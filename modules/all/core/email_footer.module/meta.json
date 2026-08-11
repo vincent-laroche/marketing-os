@@ -1,0 +1,18 @@
+{
+  "global": false,
+  "content_types": [
+    "MEMBERSHIP",
+    "LANDING_PAGE",
+    "SITE_PAGE",
+    "SUBSCRIPTION",
+    "CUSTOMER_PORTAL",
+    "EMAIL",
+    "WEB_INTERACTIVE"
+  ],
+  "host_template_types": [
+    "ANY"
+  ],
+  "module_id": 211677069610,
+  "label": "CORE - Footer - Standard - Light",
+  "is_available_for_new_content": true
+}

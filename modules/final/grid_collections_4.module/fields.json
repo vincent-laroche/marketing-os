@@ -1,0 +1,264 @@
+[
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "default": "Four collections"
+  },
+  {
+    "id": "collection_1_image",
+    "name": "collection_1_image",
+    "label": "Collection 1 image",
+    "required": false,
+    "locked": false,
+    "responsive": false,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": "Collection 1"
+    }
+  },
+  {
+    "id": "collection_1_eyebrow",
+    "name": "collection_1_eyebrow",
+    "label": "Collection 1 eyebrow",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "default": ""
+  },
+  {
+    "id": "collection_1_heading",
+    "name": "collection_1_heading",
+    "label": "Collection 1 heading",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "default": "Collection 1"
+  },
+  {
+    "id": "collection_1_text",
+    "name": "collection_1_text",
+    "label": "Collection 1 text",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "default": ""
+  },
+  {
+    "id": "collection_1_url",
+    "name": "collection_1_url",
+    "label": "Collection 1 URL",
+    "required": false,
+    "locked": false,
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS",
+      "BLOG"
+    ],
+    "type": "url",
+    "default": {
+      "type": "EXTERNAL",
+      "href": "https://hairsolutions.co/"
+    }
+  },
+  {
+    "id": "collection_2_image",
+    "name": "collection_2_image",
+    "label": "Collection 2 image",
+    "required": false,
+    "locked": false,
+    "responsive": false,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": "Collection 2"
+    }
+  },
+  {
+    "id": "collection_2_eyebrow",
+    "name": "collection_2_eyebrow",
+    "label": "Collection 2 eyebrow",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "default": ""
+  },
+  {
+    "id": "collection_2_heading",
+    "name": "collection_2_heading",
+    "label": "Collection 2 heading",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "default": "Collection 2"
+  },
+  {
+    "id": "collection_2_text",
+    "name": "collection_2_text",
+    "label": "Collection 2 text",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "default": ""
+  },
+  {
+    "id": "collection_2_url",
+    "name": "collection_2_url",
+    "label": "Collection 2 URL",
+    "required": false,
+    "locked": false,
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS",
+      "BLOG"
+    ],
+    "type": "url",
+    "default": {
+      "type": "EXTERNAL",
+      "href": "https://hairsolutions.co/"
+    }
+  },
+  {
+    "id": "collection_3_image",
+    "name": "collection_3_image",
+    "label": "Collection 3 image",
+    "required": false,
+    "locked": false,
+    "responsive": false,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": "Collection 3"
+    }
+  },
+  {
+    "id": "collection_3_eyebrow",
+    "name": "collection_3_eyebrow",
+    "label": "Collection 3 eyebrow",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "default": ""
+  },
+  {
+    "id": "collection_3_heading",
+    "name": "collection_3_heading",
+    "label": "Collection 3 heading",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "default": "Collection 3"
+  },
+  {
+    "id": "collection_3_text",
+    "name": "collection_3_text",
+    "label": "Collection 3 text",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "default": ""
+  },
+  {
+    "id": "collection_3_url",
+    "name": "collection_3_url",
+    "label": "Collection 3 URL",
+    "required": false,
+    "locked": false,
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS",
+      "BLOG"
+    ],
+    "type": "url",
+    "default": {
+      "type": "EXTERNAL",
+      "href": "https://hairsolutions.co/"
+    }
+  },
+  {
+    "id": "collection_4_image",
+    "name": "collection_4_image",
+    "label": "Collection 4 image",
+    "required": false,
+    "locked": false,
+    "responsive": false,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": "Collection 4"
+    }
+  },
+  {
+    "id": "collection_4_eyebrow",
+    "name": "collection_4_eyebrow",
+    "label": "Collection 4 eyebrow",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "default": ""
+  },
+  {
+    "id": "collection_4_heading",
+    "name": "collection_4_heading",
+    "label": "Collection 4 heading",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "default": "Collection 4"
+  },
+  {
+    "id": "collection_4_text",
+    "name": "collection_4_text",
+    "label": "Collection 4 text",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "default": ""
+  },
+  {
+    "id": "collection_4_url",
+    "name": "collection_4_url",
+    "label": "Collection 4 URL",
+    "required": false,
+    "locked": false,
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS",
+      "BLOG"
+    ],
+    "type": "url",
+    "default": {
+      "type": "EXTERNAL",
+      "href": "https://hairsolutions.co/"
+    }
+  }
+]

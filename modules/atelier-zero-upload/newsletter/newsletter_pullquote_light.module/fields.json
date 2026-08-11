@@ -1,0 +1,24 @@
+[
+  {
+    "id": "quote",
+    "name": "quote",
+    "label": "Quote",
+    "required": false,
+    "locked": false,
+    "allow_new_line": true,
+    "type": "text",
+    "display_width": null,
+    "default": "\u201cThe right base isn't the most advanced one \u2014 it's the one you'll happily maintain three months from now.\u201d"
+  },
+  {
+    "id": "attribution",
+    "name": "attribution",
+    "label": "Attribution",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Vincent \u00b7 Hair Solutions Co."
+  }
+]

@@ -1,0 +1,70 @@
+[
+  {
+    "id": "quote_text",
+    "name": "quote_text",
+    "label": "Quote",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "default": "Add an approved customer quote."
+  },
+  {
+    "id": "customer_name",
+    "name": "customer_name",
+    "label": "Customer name",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "default": ""
+  },
+  {
+    "id": "customer_detail",
+    "name": "customer_detail",
+    "label": "Customer detail",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "default": ""
+  },
+  {
+    "id": "customer_image",
+    "name": "customer_image",
+    "label": "Customer image",
+    "required": false,
+    "locked": false,
+    "responsive": false,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": "Customer portrait"
+    }
+  },
+  {
+    "id": "show_stars",
+    "name": "show_stars",
+    "label": "Show stars",
+    "required": false,
+    "locked": false,
+    "display": "select",
+    "choices": [
+      [
+        "yes",
+        "Yes"
+      ],
+      [
+        "no",
+        "No"
+      ]
+    ],
+    "multiple": false,
+    "reordering_enabled": true,
+    "preset": null,
+    "type": "choice",
+    "display_width": null,
+    "default": "no"
+  }
+]

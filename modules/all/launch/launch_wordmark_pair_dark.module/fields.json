@@ -1,0 +1,78 @@
+[
+  {
+    "id": "left_label",
+    "name": "left_label",
+    "label": "Left label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Wordmark"
+  },
+  {
+    "id": "left_image",
+    "name": "left_image",
+    "label": "Left logo/image",
+    "required": false,
+    "locked": false,
+    "responsive": true,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "display_width": null,
+    "default": {
+      "src": "https://50966981.fs1.hubspotusercontent-na1.net/hubfs/50966981/brand/hair-solutions-co-logos/email-exports/wordmark-soft-silver-email.png",
+      "alt": "Hair Solutions Co. wordmark"
+    }
+  },
+  {
+    "id": "left_caption",
+    "name": "left_caption",
+    "label": "Left caption",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Primary wordmark"
+  },
+  {
+    "id": "right_label",
+    "name": "right_label",
+    "label": "Right label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Monogram"
+  },
+  {
+    "id": "right_image",
+    "name": "right_image",
+    "label": "Right logo/image",
+    "required": false,
+    "locked": false,
+    "responsive": true,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "display_width": null,
+    "default": {
+      "src": "https://50966981.fs1.hubspotusercontent-na1.net/hubfs/50966981/brand/hair-solutions-co-logos/email-exports/monogram-soft-silver-email.png",
+      "alt": "Hair Solutions Co. monogram"
+    }
+  },
+  {
+    "id": "right_caption",
+    "name": "right_caption",
+    "label": "Right caption",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Compact brand mark"
+  }
+]

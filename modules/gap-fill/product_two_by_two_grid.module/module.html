@@ -1,0 +1,39 @@
+{% set is_dark = module.theme == "dark" %}
+{% set card_color = "#15140F" if is_dark else "#F7F1DE" %}
+{% set text_color = "#F7F1DE" if is_dark else "#15140F" %}
+{% set meta_color = "#A69E8C" if is_dark else "#8B8676" %}
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:100%;background:{{ card_color }};border-radius:16px;">
+  <tr>
+    <td style="padding:24px;font-family:Arial,Helvetica,sans-serif;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td width="48%" valign="top">
+            {% if module.product_1_image.src %}<a href="{{ module.product_1_url.href }}"><img src="{{ module.product_1_image.src }}" alt="{{ module.product_1_image.alt }}" width="100%" style="width:100%;height:auto;border-radius:16px;display:block;margin:0 0 10px 0;"></a>{% endif %}
+            <p style="margin:0 0 2px 0;font-family:'Inter Tight',Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;color:{{ text_color }};">{{ module.product_1_name }}</p>
+            <p style="margin:0;font-family:'JetBrains Mono','Courier New',Courier,monospace;font-size:11px;letter-spacing:0.5px;text-transform:uppercase;color:{{ meta_color }};">{{ module.product_1_meta }}</p>
+          </td>
+          <td width="4%">&nbsp;</td>
+          <td width="48%" valign="top">
+            {% if module.product_2_image.src %}<a href="{{ module.product_2_url.href }}"><img src="{{ module.product_2_image.src }}" alt="{{ module.product_2_image.alt }}" width="100%" style="width:100%;height:auto;border-radius:16px;display:block;margin:0 0 10px 0;"></a>{% endif %}
+            <p style="margin:0 0 2px 0;font-family:'Inter Tight',Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;color:{{ text_color }};">{{ module.product_2_name }}</p>
+            <p style="margin:0;font-family:'JetBrains Mono','Courier New',Courier,monospace;font-size:11px;letter-spacing:0.5px;text-transform:uppercase;color:{{ meta_color }};">{{ module.product_2_meta }}</p>
+          </td>
+        </tr>
+        <tr><td colspan="3" style="height:24px;line-height:24px;font-size:0;">&nbsp;</td></tr>
+        <tr>
+          <td width="48%" valign="top">
+            {% if module.product_3_image.src %}<a href="{{ module.product_3_url.href }}"><img src="{{ module.product_3_image.src }}" alt="{{ module.product_3_image.alt }}" width="100%" style="width:100%;height:auto;border-radius:16px;display:block;margin:0 0 10px 0;"></a>{% endif %}
+            <p style="margin:0 0 2px 0;font-family:'Inter Tight',Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;color:{{ text_color }};">{{ module.product_3_name }}</p>
+            <p style="margin:0;font-family:'JetBrains Mono','Courier New',Courier,monospace;font-size:11px;letter-spacing:0.5px;text-transform:uppercase;color:{{ meta_color }};">{{ module.product_3_meta }}</p>
+          </td>
+          <td width="4%">&nbsp;</td>
+          <td width="48%" valign="top">
+            {% if module.product_4_image.src %}<a href="{{ module.product_4_url.href }}"><img src="{{ module.product_4_image.src }}" alt="{{ module.product_4_image.alt }}" width="100%" style="width:100%;height:auto;border-radius:16px;display:block;margin:0 0 10px 0;"></a>{% endif %}
+            <p style="margin:0 0 2px 0;font-family:'Inter Tight',Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;color:{{ text_color }};">{{ module.product_4_name }}</p>
+            <p style="margin:0;font-family:'JetBrains Mono','Courier New',Courier,monospace;font-size:11px;letter-spacing:0.5px;text-transform:uppercase;color:{{ meta_color }};">{{ module.product_4_meta }}</p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>

@@ -1,0 +1,139 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "By the numbers"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "What customers report"
+  },
+  {
+    "id": "bar_1_label",
+    "name": "bar_1_label",
+    "label": "Bar 1 \u2014 Label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": ""
+  },
+  {
+    "id": "bar_1_value",
+    "name": "bar_1_value",
+    "label": "Bar 1 \u2014 Value text",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "90%"
+  },
+  {
+    "id": "bar_1_percent",
+    "name": "bar_1_percent",
+    "label": "Bar 1 \u2014 Fill percent (0-100)",
+    "required": false,
+    "locked": false,
+    "type": "number",
+    "display_width": null,
+    "default": 80,
+    "min": 0,
+    "max": 100,
+    "step": 1
+  },
+  {
+    "id": "bar_2_label",
+    "name": "bar_2_label",
+    "label": "Bar 2 \u2014 Label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": ""
+  },
+  {
+    "id": "bar_2_value",
+    "name": "bar_2_value",
+    "label": "Bar 2 \u2014 Value text",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "90%"
+  },
+  {
+    "id": "bar_2_percent",
+    "name": "bar_2_percent",
+    "label": "Bar 2 \u2014 Fill percent (0-100)",
+    "required": false,
+    "locked": false,
+    "type": "number",
+    "display_width": null,
+    "default": 80,
+    "min": 0,
+    "max": 100,
+    "step": 1
+  },
+  {
+    "id": "bar_3_label",
+    "name": "bar_3_label",
+    "label": "Bar 3 \u2014 Label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": ""
+  },
+  {
+    "id": "bar_3_value",
+    "name": "bar_3_value",
+    "label": "Bar 3 \u2014 Value text",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "90%"
+  },
+  {
+    "id": "bar_3_percent",
+    "name": "bar_3_percent",
+    "label": "Bar 3 \u2014 Fill percent (0-100)",
+    "required": false,
+    "locked": false,
+    "type": "number",
+    "display_width": null,
+    "default": 80,
+    "min": 0,
+    "max": 100,
+    "step": 1
+  },
+  {
+    "id": "body_text",
+    "name": "body_text",
+    "label": "Footnote",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "display_width": null,
+    "default": "Based on post-consultation follow-up surveys."
+  }
+]

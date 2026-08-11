@@ -1,0 +1,78 @@
+[
+  {
+    "id": "logo_image",
+    "name": "logo_image",
+    "label": "Logo Image",
+    "required": false,
+    "locked": false,
+    "responsive": false,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "display_width": null,
+    "default": {
+      "src": "",
+      "alt": "Hair Solutions Co."
+    }
+  },
+  {
+    "id": "ig_url",
+    "name": "ig_url",
+    "label": "Instagram URL",
+    "required": false,
+    "locked": false,
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS",
+      "BLOG"
+    ],
+    "type": "url",
+    "display_width": null,
+    "default": {
+      "type": "EXTERNAL",
+      "href": ""
+    }
+  },
+  {
+    "id": "fb_url",
+    "name": "fb_url",
+    "label": "Facebook URL",
+    "required": false,
+    "locked": false,
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS",
+      "BLOG"
+    ],
+    "type": "url",
+    "display_width": null,
+    "default": {
+      "type": "EXTERNAL",
+      "href": ""
+    }
+  },
+  {
+    "id": "yt_url",
+    "name": "yt_url",
+    "label": "YouTube URL",
+    "required": false,
+    "locked": false,
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS",
+      "BLOG"
+    ],
+    "type": "url",
+    "display_width": null,
+    "default": {
+      "type": "EXTERNAL",
+      "href": ""
+    }
+  }
+]

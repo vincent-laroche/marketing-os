@@ -1,0 +1,45 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Your code"
+  },
+  {
+    "id": "promo_code",
+    "name": "promo_code",
+    "label": "Promo code",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "WELCOME10"
+  },
+  {
+    "id": "promo_detail",
+    "name": "promo_detail",
+    "label": "Detail",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Applied at checkout"
+  },
+  {
+    "id": "body_text",
+    "name": "body_text",
+    "label": "Body",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "display_width": null,
+    "default": "<p>Enter this at checkout, or reply to this email and we will apply it for you.</p>"
+  }
+]

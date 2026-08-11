@@ -1,0 +1,92 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "You were looking at"
+  },
+  {
+    "id": "product_image",
+    "name": "product_image",
+    "label": "Product image",
+    "required": false,
+    "locked": false,
+    "type": "image",
+    "display_width": null,
+    "default": {
+      "size_type": "auto",
+      "src": "",
+      "alt": "Product you viewed",
+      "loading": "lazy"
+    },
+    "responsive": true
+  },
+  {
+    "id": "product_name",
+    "name": "product_name",
+    "label": "Product name",
+    "required": false,
+    "locked": false,
+    "allow_new_line": true,
+    "type": "text",
+    "display_width": null,
+    "default": "Custom hair system"
+  },
+  {
+    "id": "product_detail",
+    "name": "product_detail",
+    "label": "Product detail",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Lace front / medium density"
+  },
+  {
+    "id": "body_text",
+    "name": "body_text",
+    "label": "Body",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "display_width": null,
+    "default": "<p>Still deciding? We can talk you through the options with no obligation.</p>"
+  },
+  {
+    "id": "button_text",
+    "name": "button_text",
+    "label": "Button label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "View it again"
+  },
+  {
+    "id": "button_url",
+    "name": "button_url",
+    "label": "Button URL",
+    "required": false,
+    "locked": false,
+    "type": "url",
+    "display_width": null,
+    "default": {
+      "content_id": null,
+      "href": "https://hairsolutions.co",
+      "type": "EXTERNAL"
+    },
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS"
+    ]
+  }
+]

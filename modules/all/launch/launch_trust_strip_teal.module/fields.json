@@ -1,0 +1,91 @@
+[ {
+  "id" : "eyebrow",
+  "name" : "eyebrow",
+  "label" : "Eyebrow",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Why customers trust us"
+}, {
+  "id" : "item_1_label",
+  "name" : "item_1_label",
+  "label" : "Item 1 — Label",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Discreet packaging"
+}, {
+  "id" : "item_1_text",
+  "name" : "item_1_text",
+  "label" : "Item 1 — Description",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : true,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Every order ships plain and unbranded."
+}, {
+  "id" : "item_2_label",
+  "name" : "item_2_label",
+  "label" : "Item 2 — Label",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Free consultation"
+}, {
+  "id" : "item_2_text",
+  "name" : "item_2_text",
+  "label" : "Item 2 — Description",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : true,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "No pressure — we talk before you buy."
+}, {
+  "id" : "item_3_label",
+  "name" : "item_3_label",
+  "label" : "Item 3 — Label",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "45-day build window"
+}, {
+  "id" : "item_3_text",
+  "name" : "item_3_text",
+  "label" : "Item 3 — Description",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : true,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Every system made to your exact spec."
+}, {
+  "id" : "item_4_label",
+  "name" : "item_4_label",
+  "label" : "Item 4 — Label",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "3-month warranty"
+}, {
+  "id" : "item_4_text",
+  "name" : "item_4_text",
+  "label" : "Item 4 — Description",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : true,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Covered from the day it arrives."
+} ]

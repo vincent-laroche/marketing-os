@@ -1,0 +1,30 @@
+[
+  {
+    "id": "theme",
+    "name": "theme",
+    "label": "Theme",
+    "type": "choice",
+    "required": true,
+    "locked": false,
+    "choices": [["light", "Light"], ["dark", "Dark"]],
+    "default": "light"
+  },
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "required": false,
+    "locked": false,
+    "default": "THE PRECISION METHOD"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "type": "text",
+    "required": false,
+    "locked": false,
+    "default": "Crafted in small batches by master hair ventilating artisans. Each strand individually knotted to perfection."
+  }
+]

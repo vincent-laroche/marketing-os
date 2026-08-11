@@ -1,0 +1,75 @@
+[
+  {
+    "id": "theme",
+    "name": "theme",
+    "label": "Theme",
+    "type": "choice",
+    "required": true,
+    "locked": false,
+    "choices": [["light", "Light"], ["dark", "Dark"]],
+    "default": "light"
+  },
+  {
+    "id": "badge_label",
+    "name": "badge_label",
+    "label": "Badge label",
+    "type": "text",
+    "required": false,
+    "locked": false,
+    "default": "NEW ARRIVAL"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "type": "text",
+    "required": false,
+    "locked": false,
+    "default": "The Swiss Lace Atelier System"
+  },
+  {
+    "id": "image",
+    "name": "image",
+    "label": "Image",
+    "type": "image",
+    "required": false,
+    "locked": false,
+    "default": { "src": "", "alt": "Product image", "width": 528, "height": 340 }
+  },
+  {
+    "id": "price_label",
+    "name": "price_label",
+    "label": "Price label",
+    "type": "text",
+    "required": false,
+    "locked": false,
+    "default": "INTRODUCTORY RATE"
+  },
+  {
+    "id": "price",
+    "name": "price",
+    "label": "Price",
+    "type": "text",
+    "required": false,
+    "locked": false,
+    "default": "$580"
+  },
+  {
+    "id": "cta_label",
+    "name": "cta_label",
+    "label": "CTA label",
+    "type": "text",
+    "required": false,
+    "locked": false,
+    "default": "Configure Your System"
+  },
+  {
+    "id": "cta_url",
+    "name": "cta_url",
+    "label": "CTA URL",
+    "type": "url",
+    "required": false,
+    "locked": false,
+    "default": { "url": { "type": "EXTERNAL", "href": "https://hairsolutions.co/" } }
+  }
+]

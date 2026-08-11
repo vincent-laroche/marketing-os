@@ -1,0 +1,27 @@
+[
+  {
+    "id": "theme",
+    "name": "theme",
+    "label": "Theme",
+    "type": "choice",
+    "required": true,
+    "locked": false,
+    "choices": [["light", "Light"], ["dark", "Dark"]],
+    "default": "light"
+  },
+  { "id": "eyebrow", "name": "eyebrow", "label": "Eyebrow", "type": "text", "required": false, "locked": false, "default": "How it works" },
+  { "id": "heading", "name": "heading", "label": "Heading", "type": "text", "required": false, "locked": false, "default": "From first call to" },
+  { "id": "heading_accent", "name": "heading_accent", "label": "Heading accent (italic)", "type": "text", "required": false, "locked": false, "default": "first look." },
+  { "id": "step_1_label", "name": "step_1_label", "label": "Step 1 label", "type": "text", "required": false, "locked": false, "default": "01 · Consult" },
+  { "id": "step_1_heading", "name": "step_1_heading", "label": "Step 1 heading", "type": "text", "required": false, "locked": false, "default": "Talk it through" },
+  { "id": "step_1_body", "name": "step_1_body", "label": "Step 1 body", "type": "text", "required": false, "locked": false, "default": "A real specialist, zero pressure." },
+  { "id": "step_2_label", "name": "step_2_label", "label": "Step 2 label", "type": "text", "required": false, "locked": false, "default": "02 · Spec" },
+  { "id": "step_2_heading", "name": "step_2_heading", "label": "Step 2 heading", "type": "text", "required": false, "locked": false, "default": "Design your system" },
+  { "id": "step_2_body", "name": "step_2_body", "label": "Step 2 body", "type": "text", "required": false, "locked": false, "default": "Matched to you, strand by strand." },
+  { "id": "step_3_label", "name": "step_3_label", "label": "Step 3 label", "type": "text", "required": false, "locked": false, "default": "03 · Fit" },
+  { "id": "step_3_heading", "name": "step_3_heading", "label": "Step 3 heading", "type": "text", "required": false, "locked": false, "default": "Cut-in & blend" },
+  { "id": "step_3_body", "name": "step_3_body", "label": "Step 3 body", "type": "text", "required": false, "locked": false, "default": "The hairline disappears into yours." },
+  { "id": "step_4_label", "name": "step_4_label", "label": "Step 4 label", "type": "text", "required": false, "locked": false, "default": "04 · Care" },
+  { "id": "step_4_heading", "name": "step_4_heading", "label": "Step 4 heading", "type": "text", "required": false, "locked": false, "default": "Keep it perfect" },
+  { "id": "step_4_body", "name": "step_4_body", "label": "Step 4 body", "type": "text", "required": false, "locked": false, "default": "Guides, refits, lifetime support." }
+]

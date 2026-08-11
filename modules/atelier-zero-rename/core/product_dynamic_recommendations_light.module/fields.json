@@ -1,0 +1,141 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Based on your last order"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "required": false,
+    "locked": false,
+    "allow_new_line": true,
+    "type": "text",
+    "display_width": null,
+    "default": "Ready when you are"
+  },
+  {
+    "id": "product_1_image",
+    "name": "product_1_image",
+    "label": "Product 1 image",
+    "required": false,
+    "locked": false,
+    "type": "image",
+    "display_width": null,
+    "default": {
+      "size_type": "auto",
+      "src": "",
+      "alt": "Recommended product",
+      "loading": "lazy"
+    },
+    "responsive": true
+  },
+  {
+    "id": "product_1_title",
+    "name": "product_1_title",
+    "label": "Product 1 title",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Care kit"
+  },
+  {
+    "id": "product_1_text",
+    "name": "product_1_text",
+    "label": "Product 1 detail",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Cleanser, conditioner, adhesive remover"
+  },
+  {
+    "id": "product_2_image",
+    "name": "product_2_image",
+    "label": "Product 2 image",
+    "required": false,
+    "locked": false,
+    "type": "image",
+    "display_width": null,
+    "default": {
+      "size_type": "auto",
+      "src": "",
+      "alt": "Recommended product",
+      "loading": "lazy"
+    },
+    "responsive": true
+  },
+  {
+    "id": "product_2_title",
+    "name": "product_2_title",
+    "label": "Product 2 title",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Adhesive"
+  },
+  {
+    "id": "product_2_text",
+    "name": "product_2_text",
+    "label": "Product 2 detail",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Matched to your base type"
+  },
+  {
+    "id": "fallback_body",
+    "name": "fallback_body",
+    "label": "Fallback body",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "display_width": null,
+    "default": "<p>Reply and tell us what you are running low on — we will match it to the spec on your file.</p>"
+  },
+  {
+    "id": "button_text",
+    "name": "button_text",
+    "label": "Button label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Reorder your supplies"
+  },
+  {
+    "id": "button_url",
+    "name": "button_url",
+    "label": "Button URL",
+    "required": false,
+    "locked": false,
+    "type": "url",
+    "display_width": null,
+    "default": {
+      "content_id": null,
+      "href": "https://hairsolutions.co",
+      "type": "EXTERNAL"
+    },
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS"
+    ]
+  }
+]

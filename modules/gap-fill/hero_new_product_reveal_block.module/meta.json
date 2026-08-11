@@ -1,0 +1,7 @@
+{
+  "label": "Hero - New product reveal block",
+  "global": false,
+  "content_types": ["EMAIL"],
+  "host_template_types": ["EMAIL"],
+  "is_available_for_new_content": true
+}

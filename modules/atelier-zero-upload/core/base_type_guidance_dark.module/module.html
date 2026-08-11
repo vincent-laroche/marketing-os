@@ -1,0 +1,35 @@
+<style>
+@media only screen and (max-width:480px){
+  .az-module-shell{width:100%!important;max-width:100%!important;}
+  .az-module-shell .az-mobile-pad{padding-left:24px!important;padding-right:24px!important;}
+  .az-module-shell td{max-width:100%!important;box-sizing:border-box!important;overflow-wrap:anywhere!important;}
+}
+</style>
+<!-- Atelier Zero v7 local remediation. Source field identifiers preserved. -->
+<table border="0" cellpadding="0" cellspacing="0" data-module-frame="core-card" role="presentation" style="background-color:transparent;border-collapse:collapse;margin:0;" width="100%">
+<tr><td align="center" style="padding:7px 16px;">
+<table border="0" cellpadding="0" cellspacing="0" class="az-module-shell" role="presentation" style="max-width:568px;background-color:#181714;border:none;border-radius:16px;border-collapse:separate;" width="100%">
+<tr><td class="az-mobile-pad" style="padding:28px 30px;font-family:Arial,Helvetica,sans-serif;color:#EDE3CC;">
+{%- set base = contact.base_preference | default("undecided") -%}
+{%- set ctx = module.context | default("prep") -%}
+{%- if base == "undecided" or not base -%}
+ <p style="margin:0 0 12px;font-size:16px;line-height:1.6;color:#EDE3CC;">We do not have a base preference on file. A consultation can help you compare the practical tradeoffs without pressure.</p>
+<a class="az-cta" href="{{ module.fallback_cta_url.href }}" style="display:inline-block;background-color:#EA6452;color:#151411;font-size:14px;font-weight:700;text-decoration:none;padding:14px 24px;border-radius:999px;font-family:Arial,Helvetica,sans-serif;line-height:1.2;min-height:44px;box-sizing:border-box;">Book a consultation</a>
+{%- else -%}
+ <p style="margin:0 0 8px;font-size:16px;font-weight:700;line-height:1.6;color:#EDE3CC;">Your {{ base | replace("_", " ") | capitalize }} system</p>
+ {%- if ctx == "prep" -%}
+ <p style="margin:0 0 12px;font-size:16px;line-height:1.6;color:#EDE3CC;">Before application, confirm the system and attachment products are compatible. Prepare the scalp and use each product exactly as directed. Stop and ask for help if the scalp becomes irritated or the instructions are unclear.</p>
+<a class="az-cta" href="https://hairsolutions.co/pages/help-center" style="display:inline-block;background-color:#EA6452;color:#151411;font-size:14px;font-weight:700;text-decoration:none;padding:14px 24px;border-radius:999px;font-family:Arial,Helvetica,sans-serif;line-height:1.2;min-height:44px;box-sizing:border-box;">Open the help center</a>
+ {%- elif ctx == "removal_styling" -%}
+ <p style="margin:0 0 12px;font-size:16px;line-height:1.6;color:#EDE3CC;">Use a remover and styling products that are compatible with the base, hair, and attachment method. Follow their directions, work gently, and avoid forcing the base or applying unverified heat settings.</p>
+<a class="az-cta" href="https://hairsolutions.co/pages/help-center" style="display:inline-block;background-color:#EA6452;color:#151411;font-size:14px;font-weight:700;text-decoration:none;padding:14px 24px;border-radius:999px;font-family:Arial,Helvetica,sans-serif;line-height:1.2;min-height:44px;box-sizing:border-box;">Open the help center</a>
+ {%- elif ctx == "reorder" -%}
+ <p style="margin:0 0 12px;font-size:16px;line-height:1.6;color:#EDE3CC;">Review the base, hair, fit, density, color, and maintenance routine. Reorder the current specification if it still works, or compare alternatives if a practical detail should change.</p>
+<a class="az-cta" href="https://hairsolutions.co/collections/mens-hair-systems" style="display:inline-block;background-color:#EA6452;color:#151411;font-size:14px;font-weight:700;text-decoration:none;padding:14px 24px;border-radius:999px;font-family:Arial,Helvetica,sans-serif;line-height:1.2;min-height:44px;box-sizing:border-box;">Compare hair systems</a>
+ {%- else -%}
+ <p style="margin:0 0 12px;font-size:16px;line-height:1.6;color:#EDE3CC;">Construction and availability can change. Review the current product specification and care requirements before deciding whether a different base suits your routine.</p>
+<a class="az-cta" href="https://hairsolutions.co/collections/mens-hair-systems" style="display:inline-block;background-color:#EA6452;color:#151411;font-size:14px;font-weight:700;text-decoration:none;padding:14px 24px;border-radius:999px;font-family:Arial,Helvetica,sans-serif;line-height:1.2;min-height:44px;box-sizing:border-box;">Compare hair systems</a>
+ {%- endif -%}
+{%- endif -%}
+</td></tr></table>
+</td></tr></table>

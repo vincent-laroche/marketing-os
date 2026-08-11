@@ -1,0 +1,30 @@
+[
+  {
+    "id": "theme",
+    "name": "theme",
+    "label": "Theme",
+    "type": "choice",
+    "required": true,
+    "locked": false,
+    "choices": [["light", "Light"], ["dark", "Dark"]],
+    "default": "light"
+  },
+  {
+    "id": "cta_label",
+    "name": "cta_label",
+    "label": "Link label",
+    "type": "text",
+    "required": false,
+    "locked": false,
+    "default": "Explore the Atelier standard"
+  },
+  {
+    "id": "cta_url",
+    "name": "cta_url",
+    "label": "Link URL",
+    "type": "url",
+    "required": false,
+    "locked": false,
+    "default": { "url": { "type": "EXTERNAL", "href": "https://hairsolutions.co/" } }
+  }
+]

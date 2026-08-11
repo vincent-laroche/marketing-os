@@ -1,0 +1,28 @@
+{% set is_dark = module.theme == "dark" %}
+{% set card_color = "#15140F" if is_dark else "#F7F1DE" %}
+{% set text_color = "#F7F1DE" if is_dark else "#15140F" %}
+{% set muted_color = "#DDD2B6" if is_dark else "#5A5448" %}
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:100%;background:{{ card_color }};border-radius:16px;">
+  <tr>
+    <td align="center" style="padding:48px;font-family:Arial,Helvetica,sans-serif;text-align:center;">
+      {% if module.heading %}
+      <h2 style="margin:0 0 12px 0;font-family:'Inter Tight',Arial,Helvetica,sans-serif;font-size:28px;line-height:1.2;font-weight:800;color:{{ text_color }};">{{ module.heading }}</h2>
+      {% endif %}
+      {% if module.body_text %}
+      <div style="margin:0 auto 20px auto;max-width:440px;font-family:'Inter',Arial,Helvetica,sans-serif;font-size:15px;line-height:22px;color:{{ muted_color }};">{{ module.body_text }}</div>
+      {% endif %}
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 auto;"><tr>
+        {% if module.app_store_badge.src %}
+        <td style="padding-right:8px;">
+          <a href="{{ module.app_store_url.href }}"><img src="{{ module.app_store_badge.src }}" alt="{{ module.app_store_badge.alt }}" width="130" height="39" style="display:block;border-radius:8px;"></a>
+        </td>
+        {% endif %}
+        {% if module.google_play_badge.src %}
+        <td style="padding-left:8px;">
+          <a href="{{ module.google_play_url.href }}"><img src="{{ module.google_play_badge.src }}" alt="{{ module.google_play_badge.alt }}" width="130" height="39" style="display:block;border-radius:8px;"></a>
+        </td>
+        {% endif %}
+      </tr></table>
+    </td>
+  </tr>
+</table>

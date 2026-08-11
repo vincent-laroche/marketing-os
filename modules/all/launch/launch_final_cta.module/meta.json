@@ -1,0 +1,8 @@
+{
+  "global" : false,
+  "content_types" : [ "EMAIL" ],
+  "host_template_types" : [ "ANY" ],
+  "module_id" : 216606657085,
+  "label" : "Launch - Button - Final CTA - Light",
+  "is_available_for_new_content" : true
+}

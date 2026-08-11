@@ -1,0 +1,66 @@
+[
+  {
+    "id": "theme",
+    "name": "theme",
+    "label": "Theme",
+    "type": "choice",
+    "required": true,
+    "locked": false,
+    "choices": [["light", "Light"], ["dark", "Dark"]],
+    "default": "light"
+  },
+  {
+    "id": "image",
+    "name": "image",
+    "label": "Product image",
+    "type": "image",
+    "required": false,
+    "locked": false,
+    "default": { "src": "", "alt": "Product image", "width": 220, "height": 260 }
+  },
+  {
+    "id": "name",
+    "name": "name",
+    "label": "Product name",
+    "type": "text",
+    "required": false,
+    "locked": false,
+    "default": "French Lace Active"
+  },
+  {
+    "id": "price",
+    "name": "price",
+    "label": "Price",
+    "type": "text",
+    "required": false,
+    "locked": false,
+    "default": "$520"
+  },
+  {
+    "id": "body_text",
+    "name": "body_text",
+    "label": "Body",
+    "type": "richtext",
+    "required": false,
+    "locked": false,
+    "default": "A highly durable, breathable lace mesh base with reinforced stitching for intensive sports wear."
+  },
+  {
+    "id": "cta_label",
+    "name": "cta_label",
+    "label": "CTA label",
+    "type": "text",
+    "required": false,
+    "locked": false,
+    "default": "Shop French Lace"
+  },
+  {
+    "id": "cta_url",
+    "name": "cta_url",
+    "label": "CTA URL",
+    "type": "url",
+    "required": false,
+    "locked": false,
+    "default": { "url": { "type": "EXTERNAL", "href": "https://hairsolutions.co/" } }
+  }
+]

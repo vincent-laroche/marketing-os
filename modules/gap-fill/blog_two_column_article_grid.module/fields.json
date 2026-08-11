@@ -1,0 +1,20 @@
+[
+  {
+    "id": "theme",
+    "name": "theme",
+    "label": "Theme",
+    "type": "choice",
+    "required": true,
+    "locked": false,
+    "choices": [["light", "Light"], ["dark", "Dark"]],
+    "default": "light"
+  },
+  { "id": "post_1_image", "name": "post_1_image", "label": "Post 1 image", "type": "image", "required": false, "locked": false, "default": { "src": "", "alt": "Post 1", "width": 254, "height": 150 } },
+  { "id": "post_1_title", "name": "post_1_title", "label": "Post 1 title", "type": "text", "required": false, "locked": false, "default": "Choosing the Ideal Hair Density" },
+  { "id": "post_1_body", "name": "post_1_body", "label": "Post 1 body", "type": "richtext", "required": false, "locked": false, "default": "Learn how matching density correctly results in an entirely invisible hair standard." },
+  { "id": "post_1_url", "name": "post_1_url", "label": "Post 1 URL", "type": "url", "required": false, "locked": false, "default": { "url": { "type": "EXTERNAL", "href": "https://hairsolutions.co/" } } },
+  { "id": "post_2_image", "name": "post_2_image", "label": "Post 2 image", "type": "image", "required": false, "locked": false, "default": { "src": "", "alt": "Post 2", "width": 254, "height": 150 } },
+  { "id": "post_2_title", "name": "post_2_title", "label": "Post 2 title", "type": "text", "required": false, "locked": false, "default": "Organic Protection Elixirs" },
+  { "id": "post_2_body", "name": "post_2_body", "label": "Post 2 body", "type": "richtext", "required": false, "locked": false, "default": "An inside look at our advanced botanical pH balancing routine." },
+  { "id": "post_2_url", "name": "post_2_url", "label": "Post 2 URL", "type": "url", "required": false, "locked": false, "default": { "url": { "type": "EXTERNAL", "href": "https://hairsolutions.co/" } } }
+]

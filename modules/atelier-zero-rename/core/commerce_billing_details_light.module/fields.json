@@ -1,0 +1,153 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Billing"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "required": false,
+    "locked": false,
+    "allow_new_line": true,
+    "type": "text",
+    "display_width": null,
+    "default": "Your plan details"
+  },
+  {
+    "id": "label_plan",
+    "name": "label_plan",
+    "label": "Plan label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Plan"
+  },
+  {
+    "id": "value_plan",
+    "name": "value_plan",
+    "label": "Plan value",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Continuity Plan"
+  },
+  {
+    "id": "label_amount",
+    "name": "label_amount",
+    "label": "Amount label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Amount"
+  },
+  {
+    "id": "value_amount",
+    "name": "value_amount",
+    "label": "Amount value",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "—"
+  },
+  {
+    "id": "label_date",
+    "name": "label_date",
+    "label": "Date label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Next billing date"
+  },
+  {
+    "id": "value_date",
+    "name": "value_date",
+    "label": "Date value",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "—"
+  },
+  {
+    "id": "label_method",
+    "name": "label_method",
+    "label": "Method label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Payment method"
+  },
+  {
+    "id": "value_method",
+    "name": "value_method",
+    "label": "Method value",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Card on file"
+  },
+  {
+    "id": "note",
+    "name": "note",
+    "label": "Note",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "display_width": null,
+    "default": "<p>You can update, pause, or cancel at any time. Nothing is locked in.</p>"
+  },
+  {
+    "id": "button_text",
+    "name": "button_text",
+    "label": "Button label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Manage your plan"
+  },
+  {
+    "id": "button_url",
+    "name": "button_url",
+    "label": "Button URL",
+    "required": false,
+    "locked": false,
+    "type": "url",
+    "display_width": null,
+    "default": {
+      "content_id": null,
+      "href": "https://hairsolutions.co/account",
+      "type": "EXTERNAL"
+    },
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS"
+    ]
+  }
+]

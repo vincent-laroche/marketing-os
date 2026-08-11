@@ -1,0 +1,15 @@
+# Text - Opening - Light
+
+Available for New Content: Yes
+Category: launch
+Family: Text - Opening
+Field Count: 3
+Field Names: eyebrow, heading, body_text
+Field Types: richtext, text
+HTML Size KB: 1.7
+Notes: No HubSpot module ID - not yet uploaded to Design Manager
+Review Status: Not started
+Slug: text_opening_light
+Source Path: launch/text_opening_light.module
+Theme: Light
+Used In Emails: PP-7b · UGC Photo Request — PP-7 positive +7d (https://app.notion.com/p/PP-7b-UGC-Photo-Request-PP-7-positive-7d-62af4e0d84e08208885801f37e5ed816?pvs=21), Untitled (https://app.notion.com/p/3ac9f1df11268152ae92f7f588c3f74c?pvs=21), Untitled (https://app.notion.com/p/3ac9f1df11268104a69ff6980f774476?pvs=21), Untitled (https://app.notion.com/p/3ac9f1df112681b8b887c451914a98da?pvs=21), Untitled (https://app.notion.com/p/3ac9f1df11268155ac1ae3a54c3ccdd7?pvs=21), PP-1 · Order Confirmation — Day 0 (https://app.notion.com/p/PP-1-Order-Confirmation-Day-0-3b8f4e0d84e081179f67f8744ceeed1d?pvs=21), PP-2 · Prep Guide — Day 1 (https://app.notion.com/p/PP-2-Prep-Guide-Day-1-f3df4e0d84e08273b127816ad46c0ea5?pvs=21), PP-4 · Shipped + Tracking — Fulfilment event (https://app.notion.com/p/PP-4-Shipped-Tracking-Fulfilment-event-4eaf4e0d84e08205b83181ddeb546a42?pvs=21), PP-5 · Maintenance Calendar — Delivery +7d (https://app.notion.com/p/PP-5-Maintenance-Calendar-Delivery-7d-1b7f4e0d84e082228e268153dea45051?pvs=21), PP-6 · Four Products That Matter — Delivery +21d (https://app.notion.com/p/PP-6-Four-Products-That-Matter-Delivery-21d-3b8f4e0d84e0817583a8f81536369ca6?pvs=21), WB-2 · What's Changed — Day 7 (https://app.notion.com/p/WB-2-What-s-Changed-Day-7-478f4e0d84e083ee9d2b019b42fff73d?pvs=21), RO-2 · Due For Supplies — Delivery +60d (https://app.notion.com/p/RO-2-Due-For-Supplies-Delivery-60d-b70f4e0d84e0827eb83201aafef05b0d?pvs=21), C-3 · Soft Incentive — Day 12 (https://app.notion.com/p/C-3-Soft-Incentive-Day-12-9c53ce6c1f9c4d42a94de96d9b4908a9?pvs=21), C-0 · Consultation Recap — Day 0 (https://app.notion.com/p/C-0-Consultation-Recap-Day-0-7e5150343cdd4111a1e316d127a34ecb?pvs=21), C-2 · Spec Confidence — Day 6 (https://app.notion.com/p/C-2-Spec-Confidence-Day-6-064a486128b64f3e83b4ecc1e80a09eb?pvs=21), C-1 · Objections Answered — Day 2 (https://app.notion.com/p/C-1-Objections-Answered-Day-2-689d7b96ac64430aa06602934811dde7?pvs=21), W-1 · Welcome + Expectations — Signup +0d (https://app.notion.com/p/W-1-Welcome-Expectations-Signup-0d-114a216d79044540bae58cf824c77151?pvs=21), W-5 · Soft Consult Invite — Signup +18d (https://app.notion.com/p/W-5-Soft-Consult-Invite-Signup-18d-cbc584eb023c4555925a4e70f5ca4921?pvs=21), W-2 · How Systems Work — Signup +3d (https://app.notion.com/p/W-2-How-Systems-Work-Signup-3d-c5ead34961f44b2bb581e993f572e936?pvs=21), W-4 · Social Proof Wall — Signup +12d (https://app.notion.com/p/W-4-Social-Proof-Wall-Signup-12d-e0560b12f3334f2a9b30190774933653?pvs=21)

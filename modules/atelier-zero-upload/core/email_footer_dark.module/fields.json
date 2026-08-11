@@ -1,0 +1,104 @@
+[
+  {
+    "id": "company_name",
+    "name": "company_name",
+    "label": "Company name",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Hair Solutions Co."
+  },
+  {
+    "id": "company_address",
+    "name": "company_address",
+    "label": "Company address",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Eahitajate tee 110, Tallinn, Harjumaa 13517, Estonia"
+  },
+  {
+    "id": "instagram_url",
+    "name": "instagram_url",
+    "label": "Instagram URL",
+    "required": false,
+    "locked": false,
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS",
+      "BLOG"
+    ],
+    "type": "url",
+    "display_width": null,
+    "default": {
+      "type": "EXTERNAL",
+      "href": ""
+    }
+  },
+  {
+    "id": "facebook_url",
+    "name": "facebook_url",
+    "label": "Facebook URL",
+    "required": false,
+    "locked": false,
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS",
+      "BLOG"
+    ],
+    "type": "url",
+    "display_width": null,
+    "default": {
+      "type": "EXTERNAL",
+      "href": ""
+    }
+  },
+  {
+    "id": "youtube_url",
+    "name": "youtube_url",
+    "label": "YouTube URL",
+    "required": false,
+    "locked": false,
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS",
+      "BLOG"
+    ],
+    "type": "url",
+    "display_width": null,
+    "default": {
+      "type": "EXTERNAL",
+      "href": ""
+    }
+  },
+  {
+    "id": "privacy_url",
+    "name": "privacy_url",
+    "label": "Privacy URL",
+    "required": false,
+    "locked": false,
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS",
+      "BLOG"
+    ],
+    "type": "url",
+    "display_width": null,
+    "default": {
+      "type": "EXTERNAL",
+      "href": "https://hairsolutions.co/policies/privacy-policy"
+    }
+  }
+]

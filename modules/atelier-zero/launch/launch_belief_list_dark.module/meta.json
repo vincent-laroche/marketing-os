@@ -1,0 +1,12 @@
+{
+  "global": false,
+  "content_types": [
+    "EMAIL"
+  ],
+  "host_template_types": [
+    "ANY"
+  ],
+  "module_id": 216421817223,
+  "label": "Belief list — Dark / Atelier Ink",
+  "is_available_for_new_content": true
+}

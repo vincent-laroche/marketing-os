@@ -1,0 +1,57 @@
+[
+  {
+    "id": "theme",
+    "name": "theme",
+    "label": "Theme",
+    "type": "choice",
+    "required": true,
+    "locked": false,
+    "choices": [["light", "Light"], ["dark", "Dark"]],
+    "default": "light"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "type": "text",
+    "required": false,
+    "locked": false,
+    "default": "Planning a Change?"
+  },
+  {
+    "id": "body_text",
+    "name": "body_text",
+    "label": "Body",
+    "type": "richtext",
+    "required": false,
+    "locked": false,
+    "default": "Compare your current specifications with the look you want next. Keep the elements that work and adjust only what needs to change."
+  },
+  {
+    "id": "code",
+    "name": "code",
+    "label": "Code / chip text",
+    "type": "text",
+    "required": false,
+    "locked": false,
+    "default": "YOUR NEXT SYSTEM"
+  },
+  {
+    "id": "cta_label",
+    "name": "cta_label",
+    "label": "CTA label",
+    "type": "text",
+    "required": false,
+    "locked": false,
+    "default": "Build Your Next System"
+  },
+  {
+    "id": "cta_url",
+    "name": "cta_url",
+    "label": "CTA URL",
+    "type": "url",
+    "required": false,
+    "locked": false,
+    "default": { "url": { "type": "EXTERNAL", "href": "https://hairsolutions.co/" } }
+  }
+]

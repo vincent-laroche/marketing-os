@@ -1,0 +1,34 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Availability"
+  },
+  {
+    "id": "deadline_text",
+    "name": "deadline_text",
+    "label": "Deadline statement",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Available until 30 September"
+  },
+  {
+    "id": "body_text",
+    "name": "body_text",
+    "label": "Body",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "display_width": null,
+    "default": "<p>After that date this offer closes. If the timing is wrong, that is completely fine — the standard pricing stays exactly as it is.</p>"
+  }
+]

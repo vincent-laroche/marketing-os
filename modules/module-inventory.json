@@ -1,0 +1,848 @@
+[
+  {
+    "scope": "core",
+    "module_path": "core/base_type_guidance.module",
+    "label": "CORE - Text - Base type guidance - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "core",
+    "module_path": "core/base_type_guidance_dark.module",
+    "label": "CORE - Text - Base type guidance - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "core",
+    "module_path": "core/customer_snapshot.module",
+    "label": "CORE - Text - Customer snapshot - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "core",
+    "module_path": "core/customer_snapshot_dark.module",
+    "label": "CORE - Text - Customer snapshot - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "core",
+    "module_path": "core/email_footer.module",
+    "label": "CORE - Footer - Standard - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "core",
+    "module_path": "core/email_footer_dark.module",
+    "label": "CORE - Footer - Standard - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "core",
+    "module_path": "core/email_header.module",
+    "label": "CORE - Header - Centered logo - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "core",
+    "module_path": "core/email_header_dark.module",
+    "label": "CORE - Header - Centered logo - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "core",
+    "module_path": "core/faq_block.module",
+    "label": "CORE - Text - FAQ block - Light",
+    "source_status": "local-only draft",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "core",
+    "module_path": "core/faq_block_dark.module",
+    "label": "CORE - Text - FAQ block - Dark",
+    "source_status": "local-only draft",
+    "complete": false,
+    "missing_files": "fields.json",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "core",
+    "module_path": "core/goal_based_recommendation.module",
+    "label": "CORE - Products - Goal-based recommendation - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "core",
+    "module_path": "core/goal_based_recommendation_dark.module",
+    "label": "CORE - Products - Goal-based recommendation - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "core",
+    "module_path": "core/hero.module",
+    "label": "CORE - Text - Hero - Light",
+    "source_status": "local-only draft",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "core",
+    "module_path": "core/hero_dark.module",
+    "label": "CORE - Text - Hero - Dark",
+    "source_status": "local-only draft",
+    "complete": false,
+    "missing_files": "fields.json",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "core",
+    "module_path": "core/lifespan_next_step.module",
+    "label": "CORE - Text - Lifespan next step - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "core",
+    "module_path": "core/lifespan_next_step_dark.module",
+    "label": "CORE - Text - Lifespan next step - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "core",
+    "module_path": "core/proof.module",
+    "label": "CORE - Text - Proof - Light",
+    "source_status": "local-only draft",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "core",
+    "module_path": "core/proof_dark.module",
+    "label": "CORE - Text - Proof - Dark",
+    "source_status": "local-only draft",
+    "complete": false,
+    "missing_files": "fields.json",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "core",
+    "module_path": "core/reassurance.module",
+    "label": "CORE - Text - Reassurance - Light",
+    "source_status": "local-only draft",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "core",
+    "module_path": "core/reassurance_dark.module",
+    "label": "CORE - Text - Reassurance - Dark",
+    "source_status": "local-only draft",
+    "complete": false,
+    "missing_files": "fields.json",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch-01-04-logo-pair.module",
+    "label": "Launch - Image - New site experience - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch-02-03-offer.module",
+    "label": "Launch - Text - Offer - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch-03-03-offer.module",
+    "label": "Launch - Text - Offer - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch-03-05-products-3-dark.module",
+    "label": "Launch - Products - Three product grid - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch-05-01-header.module",
+    "label": "Launch - Header - Centered logo - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch-05-02-hero-image.module",
+    "label": "Launch - Image - Hero image - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch-05-03-question-list.module",
+    "label": "Launch - Text - Question list - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch-05-04-five-changes.module",
+    "label": "Launch - Text - Five changes - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch-05-05-belief-list-dark.module",
+    "label": "Launch - Text - Belief list - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch-05-06-founder-pillars.module",
+    "label": "Launch - Text - Founder pillars - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch-05-07-products-3.module",
+    "label": "Launch - Products - Three product grid - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch-05-08-final-cta.module",
+    "label": "Launch - Button - Final CTA - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch-05-09-footer.module",
+    "label": "Launch - Footer - Standard - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_belief_list.module",
+    "label": "Launch - Text - Belief list - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_belief_list_dark.module",
+    "label": "Launch - Text - Belief list - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_collections_grid4.module",
+    "label": "Launch - Grid - Collections grid (4) - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_collections_grid4_dark.module",
+    "label": "Launch - Grid - Collections grid (4) - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_collections_grid4_teal.module",
+    "label": "Launch - Grid - Collections grid (4) - Teal",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_collections_grid6.module",
+    "label": "Launch - Grid - Collections grid (6) - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_collections_grid6_dark.module",
+    "label": "Launch - Grid - Collections grid (6) - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_collections_grid6_teal.module",
+    "label": "Launch - Grid - Collections grid (6) - Teal",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_feature_list_5.module",
+    "label": "Launch - Text - Five changes - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_feature_list_5_dark.module",
+    "label": "Launch - Text - Five changes - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_feature_list_5_teal.module",
+    "label": "Launch - Text - Five changes - Teal",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_final_cta.module",
+    "label": "Launch - Button - Final CTA - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_final_cta_dark.module",
+    "label": "Launch - Button - Final CTA - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_final_cta_teal.module",
+    "label": "Launch - Button - Final CTA - Teal",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_footer.module",
+    "label": "Launch - Footer - Standard - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_footer_dark.module",
+    "label": "Launch - Footer - Standard - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_footer_teal.module",
+    "label": "Launch - Footer - Standard - Teal",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_founder_note.module",
+    "label": "Launch - Image - Founder note (photo) - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_founder_note_dark.module",
+    "label": "Launch - Image - Founder note (photo) - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_founder_note_teal.module",
+    "label": "Launch - Image - Founder note (photo) - Teal",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_founder_pillars.module",
+    "label": "Launch - Text - Founder pillars - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_founder_pillars_dark.module",
+    "label": "Launch - Text - Founder pillars - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_header.module",
+    "label": "Launch - Header - Centered logo - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_header_dark.module",
+    "label": "Launch - Header - Centered logo - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_header_teal.module",
+    "label": "Launch - Header - Centered logo - Teal",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_hero_image.module",
+    "label": "Launch - Image - Hero image - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_hero_image_dark.module",
+    "label": "Launch - Image - Hero image - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_hero_image_teal.module",
+    "label": "Launch - Image - Hero image - Teal",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_offer_discount.module",
+    "label": "Launch - Text - Offer discount - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_offer_discount_dark.module",
+    "label": "Launch - Text - Offer discount - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_offer_discount_teal.module",
+    "label": "Launch - Text - Offer discount - Teal",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_opening_text.module",
+    "label": "Launch - Text - Opening - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_opening_text_dark.module",
+    "label": "Launch - Text - Opening - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_opening_text_teal.module",
+    "label": "Launch - Text - Opening - Teal",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_product_grid3.module",
+    "label": "Launch - Products - Three product grid - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_product_grid3_dark.module",
+    "label": "Launch - Products - Three product grid - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_question_list.module",
+    "label": "Launch - Text - Question list - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_question_list_dark.module",
+    "label": "Launch - Text - Question list - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_testimonials.module",
+    "label": "Launch - List - Testimonials - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_testimonials_dark.module",
+    "label": "Launch - List - Testimonials - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_testimonials_teal.module",
+    "label": "Launch - List - Testimonials - Teal",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_trust_strip.module",
+    "label": "Launch - List - Trust strip (4-col) - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_trust_strip_dark.module",
+    "label": "Launch - List - Trust strip (4-col) - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_trust_strip_teal.module",
+    "label": "Launch - List - Trust strip (4-col) - Teal",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_why_it_matters.module",
+    "label": "Launch - Text - Why it matters (stat card) - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_why_it_matters_dark.module",
+    "label": "Launch - Text - Why it matters (stat card) - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_why_it_matters_teal.module",
+    "label": "Launch - Text - Why it matters (stat card) - Teal",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_wordmark_pair.module",
+    "label": "Launch - Image - Logo system - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "launch",
+    "module_path": "launch/launch_wordmark_pair_dark.module",
+    "label": "Launch - Image - Logo system - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "newsletter",
+    "module_path": "newsletter/newsletter_cta_dark.module",
+    "label": "Newsletter - Button - Primary CTA - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "newsletter",
+    "module_path": "newsletter/newsletter_cta_light.module",
+    "label": "Newsletter - Button - Primary CTA - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "newsletter",
+    "module_path": "newsletter/newsletter_feature_dark.module",
+    "label": "Newsletter - Image - Feature story - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "newsletter",
+    "module_path": "newsletter/newsletter_feature_light.module",
+    "label": "Newsletter - Image - Feature story - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "newsletter",
+    "module_path": "newsletter/newsletter_footer_dark.module",
+    "label": "Newsletter - Footer - Standard - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "newsletter",
+    "module_path": "newsletter/newsletter_footer_light.module",
+    "label": "Newsletter - Footer - Standard - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "newsletter",
+    "module_path": "newsletter/newsletter_masthead_dark.module",
+    "label": "Newsletter - Text - Masthead - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "newsletter",
+    "module_path": "newsletter/newsletter_masthead_light.module",
+    "label": "Newsletter - Text - Masthead - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "newsletter",
+    "module_path": "newsletter/newsletter_pullquote_dark.module",
+    "label": "Newsletter - Text - Pull quote - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "newsletter",
+    "module_path": "newsletter/newsletter_pullquote_light.module",
+    "label": "Newsletter - Text - Pull quote - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "newsletter",
+    "module_path": "newsletter/newsletter_two_column_dark.module",
+    "label": "Newsletter - Two-column - Image and text - Dark",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  },
+  {
+    "scope": "newsletter",
+    "module_path": "newsletter/newsletter_two_column_light.module",
+    "label": "Newsletter - Two-column - Image and text - Light",
+    "source_status": "local and live",
+    "complete": true,
+    "missing_files": "",
+    "rebrand_status": "pending"
+  }
+]

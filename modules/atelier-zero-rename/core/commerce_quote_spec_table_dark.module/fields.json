@@ -1,0 +1,175 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Your specification"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "required": false,
+    "locked": false,
+    "allow_new_line": true,
+    "type": "text",
+    "display_width": null,
+    "default": "What we recommended"
+  },
+  {
+    "id": "label_base",
+    "name": "label_base",
+    "label": "Base label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Base"
+  },
+  {
+    "id": "value_base",
+    "name": "value_base",
+    "label": "Base value",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "—"
+  },
+  {
+    "id": "label_density",
+    "name": "label_density",
+    "label": "Density label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Density"
+  },
+  {
+    "id": "value_density",
+    "name": "value_density",
+    "label": "Density value",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "—"
+  },
+  {
+    "id": "label_colour",
+    "name": "label_colour",
+    "label": "Colour label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Colour"
+  },
+  {
+    "id": "value_colour",
+    "name": "value_colour",
+    "label": "Colour value",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "—"
+  },
+  {
+    "id": "label_size",
+    "name": "label_size",
+    "label": "Size label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Base size"
+  },
+  {
+    "id": "value_size",
+    "name": "value_size",
+    "label": "Size value",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "—"
+  },
+  {
+    "id": "label_price",
+    "name": "label_price",
+    "label": "Price label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Quoted price"
+  },
+  {
+    "id": "value_price",
+    "name": "value_price",
+    "label": "Price value",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "—"
+  },
+  {
+    "id": "note",
+    "name": "note",
+    "label": "Note",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "display_width": null,
+    "default": "<p>This specification is saved to your file. We can adjust any part of it before production begins.</p>"
+  },
+  {
+    "id": "button_text",
+    "name": "button_text",
+    "label": "Button label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Confirm this specification"
+  },
+  {
+    "id": "button_url",
+    "name": "button_url",
+    "label": "Button URL",
+    "required": false,
+    "locked": false,
+    "type": "url",
+    "display_width": null,
+    "default": {
+      "content_id": null,
+      "href": "https://hairsolutions.co/contact",
+      "type": "EXTERNAL"
+    },
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS"
+    ]
+  }
+]

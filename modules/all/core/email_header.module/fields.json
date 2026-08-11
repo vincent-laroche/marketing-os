@@ -1,0 +1,38 @@
+[
+  {
+    "id": "logo_image",
+    "name": "logo_image",
+    "label": "Logo Image",
+    "required": false,
+    "locked": false,
+    "responsive": false,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "display_width": null,
+    "default": {
+      "src": "https://50966981.fs1.hubspotusercontent-na1.net/hubfs/50966981/brand/hair-solutions-co-logos/email-exports/wordmark-ink-black-email.png",
+      "alt": "Hair Solutions Co."
+    }
+  },
+  {
+    "id": "logo_url",
+    "name": "logo_url",
+    "label": "Logo URL (optional)",
+    "required": false,
+    "locked": false,
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS",
+      "BLOG"
+    ],
+    "type": "url",
+    "display_width": null,
+    "default": {
+      "type": "EXTERNAL",
+      "href": "https://hairsolutions.co/"
+    }
+  }
+]

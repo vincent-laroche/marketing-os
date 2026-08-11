@@ -1,0 +1,48 @@
+{% set is_dark = module.theme == "dark" %}
+{% set page_bg = "#15140F" if is_dark else "#F7F1DE" %}
+{% set tile_bg = "#2A2620" if is_dark else "#F7F1DE" %}
+{% set text_color = "#F7F1DE" if is_dark else "#15140F" %}
+{% set meta_color = "#A69E8C" if is_dark else "#8B8676" %}
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:100%;background:{{ page_bg }};border-radius:16px;">
+  <tr>
+    <td style="padding:24px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td width="48%" valign="top">
+            <a href="{{ module.topic_1_url.href }}" style="display:block;background:{{ tile_bg }};border-radius:16px;padding:18px;text-decoration:none;">
+              <span style="display:block;font-family:'JetBrains Mono','Courier New',Courier,monospace;font-size:11px;letter-spacing:1px;color:#ED6F5C;">{{ module.topic_1_number }}</span>
+              <span style="display:block;margin-top:8px;font-family:'Inter Tight',Arial,Helvetica,sans-serif;font-size:14px;font-weight:bold;color:{{ text_color }};">{{ module.topic_1_heading }}</span>
+              <span style="display:block;margin-top:8px;font-family:'JetBrains Mono','Courier New',Courier,monospace;font-size:11px;letter-spacing:0.5px;text-transform:uppercase;color:{{ meta_color }};">{{ module.topic_1_meta }}</span>
+            </a>
+          </td>
+          <td width="4%">&nbsp;</td>
+          <td width="48%" valign="top">
+            <a href="{{ module.topic_2_url.href }}" style="display:block;background:{{ tile_bg }};border-radius:16px;padding:18px;text-decoration:none;">
+              <span style="display:block;font-family:'JetBrains Mono','Courier New',Courier,monospace;font-size:11px;letter-spacing:1px;color:#ED6F5C;">{{ module.topic_2_number }}</span>
+              <span style="display:block;margin-top:8px;font-family:'Inter Tight',Arial,Helvetica,sans-serif;font-size:14px;font-weight:bold;color:{{ text_color }};">{{ module.topic_2_heading }}</span>
+              <span style="display:block;margin-top:8px;font-family:'JetBrains Mono','Courier New',Courier,monospace;font-size:11px;letter-spacing:0.5px;text-transform:uppercase;color:{{ meta_color }};">{{ module.topic_2_meta }}</span>
+            </a>
+          </td>
+        </tr>
+        <tr><td colspan="3" style="height:16px;line-height:16px;font-size:0;">&nbsp;</td></tr>
+        <tr>
+          <td width="48%" valign="top">
+            <a href="{{ module.topic_3_url.href }}" style="display:block;background:{{ tile_bg }};border-radius:16px;padding:18px;text-decoration:none;">
+              <span style="display:block;font-family:'JetBrains Mono','Courier New',Courier,monospace;font-size:11px;letter-spacing:1px;color:#ED6F5C;">{{ module.topic_3_number }}</span>
+              <span style="display:block;margin-top:8px;font-family:'Inter Tight',Arial,Helvetica,sans-serif;font-size:14px;font-weight:bold;color:{{ text_color }};">{{ module.topic_3_heading }}</span>
+              <span style="display:block;margin-top:8px;font-family:'JetBrains Mono','Courier New',Courier,monospace;font-size:11px;letter-spacing:0.5px;text-transform:uppercase;color:{{ meta_color }};">{{ module.topic_3_meta }}</span>
+            </a>
+          </td>
+          <td width="4%">&nbsp;</td>
+          <td width="48%" valign="top">
+            <a href="{{ module.topic_4_url.href }}" style="display:block;background:{{ tile_bg }};border-radius:16px;padding:18px;text-decoration:none;">
+              <span style="display:block;font-family:'JetBrains Mono','Courier New',Courier,monospace;font-size:11px;letter-spacing:1px;color:#ED6F5C;">{{ module.topic_4_number }}</span>
+              <span style="display:block;margin-top:8px;font-family:'Inter Tight',Arial,Helvetica,sans-serif;font-size:14px;font-weight:bold;color:{{ text_color }};">{{ module.topic_4_heading }}</span>
+              <span style="display:block;margin-top:8px;font-family:'JetBrains Mono','Courier New',Courier,monospace;font-size:11px;letter-spacing:0.5px;text-transform:uppercase;color:{{ meta_color }};">{{ module.topic_4_meta }}</span>
+            </a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>

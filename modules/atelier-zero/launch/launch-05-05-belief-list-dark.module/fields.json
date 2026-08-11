@@ -1,0 +1,78 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "What we believe"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Clarity creates confidence."
+  },
+  {
+    "id": "body_text",
+    "name": "body_text",
+    "label": "Body",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "display_width": null,
+    "default": "This relaunch is about reducing friction around a personal decision and giving customers a better way to move forward."
+  },
+  {
+    "id": "point_1",
+    "name": "point_1",
+    "label": "Point 1",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "A well-made experience should still feel human."
+  },
+  {
+    "id": "point_2",
+    "name": "point_2",
+    "label": "Point 2",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Education should make the choice simpler, not heavier."
+  },
+  {
+    "id": "point_3",
+    "name": "point_3",
+    "label": "Point 3",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Support should be easy to find before the purchase."
+  },
+  {
+    "id": "point_4",
+    "name": "point_4",
+    "label": "Point 4",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "The brand should feel discreet, calm, and trustworthy."
+  }
+]

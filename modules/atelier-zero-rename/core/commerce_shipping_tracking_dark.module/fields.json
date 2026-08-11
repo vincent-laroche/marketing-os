@@ -1,0 +1,131 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "On its way"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "required": false,
+    "locked": false,
+    "allow_new_line": true,
+    "type": "text",
+    "display_width": null,
+    "default": "Your order has shipped"
+  },
+  {
+    "id": "label_carrier",
+    "name": "label_carrier",
+    "label": "Carrier label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Carrier"
+  },
+  {
+    "id": "value_carrier",
+    "name": "value_carrier",
+    "label": "Carrier value",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "—"
+  },
+  {
+    "id": "label_tracking",
+    "name": "label_tracking",
+    "label": "Tracking label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Tracking number"
+  },
+  {
+    "id": "value_tracking",
+    "name": "value_tracking",
+    "label": "Tracking value",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "—"
+  },
+  {
+    "id": "label_eta",
+    "name": "label_eta",
+    "label": "ETA label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Estimated delivery"
+  },
+  {
+    "id": "value_eta",
+    "name": "value_eta",
+    "label": "ETA value",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "—"
+  },
+  {
+    "id": "note",
+    "name": "note",
+    "label": "Note",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "display_width": null,
+    "default": "<p>Tracking can take a few hours to show its first scan. That is normal.</p>"
+  },
+  {
+    "id": "button_text",
+    "name": "button_text",
+    "label": "Button label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Track your delivery"
+  },
+  {
+    "id": "button_url",
+    "name": "button_url",
+    "label": "Button URL",
+    "required": false,
+    "locked": false,
+    "type": "url",
+    "display_width": null,
+    "default": {
+      "content_id": null,
+      "href": "https://hairsolutions.co/account",
+      "type": "EXTERNAL"
+    },
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS"
+    ]
+  }
+]

@@ -1,0 +1,75 @@
+[
+  {
+    "id": "theme",
+    "name": "theme",
+    "label": "Theme",
+    "type": "choice",
+    "required": true,
+    "locked": false,
+    "choices": [["light", "Light"], ["dark", "Dark"]],
+    "default": "light"
+  },
+  {
+    "id": "image",
+    "name": "image",
+    "label": "Image",
+    "type": "image",
+    "required": false,
+    "locked": false,
+    "default": { "src": "", "alt": "Hero image", "width": 552, "height": 300 }
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "type": "text",
+    "required": false,
+    "locked": false,
+    "default": "The Botanical Maintenance Routine"
+  },
+  {
+    "id": "body_text",
+    "name": "body_text",
+    "label": "Body",
+    "type": "richtext",
+    "required": false,
+    "locked": false,
+    "default": "Protect and prolong the vitality of your base and natural hair with our advanced organic protection elixirs and pH-balanced cleansers."
+  },
+  {
+    "id": "cta_label",
+    "name": "cta_label",
+    "label": "Primary CTA label",
+    "type": "text",
+    "required": false,
+    "locked": false,
+    "default": "Shop Elixirs"
+  },
+  {
+    "id": "cta_url",
+    "name": "cta_url",
+    "label": "Primary CTA URL",
+    "type": "url",
+    "required": false,
+    "locked": false,
+    "default": { "url": { "type": "EXTERNAL", "href": "https://hairsolutions.co/" } }
+  },
+  {
+    "id": "secondary_cta_label",
+    "name": "secondary_cta_label",
+    "label": "Secondary CTA label",
+    "type": "text",
+    "required": false,
+    "locked": false,
+    "default": "Read Care Guides"
+  },
+  {
+    "id": "secondary_cta_url",
+    "name": "secondary_cta_url",
+    "label": "Secondary CTA URL",
+    "type": "url",
+    "required": false,
+    "locked": false,
+    "default": { "url": { "type": "EXTERNAL", "href": "https://hairsolutions.co/" } }
+  }
+]

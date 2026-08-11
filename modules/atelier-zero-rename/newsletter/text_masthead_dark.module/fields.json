@@ -1,0 +1,35 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "The Field Notes"
+  },
+  {
+    "id": "title",
+    "name": "title",
+    "label": "Title",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "The Field Notes"
+  },
+  {
+    "id": "date_text",
+    "name": "date_text",
+    "label": "Issue / Date",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Issue 14 \u00b7 June 2026"
+  }
+]

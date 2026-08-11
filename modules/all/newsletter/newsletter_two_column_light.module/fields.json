@@ -1,0 +1,100 @@
+[
+  {
+    "id": "card1_image",
+    "name": "card1_image",
+    "label": "Card 1 Image",
+    "required": false,
+    "locked": false,
+    "responsive": false,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "display_width": null,
+    "default": {
+      "src": "https://50966981.fs1.hubspotusercontent-na1.net/hubfs/50966981/Young_man_with_hair_system_1_300kb_bu3yxw_rs8kx0.jpg",
+      "alt": "Story one"
+    }
+  },
+  {
+    "id": "card1_eyebrow",
+    "name": "card1_eyebrow",
+    "label": "Card 1 Eyebrow",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Base types · 4 min"
+  },
+  {
+    "id": "card1_headline",
+    "name": "card1_headline",
+    "label": "Card 1 Headline",
+    "required": false,
+    "locked": false,
+    "allow_new_line": true,
+    "type": "text",
+    "display_width": null,
+    "default": "Lace, in plain terms"
+  },
+  {
+    "id": "card1_text",
+    "name": "card1_text",
+    "label": "Card 1 Text",
+    "required": false,
+    "locked": false,
+    "allow_new_line": true,
+    "type": "text",
+    "display_width": null,
+    "default": "The most natural-looking hairline available."
+  },
+  {
+    "id": "card2_image",
+    "name": "card2_image",
+    "label": "Card 2 Image",
+    "required": false,
+    "locked": false,
+    "responsive": false,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "display_width": null,
+    "default": {
+      "src": "https://50966981.fs1.hubspotusercontent-na1.net/hubfs/50966981/Young_man_with_hair_system_1_300kb_bu3yxw_rs8kx0.jpg",
+      "alt": "Story two"
+    }
+  },
+  {
+    "id": "card2_eyebrow",
+    "name": "card2_eyebrow",
+    "label": "Card 2 Eyebrow",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Base types · 4 min"
+  },
+  {
+    "id": "card2_headline",
+    "name": "card2_headline",
+    "label": "Card 2 Headline",
+    "required": false,
+    "locked": false,
+    "allow_new_line": true,
+    "type": "text",
+    "display_width": null,
+    "default": "Poly, in plain terms"
+  },
+  {
+    "id": "card2_text",
+    "name": "card2_text",
+    "label": "Card 2 Text",
+    "required": false,
+    "locked": false,
+    "allow_new_line": true,
+    "type": "text",
+    "display_width": null,
+    "default": "Durable and low-fuss for an active week."
+  }
+]

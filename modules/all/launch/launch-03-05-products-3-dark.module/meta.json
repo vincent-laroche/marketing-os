@@ -1,0 +1,11 @@
+{
+  "global": false,
+  "content_types": [
+    "EMAIL"
+  ],
+  "host_template_types": [
+    "ANY"
+  ],
+  "label": "Launch - Products - Three product grid - Dark",
+  "is_available_for_new_content": true
+}

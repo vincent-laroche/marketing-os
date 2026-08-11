@@ -1,0 +1,34 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "In their words"
+  },
+  {
+    "id": "quote_text",
+    "name": "quote_text",
+    "label": "Quote",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "display_width": null,
+    "default": "The fit consultation made the whole decision feel simple instead of overwhelming."
+  },
+  {
+    "id": "attribution",
+    "name": "attribution",
+    "label": "Attribution",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "\u2014 Verified customer"
+  }
+]

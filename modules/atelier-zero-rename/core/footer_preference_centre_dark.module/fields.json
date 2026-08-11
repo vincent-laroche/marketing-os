@@ -1,0 +1,116 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Your preferences"
+  },
+  {
+    "id": "body_text",
+    "name": "body_text",
+    "label": "Body",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "display_width": null,
+    "default": "<p>You can hear from us less often, or not at all. Either is completely fine and it will not affect your order or your support.</p>"
+  },
+  {
+    "id": "option_1_text",
+    "name": "option_1_text",
+    "label": "Option 1",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Send me less often"
+  },
+  {
+    "id": "option_1_url",
+    "name": "option_1_url",
+    "label": "Option 1 URL",
+    "required": false,
+    "locked": false,
+    "type": "url",
+    "display_width": null,
+    "default": {
+      "content_id": null,
+      "href": "{{ unsubscribe_link }}",
+      "type": "EXTERNAL"
+    },
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS"
+    ]
+  },
+  {
+    "id": "option_2_text",
+    "name": "option_2_text",
+    "label": "Option 2",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Update my preferences"
+  },
+  {
+    "id": "option_2_url",
+    "name": "option_2_url",
+    "label": "Option 2 URL",
+    "required": false,
+    "locked": false,
+    "type": "url",
+    "display_width": null,
+    "default": {
+      "content_id": null,
+      "href": "{{ preferences_link }}",
+      "type": "EXTERNAL"
+    },
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS"
+    ]
+  },
+  {
+    "id": "option_3_text",
+    "name": "option_3_text",
+    "label": "Option 3",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Unsubscribe entirely"
+  },
+  {
+    "id": "option_3_url",
+    "name": "option_3_url",
+    "label": "Option 3 URL",
+    "required": false,
+    "locked": false,
+    "type": "url",
+    "display_width": null,
+    "default": {
+      "content_id": null,
+      "href": "{{ unsubscribe_link }}",
+      "type": "EXTERNAL"
+    },
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS"
+    ]
+  }
+]

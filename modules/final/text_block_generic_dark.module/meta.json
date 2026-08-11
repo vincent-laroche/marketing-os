@@ -1,0 +1,11 @@
+{
+  "label": "Text Block — generic — Dark",
+  "global": false,
+  "content_types": [
+    "EMAIL"
+  ],
+  "host_template_types": [
+    "ANY"
+  ],
+  "is_available_for_new_content": true
+}

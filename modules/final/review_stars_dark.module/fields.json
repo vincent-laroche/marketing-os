@@ -1,0 +1,88 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "default": "Your feedback"
+  },
+  {
+    "id": "rating",
+    "name": "rating",
+    "label": "Displayed rating",
+    "required": false,
+    "locked": false,
+    "display": "select",
+    "choices": [
+      [
+        "5",
+        "5 stars"
+      ],
+      [
+        "4",
+        "4 stars"
+      ],
+      [
+        "3",
+        "3 stars"
+      ]
+    ],
+    "multiple": false,
+    "reordering_enabled": true,
+    "preset": null,
+    "type": "choice",
+    "display_width": null,
+    "default": "5"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "default": "How did we do?"
+  },
+  {
+    "id": "body_text",
+    "name": "body_text",
+    "label": "Body",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "default": ""
+  },
+  {
+    "id": "button_label",
+    "name": "button_label",
+    "label": "Button label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "default": "Leave a review"
+  },
+  {
+    "id": "button_url",
+    "name": "button_url",
+    "label": "Button URL",
+    "required": false,
+    "locked": false,
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS",
+      "BLOG"
+    ],
+    "type": "url",
+    "default": {
+      "type": "EXTERNAL",
+      "href": "https://hairsolutions.co/"
+    }
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Myth vs. reality"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "What actually changes"
+  },
+  {
+    "id": "column_a_label",
+    "name": "column_a_label",
+    "label": "Column A label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "The old routine"
+  },
+  {
+    "id": "column_b_label",
+    "name": "column_b_label",
+    "label": "Column B label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "With Atelier Zero"
+  },
+  {
+    "id": "column_a_item_1",
+    "name": "column_a_item_1",
+    "label": "Column A \u2014 Item 1",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": ""
+  },
+  {
+    "id": "column_a_item_2",
+    "name": "column_a_item_2",
+    "label": "Column A \u2014 Item 2",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": ""
+  },
+  {
+    "id": "column_a_item_3",
+    "name": "column_a_item_3",
+    "label": "Column A \u2014 Item 3",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": ""
+  },
+  {
+    "id": "column_b_item_1",
+    "name": "column_b_item_1",
+    "label": "Column B \u2014 Item 1",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": ""
+  },
+  {
+    "id": "column_b_item_2",
+    "name": "column_b_item_2",
+    "label": "Column B \u2014 Item 2",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": ""
+  },
+  {
+    "id": "column_b_item_3",
+    "name": "column_b_item_3",
+    "label": "Column B \u2014 Item 3",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": ""
+  }
+]

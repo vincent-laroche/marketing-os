@@ -1,0 +1,15 @@
+# Hero - Text-led - Light
+
+Available for New Content: Yes
+Category: core
+Family: Hero - Text-led
+Field Count: 6
+Field Names: eyebrow, heading, body_text, primary_cta_label, primary_cta_url, supporting_note
+Field Types: richtext, text, url
+HTML Size KB: 2.6
+Notes: No HubSpot module ID - not yet uploaded to Design Manager
+Review Status: Not started
+Slug: hero_text_led_light
+Source Path: core/hero_text_led_light.module
+Theme: Light
+Used In Emails: PP-7b · UGC Photo Request — PP-7 positive +7d (https://app.notion.com/p/PP-7b-UGC-Photo-Request-PP-7-positive-7d-62af4e0d84e08208885801f37e5ed816?pvs=21), PP-1 · Order Confirmation — Day 0 (https://app.notion.com/p/PP-1-Order-Confirmation-Day-0-3b8f4e0d84e081179f67f8744ceeed1d?pvs=21), PP-2 · Prep Guide — Day 1 (https://app.notion.com/p/PP-2-Prep-Guide-Day-1-f3df4e0d84e08273b127816ad46c0ea5?pvs=21), PP-4 · Shipped + Tracking — Fulfilment event (https://app.notion.com/p/PP-4-Shipped-Tracking-Fulfilment-event-4eaf4e0d84e08205b83181ddeb546a42?pvs=21), PP-5 · Maintenance Calendar — Delivery +7d (https://app.notion.com/p/PP-5-Maintenance-Calendar-Delivery-7d-1b7f4e0d84e082228e268153dea45051?pvs=21), PP-6 · Four Products That Matter — Delivery +21d (https://app.notion.com/p/PP-6-Four-Products-That-Matter-Delivery-21d-3b8f4e0d84e0817583a8f81536369ca6?pvs=21), WB-2 · What's Changed — Day 7 (https://app.notion.com/p/WB-2-What-s-Changed-Day-7-478f4e0d84e083ee9d2b019b42fff73d?pvs=21), WB-3 · 20% Welcome Back — Day 14 (https://app.notion.com/p/WB-3-20-Welcome-Back-Day-14-9e8f4e0d84e082aca298011a71c69bb8?pvs=21), BR-1 · Base Types Explainer — Browse +1d (https://app.notion.com/p/BR-1-Base-Types-Explainer-Browse-1d-b4df4e0d84e0831c928d01b7afba6e95?pvs=21), RO-2 · Due For Supplies — Delivery +60d (https://app.notion.com/p/RO-2-Due-For-Supplies-Delivery-60d-b70f4e0d84e0827eb83201aafef05b0d?pvs=21), RO-3 · Replacement Window — Delivery +90d (https://app.notion.com/p/RO-3-Replacement-Window-Delivery-90d-d78f4e0d84e08281869101bb3aabd477?pvs=21), RO-5 · Auto-Reorder — Delivery +125d (https://app.notion.com/p/RO-5-Auto-Reorder-Delivery-125d-2e2f4e0d84e083c4b5928199b38ec6df?pvs=21), RO-6 · Returning Customer Price — Delivery +140d (https://app.notion.com/p/RO-6-Returning-Customer-Price-Delivery-140d-374f4e0d84e0835b888081b370ca3743?pvs=21), C-3 · Soft Incentive — Day 12 (https://app.notion.com/p/C-3-Soft-Incentive-Day-12-9c53ce6c1f9c4d42a94de96d9b4908a9?pvs=21), C-0 · Consultation Recap — Day 0 (https://app.notion.com/p/C-0-Consultation-Recap-Day-0-7e5150343cdd4111a1e316d127a34ecb?pvs=21), C-2 · Spec Confidence — Day 6 (https://app.notion.com/p/C-2-Spec-Confidence-Day-6-064a486128b64f3e83b4ecc1e80a09eb?pvs=21), C-1 · Objections Answered — Day 2 (https://app.notion.com/p/C-1-Objections-Answered-Day-2-689d7b96ac64430aa06602934811dde7?pvs=21), W-2 · How Systems Work — Signup +3d (https://app.notion.com/p/W-2-How-Systems-Work-Signup-3d-c5ead34961f44b2bb581e993f572e936?pvs=21), W-4 · Social Proof Wall — Signup +12d (https://app.notion.com/p/W-4-Social-Proof-Wall-Signup-12d-e0560b12f3334f2a9b30190774933653?pvs=21)

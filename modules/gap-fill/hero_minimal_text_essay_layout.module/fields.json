@@ -1,0 +1,57 @@
+[
+  {
+    "id": "theme",
+    "name": "theme",
+    "label": "Theme",
+    "type": "choice",
+    "required": true,
+    "locked": false,
+    "choices": [["light", "Light"], ["dark", "Dark"]],
+    "default": "light"
+  },
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "required": false,
+    "locked": false,
+    "default": "OUR DESIGN PHILOSOPHY"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "type": "text",
+    "required": false,
+    "locked": false,
+    "default": "Designed Around Real Life"
+  },
+  {
+    "id": "body_text",
+    "name": "body_text",
+    "label": "Body",
+    "type": "richtext",
+    "required": false,
+    "locked": false,
+    "default": "We believe hair restoration shouldn't feel like a compromise. Our hand-constructed bespoke systems blend with complete confidence."
+  },
+  {
+    "id": "cta_label",
+    "name": "cta_label",
+    "label": "CTA label",
+    "type": "text",
+    "required": false,
+    "locked": false,
+    "default": "Book Consultation"
+  },
+  {
+    "id": "cta_url",
+    "name": "cta_url",
+    "label": "CTA URL",
+    "type": "url",
+    "required": false,
+    "locked": false,
+    "default": { "url": { "type": "EXTERNAL", "href": "https://hairsolutions.co/" } }
+  }
+]

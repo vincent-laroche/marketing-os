@@ -1,0 +1,11 @@
+{
+  "global": false,
+  "content_types": [
+    "EMAIL"
+  ],
+  "host_template_types": [
+    "EMAIL"
+  ],
+  "label": "CORE - Footer - Standard \u2014 Atelier Ink",
+  "is_available_for_new_content": true
+}

@@ -1,0 +1,100 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Why clients come back"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Proof should feel useful, not loud"
+  },
+  {
+    "id": "body_text",
+    "name": "body_text",
+    "label": "Body",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "display_width": null,
+    "default": "The strongest trust signals are practical: clearer guidance, careful specifications, and support that stays available after the order."
+  },
+  {
+    "id": "proof_1_label",
+    "name": "proof_1_label",
+    "label": "Proof 1 label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Fit guidance"
+  },
+  {
+    "id": "proof_1_text",
+    "name": "proof_1_text",
+    "label": "Proof 1 text",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Recommendations are based on the way you plan to wear, maintain, and replace your system."
+  },
+  {
+    "id": "proof_2_label",
+    "name": "proof_2_label",
+    "label": "Proof 2 label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Clear specifications"
+  },
+  {
+    "id": "proof_2_text",
+    "name": "proof_2_text",
+    "label": "Proof 2 text",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Density, base, attachment, and timing are explained in plain language before you commit."
+  },
+  {
+    "id": "proof_3_label",
+    "name": "proof_3_label",
+    "label": "Proof 3 label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Support after ordering"
+  },
+  {
+    "id": "proof_3_text",
+    "name": "proof_3_text",
+    "label": "Proof 3 text",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "You can ask for help with care, wear time, reorder timing, or anything that feels unclear."
+  }
+]

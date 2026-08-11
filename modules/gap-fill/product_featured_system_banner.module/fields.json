@@ -1,0 +1,84 @@
+[
+  {
+    "id": "theme",
+    "name": "theme",
+    "label": "Theme",
+    "type": "choice",
+    "required": true,
+    "locked": false,
+    "choices": [["light", "Light"], ["dark", "Dark"]],
+    "default": "light"
+  },
+  {
+    "id": "image",
+    "name": "image",
+    "label": "Image",
+    "type": "image",
+    "required": false,
+    "locked": false,
+    "default": { "src": "", "alt": "Product image", "width": 536, "height": 280 }
+  },
+  {
+    "id": "badge_label",
+    "name": "badge_label",
+    "label": "Badge label",
+    "type": "text",
+    "required": false,
+    "locked": false,
+    "default": "LIMITED RELEASE"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "type": "text",
+    "required": false,
+    "locked": false,
+    "default": "The Masterpiece Swiss Lace"
+  },
+  {
+    "id": "price",
+    "name": "price",
+    "label": "Sale price",
+    "type": "text",
+    "required": false,
+    "locked": false,
+    "default": "$520"
+  },
+  {
+    "id": "compare_at_price",
+    "name": "compare_at_price",
+    "label": "Compare-at price",
+    "type": "text",
+    "required": false,
+    "locked": false,
+    "default": "$580"
+  },
+  {
+    "id": "body_text",
+    "name": "body_text",
+    "label": "Body",
+    "type": "richtext",
+    "required": false,
+    "locked": false,
+    "default": "Secure an introductory rate on our finest medical-grade base."
+  },
+  {
+    "id": "cta_label",
+    "name": "cta_label",
+    "label": "CTA label",
+    "type": "text",
+    "required": false,
+    "locked": false,
+    "default": "Order Featured System"
+  },
+  {
+    "id": "cta_url",
+    "name": "cta_url",
+    "label": "CTA URL",
+    "type": "url",
+    "required": false,
+    "locked": false,
+    "default": { "url": { "type": "EXTERNAL", "href": "https://hairsolutions.co/" } }
+  }
+]

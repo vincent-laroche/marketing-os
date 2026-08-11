@@ -1,0 +1,8 @@
+{
+  "global" : false,
+  "content_types" : [ "EMAIL" ],
+  "host_template_types" : [ "ANY" ],
+  "module_id" : 216341839526,
+  "label" : "Launch - Text - Question list - Light",
+  "is_available_for_new_content" : true
+}

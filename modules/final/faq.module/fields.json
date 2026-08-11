@@ -1,0 +1,107 @@
+[
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "default": "Questions, answered"
+  },
+  {
+    "id": "faq_1_question",
+    "name": "faq_1_question",
+    "label": "Question 1",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "default": "Question 1"
+  },
+  {
+    "id": "faq_1_answer",
+    "name": "faq_1_answer",
+    "label": "Answer 1",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "default": "Answer copy."
+  },
+  {
+    "id": "faq_2_question",
+    "name": "faq_2_question",
+    "label": "Question 2",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "default": "Question 2"
+  },
+  {
+    "id": "faq_2_answer",
+    "name": "faq_2_answer",
+    "label": "Answer 2",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "default": "Answer copy."
+  },
+  {
+    "id": "faq_3_question",
+    "name": "faq_3_question",
+    "label": "Question 3",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "default": "Question 3"
+  },
+  {
+    "id": "faq_3_answer",
+    "name": "faq_3_answer",
+    "label": "Answer 3",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "default": "Answer copy."
+  },
+  {
+    "id": "faq_4_question",
+    "name": "faq_4_question",
+    "label": "Question 4",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "default": "Question 4"
+  },
+  {
+    "id": "faq_4_answer",
+    "name": "faq_4_answer",
+    "label": "Answer 4",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "default": "Answer copy."
+  },
+  {
+    "id": "faq_5_question",
+    "name": "faq_5_question",
+    "label": "Question 5",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "default": "Question 5"
+  },
+  {
+    "id": "faq_5_answer",
+    "name": "faq_5_answer",
+    "label": "Answer 5",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "default": "Answer copy."
+  }
+]

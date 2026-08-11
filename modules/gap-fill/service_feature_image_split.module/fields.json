@@ -1,0 +1,16 @@
+[
+  {
+    "id": "theme",
+    "name": "theme",
+    "label": "Theme",
+    "type": "choice",
+    "required": true,
+    "locked": false,
+    "choices": [["light", "Light"], ["dark", "Dark"]],
+    "default": "light"
+  },
+  { "id": "image", "name": "image", "label": "Feature image", "type": "image", "required": false, "locked": false, "default": { "src": "", "alt": "Feature image", "width": 160, "height": 160 } },
+  { "id": "eyebrow", "name": "eyebrow", "label": "Eyebrow", "type": "text", "required": false, "locked": false, "default": "THE BASE STANDARD" },
+  { "id": "heading", "name": "heading", "label": "Heading", "type": "text", "required": false, "locked": false, "default": "Artisan Bio-Base" },
+  { "id": "body_text", "name": "body_text", "label": "Body", "type": "richtext", "required": false, "locked": false, "default": "Designed to completely mimic natural follicle growth angles, ensuring your hairline stays entirely invisible even from close up." }
+]

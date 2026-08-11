@@ -1,0 +1,56 @@
+[
+  {
+    "id": "greeting",
+    "name": "greeting",
+    "label": "Greeting",
+    "required": false,
+    "locked": false,
+    "allow_new_line": true,
+    "type": "text",
+    "display_width": null,
+    "default": "Hi {{ contact.firstname }},"
+  },
+  {
+    "id": "body_text",
+    "name": "body_text",
+    "label": "Body",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "display_width": null,
+    "default": "<p>I wanted to write to you personally rather than send something that looks like a campaign.</p>"
+  },
+  {
+    "id": "signature_name",
+    "name": "signature_name",
+    "label": "Signature name",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Vincent"
+  },
+  {
+    "id": "signature_role",
+    "name": "signature_role",
+    "label": "Signature role",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Founder, Hair Solutions Co."
+  },
+  {
+    "id": "ps_text",
+    "name": "ps_text",
+    "label": "PS line",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": ""
+  }
+]

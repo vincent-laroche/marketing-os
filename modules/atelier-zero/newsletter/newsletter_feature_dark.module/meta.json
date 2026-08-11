@@ -1,0 +1,12 @@
+{
+  "global": false,
+  "content_types": [
+    "EMAIL"
+  ],
+  "host_template_types": [
+    "ANY"
+  ],
+  "module_id": 215062232737,
+  "label": "Feature story — Dark / Atelier Ink",
+  "is_available_for_new_content": true
+}

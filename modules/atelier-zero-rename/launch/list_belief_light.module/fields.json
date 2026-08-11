@@ -1,0 +1,78 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Why this matters"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Built for men who want a real solution"
+  },
+  {
+    "id": "body_text",
+    "name": "body_text",
+    "label": "Body",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "display_width": null,
+    "default": "A hair system does not solve everything in life. But the right one can remove a daily source of stress when it looks natural, fits your lifestyle, and feels like you."
+  },
+  {
+    "id": "point_1",
+    "name": "point_1",
+    "label": "Point 1",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Not dramatic transformations that feel unrealistic."
+  },
+  {
+    "id": "point_2",
+    "name": "point_2",
+    "label": "Point 2",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Not confusing product pages that assume you already know everything."
+  },
+  {
+    "id": "point_3",
+    "name": "point_3",
+    "label": "Point 3",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Not cheap solutions that create more concerns later."
+  },
+  {
+    "id": "point_4",
+    "name": "point_4",
+    "label": "Point 4",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "A clearer path toward a result that helps you feel more confident again."
+  }
+]

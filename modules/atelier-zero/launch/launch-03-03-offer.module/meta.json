@@ -1,0 +1,11 @@
+{
+  "global": false,
+  "content_types": [
+    "EMAIL"
+  ],
+  "host_template_types": [
+    "ANY"
+  ],
+  "label": "Offer — Light / Atelier Paper",
+  "is_available_for_new_content": true
+}

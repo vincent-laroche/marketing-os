@@ -1,0 +1,66 @@
+[
+  {
+    "id": "theme",
+    "name": "theme",
+    "label": "Theme",
+    "type": "choice",
+    "required": true,
+    "locked": false,
+    "choices": [["light", "Light"], ["dark", "Dark"]],
+    "default": "light"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "type": "text",
+    "required": false,
+    "locked": false,
+    "default": "Start With the Full Picture"
+  },
+  {
+    "id": "body_text",
+    "name": "body_text",
+    "label": "Body",
+    "type": "richtext",
+    "required": false,
+    "locked": false,
+    "default": "Bring together your measurements, photos, current specifications, and lifestyle preferences before selecting your next system."
+  },
+  {
+    "id": "cta_label",
+    "name": "cta_label",
+    "label": "Primary CTA label",
+    "type": "text",
+    "required": false,
+    "locked": false,
+    "default": "Prepare Your Consultation"
+  },
+  {
+    "id": "cta_url",
+    "name": "cta_url",
+    "label": "Primary CTA URL",
+    "type": "url",
+    "required": false,
+    "locked": false,
+    "default": { "url": { "type": "EXTERNAL", "href": "https://hairsolutions.co/" } }
+  },
+  {
+    "id": "secondary_cta_label",
+    "name": "secondary_cta_label",
+    "label": "Secondary CTA label",
+    "type": "text",
+    "required": false,
+    "locked": false,
+    "default": "Read the Article"
+  },
+  {
+    "id": "secondary_cta_url",
+    "name": "secondary_cta_url",
+    "label": "Secondary CTA URL",
+    "type": "url",
+    "required": false,
+    "locked": false,
+    "default": { "url": { "type": "EXTERNAL", "href": "https://hairsolutions.co/" } }
+  }
+]

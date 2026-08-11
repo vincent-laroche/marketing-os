@@ -1,0 +1,166 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Verified customer feedback"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Add approved feedback before use"
+  },
+  {
+    "id": "testimonial_1_photo",
+    "name": "testimonial_1_photo",
+    "label": "Testimonial 1 \u2014 Photo",
+    "required": false,
+    "locked": false,
+    "responsive": false,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "display_width": null,
+    "default": {
+      "src": "",
+      "alt": ""
+    }
+  },
+  {
+    "id": "testimonial_1_quote",
+    "name": "testimonial_1_quote",
+    "label": "Testimonial 1 \u2014 Quote",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "display_width": null,
+    "default": ""
+  },
+  {
+    "id": "testimonial_1_attribution",
+    "name": "testimonial_1_attribution",
+    "label": "Testimonial 1 \u2014 Attribution",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": ""
+  },
+  {
+    "id": "testimonial_2_photo",
+    "name": "testimonial_2_photo",
+    "label": "Testimonial 2 \u2014 Photo",
+    "required": false,
+    "locked": false,
+    "responsive": false,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "display_width": null,
+    "default": {
+      "src": "",
+      "alt": ""
+    }
+  },
+  {
+    "id": "testimonial_2_quote",
+    "name": "testimonial_2_quote",
+    "label": "Testimonial 2 \u2014 Quote",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "display_width": null,
+    "default": ""
+  },
+  {
+    "id": "testimonial_2_attribution",
+    "name": "testimonial_2_attribution",
+    "label": "Testimonial 2 \u2014 Attribution",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": ""
+  },
+  {
+    "id": "testimonial_3_photo",
+    "name": "testimonial_3_photo",
+    "label": "Testimonial 3 \u2014 Photo",
+    "required": false,
+    "locked": false,
+    "responsive": false,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "display_width": null,
+    "default": {
+      "src": "",
+      "alt": ""
+    }
+  },
+  {
+    "id": "testimonial_3_quote",
+    "name": "testimonial_3_quote",
+    "label": "Testimonial 3 \u2014 Quote",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "display_width": null,
+    "default": ""
+  },
+  {
+    "id": "testimonial_3_attribution",
+    "name": "testimonial_3_attribution",
+    "label": "Testimonial 3 \u2014 Attribution",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": ""
+  },
+  {
+    "id": "link_text",
+    "name": "link_text",
+    "label": "Link text",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "See more transformations \u2192"
+  },
+  {
+    "id": "link_url",
+    "name": "link_url",
+    "label": "Link URL",
+    "required": false,
+    "locked": false,
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS",
+      "BLOG"
+    ],
+    "type": "url",
+    "display_width": null,
+    "default": {
+      "type": "EXTERNAL",
+      "href": "https://hairsolutions.co/"
+    }
+  }
+]

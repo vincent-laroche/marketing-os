@@ -1,0 +1,12 @@
+{
+  "global": false,
+  "content_types": [
+    "EMAIL"
+  ],
+  "host_template_types": [
+    "ANY"
+  ],
+  "module_id": 211677070766,
+  "label": "Centered logo — Light / Atelier Paper",
+  "is_available_for_new_content": true
+}

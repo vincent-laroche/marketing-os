@@ -1,0 +1,77 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Verified reviews"
+  },
+  {
+    "id": "stars",
+    "name": "stars",
+    "label": "Stars",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "★★★★★"
+  },
+  {
+    "id": "rating_text",
+    "name": "rating_text",
+    "label": "Rating text",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "4.8 out of 5"
+  },
+  {
+    "id": "count_text",
+    "name": "count_text",
+    "label": "Review count",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Based on 214 verified reviews"
+  },
+  {
+    "id": "link_url",
+    "name": "link_url",
+    "label": "Link URL",
+    "required": false,
+    "locked": false,
+    "type": "url",
+    "display_width": null,
+    "default": {
+      "content_id": null,
+      "href": "https://hairsolutions.co/reviews",
+      "type": "EXTERNAL"
+    },
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS"
+    ]
+  },
+  {
+    "id": "link_text",
+    "name": "link_text",
+    "label": "Link text",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Read the reviews"
+  }
+]

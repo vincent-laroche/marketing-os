@@ -1,0 +1,8 @@
+{
+  "global" : false,
+  "content_types" : [ "EMAIL" ],
+  "host_template_types" : [ "ANY" ],
+  "module_id" : 216341839531,
+  "label" : "Launch - Text - Founder pillars - Light",
+  "is_available_for_new_content" : true
+}

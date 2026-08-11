@@ -1,0 +1,24 @@
+[
+  {
+    "id": "theme",
+    "name": "theme",
+    "label": "Theme",
+    "type": "choice",
+    "required": true,
+    "locked": false,
+    "choices": [["light", "Light"], ["dark", "Dark"]],
+    "default": "light"
+  },
+  { "id": "stat_1_number", "name": "stat_1_number", "label": "Stat 1 number", "type": "text", "required": false, "locked": false, "default": "10K" },
+  { "id": "stat_1_suffix", "name": "stat_1_suffix", "label": "Stat 1 suffix", "type": "text", "required": false, "locked": false, "default": "+" },
+  { "id": "stat_1_label", "name": "stat_1_label", "label": "Stat 1 label", "type": "text", "required": false, "locked": false, "default": "Customers" },
+  { "id": "stat_2_number", "name": "stat_2_number", "label": "Stat 2 number", "type": "text", "required": false, "locked": false, "default": "97" },
+  { "id": "stat_2_suffix", "name": "stat_2_suffix", "label": "Stat 2 suffix", "type": "text", "required": false, "locked": false, "default": "%" },
+  { "id": "stat_2_label", "name": "stat_2_label", "label": "Stat 2 label", "type": "text", "required": false, "locked": false, "default": "Satisfaction" },
+  { "id": "stat_3_number", "name": "stat_3_number", "label": "Stat 3 number", "type": "text", "required": false, "locked": false, "default": "15" },
+  { "id": "stat_3_suffix", "name": "stat_3_suffix", "label": "Stat 3 suffix", "type": "text", "required": false, "locked": false, "default": "+" },
+  { "id": "stat_3_label", "name": "stat_3_label", "label": "Stat 3 label", "type": "text", "required": false, "locked": false, "default": "Years" },
+  { "id": "stat_4_number", "name": "stat_4_number", "label": "Stat 4 number", "type": "text", "required": false, "locked": false, "default": "40" },
+  { "id": "stat_4_suffix", "name": "stat_4_suffix", "label": "Stat 4 suffix", "type": "text", "required": false, "locked": false, "default": "+" },
+  { "id": "stat_4_label", "name": "stat_4_label", "label": "Stat 4 label", "type": "text", "required": false, "locked": false, "default": "Salons" }
+]

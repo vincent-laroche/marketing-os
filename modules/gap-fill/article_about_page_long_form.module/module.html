@@ -1,0 +1,36 @@
+{% set is_dark = module.theme == "dark" %}
+{% set card_color = "#15140F" if is_dark else "#F7F1DE" %}
+{% set text_color = "#F7F1DE" if is_dark else "#15140F" %}
+{% set muted_color = "#DDD2B6" if is_dark else "#5A5448" %}
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:100%;background:{{ card_color }};border-radius:16px;">
+  <tr>
+    <td style="padding:55px 30px 50px 30px;font-family:Arial,Helvetica,sans-serif;">
+      {% if module.heading or module.heading_accent %}
+      <h1 style="margin:0 0 12px 0;font-family:'Inter Tight',Arial,Helvetica,sans-serif;font-size:38px;line-height:1.15;font-weight:800;color:{{ text_color }};">{{ module.heading }} <span style="font-family:'Playfair Display',Georgia,'Times New Roman',serif;font-style:italic;font-weight:500;">{{ module.heading_accent }}</span></h1>
+      {% endif %}
+      {% if module.lede %}
+      <div style="margin:0 0 34px 0;font-family:'Inter',Arial,Helvetica,sans-serif;font-size:16px;line-height:25.6px;color:{{ muted_color }};">{{ module.lede }}</div>
+      {% endif %}
+      {% if module.section_1_heading %}
+      <h2 style="margin:0 0 16px 0;font-family:'Inter Tight',Arial,Helvetica,sans-serif;font-size:30px;font-weight:800;color:{{ text_color }};">{{ module.section_1_heading }}</h2>
+      {% endif %}
+      {% if module.section_1_body %}
+      <div style="margin:0 0 24px 0;font-family:'Inter',Arial,Helvetica,sans-serif;font-size:16px;line-height:25.6px;color:{{ muted_color }};">{{ module.section_1_body }}</div>
+      {% endif %}
+      {% if module.image.src %}
+      <img src="{{ module.image.src }}" alt="{{ module.image.alt }}" width="100%" style="width:100%;height:auto;border-radius:20px;display:block;margin:0 0 34px 0;">
+      {% endif %}
+      {% if module.section_2_heading %}
+      <h2 style="margin:0 0 16px 0;font-family:'Inter Tight',Arial,Helvetica,sans-serif;font-size:30px;font-weight:800;color:{{ text_color }};">{{ module.section_2_heading }}</h2>
+      {% endif %}
+      {% if module.section_2_body %}
+      <div style="margin:0 0 24px 0;font-family:'Inter',Arial,Helvetica,sans-serif;font-size:16px;line-height:25.6px;color:{{ muted_color }};">{{ module.section_2_body }}</div>
+      {% endif %}
+      {% if module.cta_label and module.cta_url.href %}
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td style="border-radius:999px;border:1px solid {{ text_color }};">
+        <a href="{{ module.cta_url.href }}" style="display:inline-block;padding:18px 34px;font-family:'Inter Tight',Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;color:{{ text_color }};text-decoration:none;border-radius:999px;">{{ module.cta_label }}</a>
+      </td></tr></table>
+      {% endif %}
+    </td>
+  </tr>
+</table>

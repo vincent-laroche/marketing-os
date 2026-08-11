@@ -1,0 +1,12 @@
+<style>
+@media only screen and (max-width:480px){
+  .az-module-shell{width:100%!important;max-width:100%!important;}
+  .az-module-shell .az-mobile-pad{padding-left:24px!important;padding-right:24px!important;}
+  .az-module-shell .az-stack{display:block!important;width:100%!important;box-sizing:border-box!important;}
+  .az-module-shell li{font-size:16px!important;line-height:1.6!important;}
+  .az-module-shell td{max-width:100%!important;box-sizing:border-box!important;overflow-wrap:anywhere!important;}
+  .az-module-shell img{max-width:100%!important;height:auto!important;}
+}
+</style>
+<!-- Atelier Zero v7 -->
+<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background-color:transparent;border-collapse:collapse;" width="100%"><tr><td align="center" class="az-content-pad" style="padding:22px 24px 26px;text-align:center;font-family:Arial,Helvetica,sans-serif;">{% if module.logo_image.src %}<img alt="{{ module.logo_image.alt }}" height="{{ module.logo_image.height }}" src="{{ module.logo_image.src }}" style="display:block;margin:0 auto;border:0;width:118px;max-width:118px;height:auto;" width="118"/>{% else %}<span style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.2;font-weight:700;letter-spacing:1.8px;color:#151411;">HAIR SOLUTIONS CO.</span>{% endif %}<div style="font-size:16px;line-height:1.6;color:#25221D;padding-top:10px;">{{ site_settings.company_name }}<br/>{{ site_settings.company_street_address_1 }}{% if site_settings.company_street_address_2 %}, {{ site_settings.company_street_address_2 }}{% endif %}<br/>{{ site_settings.company_city }}, {{ site_settings.company_state }} {{ site_settings.company_zip }}</div><div style="font-size:16px;color:#25221D;padding-top:10px;line-height:1.6;"><a href="{{ unsubscribe_link }}" style="color:#25221D;text-decoration:underline;">Unsubscribe</a> · <a href="{{ subscription_preferences_link }}" style="color:#25221D;text-decoration:underline;">Manage preferences</a></div></td></tr></table>

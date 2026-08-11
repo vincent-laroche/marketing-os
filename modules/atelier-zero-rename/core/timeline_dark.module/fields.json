@@ -1,0 +1,156 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "What happens next"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Your first 30 days"
+  },
+  {
+    "id": "step_1_time",
+    "name": "step_1_time",
+    "label": "Step 1 \u2014 Time / day",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Day 1"
+  },
+  {
+    "id": "step_1_label",
+    "name": "step_1_label",
+    "label": "Step 1 \u2014 Label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": ""
+  },
+  {
+    "id": "step_1_text",
+    "name": "step_1_text",
+    "label": "Step 1 \u2014 Text",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": ""
+  },
+  {
+    "id": "step_2_time",
+    "name": "step_2_time",
+    "label": "Step 2 \u2014 Time / day",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Day 2"
+  },
+  {
+    "id": "step_2_label",
+    "name": "step_2_label",
+    "label": "Step 2 \u2014 Label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": ""
+  },
+  {
+    "id": "step_2_text",
+    "name": "step_2_text",
+    "label": "Step 2 \u2014 Text",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": ""
+  },
+  {
+    "id": "step_3_time",
+    "name": "step_3_time",
+    "label": "Step 3 \u2014 Time / day",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Day 3"
+  },
+  {
+    "id": "step_3_label",
+    "name": "step_3_label",
+    "label": "Step 3 \u2014 Label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": ""
+  },
+  {
+    "id": "step_3_text",
+    "name": "step_3_text",
+    "label": "Step 3 \u2014 Text",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": ""
+  },
+  {
+    "id": "step_4_time",
+    "name": "step_4_time",
+    "label": "Step 4 \u2014 Time / day",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Day 4"
+  },
+  {
+    "id": "step_4_label",
+    "name": "step_4_label",
+    "label": "Step 4 \u2014 Label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": ""
+  },
+  {
+    "id": "step_4_text",
+    "name": "step_4_text",
+    "label": "Step 4 \u2014 Text",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": ""
+  }
+]

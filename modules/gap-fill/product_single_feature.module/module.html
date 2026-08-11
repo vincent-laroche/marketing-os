@@ -1,0 +1,25 @@
+{% set is_dark = module.theme == "dark" %}
+{% set card_color = "#15140F" if is_dark else "#F7F1DE" %}
+{% set text_color = "#F7F1DE" if is_dark else "#15140F" %}
+{% set muted_color = "#DDD2B6" if is_dark else "#5A5448" %}
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:100%;background:{{ card_color }};border-radius:16px;">
+  <tr>
+    <td style="padding:32px;font-family:Arial,Helvetica,sans-serif;">
+      {% if module.image.src %}
+      <img src="{{ module.image.src }}" alt="{{ module.image.alt }}" width="536" style="width:100%;height:auto;border-radius:12px;display:block;margin:0 0 20px 0;">
+      {% endif %}
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+        <td style="font-family:'Inter Tight',Arial,Helvetica,sans-serif;font-size:22px;font-weight:800;color:{{ text_color }};">{{ module.name }}</td>
+        <td align="right" style="font-family:'Playfair Display',Georgia,'Times New Roman',serif;font-style:italic;font-size:22px;color:#ED6F5C;white-space:nowrap;">{{ module.price }}</td>
+      </tr></table>
+      {% if module.body_text %}
+      <div style="margin:12px 0 20px 0;font-family:'Inter',Arial,Helvetica,sans-serif;font-size:14px;line-height:20px;color:{{ muted_color }};">{{ module.body_text }}</div>
+      {% endif %}
+      {% if module.cta_label and module.cta_url.href %}
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td style="border-radius:999px;background:#ED6F5C;">
+        <a href="{{ module.cta_url.href }}" style="display:inline-block;padding:18px 34px;font-family:'Inter Tight',Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;color:#15140F;text-decoration:none;border-radius:999px;">{{ module.cta_label }} &rarr;</a>
+      </td></tr></table>
+      {% endif %}
+    </td>
+  </tr>
+</table>

@@ -1,0 +1,54 @@
+[
+  {
+    "id": "headline",
+    "name": "headline",
+    "label": "Headline",
+    "required": false,
+    "locked": false,
+    "allow_new_line": true,
+    "type": "text",
+    "display_width": null,
+    "default": "Start with the new experience."
+  },
+  {
+    "id": "body_text",
+    "name": "body_text",
+    "label": "Body",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "display_width": null,
+    "default": "Explore the relaunched Hair Solutions Co. site and move forward when the choice feels clear."
+  },
+  {
+    "id": "button_text",
+    "name": "button_text",
+    "label": "Button Text",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Visit hairsolutions.co"
+  },
+  {
+    "id": "button_url",
+    "name": "button_url",
+    "label": "Button URL",
+    "required": false,
+    "locked": false,
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS",
+      "BLOG"
+    ],
+    "type": "url",
+    "display_width": null,
+    "default": {
+      "type": "EXTERNAL",
+      "href": "https://hairsolutions.co/"
+    }
+  }
+]

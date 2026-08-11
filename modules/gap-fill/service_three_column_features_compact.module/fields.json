@@ -1,0 +1,21 @@
+[
+  {
+    "id": "theme",
+    "name": "theme",
+    "label": "Theme",
+    "type": "choice",
+    "required": true,
+    "locked": false,
+    "choices": [["light", "Light"], ["dark", "Dark"]],
+    "default": "light"
+  },
+  { "id": "col_1_glyph", "name": "col_1_glyph", "label": "Column 1 glyph", "type": "text", "required": false, "locked": false, "default": "★" },
+  { "id": "col_1_heading", "name": "col_1_heading", "label": "Column 1 heading", "type": "text", "required": false, "locked": false, "default": "Premium Hair" },
+  { "id": "col_1_body", "name": "col_1_body", "label": "Column 1 body", "type": "text", "required": false, "locked": false, "default": "100% natural, virgin hair." },
+  { "id": "col_2_glyph", "name": "col_2_glyph", "label": "Column 2 glyph", "type": "text", "required": false, "locked": false, "default": "+" },
+  { "id": "col_2_heading", "name": "col_2_heading", "label": "Column 2 heading", "type": "text", "required": false, "locked": false, "default": "Perfect Match" },
+  { "id": "col_2_body", "name": "col_2_body", "label": "Column 2 body", "type": "text", "required": false, "locked": false, "default": "Density and color matched." },
+  { "id": "col_3_glyph", "name": "col_3_glyph", "label": "Column 3 glyph", "type": "text", "required": false, "locked": false, "default": "→" },
+  { "id": "col_3_heading", "name": "col_3_heading", "label": "Column 3 heading", "type": "text", "required": false, "locked": false, "default": "Secure Fit" },
+  { "id": "col_3_body", "name": "col_3_body", "label": "Column 3 body", "type": "text", "required": false, "locked": false, "default": "All-day reliable security." }
+]

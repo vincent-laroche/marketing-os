@@ -1,0 +1,139 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Final recap"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "What is different now"
+  },
+  {
+    "id": "intro",
+    "name": "intro",
+    "label": "Intro",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "display_width": null,
+    "default": "The new Hair Solutions Co. experience is built to support a more confident first step."
+  },
+  {
+    "id": "item_1_title",
+    "name": "item_1_title",
+    "label": "Item 1 title",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "A calmer brand"
+  },
+  {
+    "id": "item_1_text",
+    "name": "item_1_text",
+    "label": "Item 1 text",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "display_width": null,
+    "default": "The visual system is more restrained, well-made, and discreet."
+  },
+  {
+    "id": "item_2_title",
+    "name": "item_2_title",
+    "label": "Item 2 title",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "A clearer website"
+  },
+  {
+    "id": "item_2_text",
+    "name": "item_2_text",
+    "label": "Item 2 text",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "display_width": null,
+    "default": "The new structure helps customers understand where to go next."
+  },
+  {
+    "id": "item_3_title",
+    "name": "item_3_title",
+    "label": "Item 3 title",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Better guidance"
+  },
+  {
+    "id": "item_3_text",
+    "name": "item_3_text",
+    "label": "Item 3 text",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "display_width": null,
+    "default": "Education and support are closer to the product journey."
+  },
+  {
+    "id": "item_4_title",
+    "name": "item_4_title",
+    "label": "Item 4 title",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "More confidence before purchase"
+  },
+  {
+    "id": "item_4_text",
+    "name": "item_4_text",
+    "label": "Item 4 text",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "display_width": null,
+    "default": "Customers can make the decision with more context."
+  },
+  {
+    "id": "item_5_title",
+    "name": "item_5_title",
+    "label": "Item 5 title",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "A stronger foundation"
+  },
+  {
+    "id": "item_5_text",
+    "name": "item_5_text",
+    "label": "Item 5 text",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "display_width": null,
+    "default": "The relaunch sets up better customer support after the first order."
+  }
+]

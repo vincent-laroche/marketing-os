@@ -1,0 +1,90 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Need a hand?"
+  },
+  {
+    "id": "item_1_label",
+    "name": "item_1_label",
+    "label": "Item 1 label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Email"
+  },
+  {
+    "id": "item_1_value",
+    "name": "item_1_value",
+    "label": "Item 1 value",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "info@hairsolutions.co"
+  },
+  {
+    "id": "item_2_label",
+    "name": "item_2_label",
+    "label": "Item 2 label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Reply"
+  },
+  {
+    "id": "item_2_value",
+    "name": "item_2_value",
+    "label": "Item 2 value",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Just reply to this email"
+  },
+  {
+    "id": "item_3_label",
+    "name": "item_3_label",
+    "label": "Item 3 label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Help centre"
+  },
+  {
+    "id": "item_3_value",
+    "name": "item_3_value",
+    "label": "Item 3 value",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "hairsolutions.co/help"
+  },
+  {
+    "id": "closing_text",
+    "name": "closing_text",
+    "label": "Closing line",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "A real person answers every message."
+  }
+]
