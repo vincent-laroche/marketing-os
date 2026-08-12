@@ -7,7 +7,7 @@ CSV property columns exclusively, which are the corrected v3 values.
 import csv, re
 
 STACK_RE = re.compile(r"([\(\[])([^)\]]+)([\)\]])")
-TAG_RE = re.compile(r"^\[([^\]]+)\]\s*$", re.M)
+TAG_RE = re.compile(r"^\[([^\]]+?)\]\s*(?:\([^)]*\))?\s*$", re.M)
 
 
 def _split_qualifier(text):
@@ -24,8 +24,11 @@ def parse_stack(raw):
     return out
 
 
-def parse_body(raw):
+def parse_body(raw, families=None):
     """Split a [Module]-tagged body into per-module copy blocks.
+
+    When families is None, any bracketed line alone on its line is a boundary.
+    When families is a set, only bracketed lines whose family appears in it are boundaries.
 
     Returns [] for unsegmented bodies — those are prose founder letters whose
     whole text belongs to a single Layout - Plain-text founder wrapper.
@@ -34,6 +37,20 @@ def parse_body(raw):
     tags = list(TAG_RE.finditer(raw))
     if not tags:
         return []
+
+    # Filter tags: keep only those in families if families is provided
+    if families is not None:
+        filtered_tags = []
+        for m in tags:
+            tag_text = m.group(1).strip()
+            fam, _ = _split_qualifier(tag_text)
+            if fam in families:
+                filtered_tags.append(m)
+        tags = filtered_tags
+
+    if not tags:
+        return []
+
     out = []
     for i, m in enumerate(tags):
         end = tags[i + 1].start() if i + 1 < len(tags) else len(raw)
@@ -52,6 +69,9 @@ def load_emails(csv_path):
         if series.startswith("W ·"):
             continue                      # newsletters are out of scope
         name = (r.get("Email name") or "").strip()
+        stack = parse_stack(r.get("Module Stack"))
+        # Extract valid families from stack for body parsing
+        families = {s["family"] for s in stack}
         out.append({
             "code": name.split(" · ")[0].strip(),
             "name": name,
@@ -60,8 +80,8 @@ def load_emails(csv_path):
             "subject": (r.get("Subject") or "").strip(),
             "preview": (r.get("Preview Text") or "").strip(),
             "cta": (r.get("CTA") or "").strip(),
-            "stack": parse_stack(r.get("Module Stack")),
-            "blocks": parse_body(r.get("Body")),
+            "stack": stack,
+            "blocks": parse_body(r.get("Body"), families),
             "subscription": (r.get("Subscription Type") or "").strip(),
             "channel": (r.get("Email Channel") or "").strip(),
             "hubspot_id": (r.get("HubSpot Email ID") or "").strip(),
