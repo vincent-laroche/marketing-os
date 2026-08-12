@@ -45,14 +45,11 @@ def test_unsegmented_bodies_yield_no_blocks():
 
 def test_annotated_tag_lines_are_parsed():
     # Twelve real tag lines carry (recommended) or (optional) annotations
-    emails = load_emails(CSV)
-    # Verify at least one email has annotated tags properly parsed
-    cr2 = next((e for e in emails if e["code"] == "CR-2"), None)
-    if cr2:
-        assert len(cr2["blocks"]) > 0
-        # Annotation should not appear in any block's copy
-        assert not any("(recommended)" in b["copy"] for b in cr2["blocks"])
-        assert not any("(optional)" in b["copy"] for b in cr2["blocks"])
+    cr2 = next(e for e in load_emails(CSV) if e["code"] == "CR-2")
+    assert len(cr2["blocks"]) > 0
+    # Annotation should not appear in any block's copy
+    assert not any("(recommended)" in b["copy"] for b in cr2["blocks"])
+    assert not any("(optional)" in b["copy"] for b in cr2["blocks"])
 
 
 def test_copy_desk_instructions_are_preserved_not_boundaries():
@@ -89,3 +86,21 @@ def test_no_leaked_boundary_text_in_blocks():
                         # This should NOT be in the stack
                         assert candidate_family not in stack_families, \
                             f"Email {email['code']}: leaked boundary text '[{candidate_family}]' in {block['family']}'s copy"
+
+
+def test_unrecognized_annotation_does_not_make_boundary():
+    # A bracketed line with an unrecognized trailing annotation
+    # (not "recommended" or "optional") should NOT be treated as a boundary;
+    # it should survive in the preceding block's copy, not be dropped
+    body = ("[Hero]\nHello\n\n"
+            "[Text - Offer discount] (recommended — only if W-1 carried an incentive)\n"
+            "This is copy for Text - Offer discount.\n")
+    families = {"Hero", "Text - Offer discount"}
+    blocks = parse_body(body, families)
+    # Should have only 1 block because the line with unrecognized annotation
+    # is NOT treated as a boundary
+    assert len(blocks) == 1
+    assert blocks[0]["family"] == "Hero"
+    # The entire bracketed line with unrecognized annotation should survive in Hero's copy
+    assert "[Text - Offer discount] (recommended — only if W-1 carried an incentive)" in blocks[0]["copy"]
+    assert "This is copy for Text - Offer discount" in blocks[0]["copy"]

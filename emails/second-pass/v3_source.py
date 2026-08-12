@@ -7,7 +7,7 @@ CSV property columns exclusively, which are the corrected v3 values.
 import csv, re
 
 STACK_RE = re.compile(r"([\(\[])([^)\]]+)([\)\]])")
-TAG_RE = re.compile(r"^\[([^\]]+?)\]\s*(?:\([^)]*\))?\s*$", re.M)
+TAG_RE = re.compile(r"^\[([^\]]+?)\]\s*(?:\((?:recommended|optional)\))?\s*$", re.M | re.I)
 
 
 def _split_qualifier(text):
