@@ -141,6 +141,150 @@ def items_for(folder, ctx):
         it.append({"t": "small", "s": "Unsubscribe  ·  Manage preferences  ·  Privacy",
                    "link": True})
         return it
+
+    if folder in ("button_standalone_cta", "hero_text_led"):
+        if val(ctx, "eyebrow"):
+            it.append({"t": "eyebrow", "s": val(ctx, "eyebrow")})
+        if val(ctx, "heading"):
+            it.append({"t": "h", "s": val(ctx, "heading"), "accent": val(ctx, "heading_accent")})
+        bl = bold_runs(ctx.get("body_text"))
+        for i, p in enumerate(paras(ctx.get("body_text"))):
+            it.append({"t": "p", "s": p, "bold": bl[i] if i < len(bl) else None})
+        if ctx.get("show_button") == "yes" and val(ctx, "button_label"):
+            it.append({"t": "btn", "s": val(ctx, "button_label")})
+        return it
+
+    if folder == "testimonial":
+        # customer_image can't be represented: figma.createImageAsync is unsupported here
+        if ctx.get("show_stars") == "yes":
+            it.append({"t": "meta", "s": "★★★★★"})
+        bl = bold_runs(ctx.get("quote_text"))
+        for i, p in enumerate(paras(ctx.get("quote_text"))):
+            it.append({"t": "p", "s": p, "bold": bl[i] if i < len(bl) else None})
+        if val(ctx, "customer_name"):
+            it.append({"t": "small", "s": val(ctx, "customer_name"), "strong": True})
+        if val(ctx, "customer_detail"):
+            it.append({"t": "small", "s": val(ctx, "customer_detail")})
+        return it
+
+    if folder == "support_strip":
+        # no show_button gate in this module — the live markup shows the button
+        # whenever button_label has content, so mirror that directly
+        if val(ctx, "eyebrow"):
+            it.append({"t": "eyebrow", "s": val(ctx, "eyebrow")})
+        if val(ctx, "heading"):
+            it.append({"t": "h", "s": val(ctx, "heading")})
+        bl = bold_runs(ctx.get("body_text"))
+        for i, p in enumerate(paras(ctx.get("body_text"))):
+            it.append({"t": "p", "s": p, "bold": bl[i] if i < len(bl) else None})
+        if val(ctx, "button_label"):
+            it.append({"t": "btn", "s": val(ctx, "button_label")})
+        return it
+
+    if folder == "photo_feature_story":
+        # image can't be represented: figma.createImageAsync is unsupported here
+        if val(ctx, "eyebrow"):
+            it.append({"t": "eyebrow", "s": val(ctx, "eyebrow")})
+        if val(ctx, "heading"):
+            it.append({"t": "h", "s": val(ctx, "heading"), "accent": val(ctx, "heading_accent")})
+        bl = bold_runs(ctx.get("body_text"))
+        for i, p in enumerate(paras(ctx.get("body_text"))):
+            it.append({"t": "p", "s": p, "bold": bl[i] if i < len(bl) else None})
+        if val(ctx, "meta_text"):
+            it.append({"t": "meta", "s": val(ctx, "meta_text")})
+        if val(ctx, "link_label"):
+            it.append({"t": "small", "s": val(ctx, "link_label") + " →",
+                       "strong": True, "link": True})
+        if ctx.get("show_button") == "yes" and val(ctx, "button_label"):
+            it.append({"t": "btn", "s": val(ctx, "button_label")})
+        return it
+
+    if folder == "footer_social":
+        # chrome, terminal on the emails that use it — same item vocabulary and
+        # order as the footer_standard/preference_opt_down compliance tail, just
+        # centered (this module's markup centers the whole card, footer_standard
+        # left-aligns) and with no ask/tagline/permission_note fields to carry
+        it.append({"t": "logo", "align": "center"})
+        it.append({"t": "meta", "s": "INSTAGRAM   ·   FACEBOOK   ·   YOUTUBE"})
+        it.append({"t": "rule"})
+        it.append({"t": "small", "s": val(ctx, "company_name"), "strong": True})
+        it.append({"t": "small", "s": val(ctx, "company_address")})
+        it.append({"t": "small", "s": "Unsubscribe  ·  Manage preferences  ·  Privacy",
+                   "link": True})
+        return it
+
+    if folder == "trust_badge_row":
+        for i in range(1, 5):
+            label = val(ctx, f"item_{i}_label")
+            if label:
+                it.append({"t": "kv", "k": val(ctx, f"item_{i}_icon"), "v": label})
+        return it
+
+    if folder == "faq":
+        if val(ctx, "heading"):
+            it.append({"t": "h", "s": val(ctx, "heading")})
+        first = True
+        for i in range(1, 6):
+            q = val(ctx, f"faq_{i}_question")
+            if not q:
+                continue
+            if not first:
+                it.append({"t": "rule"})
+            first = False
+            it.append({"t": "small", "s": q, "strong": True})
+            for a in paras(ctx.get(f"faq_{i}_answer")):
+                it.append({"t": "small", "s": a})
+        return it
+
+    if folder == "timeline":
+        if val(ctx, "heading"):
+            it.append({"t": "h", "s": val(ctx, "heading")})
+        for i in range(1, 5):
+            label = val(ctx, f"step_{i}_label")
+            step_heading = val(ctx, f"step_{i}_heading")
+            texts = paras(ctx.get(f"step_{i}_text"))
+            if not (label or step_heading or texts):
+                continue
+            if label:
+                it.append({"t": "meta", "s": label})
+            if step_heading:
+                it.append({"t": "small", "s": step_heading, "strong": True})
+            for t in texts:
+                it.append({"t": "p", "s": t})
+        return it
+
+    if folder == "visual_comparison_cards":
+        if val(ctx, "eyebrow"):
+            it.append({"t": "eyebrow", "s": val(ctx, "eyebrow")})
+        first = True
+        for i in range(1, 4):
+            name = val(ctx, f"card_{i}_name")
+            if not name:
+                continue
+            if not first:
+                it.append({"t": "rule"})
+            first = False
+            it.append({"t": "small", "s": name, "strong": True})
+            for k in ("attr_1", "attr_2"):
+                v = val(ctx, f"card_{i}_{k}")
+                if v:
+                    it.append({"t": "small", "s": v})
+        return it
+
+    if folder == "countdown_expiry":
+        if val(ctx, "eyebrow"):
+            it.append({"t": "eyebrow", "s": val(ctx, "eyebrow")})
+        if val(ctx, "heading"):
+            it.append({"t": "h", "s": val(ctx, "heading")})
+        bl = bold_runs(ctx.get("body_text"))
+        for i, p in enumerate(paras(ctx.get("body_text"))):
+            it.append({"t": "p", "s": p, "bold": bl[i] if i < len(bl) else None})
+        if val(ctx, "expiry_text"):
+            it.append({"t": "code", "s": val(ctx, "expiry_text")})
+        if val(ctx, "button_label"):
+            it.append({"t": "btn", "s": val(ctx, "button_label")})
+        return it
+
     raise SystemExit("unmapped module in spec: " + folder)
 
 
