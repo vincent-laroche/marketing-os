@@ -10,6 +10,23 @@ MAIN = {"#EFE7D2", "#15140F", "#ED6F5C"}
 CHROME_FOLDERS = {"header_centered_logo", "preference_opt_down", "footer_standard",
                   "footer_social", "footer_wide"}
 
+CARD_RE = re.compile(r'class="final-card"[^>]*background:(#[0-9A-Fa-f]{6})')
+
+
+def card_bg(html):
+    """The rendered block's own final-card background, or None if the block
+    emitted no card at all — i.e. it renders no visible content. A module whose
+    conditional wrapping swallows its own opening tags (a `{% if
+    module.button_label %}` gating the entire card, not just the button) leaves
+    only a stray handful of closing tags behind, and this regex simply fails to
+    match. That is a real, shippability-blocking finding, not a false negative:
+    verified against every folder in the live set that no block with real
+    content ever lacks a final-card match, and no block lacking one ever carries
+    real content either (see task-7-report.md's false-positive check)."""
+    m = CARD_RE.search(html)
+    return m.group(1).upper() if m else None
+
+
 def main():
     problems, coral = [], 0
     for e in EMAILS:
@@ -28,8 +45,14 @@ def main():
             if SURFACES[surf]["bg"] not in MAIN:
                 problems.append(f"{e['code']}/{folder}: {surf} is not a main surface")
             html = block_html(folder, surf, vals)
-            m = re.search(r'class="final-card"[^>]*background:(#[0-9A-Fa-f]{6})', html)
-            if m and m.group(1).upper() in SUPPORTING:
+            bg = card_bg(html)
+            if bg is None:
+                problems.append(
+                    f"{e['code']}/{folder}: BLANK RENDER — no visible content "
+                    "(known upstream module-template bug: {% if module.button_label %} "
+                    "gates the whole card, not just the button — see task-7-report.md; "
+                    "this is not a composition/mapping/tonal-plan defect)")
+            elif bg in SUPPORTING:
                 problems.append(f"{e['code']}/{folder}: supporting colour as section background")
             for kind, detail, _ctx in scan(html, SURFACES[surf]["bg"]):
                 problems.append(f"{e['code']}/{folder}[{surf}]: {kind} {detail}")
