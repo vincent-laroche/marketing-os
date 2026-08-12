@@ -9,7 +9,7 @@ the email-safe fallbacks, because those fonts exist here:
     body     -> Inter Regular
 """
 import json, re, html as htmllib
-from emails import EMAILS
+from compose_v3 import EMAILS
 from surface import SURFACES
 from render_emails import defaults, OPT_DOWN_ASK
 

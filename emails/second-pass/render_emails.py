@@ -6,9 +6,9 @@ fields.json default — the same resolution HubSpot performs.
 """
 import json, os, re, sys
 from render_proof import render
-from emails import EMAILS
+from compose_v3 import EMAILS
 
-LIVE = "final-verify"
+LIVE = "/tmp/live"
 BODY_BG = "#EFE7D2"          # the email body background — Paper, per the brand spec
 
 
