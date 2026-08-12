@@ -13,6 +13,26 @@ CHROME_FOLDERS = {"header_centered_logo", "preference_opt_down", "footer_standar
 CARD_RE = re.compile(r'class="final-card"[^>]*background:(#[0-9A-Fa-f]{6})')
 
 
+def faq_empty_answers(folder, vals):
+    """Every faq_N_question that has an empty faq_N_answer, for a block that
+    still shipped on the `faq` module. A correctly-mapped block never has
+    one: List - Questions/FAQ copy with no real answers is routed to
+    text_block_generic before it ever reaches here (see
+    compose_v3._compose's faq_all_unanswered branch) — so a hit here means
+    either that fallback was reverted, or a genuinely mixed block (some
+    rows answered, some not) shipped without a human decision. Modelled on
+    card_bg() above: same style, same problem-reporting mechanism, a
+    distinguishable message."""
+    if folder != "faq":
+        return []
+    hits = []
+    for i in range(1, 6):
+        q, a = (vals.get(f"faq_{i}_question") or "").strip(), (vals.get(f"faq_{i}_answer") or "").strip()
+        if q and not a:
+            hits.append(i)
+    return hits
+
+
 def card_bg(html):
     """The rendered block's own final-card background, or None if the block
     emitted no card at all — i.e. it renders no visible content. A module whose
@@ -44,6 +64,11 @@ def main():
                     problems.append(f"{e['code']}: coral on chrome ({folder})")
             if SURFACES[surf]["bg"] not in MAIN:
                 problems.append(f"{e['code']}/{folder}: {surf} is not a main surface")
+            for i in faq_empty_answers(folder, vals):
+                problems.append(
+                    f"{e['code']}/{folder}: EMPTY FAQ ANSWER — faq_{i}_question is set but "
+                    f"faq_{i}_answer is blank (dead '+' affordance in email clients; flat-list "
+                    "copy belongs on text_block_generic, not faq — see compose_v3.faq_all_unanswered)")
             html = block_html(folder, surf, vals)
             bg = card_bg(html)
             if bg is None:

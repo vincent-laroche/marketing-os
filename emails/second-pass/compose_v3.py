@@ -1,7 +1,8 @@
 """Build the composition list the renderer consumes, from the v3 export."""
 import os
 from v3_source import load_emails
-from module_map import resolve, fields_for, placeholder_fields, PLACEHOLDER_HOST
+from module_map import (resolve, fields_for, placeholder_fields, PLACEHOLDER_HOST,
+                         faq_all_unanswered, flat_list_fields)
 from tonal_plan import surface_for, CHROME
 
 CSV = os.path.join(os.path.dirname(__file__), "source-v3",
@@ -9,6 +10,7 @@ CSV = os.path.join(os.path.dirname(__file__), "source-v3",
 
 FOUNDER = "Layout - Plain-text founder wrapper"
 BUTTON = "Button - Primary CTA"
+FAQ_FAMILIES = ("List - Questions", "FAQ")
 
 
 def _copy_for(email, family, used):
@@ -46,8 +48,20 @@ def _compose(email, raw_body):
         # falls back to the email's own `cta` column, which is real content,
         # not blank.
         unmatched = blk is None and not founder_case and fam not in CHROME and fam != BUTTON
+        # The List - Questions -> faq mapping assumes Q/A-shaped copy. Where the
+        # copy is actually a flat numbered/bulleted list (checklist, timeline,
+        # checkpoints — every row's answer empty), fall back to text_block_generic
+        # rather than shipping empty FAQ rows with a dead '+' affordance. This is a
+        # property of the copy (faq_all_unanswered), not a hardcoded email list, so
+        # it keeps working as copy changes. A block with SOME answers and some
+        # empty stays on `faq` as before — that ambiguous mixed case is caught by
+        # audit.py's faq_empty_answers() check instead of being silently guessed.
+        flat_faq = (not unmatched and slug is not None
+                    and fam in FAQ_FAMILIES and faq_all_unanswered(copy))
         if slug is None or unmatched:
             blocks.append((PLACEHOLDER_HOST, surf, placeholder_fields(fam, qual, copy)))
+        elif flat_faq:
+            blocks.append((PLACEHOLDER_HOST, surf, flat_list_fields(qual, copy)))
         else:
             blocks.append((slug, surf, fields_for(fam, qual, copy, email)))
     return blocks

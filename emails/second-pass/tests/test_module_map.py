@@ -195,7 +195,15 @@ def test_fields_for_faq_flat_numbered_list_fills_question_only_not_empty_faq_row
     """PP-1 shape: a numbered list of steps, not real questions. Confirmed against
     /tmp/live/faq.module/module.html that an empty faq_N_answer collapses cleanly
     (each row is gated on faq_N_question truthy; the answer cell just renders
-    empty, no broken markup) — so filling question-only is safe, not a silent drop."""
+    empty, no broken markup) — so filling question-only is safe, not a silent drop.
+
+    This is a unit test of fields_for() itself, called directly with the
+    'List - Questions' family — it still produces this shape for callers who
+    ask for it. In the real composition path (compose_v3._compose), copy
+    shaped like this never reaches fields_for at all: faq_all_unanswered()
+    intercepts it and routes to flat_list_fields()/text_block_generic
+    instead, so these empty answer rows never actually ship. See
+    test_compose_v3.py's flat-faq tests for that routing decision."""
     from module_map import fields_for
     copy = ("1. Production starts — the base is cut and the hair is hand-tied to your spec\n"
             "2. I email you when it goes into production\n"
@@ -209,6 +217,108 @@ def test_fields_for_faq_flat_numbered_list_fills_question_only_not_empty_faq_row
     # the trailing aside is not dropped — it becomes its own 5th entry, not folded
     # away, since there is a free slot for it
     assert f["faq_5_question"] == "No filler emails in between — only the real steps."
+
+
+def test_faq_all_unanswered_true_for_flat_list_copy():
+    """PP-1 shape: a numbered checklist with no real answers -> the fallback
+    trigger must fire. This is the exact property compose_v3._compose keys
+    its faq -> text_block_generic fallback off of."""
+    from module_map import faq_all_unanswered
+    copy = ("1. Production starts — the base is cut and the hair is hand-tied to your spec\n"
+            "2. I email you when it goes into production\n"
+            "3. I email you when it ships, with tracking\n"
+            "4. It should be at your door around {{ estimated_delivery_date }}\n\n"
+            "No filler emails in between — only the real steps.")
+    assert faq_all_unanswered(copy) is True
+
+
+def test_faq_all_unanswered_false_for_genuine_qa_copy():
+    """CR-2/C-1 shape: every row is genuinely answered -> must NOT trigger the
+    fallback, i.e. these blocks stay on the real `faq` module."""
+    from module_map import faq_all_unanswered
+    copy = ('"Will it actually look real?"\n'
+            'At conversation distance, a well-fitted lace front is not detectable.\n\n'
+            '"Will it hold?"\n'
+            'With clean prep, a bond holds 7 to 14 days.')
+    assert faq_all_unanswered(copy) is False
+
+
+def test_faq_all_unanswered_mixed_case_is_documented_as_false():
+    """The ambiguous case: some rows answered, some not. Never observed in the
+    live 28-email set (verified 2026-08-11 — every block is cleanly
+    all-answered or all-unanswered), but must be handled explicitly rather
+    than silently guessed if it ever occurs. Design decision, made visible
+    here and in module_map.faq_all_unanswered's docstring: a mixed block does
+    NOT trigger the flat-list fallback (it only fires when EVERY row is
+    unanswered) — it stays on the `faq` module exactly as fields_for would
+    have produced before this fix. That is deliberately not silent, though:
+    audit.py's faq_empty_answers() check fails loudly on any faq block that
+    still has an empty answer, so a mixed block cannot ship without a human
+    resolving the ambiguity (either by supplying the missing answers or by
+    rewriting the copy as a flat list)."""
+    from module_map import faq_all_unanswered, fields_for
+    mixed_copy = ('"Will it actually look real?"\n'
+                  'At conversation distance, a well-fitted lace front is not detectable.\n\n'
+                  '1. Ships within 3 days\n'
+                  '2. Tracking emailed same day')
+    assert faq_all_unanswered(mixed_copy) is False
+    # and: it still lands on the faq module with an empty answer, which is
+    # exactly what audit.py's faq_empty_answers() is there to catch
+    f = fields_for("List - Questions", "", mixed_copy, {})
+    assert f["faq_1_question"] == "Will it actually look real?"
+    assert f["faq_1_answer"] != ""
+    assert f["faq_2_question"] == "Ships within 3 days"
+    assert f["faq_2_answer"] == ""
+
+
+def test_faq_all_unanswered_false_for_no_matching_copy():
+    """Empty copy (no matching block at all) must not trigger the fallback —
+    that case is handled upstream in compose_v3 by the existing
+    unmatched-slot placeholder path, not by this function."""
+    from module_map import faq_all_unanswered
+    assert faq_all_unanswered("") is False
+
+
+def test_flat_list_fields_carries_heading_and_preserves_every_item():
+    """PP-1 shape: heading carried from the qualifier, every list item
+    present verbatim and in order, nothing fabricated."""
+    from module_map import flat_list_fields
+    copy = ("1. Production starts — the base is cut and the hair is hand-tied to your spec\n"
+            "2. I email you when it goes into production\n"
+            "3. I email you when it ships, with tracking\n"
+            "4. It should be at your door around {{ estimated_delivery_date }}\n\n"
+            "No filler emails in between — only the real steps.")
+    f = flat_list_fields("what happens next timeline", copy)
+    assert f["heading"] == "What Happens Next Timeline"
+    assert f["eyebrow"] == ""
+    for item in ["Production starts", "I email you when it goes into production",
+                 "I email you when it ships, with tracking",
+                 "It should be at your door around {{ estimated_delivery_date }}",
+                 "No filler emails in between — only the real steps."]:
+        assert item in f["body_text"]
+    assert f["body_text"].count("<li") == 5     # all 5 items survive, none dropped
+    assert f["show_button"] == "no"
+    assert f["button_label"] == ""
+
+
+def test_flat_list_fields_no_qualifier_means_no_invented_heading():
+    """PP-7b and C-0 shape: no qualifier in the v3 export -> heading must
+    stay empty, never invented."""
+    from module_map import flat_list_fields
+    f = flat_list_fields("", "· What did you look like before?\n· What convinced you to order?")
+    assert f["heading"] == ""
+    assert "What did you look like before?" in f["body_text"]
+    assert "What convinced you to order?" in f["body_text"]
+
+
+def test_flat_list_fields_preserves_bracketed_dynamic_marker_untouched():
+    """C-0 shape: a bracketed HubL dynamic-content marker must survive
+    verbatim into the fallback body, exactly as it does everywhere else in
+    this module (Correction #3: never fabricate, never mangle)."""
+    from module_map import flat_list_fields
+    copy = "{{ dynamic: top pre-order questions — lead time, payment, colour-match worries, adjustment policy }}"
+    f = flat_list_fields("", copy)
+    assert copy in f["body_text"]
 
 
 def test_fields_for_timeline_folds_fifth_step_into_fourth_slot():

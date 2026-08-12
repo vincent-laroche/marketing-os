@@ -190,17 +190,17 @@ def _trust_items(copy):
     return [s.strip() for s in (copy or "").split("·") if s.strip()]
 
 
-def _faq_items(copy, cap=5):
-    """Split List - Questions / FAQ copy into (question, answer) pairs.
+def _split_items(copy):
+    """Uncapped (question, answer) pairs, in document order.
 
     Handles three shapes seen in the v3 export: a quoted question with its
     answer inline after an em dash (C-1), a quoted question on its own line
     followed by an answer paragraph (CR-2), and a flat numbered/bulleted list
     of steps or facts with no real answer (PP-1, PP-2, PP-7b, RO-5) — those
-    fill the question slot only, verified safe against
-    /tmp/live/faq.module/module.html: each row is gated on
-    `{% if module.faq_N_question %}`, so an empty faq_N_answer just renders
-    an empty (but valid, non-broken) answer cell under the bold question line.
+    fill the question slot only. Shared by `_faq_items` (which caps/folds to
+    5 slots for the live `faq` module) and `faq_all_unanswered`/
+    `flat_list_fields` (the text_block_generic fallback, which needs every
+    item, uncapped — see compose_v3._compose).
     """
     items = []
     for para in [p for p in (copy or "").split("\n\n") if p.strip()]:
@@ -222,7 +222,20 @@ def _faq_items(copy, cap=5):
             continue
         q = BULLET_RE.sub("", NUM_RE.sub("", text)).strip()
         items.append((q, ""))
+    return items
 
+
+def _faq_items(copy, cap=5):
+    """Split List - Questions / FAQ copy into (question, answer) pairs,
+    capped/folded to the live faq module's 5 slots. Verified safe against
+    /tmp/live/faq.module/module.html: each row is gated on
+    `{% if module.faq_N_question %}`, so an empty faq_N_answer just renders
+    an empty (but valid, non-broken) answer cell under the bold question line
+    — that remains true for the (now rarer) case where this module IS still
+    used, i.e. copy that is genuinely Q&A shaped. See faq_all_unanswered()
+    for the flat-list case, which no longer reaches this module at all.
+    """
+    items = _split_items(copy)
     if len(items) > cap:
         head = items[:cap - 1]
         tail = items[cap - 1:]
@@ -233,6 +246,61 @@ def _faq_items(copy, cap=5):
         head.append((q5, a5))
         items = head
     return items
+
+
+def faq_all_unanswered(copy):
+    """True when every item _split_items() extracts from this copy has an
+    empty answer — i.e. the copy is a flat list (checklist/timeline/
+    checkpoints), not real Q&A. This is a property of the copy itself, not a
+    hardcoded email code, so it keeps working as copy changes.
+
+    An empty `copy` (no matching block at all) returns False — that case is
+    handled upstream by compose_v3's own placeholder-for-unmatched-slot path,
+    not by this fallback.
+
+    The mixed case — some rows answered, some not — is deliberately NOT
+    routed to the fallback by this function (it only fires when *every* row
+    is unanswered). A mixed block stays on the `faq` module as before, and
+    audit.py's faq_empty_answers() check will fail loudly on it rather than
+    let it ship silently blank or have this function silently guess. Today
+    (2026-08-11) every List - Questions/FAQ block in the 28-email set is
+    cleanly all-answered (CR-2, C-1) or all-unanswered (PP-1, PP-2, PP-5,
+    PP-7b, RO-5, C-0) — see test_compose_v3.py for a synthetic test of the
+    mixed case documenting this decision.
+    """
+    items = _split_items(copy)
+    return bool(items) and all(not a.strip() for _, a in items)
+
+
+def flat_list_fields(qualifier="", copy=""):
+    """Fields for the text_block_generic fallback used when a List -
+    Questions/FAQ block's copy is a flat list, not real Q&A (see
+    faq_all_unanswered). Every content field is set explicitly so none of
+    text_block_generic's own demo defaults ('A clear next step' / 'Add
+    concise, useful copy here.') can leak through (render_emails.block_html
+    does ctx = defaults(folder) then ctx.update(values), so an omitted field
+    inherits the demo default).
+
+    No eyebrow or heading is invented: PP-7b and C-0 carry no qualifier in
+    the v3 export, so heading stays "". Where a qualifier does exist (e.g.
+    'what happens next timeline') it is carried into heading, title-cased,
+    matching how every other family in this module derives its `eyebrow`
+    from the qualifier. Every list item survives, verbatim and in order —
+    none dropped, truncated, or capped (unlike the 5-slot faq module this
+    replaces); bracketed copy-desk markers such as C-0's
+    `{{ dynamic: ... }}` pass through untouched, same as everywhere else in
+    this file.
+    """
+    items = _split_items(copy)
+    lis = "".join(
+        f"<li style='margin:0 0 10px;'>{(f'{q} — {a}' if a else q)}</li>"
+        for q, a in items
+    )
+    body = f"<ul style='margin:0;padding-left:20px;'>{lis}</ul>" if lis else ""
+    heading = qualifier.title() if qualifier else ""
+    return {"eyebrow": "", "heading": heading, "heading_accent": "",
+            "body_text": body, "show_button": "no", "button_label": "",
+            "button_url": {"href": "#"}}
 
 
 def _timeline_steps(copy, n=4):
