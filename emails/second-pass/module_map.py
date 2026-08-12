@@ -61,10 +61,10 @@ MODULE_MAP = {
     "Photo - Feature story":              "photo_feature_story",
     "Photo - Founder note":               "photo_founder_note",
     "Column - Image and text":            "column_image_and_text",
-    "Comparison":                         "visual_comparison_cards",
+    "Comparison":                         "visual_comparison_cards",  # chosen over live `comparison` (2-column head-to-head) because C-2 needs 2–3 options
     "Grid - Collections 4":               "grid_collections_4",
     "Timeline":                           "timeline",
-    "FAQ":                                "faq",
+    "FAQ":                                "faq",                    # alias for List - Questions
 
     # copy-desk markers, not modules — the composer renders these as placeholders
     "PULL from Proof Bank":               None,
