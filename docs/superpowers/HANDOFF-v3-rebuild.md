@@ -196,3 +196,77 @@ blanked.** Task 4 now does this. Any new branch in Tasks 6–9 must too.
   implementer did exactly that and surfaced the `review_stars` template bug. Preserve that framing.
 - Model tiers used: `haiku` where the plan contained complete code (transcription + testing),
   `sonnet` where judgment was needed (Task 4, all reviews). Task 8's Figma work needs `sonnet`+.
+
+---
+
+# COMPLETION RECORD — 2026-08-12 (Tasks 6–9 done, plus two unplanned repairs)
+
+All plan tasks are complete and reviewed. Final whole-branch review: **merge-ready**.
+State at `5af6a18`: **57 tests pass**, `audit.py` → `problems : 0` exit 0,
+`render_emails.py` → 28 emails / `unresolved HubL blocks: none`,
+`spec_figma.py` → 28 emails / 199 module frames / 600 content items.
+
+## What was built
+
+| Task | Outcome |
+|---|---|
+| 6 | `compose_v3.py` — all 28 emails composed from the v3 blueprint |
+| 7 | `audit.py` — one command for structure, palette, contrast **and blank renders** |
+| 8a | `spec_figma.py` extended to the full module vocabulary (**11** missing branches, not the 8 the plan listed) |
+| 8b | Figma page `291:724` rebuilt: 22 old frames archived to `357:1203`, 28 new frames built, page audit clean |
+| 9 | `~/.claude/skills/hubspot-email-modules/` SKILL.md + module-inventory.md updated |
+| **10** | **Unplanned.** Nine live Design Manager module families repaired |
+| **11** | **Unplanned.** `List - Questions` → `faq` fallback |
+
+## The two defects that mattered — both found by LOOKING, not by testing
+
+**1. Nine live templates were swallowing their entire card.** They opened
+`{% if module.button_label %}` immediately before the outer table and closed the matching
+`{% endif %}` at the very end of the file, so the button's condition wrapped the whole card.
+An empty `button_label` — a legitimate state — rendered the block as **nothing**:
+**27 of 199 blocks across 23 of the 28 emails**, including whole founder-signed letter bodies.
+Families: `plain_text_founder_wrapper`, `support_strip`, `text_base_type_guidance`,
+`promo_code_block`, `countdown_expiry`, `column_image_and_text`, `photo_founder_note`,
+`review_stars`, `button_standalone_cta` (× light/dark = 18 files).
+Repaired in HubSpot DM 50966981 by relocating the gate to the button sub-table only, verified by
+an independent `hs cms fetch` into a separate directory. **This generalises §7 item 6 of this
+document, which recorded the same bug as affecting `review_stars` alone. It was nine.**
+
+**2. Six of eight FAQ blocks had every answer empty.** `List - Questions` → `faq` assumed Q&A copy;
+most copy was flat lists (checklists, timelines), producing bold question rows with `+` expand
+affordances that do nothing in email. Now falls back to `text_block_generic` by a data-driven rule.
+Only CR-2 and C-1 are genuinely Q&A.
+
+## The unifying lesson
+
+**This codebase fails silently, not loudly.** Five separate defects this session shared one shape —
+a missing value produced plausible output instead of an error:
+demo-defaults inheritance; the card-swallowing `{% if %}`; `heading_accent` read on
+`button_standalone_cta`; the same read on `text_base_type_guidance`; and `emit_figma.py`'s recolour
+allow-list omitting the wordmark's source hex `#FF5757`, flattening the coral "co" to monochrome.
+**The plan's own tests passed throughout while 13.6% of blocks rendered blank.** Written up as a
+class (not five anecdotes) in the `hubspot-email-modules` skill.
+
+Corollary now enforced: **an audit that cannot fail is not an audit.** `audit.py` reported
+`problems : 0` while 27 blocks were invisible — the signal was already computed and discarded. Both
+new checks were verified by **deliberately reverting the fix and confirming the audit goes
+non-zero**. Do that for every new check.
+
+## Still open — carried forward unchanged
+
+1. **Button destinations are placeholders.** No CTA in the export carries a URL; everything points
+   at `https://hairsolutions.co/`. Real URLs required before anything ships.
+2. **J5 Consultation is deal-scoped.** C-0 uses `{{ deal.hsc_quote_base_type }}` etc. — *deal*
+   properties. Sales vs Marketing changes the subscription type and whether they resolve at all.
+3. `OFFER — confirm before send` appears twice and needs confirming.
+4. C-0's Timeline has 5 steps; the module has 4 (5th folded into `step_4_text`).
+5. `visual_comparison_cards` caps at 2 attributes; C-2's copy lists 5.
+6. `~/.claude/skills/hubspot-email-modules` is **not a git repo** — Task 9's docs are unversioned.
+7. `/tmp/live` is ephemeral. Re-fetch: `hs cms fetch email_modules /tmp/live --account 50966981`.
+
+## Corrections to this document's earlier sections
+
+- §7 item 6 (`review_stars` template bug) — **superseded**: nine families, now repaired.
+- §6 landmine 9's Figma constraints held. `use_figma` is available and needed no session restart.
+- The plan said "5 unsegmented founder-letter emails"; the data has **7**. Code keys off
+  `not email["blocks"]`, so it handles any count.
