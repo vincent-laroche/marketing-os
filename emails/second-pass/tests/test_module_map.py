@@ -55,3 +55,63 @@ def test_placeholder_is_visibly_labelled_and_keeps_the_instruction():
     f2 = placeholder_fields("PULL from Proof Bank",
                             "a customer on the care routine paying off", "")
     assert "a customer on the care routine paying off" in f2["body_text"]
+
+
+def test_fields_for_hero_uses_copy_as_heading():
+    from module_map import fields_for
+    f = fields_for("Hero - Text-led", "", "Your order is confirmed, {{ firstname }}.", {})
+    assert f["heading"] == "Your order is confirmed, {{ firstname }}."
+    assert f["show_button"] == "no"
+
+
+def test_fields_for_text_block_wraps_paragraphs():
+    from module_map import fields_for
+    f = fields_for("Text - Opening", "", "Hi there,\n\nSecond para.", {})
+    assert f["body_text"].count("<p") == 2
+    assert "Second para." in f["body_text"]
+
+
+def test_fields_for_button_uses_email_cta():
+    from module_map import fields_for
+    f = fields_for("Button - Primary CTA", "view your order", "View your order →",
+                   {"cta": "View your order →"})
+    assert f["button_label"] == "View your order"      # trailing arrow stripped
+    assert f["show_button"] == "yes"
+
+
+def test_fields_for_founder_wrapper_splits_greeting_and_signature():
+    from module_map import fields_for
+    body = "Hi {{ firstname }},\n\nMiddle para.\n\nVincent\nFounder, Hair Solutions Co."
+    f = fields_for("Layout - Plain-text founder wrapper", "", body, {})
+    assert f["greeting"] == "Hi {{ firstname }},"
+    assert f["signature"].startswith("Vincent")
+    assert "Middle para." in f["letter_text"]
+    assert "Vincent" not in f["letter_text"]
+
+
+def test_fields_for_testimonial_uses_quote_text_not_placeholder_shape():
+    """Correction 1: Testimonial must not go through placeholder_fields (which
+    returns text_block_generic-shaped keys like `body_text`). The bracketed
+    Proof Bank instruction must survive verbatim in the real `quote_text` field,
+    and no name/detail/rating may be fabricated."""
+    from module_map import fields_for
+    copy = "[PULL from Proof Bank: a first-order quote that answers the \"will it look real\" doubt]"
+    f = fields_for("Testimonial", "", copy, {})
+    assert f["quote_text"] == copy
+    assert "body_text" not in f
+    assert f["customer_name"] == ""
+    assert f["customer_detail"] == ""
+    assert f["show_stars"] == "no"
+
+
+def test_fields_for_review_stars_never_returns_a_fabricated_rating():
+    """Correction 1: Review stars must not go through placeholder_fields, and the
+    live module's `rating` choice field only offers "3"/"4"/"5" — never a real
+    rating we haven't been given — so it must come back empty, never "5"."""
+    from module_map import fields_for
+    copy = "[PULL from Proof Bank: aggregate rating]"
+    f = fields_for("Review stars", "", copy, {})
+    assert f["rating"] == ""
+    assert copy in f["body_text"] or copy in f["heading"]
+    assert f["button_label"] == ""
+    assert "quote_text" not in f

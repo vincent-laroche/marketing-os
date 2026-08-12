@@ -121,3 +121,103 @@ def placeholder_fields(family, qualifier="", copy=""):
         "button_label": "",
         "button_url": {"href": "#"},
     }
+
+
+# --- fields_for: v3 copy block -> live module field values -----------------
+#
+# ctx = defaults(folder) then ctx.update(values) downstream, so any field left
+# out of the dict this returns silently keeps that module's demo placeholder
+# content. Field names below are verified against /tmp/live/<module>/fields.json
+# (see task-4-report.md for the module-by-module check).
+
+import re as _re
+
+ARROW = _re.compile(r"\s*[→>]+\s*$")
+
+
+def _paras(copy):
+    out = []
+    for chunk in [c.strip() for c in (copy or "").split("\n\n") if c.strip()]:
+        chunk = chunk.replace("\n", "<br>")
+        out.append(f"<p style='margin:0 0 16px;'>{chunk}</p>")
+    return "".join(out)
+
+
+def _base(**kw):
+    f = {"eyebrow": "", "heading": "", "heading_accent": "", "body_text": "",
+         "show_button": "no", "button_label": "", "button_url": {"href": "#"}}
+    f.update(kw)
+    return f
+
+
+def fields_for(family, qualifier="", copy="", email=None):
+    email = email or {}
+    copy = (copy or "").strip()
+
+    if family in ("Hero - Text-led", "Hero - Photo-led", "Text - Masthead"):
+        # a hero's copy is its headline; keep any second paragraph as body
+        head, _, rest = copy.partition("\n\n")
+        return _base(heading=head.strip(), body_text=_paras(rest))
+
+    if family == "Layout - Plain-text founder wrapper":
+        lines = [l for l in copy.split("\n")]
+        greeting = lines[0].strip() if lines and lines[0].strip().startswith("Hi") else ""
+        rest = "\n".join(lines[1:]) if greeting else copy
+        paras = [p.strip() for p in rest.split("\n\n") if p.strip()]
+        signature = ""
+        if paras and paras[-1].split("\n")[0].strip().startswith("Vincent"):
+            signature = paras.pop().replace("\n", "<br>")
+        return _base(greeting=greeting, letter_text=_paras("\n\n".join(paras)),
+                     signature=signature)
+
+    if family == "Button - Primary CTA":
+        label = ARROW.sub("", copy or email.get("cta", "")).strip()
+        return _base(show_button="yes", button_label=label,
+                     button_url={"href": "https://hairsolutions.co/"})
+
+    if family == "Signal - Promo code":
+        code = ""
+        m = _re.search(r"\b([A-Z][A-Z0-9]{4,})\b", copy)
+        if m:
+            code = m.group(1)
+        terms = " ".join(l for l in copy.split("\n") if code not in l).strip()
+        return {"heading": copy.split("\n")[0].strip(), "promo_code": code,
+                "terms_text": terms, "button_label": "",
+                "button_url": {"href": "https://hairsolutions.co/"}}
+
+    # --- Correction 1: Testimonial and Review stars use their OWN real field
+    # names, never placeholder_fields()'s text_block_generic-shaped keys.
+    # Both modules exist in the live account to carry real Proof Bank quotes,
+    # but the Proof Bank is empty as of 2026-08-11 — every block currently
+    # arrives as a bracketed copy-desk instruction. That instruction must
+    # survive verbatim into the field the module actually renders, and no
+    # name, detail, or star rating may ever be invented to fill the gap.
+
+    if family == "Testimonial":
+        # testimonial.module fields: quote_text, customer_name, customer_detail,
+        # customer_image, show_stars. No heading/body_text/eyebrow exist here.
+        quote = copy if copy else f"[ {family} — no Proof Bank content supplied ]"
+        return {"quote_text": quote, "customer_name": "", "customer_detail": "",
+                "show_stars": "no"}
+
+    if family == "Review stars":
+        # review_stars.module fields: eyebrow, rating, heading, body_text,
+        # button_label, button_url. `rating` is a choice field offering only
+        # "3"/"4"/"5" (verified in fields.json) — there is no real aggregate
+        # rating to report, so it must never be set to a fabricated value.
+        body = _paras(copy) if copy else \
+            f"<p style='margin:0;'>[ {family} — no Proof Bank content supplied ]</p>"
+        return {"eyebrow": "", "rating": "", "heading": f"[ {family} ]",
+                "body_text": body, "button_label": "",
+                "button_url": {"href": "#"}}
+
+    if family.startswith(("PULL", "OFFER")):
+        # Defensive only: after the Task 1 fix these bracketed instructions no
+        # longer parse as their own family — they arrive as copy text inside
+        # another family's block (handled by the branches above). Kept in case
+        # a stray one ever slips through unparsed.
+        return placeholder_fields(family, qualifier, copy)
+
+    # every remaining text-ish family renders as a titled block
+    return _base(eyebrow=qualifier.title() if qualifier else "",
+                 heading="", body_text=_paras(copy))
