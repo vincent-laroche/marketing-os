@@ -86,3 +86,38 @@ def missing_families(emails):
                 if not s["family"].startswith(("PULL", "OFFER")):
                     out.add(s["family"])
     return sorted(out)
+
+
+PLACEHOLDER_HOST = "text_block_generic"
+
+_REASON = {
+    "Commerce - Cart line items":
+        "Needs live Shopify cart data. Replace with the native HubSpot/Shopify cart module.",
+    "Commerce - Viewed product":
+        "Needs live catalogue data. Replace with the native HubSpot/Shopify product module.",
+    "Product - Dynamic recommendations":
+        "Deliberately deferred — replace with the native HubSpot/Shopify product-recommendations "
+        "module so it pulls real price, image, stock and link.",
+    "PULL from Proof Bank":
+        "Proof Bank is empty (confirmed 2026-08-11). Vincent supplies the approved quote.",
+    "OFFER — confirm before send":
+        "Offer terms need confirming before this email can ship.",
+}
+
+
+def placeholder_fields(family, qualifier="", copy=""):
+    """Field values rendering a visible, labelled placeholder in a text_block_generic."""
+    reason = _REASON.get(family, "Not available yet.")
+    detail = qualifier or copy.strip()
+    body = f"<p style='margin:0 0 12px;'>{reason}</p>"
+    if detail:
+        body += f"<p style='margin:0;'><em>Brief: {detail}</em></p>"
+    return {
+        "eyebrow": "Placeholder",
+        "heading": f"[ {family} ]",
+        "heading_accent": "",
+        "body_text": body,
+        "show_button": "no",
+        "button_label": "",
+        "button_url": {"href": "#"},
+    }

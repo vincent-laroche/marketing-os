@@ -43,3 +43,15 @@ def test_missing_families_reports_exactly_three():
         "Commerce - Viewed product",
         "Product - Dynamic recommendations",
     ]
+
+
+def test_placeholder_is_visibly_labelled_and_keeps_the_instruction():
+    from module_map import placeholder_fields
+    f = placeholder_fields("Commerce - Cart line items", "", "")
+    assert f["heading"].startswith("[") and f["heading"].endswith("]")
+    assert "Commerce - Cart line items" in f["heading"]
+    assert f["show_button"] == "no"
+
+    f2 = placeholder_fields("PULL from Proof Bank",
+                            "a customer on the care routine paying off", "")
+    assert "a customer on the care routine paying off" in f2["body_text"]
