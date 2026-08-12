@@ -52,7 +52,12 @@ MODULE_MAP = {
 
     # proof
     "Testimonial":                        "testimonial",
-    "Review stars":                       "review_stars",
+    # review_stars hardcodes five literal star glyphs in module.html — the
+    # `rating` field only fills the "N/5" caption text, so no field value can
+    # ever stop it rendering a fabricated 5-star graphic. Confirmed against
+    # /tmp/live/review_stars.module/module.html 2026-08-11. Vincent's call:
+    # treat as unavailable, same as the commerce modules with no live source.
+    "Review stars":                       None,
     "Quote - Accent bar":                 "quote_accent_bar",
     "Quote - Centered":                   "quote_centered",
     "Stat bars":                          "stat_bars",
@@ -98,6 +103,10 @@ _REASON = {
     "Product - Dynamic recommendations":
         "Deliberately deferred — replace with the native HubSpot/Shopify product-recommendations "
         "module so it pulls real price, image, stock and link.",
+    "Review stars":
+        "review_stars hardcodes five star glyphs in its own HTML regardless of the `rating` "
+        "field, and the Proof Bank is empty — there is no real rating to show and no field "
+        "value can suppress the fake stars. Needs a module fix before this can be live.",
     "PULL from Proof Bank":
         "Proof Bank is empty (confirmed 2026-08-11). Vincent supplies the approved quote.",
     "OFFER — confirm before send":
@@ -150,16 +159,145 @@ def _base(**kw):
     return f
 
 
+NUM_RE = _re.compile(r"^\d+\.\s*")
+BULLET_RE = _re.compile(r"^[·—]\s*")
+INLINE_QA_RE = _re.compile(r'^"([^"]+)"\s*[—-]\s*(.+)$', _re.S)
+QUOTE_ONLY_RE = _re.compile(r'^"[^"]+"$')
+
+
+def _kv_lines(copy):
+    """'Label: value' lines -> [(label, value), ...], in order, skipping blanks."""
+    out = []
+    for line in (copy or "").split("\n"):
+        line = line.strip()
+        if line and ":" in line:
+            label, _, value = line.partition(":")
+            out.append((label.strip(), value.strip()))
+    return out
+
+
+def _fill_slots(prefix_fmt, pairs, slots):
+    """Fill named label_*/value_* slots from an ordered pairs list, blanking the rest."""
+    f = {}
+    for i, slot in enumerate(slots):
+        label, value = pairs[i] if i < len(pairs) else ("", "")
+        f[prefix_fmt.format(slot=slot, part="label")] = label
+        f[prefix_fmt.format(slot=slot, part="value")] = value
+    return f
+
+
+def _trust_items(copy):
+    return [s.strip() for s in (copy or "").split("·") if s.strip()]
+
+
+def _faq_items(copy, cap=5):
+    """Split List - Questions / FAQ copy into (question, answer) pairs.
+
+    Handles three shapes seen in the v3 export: a quoted question with its
+    answer inline after an em dash (C-1), a quoted question on its own line
+    followed by an answer paragraph (CR-2), and a flat numbered/bulleted list
+    of steps or facts with no real answer (PP-1, PP-2, PP-7b, RO-5) — those
+    fill the question slot only, verified safe against
+    /tmp/live/faq.module/module.html: each row is gated on
+    `{% if module.faq_N_question %}`, so an empty faq_N_answer just renders
+    an empty (but valid, non-broken) answer cell under the bold question line.
+    """
+    items = []
+    for para in [p for p in (copy or "").split("\n\n") if p.strip()]:
+        lines = [l for l in para.split("\n") if l.strip()]
+        if len(lines) >= 2 and all(NUM_RE.match(l) or BULLET_RE.match(l) for l in lines):
+            for l in lines:
+                q = BULLET_RE.sub("", NUM_RE.sub("", l.strip())).strip()
+                items.append((q, ""))
+            continue
+        text = para.strip()
+        m = INLINE_QA_RE.match(text)
+        if m:
+            items.append((m.group(1).strip(), m.group(2).strip()))
+            continue
+        if len(lines) >= 2 and QUOTE_ONLY_RE.match(lines[0].strip()):
+            q = lines[0].strip().strip('"')
+            a = " ".join(l.strip() for l in lines[1:])
+            items.append((q, a))
+            continue
+        q = BULLET_RE.sub("", NUM_RE.sub("", text)).strip()
+        items.append((q, ""))
+
+    if len(items) > cap:
+        head = items[:cap - 1]
+        tail = items[cap - 1:]
+        q5, a5 = tail[0]
+        extra = [f"{q} — {a}" if a else q for q, a in tail[1:]]
+        if extra:
+            a5 = (a5 + " " if a5 else "") + " / ".join(extra)
+        head.append((q5, a5))
+        items = head
+    return items
+
+
+def _timeline_steps(copy, n=4):
+    """Numbered steps -> [(heading, text), ...], capped at n. When there are
+    more numbered items than slots, folds the overflow into the last slot's
+    `text` rather than dropping it — see C-0's 5-step production window
+    against the module's 4 slots."""
+    items = []
+    for line in (copy or "").split("\n"):
+        m = _re.match(r"^\d+\.\s*(.+)$", line.strip())
+        if m:
+            items.append(m.group(1).strip())
+    if len(items) <= n:
+        return [(it, "") for it in items]
+    head = [(it, "") for it in items[:n - 1]]
+    tail = items[n - 1:]
+    head.append((tail[0], " ".join(tail[1:])))
+    return head
+
+
+def _quote_parts(copy):
+    """'Intro line: / token' and 'Label: value [· Label: value]' shapes -> (intro, pairs)."""
+    lines = [l.strip() for l in (copy or "").split("\n") if l.strip()]
+    intro, pairs = [], []
+    pending_token = False
+    for line in lines:
+        kv = []
+        for seg in [s.strip() for s in line.split("·")]:
+            if ":" in seg:
+                label, _, value = seg.partition(":")
+                if value.strip():
+                    kv.append((label.strip(), value.strip()))
+        if kv:
+            pairs.extend(kv)
+            pending_token = False
+            continue
+        if line.endswith(":"):
+            intro.append(line[:-1].strip())
+            pending_token = True
+            continue
+        if pending_token:
+            pairs.append(("Specification", line))
+            pending_token = False
+            continue
+        intro.append(line)
+    return " ".join(intro).strip(), pairs
+
+
 def fields_for(family, qualifier="", copy="", email=None):
     email = email or {}
     copy = (copy or "").strip()
+    eyebrow = qualifier.title() if qualifier else ""
 
     if family in ("Hero - Text-led", "Hero - Photo-led", "Text - Masthead"):
-        # a hero's copy is its headline; keep any second paragraph as body
+        # a hero's copy is its headline; keep any second paragraph as body.
+        # hero_text_led / hero_photo_led / text_masthead all share this exact
+        # 7-field shape (verified /tmp/live) so _base()'s full set is correct here.
         head, _, rest = copy.partition("\n\n")
         return _base(heading=head.strip(), body_text=_paras(rest))
 
     if family == "Layout - Plain-text founder wrapper":
+        # plain_text_founder_wrapper fields: greeting, letter_text, signature,
+        # show_button, button_label, button_url. No eyebrow/heading/body_text
+        # here, so this does NOT use _base() (which would add those as inert
+        # keys — Correction #4).
         lines = [l for l in copy.split("\n")]
         greeting = lines[0].strip() if lines and lines[0].strip().startswith("Hi") else ""
         rest = "\n".join(lines[1:]) if greeting else copy
@@ -167,13 +305,18 @@ def fields_for(family, qualifier="", copy="", email=None):
         signature = ""
         if paras and paras[-1].split("\n")[0].strip().startswith("Vincent"):
             signature = paras.pop().replace("\n", "<br>")
-        return _base(greeting=greeting, letter_text=_paras("\n\n".join(paras)),
-                     signature=signature)
+        return {"greeting": greeting, "letter_text": _paras("\n\n".join(paras)),
+                "signature": signature, "show_button": "no", "button_label": "",
+                "button_url": {"href": "#"}}
 
     if family == "Button - Primary CTA":
+        # button_standalone_cta fields: eyebrow, heading, body_text,
+        # show_button, button_label, button_url. No heading_accent — so this
+        # does NOT use _base() either (Correction #4).
         label = ARROW.sub("", copy or email.get("cta", "")).strip()
-        return _base(show_button="yes", button_label=label,
-                     button_url={"href": "https://hairsolutions.co/"})
+        return {"eyebrow": "", "heading": "", "body_text": "",
+                "show_button": "yes", "button_label": label,
+                "button_url": {"href": "https://hairsolutions.co/"}}
 
     if family == "Signal - Promo code":
         code = ""
@@ -185,39 +328,152 @@ def fields_for(family, qualifier="", copy="", email=None):
                 "terms_text": terms, "button_label": "",
                 "button_url": {"href": "https://hairsolutions.co/"}}
 
-    # --- Correction 1: Testimonial and Review stars use their OWN real field
-    # names, never placeholder_fields()'s text_block_generic-shaped keys.
-    # Both modules exist in the live account to carry real Proof Bank quotes,
-    # but the Proof Bank is empty as of 2026-08-11 — every block currently
-    # arrives as a bracketed copy-desk instruction. That instruction must
-    # survive verbatim into the field the module actually renders, and no
-    # name, detail, or star rating may ever be invented to fill the gap.
+    # --- Round 2, Correction #4 (general case): these three families were
+    # already landing their copy correctly via the generic fallback below
+    # (their modules do have body_text), but that fallback always uses
+    # _base()'s full 7-key shape, which stamps show_button/heading_accent
+    # keys these modules don't have. The round-2 regression test (every
+    # fields_for key must exist in its module's fields.json, across all 28
+    # emails) caught these three in addition to the two named in the
+    # coordinator's note, so they get the same treatment.
+
+    if family in ("List - Support strip", "M10 Support strip"):
+        # support_strip: eyebrow, heading, body_text, button_label, button_url.
+        # No show_button, no heading_accent.
+        return {"eyebrow": eyebrow, "heading": "", "body_text": _paras(copy),
+                "button_label": "", "button_url": {"href": "#"}}
+
+    if family == "Text - Base type guidance":
+        # text_base_type_guidance: eyebrow, heading, body_text, show_button,
+        # button_label, button_url. No heading_accent.
+        return {"eyebrow": eyebrow, "heading": "", "body_text": _paras(copy),
+                "show_button": "no", "button_label": "", "button_url": {"href": "#"}}
+
+    if family == "Signal - Countdown":
+        # countdown_expiry: eyebrow, heading, expiry_text, body_text,
+        # button_label, button_url. No heading_accent, no show_button. The
+        # copy here (e.g. "Valid for 7 days from this email.") IS the
+        # validity statement, so it belongs in expiry_text — the module's
+        # large bold deadline line — not body_text.
+        return {"eyebrow": eyebrow, "heading": "", "expiry_text": copy,
+                "body_text": "", "button_label": "", "button_url": {"href": "#"}}
+
+    # --- Correction 1 (round 1): Testimonial uses its own real field names,
+    # never placeholder_fields()'s text_block_generic-shaped keys. The module
+    # exists in the live account to carry real Proof Bank quotes, but the
+    # Proof Bank is empty as of 2026-08-11 — every block currently arrives as
+    # a bracketed copy-desk instruction. That instruction must survive
+    # verbatim into quote_text, and no name/detail/rating may be invented.
+    # (Review stars was here too in round 1; round 2 moved it to `None` in
+    # MODULE_MAP — see the PULL/OFFER branch below and task-4-report.md.)
 
     if family == "Testimonial":
         # testimonial.module fields: quote_text, customer_name, customer_detail,
-        # customer_image, show_stars. No heading/body_text/eyebrow exist here.
+        # customer_image, show_stars. customer_image is left untouched (its
+        # default is an empty src, not a fabricated fact).
         quote = copy if copy else f"[ {family} — no Proof Bank content supplied ]"
         return {"quote_text": quote, "customer_name": "", "customer_detail": "",
                 "show_stars": "no"}
 
-    if family == "Review stars":
-        # review_stars.module fields: eyebrow, rating, heading, body_text,
-        # button_label, button_url. `rating` is a choice field offering only
-        # "3"/"4"/"5" (verified in fields.json) — there is no real aggregate
-        # rating to report, so it must never be set to a fabricated value.
-        body = _paras(copy) if copy else \
-            f"<p style='margin:0;'>[ {family} — no Proof Bank content supplied ]</p>"
-        return {"eyebrow": "", "rating": "", "heading": f"[ {family} ]",
-                "body_text": body, "button_label": "",
-                "button_url": {"href": "#"}}
+    # --- Round 2: structured modules that were previously falling through to
+    # the generic text_block_generic-shaped fallback below, silently dropping
+    # their copy (those modules have no body_text field at all) and leaving
+    # HubSpot's fabricated demo defaults (fake order numbers, tracking
+    # numbers, trust-badge claims, quote figures...) to render as if real.
 
-    if family.startswith(("PULL", "OFFER")):
-        # Defensive only: after the Task 1 fix these bracketed instructions no
-        # longer parse as their own family — they arrive as copy text inside
-        # another family's block (handled by the branches above). Kept in case
-        # a stray one ever slips through unparsed.
+    if family == "Commerce - Order summary":
+        # commerce_order_summary: eyebrow, heading, label_order/value_order,
+        # label_spec/value_spec, label_status/value_status, label_eta/value_eta,
+        # note, button_label, button_url. Every field explicitly set/blanked —
+        # none of the module's fabricated demo defaults ('#HS-40218', 'In
+        # production', 'Aug 24', ...) may survive.
+        pairs = _kv_lines(copy)
+        f = {"eyebrow": eyebrow, "heading": "", "note": "",
+             "button_label": "", "button_url": {"href": "#"}}
+        f.update(_fill_slots("{part}_{slot}", pairs, ["order", "spec", "status", "eta"]))
+        return f
+
+    if family == "Commerce - Shipping tracking":
+        # commerce_shipping_tracking: eyebrow, heading, label_carrier/value_carrier,
+        # label_tracking/value_tracking, label_eta/value_eta, note, button_label,
+        # button_url. Same rule: blank every field, never inherit 'UPS Ground' /
+        # '1Z999AA10123456784' / 'Aug 9'.
+        pairs = _kv_lines(copy)
+        f = {"eyebrow": eyebrow, "heading": "", "note": "",
+             "button_label": "", "button_url": {"href": "#"}}
+        f.update(_fill_slots("{part}_{slot}", pairs, ["carrier", "tracking", "eta"]))
+        return f
+
+    if family == "Commerce - Quote and spec table":
+        # commerce_quote_spec_table: eyebrow, heading, label_1..5/value_1..5,
+        # note, button_label, button_url. The copy's intro line goes to
+        # heading; "Label: value" segments (· -separated on one line, as in
+        # C-2's "Base: X · Hair: Y") fill label_N/value_N in order.
+        intro, pairs = _quote_parts(copy)
+        f = {"eyebrow": eyebrow, "heading": intro, "note": "",
+             "button_label": "", "button_url": {"href": "#"}}
+        for i in range(1, 6):
+            label, value = pairs[i - 1] if i <= len(pairs) else ("", "")
+            f[f"label_{i}"] = label
+            f[f"value_{i}"] = value
+        return f
+
+    if family == "List - Trust strip":
+        # trust_badge_row: item_1..4_icon/item_1..4_label. Only the labels are
+        # set — icons are left untouched so the module's own icon glyphs
+        # survive (decorative, not a fabricated fact). Every unused label slot
+        # is explicitly blanked so demo claims like 'Secure Payment' cannot
+        # leak in under an icon that has nothing real to say.
+        items = _trust_items(copy)
+        return {f"item_{i}_label": (items[i - 1] if i <= len(items) else "")
+                for i in range(1, 5)}
+
+    if family in ("List - Questions", "FAQ"):
+        # faq: heading, faq_1..5_question, faq_1..5_answer. See _faq_items for
+        # the three copy shapes this needs to handle.
+        items = _faq_items(copy)
+        f = {"heading": eyebrow}
+        for i in range(1, 6):
+            q, a = items[i - 1] if i <= len(items) else ("", "")
+            f[f"faq_{i}_question"] = q
+            f[f"faq_{i}_answer"] = a
+        return f
+
+    if family == "Timeline":
+        # timeline: heading, step_1..4_label/heading/text (three fields per
+        # step, not two). No `{% if %}` gate on any step, so an unused slot
+        # must be fully blanked (label included) or it renders as a hollow row.
+        steps = _timeline_steps(copy, 4)
+        f = {"heading": eyebrow}
+        for i in range(1, 5):
+            h, t = steps[i - 1] if i <= len(steps) else ("", "")
+            f[f"step_{i}_label"] = (f"Step {i}" if (h or t) else "")
+            f[f"step_{i}_heading"] = h
+            f[f"step_{i}_text"] = t
+        return f
+
+    if family == "Comparison":
+        # visual_comparison_cards: eyebrow, card_1..3_name/attr_1/attr_2. No
+        # body field at all, so a dynamic-instruction copy block (C-2's
+        # `{{ dynamic: ... }}`) is carried visibly in card_1_name; cards 2 and
+        # 3 are explicitly blanked so 'Option B'/'Option C' cannot leak in.
+        card1 = f"[ {copy} ]" if copy else f"[ {family} — no content supplied ]"
+        return {"eyebrow": eyebrow, "card_1_name": card1,
+                "card_1_attr_1": "", "card_1_attr_2": "",
+                "card_2_name": "", "card_2_attr_1": "", "card_2_attr_2": "",
+                "card_3_name": "", "card_3_attr_1": "", "card_3_attr_2": ""}
+
+    if family.startswith(("PULL", "OFFER")) or family == "Review stars":
+        # Review stars (round 2): MODULE_MAP now maps it to None — its live
+        # module hardcodes five star glyphs regardless of field values, so no
+        # field mapping can honestly satisfy "no fabricated stars." It renders
+        # through the same labelled-placeholder path as the three commerce
+        # modules with no live source.
+        # PULL/OFFER: defensive only — after the Task 1 fix these bracketed
+        # copy-desk instructions no longer parse as their own family, they
+        # arrive as copy text inside another family's block (handled by the
+        # branches above). Kept in case a stray one ever slips through unparsed.
         return placeholder_fields(family, qualifier, copy)
 
     # every remaining text-ish family renders as a titled block
-    return _base(eyebrow=qualifier.title() if qualifier else "",
-                 heading="", body_text=_paras(copy))
+    return _base(eyebrow=eyebrow, heading="", body_text=_paras(copy))
