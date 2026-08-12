@@ -96,11 +96,26 @@ def items_for(folder, ctx):
             it.append({"t": "btn", "s": val(ctx, "button_label")})
         return it
 
-    if folder in ("text_block_generic", "text_base_type_guidance"):
+    if folder == "text_block_generic":
+        # this module genuinely has heading_accent
         if val(ctx, "eyebrow"):
             it.append({"t": "eyebrow", "s": val(ctx, "eyebrow")})
         if val(ctx, "heading"):
             it.append({"t": "h", "s": val(ctx, "heading"), "accent": val(ctx, "heading_accent")})
+        bl = bold_runs(ctx.get("body_text"))
+        for i, p in enumerate(paras(ctx.get("body_text"))):
+            it.append({"t": "p", "s": p, "bold": bl[i] if i < len(bl) else None})
+        if ctx.get("show_button") == "yes" and val(ctx, "button_label"):
+            it.append({"t": "btn", "s": val(ctx, "button_label")})
+        return it
+
+    if folder == "text_base_type_guidance":
+        # fields.json has no heading_accent here — unlike text_block_generic,
+        # do not read it (same class of bug fixed in button_standalone_cta)
+        if val(ctx, "eyebrow"):
+            it.append({"t": "eyebrow", "s": val(ctx, "eyebrow")})
+        if val(ctx, "heading"):
+            it.append({"t": "h", "s": val(ctx, "heading")})
         bl = bold_runs(ctx.get("body_text"))
         for i, p in enumerate(paras(ctx.get("body_text"))):
             it.append({"t": "p", "s": p, "bold": bl[i] if i < len(bl) else None})
@@ -113,7 +128,9 @@ def items_for(folder, ctx):
                    "secondary": val(ctx, "secondary_label")})
         return it
 
-    if folder in ("preference_opt_down", "footer_standard"):
+    if folder == "preference_opt_down":
+        # this module genuinely has eyebrow/heading/body_text/button_label —
+        # the opt-down "ask" — plus the compliance tail below
         ask = False
         if val(ctx, "eyebrow"):
             it.append({"t": "eyebrow", "s": val(ctx, "eyebrow")}); ask = True
@@ -123,14 +140,30 @@ def items_for(folder, ctx):
             it.append({"t": "p", "s": p}); ask = True
         if val(ctx, "button_label"):
             it.append({"t": "btn", "s": val(ctx, "button_label")}); ask = True
-        if folder == "footer_standard" and val(ctx, "tagline"):
+        # the divider only separates an opt-down ask from the compliance block;
+        # with no ask above it, it is an orphan rule floating at the card top
+        if ask:
+            it.append({"t": "rule"})
+        it.append({"t": "logo", "align": "left"})
+        it.append({"t": "meta", "s": "INSTAGRAM   ·   FACEBOOK   ·   YOUTUBE"})
+        it.append({"t": "rule"})
+        it.append({"t": "small", "s": val(ctx, "company_name"), "strong": True})
+        it.append({"t": "small", "s": val(ctx, "company_address")})
+        if val(ctx, "permission_note"):
+            it.append({"t": "small", "s": val(ctx, "permission_note")})
+        it.append({"t": "small", "s": "Unsubscribe  ·  Manage preferences  ·  Privacy",
+                   "link": True})
+        return it
+
+    if folder == "footer_standard":
+        # fields.json has no eyebrow/heading/body_text/button_label here — this
+        # module is pure compliance chrome plus an optional tagline, never an
+        # "ask" like preference_opt_down. Do not read those four fields (same
+        # class of bug fixed in button_standalone_cta / text_base_type_guidance).
+        if val(ctx, "tagline"):
             it.append({"t": "logo", "align": "left"})
             it.append({"t": "p", "s": val(ctx, "tagline"), "muted": True})
         else:
-            # the divider only separates an opt-down ask from the compliance block;
-            # with no ask above it, it is an orphan rule floating at the card top
-            if ask:
-                it.append({"t": "rule"})
             it.append({"t": "logo", "align": "left"})
         it.append({"t": "meta", "s": "INSTAGRAM   ·   FACEBOOK   ·   YOUTUBE"})
         it.append({"t": "rule"})
