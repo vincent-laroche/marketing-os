@@ -1,6 +1,9 @@
 # Handoff — Journey Emails v3 Rebuild (Tasks 6–9)
 
-**Written:** 2026-08-11 · **Branch:** `journey-emails-v3-rebuild` · **HEAD at handoff:** `5b67dd1`
+**Written:** 2026-08-11 · **Branch:** `journey-emails-v3-rebuild`
+
+**Last functional commit:** `fix: zero gap between email modules per brand constraint`
+(everything after it is documentation only).
 
 Tasks 1–5 of `docs/superpowers/plans/2026-08-11-journey-emails-v3-rebuild.md` are **complete,
 reviewed and committed**. Tasks 6–9 remain. This document is the authority for resuming; it
@@ -14,7 +17,14 @@ Invoke `superpowers:subagent-driven-development` with the plan file
 `docs/superpowers/plans/2026-08-11-journey-emails-v3-rebuild.md`.
 
 **Skip the Setup and pre-flight phase entirely** — it is done, and its findings are below.
-Resume by dispatching **Task 6** with BASE = `5b67dd1`.
+Resume by dispatching **Task 6** with BASE = the branch tip. Get it with:
+
+```bash
+cd "/Users/vMac/04_marketing/Email Marketing" && git rev-parse --short HEAD
+```
+
+The tip is a docs commit; the working tree is clean and all 35 tests pass there, so it is a
+valid BASE. Do not use an older SHA — you would re-review work already reviewed.
 
 Ledger (richer, chronological, includes every adjudication):
 `.superpowers/sdd/2026-08-11-journey-emails-v3-rebuild/progress.md`
@@ -113,7 +123,7 @@ blanked.** Task 4 now does this. Any new branch in Tasks 6–9 must too.
 1. **`render_emails.py:11`** is `LIVE = "final-verify"`. Must become `/tmp/live`.
 2. **`render_emails.py:9`** is `from emails import EMAILS`. Must become `from compose_v3 import EMAILS`.
 3. ~~**`render_emails.py:51`** wrapped each block in `padding:0 0 12px` — a 12px gap between
-   modules.~~ **RESOLVED 2026-08-11 (commit `5b67dd1`).** Vincent confirmed: **zero gap.** The line
+   modules.~~ **RESOLVED 2026-08-11.** Vincent confirmed: **zero gap.** The line
    is now `padding:0;`. Verified that 86 of the 91 live modules carry their own `padding:32px`, so
    the module padding supplies the rhythm exactly as the Global Constraints describe. **Do not
    reintroduce an inter-module gap** — it is what makes adjacent sections read as separately tinted
