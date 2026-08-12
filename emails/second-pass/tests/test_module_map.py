@@ -257,14 +257,18 @@ def test_fields_for_every_key_is_real_across_all_28_emails():
     when the family maps to None). This is the exact class of bug this whole
     task was about: a field name that doesn't exist is silently ignored by
     ctx.update() downstream, and the module's fabricated demo default ships
-    instead. Reads schemas from /tmp/live, fetched per the task-4 environment
-    setup; skips (rather than fails) if that path isn't present so the suite
-    stays runnable on a machine that hasn't fetched the live tree."""
+    instead. Reads schemas from /tmp/live. That path is the live source of
+    truth (deliberately not vendored into the repo — a checked-in copy would
+    drift from the live account and this test would validate against fiction).
+    /tmp is ephemeral, so this MUST fail loudly, not skip, when the tree is
+    missing — a skip here would silently disable the single most valuable
+    guard in this suite and the run would still report green."""
     import json as _json
     live_dir = "/tmp/live"
-    if not os.path.isdir(live_dir):
-        import pytest
-        pytest.skip(f"{live_dir} not present in this environment")
+    assert os.path.isdir(live_dir), (
+        f"{live_dir} not found — fetch the live module tree first: "
+        f"hs cms fetch email_modules {live_dir} --account 50966981"
+    )
 
     from module_map import fields_for, resolve, PLACEHOLDER_HOST
 
