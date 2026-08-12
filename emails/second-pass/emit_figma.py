@@ -55,7 +55,7 @@ const hex = h => ({ r: parseInt(h.slice(1,3),16)/255,
                     g: parseInt(h.slice(3,5),16)/255,
                     b: parseInt(h.slice(5,7),16)/255 });
 const solid = h => [{ type: "SOLID", color: hex(h) }];
-const CORAL = ["#ED6F5C","#EA6452","#F08E7C"];
+const SRC_CORAL = "#FF5757";  // source wordmark's "co" suffix marker color
 
 function txt(s, font, size, color, lh, ls) {
   const t = figma.createText();
@@ -81,7 +81,7 @@ async function wordmark(parent, tone, tx, w) {
     if (!f || f.type !== "SOLID") continue;
     const h = "#" + [f.color.r,f.color.g,f.color.b]
       .map(v => ("0"+Math.round(v*255).toString(16)).slice(-2)).join("").toUpperCase();
-    if (CORAL.indexOf(h) === -1) n.fills = solid(tx);   // keep the coral "co"
+    n.fills = solid(h === SRC_CORAL ? "#ED6F5C" : tx);   // map source coral "co" to brand coral explicitly
   }
   const holder = figma.createAutoLayout("HORIZONTAL", { name: "Wordmark" });
   holder.fills = [];
