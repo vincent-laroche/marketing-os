@@ -142,7 +142,22 @@ def items_for(folder, ctx):
                    "link": True})
         return it
 
-    if folder in ("button_standalone_cta", "hero_text_led"):
+    if folder == "button_standalone_cta":
+        # fields.json has no heading_accent here (module_map.py's own comment
+        # on "Button - Primary CTA" documents this) — do not read it
+        if val(ctx, "eyebrow"):
+            it.append({"t": "eyebrow", "s": val(ctx, "eyebrow")})
+        if val(ctx, "heading"):
+            it.append({"t": "h", "s": val(ctx, "heading")})
+        bl = bold_runs(ctx.get("body_text"))
+        for i, p in enumerate(paras(ctx.get("body_text"))):
+            it.append({"t": "p", "s": p, "bold": bl[i] if i < len(bl) else None})
+        if ctx.get("show_button") == "yes" and val(ctx, "button_label"):
+            it.append({"t": "btn", "s": val(ctx, "button_label")})
+        return it
+
+    if folder == "hero_text_led":
+        # unlike button_standalone_cta, this module genuinely has heading_accent
         if val(ctx, "eyebrow"):
             it.append({"t": "eyebrow", "s": val(ctx, "eyebrow")})
         if val(ctx, "heading"):
