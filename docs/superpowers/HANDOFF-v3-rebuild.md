@@ -1,6 +1,6 @@
 # Handoff — Journey Emails v3 Rebuild (Tasks 6–9)
 
-**Written:** 2026-08-11 · **Branch:** `journey-emails-v3-rebuild` · **HEAD at handoff:** `0806814`
+**Written:** 2026-08-11 · **Branch:** `journey-emails-v3-rebuild` · **HEAD at handoff:** `5b67dd1`
 
 Tasks 1–5 of `docs/superpowers/plans/2026-08-11-journey-emails-v3-rebuild.md` are **complete,
 reviewed and committed**. Tasks 6–9 remain. This document is the authority for resuming; it
@@ -14,7 +14,7 @@ Invoke `superpowers:subagent-driven-development` with the plan file
 `docs/superpowers/plans/2026-08-11-journey-emails-v3-rebuild.md`.
 
 **Skip the Setup and pre-flight phase entirely** — it is done, and its findings are below.
-Resume by dispatching **Task 6** with BASE = `0806814`.
+Resume by dispatching **Task 6** with BASE = `5b67dd1`.
 
 Ledger (richer, chronological, includes every adjudication):
 `.superpowers/sdd/2026-08-11-journey-emails-v3-rebuild/progress.md`
@@ -73,6 +73,8 @@ One test **hard-fails** (deliberately, not skips) if `/tmp/live` is missing:
    Reason: the live module hardcodes `★★★★★` as literal text (`rating` only fills the "N/5"
    caption), so it always shows five filled stars; the Proof Bank is empty. Shipping it would
    have fabricated a rating in 5 emails.
+4. **Zero gap between modules.** Confirmed explicitly. `render_emails.py:51` is `padding:0;`.
+   Each module's own 32px padding sets the rhythm. See §6 landmine 3.
 
 ---
 
@@ -110,11 +112,12 @@ blanked.** Task 4 now does this. Any new branch in Tasks 6–9 must too.
 
 1. **`render_emails.py:11`** is `LIVE = "final-verify"`. Must become `/tmp/live`.
 2. **`render_emails.py:9`** is `from emails import EMAILS`. Must become `from compose_v3 import EMAILS`.
-3. **`render_emails.py:51`** wraps each block in `padding:0 0 12px` — a **12px gap between
-   modules**. The Global Constraints say *"The wrapper uses zero gap between modules; each
-   module's own 32px padding sets the rhythm."* **These contradict.** The 12px gap is what makes
-   sections read as separately tinted cards — the exact effect that was rejected on sight.
-   Recommend setting it to `padding:0`. Confirm with Vincent, or at minimum render both and compare.
+3. ~~**`render_emails.py:51`** wrapped each block in `padding:0 0 12px` — a 12px gap between
+   modules.~~ **RESOLVED 2026-08-11 (commit `5b67dd1`).** Vincent confirmed: **zero gap.** The line
+   is now `padding:0;`. Verified that 86 of the 91 live modules carry their own `padding:32px`, so
+   the module padding supplies the rhythm exactly as the Global Constraints describe. **Do not
+   reintroduce an inter-module gap** — it is what makes adjacent sections read as separately tinted
+   cards, the effect that was rejected on sight.
 4. `_compose` in the plan swaps to `PLACEHOLDER_HOST` only when `resolve(fam) is None`. That is
    now correct because `Review stars` is `None`. Do not "fix" it to also swap for Testimonial —
    Testimonial has a real `quote_text` and its branch is correct.

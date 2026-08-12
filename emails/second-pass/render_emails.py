@@ -48,7 +48,7 @@ def block_html(folder, surface, values):
 def email_html(e):
     parts = []
     for folder, surface, values in e["blocks"]:
-        parts.append(f"<tr><td style='padding:0 0 12px;'>{block_html(folder, surface, values)}</td></tr>")
+        parts.append(f"<tr><td style='padding:0;'>{block_html(folder, surface, values)}</td></tr>")
     return ("<table role='presentation' width='100%' cellpadding='0' cellspacing='0' border='0' "
             f"style='width:100%;background:{BODY_BG};'><tr><td align='center' style='padding:28px 12px;'>"
             "<table role='presentation' width='600' cellpadding='0' cellspacing='0' border='0' "
