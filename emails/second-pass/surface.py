@@ -42,6 +42,12 @@ SURFACES = {
                        iv="#15140F", it="#F7F1DE", lg=LOGO_DARK),
 }
 
+# Supporting colours: may appear as dividers, inset fills (`sc`) and text-on-dark
+# (`it`), but must NEVER be a section (.final-card) background. Bone, Paper Dark
+# and Ink Soft are the three "one step off" surfaces — they're deliberately kept
+# out of SURFACES-as-section-bg territory by the audit, not by this set alone.
+SUPPORTING = {"#F7F1DE", "#DDD2B6", "#2A2620"}
+
 KEYS = ["bg", "tx", "mu", "dv", "sc", "bb", "bt", "ac", "iv", "it", "lg"]
 
 ORDER = ["bone", "paper", "paper_dark", "ink", "ink_soft", "coral"]
