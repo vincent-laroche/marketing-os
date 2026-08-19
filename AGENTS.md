@@ -46,11 +46,19 @@ Contents:
 Email families: `W-` welcome, `PP-` post-purchase, `CR-` cart recovery, `WB-` win-back,
 `RO-` reorder, `C-` consultation, `BR-` browse, `NL-01…20` newsletter.
 
-## 2. Nothing here sends
+## 2. No marketing send path
 
-No script in this repo sends or schedules email. Campaigns are created and configured as
-**drafts** only. Sending and scheduling are manual, deliberate, out-of-band acts by Vincent.
-This is a standing safety rule, not a current limitation — do not add a send path.
+No script in this repo sends or schedules **marketing** email. Campaigns are created and
+configured as **drafts** only. Sending and scheduling marketing are manual, deliberate,
+out-of-band acts by Vincent. This is a standing safety rule, not a current limitation — do
+not add a marketing send path.
+
+**Narrow, deliberate exception — transactional only.** `mailersend/send_service_email.py`
+does send, because order confirmations and shipping notices are service mail a customer is
+waiting on, not campaigns. It is bounded by `ALLOWED_RECIPIENTS`, a module constant checked
+immediately before the request is issued; no flag, environment variable or payload field can
+extend it, and any other address aborts before a socket opens. Widening that allowlist is a
+deliberate decision, never a side effect. Everything else in this repo remains send-free.
 
 Related standing hazard: MailerLite treats a campaign with **no group/segment** as "all
 active subscribers", not "no recipients". Every parked draft must be assigned to the
@@ -66,9 +74,24 @@ configure drafts. `BUILD-LEDGER.md` records what has actually been built and pus
 `API-SURFACE.md` records API behaviours that cost real time to discover — read both before
 touching the account.
 
-**Resend — transactional only.** Lives at `~/02_dev/mkt-resend` (its own git repo, own
-GitHub remote). Moved out of this project 2026-08-18. `mailerlite/import_prospects.py`
-still reads its prospect CSV; override the location with `PROSPECT_IMPORT_DIR`.
+**MailerSend — transactional only.** Replaced Resend 2026-08-19 (Vincent), consolidating
+onto MailerLite's sibling platform. Lives in `mailersend/`: `send_service_email.py` plus the
+order-confirmation and shipping-confirmation templates. Uses `MAILERSEND_API_TOKEN`. Every
+accepted send is recorded in `.send-ledger.json` keyed by (type, order number, recipient,
+content fingerprint), so re-running is a no-op unless `--force`.
+
+**Resend — decommissioned 2026-08-19.** Superseded by MailerSend. `~/02_dev/mkt-resend`
+(its own git repo and remote) **stays on disk regardless**: `mailerlite/import_prospects.py`
+reads its prospect CSV. Override that location with `PROSPECT_IMPORT_DIR`. Do not delete
+that repo without first rehoming the CSV.
+
+**Shopify — catalog only, never contacts.** Set 2026-08-19 by Vincent after the integration
+synced 631 subscribers into the *marketing* group while ignoring Shopify's own consent
+state (95 had none). **Contacts never come from Shopify.** The audience is built from the
+HubSpot export by `select_audience.py`. The shop connection is retained only so product data
+can populate e-commerce blocks; its subscriber sync is pointed at
+`⛔ Shopify sync — quarantine` (id `196200001017218918`) with resubscribe and popups off, so
+anything it imports lands somewhere inert. Never point it at a sending group.
 
 **HubSpot — historical.** Account 50966981. **Access was lost in 2026-08** — the OAuth
 connector token is expired and only `HUBSPOT_SERVICE_KEY` works, which is what

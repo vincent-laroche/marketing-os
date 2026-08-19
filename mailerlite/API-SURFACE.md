@@ -195,3 +195,22 @@ Consequences:
   automation trigger keyed on that group.
 - Counting `source=ecommerce` therefore **overstates** Shopify's contribution.
   Cross-check against the upload list before concluding the integration re-ran.
+
+### 8. `name` is required on **every** PUT, not just campaigns
+
+The §6 campaign quirk generalises. `PUT /api/automations/{id}` with only a `triggers` body
+returns 422 *"The name field is required."* Resend the object's existing `name` on every PUT
+or the write is rejected outright.
+
+### 9. `PUT /api/ecommerce/shops/{id}` — the sync group cannot be cleared, only repointed
+
+- `{"group_id": null}` → 422 *"The group id field must be an integer."*
+- `{"group_id": ""}`   → 422, same message.
+- `{"group": null}`    → **200 and silently does nothing** — another of this API's no-op
+  writes. Reading back is mandatory.
+
+There is therefore no API way to disconnect the Shopify subscriber sync from a group while
+keeping the shop connected for catalog data. The workaround is to repoint it at an inert
+quarantine group. `enable_resubscribe` and `enable_popups` *do* accept `false` and take
+effect — turn both off: `enable_resubscribe: true` lets the integration resurrect people who
+had unsubscribed.
