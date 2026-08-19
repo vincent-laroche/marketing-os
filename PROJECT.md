@@ -3,13 +3,15 @@
 > Living status log. Full context/rules live in `AGENTS.md` (the project bible) — don't duplicate them
 > here. Update this file at the end of every session: what changed, what's next, who touched it.
 
-**Last updated:** 2026-08-19 by Claude (audience rebuilt from HubSpot; Shopify contacts purged)
+**Last updated:** 2026-08-19 by Claude (close-out of the audience-rebuild session: rules, MailerSend,
+DNS removal and modules-pilot snapshot committed after the session hit a usage limit)
 **Status:** HubSpot access lost → MailerLite is the sending platform. **Audience is now built from the
 HubSpot export only — never from Shopify** (Vincent, 2026-08-19). The Shopify shop `97521` is connected
 and `enabled: true`, but its subscriber sync imported 631 contacts into the *marketing* group without
-respecting Shopify's own consent state (95 had none), so all 631 were deleted and the sync must be
-switched off. Account now holds **2,212 / 2,500** subscribers across six tier groups plus a hair-professional
-segment. 23 campaigns, all draft, all parked. 2 automations, both disabled. Nothing sent or scheduled.
+respecting Shopify's own consent state (95 had none), so all 631 were deleted; the sync is now
+repointed to `⛔ Shopify sync — quarantine` (resubscribe/popups off) until Vincent switches it off in
+the dashboard. Account now holds **2,212 / 2,500** subscribers across six tier groups plus a hair-professional
+segment. 23 campaigns, all draft, all parked. 2 automations, both disabled. No marketing sent or scheduled.
 Blockers: Shopify **product** sync still returns 0 (so e-commerce blocks stay empty), domain DKIM/SPF
 records, 3 photos, care-products catalog gap, empty testimonial Proof Bank, and `profile_hair_*` being
 unpopulated in the CRM (1 of 3,967).
@@ -37,8 +39,10 @@ working tree**. It stays recoverable from git history at `e892e64` and earlier.
 
 **Vincent only (dashboard / assets):**
 
-1. **Switch off the Shopify subscriber sync** — shop `97521`, group → News & Offers,
-   `enable_resubscribe: true`. Until this is off it will re-import contacts and undo the purge.
+1. **Switch off the Shopify subscriber sync** (dashboard act — no API path; API-SURFACE §9). Already
+   neutralised at the API on 2026-08-19: sync group repointed to `⛔ Shopify sync — quarantine`
+   (id `196200001017218918`), `enable_resubscribe`/`enable_popups` off, so re-imports land inert.
+   Switching the sync itself off remains the clean end state; keep the shop connected for catalog.
 2. Get the Shopify **product** sync working — products/orders are `0`, so every e-commerce block has
    no catalog to render. Separate toggle from subscriber sync; keep the shop connected for catalog.
 3. Verify domain DKIM/SPF in MailerLite (Cloudflare zone ready).
@@ -49,17 +53,44 @@ working tree**. It stays recoverable from git history at `e892e64` and earlier.
 
 **Open engineering work:**
 
-7. Resolve the News & Offers / `W · Lead Nurture` interaction: that group (1,178) is the automation's
-   trigger and now contains 306 actual customers plus 186 restored records. Enabling the automation
-   as-is sends the prospect welcome sequence to customers.
+7. News & Offers / `W · Lead Nurture`: largely defused 2026-08-19. The trigger is
+   `subscriber_joins_group`, an **event** — existing members do not enter on enable, only future joins.
+   `HS · C · Customers` is now excluded from the trigger, so customers are doubly protected. Automation
+   remains disabled. Still open: whether News & Offers (a 1,178-strong mixed group, 306 customers +
+   186 restored records) is the right long-term trigger audience at all.
 8. Retokenise `ml_components.py` to the module palette (see AGENTS.md §1) — the 27 built emails use a
    different palette from the reference-file modules.
 9. Migrate the 23 parked campaigns into automations; J3's shell exists (`196158522200688485`) but is
    incomplete (`segment_id: ""`, 0 steps). J3's segment `196158509152207934` still has **no filter** and
    matches everyone — do not wire it live.
-10. Decide `mailersend/`'s fate: it is an uncommitted transactional send path inside a repo whose
-    AGENTS.md §2 forbids send paths and §3 names Resend. Vincent chose MailerSend-replaces-Resend;
-    the AGENTS.md amendment was not made before priorities moved.
+10. ~~Decide `mailersend/`'s fate~~ — **resolved 2026-08-19**: AGENTS.md §2 now carries the narrow
+    transactional exception (`ALLOWED_RECIPIENTS`-bounded) and §3 names MailerSend with Resend
+    decommissioned; `mailersend/` is committed. Shopify is declared catalog-only in §3.
+- **2026-08-19 (Claude — close-out: Shopify quarantine, W trigger defused, HubSpot DNS removal, MailerSend committed):**
+  Tail of the audience-rebuild session, which hit a usage limit at ~00:43 with these changes on disk
+  uncommitted; verified and committed as-written by the following session.
+  - Shopify subscriber sync repointed from News & Offers to `⛔ Shopify sync — quarantine`
+    (id `196200001017218918`); `enable_resubscribe`/`enable_popups` off. API-SURFACE §9: the sync group
+    cannot be cleared via API, only repointed — `{"group": null}` is a 200 no-op, so read back every write.
+  - `W · Lead Nurture` trigger confirmed as a `subscriber_joins_group` **event** — enabling does not
+    sweep in existing members. `HS · C · Customers` excluded from the trigger; automation still disabled.
+    API-SURFACE §8: `name` is required on every PUT, not just campaigns.
+  - HubSpot removed from the hairsolutions.co zone (9 changes: SPF include dropped, 4 dead CNAMEs and
+    4 DKIM records removed; `customerportal` kept — it serves a live login page). Full record and
+    pre-change backup in `mailerlite/dns/HUBSPOT-DNS-REMOVAL.md`; MailerLite/MailerSend verified intact
+    after, including an end-to-end MailerSend test send (HTTP 202).
+  - `mailersend/` added: transactional sender (`send_service_email.py`, bounded by `ALLOWED_RECIPIENTS`),
+    PP-1 order-confirmation and PP-4 shipped-tracking templates, synthetic fixture. Two test sends to
+    Vincent recorded in `.send-ledger.json` (order `#HS-10428`).
+  - AGENTS.md §2/§3 amended: marketing send path still forbidden; narrow MailerSend transactional
+    exception; Resend decommissioned (repo kept on disk for the prospect CSV); Shopify declared
+    catalog-only, never contacts.
+  - `mailerlite/modules-pilot/` committed as a WIP snapshot of the parallel preview session: white
+    `#FFFFFF` canvas landed; the "thick header" is the logo PNG's ~42% baked-in transparent margin
+    (1860×822 file, 1580×473 ink); header-trim and section-padding fixes were in flight.
+  - `.playwright-mcp/` gitignored (browser automation state, may hold session cookies).
+
+
 11. `~/02_dev/mkt-resend` has 3 uncommitted changes. Its remote is **not** behind — local and
     `origin/main` are both at `2196502` (an earlier note here claiming `55e98fa` was wrong).
 12. `profile_hair_*` is empty in the CRM — either populate it or drop those merge fields from modules.
