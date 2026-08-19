@@ -1,0 +1,63 @@
+{
+  "_comment": "Synthetic fixture. Invented data only — no real customer record was read or copied (AGENTS.md #5). Recipient is the sole allowlisted test address.",
+
+  "order_number": "#HS-10428",
+  "customer": {
+    "name": "Vincent",
+    "email": "vincent@hairsolutions.co"
+  },
+
+  "order_status_url": "https://hairsolutions.co/account/orders/HS-10428",
+  "estimated_ship_date": "Wednesday 26 August",
+  "estimated_delivery_date": "Thursday 3 September",
+
+  "items": [
+    {
+      "name": "Lace Edge 180",
+      "spec": "Swiss lace · 1B off-black · 6\" wavy · 8×10 · 130% density",
+      "qty": 1,
+      "price": "$289.00"
+    },
+    {
+      "name": "Mono Edge LF",
+      "spec": "Mono top, lace front · 1B20 · 5\" straight · 8×10 · 120% density",
+      "qty": 1,
+      "price": "$279.00"
+    },
+    {
+      "name": "Thin Skin LF",
+      "spec": "0.06mm skin, lace front · 2 dark brown · 6\" wavy · 8×10",
+      "qty": 2,
+      "price": "$558.00"
+    },
+    {
+      "name": "Ghost Bond XL adhesive — 1.3oz",
+      "spec": "",
+      "qty": 3,
+      "price": "$74.85"
+    },
+    {
+      "name": "Walker Tape Ultra Hold roll — 3/4\" × 12yd",
+      "spec": "",
+      "qty": 1,
+      "price": "$21.95"
+    }
+  ],
+
+  "totals": {
+    "rows": [
+      { "label": "Subtotal", "value": "$1,222.80" },
+      { "label": "Returning-customer discount", "value": "-$122.28" },
+      { "label": "Shipping (DHL Express, tracked)", "value": "$0.00" },
+      { "label": "Tax", "value": "$0.00" }
+    ],
+    "total_label": "Total paid",
+    "total": "$1,100.52"
+  },
+
+  "shipping": {
+    "carrier": "DHL Express",
+    "tracking_number": "JD014600008812345678",
+    "tracking_url": "https://www.dhl.com/en/express/tracking.html?AWB=JD014600008812345678"
+  }
+}

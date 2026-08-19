@@ -1,0 +1,16 @@
+{
+  "8915704a4b4bf1a80371816605ae2dff": {
+    "message_id": "6a851c1c77ae976484a53a4b",
+    "order_number": "#HS-10428",
+    "sent_at": "2026-08-19T02:59:40+00:00",
+    "to": "vincent@hairsolutions.co",
+    "type": "order-confirmation"
+  },
+  "f52c24b8dab4c88a885b7d5dfb964063": {
+    "message_id": "6a851ae960b7e2c600316362",
+    "order_number": "#HS-10428",
+    "sent_at": "2026-08-19T02:54:33+00:00",
+    "to": "vincent@hairsolutions.co",
+    "type": "shipping-confirmation"
+  }
+}
