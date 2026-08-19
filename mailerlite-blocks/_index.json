@@ -1,0 +1,512 @@
+[
+ {
+  "module": "core--commerce_billing_details_dark",
+  "bytes": 4342,
+  "forbidden": []
+ },
+ {
+  "module": "core--commerce_billing_details_light",
+  "bytes": 4342,
+  "forbidden": []
+ },
+ {
+  "module": "core--commerce_cart_line_items_dark",
+  "bytes": 4401,
+  "forbidden": []
+ },
+ {
+  "module": "core--commerce_cart_line_items_light",
+  "bytes": 4401,
+  "forbidden": []
+ },
+ {
+  "module": "core--commerce_checkout_summary_dark",
+  "bytes": 3939,
+  "forbidden": []
+ },
+ {
+  "module": "core--commerce_checkout_summary_light",
+  "bytes": 3939,
+  "forbidden": []
+ },
+ {
+  "module": "core--commerce_order_summary_dark",
+  "bytes": 4357,
+  "forbidden": []
+ },
+ {
+  "module": "core--commerce_order_summary_light",
+  "bytes": 4357,
+  "forbidden": []
+ },
+ {
+  "module": "core--commerce_quote_spec_table_dark",
+  "bytes": 4752,
+  "forbidden": []
+ },
+ {
+  "module": "core--commerce_quote_spec_table_light",
+  "bytes": 4752,
+  "forbidden": []
+ },
+ {
+  "module": "core--commerce_shipping_tracking_dark",
+  "bytes": 3943,
+  "forbidden": []
+ },
+ {
+  "module": "core--commerce_shipping_tracking_light",
+  "bytes": 3943,
+  "forbidden": []
+ },
+ {
+  "module": "core--commerce_viewed_product_dark",
+  "bytes": 2945,
+  "forbidden": []
+ },
+ {
+  "module": "core--commerce_viewed_product_light",
+  "bytes": 2945,
+  "forbidden": []
+ },
+ {
+  "module": "core--comparison_dark",
+  "bytes": 3930,
+  "forbidden": []
+ },
+ {
+  "module": "core--comparison_light",
+  "bytes": 3930,
+  "forbidden": []
+ },
+ {
+  "module": "core--faq_dark",
+  "bytes": 3674,
+  "forbidden": []
+ },
+ {
+  "module": "core--faq_light",
+  "bytes": 3674,
+  "forbidden": []
+ },
+ {
+  "module": "core--footer_preference_centre_dark",
+  "bytes": 2576,
+  "forbidden": []
+ },
+ {
+  "module": "core--footer_preference_centre_light",
+  "bytes": 2576,
+  "forbidden": []
+ },
+ {
+  "module": "core--footer_standard_dark",
+  "bytes": 1936,
+  "forbidden": []
+ },
+ {
+  "module": "core--footer_standard_light",
+  "bytes": 1936,
+  "forbidden": []
+ },
+ {
+  "module": "core--header_centered_logo_dark",
+  "bytes": 1596,
+  "forbidden": []
+ },
+ {
+  "module": "core--header_centered_logo_light",
+  "bytes": 1629,
+  "forbidden": []
+ },
+ {
+  "module": "core--hero_text_led_dark",
+  "bytes": 2952,
+  "forbidden": []
+ },
+ {
+  "module": "core--hero_text_led_light",
+  "bytes": 2952,
+  "forbidden": []
+ },
+ {
+  "module": "core--layout_founder_wrapper_dark",
+  "bytes": 2181,
+  "forbidden": []
+ },
+ {
+  "module": "core--layout_founder_wrapper_light",
+  "bytes": 2181,
+  "forbidden": []
+ },
+ {
+  "module": "core--list_support_strip_dark",
+  "bytes": 3026,
+  "forbidden": []
+ },
+ {
+  "module": "core--list_support_strip_light",
+  "bytes": 3026,
+  "forbidden": []
+ },
+ {
+  "module": "core--product_dynamic_recommendations_dark",
+  "bytes": 3889,
+  "forbidden": []
+ },
+ {
+  "module": "core--product_dynamic_recommendations_light",
+  "bytes": 3889,
+  "forbidden": []
+ },
+ {
+  "module": "core--product_goal_based_recommendation_dark",
+  "bytes": 2484,
+  "forbidden": []
+ },
+ {
+  "module": "core--product_goal_based_recommendation_light",
+  "bytes": 2484,
+  "forbidden": []
+ },
+ {
+  "module": "core--proof_dark",
+  "bytes": 3882,
+  "forbidden": []
+ },
+ {
+  "module": "core--proof_light",
+  "bytes": 3882,
+  "forbidden": []
+ },
+ {
+  "module": "core--quote_accent_bar_dark",
+  "bytes": 2185,
+  "forbidden": []
+ },
+ {
+  "module": "core--quote_accent_bar_light",
+  "bytes": 2185,
+  "forbidden": []
+ },
+ {
+  "module": "core--signal_offer_deadline_dark",
+  "bytes": 2021,
+  "forbidden": []
+ },
+ {
+  "module": "core--signal_offer_deadline_light",
+  "bytes": 2021,
+  "forbidden": []
+ },
+ {
+  "module": "core--signal_promo_code_dark",
+  "bytes": 2197,
+  "forbidden": []
+ },
+ {
+  "module": "core--signal_promo_code_light",
+  "bytes": 2197,
+  "forbidden": []
+ },
+ {
+  "module": "core--signal_review_stars_dark",
+  "bytes": 2176,
+  "forbidden": []
+ },
+ {
+  "module": "core--signal_review_stars_light",
+  "bytes": 2176,
+  "forbidden": []
+ },
+ {
+  "module": "core--stat_bars_dark",
+  "bytes": 4307,
+  "forbidden": []
+ },
+ {
+  "module": "core--stat_bars_light",
+  "bytes": 4307,
+  "forbidden": []
+ },
+ {
+  "module": "core--text_base_type_guidance_dark",
+  "bytes": 1613,
+  "forbidden": []
+ },
+ {
+  "module": "core--text_base_type_guidance_light",
+  "bytes": 1613,
+  "forbidden": []
+ },
+ {
+  "module": "core--text_customer_snapshot_dark",
+  "bytes": 3807,
+  "forbidden": []
+ },
+ {
+  "module": "core--text_customer_snapshot_light",
+  "bytes": 3807,
+  "forbidden": []
+ },
+ {
+  "module": "core--text_next_step_dark",
+  "bytes": 3293,
+  "forbidden": []
+ },
+ {
+  "module": "core--text_next_step_light",
+  "bytes": 3293,
+  "forbidden": []
+ },
+ {
+  "module": "core--text_reassurance_dark",
+  "bytes": 3136,
+  "forbidden": []
+ },
+ {
+  "module": "core--text_reassurance_light",
+  "bytes": 3136,
+  "forbidden": []
+ },
+ {
+  "module": "core--timeline_dark",
+  "bytes": 4326,
+  "forbidden": []
+ },
+ {
+  "module": "core--timeline_light",
+  "bytes": 4326,
+  "forbidden": []
+ },
+ {
+  "module": "launch--button_final_cta_dark",
+  "bytes": 2404,
+  "forbidden": []
+ },
+ {
+  "module": "launch--button_final_cta_light",
+  "bytes": 2404,
+  "forbidden": []
+ },
+ {
+  "module": "launch--footer_wide_dark",
+  "bytes": 1636,
+  "forbidden": []
+ },
+ {
+  "module": "launch--footer_wide_light",
+  "bytes": 1636,
+  "forbidden": []
+ },
+ {
+  "module": "launch--grid_collections_4_dark",
+  "bytes": 8486,
+  "forbidden": []
+ },
+ {
+  "module": "launch--grid_collections_4_light",
+  "bytes": 8486,
+  "forbidden": []
+ },
+ {
+  "module": "launch--grid_collections_6_dark",
+  "bytes": 9492,
+  "forbidden": []
+ },
+ {
+  "module": "launch--grid_collections_6_light",
+  "bytes": 9492,
+  "forbidden": []
+ },
+ {
+  "module": "launch--hero_photo_led_dark",
+  "bytes": 2840,
+  "forbidden": []
+ },
+ {
+  "module": "launch--hero_photo_led_light",
+  "bytes": 2840,
+  "forbidden": []
+ },
+ {
+  "module": "launch--list_belief_dark",
+  "bytes": 2862,
+  "forbidden": []
+ },
+ {
+  "module": "launch--list_belief_light",
+  "bytes": 2862,
+  "forbidden": []
+ },
+ {
+  "module": "launch--list_questions_dark",
+  "bytes": 3263,
+  "forbidden": []
+ },
+ {
+  "module": "launch--list_questions_light",
+  "bytes": 3263,
+  "forbidden": []
+ },
+ {
+  "module": "launch--list_trust_strip_dark",
+  "bytes": 3767,
+  "forbidden": []
+ },
+ {
+  "module": "launch--list_trust_strip_light",
+  "bytes": 3767,
+  "forbidden": []
+ },
+ {
+  "module": "launch--photo_founder_note_dark",
+  "bytes": 3256,
+  "forbidden": []
+ },
+ {
+  "module": "launch--photo_founder_note_light",
+  "bytes": 3256,
+  "forbidden": []
+ },
+ {
+  "module": "launch--photo_logo_system_dark",
+  "bytes": 2020,
+  "forbidden": []
+ },
+ {
+  "module": "launch--photo_logo_system_light",
+  "bytes": 2020,
+  "forbidden": []
+ },
+ {
+  "module": "launch--product_3up_grid_dark",
+  "bytes": 5163,
+  "forbidden": []
+ },
+ {
+  "module": "launch--product_3up_grid_light",
+  "bytes": 5163,
+  "forbidden": []
+ },
+ {
+  "module": "launch--testimonial_dark",
+  "bytes": 3708,
+  "forbidden": []
+ },
+ {
+  "module": "launch--testimonial_light",
+  "bytes": 3708,
+  "forbidden": []
+ },
+ {
+  "module": "launch--text_five_changes_dark",
+  "bytes": 5429,
+  "forbidden": []
+ },
+ {
+  "module": "launch--text_five_changes_light",
+  "bytes": 5429,
+  "forbidden": []
+ },
+ {
+  "module": "launch--text_founder_pillars_dark",
+  "bytes": 3388,
+  "forbidden": []
+ },
+ {
+  "module": "launch--text_founder_pillars_light",
+  "bytes": 3388,
+  "forbidden": []
+ },
+ {
+  "module": "launch--text_offer_discount_dark",
+  "bytes": 3411,
+  "forbidden": []
+ },
+ {
+  "module": "launch--text_offer_discount_light",
+  "bytes": 3411,
+  "forbidden": []
+ },
+ {
+  "module": "launch--text_opening_dark",
+  "bytes": 2183,
+  "forbidden": []
+ },
+ {
+  "module": "launch--text_opening_light",
+  "bytes": 2183,
+  "forbidden": []
+ },
+ {
+  "module": "launch--text_why_it_matters_dark",
+  "bytes": 3391,
+  "forbidden": []
+ },
+ {
+  "module": "launch--text_why_it_matters_light",
+  "bytes": 3391,
+  "forbidden": []
+ },
+ {
+  "module": "newsletter--button_primary_cta_dark",
+  "bytes": 2377,
+  "forbidden": []
+ },
+ {
+  "module": "newsletter--button_primary_cta_light",
+  "bytes": 2377,
+  "forbidden": []
+ },
+ {
+  "module": "newsletter--column_image_and_text_dark",
+  "bytes": 2955,
+  "forbidden": []
+ },
+ {
+  "module": "newsletter--column_image_and_text_light",
+  "bytes": 2955,
+  "forbidden": []
+ },
+ {
+  "module": "newsletter--footer_social_dark",
+  "bytes": 1572,
+  "forbidden": []
+ },
+ {
+  "module": "newsletter--footer_social_light",
+  "bytes": 1294,
+  "forbidden": []
+ },
+ {
+  "module": "newsletter--photo_feature_story_dark",
+  "bytes": 2587,
+  "forbidden": []
+ },
+ {
+  "module": "newsletter--photo_feature_story_light",
+  "bytes": 2587,
+  "forbidden": []
+ },
+ {
+  "module": "newsletter--quote_centered_dark",
+  "bytes": 1670,
+  "forbidden": []
+ },
+ {
+  "module": "newsletter--quote_centered_light",
+  "bytes": 1670,
+  "forbidden": []
+ },
+ {
+  "module": "newsletter--text_masthead_dark",
+  "bytes": 1635,
+  "forbidden": []
+ },
+ {
+  "module": "newsletter--text_masthead_light",
+  "bytes": 1635,
+  "forbidden": []
+ }
+]
