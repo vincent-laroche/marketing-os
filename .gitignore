@@ -4,3 +4,9 @@ __pycache__/
 .ruff_cache/
 .pytest_cache/
 .superpowers/
+
+# HubSpot exports — PII-bearing, never commit
+exports/
+
+# Claude Code: keep project settings, ignore local worktree copies
+.claude/worktrees/
