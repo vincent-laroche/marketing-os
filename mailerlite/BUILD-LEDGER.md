@@ -63,7 +63,7 @@ no trial. All objects below were rebuilt here from scratch; nothing carried over
 ## Global blockers / decisions
 
 1. **Domain authentication (blocking all sends):** Domains tab in MailerLite UI → mail.hairsolutions.co → copy DKIM (CNAME) + SPF (TXT) records → add to Cloudflare zone `44c9e2d6eb71ce0de6bb40e563bbf351` (hairsolutions.co, active). Records are not exposed via the API.
-2. **Account postal address** in MailerLite is the Tallinn default — update to Forest Hills, New York 11209 (account settings) to match the email footers.
+2. ~~Account postal address should become Forest Hills, New York 11209.~~ **RETRACTED 2026-08-19 — this was wrong.** The registered address is `Ehitajate tee 110, Tallinn, EE`. It matches across the MailerLite account, `core--footer_standard`, and all 27 built emails. "Forest Hills, New York 11209" appeared nowhere in this repo except this ledger — it was never in any footer. No change needed.
 3. **Care products missing from Shopify** (44 products, all hair systems) — PP-5/PP-6/RO-2 grids are placeholders until catalog exists.
 4. **Field sync script (Shopify → MailerLite)** needed for the 18 custom fields; without it, tokens render empty. Masters' rule: never send with unresolved tokens.
 5. **Review stars omitted everywhere** (source module broken, hardcoded 5 stars, empty Proof Bank). Testimonials omitted (Proof Bank empty).
@@ -96,7 +96,8 @@ enquiries, not new opt-ins. Vincent chose to build as written, no rewrite (2026-
    W-1 / W-2 / W-3 / W-5.
 4. The 1,000 contacts are not yet imported into this MailerLite account (0 subscribers).
 5. MailerLite account address is still the Tallinn default; the email footers say
-   Forest Hills, New York 11209. Mismatched footers can trigger MailerLite's own footer append.
+   Tallinn, EE — which is correct and matches the account. (An earlier claim of a
+   Forest Hills, New York address was wrong; see the retraction above.)
 
 ## Automations built (2026-08-18)
 
@@ -127,7 +128,7 @@ Signup +18d rather than being pulled forward to day 12. Re-add W-4 at day 12 (sp
 
 Open items before activating: **W-3 still needs its style photo** (visible placeholder block);
 W-2's subject flagged as possibly too long; MailerLite account address is still the Tallinn
-default while the footers say Forest Hills, New York 11209.
+address, which is correct — Ehitajate tee 110, Tallinn, EE — and matches the footers.
 
 ### J1 / J2 / J4 — NOT BUILT, structurally blocked
 
@@ -214,3 +215,118 @@ W-1..W-5 as automation email steps triggered by joining News & Offers. W-1/2/3/5
 exist as broadcast campaigns pointed at that same group. If both paths ever go live,
 those subscribers receive each W email twice. Pick one delivery path before activating
 either. Flagged, not resolved — the automation side is out of this pass's scope.
+
+## Safety pass — all 27 drafts parked (2026-08-19)
+
+Every one of the 27 drafts had **no audience**, so each fell back to
+`all_active_subscribers` and read as ~1,000 recipients. A single mis-click on *Send*
+would have mailed e.g. `PP-1-order-confirmation` to 999 never-purchased prospects with
+every merge token blank.
+
+The ledger's earlier claim that W-1/2/3/5 were assigned to *News & Offers* did **not**
+hold — live state showed no audience on all 27, W-series included.
+
+Fixed with `park_drafts.py` (idempotent, `--dry-run`, stdlib-only): all 27 assigned to
+`⛔ DO NOT SEND — Lifecycle Drafts (parked)` (196158361233786451), per AGENTS.md #2.
+
+Verified: 27/27 carry the safeguard filter, `recipients_count: 0` on detail GET,
+0 non-draft, none scheduled or queued. Re-runs report `already=27`.
+
+Signup forms created the same pass (the account previously had **zero** forms):
+- Newsletter Popup — Site Wide · `196195799009330463` · popup · → News & Offers
+- Newsletter Signup — Embedded Footer · `196195802555614991` · embedded · → News & Offers
+
+Both are double-opt-in, created empty (`has_content: false`) — they still need their
+design + copy pass before deployment.
+
+## MailerSend service emails — first sends (2026-08-19)
+
+`mailersend/` created: `send_service_email.py`, `emails/PP-1-order-confirmation.html`,
+`emails/PP-4-shipped-tracking.html`, `fixtures/sample-order.json`, `API-SURFACE.md`.
+
+Both emails converted MailerLite `{$token}` → MailerSend `{{ token }}`, and
+`{$product_summary}` (a flat string) upgraded to a **real itemised line-item loop**.
+Zero MailerLite tokens remain in the converted templates.
+
+**Two live test sends, both `delivered`**, to `vincent@hairsolutions.co` only:
+
+| Message id | Subject | Status |
+|---|---|---|
+| `6a851ae75eefa737b187afb1` | Your order is confirmed, Vincent | delivered |
+| `6a851ae960b7e2c600316362` | It's shipped — tracking inside | delivered |
+
+Safety, verified empirically rather than by code reading:
+- `ALLOWED_RECIPIENTS` is a module constant = `{vincent@hairsolutions.co}`.
+- A send to `stranger@example.com` **with `--force` and no `--dry-run`** was refused
+  (exit 2) before any socket opened. `--force` affects only the idempotency ledger.
+- Re-running an identical send is a no-op via a content-fingerprint ledger.
+
+Two bugs found and fixed in the agent-written script:
+1. The payload sent `spec["subject"]` (raw template) instead of the rendered
+   `subject`, so the order confirmation would have shipped with a literal
+   `{{ name }}` in the subject line. Now fixed and confirmed: the delivered
+   subject reads "Your order is confirmed, Vincent".
+2. Cloudflare 1010 UA ban — see `mailersend/API-SURFACE.md` §1.
+
+**Still open:** the Shopify webhook → Cloudflare Worker pipeline that would feed real
+order data in. Nothing is wired to Shopify yet; sends are manual, fixture-driven, and
+allowlisted to Vincent.
+
+## Audience rebuilt from HubSpot — Shopify contacts purged (2026-08-19)
+
+**Standing decision (Vincent):** contacts NEVER come from Shopify. The HubSpot
+export is the only audience source. `comm_marketing_status_manual` is worthless
+outside HubSpot and must never be read as a consent signal.
+
+### Why
+
+The Shopify integration synced 631 subscribers into **News & Offers** — the
+*marketing* group, not Shopify Customers — and did not filter on Shopify's own
+marketing-consent state. Cross-referencing the Shopify Admin API found **95 of
+the 631 had no affirmative consent** (93 `unsubscribed`, 2 `not_subscribed`).
+MailerLite's own `accepts_marketing` flag showed only 47 of these, because it
+covers just the 246 order-bearing customers; the other 48 hid in the 421
+non-customer records. Shopify holds 155 non-consenting contacts in total.
+
+### Done
+
+- `purge_shopify_subscribers.py` — deleted all 631 `source=ecommerce`
+  subscribers. Verified zero remaining. HubSpot imports and manual records
+  untouched.
+- `select_audience.py` — tiers the 3,967 HubSpot contacts. Suppression is
+  absolute (130): crisis/chargeback/angry/lost (38), hard bounce (38),
+  subscription opt-out (37), `hs_email_optout` (29), `suppress_never_market`
+  (23), internal/supplier (15), invalid email (2).
+  Held back: `hold_review` 1,237 (unvalidated — 1,270 `hs_marketable_status=false`,
+  1,176 no `verified_email`) and `keep_non_marketing` 397.
+- `upload_audience.py` — upserted 2,188 across six new groups. 8 suppressed
+  contacts that were already in the account were deleted. 5 addresses were
+  rejected by MailerLite itself ("cannot be imported" — dot-abuse gmail patterns).
+
+| Group | n |
+|---|---:|
+| HS · A · Promote now | 71 |
+| HS · B · Promote next cycle | 352 |
+| HS · C · Customers | 306 |
+| HS · D · Warm intent | 690 |
+| HS · E · Cold intent | 769 |
+| HS · Hair professionals | 89 |
+
+Account: **2,212 / 2,500**. Suppressed present: **0**. Campaigns: 23, all draft,
+all parked.
+
+### Open
+
+- **The Shopify subscriber sync is still enabled** (shop `97521`, group
+  News & Offers, `enable_resubscribe: true`). Until it is switched off in the
+  dashboard it will re-import contacts. Products/orders remain **0**, so the
+  e-commerce blocks still have no catalog — that is a separate toggle.
+- 186 upserted contacts read `source: ecommerce` because MailerLite's delete is
+  soft and the upsert resurrected them (see API-SURFACE §7). They also regained
+  News & Offers membership, which is the `W · Lead Nurture` automation trigger.
+- `exports/mailerlite-audience/pro-candidates-REVIEW.csv` — 20 self-identified
+  professionals awaiting Vincent's confirmation; ~4 look like consumers.
+- `profile_hair_*` is empty (1 of 3,967). Any module merging hair base size,
+  colour, curl pattern, density, length or origin renders blank.
+- 9 `oneheadhairmyshopifycom_*` custom fields created by the integration, now
+  empty. Left in place.

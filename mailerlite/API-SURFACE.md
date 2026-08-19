@@ -155,3 +155,43 @@ Hard-won details:
 - **999 of 1,000 subscriber cap used** by the prospect cohort → no headroom to sync the
   3,958 Shopify customers those journeys would target.
 - Template #7 "Advanced welcome" is plan-gated: "Cannot use this template on your current plan."
+
+### 6. `PUT /api/campaigns/{id}` — group assignment reads back on `filter`, not `groups`
+
+Two quirks, both cost real time (2026-08-19):
+
+1. **`name` is required on every PUT**, even when the only change is the audience.
+   Omitting it returns 422 *"The name field is required."*
+2. **The assignment does not read back on `groups`** — that field stays `null`
+   forever. It lands on `filter` as a rule:
+   `"filter": [[{"operator":"in_any","args":["groups",["<group_id>"]]}]]`
+
+   Verifying via `groups` therefore produces a **false negative** — the write looks
+   like a silent no-op when it actually succeeded. Verify via `filter`, plus
+   `recipients_count`.
+
+3. **`recipients_count` is `null` on the list endpoint** and only computed on
+   `GET /api/campaigns/{id}`. Do not assert `== 0` against list output.
+
+This is distinct from the genuine no-ops (`groups: []` to *clear*, and the
+`settings.use_google_analytics` UTM keys), which really are discarded.
+
+### 7. `DELETE /api/subscribers/{id}` is a SOFT delete — an upsert resurrects it
+
+Discovered 2026-08-19 while rebuilding the audience. After deleting all 631
+Shopify-sourced subscribers (verified: zero `source=ecommerce` remained), a
+later `POST api/subscribers` upsert of an overlapping email brought 186 of them
+**back with their original `id`, `created_at` and `source`** — plus their old
+group memberships. Only `updated_at`, `fields` and newly-assigned groups
+reflected the upsert.
+
+Consequences:
+
+- `source` is **not** provenance for the current record. A subscriber can read
+  `source: ecommerce` while having arrived via a HubSpot CSV upsert. Judge
+  provenance by a field you control (here: `migration_cohort`), never by `source`.
+- Deleting to "clean" an audience does not survive re-adding the same address.
+  Prior group membership returns with it — which can silently re-arm an
+  automation trigger keyed on that group.
+- Counting `source=ecommerce` therefore **overstates** Shopify's contribution.
+  Cross-check against the upload list before concluding the integration re-ran.

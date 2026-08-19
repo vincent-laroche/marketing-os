@@ -20,6 +20,19 @@ which modules appear in each email. It is a Notion export of the email system.
 - If it looks stale, ask Vincent to re-export from Notion — do not patch around it.
 - Anything anywhere else in this repo that disagrees with it is obsolete by definition.
 
+**Brand colours for email come from the modules in `Email Reference File/`, not from
+`brand-design-system/`.** Set 2026-08-19 by Vincent. The rendered module previews in
+`Atelier Zero — Resolved HTML Module Previews (102)/` ARE the correct brand colours:
+`#F6EFD9` page · `#EDE3CC` card · `#151411` ink · `#25221D` body · `#C7BFAC` rule ·
+`#EA6452` coral. Do **not** consult, cite, or reconcile against
+`brand-design-system/specs/ATELIER_ZERO_RULEBOOK_V1.md` or `specs/PLATFORM_EMAIL.md` —
+Vincent has explicitly ruled both out of scope. §4 below does not apply to email colour.
+
+Consequence, recorded so it is not rediscovered: `mailerlite/ml_components.py` renders a
+*different* palette (`#F7F1DE / #EFE7D2 / #ED6F5C / #15140F / #DDD2B6`), so the 27 emails
+built from it do not match the modules. Retokenising it to the module palette above is
+open work, not a decision to revisit.
+
 Contents:
 
 | Path | Contents |
