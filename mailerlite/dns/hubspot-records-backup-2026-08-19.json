@@ -1,0 +1,82 @@
+[
+  {
+    "type": "CNAME",
+    "name": "cloud.hairsolutions.co",
+    "content": "50966981.group31.sites.hubspot.net",
+    "ttl": 1,
+    "proxied": false,
+    "id": "f377e5bd5259f8bc9411d7c12bc73540"
+  },
+  {
+    "type": "CNAME",
+    "name": "customerportal.hairsolutions.co",
+    "content": "50966981.group31.sites.hubspot.net",
+    "ttl": 3600,
+    "proxied": false,
+    "id": "8aacc882a08d17f3f3f0f9f6b0d48c74"
+  },
+  {
+    "type": "CNAME",
+    "name": "helpcenter.hairsolutions.co",
+    "content": "50966981.group31.sites.hubspot.net",
+    "ttl": 3600,
+    "proxied": false,
+    "id": "93934e6b7e33eac3f07df75f578fc17e"
+  },
+  {
+    "type": "CNAME",
+    "name": "help.hairsolutions.co",
+    "content": "50966981.group31.sites.hubspot.net",
+    "ttl": 3600,
+    "proxied": false,
+    "id": "e6d29544c45c0ea39651eaef038ceef9"
+  },
+  {
+    "type": "CNAME",
+    "name": "hs1-50966981._domainkey.hairsolutions.co",
+    "content": "hairsolutions-co.hs15a.dkim.hubspotemail.net",
+    "ttl": 3600,
+    "proxied": false,
+    "id": "8e82d7b3b9e5ca628026d8111692bc5d"
+  },
+  {
+    "type": "CNAME",
+    "name": "hs1-50966981._domainkey.mail.hairsolutions.co",
+    "content": "mail-hairsolutions-co.hs15a.dkim.hubspotemail.net",
+    "ttl": 3600,
+    "proxied": false,
+    "id": "4cc06a83d0974b1f0659f9ecf1461d7e"
+  },
+  {
+    "type": "CNAME",
+    "name": "hs2-50966981._domainkey.hairsolutions.co",
+    "content": "hairsolutions-co.hs15b.dkim.hubspotemail.net",
+    "ttl": 3600,
+    "proxied": false,
+    "id": "a62d98171b496c315e7f104316d109bc"
+  },
+  {
+    "type": "CNAME",
+    "name": "hs2-50966981._domainkey.mail.hairsolutions.co",
+    "content": "mail-hairsolutions-co.hs15b.dkim.hubspotemail.net",
+    "ttl": 3600,
+    "proxied": false,
+    "id": "66af9680b2a6e3bcfe49bb1b6b5c32af"
+  },
+  {
+    "type": "CNAME",
+    "name": "mail.hairsolutions.co",
+    "content": "50966981.group31.sites.hubspot.net",
+    "ttl": 3600,
+    "proxied": false,
+    "id": "19b1c54948a80334e19349f1de760afd"
+  },
+  {
+    "type": "TXT",
+    "name": "hairsolutions.co",
+    "content": "\"v=spf1 include:_spf.google.com include:50966981.spf10.hubspotemail.net a mx include:_spf.mlsend.com include:_spf.mailersend.net ~all\"",
+    "ttl": 3600,
+    "proxied": false,
+    "id": "e8a31b9de5cd9caf2c6888ca2572348d"
+  }
+]

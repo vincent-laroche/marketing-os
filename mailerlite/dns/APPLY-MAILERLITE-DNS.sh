@@ -41,7 +41,9 @@ echo -n "  DKIM  : "; dig +short CNAME litesrv._domainkey.mail.hairsolutions.co 
 
 cat <<'ROLLBACK'
 
-== ROLLBACK ==
+== ROLLBACK — OBSOLETE as of 2026-08-19 ==
+  HubSpot is fully removed from this zone; do NOT restore its SPF include.
+  See HUBSPOT-DNS-REMOVAL.md.
   SPF restore:
     curl -X PATCH -H "Authorization: Bearer $CLOUDFLARE_API_KEY" -H "Content-Type: application/json" \
       "https://api.cloudflare.com/client/v4/zones/44c9e2d6eb71ce0de6bb40e563bbf351/dns_records/32a229a095d790ae3c7eeaaa0676c5f0" \
