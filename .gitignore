@@ -9,6 +9,7 @@ exports/
 
 # Playwright / browser automation state (large, machine-local, may hold session cookies)
 .browser-profile/
+.playwright-mcp/
 
 # Claude Code: keep project settings, ignore local worktree copies
 .claude/worktrees/
