@@ -1,8 +1,0 @@
-{
-  "global" : false,
-  "content_types" : [ "EMAIL" ],
-  "host_template_types" : [ "ANY" ],
-  "module_id" : 216334567333,
-  "label" : "Launch - Text - Five changes - Light",
-  "is_available_for_new_content" : true
-}

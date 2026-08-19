@@ -3,10 +3,12 @@ __pycache__/
 *.pyc
 .ruff_cache/
 .pytest_cache/
-.superpowers/
 
-# HubSpot exports — PII-bearing, never commit
+# HubSpot / CRM exports — PII-bearing, never commit
 exports/
+
+# Playwright / browser automation state (large, machine-local, may hold session cookies)
+.browser-profile/
 
 # Claude Code: keep project settings, ignore local worktree copies
 .claude/worktrees/

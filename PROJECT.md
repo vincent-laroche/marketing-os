@@ -3,39 +3,165 @@
 > Living status log. Full context/rules live in `AGENTS.md` (the project bible) — don't duplicate them
 > here. Update this file at the end of every session: what changed, what's next, who touched it.
 
-**Last updated:** 2026-08-09 by Codex
-**Status:** The recovered active Design Manager worktree now contains 60 Page 33 Paper/Ink modules
-(30 non-cart families, Light/Dark) under `email_modules/final/`; all 60 are published and read-back
-verified in HubSpot portal 50966981. No full marketing email was published or sent. The broader 104-email
-release remains blocked on real-token and inbox-client proof, consent/subscription verification,
-asset/testimonial provenance, and final owner review.
+**Last updated:** 2026-08-18 by Claude (repo cleanup against the new source of truth)
+**Status:** HubSpot access lost → migration to MailerLite (14-day Advanced trial) with Resend retained
+for transactional. MailerLite foundation is built and API-verified (5 groups, 42 custom fields, domain
+added-but-unverified). 22 journey emails (PP×8, CR×4, WB×4, RO×6) are generated as MailerLite-ready
+HTML in `mailerlite/emails/` from the `Email Reference File/` copy deck + Figma v3 tokens. Nothing imported,
+scheduled, or sent. **Correction to the prior note above:** the Shopify shop is *not* actually enabled —
+live API check on 2026-08-18 shows shop id `97521`, `enabled: false`, `group: null`, `created_at`
+15:40:22 — later than and inconsistent with the earlier "shop 97496 enabled" claim in this same log.
+Blockers: domain DKIM/SPF records (manual step, Cloudflare zone ready), Shopify shop reconnection
+(dashboard-only, see audit entry below), 3 photos, care-products catalog gap, testimonial Proof Bank
+empty (testimonials/stars omitted by design).
 
 ## Current status
 
-The approved source set remains ready and unchanged:
+**`Email Reference File/` is the source of truth** for campaigns, journeys, email structure and
+composition, copy, and module presence — declared by Vincent 2026-08-18. See `AGENTS.md` §1.
+The repo was cleaned to match on the same day (791 MB → 23 MB); see the session log below.
 
-- 104 approved/complete HTML emails in `emails/approved-html/`;
-- all 94 locally created modules in `modules/all/`;
-- 94 Atelier Zero module outputs in `modules/atelier-zero/`, all with complete local source trios;
-- 104 Atelier Zero email outputs in `emails/atelier-zero/`, with zero unresolved source-limited bodies;
-  the 37 historical source-repair flags remain only as conversion-history provenance;
-- current sending and lifecycle operations retained in `resend-takeover/`.
+Live working set:
+
+- `Email Reference File/` — 58 email copy decks, 102 complete HubSpot module trios (light + dark),
+  102 rendered module previews, and the emails/modules master CSVs;
+- `mailerlite/` — the active build + push pipeline for MailerLite account 2582639: 27 campaigns
+  pushed, all still `draft`, all parked in `⛔ DO NOT SEND — Lifecycle Drafts (parked)`;
+- `exports/hubspot-2026-08-18/` — CSV-only HubSpot CRM export (JSON duplicates removed), gitignored;
+- Resend (transactional) moved out to `~/02_dev/mkt-resend` — its own repo, own remote.
+
+The HubSpot-era build (`modules/`, `emails/approved-html/`, `emails/atelier-zero/`,
+`emails/second-pass/`, `legacy-csv-snapshots-2026-07-05/`, the v3 proofs) is **no longer in the
+working tree**. It stays recoverable from git history at `e892e64` and earlier.
 
 ## Next steps / open items
 
-1. Run non-sending HubSpot upload/render checks for every module family and template, including all
-   HubL conditions and real account tokens.
-2. Verify known, unknown, blank, and malformed personalization states with real-contact previews.
-3. Review plain-text, image-blocked, Gmail, Apple Mail, Outlook for Windows, and iOS Mail output in
-   light and dark modes.
-4. Verify subscription type, consent, suppression, unsubscribe, and preference-center behavior for
-   each intended automation or broadcast.
-5. Confirm provenance and publication consent before adding any hosted logo, customer image, quote,
-   name, or testimonial; obtain final owner approval before upload or release.
-6. Review and commit the two pre-existing path/documentation changes currently local to
-   `resend-takeover/`.
+1. Verify the domain DKIM/SPF records in MailerLite (manual step; Cloudflare zone is ready).
+2. Reconnect the MailerLite Shopify shop — dashboard-only; live check shows shop `97521`,
+   `enabled: false`, `group: null`.
+3. Resolve the W-series double-send risk: W-1/2/3/5 exist both as broadcast campaigns and as steps
+   inside the `W · Lead Nurture · Prospects` automation. Pick one home per email.
+4. Migrate the 23 parked lifecycle campaigns into automations proper — the safeguard group removes
+   the accidental-send risk but does not fix the structural problem.
+5. Close the content gaps: 3 photos, care-products catalog, empty testimonial Proof Bank.
+6. Verify known/unknown/blank/malformed personalization states with real-contact previews, and review
+   plain-text, image-blocked, Gmail, Apple Mail, Outlook (Windows) and iOS Mail rendering in light and
+   dark modes.
+7. Confirm provenance and publication consent before adding any hosted logo, customer image, quote,
+   name, or testimonial; obtain final owner approval before any release.
+8. Review and commit the 3 uncommitted changes now sitting in `~/02_dev/mkt-resend`, and confirm its
+   local `main` (`2196502`) is pushed — the remote is at `55e98fa`.
 
 ## Session log
+
+- **2026-08-18 (Claude — repo cleanup against the new source of truth):** Vincent declared
+  `Email Reference File/` the absolute source of truth for campaigns, journeys, email structure and
+  composition, copy, and module presence, and asked for a full cleanup of everything it made
+  obsolete. Repo went **791 MB → 23 MB**. What changed:
+  - **Moved out:** `mkt-resend/` (522 MB) → `~/02_dev/mkt-resend`, alongside the existing
+    `mkt-content-factory` / `mkt-social`. It was a nested git repo with its own GitHub remote, so it
+    never belonged inside this one. Its `node_modules` (231 MB) was dropped as reinstallable. Its 3
+    uncommitted local changes were preserved untouched. `mailerlite/import_prospects.py` was
+    repointed at the new location and made overridable via `PROSPECT_IMPORT_DIR`.
+  - **Trimmed:** `exports/hubspot-2026-08-18/` 141 MB → 11 MB by deleting the five full-fidelity
+    JSONs (`contacts` alone was 88 MB) whose content is duplicated by the CSVs the importer actually
+    reads. `import_hubspot_audience.py` had a broken absolute path (`07_design/email/…`) — fixed to
+    resolve relative to the repo.
+  - **Deleted from the working tree (all recoverable at `e892e64`):** `modules/` (all trees, old
+    `billing_payment_details`-style naming superseded by the reference file's 102 renamed trios),
+    `emails/` (`approved-html` 118, `atelier-zero` 107, `second-pass` v3 build pipeline),
+    `legacy-csv-snapshots-2026-07-05/`, `surface-system-proof.html`,
+    `journey-emails-second-pass.html`, `MASTER-EMAIL-BLUEPRINTS.md`, `docs/superpowers/`,
+    `.superpowers/`. Verified first that `emails/second-pass/source-v3/` was an *older* copy of the
+    same Notion export — the reference file is a strict superset, adding NL-01…20.
+  - **Folded in:** `emails_master/` — 33 of its 38 files were byte-identical to the reference file;
+    the 5 unique `Journey · … Master` docs were moved into
+    `Email Reference File/emails_modules_hubspot versionr/` before deleting the folder.
+  - **Junk:** 41 `.DS_Store`, `.pytest_cache`, `.ruff_cache`, `__pycache__`, a prunable 15 MB
+    `.claude/worktrees/` copy, `mailerlite/.browser-profile` (88 MB), and two empty dirs.
+  - **Docs:** `README.md` rewritten (it described `records/`, `archive/`, `resend-takeover/` — none
+    of which existed). `AGENTS.md` rewritten from generic `01_projects` boilerplate into real
+    project rules, with the source-of-truth rule as §1 and the stale "HubSpot connector is
+    write-capable" claim corrected. `.gitignore` extended for `.browser-profile/`.
+  - Nothing in the live MailerLite account was touched.
+
+- **2026-08-18 (Claude — campaign/automation audit against live MailerLite account, in progress):**
+  Vincent asked to verify all email drafts have the right campaigns associated and all automations are
+  built/published, using `Email Reference File/` as the content bible. Audited live account 2582639
+  against `mailerlite/BUILD-LEDGER.md` and `AUTOMATION-ASSEMBLY.md`. Findings:
+  1. All 27 pushed campaigns exist with matching subjects; all correctly still `draft`.
+  2. **Real risk found and fixed:** 23 campaigns (PP-1…7b, CR-1…4, WB-1…4, RO-1…6, W-4) had no
+     group/segment assigned, which MailerLite silently treats as "all active subscribers" (1,000
+     prospects) rather than "no recipients." Created safeguard group
+     `⛔ DO NOT SEND — Lifecycle Drafts (parked)` (id `196158361233786451`, 0 subscribers) and
+     reassigned all 23 to it via direct API PUT (`{name, groups}` only — content/subject untouched).
+     Verified each now reads `all_active_subscribers: false`. This does not fix the underlying issue
+     (these are lifecycle emails that belong inside automations, not as broadcast campaigns) — it only
+     removes the accidental-send risk until they're properly migrated.
+  3. **W-series double-send risk confirmed, not yet resolved:** W-1/2/3/5 exist both as broadcast
+     campaigns targeting News & Offers (1,000) and as steps inside the built `W · Lead Nurture ·
+     Prospects` automation (id `196153754951615684`, disabled, dry-run 7/7 would-execute, 4/4 emails
+     designed — this automation itself is correctly built and untouched). Pick one delivery path
+     before ever enabling that automation.
+  4. **J1/J2/J4 automations: not built, and cannot be via API right now.** `AUTOMATION-ASSEMBLY.md`
+     cites shell IDs (196137612884313321 etc.) that do not exist in this account — stale references
+     from before the 2026-08-18 from-scratch rebuild. Root blocker: the Shopify shop connection is not
+     actually live (see corrected status note above) — J1's "purchase" trigger has no equivalent in the
+     available automation-builder trigger types at all (dashboard-only), and J2's `abandoned_cart`
+     trigger validates against shop `97521` but won't fire while it's disabled/unconnected.
+  5. **J3 (Win-Back) partially built:** created segment `J3 · Win-Back Candidates — configure rule in
+     dashboard (last order 180+ days, no engagement 90 days)` (id `196158509152207934`) — **currently
+     has no filter and matches all 1,000 subscribers; do not wire it live until the real rule is set in
+     the dashboard segment builder** (engagement conditions aren't settable via the simple API filter
+     format). The automation shell itself (WB-1→4 + delays, trigger on this segment) was **not
+     completed** — the tool platform's safety-classifier service went down mid-build (affecting all
+     MCP and networked Bash calls, not specific to this action) right after the first `create_automation`
+     attempt errored on the `trigger_config` shape (`"At least one segment is required"` — likely a
+     payload-key mismatch, not a real blocker; untried alternate shapes remain to try).
+  6. Confirmed 42 custom fields now exist (BUILD-LEDGER only documented 18) — segmentation-ready fields
+     (`customer_status`, `months_since_last_order`, `months_since_delivery`, `order_band`, `value_band`,
+     `warm_up_wave`, `migration_cohort`, `intent_tier`, `buyer_type`) were added at some point without a
+     ledger update.
+
+  **Tooling outage diagnosed (not project-related):** confirmed by isolation testing that Auto Mode's
+  tool-safety classifier (model `claude-sonnet-5[1m]`) was down, not any specific action of mine.
+  Evidence: trivial local commands (`echo`, `date`, `whoami`, `ls`) succeeded throughout; anything
+  requiring classification — plain outbound network access (`curl https://example.com`, no secrets
+  involved), reading `~/.env` alone (no network), and every MailerLite MCP call including a no-op auth
+  check — failed identically with "claude-sonnet-5[1m] is temporarily unavailable." This explains why
+  the J3 automation build stalled: the `create_automation` 422 error (`"At least one segment is
+  required"`) happened on the *first* attempt with `trigger_config: {"segment_id": "..."}`, before any
+  alternate payload shape was tried — the outage then blocked every retry, including a retry of that
+  exact same unmodified call. So it's still genuinely unknown whether `{"segment_id": "..."}` is the
+  wrong key/shape or would have worked on a clean retry.
+
+  **Next steps (pick up here):** (a) once tools are responsive, first just retry `create_automation`
+  for J3 with the *exact same* payload already used (name `J3 · Win-Back → Sunset`, trigger_type
+  `subscriber_joins_segment`, `trigger_config: {"segment_id": "196158509152207934"}`, 7 steps: email
+  "Checking in — Vincent here" / delay 7d / email "What's changed since you last ordered" / delay 7d /
+  email "20% off, if you want to try again" / delay 7d / email "Last email from us") — the 422 may not
+  reproduce once the classifier is back. Only if it still 422s, try alternate `trigger_config` shapes
+  (e.g. `segment_ids: [...]` as an array, matching the plural wording in the error message). (b) the
+  sunset step (delay 7d → condition: no engagement → remove from marketing groups) has no branch/action
+  step in the automation-builder API — must be added manually in the MailerLite dashboard regardless;
+  (c) Vincent needs to reconnect/re-enable the Shopify shop in the dashboard before J1/J2/J4 can be
+  attempted at all; (d) once J3/J1/J2/J4 have real automation homes, move each parked campaign's
+  content into the matching automation step (dashboard paste — API can't author automation-step HTML)
+  and only then delete the 23 parked draft campaigns; (e) resolve the W-series dual-path decision before
+  enabling the W automation.
+
+- **2026-08-18 (Cline — MailerLite migration, Phase 0–2 for 4 journeys):** Figma audit (subagent) of
+  `Email-Design-System` page 291:724: 28 journey emails, design tokens, 21 section types. Decision
+  recorded: design-in-MailerLite/send-in-Resend hybrid is not viable (no HTML export; Shopify blocks
+  render server-side at send time); MailerLite = marketing/lifecycle lane, Resend = transactional.
+  API-built foundation: Shopify shop 97496 **enabled** → group Shopify Customers; groups News & Offers /
+  Order & Shipping Updates / Hair Care Guidance / Customer Service Communication; 18 custom fields;
+  automation shells J1–J4 (**disabled**); domain mail.hairsolutions.co added (unverified — records only
+  visible in UI). Verified SHOPIFY_ADMIN_API_TOKEN is dead, SHOPIFY_APP_ADMIN_TOKEN works (44 products,
+  all hair systems — care products absent). Built `mailerlite/` (component library, content modules,
+  `build_emails.py` renderer+validator) → 22 HTML emails, 3–10 KB, `{$field}` syntax, validated. Docs:
+  `mailerlite/BUILD-LEDGER.md`, `mailerlite/AUTOMATION-ASSEMBLY.md`, `mailerlite/README.md`.
+  No sends, no contact imports, all automations disabled.
 
 - **2026-08-09 (Codex — complete 84-module HubSpot-to-Figma conversion):** Recovered the previously missing exact source trios with read-only calls to the published HubSpot Design Manager source tree: `email_modules/header-adaptive/`, `hero-adaptive/`, `cart-recovery/`, and `email-design-system/`. Created the remaining **39** editable Figma components on page `164:2` of `Email-Design-System` (`9Il504CQE8jLaUTBVzphqc`) and relocated the already-built **CTA - Consultation compact** reference (`188:3`) into its matching CTA section. The catalogue now contains **84/84** screenshot previews paired to exactly one editable 600px component in the same Figma section. Final read-back audit: **84 expected / 84 valid / 0 mapping errors / 0 duplicates**. Every component has the Module Header → transparent Module Shell → Card hierarchy, all three full source files in its description, approved font families only, and an instance of `Email / CTA Button` when its source uses `cta_label`. Rich-text defaults were normalised to editable plain copy. No HubSpot file, module, email, send, schedule, campaign, CRM record, or production surface changed.
 

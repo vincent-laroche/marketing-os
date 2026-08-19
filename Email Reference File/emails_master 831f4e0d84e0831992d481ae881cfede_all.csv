@@ -1,0 +1,1666 @@
+﻿Email name,Body,Build Status,CTA,Email Channel,HubSpot Email ID,Hubspot Matched,Missing Modules,Module Stack,Modules Used,Position,Preview Text,Series,Series Total,Subject,Subscription Type,Workflow IDs
+CR-2 · Three Questions Answered — Abandon +1d,"[Layout - Plain-text founder wrapper]
+Hi {{ firstname }},
+
+Most people who hesitate at checkout are stuck on one of three things. Here they are, answered straight.
+
+[List - Questions: the three answers]
+""Will it actually look real?""
+At conversation distance, a well-fitted lace front is not detectable. The giveaway is never the hair — it's a hairline set too low, or a density too high for your age. We set both conservatively for exactly that reason.
+
+""Will it hold?""
+With clean prep and the right adhesive, a bond holds 7 to 14 days through showering, sweating and sleeping. Prep is the variable, not the product, and we walk you through it.
+
+""What if it's not right when it arrives?""
+Then you email me and we fix it. Colour off, density wrong, base size out — those are on us to resolve, and we do.
+
+[Commerce - Cart line items] (recommended)
+Still in your cart: {{ cart_contents }}
+
+[List - Trust strip]
+Handcrafted to your spec · 14-day inspection window · Direct line to the founder
+
+[Testimonial]
+[PULL from Proof Bank: a first-order quote that answers the ""will it look real"" doubt]
+
+[Button - Primary CTA]
+Finish your order →
+
+Vincent
+
+[Footer - Preference centre]",Blocked - missing module,See what customers say →,Marketing,214987971489,Yes,List - Trust strip,(Header - Centered logo) (Layout - Plain-text founder wrapper) [Commerce - Cart line items] (List - Questions: the three answers) (List - Trust strip) (Testimonial) (Button - Primary CTA) (Footer - Preference centre),"Header - Centered logo - Light (https://app.notion.com/p/Header-Centered-logo-Light-586f4e0d84e0821a960b015f18443fb8?pvs=21), Layout - Plain-text founder wrapper - Light (https://app.notion.com/p/Layout-Plain-text-founder-wrapper-Light-245f4e0d84e0832280a101f38a7141a7?pvs=21), Commerce - Cart line items - Light (https://app.notion.com/p/Commerce-Cart-line-items-Light-9cbf4e0d84e08365a58c01cfae02db12?pvs=21), List - Questions - Light (https://app.notion.com/p/List-Questions-Light-190f4e0d84e083418a230178ca6196ec?pvs=21), List - Trust strip - Light (https://app.notion.com/p/List-Trust-strip-Light-8801ff07efc24e8c9dc7ec6e81e42bbc?pvs=21), Testimonial - Light (https://app.notion.com/p/Testimonial-Light-955f4e0d84e083e1a17501a482a51f91?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Preference centre - Light (https://app.notion.com/p/Footer-Preference-centre-Light-fa4f4e0d84e082819ba601163ca05b5a?pvs=21)",2,"Will it look real, will it hold, and what if it's wrong.",J2 · Cart Recovery · Master,5,The three things people ask before ordering,Order & Shipping Updates,Journey · Cart Recovery · Master
+WB-1 · Checking In — Day 0,"Hi {{ firstname }},
+
+It's been a while — your last order with us was {{ months_since_last_order }} months ago.
+
+No pitch in this email. I'm just curious how you got on.
+
+If you're still wearing a system and it's working, that's good to hear and you can ignore this.
+
+If you stopped, I'd honestly like to know why. Was it the maintenance? The cost? Did the fit never come right? Did you go a different route entirely?
+
+I read every reply, and the answers change what we make. The most useful feedback I've had all year came from people who stopped buying.
+
+Vincent
+Founder, Hair Solutions Co.",Needs building in HubSpot,No button — reply-only by design,Marketing,211345979664,Yes,,(Header - Centered logo) (Layout - Plain-text founder wrapper) (Footer - Preference centre),"Header - Centered logo - Light (https://app.notion.com/p/Header-Centered-logo-Light-586f4e0d84e0821a960b015f18443fb8?pvs=21), Layout - Plain-text founder wrapper - Light (https://app.notion.com/p/Layout-Plain-text-founder-wrapper-Light-245f4e0d84e0832280a101f38a7141a7?pvs=21), Footer - Preference centre - Light (https://app.notion.com/p/Footer-Preference-centre-Light-fa4f4e0d84e082819ba601163ca05b5a?pvs=21)",1,No offer attached. Just wondering how you got on.,J3 · Win-Back → Sunset,4,Checking in — Vincent here,News & Offers,Journey · Win-Back → Sunset
+CR-1 · Your Cart's Still Here — Abandon +4h,"[Layout - Plain-text founder wrapper]
+Hi {{ firstname }},
+
+You were partway through an order and stopped. That's completely fine — but occasionally it's because something on our side didn't work, and I'd want to know.
+
+If it was a payment error, a shipping surprise, or the page just froze, reply and tell me. I'll sort it out.
+
+If you're still deciding, no rush at all. Your cart's saved.
+
+Vincent
+
+[Commerce - Cart line items]
+Still in your cart:
+{{ cart_contents }}
+
+[Button - Primary CTA]
+Finish your order →
+
+[Footer - Preference centre]",Needs building in HubSpot,Finish your order →,Marketing,214989746959,Yes,,(Header - Centered logo) (Layout - Plain-text founder wrapper) (Commerce - Cart line items) (Button - Primary CTA: return to cart) (Footer - Preference centre),"Header - Centered logo - Light (https://app.notion.com/p/Header-Centered-logo-Light-586f4e0d84e0821a960b015f18443fb8?pvs=21), Layout - Plain-text founder wrapper - Light (https://app.notion.com/p/Layout-Plain-text-founder-wrapper-Light-245f4e0d84e0832280a101f38a7141a7?pvs=21), Commerce - Cart line items - Light (https://app.notion.com/p/Commerce-Cart-line-items-Light-9cbf4e0d84e08365a58c01cfae02db12?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Preference centre - Light (https://app.notion.com/p/Footer-Preference-centre-Light-fa4f4e0d84e082819ba601163ca05b5a?pvs=21)",1,No pressure — just making sure nothing broke on our end.,J2 · Cart Recovery · Master,5,Your cart's still here,Order & Shipping Updates,Journey · Cart Recovery · Master
+PP-7 · How's It Going — Delivery +35d,"Hi {{ firstname }},
+
+You've had your system about five weeks now — long enough to know how you feel about it.
+
+How's it going?
+
+If it's going well, the first button takes you to a review page. Reviews are how people in the same position you were in five weeks ago decide whether to trust us.
+
+If it isn't right, the second comes straight to me. Fit, colour, density, adhesion, anything. No form, no ticket queue — it's my inbox. Most issues at this stage are fixable, and the ones that aren't, I'd still rather know about.
+
+Vincent
+Founder, Hair Solutions Co.",Needs building in HubSpot,It's going well → / It's not quite right →,Service,214989746989,Yes,,(Header - Centered logo) (Layout - Plain-text founder wrapper) (Footer - Standard),"Header - Centered logo - Light (https://app.notion.com/p/Header-Centered-logo-Light-586f4e0d84e0821a960b015f18443fb8?pvs=21), Layout - Plain-text founder wrapper - Light (https://app.notion.com/p/Layout-Plain-text-founder-wrapper-Light-245f4e0d84e0832280a101f38a7141a7?pvs=21), Footer - Standard - Light (https://app.notion.com/p/Footer-Standard-Light-8c3f4e0d84e082c6acf6815321074fc7?pvs=21)",7,"One question. Good or bad, I want the real answer.",J1 · Post-Purchase · Master,7,Honestly — how's it going?,Customer Service Communication,Journey · Post-Purchase · Master
+PP-3 · On The Bench — Day 5,"[Layout - Plain-text founder wrapper]
+Hi {{ firstname }},
+
+Quick update: your system is in production.
+
+What that means in practice — the base is cut to your specification, and the hair is being tied into it by hand, a few strands at a time. A full unit is somewhere between twenty and thirty thousand knots. It's slow work, and it's the reason the wait exists.
+
+This is also the part that decides whether a hairline looks real or looks like a wig. There's no way to rush it without it showing.
+
+Nothing needed from you. My next email is the dispatch notice with your tracking number.
+
+Vincent
+
+[Photo - Feature story: workshop shot]
+{{ image: the bench — a unit mid-ventilation, natural light, no staging }}
+Caption: This is what the middle of your wait looks like.
+
+[Footer - Preference centre]",Needs building in HubSpot,See how a system is made →,Marketing,214989746995,Yes,,(Header - Centered logo) (Layout - Plain-text founder wrapper) (Photo - Feature story: workshop shot) (Footer - Preference centre),"Header - Centered logo - Light (https://app.notion.com/p/Header-Centered-logo-Light-586f4e0d84e0821a960b015f18443fb8?pvs=21), Layout - Plain-text founder wrapper - Light (https://app.notion.com/p/Layout-Plain-text-founder-wrapper-Light-245f4e0d84e0832280a101f38a7141a7?pvs=21), Photo - Feature story - Light (https://app.notion.com/p/Photo-Feature-story-Light-fd5f4e0d84e0833bb12d0192e338778d?pvs=21), Footer - Preference centre - Light (https://app.notion.com/p/Footer-Preference-centre-Light-fa4f4e0d84e082819ba601163ca05b5a?pvs=21)",3,A look at what's actually happening to it right now.,J1 · Post-Purchase · Master,7,Your system is on the bench,Order & Shipping Updates,Journey · Post-Purchase · Master
+RO-2 · Due For Supplies — Delivery +60d,"[Hero - Text-led]
+You're about due for supplies.
+
+[Text - Opening]
+Hi {{ firstname }},
+
+You last ordered supplies {{ days_since_supply_order }} days ago.
+
+At a normal reapplication cycle, that's about when adhesive and remover run out. Not a guess — that's the maths on a two-week bond.
+
+The reason I flag it: running out mid-cycle is when people improvise with the wrong solvent, and that's the single most common way a good system gets ruined.
+
+[Product - Dynamic recommendations] (recommended)
+What you'd normally need now:
+{{ recommended_reorder_items }}
+
+[Text - Reassurance]
+If you've changed routine and need something different, reply and tell me what you're using now — I'll adjust the list rather than send you the default.
+
+Vincent
+
+[Button - Primary CTA]
+Reorder supplies →
+
+[Footer - Preference centre]",Needs building in HubSpot,Reorder supplies →,Marketing,214989746983,Yes,,(Header - Centered logo) (Hero - Text-led) (Text - Opening) [Product - Dynamic recommendations] (Text - Reassurance) (Button - Primary CTA: reorder supplies) (Footer - Preference centre),"Header - Centered logo - Light (https://app.notion.com/p/Header-Centered-logo-Light-586f4e0d84e0821a960b015f18443fb8?pvs=21), Hero - Text-led - Light (https://app.notion.com/p/Hero-Text-led-Light-963f4e0d84e08227a47b8102d3cfa40c?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), Product - Dynamic recommendations - Light (https://app.notion.com/p/Product-Dynamic-recommendations-Light-bcaf4e0d84e082ef91cd016f15fff865?pvs=21), Text - Reassurance - Light (https://app.notion.com/p/Text-Reassurance-Light-5d3f4e0d84e082fe98ef010e47535c71?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Preference centre - Light (https://app.notion.com/p/Footer-Preference-centre-Light-fa4f4e0d84e082819ba601163ca05b5a?pvs=21)",2,"Based on when you last ordered, not a guess.",J4 · Reorder · Master,6,You're about due for supplies,Hair Care Guidance,Journey · Reorder · Master
+RO-5 · Auto-Reorder — Delivery +125d,"[Hero - Text-led]
+Stop thinking about supplies entirely.
+
+[Layout - Plain-text founder wrapper]
+Hi {{ firstname }},
+
+You've reordered supplies {{ reorder_count }} times now. That's {{ reorder_count }} occasions you had to notice you were low, and at least one where you probably cut it fine.
+
+There's a simpler version. Set your interval once and the supplies arrive before you run out.
+
+Based on your history, {{ recommended_interval }} weeks looks about right, but you can change it.
+
+Vincent
+
+[List - Questions: how it works]
+— You choose the interval; adjust or skip any delivery
+— 10% off every order on a plan
+— Cancel in one click, no email required
+
+[Text - Reassurance]
+If you'd rather keep ordering manually, that's completely fine — I'll stop mentioning it after this.
+
+[Button - Primary CTA]
+Set up auto-reorder →
+
+[Footer - Preference centre]",Needs building in HubSpot,Set up auto-reorder →,Marketing,214989746986,Yes,,(Header - Centered logo) (Hero - Text-led) (Layout - Plain-text founder wrapper) (List - Questions: how it works) (Text - Reassurance) (Button - Primary CTA) (Footer - Preference centre),"Header - Centered logo - Light (https://app.notion.com/p/Header-Centered-logo-Light-586f4e0d84e0821a960b015f18443fb8?pvs=21), Hero - Text-led - Light (https://app.notion.com/p/Hero-Text-led-Light-963f4e0d84e08227a47b8102d3cfa40c?pvs=21), Layout - Plain-text founder wrapper - Light (https://app.notion.com/p/Layout-Plain-text-founder-wrapper-Light-245f4e0d84e0832280a101f38a7141a7?pvs=21), List - Questions - Light (https://app.notion.com/p/List-Questions-Light-190f4e0d84e083418a230178ca6196ec?pvs=21), Text - Reassurance - Light (https://app.notion.com/p/Text-Reassurance-Light-5d3f4e0d84e082fe98ef010e47535c71?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Preference centre - Light (https://app.notion.com/p/Footer-Preference-centre-Light-fa4f4e0d84e082819ba601163ca05b5a?pvs=21)",5,Auto-reorder on your schedule. Cancel any time.,J4 · Reorder · Master,6,Stop thinking about supplies entirely,News & Offers,Journey · Reorder · Master
+BR-1 · Base Types Explainer — Browse +1d,"[Hero - Text-led]
+Lace, poly, or hybrid — the two-minute version.
+
+[Layout - Plain-text founder wrapper]
+Hi {{ firstname }},
+
+You were looking at {{ last_viewed_product }}. Before you go further, the base type question is worth two minutes, because it decides more about your day-to-day than anything else.
+
+If you tell me how you live — gym, heat, hats, how often you want to remove it — I'll tell you which one I'd pick.
+
+Vincent
+
+[Commerce - Viewed product] (recommended)
+{{ last_viewed_product }}
+
+[Text - Base type guidance] (recommended)
+Lace — most natural at the hairline, most breathable, shortest life. Best if appearance is the priority and you don't mind replacing more often.
+
+Poly — most durable, easiest to clean and reapply, slightly less invisible up close. Best if you want low maintenance and a long bond.
+
+Hybrid — lace front for the hairline, poly at the sides and back. Most people end up here.
+
+[Button - Primary CTA]
+Compare base types →
+
+[Footer - Preference centre]",Needs building in HubSpot,Compare base types →,Marketing,214987971495,Yes,,(Header - Centered logo) (Hero - Text-led) (Layout - Plain-text founder wrapper) [Commerce - Viewed product] [Text - Base type guidance] (Button - Primary CTA) (Footer - Preference centre),"Header - Centered logo - Light (https://app.notion.com/p/Header-Centered-logo-Light-586f4e0d84e0821a960b015f18443fb8?pvs=21), Hero - Text-led - Light (https://app.notion.com/p/Hero-Text-led-Light-963f4e0d84e08227a47b8102d3cfa40c?pvs=21), Layout - Plain-text founder wrapper - Light (https://app.notion.com/p/Layout-Plain-text-founder-wrapper-Light-245f4e0d84e0832280a101f38a7141a7?pvs=21), Commerce - Viewed product - Light (https://app.notion.com/p/Commerce-Viewed-product-Light-4a6f4e0d84e0824aa3ca8129c698a993?pvs=21), Text - Base type guidance - Light (https://app.notion.com/p/Text-Base-type-guidance-Light-cc0f4e0d84e083618a8c016dc8a36971?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Preference centre - Light (https://app.notion.com/p/Footer-Preference-centre-Light-fa4f4e0d84e082819ba601163ca05b5a?pvs=21)",5,"Lace, poly, or hybrid — the two-minute version.",J2 · Cart Recovery · Master,5,Still weighing up base types?,Order & Shipping Updates,Journey · Cart Recovery · Master
+RO-1 · Six Weeks In — Delivery +45d,"Hi {{ firstname }},
+
+Six weeks is the point where a system starts telling you how it's going to age. Two things worth checking this week.
+
+The front perimeter. Hold it to the light and look along the very front edge. Fine splits there are normal wear, but they spread. Catching one now is a repair; catching it in a month is a replacement.
+
+The knots at the crown. If hair is shedding faster than it was, that's usually cleaning technique rather than a fault — too much friction on the base.
+
+Where you are in the cycle: most systems run three to six months. At six weeks you're roughly a third through, which means now is the time to be maintaining, not replacing.
+
+Reply with a photo if anything looks off and I'll tell you what I'm seeing.
+
+Vincent",Needs building in HubSpot,Inspection guide →,Marketing,214990267468,Yes,,(Header - Centered logo) (Layout - Plain-text founder wrapper) (Footer - Preference centre),"Header - Centered logo - Light (https://app.notion.com/p/Header-Centered-logo-Light-586f4e0d84e0821a960b015f18443fb8?pvs=21), Layout - Plain-text founder wrapper - Light (https://app.notion.com/p/Layout-Plain-text-founder-wrapper-Light-245f4e0d84e0832280a101f38a7141a7?pvs=21), Footer - Preference centre - Light (https://app.notion.com/p/Footer-Preference-centre-Light-fa4f4e0d84e082819ba601163ca05b5a?pvs=21)",1,"Two things to check, and what they tell you.",J4 · Reorder · Master,6,Six weeks in — how's it holding up?,Hair Care Guidance,Journey · Reorder · Master
+RO-3 · Replacement Window — Delivery +90d,"[Hero - Text-led]
+Your replacement window is opening.
+
+[Text - Customer snapshot: their spec]
+Hi {{ firstname }},
+
+Your system is about three months old, which puts you at the start of the replacement window rather than the end of it.
+
+Nothing to do today. But two things worth knowing:
+
+A replacement takes {{ production_lead_time }} to make. If you order the day your current one fails, you have a gap with no system. Most people order their second while the first still has a few weeks left, and rotate between them.
+
+Rotating two systems roughly doubles the life of both. Neither is worn continuously, adhesive gets a full cure between wears, and the bases last considerably longer.
+
+Vincent
+
+[Commerce - Quote and spec table] (recommended)
+Your saved specification:
+{{ last_order_specification }}
+
+[Testimonial]
+[PULL from Proof Bank: a customer on rotating two systems — practical register]
+
+[Review stars]
+[PULL from Proof Bank: aggregate rating]
+
+[Button - Primary CTA]
+Order your next system →
+
+[Footer - Preference centre]",Blocked - missing module,Order your next system →,Marketing,214988061045,Yes,Review stars,(Header - Centered logo) (Hero - Text-led) (Text - Customer snapshot: their spec) [Commerce - Quote and spec table] (Testimonial) (Review stars) (Button - Primary CTA) (Footer - Preference centre),"Header - Centered logo - Light (https://app.notion.com/p/Header-Centered-logo-Light-586f4e0d84e0821a960b015f18443fb8?pvs=21), Hero - Text-led - Light (https://app.notion.com/p/Hero-Text-led-Light-963f4e0d84e08227a47b8102d3cfa40c?pvs=21), Text - Customer snapshot - Light (https://app.notion.com/p/Text-Customer-snapshot-Light-02bf4e0d84e0820fbfcf816d63fe68ae?pvs=21), Commerce - Quote and spec table - Light (https://app.notion.com/p/Commerce-Quote-and-spec-table-Light-b38f4e0d84e08340b8978142a8ab3328?pvs=21), Testimonial - Light (https://app.notion.com/p/Testimonial-Light-955f4e0d84e083e1a17501a482a51f91?pvs=21), Review stars - Light (https://app.notion.com/p/Review-stars-Light-d78b9112fd1d40eaa4919a1496b51c38?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Preference centre - Light (https://app.notion.com/p/Footer-Preference-centre-Light-fa4f4e0d84e082819ba601163ca05b5a?pvs=21)",3,Not urgent yet — but worth knowing the lead time.,J4 · Reorder · Master,6,Your replacement window is opening,Hair Care Guidance,Journey · Reorder · Master
+RO-6 · Returning Customer Price — Delivery +140d,"[Hero - Text-led]
+A returning-customer price, while it's still useful.
+
+[Text - Offer discount: returning-customer price]
+Hi {{ firstname }},
+
+Your system is around {{ months_since_delivery }} months old. Most are near the end of their usable life by now, so this is the last time I'll raise it.
+
+Because you've bought before, the returning-customer price applies.
+
+If you've moved on from systems altogether, no problem — and if it's because something didn't work, I'd still like to hear it. That's more useful to me than the sale.
+
+Vincent
+Founder, Hair Solutions Co.
+
+[Signal - Promo code]
+15% off your next system
+Code: RETURNING15
+Valid 21 days
+
+[Commerce - Quote and spec table] (recommended)
+Your saved specification:
+{{ last_order_specification }}
+
+[Testimonial]
+[PULL from Proof Bank: a repeat customer on the second system being easier than the first]
+
+[Review stars]
+[PULL from Proof Bank: aggregate rating]
+
+[Button - Primary CTA]
+Reorder now →
+
+[Footer - Preference centre]",Blocked - missing module,Reorder now → / Talk it through first →,Marketing,214989747033,Yes,Review stars,(Header - Centered logo) (Hero - Text-led) (Text - Offer discount: returning-customer price) (Signal - Promo code) [Commerce - Quote and spec table] (Testimonial) (Review stars) (Button - Primary CTA) (Footer - Preference centre),"Header - Centered logo - Light (https://app.notion.com/p/Header-Centered-logo-Light-586f4e0d84e0821a960b015f18443fb8?pvs=21), Hero - Text-led - Light (https://app.notion.com/p/Hero-Text-led-Light-963f4e0d84e08227a47b8102d3cfa40c?pvs=21), Text - Offer discount - Light (https://app.notion.com/p/Text-Offer-discount-Light-a36f4e0d84e083db94f501d582855339?pvs=21), Signal - Promo code - Light (https://app.notion.com/p/Signal-Promo-code-Light-0daf4e0d84e08206a3e6013131cecde9?pvs=21), Commerce - Quote and spec table - Light (https://app.notion.com/p/Commerce-Quote-and-spec-table-Light-b38f4e0d84e08340b8978142a8ab3328?pvs=21), Testimonial - Light (https://app.notion.com/p/Testimonial-Light-955f4e0d84e083e1a17501a482a51f91?pvs=21), Review stars - Light (https://app.notion.com/p/Review-stars-Light-d78b9112fd1d40eaa4919a1496b51c38?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Preference centre - Light (https://app.notion.com/p/Footer-Preference-centre-Light-fa4f4e0d84e082819ba601163ca05b5a?pvs=21)",6,Last reorder note before I leave you alone.,J4 · Reorder · Master,6,"A returning-customer price, while it's useful",News & Offers,Journey · Reorder · Master
+PP-2 · Prep Guide — Day 1,"[Hero - Text-led]
+Three small things before it arrives.
+
+[Text - Opening]
+Hi {{ firstname }},
+
+While your system is being made, there are three small things worth doing. None take long, and they make the first fitting go much better.
+
+[List - Questions: prep checklist]
+1. Clear a workspace with a good mirror and decent light. Bathroom mirrors are usually the worst light in the house.
+
+2. Check what you have. You'll want adhesive or tape, scissors you trust, and rubbing alcohol for prep. If you're missing something, order it now so it arrives before the system does.
+
+3. Watch the fitting walkthrough once, before you need it. It's twelve minutes and it will save you an hour of guessing.
+
+[Text - Reassurance]
+One more thing: your first fitting will not be your best fitting. That's true for everyone. By the third you'll have it down.
+
+Vincent
+
+[Button - Primary CTA]
+Read the prep guide →
+
+[List - Support strip]
+Missing something from the checklist? Reply and I'll point you to the right product.
+
+[Footer - Preference centre]",Needs building in HubSpot,Read the prep guide →,Marketing,214989746992,Yes,,(Header - Centered logo) (Hero - Text-led) (Text - Opening) (List - Questions: prep checklist) (Text - Reassurance) (Button - Primary CTA) (List - Support strip) (Footer - Preference centre),"Header - Centered logo - Light (https://app.notion.com/p/Header-Centered-logo-Light-586f4e0d84e0821a960b015f18443fb8?pvs=21), Hero - Text-led - Light (https://app.notion.com/p/Hero-Text-led-Light-963f4e0d84e08227a47b8102d3cfa40c?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), List - Questions - Light (https://app.notion.com/p/List-Questions-Light-190f4e0d84e083418a230178ca6196ec?pvs=21), Text - Reassurance - Light (https://app.notion.com/p/Text-Reassurance-Light-5d3f4e0d84e082fe98ef010e47535c71?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), List - Support strip - Light (https://app.notion.com/p/List-Support-strip-Light-9e5f4e0d84e0829299b3811647c638e6?pvs=21), Footer - Preference centre - Light (https://app.notion.com/p/Footer-Preference-centre-Light-fa4f4e0d84e082819ba601163ca05b5a?pvs=21)",2,"Three things worth doing before it arrives. Ten minutes, total.",J1 · Post-Purchase · Master,7,Getting ready for your system — a short prep guide,Order & Shipping Updates,Journey · Post-Purchase · Master
+PP-5 · Maintenance Calendar — Delivery +7d,"[Hero - Text-led]
+Your 30 / 60 / 90 day maintenance calendar.
+
+[Text - Opening]
+Hi {{ firstname }},
+
+You've had your system about a week. This is the right moment for the maintenance schedule, because the habits you set now are the ones that stick.
+
+[List - Questions: 30/60/90 checkpoints]
+Every 7–14 days — full removal, clean the base, clean your scalp, reapply. Don't stretch this. Adhesive left too long is the single most common cause of base damage.
+
+Every 30 days — deep clean. Solvent soak, gentle brush along the knots, air dry flat. Never wring it.
+
+Every 60 days — inspect the perimeter. Lace goes at the front edge first. Catching a small tear here is a repair; missing it is a replacement.
+
+Every 90 days — assess honestly. Most systems have a usable life of three to six months depending on wear and care. Knowing where you are in that cycle means you're never caught out.
+
+Two things shorten a system's life more than anything else: heat styling directly on the base, and sleeping in it without a wrap. Neither is forbidden. Both cost you weeks.
+
+[Product - Dynamic recommendations: care products]
+{{ products: remover, sulphate-free shampoo, scalp prep — matched to base type }}
+
+[Button - Primary CTA]
+Save the care schedule →
+
+[List - Support strip]
+Reply with any question at all — I answer these myself.
+
+Vincent
+
+[Footer - Preference centre]",Needs building in HubSpot,Save the care schedule →,Marketing,214989746977,Yes,,(Header - Centered logo) (Hero - Text-led) (Text - Opening) (List - Questions: 30/60/90 checkpoints) (Product - Dynamic recommendations: care products) (Button - Primary CTA) (List - Support strip) (Footer - Preference centre),"Header - Centered logo - Light (https://app.notion.com/p/Header-Centered-logo-Light-586f4e0d84e0821a960b015f18443fb8?pvs=21), Hero - Text-led - Light (https://app.notion.com/p/Hero-Text-led-Light-963f4e0d84e08227a47b8102d3cfa40c?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), List - Questions - Light (https://app.notion.com/p/List-Questions-Light-190f4e0d84e083418a230178ca6196ec?pvs=21), Product - Dynamic recommendations - Light (https://app.notion.com/p/Product-Dynamic-recommendations-Light-bcaf4e0d84e082ef91cd016f15fff865?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), List - Support strip - Light (https://app.notion.com/p/List-Support-strip-Light-9e5f4e0d84e0829299b3811647c638e6?pvs=21), Footer - Preference centre - Light (https://app.notion.com/p/Footer-Preference-centre-Light-fa4f4e0d84e082819ba601163ca05b5a?pvs=21)",5,"What to do, and when, so it lasts as long as it should.",J1 · Post-Purchase · Master,7,Your 30 / 60 / 90 day maintenance calendar,Hair Care Guidance,Journey · Post-Purchase · Master
+WB-4 · Last Email From Us — Day 21,"Hi {{ firstname }},
+
+This is the last marketing email you'll get from us.
+
+You haven't opened anything in a while, and I'd rather stop than keep arriving in an inbox where I'm not wanted. In a week I'll quietly remove you from our marketing list. You don't need to do anything.
+
+If you'd like to stay, one click keeps you on.
+
+Either way, your account and order history stay intact, and you can buy from the site any time without being on a list. If you ever need help with a system — even one you didn't buy from us — my inbox is open. That doesn't expire.
+
+Thanks for having given us a go.
+
+Vincent
+Founder, Hair Solutions Co.",Needs building in HubSpot,Keep me on the list →,Marketing,211345977476,Yes,,(Header - Centered logo) (Layout - Plain-text founder wrapper) (Footer - Preference centre),"Header - Centered logo - Light (https://app.notion.com/p/Header-Centered-logo-Light-586f4e0d84e0821a960b015f18443fb8?pvs=21), Layout - Plain-text founder wrapper - Light (https://app.notion.com/p/Layout-Plain-text-founder-wrapper-Light-245f4e0d84e0832280a101f38a7141a7?pvs=21), Footer - Preference centre - Light (https://app.notion.com/p/Footer-Preference-centre-Light-fa4f4e0d84e082819ba601163ca05b5a?pvs=21)",4,We'll stop here unless you tell us otherwise.,J3 · Win-Back → Sunset,4,Last email from us,News & Offers,Journey · Win-Back → Sunset
+PP-7b · UGC Photo Request — PP-7 positive +7d,"[Hero - Text-led]
+The photo that convinces the next person.
+
+[Text - Opening]
+Hi {{ personalization_token('contact.firstname', 'there') }},
+
+Thanks for the feedback last week — it genuinely helps.
+
+One more ask, and this one's bigger: would you be willing to let us show your result?
+
+Here's why I'm asking. The single thing that stops people ordering is the fear it will look obvious. No amount of copy from me fixes that. One photo from someone who was in their position does.
+
+[Text - Customer snapshot]
+{{ dynamic: product ordered — name, base type, order date }}
+
+[Photo - Feature story: example UGC]
+{{ image: example of a good customer submission }}
+
+[Testimonial: what a good one looks like]
+[PULL: one consented customer photo + quote from the approved library, shown as the example]
+
+A good one is simple: natural daylight, straight on and slightly angled, no filter. Front hairline is what people want to see. You don't need to show your face — plenty of people don't, and it still works.
+
+[Text - Offer discount: incentive]
+[OFFER — confirm before send: UGC incentive, e.g. store credit or discount on next order]
+
+[List - Questions] (optional)
+· What did you look like before, if you're comfortable sharing?
+· What convinced you to finally order?
+· What would you tell someone still deciding?
+
+[Text - Reassurance]
+You control exactly how it's used. Nothing gets published without your written say-so, we'll never use your full name unless you want us to, and you can ask us to pull it at any point, permanently, no questions.
+
+[Button - Primary CTA]
+Share my photo →
+
+[M10 Support strip] (optional)
+Rather not? Completely fine — reply and I'll take you off this ask.
+
+[Footer - Social]",Needs workflow wiring,,Service,214987971586,Yes,,(Header) → (Hero - Text-led) → (Text - Opening) → (Text - Customer snapshot) → (Photo - Feature story: example UGC) → (Testimonial: what a good one looks like) → (Text - Offer discount: incentive) → [List - Questions] → [Text - Reassurance] → (Button - Primary CTA) → [M10 Support strip] → (Footer - Social),"Header - Centered logo - Light (https://app.notion.com/p/Header-Centered-logo-Light-586f4e0d84e0821a960b015f18443fb8?pvs=21), Hero - Text-led - Light (https://app.notion.com/p/Hero-Text-led-Light-963f4e0d84e08227a47b8102d3cfa40c?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), Text - Customer snapshot - Light (https://app.notion.com/p/Text-Customer-snapshot-Light-02bf4e0d84e0820fbfcf816d63fe68ae?pvs=21), Photo - Feature story - Light (https://app.notion.com/p/Photo-Feature-story-Light-fd5f4e0d84e0833bb12d0192e338778d?pvs=21), Testimonial - Light (https://app.notion.com/p/Testimonial-Light-955f4e0d84e083e1a17501a482a51f91?pvs=21), Text - Offer discount - Light (https://app.notion.com/p/Text-Offer-discount-Light-a36f4e0d84e083db94f501d582855339?pvs=21), List - Questions - Light (https://app.notion.com/p/List-Questions-Light-190f4e0d84e083418a230178ca6196ec?pvs=21), Text - Reassurance - Light (https://app.notion.com/p/Text-Reassurance-Light-5d3f4e0d84e082fe98ef010e47535c71?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), List - Support strip - Light (https://app.notion.com/p/List-Support-strip-Light-9e5f4e0d84e0829299b3811647c638e6?pvs=21), Footer - Social - Light (https://app.notion.com/p/Footer-Social-Light-746f4e0d84e083999c1d815025958c68?pvs=21)",8,,J1 · Post-Purchase · Master,7,Would you let us show your result?,Customer Service Communication,Journey · Post-Purchase · Master
+PP-4 · Shipped + Tracking — Fulfilment event,"[Hero - Text-led]
+It's shipped.
+
+[Text - Opening]
+Hi {{ firstname }},
+
+Your system is on its way. When it arrives, do these four things in order:
+
+1. Open it over a table, not a sink. The lace is fine and static-prone.
+2. Check the colour against your own hair in daylight, not indoors.
+3. Don't cut anything yet. Try it on untrimmed first.
+4. Take a photo of it as it came, before any modification.
+
+That last one matters. If something isn't right, a photo of the unmodified system is what lets me sort it out for you quickly.
+
+Vincent
+
+[Commerce - Shipping tracking]
+Tracking: {{ tracking_number }}
+Carrier: {{ carrier }}
+Expected: {{ estimated_delivery_date }}
+
+[Button - Primary CTA]
+Track your order →
+
+[List - Support strip]
+Delivery problem or damaged box? Reply with a photo and I'll take it from there.
+
+[Footer - Preference centre]",Needs building in HubSpot,Track your order →,Marketing,214989746974,Yes,,(Header - Centered logo) (Hero - Text-led) (Text - Opening) (Commerce - Shipping tracking) (Button - Primary CTA: track your order) (List - Support strip) (Footer - Preference centre),"Header - Centered logo - Light (https://app.notion.com/p/Header-Centered-logo-Light-586f4e0d84e0821a960b015f18443fb8?pvs=21), Hero - Text-led - Light (https://app.notion.com/p/Hero-Text-led-Light-963f4e0d84e08227a47b8102d3cfa40c?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), Commerce - Shipping tracking - Light (https://app.notion.com/p/Commerce-Shipping-tracking-Light-c1ff4e0d84e08364a13401d6c47ba904?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), List - Support strip - Light (https://app.notion.com/p/List-Support-strip-Light-9e5f4e0d84e0829299b3811647c638e6?pvs=21), Footer - Preference centre - Light (https://app.notion.com/p/Footer-Preference-centre-Light-fa4f4e0d84e082819ba601163ca05b5a?pvs=21)",4,Plus the quick-start steps for the day it lands.,J1 · Post-Purchase · Master,7,It's shipped — tracking inside,Order & Shipping Updates,Journey · Post-Purchase · Master
+CR-4 · Last Note + Free Shipping — Abandon +4d,"Hi {{ firstname }},
+
+Last email about this — I won't keep bringing it up.
+
+If cost is the sticking point, here's free shipping on the order:
+
+Code: FREESHIP
+Valid for 72 hours
+
+{{ cart_contents }}
+
+And if the timing just isn't right, that's genuinely fine. Your cart stays saved, the code will be honoured whenever you come back, and I'll stop emailing you about it.
+
+Vincent
+Founder, Hair Solutions Co.",Needs building in HubSpot,Complete your order →,Marketing,214987971492,Yes,,(Header - Centered logo) (Layout - Plain-text founder wrapper) (Commerce - Cart line items) (Text - Offer discount: free shipping) (Signal - Promo code) (Button - Primary CTA) (Footer - Preference centre),"Header - Centered logo - Light (https://app.notion.com/p/Header-Centered-logo-Light-586f4e0d84e0821a960b015f18443fb8?pvs=21), Layout - Plain-text founder wrapper - Light (https://app.notion.com/p/Layout-Plain-text-founder-wrapper-Light-245f4e0d84e0832280a101f38a7141a7?pvs=21), Commerce - Cart line items - Light (https://app.notion.com/p/Commerce-Cart-line-items-Light-9cbf4e0d84e08365a58c01cfae02db12?pvs=21), Text - Offer discount - Light (https://app.notion.com/p/Text-Offer-discount-Light-a36f4e0d84e083db94f501d582855339?pvs=21), Signal - Promo code - Light (https://app.notion.com/p/Signal-Promo-code-Light-0daf4e0d84e08206a3e6013131cecde9?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Preference centre - Light (https://app.notion.com/p/Footer-Preference-centre-Light-fa4f4e0d84e082819ba601163ca05b5a?pvs=21)",4,"Free shipping if it helps. Either way, this is the last one.",J2 · Cart Recovery · Master,5,Last note about your cart,Order & Shipping Updates,Journey · Cart Recovery · Master
+WB-2 · What's Changed — Day 7,"[Hero - Text-led]
+Three things that are genuinely different now.
+
+[Text - Opening]
+Hi {{ firstname }},
+
+If it's been a while, a few things are genuinely different now.
+
+Better hybrid bases. The lace-front-poly-back construction we now stock lasts noticeably longer than the full-lace units most people started on. If yours never lasted long enough to feel worth it, this is the reason why.
+
+Real tracking, end to end. You can see your unit's status from production through to delivery. The old ""it ships when it ships"" problem is gone.
+
+Maintenance plans. If the every-two-weeks routine was what wore you down, supplies can arrive automatically on schedule instead of you remembering.
+
+Still no offer. If one of these solves the thing that stopped you, that's the point.
+
+Vincent
+
+[Photo - Feature story]
+{{ image: the current hybrid base construction, up close — lace front seam visible }}
+Caption: The lace-front-poly-back build — the single biggest change since you last ordered.
+
+[Product - Dynamic recommendations]
+{{ products: current hybrid systems + the maintenance plan }}
+
+[Testimonial]
+[PULL from Proof Bank: a returning customer on the difference the new bases made]
+
+[Review stars]
+[PULL from Proof Bank: aggregate rating]
+
+[Button - Primary CTA]
+See what's changed →
+
+[Footer - Social]",Blocked - missing module,See what's changed →,Marketing,214988061042,Yes,Review stars,(Header - Centered logo) (Hero - Text-led) (Text - Opening) (Photo - Feature story) (Product - Dynamic recommendations) (Testimonial) (Review stars) (Button - Primary CTA) (Footer - Social),"Header - Centered logo - Light (https://app.notion.com/p/Header-Centered-logo-Light-586f4e0d84e0821a960b015f18443fb8?pvs=21), Hero - Text-led - Light (https://app.notion.com/p/Hero-Text-led-Light-963f4e0d84e08227a47b8102d3cfa40c?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), Photo - Feature story - Light (https://app.notion.com/p/Photo-Feature-story-Light-fd5f4e0d84e0833bb12d0192e338778d?pvs=21), Product - Dynamic recommendations - Light (https://app.notion.com/p/Product-Dynamic-recommendations-Light-bcaf4e0d84e082ef91cd016f15fff865?pvs=21), Testimonial - Light (https://app.notion.com/p/Testimonial-Light-955f4e0d84e083e1a17501a482a51f91?pvs=21), Review stars - Light (https://app.notion.com/p/Review-stars-Light-d78b9112fd1d40eaa4919a1496b51c38?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Social - Light (https://app.notion.com/p/Footer-Social-Light-746f4e0d84e083999c1d815025958c68?pvs=21)",2,"Three things, briefly. Some of them fix the reasons people leave.",J3 · Win-Back → Sunset,4,What's changed since you last ordered,News & Offers,Journey · Win-Back → Sunset
+WB-3 · 20% Welcome Back — Day 14,"[Hero - Text-led]
+20% off, if you want to try again.
+
+[Text - Offer discount]
+Hi {{ firstname }},
+
+Now the offer, since I said I'd get to it.
+
+20% off your next system. If you want the same again, it's about a minute. If you'd rather change base type or density based on how the last one went, reply and tell me what didn't work — I'll adjust the spec myself before it goes to production.
+
+Vincent
+
+[Signal - Promo code]
+Code: WELCOMEBACK20
+Valid 14 days
+
+[Commerce - Quote and spec table] (recommended)
+Your last specification, still on file:
+{{ last_order_specification }}
+
+[Testimonial]
+[PULL from Proof Bank: a customer who came back after a gap — what changed their mind]
+
+[Review stars]
+[PULL from Proof Bank: aggregate rating]
+
+[Button - Primary CTA]
+Reorder with 20% off →
+
+[Footer - Preference centre]",Blocked - missing module,Reorder with 20% off →,Marketing,214990267465,Yes,Review stars,(Header - Centered logo) (Hero - Text-led) (Text - Offer discount) (Signal - Promo code) [Commerce - Quote and spec table] (Testimonial) (Review stars) (Button - Primary CTA) (Footer - Preference centre),"Header - Centered logo - Light (https://app.notion.com/p/Header-Centered-logo-Light-586f4e0d84e0821a960b015f18443fb8?pvs=21), Hero - Text-led - Light (https://app.notion.com/p/Hero-Text-led-Light-963f4e0d84e08227a47b8102d3cfa40c?pvs=21), Text - Offer discount - Light (https://app.notion.com/p/Text-Offer-discount-Light-a36f4e0d84e083db94f501d582855339?pvs=21), Signal - Promo code - Light (https://app.notion.com/p/Signal-Promo-code-Light-0daf4e0d84e08206a3e6013131cecde9?pvs=21), Commerce - Quote and spec table - Light (https://app.notion.com/p/Commerce-Quote-and-spec-table-Light-b38f4e0d84e08340b8978142a8ab3328?pvs=21), Testimonial - Light (https://app.notion.com/p/Testimonial-Light-955f4e0d84e083e1a17501a482a51f91?pvs=21), Review stars - Light (https://app.notion.com/p/Review-stars-Light-d78b9112fd1d40eaa4919a1496b51c38?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Preference centre - Light (https://app.notion.com/p/Footer-Preference-centre-Light-fa4f4e0d84e082819ba601163ca05b5a?pvs=21)",3,Your previous specification is saved — reordering takes a minute.,J3 · Win-Back → Sunset,4,"20% off, if you want to try again",News & Offers,Journey · Win-Back → Sunset
+PP-1 · Order Confirmation — Day 0,"[Hero - Text-led]
+Your order is confirmed, {{ firstname }}.
+
+[Text - Opening]
+Hi {{ firstname }},
+
+Your order is in. Thank you — genuinely.
+
+Here's what happens now. Your system isn't sitting on a shelf waiting to be boxed; it gets made for you. That takes time, and I'd rather tell you that up front than have you wondering where it is.
+
+[Commerce - Order summary]
+Order number: {{ order_number }}
+What you ordered: {{ product_summary }}
+Estimated dispatch: {{ estimated_ship_date }}
+
+[List - Questions: what happens next timeline]
+1. Production starts — the base is cut and the hair is hand-tied to your spec
+2. I email you when it goes into production
+3. I email you when it ships, with tracking
+4. It should be at your door around {{ estimated_delivery_date }}
+
+No filler emails in between — only the real steps.
+
+[Text - Reassurance]
+If anything about your order looks wrong, reply to this email today and I'll fix it before production starts.
+
+Vincent
+Founder, Hair Solutions Co.
+
+[Button - Primary CTA]
+View your order →
+
+[List - Support strip]
+Questions about your order? Reply to this email — it comes straight to me.
+
+[Footer - Preference centre]",Needs building in HubSpot,View your order →,Marketing,,No,,(Header - Centered logo) (Hero - Text-led) (Text - Opening) (Commerce - Order summary) (List - Questions: what happens next timeline) (Text - Reassurance) (Button - Primary CTA: view your order) (List - Support strip) (Footer - Preference centre),"Header - Centered logo - Light (https://app.notion.com/p/Header-Centered-logo-Light-586f4e0d84e0821a960b015f18443fb8?pvs=21), Hero - Text-led - Light (https://app.notion.com/p/Hero-Text-led-Light-963f4e0d84e08227a47b8102d3cfa40c?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), Commerce - Order summary - Light (https://app.notion.com/p/Commerce-Order-summary-Light-d9ef4e0d84e082baa296018240d67098?pvs=21), List - Questions - Light (https://app.notion.com/p/List-Questions-Light-190f4e0d84e083418a230178ca6196ec?pvs=21), Text - Reassurance - Light (https://app.notion.com/p/Text-Reassurance-Light-5d3f4e0d84e082fe98ef010e47535c71?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), List - Support strip - Light (https://app.notion.com/p/List-Support-strip-Light-9e5f4e0d84e0829299b3811647c638e6?pvs=21), Footer - Preference centre - Light (https://app.notion.com/p/Footer-Preference-centre-Light-fa4f4e0d84e082819ba601163ca05b5a?pvs=21)",1,Here's exactly what happens between now and the day it arrives.,J1 · Post-Purchase · Master,7,"Your order is confirmed, {{ firstname }}",Order & Shipping Updates,Journey · Post-Purchase · Master
+PP-6 · Four Products That Matter — Delivery +21d,"[Hero - Text-led]
+The four products that actually matter.
+
+[Text - Opening]
+Hi {{ firstname }},
+
+Three weeks in, most people ask the same question: what do I actually need to buy, and what's marketing?
+
+The honest short list:
+
+A dedicated adhesive remover. Not acetone, not household solvent. This is the one product where the cheap option genuinely damages the base.
+
+A sulphate-free shampoo. Sulphates strip the knots and loosen the ventilation over time.
+
+A soft-bristle looped brush. Standard brushes catch the knots and pull hair through the base.
+
+A scalp prep wipe. Cheap, and it roughly doubles how long a bond holds.
+
+That's it. You do not need a leave-in, a serum, or a heat protectant unless you style with heat.
+
+If you already have equivalents that work, keep using them. I'd rather you had a system that lasts than a bigger order.
+
+Vincent
+
+[Product - Dynamic recommendations] (recommended)
+{{ products: the four essentials, matched to base type }}
+
+[Testimonial]
+[PULL from Proof Bank: a customer on the care routine paying off — longevity register, not hype]
+
+[Review stars]
+[PULL from Proof Bank: aggregate care-product rating]
+
+[Button - Primary CTA]
+See the four essentials →
+
+[Footer - Social]",Blocked - missing module,See the four essentials →,Marketing,214987971504,Yes,Review stars,(Header - Centered logo) (Hero - Text-led) (Text - Opening) [Product - Dynamic recommendations] (Testimonial) (Review stars) (Button - Primary CTA) (Footer - Social),"Header - Centered logo - Light (https://app.notion.com/p/Header-Centered-logo-Light-586f4e0d84e0821a960b015f18443fb8?pvs=21), Hero - Text-led - Light (https://app.notion.com/p/Hero-Text-led-Light-963f4e0d84e08227a47b8102d3cfa40c?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), Product - Dynamic recommendations - Light (https://app.notion.com/p/Product-Dynamic-recommendations-Light-bcaf4e0d84e082ef91cd016f15fff865?pvs=21), Testimonial - Light (https://app.notion.com/p/Testimonial-Light-955f4e0d84e083e1a17501a482a51f91?pvs=21), Review stars - Light (https://app.notion.com/p/Review-stars-Light-d78b9112fd1d40eaa4919a1496b51c38?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Social - Light (https://app.notion.com/p/Footer-Social-Light-746f4e0d84e083999c1d815025958c68?pvs=21)",6,"Not a bundle pitch — the short list, and what to skip.",J1 · Post-Purchase · Master,7,The four products that actually matter,Hair Care Guidance,Journey · Post-Purchase · Master
+CR-3 · Not Sure You Picked Right — Abandon +2d,"[Layout - Plain-text founder wrapper]
+Hi {{ firstname }},
+
+There's one reason for stalling I haven't covered, and it's the most common: you're not certain you chose the right system.
+
+That's reasonable. Base type, density, hairline, colour — it's a lot of decisions to make from product photos.
+
+So here's an easier route. Reply to this email with:
+
+— how you currently wear your hair
+— whether you want daily removal or a longer bond
+— your rough age bracket
+
+That's enough for me to tell you which base and density I'd actually recommend, and whether what's in your cart is right. If it isn't, I'll say so, even if the answer is a cheaper unit.
+
+Or if you'd rather talk it through properly, book fifteen minutes with me.
+
+Vincent
+
+[Text - Base type guidance]
+The two-minute version while you're deciding: lace is the most natural at the hairline and the least durable. Poly is the toughest and the easiest to clean and reattach. Hybrid takes the front from one and the back from the other — which is why most people end up there. Density should sit slightly under what feels safe; it's the difference between natural and obviously new.
+
+[Commerce - Viewed product]
+What you were looking at: {{ last_viewed_product }}
+
+[Text - Reassurance]
+Nothing expires here. Your cart stays saved, and a spec question before you order costs you nothing — it's what I'm here for.
+
+[List - Trust strip]
+Handcrafted to your spec · 14-day inspection window · Direct line to the founder
+
+[Button - Primary CTA]
+Book 15 minutes →
+
+[Footer - Preference centre]",Blocked - missing module,Book 15 minutes →,Marketing,,No,List - Trust strip,(Header - Centered logo) (Layout - Plain-text founder wrapper) (Text - Base type guidance) (Commerce - Viewed product) (Text - Reassurance) (List - Trust strip) (Button - Primary CTA) (Footer - Preference centre),"Header - Centered logo - Light (https://app.notion.com/p/Header-Centered-logo-Light-586f4e0d84e0821a960b015f18443fb8?pvs=21), Layout - Plain-text founder wrapper - Light (https://app.notion.com/p/Layout-Plain-text-founder-wrapper-Light-245f4e0d84e0832280a101f38a7141a7?pvs=21), Text - Base type guidance - Light (https://app.notion.com/p/Text-Base-type-guidance-Light-cc0f4e0d84e083618a8c016dc8a36971?pvs=21), Commerce - Viewed product - Light (https://app.notion.com/p/Commerce-Viewed-product-Light-4a6f4e0d84e0824aa3ca8129c698a993?pvs=21), Text - Reassurance - Light (https://app.notion.com/p/Text-Reassurance-Light-5d3f4e0d84e082fe98ef010e47535c71?pvs=21), List - Trust strip - Light (https://app.notion.com/p/List-Trust-strip-Light-8801ff07efc24e8c9dc7ec6e81e42bbc?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Preference centre - Light (https://app.notion.com/p/Footer-Preference-centre-Light-fa4f4e0d84e082819ba601163ca05b5a?pvs=21)",3,Tell me your situation and I'll tell you what I'd choose.,J2 · Cart Recovery · Master,5,Not sure you picked the right one?,Order & Shipping Updates,Journey · Cart Recovery · Master
+RO-4 · Same Spec Or Change — Delivery +110d,"Hi {{ firstname }},
+
+If you're going to order a replacement, this is the useful moment — before you're forced into it.
+
+The question worth answering: same again, or change something?
+
+Reasons people change:
+
+Density. The most common regret is a first system slightly too dense. If yours reads a bit young, dropping one grade is the fix.
+
+Base type. If you're replacing more often than you'd like, moving from full lace to a hybrid buys you weeks.
+
+Hairline. If you've been wearing it a while, you may want it set slightly differently now that you know how it sits.
+
+Reply with what you'd change and I'll adjust the specification before it goes to production. That costs nothing.
+
+Vincent",Needs building in HubSpot,Same spec → / Change my spec →,Marketing,,No,,(Header - Centered logo) (Layout - Plain-text founder wrapper) (Text - Customer snapshot: spec on file) (Button - Primary CTA: reply or reorder) (Footer - Preference centre),"Header - Centered logo - Light (https://app.notion.com/p/Header-Centered-logo-Light-586f4e0d84e0821a960b015f18443fb8?pvs=21), Layout - Plain-text founder wrapper - Light (https://app.notion.com/p/Layout-Plain-text-founder-wrapper-Light-245f4e0d84e0832280a101f38a7141a7?pvs=21), Text - Customer snapshot - Light (https://app.notion.com/p/Text-Customer-snapshot-Light-02bf4e0d84e0820fbfcf816d63fe68ae?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Preference centre - Light (https://app.notion.com/p/Footer-Preference-centre-Light-fa4f4e0d84e082819ba601163ca05b5a?pvs=21)",4,Now's the moment to adjust density or base type.,J4 · Reorder · Master,6,"Same spec, or change something?",News & Offers,Journey · Reorder · Master
+C-2 · Spec Confidence — Day 6,"[Hero - Text-led]
+The spec question, settled properly.
+
+[Text - Opening]
+Hi {{ firstname }},
+
+If you're still weighing options, that's normal — the spec is the real decision here, and it's worth getting right. So instead of another nudge, here's the comparison that actually matters for your situation.
+
+[Text - Base type guidance]
+Quick recap of the recommendation: {{ deal.hsc_quote_base_type }} — because of what you told me your priority was. The base decides more about your day-to-day than anything else. Lace is the most natural at the hairline and the least durable. Poly is the toughest and the easiest to clean and reattach. Hybrid takes the front from one and the back from the other, which is why most people end up there.
+
+[Comparison: their shortlist]
+{{ dynamic: the 2–3 options discussed on the call — hairline realism / bond length / maintenance load / lifespan / cost per month of wear }}
+
+[Commerce - Quote and spec table] (recommended)
+Your quote, unchanged since the call:
+Base: {{ deal.hsc_quote_base_type }} · Hair: {{ deal.hsc_quote_hair_type }}
+Unit price: {{ deal.hsc_quote_currency }} {{ deal.hsc_quote_base_price }}
+
+[Button - Primary CTA]
+Confirm your spec →
+
+[Footer - Preference centre]",Blocked - missing module,Confirm your spec →,Marketing,,No,Comparison,(Header - Centered logo) (Hero - Text-led) (Text - Opening) (Text - Base type guidance) (Comparison: their shortlist) [Commerce - Quote and spec table] (Button - Primary CTA) (Footer - Preference centre),"Header - Centered logo - Light (https://app.notion.com/p/Header-Centered-logo-Light-586f4e0d84e0821a960b015f18443fb8?pvs=21), Hero - Text-led - Light (https://app.notion.com/p/Hero-Text-led-Light-963f4e0d84e08227a47b8102d3cfa40c?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), Text - Base type guidance - Light (https://app.notion.com/p/Text-Base-type-guidance-Light-cc0f4e0d84e083618a8c016dc8a36971?pvs=21), Comparison - Light (https://app.notion.com/p/Comparison-Light-16ce628870c74196a3bbc2b923f6e6e1?pvs=21), Commerce - Quote and spec table - Light (https://app.notion.com/p/Commerce-Quote-and-spec-table-Light-b38f4e0d84e08340b8978142a8ab3328?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Preference centre - Light (https://app.notion.com/p/Footer-Preference-centre-Light-fa4f4e0d84e082819ba601163ca05b5a?pvs=21)",3,The trade-offs between the options we discussed — in one table.,J5 · Consultation · Master,5,"Your shortlist, side by side",News & Offers,
+C-0 · Consultation Recap — Day 0,"[Hero - Text-led]
+Everything we discussed, in one place.
+
+[Text - Opening: thank you]
+Hi {{ firstname }},
+
+Thanks for your time today. Below is a written record of what we covered — your situation, the spec I'd recommend, and what it costs — so you can think it over properly instead of working from memory.
+
+Nothing here is a commitment. It's a starting point you can change.
+
+[Text - Customer snapshot: their situation]
+{{ dynamic: hair loss stage, lifestyle factors, previous system experience, stated priorities }}
+
+[Text - Base type guidance: recommended spec]
+Based on what you described, here's what I'd recommend and why:
+
+Base: {{ deal.hsc_quote_base_type }}
+Hair: {{ deal.hsc_quote_hair_type }}
+Recommended path: {{ deal.hsc_recommended_path }}
+
+The reasoning is the trade-off we talked through — realism at the hairline versus ease of maintenance and lifespan. This spec sits where you said your priorities were. If you'd rather shift it in either direction, that's a conversation, not a problem.
+
+[Commerce - Quote and spec table]
+{{ deal.hsc_quote_currency }} — full spec and pricing breakdown
+Unit price: {{ deal.hsc_quote_base_price }}
+Shipping: {{ deal.hsc_quote_shipping_price }}
+Down payment: {{ deal.hsc_quote_down_payment }}
+
+[Timeline: production window]
+1. You approve the spec (or tell me what to change)
+2. Down payment confirms your build slot
+3. Handcrafted to your spec — 3–4 weeks
+4. Inspected against your spec, then dispatched
+5. Delivered, with a 14-day inspection window
+
+[Text - Reassurance: guarantee + adjustment]
+Two things worth knowing before you decide.
+
+First, you have 14 days from delivery to raise any production error — wrong density, colour inconsistency, base construction fault. If it's on us, we repair or replace at no cost.
+
+Second, first systems are rarely perfect and that's expected. Most customers adjust density or grey blend on their second order. By the third, the spec is locked and it simply repeats. We build that iteration into how we work.
+
+[Testimonial] (recommended)
+[PULL from Proof Bank: one consented quote — same base type or similar situation]
+
+[FAQ]
+{{ dynamic: top pre-order questions — lead time, payment, colour-match worries, adjustment policy }}
+
+[Button - Primary CTA]
+Approve your spec →
+
+[List - Support strip]
+Reply to this email with any question about the spec or the quote — it comes straight to me.
+
+[Footer - Standard]",Blocked - missing module,Approve your spec →,Sales,,No,"Timeline, FAQ",(Header - Centered logo) (Hero - Text-led) (Text - Opening: thank you) (Text - Customer snapshot: their situation) (Text - Base type guidance: recommended spec) (Commerce - Quote and spec table) (Timeline: production window) (Text - Reassurance: guarantee + adjustment) [Testimonial] (FAQ) (Button - Primary CTA: approve your spec) (List - Support strip) (Footer - Standard),"Header - Centered logo - Light (https://app.notion.com/p/Header-Centered-logo-Light-586f4e0d84e0821a960b015f18443fb8?pvs=21), Hero - Text-led - Light (https://app.notion.com/p/Hero-Text-led-Light-963f4e0d84e08227a47b8102d3cfa40c?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), Text - Customer snapshot - Light (https://app.notion.com/p/Text-Customer-snapshot-Light-02bf4e0d84e0820fbfcf816d63fe68ae?pvs=21), Text - Base type guidance - Light (https://app.notion.com/p/Text-Base-type-guidance-Light-cc0f4e0d84e083618a8c016dc8a36971?pvs=21), Commerce - Quote and spec table - Light (https://app.notion.com/p/Commerce-Quote-and-spec-table-Light-b38f4e0d84e08340b8978142a8ab3328?pvs=21), Timeline - Light (https://app.notion.com/p/Timeline-Light-2e67e7f87f954aa89c67df538f973121?pvs=21), Text - Reassurance - Light (https://app.notion.com/p/Text-Reassurance-Light-5d3f4e0d84e082fe98ef010e47535c71?pvs=21), Testimonial - Light (https://app.notion.com/p/Testimonial-Light-955f4e0d84e083e1a17501a482a51f91?pvs=21), FAQ - Light (https://app.notion.com/p/FAQ-Light-1b8ef749952e467aaffdb8c25a808bb6?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), List - Support strip - Light (https://app.notion.com/p/List-Support-strip-Light-9e5f4e0d84e0829299b3811647c638e6?pvs=21), Footer - Standard - Light (https://app.notion.com/p/Footer-Standard-Light-8c3f4e0d84e082c6acf6815321074fc7?pvs=21)",1,"Everything we discussed, in one place — take your time with it.",J5 · Consultation · Master,5,Your consultation recap and recommended spec,One to One,
+C-4 · Founder Close — Day 18,"Hi {{ firstname }},
+
+Last note from me about the consultation — I won't keep nudging.
+
+Almost three weeks ago we built a spec for you. If you've decided against it, or the timing's wrong, that's completely fine — you can tell me, or just let this be the last email.
+
+But if something specific is holding you back — the price, a doubt about the spec, something you didn't want to ask on the call — reply and tell me. Plain question, plain answer. And if a system honestly isn't the right call for your situation, I'll say that too.
+
+Your quote stays on file either way. There's no expiry on the conversation.
+
+Vincent
+Founder, Hair Solutions Co.",Needs building in HubSpot,No button — reply-only by design,Marketing,,No,,(Header - Centered logo) (Layout - Plain-text founder wrapper) (Footer - Preference centre),"Header - Centered logo - Light (https://app.notion.com/p/Header-Centered-logo-Light-586f4e0d84e0821a960b015f18443fb8?pvs=21), Layout - Plain-text founder wrapper - Light (https://app.notion.com/p/Layout-Plain-text-founder-wrapper-Light-245f4e0d84e0832280a101f38a7141a7?pvs=21), Footer - Preference centre - Light (https://app.notion.com/p/Footer-Preference-centre-Light-fa4f4e0d84e082819ba601163ca05b5a?pvs=21)",5,"One honest question, then I'll stop nudging.",J5 · Consultation · Master,5,Where I'll leave it,News & Offers,
+C-1 · Objections Answered — Day 2,"[Hero - Text-led]
+The three things everyone asks before saying yes.
+
+[Text - Opening]
+Hi {{ firstname }},
+
+You've had the recap a couple of days. If you're still turning it over, you're probably stuck on one of the same three questions everyone asks at this point. Here they are, answered straight.
+
+[List - Questions: the 3 things everyone asks]
+""Will it actually look real?"" — At conversation distance, a well-fitted lace front is not detectable. The giveaway is never the hair — it's a hairline set too low, or a density too high for your age. Your spec sets both conservatively for exactly that reason.
+
+""Will it hold?"" — With clean prep and the right adhesive, a bond holds 7 to 14 days through showering, sweating and sleeping. Prep is the variable, not the product, and we walk you through it.
+
+""What if it's not right when it arrives?"" — Then you email me and we fix it. Colour off, density wrong, base size out — you have 14 days from delivery, and anything that's on us, we resolve at no cost.
+
+[List - Trust strip]
+Handcrafted to your spec · 14-day inspection window · Direct line to the founder
+
+[Testimonial]
+[PULL from Proof Bank: first-time buyer who hesitated on one of these three, then ordered]
+
+[Text - Reassurance]
+There's no clock on your quote. I'd rather you order sure than order fast.
+
+[Button - Primary CTA]
+Approve your spec →
+
+[Footer - Preference centre]",Blocked - missing module,Approve your spec →,Marketing,,No,List - Trust strip,(Header - Centered logo) (Hero - Text-led) (Text - Opening) (List - Questions: the 3 things everyone asks) (List - Trust strip) (Testimonial) (Text - Reassurance) (Button - Primary CTA) (Footer - Preference centre),"Header - Centered logo - Light (https://app.notion.com/p/Header-Centered-logo-Light-586f4e0d84e0821a960b015f18443fb8?pvs=21), Hero - Text-led - Light (https://app.notion.com/p/Hero-Text-led-Light-963f4e0d84e08227a47b8102d3cfa40c?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), List - Questions - Light (https://app.notion.com/p/List-Questions-Light-190f4e0d84e083418a230178ca6196ec?pvs=21), List - Trust strip - Light (https://app.notion.com/p/List-Trust-strip-Light-8801ff07efc24e8c9dc7ec6e81e42bbc?pvs=21), Testimonial - Light (https://app.notion.com/p/Testimonial-Light-955f4e0d84e083e1a17501a482a51f91?pvs=21), Text - Reassurance - Light (https://app.notion.com/p/Text-Reassurance-Light-5d3f4e0d84e082fe98ef010e47535c71?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Preference centre - Light (https://app.notion.com/p/Footer-Preference-centre-Light-fa4f4e0d84e082819ba601163ca05b5a?pvs=21)",2,"Will it look real, will it hold, and what happens if it's wrong.",J5 · Consultation · Master,5,The three questions everyone asks before their first order,News & Offers,
+C-3 · Soft Incentive — Day 12,"[Hero - Text-led]
+If price is the last thing in the way, this should help.
+
+[Text - Opening]
+Hi {{ firstname }},
+
+It's been about two weeks since we spoke. If you're still deciding, no problem — but if the only thing left between you and the spec we built is the number, I'd rather move the number than lose you over it.
+
+[Text - Offer discount]
+10% off your first system. Applies to the quoted spec exactly as it stands — nothing changes but the price.
+[OFFER — confirm before send: FIRSTFIT10 · 10% off first system · 7 days]
+
+[Signal - Promo code]
+Code: FIRSTFIT10
+
+[Signal - Countdown]
+Valid for 7 days from this email.
+
+[Testimonial]
+[PULL from Proof Bank: a customer on the first order being worth it — value register, not hype]
+
+[Button - Primary CTA]
+Start your build with 10% off →
+
+[Footer - Preference centre]",Blocked - missing module,Start your build with 10% off →,Marketing,,No,Signal - Countdown,(Header - Centered logo) (Hero - Text-led) (Text - Opening) (Text - Offer discount) (Signal - Promo code) (Signal - Countdown) (Testimonial) (Button - Primary CTA) (Footer - Preference centre),"Header - Centered logo - Light (https://app.notion.com/p/Header-Centered-logo-Light-586f4e0d84e0821a960b015f18443fb8?pvs=21), Hero - Text-led - Light (https://app.notion.com/p/Hero-Text-led-Light-963f4e0d84e08227a47b8102d3cfa40c?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), Text - Offer discount - Light (https://app.notion.com/p/Text-Offer-discount-Light-a36f4e0d84e083db94f501d582855339?pvs=21), Signal - Promo code - Light (https://app.notion.com/p/Signal-Promo-code-Light-0daf4e0d84e08206a3e6013131cecde9?pvs=21), Signal - Countdown - Light (https://app.notion.com/p/Signal-Countdown-Light-9a3a477b95ce410babc12e160cfa32e7?pvs=21), Testimonial - Light (https://app.notion.com/p/Testimonial-Light-955f4e0d84e083e1a17501a482a51f91?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Preference centre - Light (https://app.notion.com/p/Footer-Preference-centre-Light-fa4f4e0d84e082819ba601163ca05b5a?pvs=21)",4,"A small discount, live for one week — no pressure attached.",J5 · Consultation · Master,5,Something to make the first order easier,News & Offers,
+W-1 · Welcome + Expectations — Signup +0d,"⚠️ GATED: this audience exists only after the newsletter capture form ships (order-of-ops item 9).
+
+[Text - Masthead]
+Hair Solutions Co. — the newsletter
+
+[Text - Opening]
+Hi {{ firstname }},
+
+Welcome to the Hair Solutions list. Before anything else, here's the deal — what you'll get from us, and what you never will.
+
+[Text - Section: expectations]
+What you'll get:
+- Practical content about hair systems — how they work, what they cost, how to maintain them
+- Real customer stories — actual experiences, not stock-photo marketing
+- Product and material updates when we launch something worth knowing about
+
+What you'll never get:
+- Pressure to buy before you're ready
+- Medical claims or miracle promises
+- Spam — we email 2–4 times a month, maximum
+
+If you ever have a question — even a basic one — reply to any email and I'll answer it personally.
+
+[Text - Offer discount] + [Signal - Promo code] (recommended — only if the capture form promised an incentive)
+[OFFER — confirm before send: welcome incentive, only if promised at signup. If none was promised, drop both modules.]
+
+[FAQ]
+{{ dynamic: the three questions new subscribers ask — do I need a consultation first, what does a system cost, how natural does it look }}
+
+[Button - Primary CTA: low pressure]
+Start with the basics →
+
+[Footer - Social]",Blocked - missing module,Start with the basics →,Marketing,,No,"Text - Masthead, Text - Section, FAQ",(Text - Masthead) (Text - Opening) (Text - Section: expectations) [Text - Offer discount] [Signal - Promo code] (FAQ) (Button - Primary CTA: low pressure) (Footer - Social),"Text - Masthead - Light (https://app.notion.com/p/Text-Masthead-Light-e139ea84fd444ab593206f590b338c7c?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), Text - Section - Light (https://app.notion.com/p/Text-Section-Light-1086c979270d4436913f6953ec54ce62?pvs=21), Text - Offer discount - Light (https://app.notion.com/p/Text-Offer-discount-Light-a36f4e0d84e083db94f501d582855339?pvs=21), Signal - Promo code - Light (https://app.notion.com/p/Signal-Promo-code-Light-0daf4e0d84e08206a3e6013131cecde9?pvs=21), FAQ - Light (https://app.notion.com/p/FAQ-Light-1b8ef749952e467aaffdb8c25a808bb6?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Social - Light (https://app.notion.com/p/Footer-Social-Light-746f4e0d84e083999c1d815025958c68?pvs=21)",1,"What you'll get, what you'll never get, and how often.",W · Newsletter Welcome,5,You're in — here's what to expect,News & Offers,
+W-3 · Style Inspiration — Signup +7d,"⚠️ GATED: this audience exists only after the newsletter capture form ships (order-of-ops item 9).
+
+[Text - Masthead]
+Hair Solutions Co. — the newsletter
+
+[Photo - Feature story]
+{{ image: customer style shot — textured crop, natural daylight, no staging }}
+One of the best things about a system: you style it exactly how you want.
+
+[Column - Image and text]
+Five looks our customers are wearing right now:
+
+1. The textured crop — short sides, textured top. 80% density with slight wave. Low maintenance.
+2. The classic slick-back — straight hair, 100% density, 6""+ length. Clean and professional.
+3. The natural curl — body wave or curly, 80–100% density. Very natural movement.
+4. The fade blend — system hair blended into a skin fade. Needs a barber who can cut in a system (we can help you find one).
+5. The grey blend — 10–30% grey mixed into the base colour. Adds realism for men 35+.
+
+The rule behind all five: density matched to age. A 25-year-old can pull off 100% density; a 45-year-old looks more natural at 70–80%. It's one of the most important decisions we help with during spec building.
+
+[Product - 3-up grid]
+{{ products: three HS- systems that carry these styles }}
+
+[Testimonial]
+[PULL from Proof Bank: a style/confidence quote — someone who changed their look after switching to a system]
+
+[Button - Primary CTA]
+See the style gallery →
+
+[Footer - Social]",Blocked - missing module,See the style gallery →,Marketing,,No,"Text - Masthead, Column - Image and text, Product - 3-up grid",(Text - Masthead) (Photo - Feature story) (Column - Image and text) (Product - 3-up grid) (Testimonial) (Button - Primary CTA) (Footer - Social),"Text - Masthead - Light (https://app.notion.com/p/Text-Masthead-Light-e139ea84fd444ab593206f590b338c7c?pvs=21), Photo - Feature story - Light (https://app.notion.com/p/Photo-Feature-story-Light-fd5f4e0d84e0833bb12d0192e338778d?pvs=21), Column - Image and text - Light (https://app.notion.com/p/Column-Image-and-text-Light-7266afaedac44b3280a9264e77f5d88c?pvs=21), Product - 3-up grid - Light (https://app.notion.com/p/Product-3-up-grid-Light-224fec0ed29e4c568b227f8394b0890c?pvs=21), Testimonial - Light (https://app.notion.com/p/Testimonial-Light-955f4e0d84e083e1a17501a482a51f91?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Social - Light (https://app.notion.com/p/Footer-Social-Light-746f4e0d84e083999c1d815025958c68?pvs=21)",3,"Real wearers, real cuts — and the density rule that makes them work.",W · Newsletter Welcome,5,5 styles our customers are wearing right now,News & Offers,
+W-2 · How Systems Work — Signup +3d,"⚠️ GATED: this audience exists only after the newsletter capture form ships (order-of-ops item 9).
+
+[Hero - Text-led]
+The 3-minute version of how this actually works.
+
+[Text - Opening]
+Hi {{ firstname }},
+
+If you've been curious about hair systems but never quite understood them, here's the simple version — no jargon, no sales angle. There are only four parts that matter: the base, the hair, the attachment, and the routine. Everything else is detail.
+
+[Photo - Founder note]
+I explain this to someone new nearly every day. The base is the biggest decision — it determines how natural the system looks, how breathable it feels, and how long it lasts. Get that right and the rest follows. — Vincent
+
+[Comparison]
+Lace — most natural at the hairline, most breathable, shortest life.
+Poly (skin) — most durable, easiest to clean and reattach, slightly less invisible up close.
+Hybrid — lace front for the hairline, poly at the sides and back. Most people end up here.
+
+[Timeline: how it works]
+1. The hair — hand-tied into the base, matched to your colour, density and length. The goal is proportional and natural for your age, not ""too perfect""
+2. The attachment — tape or adhesive; properly done, it holds through workouts, swimming, wind and sleep
+3. Daily — wash and style like natural hair (5 minutes)
+4. Every 2–4 weeks — remove, clean scalp and base, reattach (30–45 minutes)
+5. Every 3–6 months — replace the system
+
+No surgery, no chemicals, no downtime.
+
+[Button - Primary CTA]
+Explore base types →
+
+[Footer - Social]",Blocked - missing module,Explore base types →,Marketing,,No,"Photo - Founder note, Comparison, Timeline",(Header - Centered logo) (Hero - Text-led) (Text - Opening) (Photo - Founder note) (Comparison) (Timeline: how it works) (Button - Primary CTA) (Footer - Social),"Header - Centered logo - Light (https://app.notion.com/p/Header-Centered-logo-Light-586f4e0d84e0821a960b015f18443fb8?pvs=21), Hero - Text-led - Light (https://app.notion.com/p/Hero-Text-led-Light-963f4e0d84e08227a47b8102d3cfa40c?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), Photo - Founder note - Light (https://app.notion.com/p/Photo-Founder-note-Light-efc5d4d197d94045a6ad9986f50b0414?pvs=21), Comparison - Light (https://app.notion.com/p/Comparison-Light-16ce628870c74196a3bbc2b923f6e6e1?pvs=21), Timeline - Light (https://app.notion.com/p/Timeline-Light-2e67e7f87f954aa89c67df538f973121?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Social - Light (https://app.notion.com/p/Footer-Social-Light-746f4e0d84e083999c1d815025958c68?pvs=21)",2,"Base, hair, attachment, routine — no jargon, no sales angle.",W · Newsletter Welcome,5,How a hair system actually works (the 3-minute version),News & Offers,
+W-4 · Social Proof Wall — Signup +12d,"⚠️ GATED: this audience exists only after the newsletter capture form ships (order-of-ops item 9). Restored from legacy Welcome 4of5 (Social-Proof-Wall format — one of the two email types allowed to stack stat bars + review stars).
+
+[Hero - Text-led]
+What customers say once they've lived with it.
+
+[Text - Opening]
+Hi {{ firstname }},
+
+I can tell you a system looks natural. It lands differently coming from the people wearing one. Everything below is real, consented, and unedited — that's a hard rule here.
+
+[Testimonial]
+[PULL from Proof Bank: lead testimonial — first-time buyer, first month, the ""nobody noticed"" register]
+
+[Quote - Accent bar]
+[PULL from Proof Bank: one-line quote — e.g. the barber-couldn't-tell register]
+
+[Stat bars]
+[PULL from Proof Bank: stats — e.g. % of customers who reorder, average review score, systems shipped]
+
+[Review stars]
+[PULL from Proof Bank: aggregate rating]
+
+[Text - Offer discount: reminder] (recommended — only if W-1 carried an incentive)
+[OFFER — confirm before send: reminder of the welcome incentive, only if it was promised at signup]
+
+[Button - Primary CTA]
+Read the reviews →
+
+[Footer - Social]",Blocked - missing module,Read the reviews →,Marketing,,No,"Quote - Accent bar, Stat bars, Review stars",(Header - Centered logo) (Hero - Text-led) (Text - Opening) (Testimonial) (Quote - Accent bar) (Stat bars) (Review stars) [Text - Offer discount: reminder] (Button - Primary CTA) (Footer - Social),"Header - Centered logo - Light (https://app.notion.com/p/Header-Centered-logo-Light-586f4e0d84e0821a960b015f18443fb8?pvs=21), Hero - Text-led - Light (https://app.notion.com/p/Hero-Text-led-Light-963f4e0d84e08227a47b8102d3cfa40c?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), Testimonial - Light (https://app.notion.com/p/Testimonial-Light-955f4e0d84e083e1a17501a482a51f91?pvs=21), Quote - Accent bar - Light (https://app.notion.com/p/Quote-Accent-bar-Light-9be17a802a29457589bb9e36ac500dee?pvs=21), Stat bars - Light (https://app.notion.com/p/Stat-bars-Light-fd72f22fa2ee488aa7ef79aa0362170f?pvs=21), Review stars - Light (https://app.notion.com/p/Review-stars-Light-d78b9112fd1d40eaa4919a1496b51c38?pvs=21), Text - Offer discount - Light (https://app.notion.com/p/Text-Offer-discount-Light-a36f4e0d84e083db94f501d582855339?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Social - Light (https://app.notion.com/p/Footer-Social-Light-746f4e0d84e083999c1d815025958c68?pvs=21)",4,What customers say after the first month — unedited.,W · Newsletter Welcome,5,Don't take my word for it,News & Offers,
+W-5 · Soft Consult Invite — Signup +18d,"⚠️ GATED: this audience exists only after the newsletter capture form ships (order-of-ops item 9).
+
+[Text - Masthead]
+Hair Solutions Co. — the newsletter
+
+[Text - Opening]
+Hi {{ firstname }},
+
+Over the past few weeks you've had a decent picture of how systems work — the bases, the styles, the maintenance. If you're still in research mode, that's completely fine. Take your time; you'll keep getting our best content either way.
+
+If you're starting to feel ready, here's exactly how it works.
+
+[Timeline: the process]
+1. We talk — email, WhatsApp or phone, whatever you prefer. Most first consultations take 10–15 minutes
+2. I recommend one system — not a catalogue of options, one specific recommendation tailored to you
+3. You decide — no pressure, no time limits. If the quote makes sense, we build it. If not, no hard feelings
+
+[Product - Dynamic recommendations]
+{{ products: based on browsing history, or the three most-ordered first systems }}
+
+[List - Questions]
+Worth thinking about before a call:
+· How you currently wear your hair
+· Whether you want daily removal or a longer bond
+· Which matters more — the most natural hairline, or the least maintenance
+
+[Testimonial]
+[PULL from Proof Bank: a customer on the consultation itself — low-pressure, honest register]
+
+[Photo - Founder note]
+Every consultation is with me, not a sales team. If a system isn't right for your situation, I'll tell you that too. — Vincent
+
+[Button - Primary CTA]
+Start a consultation →
+
+[Footer - Social]",Blocked - missing module,Start a consultation →,Marketing,,No,"Text - Masthead, Timeline, Photo - Founder note",(Text - Masthead) (Text - Opening) (Timeline: the process) (Product - Dynamic recommendations) (List - Questions) (Testimonial) (Photo - Founder note) (Button - Primary CTA) (Footer - Social),"Text - Masthead - Light (https://app.notion.com/p/Text-Masthead-Light-e139ea84fd444ab593206f590b338c7c?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), Timeline - Light (https://app.notion.com/p/Timeline-Light-2e67e7f87f954aa89c67df538f973121?pvs=21), Product - Dynamic recommendations - Light (https://app.notion.com/p/Product-Dynamic-recommendations-Light-bcaf4e0d84e082ef91cd016f15fff865?pvs=21), List - Questions - Light (https://app.notion.com/p/List-Questions-Light-190f4e0d84e083418a230178ca6196ec?pvs=21), Testimonial - Light (https://app.notion.com/p/Testimonial-Light-955f4e0d84e083e1a17501a482a51f91?pvs=21), Photo - Founder note - Light (https://app.notion.com/p/Photo-Founder-note-Light-efc5d4d197d94045a6ad9986f50b0414?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Social - Light (https://app.notion.com/p/Footer-Social-Light-746f4e0d84e083999c1d815025958c68?pvs=21)",5,How the process works when you are — and no pressure while you're not.,W · Newsletter Welcome,5,Whenever you're ready,News & Offers,
+"NL-02 · Story — ""My barber couldn't tell""","📎 FULL · salvaged from the legacy Customer Story bank (Danny, Austin). ⚠️ Before send: verify Danny's written consent is on file in the Proof Bank (Permission = Yes) — quotes and photo.
+
+[Text - Masthead]
+Hair Solutions Co. — Customer Stories
+
+[Photo - Feature story]
+{{ image: Danny — consented customer photo from the approved library }}
+
+[Text - Opening]
+Hi {{ firstname }},
+
+Every so often we ask a customer to tell their story properly — not a one-line review, but what actually happened: what they tried before, what they were afraid of, and what changed.
+
+This one is Danny's. He's a 34-year-old project manager from Austin who started losing his hair at 26. Shared with permission.
+
+[Quote - Centered]
+""I looked like me again. The version of me I'd been missing.""
+
+[Testimonial]
+Before: three years of minoxidil with minimal results. Expensive PRP treatments. Hats as a permanent accessory. ""I stopped going to pool parties. I avoided photos. The worst part wasn't the hair loss — it was how much mental space it took up.""
+
+The decision: months of research after finding hair systems on YouTube. ""I was skeptical. I thought it would look fake, or that people would notice."" His first system: French lace, natural dark brown, medium density.
+
+The first fit: ""I put it on and just stared in the mirror.""
+
+Where he is now, a year in: girlfriend didn't know for the first three months. Coworkers still don't. Gym five days a week, swims on weekends, travels for work. ""It just works. That's the best thing I can say about it. It just works, and I get to live my life again.""
+
+[Review stars] (recommended)
+{{ dynamic: aggregate review rating and count }}
+
+[Stat bars] (recommended)
+[PULL from Proof Bank: verified metrics only — e.g. repeat-order rate, average time to locked spec]
+
+[Product - Dynamic recommendations]
+{{ dynamic: French lace systems in the spec range Danny wears }}
+
+[Button - Primary CTA]
+See more customer results →
+
+[Footer - Social]",Blocked - missing module,See more customer results →,Marketing,,No,"Text - Masthead, Quote - Centered",(Text - Masthead) (Photo - Feature story) (Text - Opening) (Quote - Centered) (Testimonial) [Review stars] [Stat bars] (Product - Dynamic recommendations) (Button - Primary CTA) (Footer - Social),"Text - Masthead - Light (https://app.notion.com/p/Text-Masthead-Light-e139ea84fd444ab593206f590b338c7c?pvs=21), Photo - Feature story - Light (https://app.notion.com/p/Photo-Feature-story-Light-fd5f4e0d84e0833bb12d0192e338778d?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), Quote - Centered - Light (https://app.notion.com/p/Quote-Centered-Light-fecc2e162cc54a3cb62f8f3172064d81?pvs=21), Testimonial - Light (https://app.notion.com/p/Testimonial-Light-955f4e0d84e083e1a17501a482a51f91?pvs=21), Review stars - Light (https://app.notion.com/p/Review-stars-Light-d78b9112fd1d40eaa4919a1496b51c38?pvs=21), Stat bars - Light (https://app.notion.com/p/Stat-bars-Light-fd72f22fa2ee488aa7ef79aa0362170f?pvs=21), Product - Dynamic recommendations - Light (https://app.notion.com/p/Product-Dynamic-recommendations-Light-bcaf4e0d84e082ef91cd016f15fff865?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Social - Light (https://app.notion.com/p/Footer-Social-Light-746f4e0d84e083999c1d815025958c68?pvs=21)",2,Danny spent years hiding under hats. Here's what actually changed.,N · Newsletter Programme,20,"""My barber couldn't tell"" — one customer's first year",News & Offers,
+NL-03 · Offer — Limited offer on bestsellers,"📋 TEMPLATE · offer-led — real offers cannot be invented (brand rule). The legacy salvage (MIDYEAR25, 25% off) is expired; every figure, code and date below is confirm-before-send.
+FILL CHECKLIST (~20 min): 1. Confirm offer % / scope / expiry with Vincent · 2. Pull proof from Proof Bank · 3. Replace all tokens · 4. Verify the CTA lands on the exact collection + UTMs · 5. Test · 6. Schedule.
+
+[Text - Masthead]
+Hair Solutions Co.
+
+[Text - Offer discount: HERO POSITION]
+[OFFER — confirm before send: headline discount %, exactly which collection or systems it applies to, and the expiry date. The number is the first thing the reader sees.]
+
+No exclusions games, no fake urgency — the offer is what it says, and it ends when it says.
+
+[Signal - Promo code]
+{{ promo code — auto-apply at checkout }}
+
+[Signal - Countdown]
+{{ countdown to offer expiry }}
+
+[Grid - Collections 4]
+{{ dynamic: the 4 collections this offer applies to }}
+
+[Product - 3-up grid] (recommended)
+{{ dynamic: the 3 bestselling systems within the offer }}
+
+[Testimonial] (recommended)
+[PULL from Proof Bank: one consented quote — value or first-order angle]
+
+[List - Trust strip] (recommended)
+Built to your spec · 14-day inspection window · Skin-safe certified adhesives · 3–4 week build
+
+Every system in this offer is still built to your spec — same density grading, same colour matching, same inspection window. The discount is on the price, not the process. If you're not sure which base is right for you, reply before you order — we'd rather you use the offer on the correct system than the wrong one.
+
+[Button - Primary CTA → lands on the exact collection]
+Shop the offer →
+
+[Footer - Standard]",Blocked - missing module,Shop the offer →,Marketing,,No,"Text - Masthead, Signal - Countdown, Grid - Collections 4",(Text - Masthead) (Text - Offer discount: hero position) (Signal - Promo code) (Signal - Countdown) (Grid - Collections 4) [Product - 3-up grid] [Testimonial] [List - Trust strip] (Button - Primary CTA → exact collection) (Footer - Standard),"Text - Masthead - Light (https://app.notion.com/p/Text-Masthead-Light-e139ea84fd444ab593206f590b338c7c?pvs=21), Text - Offer discount - Light (https://app.notion.com/p/Text-Offer-discount-Light-a36f4e0d84e083db94f501d582855339?pvs=21), Signal - Promo code - Light (https://app.notion.com/p/Signal-Promo-code-Light-0daf4e0d84e08206a3e6013131cecde9?pvs=21), Signal - Countdown - Light (https://app.notion.com/p/Signal-Countdown-Light-9a3a477b95ce410babc12e160cfa32e7?pvs=21), Grid - Collections 4 - Light (https://app.notion.com/p/Grid-Collections-4-Light-85b01799273b4cd6b21ae4da56699a78?pvs=21), Product - 3-up grid - Light (https://app.notion.com/p/Product-3-up-grid-Light-224fec0ed29e4c568b227f8394b0890c?pvs=21), Testimonial - Light (https://app.notion.com/p/Testimonial-Light-955f4e0d84e083e1a17501a482a51f91?pvs=21), List - Trust strip - Light (https://app.notion.com/p/List-Trust-strip-Light-8801ff07efc24e8c9dc7ec6e81e42bbc?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Standard - Light (https://app.notion.com/p/Footer-Standard-Light-8c3f4e0d84e082c6acf6815321074fc7?pvs=21)",3,The price drops. The build doesn't change.,N · Newsletter Programme,20,A limited offer on the systems people order most,News & Offers,
+"NL-05 · Launch — New systems, who each one is for","📎 FULL · evergreen framing salvaged from the legacy Product Launch recurring template. The featured systems slot in dynamically — the positioning copy below doesn't change.
+
+[Text - Masthead]
+Hair Solutions Co. — New Arrivals
+
+[Hero - Photo-led]
+{{ image: the new systems, hero shot }}
+
+[Text - Opening]
+Hi {{ firstname }},
+
+We've added new systems to the range. Rather than list specifications at you, here's the more useful framing: who each one is actually for, and what problem it solves.
+
+[Text - Section: why it matters — benefits tied to pain points]
+Every base we add exists because customers kept hitting the same wall.
+
+If you love how lace looks at the hairline but keep tearing it at the perimeter — that's what the hybrid constructions solve. Lace where it's visible, PU where you bond.
+
+If you're tired of replacing a system every six weeks — that's the durability end of the range, Mono Pro and Dura Skin, where you trade a little thinness for months of extra life.
+
+If detection is the thing keeping you awake — that's the ultra-fine skin end, Nano at 0.03mm, where you accept a shorter lifespan for the most convincing result available.
+
+[Column - Image and text]
+{{ image + text: the new base construction shown close up, with what it's built for }}
+
+[Product - 3-up grid]
+{{ dynamic: the 3 newly launched systems }}
+
+[Comparison] (recommended)
+{{ dynamic: new systems vs the closest existing options — base, lifespan, attachment, best for }}
+
+[Testimonial] (recommended)
+[PULL from Proof Bank: one consented quote — early wearer of a new system, if available]
+
+[List - Trust strip] (recommended)
+Built to your spec · 14-day inspection window · 3–4 week build · Skin-safe certified adhesives
+
+[Signal - Countdown: early access] (recommended)
+{{ countdown to end of early-access window, if one applies }}
+
+[Button - Primary CTA]
+See the new range →
+
+[Footer - Social]",Blocked - missing module,See the new range →,Marketing,,No,"Text - Masthead, Hero - Photo-led, Text - Section, Column - Image and text, Product - 3-up grid",(Text - Masthead) (Hero - Photo-led) (Text - Opening) (Text - Section: why it matters) (Column - Image and text) (Product - 3-up grid) [Comparison] [Testimonial] [List - Trust strip] [Signal - Countdown] (Button - Primary CTA) (Footer - Social),"Text - Masthead - Light (https://app.notion.com/p/Text-Masthead-Light-e139ea84fd444ab593206f590b338c7c?pvs=21), Hero - Photo-led - Light (https://app.notion.com/p/Hero-Photo-led-Light-5c87dfafc5084fdab11abefa21891961?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), Text - Section - Light (https://app.notion.com/p/Text-Section-Light-1086c979270d4436913f6953ec54ce62?pvs=21), Column - Image and text - Light (https://app.notion.com/p/Column-Image-and-text-Light-7266afaedac44b3280a9264e77f5d88c?pvs=21), Product - 3-up grid - Light (https://app.notion.com/p/Product-3-up-grid-Light-224fec0ed29e4c568b227f8394b0890c?pvs=21), Comparison - Light (https://app.notion.com/p/Comparison-Light-16ce628870c74196a3bbc2b923f6e6e1?pvs=21), Testimonial - Light (https://app.notion.com/p/Testimonial-Light-955f4e0d84e083e1a17501a482a51f91?pvs=21), List - Trust strip - Light (https://app.notion.com/p/List-Trust-strip-Light-8801ff07efc24e8c9dc7ec6e81e42bbc?pvs=21), Signal - Countdown - Light (https://app.notion.com/p/Signal-Countdown-Light-9a3a477b95ce410babc12e160cfa32e7?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Social - Light (https://app.notion.com/p/Footer-Social-Light-746f4e0d84e083999c1d815025958c68?pvs=21)",5,"Not a spec sheet — who each one is for, and the problem it solves.",N · Newsletter Programme,20,"New systems, and who each one is actually for",News & Offers,
+"NL-01 · Education — Lace, skin, mono or hybrid","📎 FULL · evergreen — salvaged from the legacy Education recurring template. Pairs with a blog post on base selection; CTA lands on the post.
+
+[Text - Masthead]
+Hair Solutions Co. — Education
+
+[Text - Opening]
+Hi {{ firstname }},
+
+The most common question we get, by a wide margin: which base should I choose?
+
+Most answers you'll find online are really product pitches. Here's the version that isn't.
+
+There is no best base. There's only the trade-off, and it's the same one every time: the more realistic a base looks, the thinner and more fragile it is. Everything else — brand names, marketing terms, price tiers — sits downstream of that single trade-off.
+
+So the useful question isn't ""what's best?"" It's ""which do I care about more: the most natural possible hairline, or a system that survives my life?""
+
+[Column - Image and text]
+{{ image: close-up comparison of base constructions at the hairline }}
+Left: Swiss lace at the hairline. Right: skin at the same angle. Both read as scalp from conversation distance — the difference is what each costs you in lifespan and routine.
+
+[Comparison]
+Lace (Swiss, French) — most natural hairline, breathable, scalp shows through the mesh. 3–6 months.
+Skin (Nano 0.03mm → Dura 0.12mm) — clean shaved-scalp illusion, easiest to attach and remove. 1–8 months depending on thickness.
+Mono (Mono Pro) — most durable, natural movement, comfortable for daily wear. 5–8 months.
+Hybrid (Lace Edge, Mono Fusion LF, Thin Skin LF) — lace hairline with a PU perimeter for secure bonding. 3–6 months.
+
+A rough rule that holds up: if you're new and nervous about detection, start lace at the front. If you're active, sweat a lot, or want the simplest routine, start skin or hybrid. If you want maximum life per unit, Mono Pro.
+
+[FAQ]
+Can I switch base types between orders? — Yes. Most customers adjust the spec on order two and lock it by order three.
+Will people see the base? — Not at conversation distance, if the density is graded properly. The spec matters more than the base.
+Do I need a consultation first? — No, but it removes the guesswork. It's free and there's no obligation.
+
+[Testimonial]
+[PULL from Proof Bank: one consented quote — base-choice angle, Permission = Yes]
+
+[Button - Primary CTA → paired blog post]
+Read the full guide →
+
+[Footer - Social]",Blocked - missing module,Read the full guide →,Marketing,,No,"Text - Masthead, Column - Image and text, Comparison, FAQ",(Text - Masthead) (Text - Opening) (Column - Image and text) (Comparison) (FAQ) [Testimonial] (Button - Primary CTA → paired blog post) (Footer - Social),"Text - Masthead - Light (https://app.notion.com/p/Text-Masthead-Light-e139ea84fd444ab593206f590b338c7c?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), Column - Image and text - Light (https://app.notion.com/p/Column-Image-and-text-Light-7266afaedac44b3280a9264e77f5d88c?pvs=21), Comparison - Light (https://app.notion.com/p/Comparison-Light-16ce628870c74196a3bbc2b923f6e6e1?pvs=21), FAQ - Light (https://app.notion.com/p/FAQ-Light-1b8ef749952e467aaffdb8c25a808bb6?pvs=21), Testimonial - Light (https://app.notion.com/p/Testimonial-Light-955f4e0d84e083e1a17501a482a51f91?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Social - Light (https://app.notion.com/p/Footer-Social-Light-746f4e0d84e083999c1d815025958c68?pvs=21)",1,"There is no best base. There's one trade-off, and it's the same every time.",N · Newsletter Programme,20,"Lace, skin, mono or hybrid — how to actually choose",News & Offers,
+NL-04 · Brand — What we've been building,"📎 FULL · salvaged from the legacy Brand & Recap recurring template. Prose is complete; the two proof slots are Proof Bank pulls (verified figures only).
+
+[Text - Masthead]
+Hair Solutions Co.
+
+[Photo - Feature story]
+{{ image: the workshop — a system mid-build on the bench }}
+
+[Text - Opening]
+Hi {{ firstname }},
+
+We don't send these often. This one's a look at what's changed here recently, what we've learned from customers, and where we're heading. No offer attached.
+
+[Text - Section: what changed]
+Three things, honestly told:
+
+1. We tightened the consultation process. More of you are locking the right spec on the first order instead of the second, which means fewer adjustment rounds and faster reorders.
+2. We expanded colour matching — including the grey blends customers kept asking for. If you were told ""close enough"" before, it's worth re-checking.
+3. We rebuilt how we email you. Fewer sends, each one with an actual job. If we don't have something useful to say, you won't hear from us.
+
+A note from me: the thing I've become most convinced of this year is that the spec matters more than the product tier. A well-specced mid-range system beats a badly-specced premium one every single time. It's why we keep pushing consultations rather than upsells.
+
+Vincent Laroche
+Founder, Hair Solutions Co.
+
+[Quote - Centered] (recommended)
+[PULL from Proof Bank: one consented customer quote that reflects the period's theme]
+
+[Stat bars] (recommended)
+[PULL from Proof Bank: verified figures only — systems built, average time to locked spec, repeat-order rate. Confirm each number before send.]
+
+[Button - Primary CTA]
+See what's new →
+
+[Footer - Social]",Blocked - missing module,See what's new →,Marketing,,No,"Text - Masthead, Text - Section",(Text - Masthead) (Photo - Feature story) (Text - Opening) (Text - Section: what changed) [Quote - Centered] [Stat bars] (Button - Primary CTA) (Footer - Social),"Text - Masthead - Light (https://app.notion.com/p/Text-Masthead-Light-e139ea84fd444ab593206f590b338c7c?pvs=21), Photo - Feature story - Light (https://app.notion.com/p/Photo-Feature-story-Light-fd5f4e0d84e0833bb12d0192e338778d?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), Text - Section - Light (https://app.notion.com/p/Text-Section-Light-1086c979270d4436913f6953ec54ce62?pvs=21), Quote - Centered - Light (https://app.notion.com/p/Quote-Centered-Light-fecc2e162cc54a3cb62f8f3172064d81?pvs=21), Stat bars - Light (https://app.notion.com/p/Stat-bars-Light-fd72f22fa2ee488aa7ef79aa0362170f?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Social - Light (https://app.notion.com/p/Footer-Social-Light-746f4e0d84e083999c1d815025958c68?pvs=21)",4,No offer in this one — just what's changed and where we're heading.,N · Newsletter Programme,20,What we've been building,News & Offers,
+NL-06 · Education — Density explained,"📎 FULL · evergreen. Pairs with a blog post on density selection; CTA lands on the post.
+
+[Text - Masthead]
+Hair Solutions Co. — Education
+
+[Text - Opening]
+Hi {{ firstname }},
+
+Here's the mistake almost everyone makes on their first order: they buy more hair than they ever had.
+
+It's understandable. You've been missing hair for years — of course ""full"" sounds right. But a 40-year-old with the density of a 20-year-old doesn't read as lucky. It reads as wrong, even to people who can't say why. Density is the #1 reason systems get noticed — not the base, not the colour. The amount of hair.
+
+[Column - Image and text]
+{{ image: the same system at 90% vs 65% density, on the same head }}
+Same base, same colour, same cut. The one on the right is 25 points lighter — and it's the one nobody looks twice at.
+
+[Text - Base type guidance]
+How to think about it:
+
+- Match the hair you'd have if you'd never lost it — at your age, not at 20. That's the whole rule.
+- Density is graded, not flat. A believable system runs lighter at the hairline and temples, fuller through the mid and crown. A flat, uniform density is what makes a front look like a wall.
+- Rough ladder: 60–65% reads light and mature · 70–80% is the natural range for most men 30–50 · 90%+ only holds up on younger faces — and even then, graded.
+- When in doubt, go one step lighter. You can add density on the next order; you can't subtract it from this one.
+
+[FAQ]
+Can density be adjusted after I order? — Not on the unit itself; a barber can thin it slightly, but it's better specced right. Most customers dial it in by order two.
+What do most men actually order? — Medium (70–80%). It's our most reordered spec by a wide margin.
+What about the hairline specifically? — Ask for a graded, slightly irregular front. It's on the spec sheet for a reason.
+
+[Testimonial]
+[PULL from Proof Bank: one consented quote — density or ""looks natural"" angle, Permission = Yes]
+
+[Button - Primary CTA → paired blog post]
+Read the full guide →
+
+[Footer - Social]",Blocked - missing module,Read the full guide →,Marketing,,No,"Text - Masthead, Column - Image and text, FAQ",(Text - Masthead) (Text - Opening) (Column - Image and text) (Text - Base type guidance) (FAQ) [Testimonial] (Button - Primary CTA → paired blog post) (Footer - Social),"Text - Masthead - Light (https://app.notion.com/p/Text-Masthead-Light-e139ea84fd444ab593206f590b338c7c?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), Column - Image and text - Light (https://app.notion.com/p/Column-Image-and-text-Light-7266afaedac44b3280a9264e77f5d88c?pvs=21), Text - Base type guidance - Light (https://app.notion.com/p/Text-Base-type-guidance-Light-cc0f4e0d84e083618a8c016dc8a36971?pvs=21), FAQ - Light (https://app.notion.com/p/FAQ-Light-1b8ef749952e467aaffdb8c25a808bb6?pvs=21), Testimonial - Light (https://app.notion.com/p/Testimonial-Light-955f4e0d84e083e1a17501a482a51f91?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Social - Light (https://app.notion.com/p/Footer-Social-Light-746f4e0d84e083999c1d815025958c68?pvs=21)",6,The #1 reason systems get noticed isn't the base. It's too much hair.,N · Newsletter Programme,20,"Density, explained — matching what you actually had",News & Offers,
+NL-10 · Launch — HS- spotlight,"📋 TEMPLATE · deep dive on one HS- system — the featured system cannot be invented; pick it when the slot arrives.
+FILL CHECKLIST (~20 min): 1. Choose the HS- system with Vincent · 2. Fill every {{ token }} with its real spec · 3. Pull an early-wearer quote from Proof Bank if one exists · 4. Verify links/UTMs · 5. Test · 6. Schedule.
+
+[Text - Masthead]
+Hair Solutions Co. — Spotlight
+
+[Hero - Photo-led]
+{{ image: the featured system, hero shot }}
+
+[Text - Opening]
+Hi {{ firstname }},
+
+Usually we cover the range. This time, one system — {{ system name }} — and a proper look at it: what it does well, what it trades away, and who should skip it. If we only told you the first part, this would be an ad.
+
+[Text - Section: why it matters]
+{{ the problem this system was built to solve, in one honest paragraph — what customers kept asking for that the existing range didn't cover }}
+
+Strengths: {{ 2–3 real strengths — base behaviour, hairline, lifespan, routine }}
+Trade-offs: {{ the honest cost — lifespan, fragility, routine, price }}
+Skip it if: {{ who this is genuinely wrong for }}
+
+[Column - Image and text]
+{{ image + text: the base construction close up — what you're looking at and why it's built that way }}
+
+[Product - 3-up grid]
+{{ dynamic: the featured system + the two closest alternatives }}
+
+[Comparison] (recommended)
+{{ dynamic: featured system vs its two neighbours — base, lifespan, attachment, best for }}
+
+[Testimonial] (recommended)
+[PULL from Proof Bank: one consented quote from an early wearer of this system, if available]
+
+[List - Trust strip] (recommended)
+Built to your spec · 14-day inspection window · 3–4 week build · Skin-safe certified adhesives
+
+[Signal - Countdown] (recommended)
+{{ countdown — only if a real early-access window applies; otherwise drop the module }}
+
+[Button - Primary CTA]
+See the full spec →
+
+[Footer - Social]",Blocked - missing module,See the full spec →,Marketing,,No,"Text - Masthead, Hero - Photo-led, Text - Section, Column - Image and text, Product - 3-up grid",(Text - Masthead) (Hero - Photo-led) (Text - Opening) (Text - Section: why it matters) (Column - Image and text) (Product - 3-up grid) [Comparison] [Testimonial] [List - Trust strip] [Signal - Countdown] (Button - Primary CTA) (Footer - Social),"Text - Masthead - Light (https://app.notion.com/p/Text-Masthead-Light-e139ea84fd444ab593206f590b338c7c?pvs=21), Hero - Photo-led - Light (https://app.notion.com/p/Hero-Photo-led-Light-5c87dfafc5084fdab11abefa21891961?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), Text - Section - Light (https://app.notion.com/p/Text-Section-Light-1086c979270d4436913f6953ec54ce62?pvs=21), Column - Image and text - Light (https://app.notion.com/p/Column-Image-and-text-Light-7266afaedac44b3280a9264e77f5d88c?pvs=21), Product - 3-up grid - Light (https://app.notion.com/p/Product-3-up-grid-Light-224fec0ed29e4c568b227f8394b0890c?pvs=21), Comparison - Light (https://app.notion.com/p/Comparison-Light-16ce628870c74196a3bbc2b923f6e6e1?pvs=21), Testimonial - Light (https://app.notion.com/p/Testimonial-Light-955f4e0d84e083e1a17501a482a51f91?pvs=21), List - Trust strip - Light (https://app.notion.com/p/List-Trust-strip-Light-8801ff07efc24e8c9dc7ec6e81e42bbc?pvs=21), Signal - Countdown - Light (https://app.notion.com/p/Signal-Countdown-Light-9a3a477b95ce410babc12e160cfa32e7?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Social - Light (https://app.notion.com/p/Footer-Social-Light-746f4e0d84e083999c1d815025958c68?pvs=21)",10,"One system, a proper look — strengths, trade-offs, and who should skip it.",N · Newsletter Programme,20,Spotlight: {{ system name }} — who it's actually for,News & Offers,
+NL-07 · Story — The first 90 days,"📋 TEMPLATE · real customers cannot be invented (brand rule). Feature one consented customer with a first-90-days arc.
+FILL CHECKLIST (~20 min): 1. Pick the customer from Proof Bank (Permission = Yes, photo + quotes) · 2. Replace all [PULL] slots with their actual timeline · 3. Relate the Proof Bank rows via Used In · 4. Verify links/UTMs · 5. Test · 6. Schedule.
+
+[Text - Masthead]
+Hair Solutions Co. — Customer Stories
+
+[Photo - Feature story]
+[PULL from Proof Bank: consented customer photo — ideally day-one vs day-90]
+
+[Text - Opening]
+Hi {{ firstname }},
+
+The question people don't ask out loud: what's it actually like at the start?
+
+Honest answer: week one feels strange. Day 90 feels like nothing. What matters is the middle — so we asked {{ customer first name }} to walk through it, week by week. Shared with permission.
+
+[Quote - Centered]
+[PULL: the customer's single strongest line about the moment it stopped feeling new]
+
+[Testimonial]
+[PULL: the full consented 90-day arc — structure it as:]
+Week 1 — first fit, first self-application, what surprised them.
+Week 2–4 — first wash, first haircut with the system, the routine settling in.
+Month 2 — first re-bond, what they stopped thinking about.
+Day 90 — where it sits now: routine time per week, and what changed outside the mirror.
+Include base type, density and how long they've worn it.
+
+[Review stars] (recommended)
+{{ dynamic: aggregate review rating and count }}
+
+[Stat bars] (recommended)
+[PULL from Proof Bank: verified metrics only — e.g. average routine minutes/week reported, repeat-order rate]
+
+[Product - Dynamic recommendations]
+{{ dynamic: the featured customer's base type and comparable systems }}
+
+[Button - Primary CTA]
+See more customer results →
+
+[Footer - Social]",Blocked - missing module,See more customer results →,Marketing,,No,"Text - Masthead, Quote - Centered",(Text - Masthead) (Photo - Feature story) (Text - Opening) (Quote - Centered) (Testimonial) [Review stars] [Stat bars] (Product - Dynamic recommendations) (Button - Primary CTA) (Footer - Social),"Text - Masthead - Light (https://app.notion.com/p/Text-Masthead-Light-e139ea84fd444ab593206f590b338c7c?pvs=21), Photo - Feature story - Light (https://app.notion.com/p/Photo-Feature-story-Light-fd5f4e0d84e0833bb12d0192e338778d?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), Quote - Centered - Light (https://app.notion.com/p/Quote-Centered-Light-fecc2e162cc54a3cb62f8f3172064d81?pvs=21), Testimonial - Light (https://app.notion.com/p/Testimonial-Light-955f4e0d84e083e1a17501a482a51f91?pvs=21), Review stars - Light (https://app.notion.com/p/Review-stars-Light-d78b9112fd1d40eaa4919a1496b51c38?pvs=21), Stat bars - Light (https://app.notion.com/p/Stat-bars-Light-fd72f22fa2ee488aa7ef79aa0362170f?pvs=21), Product - Dynamic recommendations - Light (https://app.notion.com/p/Product-Dynamic-recommendations-Light-bcaf4e0d84e082ef91cd016f15fff865?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Social - Light (https://app.notion.com/p/Footer-Social-Light-746f4e0d84e083999c1d815025958c68?pvs=21)",7,Week one feels strange. Day 90 feels like nothing. Here's the middle.,N · Newsletter Programme,20,The first 90 days — a real timeline,News & Offers,
+NL-08 · Offer — Care kit bundle,"📋 TEMPLATE · offer-led — care kit bundle and/or free-shipping threshold. Figures are confirm-before-send.
+FILL CHECKLIST (~20 min): 1. Confirm with Vincent: bundle contents, bundle price or discount %, free-shipping threshold, code, expiry · 2. Pull proof · 3. Replace tokens · 4. CTA → care collection + UTMs · 5. Test · 6. Schedule.
+
+[Text - Masthead]
+Hair Solutions Co.
+
+[Text - Offer discount: HERO POSITION]
+[OFFER — confirm before send: the care kit bundle — exact contents, bundle price vs bought-separately price, and/or the free-shipping threshold. Lead with the concrete saving.]
+
+Here's the honest pitch: most systems don't die of old age. They die of the wrong shampoo, alcohol-heavy removers, and adhesive habits that seemed fine for the first month. The kit exists so the care side stops costing you lifespan.
+
+[Signal - Promo code]
+{{ promo code — auto-apply at checkout }}
+
+[Signal - Countdown]
+{{ countdown to offer expiry }}
+
+[Grid - Collections 4]
+{{ dynamic: care collections — adhesives, removers, wash care, tools }}
+
+[Product - 3-up grid] (recommended)
+{{ dynamic: the 3 items most ordered alongside a first system }}
+
+[Testimonial] (recommended)
+[PULL from Proof Bank: one consented quote — system-longevity or routine angle]
+
+[List - Trust strip] (recommended)
+Skin-safe certified adhesives · Matched to your base type · 14-day inspection window · Ships with plain instructions
+
+One thing we won't do: sell you care products your base doesn't need. If you're not sure what your system actually requires, reply with your base type and we'll tell you — even if the answer is ""less than you think.""
+
+[Button - Primary CTA → lands on the care collection]
+Shop the offer →
+
+[Footer - Standard]",Blocked - missing module,Shop the offer →,Marketing,,No,"Text - Masthead, Signal - Countdown, Grid - Collections 4",(Text - Masthead) (Text - Offer discount: hero position) (Signal - Promo code) (Signal - Countdown) (Grid - Collections 4) [Product - 3-up grid] [Testimonial] [List - Trust strip] (Button - Primary CTA → exact collection) (Footer - Standard),"Text - Masthead - Light (https://app.notion.com/p/Text-Masthead-Light-e139ea84fd444ab593206f590b338c7c?pvs=21), Text - Offer discount - Light (https://app.notion.com/p/Text-Offer-discount-Light-a36f4e0d84e083db94f501d582855339?pvs=21), Signal - Promo code - Light (https://app.notion.com/p/Signal-Promo-code-Light-0daf4e0d84e08206a3e6013131cecde9?pvs=21), Signal - Countdown - Light (https://app.notion.com/p/Signal-Countdown-Light-9a3a477b95ce410babc12e160cfa32e7?pvs=21), Grid - Collections 4 - Light (https://app.notion.com/p/Grid-Collections-4-Light-85b01799273b4cd6b21ae4da56699a78?pvs=21), Product - 3-up grid - Light (https://app.notion.com/p/Product-3-up-grid-Light-224fec0ed29e4c568b227f8394b0890c?pvs=21), Testimonial - Light (https://app.notion.com/p/Testimonial-Light-955f4e0d84e083e1a17501a482a51f91?pvs=21), List - Trust strip - Light (https://app.notion.com/p/List-Trust-strip-Light-8801ff07efc24e8c9dc7ec6e81e42bbc?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Standard - Light (https://app.notion.com/p/Footer-Standard-Light-8c3f4e0d84e082c6acf6815321074fc7?pvs=21)",8,"Most lifespan is lost to care, not construction. This fixes the care part.",N · Newsletter Programme,20,The kit that makes your system last longer,News & Offers,
+NL-09 · Brand — On the bench,"📎 FULL · evergreen. Behind-the-scenes build story — also quietly answers ""why does it take 3–4 weeks?""
+
+[Text - Masthead]
+Hair Solutions Co.
+
+[Photo - Feature story]
+{{ image: the bench — a base mid-ventilation, tools out }}
+
+[Text - Opening]
+Hi {{ firstname }},
+
+Every so often someone asks why a system takes 3–4 weeks when a wig ships tomorrow. Fair question. This email is the answer — a walk through what actually happens between your spec sheet and your door.
+
+[Text - Section: how a system gets made]
+1. The spec sheet becomes a pattern. Your base type, size and hairline shape get cut before any hair is touched. If the consultation flagged an irregular hairline or temple recession, it's built in here — not styled in later.
+
+2. Colour is matched against a physical ring, not a photo. Screens lie. Grey percentage is counted per zone, because real grey doesn't distribute evenly.
+
+3. The hair goes in by hand — knot by knot. Ventilation is the slow part. Direction matters: crown hair grows differently to hairline hair, and a system knotted flat looks combed even when it isn't. The hairline gets the finest knots and the lightest grading, because it's the part everyone sees first.
+
+4. It gets checked against the spec, not against ""looks fine."" Density per zone, colour under two light sources, hairline placement. If it misses, it doesn't ship.
+
+That's the whole reason for the wait. Nothing on a shelf, nothing pre-made and relabelled. A system built to a spec takes the time the spec takes.
+
+Vincent Laroche
+Founder, Hair Solutions Co.
+
+[Quote - Centered] (recommended)
+[PULL from Proof Bank: one consented quote — quality or craftsmanship angle]
+
+[Stat bars] (recommended)
+[PULL from Proof Bank: verified figures only — e.g. knots per system, build hours, QC pass rate. Confirm before send.]
+
+[Button - Primary CTA]
+See what goes into yours →
+
+[Footer - Social]",Blocked - missing module,See what goes into yours →,Marketing,,No,"Text - Masthead, Text - Section",(Text - Masthead) (Photo - Feature story) (Text - Opening) (Text - Section: what changed) [Quote - Centered] [Stat bars] (Button - Primary CTA) (Footer - Social),"Text - Masthead - Light (https://app.notion.com/p/Text-Masthead-Light-e139ea84fd444ab593206f590b338c7c?pvs=21), Photo - Feature story - Light (https://app.notion.com/p/Photo-Feature-story-Light-fd5f4e0d84e0833bb12d0192e338778d?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), Text - Section - Light (https://app.notion.com/p/Text-Section-Light-1086c979270d4436913f6953ec54ce62?pvs=21), Quote - Centered - Light (https://app.notion.com/p/Quote-Centered-Light-fecc2e162cc54a3cb62f8f3172064d81?pvs=21), Stat bars - Light (https://app.notion.com/p/Stat-bars-Light-fd72f22fa2ee488aa7ef79aa0362170f?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Social - Light (https://app.notion.com/p/Footer-Social-Light-746f4e0d84e083999c1d815025958c68?pvs=21)",9,From spec sheet to ventilated hairline — the part you never see.,N · Newsletter Programme,20,On the bench — how a system actually gets made,News & Offers,
+NL-15 · Launch — New colours & textures,"📋 TEMPLATE · real launches cannot be invented — fill with the actual new colours/textures when they land.
+FILL CHECKLIST (~20 min): 1. Confirm the real new range with Vincent (names, shades, which bases carry them) · 2. Fill every {{ token }} · 3. Pull proof if an early wearer exists · 4. Verify links/UTMs · 5. Test · 6. Schedule.
+
+[Text - Masthead]
+Hair Solutions Co. — New Arrivals
+
+[Hero - Photo-led]
+{{ image: the new colour/texture range — swatches on real systems, not colour chips }}
+
+[Text - Opening]
+Hi {{ firstname }},
+
+New colours and textures are in — including {{ the specific shades customers kept requesting }}. Colour is where most systems quietly fail, so here's what's new and, more usefully, how to get it matched right.
+
+[Text - Section: why it matters]
+A colour miss is worse than a density miss — you can't style your way out of it. Two things matter more than the shade name:
+
+Grey is a percentage, not a colour. Real grey distributes unevenly — more at the temples, less at the crown. {{ if the new range includes grey blends: name them and the % steps }}.
+
+Texture has to match what's left. If your side hair has wave, a straight system meets it at the seam and loses. {{ name the new texture options and who each suits }}.
+
+[Column - Image and text]
+{{ image + text: one new shade/texture close up, on a system — in daylight, not studio light }}
+
+[Product - 3-up grid]
+{{ dynamic: 3 systems available in the new range }}
+
+[Comparison] (recommended)
+{{ dynamic: new shades vs the closest existing options — base availability, grey %, texture }}
+
+[Testimonial] (recommended)
+[PULL from Proof Bank: one consented quote — colour-match angle, if available]
+
+[List - Trust strip] (recommended)
+Matched against a physical colour ring · Grey counted per zone · 14-day inspection window · Built to your spec
+
+[Signal - Countdown] (recommended)
+{{ countdown — only if a real early-access window applies; otherwise drop the module }}
+
+[Button - Primary CTA]
+See the new options →
+
+[Footer - Social]",Blocked - missing module,See the new options →,Marketing,,No,"Text - Masthead, Hero - Photo-led, Text - Section, Column - Image and text, Product - 3-up grid",(Text - Masthead) (Hero - Photo-led) (Text - Opening) (Text - Section: why it matters) (Column - Image and text) (Product - 3-up grid) [Comparison] [Testimonial] [List - Trust strip] [Signal - Countdown] (Button - Primary CTA) (Footer - Social),"Text - Masthead - Light (https://app.notion.com/p/Text-Masthead-Light-e139ea84fd444ab593206f590b338c7c?pvs=21), Hero - Photo-led - Light (https://app.notion.com/p/Hero-Photo-led-Light-5c87dfafc5084fdab11abefa21891961?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), Text - Section - Light (https://app.notion.com/p/Text-Section-Light-1086c979270d4436913f6953ec54ce62?pvs=21), Column - Image and text - Light (https://app.notion.com/p/Column-Image-and-text-Light-7266afaedac44b3280a9264e77f5d88c?pvs=21), Product - 3-up grid - Light (https://app.notion.com/p/Product-3-up-grid-Light-224fec0ed29e4c568b227f8394b0890c?pvs=21), Comparison - Light (https://app.notion.com/p/Comparison-Light-16ce628870c74196a3bbc2b923f6e6e1?pvs=21), Testimonial - Light (https://app.notion.com/p/Testimonial-Light-955f4e0d84e083e1a17501a482a51f91?pvs=21), List - Trust strip - Light (https://app.notion.com/p/List-Trust-strip-Light-8801ff07efc24e8c9dc7ec6e81e42bbc?pvs=21), Signal - Countdown - Light (https://app.notion.com/p/Signal-Countdown-Light-9a3a477b95ce410babc12e160cfa32e7?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Social - Light (https://app.notion.com/p/Footer-Social-Light-746f4e0d84e083999c1d815025958c68?pvs=21)",15,Including the shades you kept asking for — greys included.,N · Newsletter Programme,20,New colours and textures just landed,News & Offers,
+"NL-12 · Story — Gym, pool, travel","📋 TEMPLATE · real customers cannot be invented (brand rule). Feature one consented customer with a genuinely active routine.
+FILL CHECKLIST (~20 min): 1. Pick the customer from Proof Bank (Permission = Yes — must actually train/swim/travel) · 2. Replace all [PULL] slots with their real routine · 3. Relate Proof Bank rows via Used In · 4. Verify links/UTMs · 5. Test · 6. Schedule.
+
+[Text - Masthead]
+Hair Solutions Co. — Customer Stories
+
+[Photo - Feature story]
+[PULL from Proof Bank: consented photo — the customer mid-activity if available, not a studio shot]
+
+[Text - Opening]
+Hi {{ firstname }},
+
+The most common fear we hear from active men: ""the first hard workout will end it."" So this issue is one customer's actual week — training, chlorine, airports — and what the routine really looks like. Shared with permission.
+
+[Quote - Centered]
+[PULL: the customer's strongest line about training or swimming with the system]
+
+[Testimonial]
+[PULL: the full consented routine — structure it as:]
+The week — how many sessions, what kind, how much sweat is really involved.
+The pool — what they do before and after chlorine, honestly.
+Travel — what's actually in the wash bag; carry-on reality.
+The bond — which attachment routine they use, how often they re-bond, and the one mistake they made early on.
+Include base type (skin/hybrid tend to suit this profile) and how long they've worn it.
+
+[Review stars] (recommended)
+{{ dynamic: aggregate review rating and count }}
+
+[Stat bars] (recommended)
+[PULL from Proof Bank: verified metrics only — e.g. re-bond interval reported by active wearers]
+
+[Product - Dynamic recommendations]
+{{ dynamic: the featured customer's base type and comparable active-lifestyle systems }}
+
+[Button - Primary CTA]
+See more customer results →
+
+[Footer - Social]",Blocked - missing module,See more customer results →,Marketing,,No,"Text - Masthead, Quote - Centered",(Text - Masthead) (Photo - Feature story) (Text - Opening) (Quote - Centered) (Testimonial) [Review stars] [Stat bars] (Product - Dynamic recommendations) (Button - Primary CTA) (Footer - Social),"Text - Masthead - Light (https://app.notion.com/p/Text-Masthead-Light-e139ea84fd444ab593206f590b338c7c?pvs=21), Photo - Feature story - Light (https://app.notion.com/p/Photo-Feature-story-Light-fd5f4e0d84e0833bb12d0192e338778d?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), Quote - Centered - Light (https://app.notion.com/p/Quote-Centered-Light-fecc2e162cc54a3cb62f8f3172064d81?pvs=21), Testimonial - Light (https://app.notion.com/p/Testimonial-Light-955f4e0d84e083e1a17501a482a51f91?pvs=21), Review stars - Light (https://app.notion.com/p/Review-stars-Light-d78b9112fd1d40eaa4919a1496b51c38?pvs=21), Stat bars - Light (https://app.notion.com/p/Stat-bars-Light-fd72f22fa2ee488aa7ef79aa0362170f?pvs=21), Product - Dynamic recommendations - Light (https://app.notion.com/p/Product-Dynamic-recommendations-Light-bcaf4e0d84e082ef91cd016f15fff865?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Social - Light (https://app.notion.com/p/Footer-Social-Light-746f4e0d84e083999c1d815025958c68?pvs=21)",12,"Five workouts a week, chlorine, carry-on only. Here's how the routine holds.",N · Newsletter Programme,20,"Gym, pool, travel — an active customer's routine",News & Offers,
+NL-11 · Education — Hairline realism,"📎 FULL · evergreen. Pairs with a blog post on hairline design; CTA lands on the post.
+
+[Text - Masthead]
+Hair Solutions Co. — Education
+
+[Text - Opening]
+Hi {{ firstname }},
+
+When a system gets noticed, it's almost never the hair. It's the line the hair starts on.
+
+Three giveaways, in order of how often we see them:
+
+1. Too straight. Real hairlines are irregular. A ruler-clean front edge is the single fastest tell there is.
+2. Too dense. The front of a real head of hair is its lightest zone — fine hairs first, fuller behind. A front that starts at full density starts like a wall.
+3. Too low. Grown men don't have the hairline they had at 17. A low, closed hairline on a 45-year-old face doesn't read young — it reads wrong.
+
+None of these are fixed by spending more. All of them are fixed on the spec sheet.
+
+[Column - Image and text]
+{{ image: two fronts side by side — straight/dense/low vs irregular/graded/age-appropriate }}
+Same base material on both. The difference is entirely in how the front was specced.
+
+[Text - Base type guidance]
+What to actually ask for:
+
+- A soft, irregular front — it's a standard spec-sheet option, not a custom favour.
+- Graded density at the hairline — finest knots and lightest hair at the leading edge, stepping up behind.
+- Age-appropriate placement — a rough rule: about four fingers above the brow ridge, with slight temple recession. If you have photos of yourself from before, send them with your consultation — they beat any formula.
+- Lace at the front if detection is your top concern — it's what the mesh construction is for.
+
+[FAQ]
+Should the knots be bleached? — At the hairline, usually yes on darker hair — it removes the dot pattern at the roots. Elsewhere it trades durability for nothing you can see.
+Can you copy my old hairline? — Yes. Photos from before are the best spec input we get.
+What if my last system's front looked fake? — Almost always one of the three above. Reply with a photo and we'll tell you which.
+
+[Testimonial]
+[PULL from Proof Bank: one consented quote — ""nobody noticed"" / hairline angle, Permission = Yes]
+
+[Button - Primary CTA → paired blog post]
+Read the full guide →
+
+[Footer - Social]",Blocked - missing module,Read the full guide →,Marketing,,No,"Text - Masthead, Column - Image and text, FAQ",(Text - Masthead) (Text - Opening) (Column - Image and text) (Text - Base type guidance) (FAQ) [Testimonial] (Button - Primary CTA → paired blog post) (Footer - Social),"Text - Masthead - Light (https://app.notion.com/p/Text-Masthead-Light-e139ea84fd444ab593206f590b338c7c?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), Column - Image and text - Light (https://app.notion.com/p/Column-Image-and-text-Light-7266afaedac44b3280a9264e77f5d88c?pvs=21), Text - Base type guidance - Light (https://app.notion.com/p/Text-Base-type-guidance-Light-cc0f4e0d84e083618a8c016dc8a36971?pvs=21), FAQ - Light (https://app.notion.com/p/FAQ-Light-1b8ef749952e467aaffdb8c25a808bb6?pvs=21), Testimonial - Light (https://app.notion.com/p/Testimonial-Light-955f4e0d84e083e1a17501a482a51f91?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Social - Light (https://app.notion.com/p/Footer-Social-Light-746f4e0d84e083999c1d815025958c68?pvs=21)",11,It's almost never the hair. It's the line it starts on.,N · Newsletter Programme,20,Why fronts look fake (and how not to),News & Offers,
+NL-13 · Offer — Returning-customer pricing,"📎 FULL · evergreen prose — the explanation is the email. ⚠️ Figures are confirm-before-send: align the % and code with the returning-customer offer already used in RO-6 (RETURNING15) so the two never contradict each other in the same inbox.
+
+[Text - Masthead]
+Hair Solutions Co.
+
+[Text - Offer discount: HERO POSITION]
+[OFFER — confirm before send: returning-customer % and mechanics. Must match the RO-6 journey offer — same number, same story.]
+
+Returning customers pay less. Not as a loyalty gimmick — for a boring, structural reason we're happy to put in writing.
+
+Your first system carries real one-time work: colour matched from scratch, hairline designed, density graded, fit adjusted. By your second order, your spec is locked. No rework, no remakes, far less back-and-forth. That costs us less to build — so it costs you less to buy. That's the whole mechanism.
+
+[Signal - Promo code]
+{{ returning-customer code — auto-apply for eligible accounts }}
+
+[Signal - Countdown]
+{{ countdown — only if the returning window is genuinely time-bound; otherwise drop the module }}
+
+[Grid - Collections 4]
+{{ dynamic: collections filtered to the reader's locked spec }}
+
+[Product - 3-up grid] (recommended)
+{{ dynamic: the reader's current system + its neighbours }}
+
+[Testimonial] (recommended)
+[PULL from Proof Bank: one consented quote — reorder / ""second one was easy"" angle]
+
+[List - Trust strip] (recommended)
+Your spec on file · Same build, lower price · 14-day inspection window · 3–4 week build
+
+One honest caveat: if you want to change your spec — new base type, different density — say so before you reorder. Spec changes get the consultation treatment, not the shortcut, because a locked-in mistake is the expensive kind.
+
+[Button - Primary CTA → lands on the returning-customer collection]
+See your returning price →
+
+[Footer - Standard]",Blocked - missing module,See your returning price →,Marketing,,No,"Text - Masthead, Signal - Countdown, Grid - Collections 4",(Text - Masthead) (Text - Offer discount: hero position) (Signal - Promo code) (Signal - Countdown) (Grid - Collections 4) [Product - 3-up grid] [Testimonial] [List - Trust strip] (Button - Primary CTA → exact collection) (Footer - Standard),"Text - Masthead - Light (https://app.notion.com/p/Text-Masthead-Light-e139ea84fd444ab593206f590b338c7c?pvs=21), Text - Offer discount - Light (https://app.notion.com/p/Text-Offer-discount-Light-a36f4e0d84e083db94f501d582855339?pvs=21), Signal - Promo code - Light (https://app.notion.com/p/Signal-Promo-code-Light-0daf4e0d84e08206a3e6013131cecde9?pvs=21), Signal - Countdown - Light (https://app.notion.com/p/Signal-Countdown-Light-9a3a477b95ce410babc12e160cfa32e7?pvs=21), Grid - Collections 4 - Light (https://app.notion.com/p/Grid-Collections-4-Light-85b01799273b4cd6b21ae4da56699a78?pvs=21), Product - 3-up grid - Light (https://app.notion.com/p/Product-3-up-grid-Light-224fec0ed29e4c568b227f8394b0890c?pvs=21), Testimonial - Light (https://app.notion.com/p/Testimonial-Light-955f4e0d84e083e1a17501a482a51f91?pvs=21), List - Trust strip - Light (https://app.notion.com/p/List-Trust-strip-Light-8801ff07efc24e8c9dc7ec6e81e42bbc?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Standard - Light (https://app.notion.com/p/Footer-Standard-Light-8c3f4e0d84e082c6acf6815321074fc7?pvs=21)",13,Your second system costs less. Here's the honest reason why.,N · Newsletter Programme,20,"Returning-customer pricing, explained",News & Offers,
+NL-14 · Brand — Milestones + reviews,"📋 TEMPLATE · Proof Bank pull edition — this one is mostly assembled from the Proof Bank when its slot arrives. Nothing here can be invented.
+FILL CHECKLIST (~20 min): 1. Pull milestones + 2–3 consented review quotes + verified stats from Proof Bank (Permission = Yes) · 2. Pick one genuinely critical review and the real fix it triggered · 3. Relate every pulled row via Used In · 4. Verify links/UTMs · 5. Test · 6. Schedule.
+
+[Text - Masthead]
+Hair Solutions Co.
+
+[Photo - Feature story]
+[PULL from Proof Bank: consented UGC photo from this period, if one exists; otherwise a workshop shot]
+
+[Text - Opening]
+Hi {{ firstname }},
+
+Every few months we round up what customers actually said — the good, and at least one that stung. Reviews you can't verify are marketing; these are pulled straight from the file, with permission.
+
+[Text - Section: what changed]
+{{ this period's milestones — verified only: systems shipped, review count and average, notable firsts }}
+
+The one that stung: [PULL: one genuinely critical review or complaint — quoted fairly, not softened]
+
+What we did about it: {{ the real operational fix that followed — process, product or policy. If nothing changed, don't run this edition yet. }}
+
+[Quote - Centered] (recommended)
+[PULL from Proof Bank: the single strongest consented review line from this period]
+
+[Stat bars] (recommended)
+[PULL from Proof Bank: verified figures only — review average, review count, repeat-order rate. Confirm each number before send.]
+
+[Button - Primary CTA]
+Read the reviews →
+
+[Footer - Social]",Blocked - missing module,Read the reviews →,Marketing,,No,"Text - Masthead, Text - Section",(Text - Masthead) (Photo - Feature story) (Text - Opening) (Text - Section: what changed) [Quote - Centered] [Stat bars] (Button - Primary CTA) (Footer - Social),"Text - Masthead - Light (https://app.notion.com/p/Text-Masthead-Light-e139ea84fd444ab593206f590b338c7c?pvs=21), Photo - Feature story - Light (https://app.notion.com/p/Photo-Feature-story-Light-fd5f4e0d84e0833bb12d0192e338778d?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), Text - Section - Light (https://app.notion.com/p/Text-Section-Light-1086c979270d4436913f6953ec54ce62?pvs=21), Quote - Centered - Light (https://app.notion.com/p/Quote-Centered-Light-fecc2e162cc54a3cb62f8f3172064d81?pvs=21), Stat bars - Light (https://app.notion.com/p/Stat-bars-Light-fd72f22fa2ee488aa7ef79aa0362170f?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Social - Light (https://app.notion.com/p/Footer-Social-Light-746f4e0d84e083999c1d815025958c68?pvs=21)",14,"The good ones, one hard one, and what changed because of it.",N · Newsletter Programme,20,The reviews that came in — and what we did about them,News & Offers,
+NL-17 · Story — Consultation to confidence,"📋 TEMPLATE · real customers cannot be invented (brand rule). Feature one consented customer whose journey started with a consultation — this edition quietly supports the J5 journey's promise.
+FILL CHECKLIST (~20 min): 1. Pick the customer from Proof Bank (Permission = Yes, consultation-first journey) · 2. Replace all [PULL] slots · 3. Relate Proof Bank rows via Used In · 4. CTA → consultation booking page + UTMs · 5. Test · 6. Schedule.
+
+[Text - Masthead]
+Hair Solutions Co. — Customer Stories
+
+[Photo - Feature story]
+[PULL from Proof Bank: consented customer photo]
+
+[Text - Opening]
+Hi {{ firstname }},
+
+Most customer stories start at the first fit. This one starts earlier — at the consultation call {{ customer first name }} almost didn't book. Because for most people the hardest part isn't wearing a system. It's the weeks of second-guessing before asking anyone anything. Shared with permission.
+
+[Quote - Centered]
+[PULL: the customer's strongest line about what the consultation changed]
+
+[Testimonial]
+[PULL: the full consented arc — structure it as:]
+Before the call — how long they hesitated, and what they were afraid of being sold.
+The consultation — what was actually discussed: base options, density, colour, honest expectations. What surprised them.
+The first order — what they chose and why; what the recap email locked in.
+The adjustment — what changed on order two (density, hairline, colour). This part matters: journeys rarely land perfect on the first spec, and pretending otherwise is what the hype merchants do.
+Now — locked spec, routine down to minutes, and what they'd tell the version of themselves who hesitated.
+
+[Review stars] (recommended)
+{{ dynamic: aggregate review rating and count }}
+
+[Stat bars] (recommended)
+[PULL from Proof Bank: verified metrics only — e.g. average time to locked spec, consultation-to-order rate]
+
+[Product - Dynamic recommendations]
+{{ dynamic: the featured customer's base type and comparable systems }}
+
+[Button - Primary CTA → consultation booking]
+Book a consultation →
+
+[Footer - Social]",Blocked - missing module,Book a consultation →,Marketing,,No,"Text - Masthead, Quote - Centered",(Text - Masthead) (Photo - Feature story) (Text - Opening) (Quote - Centered) (Testimonial) [Review stars] [Stat bars] (Product - Dynamic recommendations) (Button - Primary CTA) (Footer - Social),"Text - Masthead - Light (https://app.notion.com/p/Text-Masthead-Light-e139ea84fd444ab593206f590b338c7c?pvs=21), Photo - Feature story - Light (https://app.notion.com/p/Photo-Feature-story-Light-fd5f4e0d84e0833bb12d0192e338778d?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), Quote - Centered - Light (https://app.notion.com/p/Quote-Centered-Light-fecc2e162cc54a3cb62f8f3172064d81?pvs=21), Testimonial - Light (https://app.notion.com/p/Testimonial-Light-955f4e0d84e083e1a17501a482a51f91?pvs=21), Review stars - Light (https://app.notion.com/p/Review-stars-Light-d78b9112fd1d40eaa4919a1496b51c38?pvs=21), Stat bars - Light (https://app.notion.com/p/Stat-bars-Light-fd72f22fa2ee488aa7ef79aa0362170f?pvs=21), Product - Dynamic recommendations - Light (https://app.notion.com/p/Product-Dynamic-recommendations-Light-bcaf4e0d84e082ef91cd016f15fff865?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Social - Light (https://app.notion.com/p/Footer-Social-Light-746f4e0d84e083999c1d815025958c68?pvs=21)",17,"From a nervous first call to a locked spec — the whole arc, honestly told.",N · Newsletter Programme,20,From consultation to confidence — a full journey,News & Offers,
+NL-19 · Brand — What's next + reader Q&A,"📋 TEMPLATE · the Q&A must come from real reader replies and Intercom threads — questions cannot be invented (brand rule).
+FILL CHECKLIST (~20 min): 1. Collect 3–5 real questions from newsletter replies + Intercom since the last Brand edition · 2. Confirm the ""what's next"" items with Vincent (only commitments we'll actually keep) · 3. Pull proof if used · 4. Verify links/UTMs · 5. Test · 6. Schedule.
+
+[Text - Masthead]
+Hair Solutions Co.
+
+[Photo - Feature story]
+{{ image: the workshop, or whatever ""what's next"" actually looks like right now }}
+
+[Text - Opening]
+Hi {{ firstname }},
+
+Two things in this one: where we're heading next, and answers to the questions you've been sending in. Every question below came from a real reply to this newsletter or a support thread — that's the whole point of it.
+
+[Text - Section: what's next]
+{{ 2–4 things genuinely in progress — new bases, process changes, service improvements. Only commitments we'll keep; nothing aspirational. }}
+
+Your questions, answered:
+
+Q: {{ real reader question 1 }}
+A: {{ plain answer — including ""we don't do that"" if that's the answer }}
+
+Q: {{ real reader question 2 }}
+A: {{ plain answer }}
+
+Q: {{ real reader question 3 }}
+A: {{ plain answer }}
+
+Got one of your own? Reply to this email. I read them all, and the next Q&A gets built from exactly these.
+
+Vincent Laroche
+Founder, Hair Solutions Co.
+
+[Quote - Centered] (recommended)
+[PULL from Proof Bank: one consented reader line, if a reply is worth quoting — with permission]
+
+[Stat bars] (recommended)
+[PULL from Proof Bank: verified figures only, if relevant to the period]
+
+[Button - Primary CTA — reply-driven, low pressure]
+Ask your question — just reply
+
+[Footer - Social]",Blocked - missing module,Ask your question — just reply,Marketing,,No,"Text - Masthead, Text - Section",(Text - Masthead) (Photo - Feature story) (Text - Opening) (Text - Section: what changed) [Quote - Centered] [Stat bars] (Button - Primary CTA) (Footer - Social),"Text - Masthead - Light (https://app.notion.com/p/Text-Masthead-Light-e139ea84fd444ab593206f590b338c7c?pvs=21), Photo - Feature story - Light (https://app.notion.com/p/Photo-Feature-story-Light-fd5f4e0d84e0833bb12d0192e338778d?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), Text - Section - Light (https://app.notion.com/p/Text-Section-Light-1086c979270d4436913f6953ec54ce62?pvs=21), Quote - Centered - Light (https://app.notion.com/p/Quote-Centered-Light-fecc2e162cc54a3cb62f8f3172064d81?pvs=21), Stat bars - Light (https://app.notion.com/p/Stat-bars-Light-fd72f22fa2ee488aa7ef79aa0362170f?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Social - Light (https://app.notion.com/p/Footer-Social-Light-746f4e0d84e083999c1d815025958c68?pvs=21)",19,"Where we're heading, and the questions you actually asked.",N · Newsletter Programme,20,"What's next — plus your questions, answered",News & Offers,
+NL-16 · Education — Maintenance myths,"📎 FULL · evergreen. Pairs with a blog post on system care; CTA lands on the post. Comparison slot is used as myth vs reality.
+
+[Text - Masthead]
+Hair Solutions Co. — Education
+
+[Text - Opening]
+Hi {{ firstname }},
+
+Most systems don't wear out. They get worn out — by advice that sounds sensible and isn't. Half the ""tips"" circulating in forums cost you months of lifespan.
+
+Here are the ones we see doing the most damage, next to what actually happens.
+
+[Column - Image and text]
+{{ image: two systems after 4 months — one cared for correctly, one washed daily with the wrong products }}
+Same system, same age. The difference is entirely routine.
+
+[Comparison] — myth vs reality
+""Wash it daily like real hair"" — Daily washing strips the knots. 2–3 times a week with a sulfate-free wash is the honest ceiling.
+""More adhesive = stronger hold"" — More adhesive means more residue, harder removal, and a shorter base life. Thin, even coverage holds better.
+""Any remover works"" — Alcohol-heavy removers dry the base until it cracks. Use one matched to your adhesive.
+""Brush it into place when wet"" — Wet hair pulls at the knots hardest. Pat dry, then style.
+""Sleep prep is optional"" — Friction is the silent killer. A minute of prep (or a smoother pillowcase) buys real weeks.
+
+None of this adds routine time. It just replaces the wrong five minutes with the right five.
+
+[FAQ]
+How often should I deep-clean the base? — Roughly monthly — residue build-up, not dirt, is what usually forces early retirement.
+Can a barber help with upkeep? — Yes — more work with systems than you'd expect. Cutting it dry while worn is the norm.
+What single change buys the most lifespan? — The remover. It's the cheapest fix on this list and the most commonly wrong.
+
+[Testimonial]
+[PULL from Proof Bank: one consented quote — longevity or routine angle, Permission = Yes]
+
+[Button - Primary CTA → paired blog post]
+Read the full guide →
+
+[Footer - Social]",Blocked - missing module,Read the full guide →,Marketing,,No,"Text - Masthead, Column - Image and text, Comparison, FAQ",(Text - Masthead) (Text - Opening) (Column - Image and text) (Comparison) (FAQ) [Testimonial] (Button - Primary CTA → paired blog post) (Footer - Social),"Text - Masthead - Light (https://app.notion.com/p/Text-Masthead-Light-e139ea84fd444ab593206f590b338c7c?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), Column - Image and text - Light (https://app.notion.com/p/Column-Image-and-text-Light-7266afaedac44b3280a9264e77f5d88c?pvs=21), Comparison - Light (https://app.notion.com/p/Comparison-Light-16ce628870c74196a3bbc2b923f6e6e1?pvs=21), FAQ - Light (https://app.notion.com/p/FAQ-Light-1b8ef749952e467aaffdb8c25a808bb6?pvs=21), Testimonial - Light (https://app.notion.com/p/Testimonial-Light-955f4e0d84e083e1a17501a482a51f91?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Social - Light (https://app.notion.com/p/Footer-Social-Light-746f4e0d84e083999c1d815025958c68?pvs=21)",16,Half the 'tips' online cost you months of lifespan.,N · Newsletter Programme,20,Maintenance myths that shorten your system's life,News & Offers,
+NL-18 · Offer — Seasonal promo (slot),"📋 TEMPLATE · seasonal slot — deliberately empty of specifics. Everything offer-shaped is confirm-before-send; the structure and voice rules below don't change.
+FILL CHECKLIST (~20 min): 1. Confirm with Vincent: the season/occasion, discount % or mechanic, scope, code, start/expiry · 2. Write the subject as the plain offer, not a pun · 3. Pull proof · 4. CTA → the exact collection + UTMs · 5. Test · 6. Schedule.
+
+VOICE RULES for this slot (fixed): the number leads · the end date is real and stated once · no ""last chance"" resends unless one was planned from the start · no inflated ""was"" prices.
+
+[Text - Masthead]
+Hair Solutions Co.
+
+[Text - Offer discount: HERO POSITION]
+[OFFER — confirm before send: headline %, exact scope (collection / products / sitewide), and expiry. One sentence of seasonal context maximum — the offer is the message.]
+
+[Signal - Promo code]
+{{ promo code — auto-apply at checkout }}
+
+[Signal - Countdown]
+{{ countdown to offer expiry }}
+
+[Grid - Collections 4]
+{{ dynamic: the 4 collections this offer applies to }}
+
+[Product - 3-up grid] (recommended)
+{{ dynamic: 3 bestsellers within the offer }}
+
+[Testimonial] (recommended)
+[PULL from Proof Bank: one consented quote — value angle]
+
+[List - Trust strip] (recommended)
+Built to your spec · 14-day inspection window · Skin-safe certified adhesives · 3–4 week build
+
+Same build, same process, same inspection window — the discount is on the price, not the product. If the timing's wrong for you, skip it; there'll be another season.
+
+[Button - Primary CTA → lands on the exact collection]
+Shop the offer →
+
+[Footer - Standard]",Blocked - missing module,Shop the offer →,Marketing,,No,"Text - Masthead, Signal - Countdown, Grid - Collections 4",(Text - Masthead) (Text - Offer discount: hero position) (Signal - Promo code) (Signal - Countdown) (Grid - Collections 4) [Product - 3-up grid] [Testimonial] [List - Trust strip] (Button - Primary CTA → exact collection) (Footer - Standard),"Text - Masthead - Light (https://app.notion.com/p/Text-Masthead-Light-e139ea84fd444ab593206f590b338c7c?pvs=21), Text - Offer discount - Light (https://app.notion.com/p/Text-Offer-discount-Light-a36f4e0d84e083db94f501d582855339?pvs=21), Signal - Promo code - Light (https://app.notion.com/p/Signal-Promo-code-Light-0daf4e0d84e08206a3e6013131cecde9?pvs=21), Signal - Countdown - Light (https://app.notion.com/p/Signal-Countdown-Light-9a3a477b95ce410babc12e160cfa32e7?pvs=21), Grid - Collections 4 - Light (https://app.notion.com/p/Grid-Collections-4-Light-85b01799273b4cd6b21ae4da56699a78?pvs=21), Product - 3-up grid - Light (https://app.notion.com/p/Product-3-up-grid-Light-224fec0ed29e4c568b227f8394b0890c?pvs=21), Testimonial - Light (https://app.notion.com/p/Testimonial-Light-955f4e0d84e083e1a17501a482a51f91?pvs=21), List - Trust strip - Light (https://app.notion.com/p/List-Trust-strip-Light-8801ff07efc24e8c9dc7ec6e81e42bbc?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Standard - Light (https://app.notion.com/p/Footer-Standard-Light-8c3f4e0d84e082c6acf6815321074fc7?pvs=21)",18,{{ the offer in one plain sentence — no teasing }},N · Newsletter Programme,20,{{ seasonal hook }} — a straightforward offer,News & Offers,
+NL-20 · Launch — Accessories & tools line,"📋 TEMPLATE · fill when the accessories & tools line actually ships — products cannot be invented (brand rule).
+FILL CHECKLIST (~20 min): 1. Confirm the real line-up with Vincent (items, what each replaces, pricing) · 2. Fill every {{ token }} · 3. Pull proof if early users exist · 4. Verify links/UTMs · 5. Test · 6. Schedule.
+
+[Text - Masthead]
+Hair Solutions Co. — New Arrivals
+
+[Hero - Photo-led]
+{{ image: the accessories & tools line, laid out plainly }}
+
+[Text - Opening]
+Hi {{ firstname }},
+
+We've added an accessories and tools line. Before you picture a drawer of gadgets: the bar for making this list was ""does it measurably improve the routine?"" — and most candidates didn't.
+
+Here's what made the cut, and what each one replaces.
+
+[Text - Section: why it matters]
+{{ for each item (3–5): the routine problem it solves → what people were using instead → what changes. Plain statements, no gadget language. Example shape: ""The application tool exists because fingers apply adhesive unevenly at the temples — the one spot where evenness matters most."" }}
+
+[Column - Image and text]
+{{ image + text: one hero tool in use — mid-routine, not product photography }}
+
+[Product - 3-up grid]
+{{ dynamic: the 3 core items in the line }}
+
+[Comparison] (recommended)
+{{ dynamic: kit vs bought-separately — contents, price, what's included }}
+
+[Testimonial] (recommended)
+[PULL from Proof Bank: one consented quote — routine improvement angle, if available]
+
+[List - Trust strip] (recommended)
+Skin-safe certified · Matched to your base type · 14-day inspection window · Plain instructions included
+
+[Signal - Countdown] (recommended)
+{{ countdown — only if a real launch window applies; otherwise drop the module }}
+
+[Button - Primary CTA]
+See the tools →
+
+[Footer - Social]",Blocked - missing module,See the tools →,Marketing,,No,"Text - Masthead, Hero - Photo-led, Text - Section, Column - Image and text, Product - 3-up grid",(Text - Masthead) (Hero - Photo-led) (Text - Opening) (Text - Section: why it matters) (Column - Image and text) (Product - 3-up grid) [Comparison] [Testimonial] [List - Trust strip] [Signal - Countdown] (Button - Primary CTA) (Footer - Social),"Text - Masthead - Light (https://app.notion.com/p/Text-Masthead-Light-e139ea84fd444ab593206f590b338c7c?pvs=21), Hero - Photo-led - Light (https://app.notion.com/p/Hero-Photo-led-Light-5c87dfafc5084fdab11abefa21891961?pvs=21), Text - Opening - Light (https://app.notion.com/p/Text-Opening-Light-09af4e0d84e08274be7e01b5ade1e13c?pvs=21), Text - Section - Light (https://app.notion.com/p/Text-Section-Light-1086c979270d4436913f6953ec54ce62?pvs=21), Column - Image and text - Light (https://app.notion.com/p/Column-Image-and-text-Light-7266afaedac44b3280a9264e77f5d88c?pvs=21), Product - 3-up grid - Light (https://app.notion.com/p/Product-3-up-grid-Light-224fec0ed29e4c568b227f8394b0890c?pvs=21), Comparison - Light (https://app.notion.com/p/Comparison-Light-16ce628870c74196a3bbc2b923f6e6e1?pvs=21), Testimonial - Light (https://app.notion.com/p/Testimonial-Light-955f4e0d84e083e1a17501a482a51f91?pvs=21), List - Trust strip - Light (https://app.notion.com/p/List-Trust-strip-Light-8801ff07efc24e8c9dc7ec6e81e42bbc?pvs=21), Signal - Countdown - Light (https://app.notion.com/p/Signal-Countdown-Light-9a3a477b95ce410babc12e160cfa32e7?pvs=21), Button - Primary CTA - Light (https://app.notion.com/p/Button-Primary-CTA-Light-5cef4e0d84e08240b53a0126a9c9667a?pvs=21), Footer - Social - Light (https://app.notion.com/p/Footer-Social-Light-746f4e0d84e083999c1d815025958c68?pvs=21)",20,No gadgets. The short list of tools that actually change the routine.,N · Newsletter Programme,20,The accessories line — tools that earn their place,News & Offers,

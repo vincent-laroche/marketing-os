@@ -1,0 +1,115 @@
+[
+ {
+  "slug": "PP-1-order-confirmation",
+  "campaign_id": "196144471859005313"
+ },
+ {
+  "slug": "PP-2-prep-guide",
+  "campaign_id": "196144474776143793"
+ },
+ {
+  "slug": "PP-3-on-the-bench",
+  "campaign_id": "196144477599958110"
+ },
+ {
+  "slug": "PP-4-shipped-tracking",
+  "campaign_id": "196144480649217654"
+ },
+ {
+  "slug": "PP-5-maintenance-calendar",
+  "campaign_id": "196144483673310497"
+ },
+ {
+  "slug": "PP-6-four-products",
+  "campaign_id": "196144486522291388"
+ },
+ {
+  "slug": "PP-7-hows-it-going",
+  "campaign_id": "196144489377564629"
+ },
+ {
+  "slug": "PP-7b-ugc-photo-request",
+  "campaign_id": "196144492284216637"
+ },
+ {
+  "slug": "CR-1-your-carts-still-here",
+  "campaign_id": "196144495178286161"
+ },
+ {
+  "slug": "CR-2-three-questions-answered",
+  "campaign_id": "196144498028316030"
+ },
+ {
+  "slug": "CR-3-not-sure-you-picked-right",
+  "campaign_id": "196144500995785905"
+ },
+ {
+  "slug": "CR-4-last-note-free-shipping",
+  "campaign_id": "196144503638197981"
+ },
+ {
+  "slug": "WB-1-checking-in",
+  "campaign_id": "196144506392807135"
+ },
+ {
+  "slug": "WB-2-whats-changed",
+  "campaign_id": "196144509421094310"
+ },
+ {
+  "slug": "WB-3-20-welcome-back",
+  "campaign_id": "196144512294192204"
+ },
+ {
+  "slug": "WB-4-last-email-from-us",
+  "campaign_id": "196144515193505139"
+ },
+ {
+  "slug": "RO-1-six-weeks-in",
+  "campaign_id": "196144518070797557"
+ },
+ {
+  "slug": "RO-2-due-for-supplies",
+  "campaign_id": "196144521022538768"
+ },
+ {
+  "slug": "RO-3-replacement-window",
+  "campaign_id": "196144523841111166"
+ },
+ {
+  "slug": "RO-4-same-spec-or-change",
+  "campaign_id": "196144526629274975"
+ },
+ {
+  "slug": "RO-5-auto-reorder",
+  "campaign_id": "196144529344038890"
+ },
+ {
+  "slug": "RO-6-returning-customer-price",
+  "campaign_id": "196144532802241896"
+ },
+ {
+  "slug": "W-1-welcome-expectations",
+  "campaign_id": "196150825275360658",
+  "email_id": "196150825285846422"
+ },
+ {
+  "slug": "W-2-how-systems-work",
+  "campaign_id": "196150828106516083",
+  "email_id": "196150828117001858"
+ },
+ {
+  "slug": "W-3-style-inspiration",
+  "campaign_id": "196150831030994576",
+  "email_id": "196150831045674647"
+ },
+ {
+  "slug": "W-4-social-proof-wall",
+  "campaign_id": "196150833889412292",
+  "email_id": "196150833900946633"
+ },
+ {
+  "slug": "W-5-soft-consult-invite",
+  "campaign_id": "196150837397947834",
+  "email_id": "196150837415773635"
+ }
+]
