@@ -19,7 +19,7 @@ HTTP request is issued, and **no command-line flag, environment variable or
 payload field can extend it**. Any other address aborts with exit code 2 before
 a socket is opened. Vincent approved test sends to himself only.
 
-Stdlib only (urllib.request), per AGENTS.md #6. Idempotent: every accepted send
+Stdlib only (urllib.request), per AGENTS.md #7. Idempotent: every accepted send
 is recorded in `.send-ledger.json` keyed by (type, order number, recipient,
 content fingerprint); re-running the same send is a no-op unless --force.
 """
@@ -72,7 +72,31 @@ EMAIL_TYPES = {
         "requires": ("order_number", "estimated_delivery_date", "items",
                      "tracking_number", "carrier", "tracking_url"),
     },
+    # --- Figma Email Design System, canvas 225:357 --------------------------
+    # Built by build_service_emails.py; edit that, never the HTML.
+    "order-confirmed": {
+        "template": "SVC-1-order-confirmed.html",
+        "subject": "Your order is confirmed, {{ name }}",
+        "tag": "order-confirmed",
+        "requires": ("order_number", "order_status_url", "items", "totals"),
+    },
+    "specification-review": {
+        "template": "SVC-2-specification-review.html",
+        "subject": "Your selection is now in our care",
+        "tag": "specification-review",
+        "requires": ("order_number", "order_status_url", "summary_rows"),
+    },
+    "reorder-received": {
+        "template": "SVC-3-reorder-received.html",
+        "subject": "Your reorder has been received, {{ name }}",
+        "tag": "reorder-received",
+        "requires": ("order_number", "order_status_url", "items", "totals"),
+    },
 }
+
+# Email types whose only line-item requirement is that the list is non-empty;
+# `specification-review` reports status, not a basket, so it carries none.
+ITEMLESS_TYPES = frozenset({"specification-review"})
 
 
 # --------------------------------------------------------------------------
@@ -92,10 +116,14 @@ def build_personalization(order: dict, email_type: str) -> dict:
     items = []
     for raw in order.get("items") or []:
         spec = (raw.get("spec") or "").strip()
+        image = (raw.get("image") or "").strip()
         items.append({
             "name": raw.get("name", ""),
             "spec": spec,
             "has_spec": bool(spec),
+            "image": image,
+            "has_image": bool(image),
+            "url": raw.get("url", ""),
             "qty": raw.get("qty", 1),
             "price": raw.get("price", ""),
         })
@@ -114,6 +142,33 @@ def build_personalization(order: dict, email_type: str) -> dict:
             "total": totals.get("total", ""),
         },
     }
+
+    # Optional blocks. `has_*` exists because the MailerSend Twig subset has no
+    # reliable truthiness test for an absent key — the templates compare `== true`
+    # and the whole card collapses when the flag is false.
+    summary_rows = [
+        {"label": r.get("label", ""), "value": r.get("value", "")}
+        for r in (order.get("summary_rows") or [])
+        if (r.get("label") or r.get("value"))
+    ]
+    recommendations = [
+        {"name": r.get("name", ""), "label": r.get("label", ""),
+         "image": r.get("image", ""), "url": r.get("url", "")}
+        for r in (order.get("recommendations") or []) if r.get("name")
+    ]
+    resources = [
+        {"title": r.get("title", ""), "cta_label": r.get("cta_label", "Read"),
+         "image": r.get("image", ""), "url": r.get("url", "")}
+        for r in (order.get("resources") or []) if r.get("title")
+    ]
+    data["summary_rows"] = summary_rows
+    data["has_summary"] = bool(summary_rows)
+    data["recommendations"] = recommendations
+    data["has_recommendations"] = bool(recommendations)
+    data["resources"] = resources
+    data["has_resources"] = bool(resources)
+    data["view_in_browser_url"] = order.get("view_in_browser_url") or \
+        order.get("order_status_url", "")
     if email_type == "shipping-confirmation":
         data["carrier"] = shipping.get("carrier", "")
         data["tracking_number"] = shipping.get("tracking_number", "")
@@ -127,21 +182,40 @@ def validate(order: dict, email_type: str, data: dict) -> list[str]:
     for key in spec["requires"]:
         value = data.get(key)
         if key in ("items",):
-            if not value:
+            if not value and email_type not in ITEMLESS_TYPES:
                 problems.append("items: at least one line item is required")
             continue
+        if key == "summary_rows":
+            if not value:
+                problems.append("summary_rows: at least one status row is required")
+            continue
         if key == "totals":
-            if email_type == "order-confirmation" and not data["totals"]["total"]:
-                problems.append("totals.total: required for order-confirmation")
+            needs_total = email_type in ("order-confirmation", "order-confirmed",
+                                         "reorder-received")
+            if needs_total and not data["totals"]["total"]:
+                problems.append(f"totals.total: required for {email_type}")
             continue
         if not value:
             problems.append(f"{key}: missing or empty")
+    priced = ("order-confirmation", "order-confirmed", "reorder-received")
     for i, item in enumerate(data.get("items") or []):
         if not item["name"]:
             problems.append(f"items[{i}].name: missing")
-        if email_type == "order-confirmation" and not item["price"]:
+        if email_type in priced and not item["price"]:
             problems.append(f"items[{i}].price: missing (must be a pre-formatted "
                             "display string — MailerSend's Twig subset cannot format numbers)")
+
+    # The Figma grids are fixed three-up (SVC-1, SVC-3) and two-up (SVC-2). More
+    # than that silently overflows the 576px card on desktop, where no media
+    # query rescues it, so refuse rather than ship a broken row.
+    caps = {"order-confirmed": ("recommendations", 3),
+            "reorder-received": ("recommendations", 3),
+            "specification-review": ("resources", 2)}
+    if email_type in caps:
+        field, cap = caps[email_type]
+        n = len(data.get(field) or [])
+        if n > cap:
+            problems.append(f"{field}: {n} supplied, the {email_type} grid holds {cap}")
     return problems
 
 
@@ -245,11 +319,22 @@ def save_ledger(ledger: dict) -> None:
     LEDGER_PATH.write_text(json.dumps(ledger, indent=2, sort_keys=True) + "\n")
 
 
-def idempotency_key(email_type: str, order_number: str, recipient: str, data: dict) -> str:
+def idempotency_key(email_type: str, order_number: str, recipient: str,
+                    data: dict, template: str = "") -> str:
+    """Fingerprint the payload AND the template.
+
+    Keying on the payload alone means a redesigned template resends nothing: the
+    order data is unchanged, so the key matches and the send is skipped as a
+    duplicate. That is wrong for a template edit and was wrong for exactly one
+    real case — the 2026-08-19 transparent-background change. Including the
+    template body makes a rebuilt design a new send. It also invalidates every
+    ledger entry written before this change, which is the correct outcome.
+    """
     fingerprint = hashlib.sha256(
         json.dumps(data, sort_keys=True, ensure_ascii=False).encode()
     ).hexdigest()
-    raw = f"{email_type}|{order_number}|{recipient}|{fingerprint}"
+    template_hash = hashlib.sha256(template.encode()).hexdigest()
+    raw = f"{email_type}|{order_number}|{recipient}|{fingerprint}|{template_hash}"
     return hashlib.sha256(raw.encode()).hexdigest()[:32]
 
 
@@ -357,7 +442,7 @@ def main() -> int:
         "personalization": [{"email": recipient, "data": data}],
     }
 
-    key = idempotency_key(args.type, data["order_number"], recipient, data)
+    key = idempotency_key(args.type, data["order_number"], recipient, data, template)
     ledger = load_ledger()
 
     if args.dry_run:
@@ -383,8 +468,10 @@ def main() -> int:
         print(text)
         print()
         print("--- rendered line-item table, HTML " + "-" * 43)
-        table = re.search(r"(?s)(What(?:&#x27;|')?s? (?:you ordered|in the box).*?</table>)", html)
-        print(table.group(1) if table else "(not found)")
+        table = re.search(
+            r"(?s)(What(?:&#x27;|')?s? (?:you ordered|in the box)"
+            r"|Your Selection|Confirmed Selection|Your Order Summary).*?</table>", html)
+        print(table.group(0) if table else "(not found)")
         return 0
 
     if key in ledger and not args.force:

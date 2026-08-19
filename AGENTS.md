@@ -75,10 +75,18 @@ configure drafts. `BUILD-LEDGER.md` records what has actually been built and pus
 touching the account.
 
 **MailerSend — transactional only.** Replaced Resend 2026-08-19 (Vincent), consolidating
-onto MailerLite's sibling platform. Lives in `mailersend/`: `send_service_email.py` plus the
-order-confirmation and shipping-confirmation templates. Uses `MAILERSEND_API_TOKEN`. Every
-accepted send is recorded in `.send-ledger.json` keyed by (type, order number, recipient,
-content fingerprint), so re-running is a no-op unless `--force`.
+onto MailerLite's sibling platform. Lives in `mailersend/`: `send_service_email.py` plus six
+templates. Uses `MAILERSEND_API_TOKEN`. Every accepted send is recorded in
+`.send-ledger.json` keyed by (type, order number, recipient, content fingerprint), so
+re-running is a no-op unless `--force`.
+
+The three `SVC-*` templates (order confirmed, specification review, reorder received) are
+**build output** of `build_service_emails.py`, drawn from the Figma Email Design System
+canvas `225:357`. Edit the builder, never the HTML; `--check` fails when they have drifted.
+`mailersend/DESIGN-NOTES.md` records every place those templates depart from the Figma
+frames and why — read it before "correcting" one back. The older `PP-1` / `PP-4` pair is
+hand-written and covers the same order-confirmation ground as `SVC-1`; which one is
+canonical is Vincent's call, not a cleanup.
 
 **Resend — decommissioned 2026-08-19.** Superseded by MailerSend. `~/02_dev/mkt-resend`
 (its own git repo and remote) **stays on disk regardless**: `mailerlite/import_prospects.py`
@@ -112,14 +120,32 @@ stats. `Email Reference File/` is an export *of* Notion, which is why Notion win
 `brand-design-system/` exists in two identical copies (`~/07_design` and `~/08_brand`); check
 the real directory rather than any cached value. This has gone stale repeatedly.
 
-## 5. PII
+## 5. No wallpaper behind an email
+
+**Hard rule, set 2026-08-19 by Vincent.** An email paints no page background. `<body>` and
+the outer wrapper table are `background-color:transparent`, so the client's own background
+shows through the gutter between the card column and the window edge. Colour belongs to
+cards and to insets inside cards — never to the surface behind them.
+
+This is not a palette question and does not reopen one: no value is correct there, including
+Bone `#F7F1DE`, Paper `#EFE7D2` and `#F6EFD9`. Those remain correct as *card* surfaces.
+
+Applies to every email in this repo, both platforms. Enforced at the source, not per file:
+`mailerlite/ml_components.py` (`PAGE_BG`) and `mailersend/build_service_emails.py` (`PAGE`).
+The two hand-written MailerSend templates, `PP-1` and `PP-4`, carry it inline. A rebuilt or
+new template that reintroduces a page background is a regression.
+
+Consequence to expect: on a dark-mode client the gutter goes dark while the cards stay light.
+That is the intended behaviour, not a bug to patch with a background.
+
+## 6. PII
 
 `exports/` holds HubSpot CRM exports (contacts, deals, orders, companies). It is
 **gitignored and must stay that way.** Never commit it, never paste its contents into a
 conversation, never publish it. Secrets come from `~/.env` via
 `set -a && source ~/.env && set +a` — never hardcode a token.
 
-## 6. Conventions
+## 7. Conventions
 
 - Python 3, stdlib-only (`urllib.request`, `csv`, `json`) — no dependency stack here.
 - Scripts are idempotent and support `--dry-run` where they touch a live account.

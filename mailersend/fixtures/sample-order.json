@@ -1,5 +1,5 @@
 {
-  "_comment": "Synthetic fixture. Invented data only — no real customer record was read or copied (AGENTS.md #5). Recipient is the sole allowlisted test address.",
+  "_comment": "Synthetic fixture. Invented data only — no real customer record was read or copied (AGENTS.md #6). Recipient is the sole allowlisted test address.",
 
   "order_number": "#HS-10428",
   "customer": {
