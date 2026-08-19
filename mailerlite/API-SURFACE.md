@@ -214,3 +214,8 @@ keeping the shop connected for catalog data. The workaround is to repoint it at 
 quarantine group. `enable_resubscribe` and `enable_popups` *do* accept `false` and take
 effect — turn both off: `enable_resubscribe: true` lets the integration resurrect people who
 had unsubscribed.
+
+The embedded Shopify app's UI matches (verified 2026-08-19): the Groups tab shows the current
+sync group with an **Active** badge and offers only per-group **Select** buttons — repoint,
+never unselect. Pop-ups and resubscribe are On/Off toggles on its Settings tab. The
+**Disconnect** button there is the only full off, and it severs the catalog sync too.

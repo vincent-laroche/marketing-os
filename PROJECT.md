@@ -39,10 +39,12 @@ working tree**. It stays recoverable from git history at `e892e64` and earlier.
 
 **Vincent only (dashboard / assets):**
 
-1. **Switch off the Shopify subscriber sync** (dashboard act — no API path; API-SURFACE §9). Already
-   neutralised at the API on 2026-08-19: sync group repointed to `⛔ Shopify sync — quarantine`
-   (id `196200001017218918`), `enable_resubscribe`/`enable_popups` off, so re-imports land inert.
-   Switching the sync itself off remains the clean end state; keep the shop connected for catalog.
+1. ~~Switch off the Shopify subscriber sync~~ — **there is no off switch** (confirmed 2026-08-19 in the
+   embedded app's UI: the Groups tab only repoints the sync — per-group *Select* buttons, never
+   unselect; API-SURFACE §9 shows the same at the API). Neutralised instead: sync points at
+   `⛔ Shopify sync — quarantine` (id `196200001017218918`, verified live at 0 members) with
+   `enable_resubscribe`/`enable_popups` off. The only true off is **Disconnect**, which also severs the
+   catalog sync we want to keep — quarantine IS the end state unless that changes.
 2. Get the Shopify **product** sync working — products/orders are `0`, so every e-commerce block has
    no catalog to render. Separate toggle from subscriber sync; keep the shop connected for catalog.
 3. Verify domain DKIM/SPF in MailerLite (Cloudflare zone ready).
@@ -97,6 +99,17 @@ working tree**. It stays recoverable from git history at `e892e64` and earlier.
 
 ## Session log
 
+- **2026-08-19 (Claude — `email-marketing` plugin installed):** Installed the `email-marketing` plugin
+  (v1.0.0+codex.20260818181954) from the local `toolkit-marketplace` (`~/.claude/plugins/marketplaces/`):
+  registered in `installed_plugins.json` (scope user, commit `904045ee`), enabled in
+  `~/.claude/settings.json`, cleared the cache orphan marker so the sweep keeps the payload. Ships 13
+  skills (incl. `email-marketing-preflight`, `mailerlite-campaign-drafting`, `mailerlite-release`), 8
+  paired Claude+Codex agents, the MailerLite OAuth MCP (`mcp.mailerlite.com/mcp` — authorizes on first
+  use), and safety hooks (session preflight, Bash guard, MailerLite write guard, post-edit validator).
+  Refreshed all 8 Codex agents in `~/.codex/agents/` via `install_codex_agents.py` (were stale;
+  `--check` now passes 8/8). Known nit: `session_preflight.py` hardcodes project path
+  `/Users/vMac/07_design/email` (reports "Project available: no") — real project is
+  `/Users/vMac/07_design/email_marketing`; flagged for a marketplace-side fix, not patched here.
 - **2026-08-19 (Claude — audience rebuilt from HubSpot, Shopify contacts purged):** Vincent connected
   the Shopify shop, then asked why products weren't populating the e-commerce blocks. Live check showed
   the shop `enabled: true` but **products 0 / orders 0** — only *customers* had synced, and into
