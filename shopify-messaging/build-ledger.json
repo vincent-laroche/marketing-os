@@ -1,0 +1,1408 @@
+[
+ {
+  "file": "01-cr-1.html",
+  "email": "CR-1 · Your Cart's Still Here — Abandon +4h",
+  "status": "GREEN",
+  "size_kb": 12.4,
+  "modules": [
+   "Header - Centered logo",
+   "Layout - Plain-text founder wrapper",
+   "Commerce - Cart line items",
+   "Button - Primary CTA",
+   "Footer - Preference centre"
+  ],
+  "gated": false,
+  "preamble_notes": [],
+  "blockers": [],
+  "issues": [],
+  "deviations": [],
+  "loud_placeholders": 1
+ },
+ {
+  "file": "02-cr-2.html",
+  "email": "CR-2 · Three Questions Answered — Abandon +1d",
+  "status": "GREEN",
+  "size_kb": 18.6,
+  "modules": [
+   "Header - Centered logo",
+   "Layout - Plain-text founder wrapper",
+   "Commerce - Cart line items",
+   "List - Questions",
+   "List - Trust strip",
+   "Testimonial",
+   "Button - Primary CTA",
+   "Footer - Preference centre"
+  ],
+  "gated": false,
+  "preamble_notes": [],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Testimonial): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 1
+ },
+ {
+  "file": "03-cr-3.html",
+  "email": "CR-3 · Not Sure You Picked Right — Abandon +2d",
+  "status": "GREEN",
+  "size_kb": 16.3,
+  "modules": [
+   "Header - Centered logo",
+   "Layout - Plain-text founder wrapper",
+   "Text - Base type guidance",
+   "Commerce - Viewed product",
+   "Text - Reassurance",
+   "List - Trust strip",
+   "Button - Primary CTA",
+   "Footer - Preference centre"
+  ],
+  "gated": false,
+  "preamble_notes": [],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Commerce - Viewed product): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 0
+ },
+ {
+  "file": "04-cr-4.html",
+  "email": "CR-4 · Last Note + Free Shipping — Abandon +4d",
+  "status": "GREEN",
+  "size_kb": 15.2,
+  "modules": [
+   "Header - Centered logo",
+   "Layout - Plain-text founder wrapper",
+   "Commerce - Cart line items",
+   "Text - Offer discount",
+   "Signal - Promo code",
+   "Button - Primary CTA",
+   "Footer - Preference centre"
+  ],
+  "gated": false,
+  "preamble_notes": [
+   "Hi {{ firstname }},",
+   "Last email about this — I won't keep bringing it up.",
+   "If cost is the sticking point, here's free shipping on the order:",
+   "Code: FREESHIP",
+   "Valid for 72 hours",
+   "{{ cart_contents }}",
+   "And if the timing just isn't right, that's genuinely fine. Your cart stays saved, the code will be honoured whenever you come back, and I'll stop emailing you about it.",
+   "Vincent",
+   "Founder, Hair Solutions Co."
+  ],
+  "blockers": [],
+  "issues": [],
+  "deviations": [],
+  "loud_placeholders": 1
+ },
+ {
+  "file": "05-br-1.html",
+  "email": "BR-1 · Base Types Explainer — Browse +1d",
+  "status": "GREEN",
+  "size_kb": 14.2,
+  "modules": [
+   "Header - Centered logo",
+   "Hero - Text-led",
+   "Layout - Plain-text founder wrapper",
+   "Commerce - Viewed product",
+   "Text - Base type guidance",
+   "Button - Primary CTA",
+   "Footer - Preference centre"
+  ],
+  "gated": false,
+  "preamble_notes": [],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Commerce - Viewed product): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 1
+ },
+ {
+  "file": "06-pp-1.html",
+  "email": "PP-1 · Order Confirmation — Day 0",
+  "status": "GREEN",
+  "size_kb": 16.8,
+  "modules": [
+   "Header - Centered logo",
+   "Hero - Text-led",
+   "Text - Opening",
+   "Commerce - Order summary",
+   "List - Questions",
+   "Text - Reassurance",
+   "Button - Primary CTA",
+   "List - Support strip",
+   "Footer - Preference centre"
+  ],
+  "gated": false,
+  "preamble_notes": [],
+  "blockers": [],
+  "issues": [],
+  "deviations": [],
+  "loud_placeholders": 0
+ },
+ {
+  "file": "07-pp-2.html",
+  "email": "PP-2 · Prep Guide — Day 1",
+  "status": "GREEN",
+  "size_kb": 13.6,
+  "modules": [
+   "Header - Centered logo",
+   "Hero - Text-led",
+   "Text - Opening",
+   "List - Questions",
+   "Text - Reassurance",
+   "Button - Primary CTA",
+   "List - Support strip",
+   "Footer - Preference centre"
+  ],
+  "gated": false,
+  "preamble_notes": [],
+  "blockers": [],
+  "issues": [],
+  "deviations": [],
+  "loud_placeholders": 0
+ },
+ {
+  "file": "08-pp-3.html",
+  "email": "PP-3 · On The Bench — Day 5",
+  "status": "GREEN",
+  "size_kb": 9.7,
+  "modules": [
+   "Header - Centered logo",
+   "Layout - Plain-text founder wrapper",
+   "Photo - Feature story",
+   "Footer - Preference centre"
+  ],
+  "gated": false,
+  "preamble_notes": [],
+  "blockers": [],
+  "issues": [],
+  "deviations": [],
+  "loud_placeholders": 0
+ },
+ {
+  "file": "09-pp-4.html",
+  "email": "PP-4 · Shipped + Tracking — Fulfilment event",
+  "status": "GREEN",
+  "size_kb": 13.8,
+  "modules": [
+   "Header - Centered logo",
+   "Hero - Text-led",
+   "Text - Opening",
+   "Commerce - Shipping tracking",
+   "Button - Primary CTA",
+   "List - Support strip",
+   "Footer - Preference centre"
+  ],
+  "gated": false,
+  "preamble_notes": [],
+  "blockers": [],
+  "issues": [],
+  "deviations": [],
+  "loud_placeholders": 0
+ },
+ {
+  "file": "10-pp-5.html",
+  "email": "PP-5 · Maintenance Calendar — Delivery +7d",
+  "status": "GREEN",
+  "size_kb": 14.8,
+  "modules": [
+   "Header - Centered logo",
+   "Hero - Text-led",
+   "Text - Opening",
+   "List - Questions",
+   "Product - Dynamic recommendations",
+   "Button - Primary CTA",
+   "List - Support strip",
+   "Footer - Preference centre"
+  ],
+  "gated": false,
+  "preamble_notes": [],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Product - Dynamic recommendations): 1 line(s) beyond the module's slots, appended verbatim",
+   "overflow carried into (List - Support strip): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 1
+ },
+ {
+  "file": "11-pp-6.html",
+  "email": "PP-6 · Four Products That Matter — Delivery +21d",
+  "status": "GREEN",
+  "size_kb": 14.6,
+  "modules": [
+   "Header - Centered logo",
+   "Hero - Text-led",
+   "Text - Opening",
+   "Product - Dynamic recommendations",
+   "Testimonial",
+   "Review stars",
+   "Button - Primary CTA",
+   "Footer - Social"
+  ],
+  "gated": false,
+  "preamble_notes": [],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Product - Dynamic recommendations): 1 line(s) beyond the module's slots, appended verbatim",
+   "overflow carried into (Testimonial): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 3
+ },
+ {
+  "file": "12-pp-7.html",
+  "email": "PP-7 · How's It Going — Delivery +35d",
+  "status": "GREEN",
+  "size_kb": 7.6,
+  "modules": [
+   "Header - Centered logo",
+   "Layout - Plain-text founder wrapper",
+   "Footer - Standard"
+  ],
+  "gated": false,
+  "preamble_notes": [
+   "Hi {{ firstname }},",
+   "You've had your system about five weeks now — long enough to know how you feel about it.",
+   "How's it going?",
+   "If it's going well, the first button takes you to a review page. Reviews are how people in the same position you were in five weeks ago decide whether to trust us.",
+   "If it isn't right, the second comes straight to me. Fit, colour, density, adhesion, anything. No form, no ticket queue — it's my inbox. Most issues at this stage are fixable, and the ones that aren't, I'd still rather know about.",
+   "Vincent",
+   "Founder, Hair Solutions Co."
+  ],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "dual CTA rendered in-wrapper: 'It's going well →' -> #TODO-review-destination; 'It's not quite right →' -> mailto:info@hairsolutions.co"
+  ],
+  "loud_placeholders": 0
+ },
+ {
+  "file": "13-pp-7b.html",
+  "email": "PP-7b · UGC Photo Request — PP-7 positive +7d",
+  "status": "GREEN",
+  "size_kb": 20.4,
+  "modules": [
+   "Header - Centered logo",
+   "Hero - Text-led",
+   "Text - Opening",
+   "Text - Customer snapshot",
+   "Photo - Feature story",
+   "Testimonial",
+   "Text - Offer discount",
+   "List - Questions",
+   "Text - Reassurance",
+   "Button - Primary CTA",
+   "List - Support strip",
+   "Footer - Social"
+  ],
+  "gated": false,
+  "preamble_notes": [],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Testimonial): 2 line(s) beyond the module's slots, appended verbatim",
+   "overflow carried into (List - Support strip): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 4
+ },
+ {
+  "file": "14-w-1.html",
+  "email": "W-1 · Welcome + Expectations — Signup +0d",
+  "status": "GREEN",
+  "size_kb": 12.8,
+  "modules": [
+   "Text - Masthead",
+   "Text - Opening",
+   "Text - Section",
+   "Text - Offer discount",
+   "Signal - Promo code",
+   "FAQ",
+   "Button - Primary CTA",
+   "Footer - Social"
+  ],
+  "gated": true,
+  "preamble_notes": [
+   "⚠️ GATED: this audience exists only after the newsletter capture form ships (order-of-ops item 9)."
+  ],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Signal - Promo code): 1 line(s) beyond the module's slots, appended verbatim",
+   "overflow carried into (FAQ): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 3
+ },
+ {
+  "file": "15-w-2.html",
+  "email": "W-2 · How Systems Work — Signup +3d",
+  "status": "GREEN",
+  "size_kb": 15.4,
+  "modules": [
+   "Header - Centered logo",
+   "Hero - Text-led",
+   "Text - Opening",
+   "Photo - Founder note",
+   "Comparison",
+   "Timeline",
+   "Button - Primary CTA",
+   "Footer - Social"
+  ],
+  "gated": true,
+  "preamble_notes": [
+   "⚠️ GATED: this audience exists only after the newsletter capture form ships (order-of-ops item 9)."
+  ],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "(Comparison) copy is an option list, not a two-sided comparison — column labels blanked; consider FAQ or List - Questions for this slot"
+  ],
+  "loud_placeholders": 0
+ },
+ {
+  "file": "16-w-3.html",
+  "email": "W-3 · Style Inspiration — Signup +7d",
+  "status": "GREEN",
+  "size_kb": 14.6,
+  "modules": [
+   "Text - Masthead",
+   "Photo - Feature story",
+   "Column - Image and text",
+   "Product - 3-up grid",
+   "Testimonial",
+   "Button - Primary CTA",
+   "Footer - Social"
+  ],
+  "gated": true,
+  "preamble_notes": [
+   "⚠️ GATED: this audience exists only after the newsletter capture form ships (order-of-ops item 9)."
+  ],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Column - Image and text): 1 line(s) beyond the module's slots, appended verbatim",
+   "overflow carried into (Testimonial): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 2
+ },
+ {
+  "file": "17-w-4.html",
+  "email": "W-4 · Social Proof Wall — Signup +12d",
+  "status": "GREEN",
+  "size_kb": 17.1,
+  "modules": [
+   "Header - Centered logo",
+   "Hero - Text-led",
+   "Text - Opening",
+   "Testimonial",
+   "Quote - Accent bar",
+   "Stat bars",
+   "Review stars",
+   "Text - Offer discount",
+   "Button - Primary CTA",
+   "Footer - Social"
+  ],
+  "gated": true,
+  "preamble_notes": [
+   "⚠️ GATED: this audience exists only after the newsletter capture form ships (order-of-ops item 9). Restored from legacy Welcome 4of5 (Social-Proof-Wall format — one of the two email types allowed to stack stat bars + review stars)."
+  ],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Testimonial): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 5
+ },
+ {
+  "file": "18-w-5.html",
+  "email": "W-5 · Soft Consult Invite — Signup +18d",
+  "status": "GREEN",
+  "size_kb": 16.8,
+  "modules": [
+   "Text - Masthead",
+   "Text - Opening",
+   "Timeline",
+   "Product - Dynamic recommendations",
+   "List - Questions",
+   "Testimonial",
+   "Photo - Founder note",
+   "Button - Primary CTA",
+   "Footer - Social"
+  ],
+  "gated": true,
+  "preamble_notes": [
+   "⚠️ GATED: this audience exists only after the newsletter capture form ships (order-of-ops item 9)."
+  ],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Product - Dynamic recommendations): 1 line(s) beyond the module's slots, appended verbatim",
+   "overflow carried into (Testimonial): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 2
+ },
+ {
+  "file": "19-ro-1.html",
+  "email": "RO-1 · Six Weeks In — Delivery +45d",
+  "status": "GREEN",
+  "size_kb": 9.0,
+  "modules": [
+   "Header - Centered logo",
+   "Layout - Plain-text founder wrapper",
+   "Footer - Preference centre"
+  ],
+  "gated": false,
+  "preamble_notes": [
+   "Hi {{ firstname }},",
+   "Six weeks is the point where a system starts telling you how it's going to age. Two things worth checking this week.",
+   "The front perimeter. Hold it to the light and look along the very front edge. Fine splits there are normal wear, but they spread. Catching one now is a repair; catching it in a month is a replacement.",
+   "The knots at the crown. If hair is shedding faster than it was, that's usually cleaning technique rather than a fault — too much friction on the base.",
+   "Where you are in the cycle: most systems run three to six months. At six weeks you're roughly a third through, which means now is the time to be maintaining, not replacing.",
+   "Reply with a photo if anything looks off and I'll tell you what I'm seeing.",
+   "Vincent"
+  ],
+  "blockers": [],
+  "issues": [],
+  "deviations": [],
+  "loud_placeholders": 0
+ },
+ {
+  "file": "20-ro-2.html",
+  "email": "RO-2 · Due For Supplies — Delivery +60d",
+  "status": "GREEN",
+  "size_kb": 12.9,
+  "modules": [
+   "Header - Centered logo",
+   "Hero - Text-led",
+   "Text - Opening",
+   "Product - Dynamic recommendations",
+   "Text - Reassurance",
+   "Button - Primary CTA",
+   "Footer - Preference centre"
+  ],
+  "gated": false,
+  "preamble_notes": [],
+  "blockers": [],
+  "issues": [],
+  "deviations": [],
+  "loud_placeholders": 0
+ },
+ {
+  "file": "21-ro-3.html",
+  "email": "RO-3 · Replacement Window — Delivery +90d",
+  "status": "GREEN",
+  "size_kb": 17.9,
+  "modules": [
+   "Header - Centered logo",
+   "Hero - Text-led",
+   "Text - Customer snapshot",
+   "Commerce - Quote and spec table",
+   "Testimonial",
+   "Review stars",
+   "Button - Primary CTA",
+   "Footer - Preference centre"
+  ],
+  "gated": false,
+  "preamble_notes": [],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Testimonial): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 3
+ },
+ {
+  "file": "22-ro-4.html",
+  "email": "RO-4 · Same Spec Or Change — Delivery +110d",
+  "status": "BLOCKED",
+  "size_kb": 10.8,
+  "modules": [
+   "Header - Centered logo",
+   "Layout - Plain-text founder wrapper",
+   "Button - Primary CTA",
+   "Footer - Preference centre"
+  ],
+  "gated": false,
+  "preamble_notes": [
+   "Hi {{ firstname }},",
+   "If you're going to order a replacement, this is the useful moment — before you're forced into it.",
+   "The question worth answering: same again, or change something?",
+   "Reasons people change:",
+   "Density. The most common regret is a first system slightly too dense. If yours reads a bit young, dropping one grade is the fix.",
+   "Base type. If you're replacing more often than you'd like, moving from full lace to a hybrid buys you weeks.",
+   "Hairline. If you've been wearing it a while, you may want it set slightly differently now that you know how it sits.",
+   "Reply with what you'd change and I'll adjust the specification before it goes to production. That costs nothing.",
+   "Vincent"
+  ],
+  "blockers": [
+   "BLOCKER: required module (Text - Customer snapshot) has no copy block"
+  ],
+  "issues": [],
+  "deviations": [
+   "dual CTA rendered in-wrapper: 'Same spec →' -> https://hairsolutions.co/collections/mens-hair-systems?utm_source=shopify_email&utm_medium=email&utm_campaign=ro-4; 'Change my spec →' -> mailto:info@hairsolutions.co"
+  ],
+  "loud_placeholders": 0
+ },
+ {
+  "file": "23-ro-5.html",
+  "email": "RO-5 · Auto-Reorder — Delivery +125d",
+  "status": "GREEN",
+  "size_kb": 13.0,
+  "modules": [
+   "Header - Centered logo",
+   "Hero - Text-led",
+   "Layout - Plain-text founder wrapper",
+   "List - Questions",
+   "Text - Reassurance",
+   "Button - Primary CTA",
+   "Footer - Preference centre"
+  ],
+  "gated": false,
+  "preamble_notes": [],
+  "blockers": [],
+  "issues": [],
+  "deviations": [],
+  "loud_placeholders": 0
+ },
+ {
+  "file": "24-ro-6.html",
+  "email": "RO-6 · Returning Customer Price — Delivery +140d",
+  "status": "GREEN",
+  "size_kb": 18.6,
+  "modules": [
+   "Header - Centered logo",
+   "Hero - Text-led",
+   "Text - Offer discount",
+   "Signal - Promo code",
+   "Commerce - Quote and spec table",
+   "Testimonial",
+   "Review stars",
+   "Button - Primary CTA",
+   "Footer - Preference centre"
+  ],
+  "gated": false,
+  "preamble_notes": [],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Signal - Promo code): 1 line(s) beyond the module's slots, appended verbatim",
+   "overflow carried into (Testimonial): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 3
+ },
+ {
+  "file": "25-wb-1.html",
+  "email": "WB-1 · Checking In — Day 0",
+  "status": "GREEN",
+  "size_kb": 9.0,
+  "modules": [
+   "Header - Centered logo",
+   "Layout - Plain-text founder wrapper",
+   "Footer - Preference centre"
+  ],
+  "gated": false,
+  "preamble_notes": [
+   "Hi {{ firstname }},",
+   "It's been a while — your last order with us was {{ months_since_last_order }} months ago.",
+   "No pitch in this email. I'm just curious how you got on.",
+   "If you're still wearing a system and it's working, that's good to hear and you can ignore this.",
+   "If you stopped, I'd honestly like to know why. Was it the maintenance? The cost? Did the fit never come right? Did you go a different route entirely?",
+   "I read every reply, and the answers change what we make. The most useful feedback I've had all year came from people who stopped buying.",
+   "Vincent",
+   "Founder, Hair Solutions Co."
+  ],
+  "blockers": [],
+  "issues": [],
+  "deviations": [],
+  "loud_placeholders": 0
+ },
+ {
+  "file": "26-wb-2.html",
+  "email": "WB-2 · What's Changed — Day 7",
+  "status": "GREEN",
+  "size_kb": 16.2,
+  "modules": [
+   "Header - Centered logo",
+   "Hero - Text-led",
+   "Text - Opening",
+   "Photo - Feature story",
+   "Product - Dynamic recommendations",
+   "Testimonial",
+   "Review stars",
+   "Button - Primary CTA",
+   "Footer - Social"
+  ],
+  "gated": false,
+  "preamble_notes": [],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Product - Dynamic recommendations): 1 line(s) beyond the module's slots, appended verbatim",
+   "overflow carried into (Testimonial): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 3
+ },
+ {
+  "file": "27-wb-3.html",
+  "email": "WB-3 · 20% Welcome Back — Day 14",
+  "status": "GREEN",
+  "size_kb": 18.4,
+  "modules": [
+   "Header - Centered logo",
+   "Hero - Text-led",
+   "Text - Offer discount",
+   "Signal - Promo code",
+   "Commerce - Quote and spec table",
+   "Testimonial",
+   "Review stars",
+   "Button - Primary CTA",
+   "Footer - Preference centre"
+  ],
+  "gated": false,
+  "preamble_notes": [],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Testimonial): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 3
+ },
+ {
+  "file": "28-wb-4.html",
+  "email": "WB-4 · Last Email From Us — Day 21",
+  "status": "GREEN",
+  "size_kb": 8.8,
+  "modules": [
+   "Header - Centered logo",
+   "Layout - Plain-text founder wrapper",
+   "Footer - Preference centre"
+  ],
+  "gated": false,
+  "preamble_notes": [
+   "Hi {{ firstname }},",
+   "This is the last marketing email you'll get from us.",
+   "You haven't opened anything in a while, and I'd rather stop than keep arriving in an inbox where I'm not wanted. In a week I'll quietly remove you from our marketing list. You don't need to do anything.",
+   "If you'd like to stay, one click keeps you on.",
+   "Either way, your account and order history stay intact, and you can buy from the site any time without being on a list. If you ever need help with a system — even one you didn't buy from us — my inbox is open. That doesn't expire.",
+   "Thanks for having given us a go.",
+   "Vincent",
+   "Founder, Hair Solutions Co."
+  ],
+  "blockers": [],
+  "issues": [],
+  "deviations": [],
+  "loud_placeholders": 0
+ },
+ {
+  "file": "29-c-0.html",
+  "email": "C-0 · Consultation Recap — Day 0",
+  "status": "GREEN",
+  "size_kb": 25.7,
+  "modules": [
+   "Header - Centered logo",
+   "Hero - Text-led",
+   "Text - Opening",
+   "Text - Customer snapshot",
+   "Text - Base type guidance",
+   "Commerce - Quote and spec table",
+   "Timeline",
+   "Text - Reassurance",
+   "Testimonial",
+   "FAQ",
+   "Button - Primary CTA",
+   "List - Support strip",
+   "Footer - Standard"
+  ],
+  "gated": false,
+  "preamble_notes": [],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Testimonial): 1 line(s) beyond the module's slots, appended verbatim",
+   "overflow carried into (FAQ): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 4
+ },
+ {
+  "file": "30-c-1.html",
+  "email": "C-1 · Objections Answered — Day 2",
+  "status": "GREEN",
+  "size_kb": 17.2,
+  "modules": [
+   "Header - Centered logo",
+   "Hero - Text-led",
+   "Text - Opening",
+   "List - Questions",
+   "List - Trust strip",
+   "Testimonial",
+   "Text - Reassurance",
+   "Button - Primary CTA",
+   "Footer - Preference centre"
+  ],
+  "gated": false,
+  "preamble_notes": [],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Testimonial): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 1
+ },
+ {
+  "file": "31-c-2.html",
+  "email": "C-2 · Spec Confidence — Day 6",
+  "status": "GREEN",
+  "size_kb": 17.5,
+  "modules": [
+   "Header - Centered logo",
+   "Hero - Text-led",
+   "Text - Opening",
+   "Text - Base type guidance",
+   "Comparison",
+   "Commerce - Quote and spec table",
+   "Button - Primary CTA",
+   "Footer - Preference centre"
+  ],
+  "gated": false,
+  "preamble_notes": [],
+  "blockers": [],
+  "issues": [],
+  "deviations": [],
+  "loud_placeholders": 0
+ },
+ {
+  "file": "32-c-3.html",
+  "email": "C-3 · Soft Incentive — Day 12",
+  "status": "GREEN",
+  "size_kb": 15.4,
+  "modules": [
+   "Header - Centered logo",
+   "Hero - Text-led",
+   "Text - Opening",
+   "Text - Offer discount",
+   "Signal - Promo code",
+   "Signal - Countdown",
+   "Testimonial",
+   "Button - Primary CTA",
+   "Footer - Preference centre"
+  ],
+  "gated": false,
+  "preamble_notes": [],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Testimonial): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 1
+ },
+ {
+  "file": "33-c-4.html",
+  "email": "C-4 · Founder Close — Day 18",
+  "status": "GREEN",
+  "size_kb": 8.7,
+  "modules": [
+   "Header - Centered logo",
+   "Layout - Plain-text founder wrapper",
+   "Footer - Preference centre"
+  ],
+  "gated": false,
+  "preamble_notes": [
+   "Hi {{ firstname }},",
+   "Last note from me about the consultation — I won't keep nudging.",
+   "Almost three weeks ago we built a spec for you. If you've decided against it, or the timing's wrong, that's completely fine — you can tell me, or just let this be the last email.",
+   "But if something specific is holding you back — the price, a doubt about the spec, something you didn't want to ask on the call — reply and tell me. Plain question, plain answer. And if a system honestly isn't the right call for your situation, I'll say that too.",
+   "Your quote stays on file either way. There's no expiry on the conversation.",
+   "Vincent",
+   "Founder, Hair Solutions Co."
+  ],
+  "blockers": [],
+  "issues": [],
+  "deviations": [],
+  "loud_placeholders": 0
+ },
+ {
+  "file": "34-nl-01.html",
+  "email": "NL-01 · Education — Lace, skin, mono or hybrid",
+  "status": "GREEN",
+  "size_kb": 17.1,
+  "modules": [
+   "Text - Masthead",
+   "Text - Opening",
+   "Column - Image and text",
+   "Comparison",
+   "FAQ",
+   "Testimonial",
+   "Button - Primary CTA",
+   "Footer - Social"
+  ],
+  "gated": true,
+  "preamble_notes": [
+   "📎 FULL · evergreen — salvaged from the legacy Education recurring template. Pairs with a blog post on base selection; CTA lands on the post."
+  ],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "(Comparison) copy is an option list, not a two-sided comparison — column labels blanked; consider FAQ or List - Questions for this slot",
+   "overflow carried into (Comparison): 1 line(s) beyond the module's slots, appended verbatim",
+   "overflow carried into (FAQ): 1 line(s) beyond the module's slots, appended verbatim",
+   "overflow carried into (Testimonial): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 1
+ },
+ {
+  "file": "35-nl-02.html",
+  "email": "NL-02 · Story — \"My barber couldn't tell\"",
+  "status": "GREEN",
+  "size_kb": 18.1,
+  "modules": [
+   "Text - Masthead",
+   "Photo - Feature story",
+   "Text - Opening",
+   "Quote - Centered",
+   "Testimonial",
+   "Review stars",
+   "Stat bars",
+   "Product - Dynamic recommendations",
+   "Button - Primary CTA",
+   "Footer - Social"
+  ],
+  "gated": true,
+  "preamble_notes": [
+   "📎 FULL · salvaged from the legacy Customer Story bank (Danny, Austin). ⚠️ Before send: verify Danny's written consent is on file in the Proof Bank (Permission = Yes) — quotes and photo."
+  ],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Testimonial): 4 line(s) beyond the module's slots, appended verbatim",
+   "overflow carried into (Product - Dynamic recommendations): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 4
+ },
+ {
+  "file": "36-nl-03.html",
+  "email": "NL-03 · Offer — Limited offer on bestsellers",
+  "status": "GREEN",
+  "size_kb": 20.6,
+  "modules": [
+   "Text - Masthead",
+   "Text - Offer discount",
+   "Signal - Promo code",
+   "Signal - Countdown",
+   "Grid - Collections 4",
+   "Product - 3-up grid",
+   "Testimonial",
+   "List - Trust strip",
+   "Button - Primary CTA",
+   "Footer - Standard"
+  ],
+  "gated": false,
+  "preamble_notes": [
+   "📋 TEMPLATE · offer-led — real offers cannot be invented (brand rule). The legacy salvage (MIDYEAR25, 25% off) is expired; every figure, code and date below is confirm-before-send.",
+   "FILL CHECKLIST (~20 min): 1. Confirm offer % / scope / expiry with Vincent · 2. Pull proof from Proof Bank · 3. Replace all tokens · 4. Verify the CTA lands on the exact collection + UTMs · 5. Test · 6. Schedule."
+  ],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Signal - Promo code): 1 line(s) beyond the module's slots, appended verbatim",
+   "overflow carried into (Testimonial): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 6
+ },
+ {
+  "file": "37-nl-04.html",
+  "email": "NL-04 · Brand — What we've been building",
+  "status": "GREEN",
+  "size_kb": 13.9,
+  "modules": [
+   "Text - Masthead",
+   "Photo - Feature story",
+   "Text - Opening",
+   "Text - Section",
+   "Quote - Centered",
+   "Stat bars",
+   "Button - Primary CTA",
+   "Footer - Social"
+  ],
+  "gated": true,
+  "preamble_notes": [
+   "📎 FULL · salvaged from the legacy Brand & Recap recurring template. Prose is complete; the two proof slots are Proof Bank pulls (verified figures only)."
+  ],
+  "blockers": [],
+  "issues": [],
+  "deviations": [],
+  "loud_placeholders": 3
+ },
+ {
+  "file": "38-nl-05.html",
+  "email": "NL-05 · Launch — New systems, who each one is for",
+  "status": "GREEN",
+  "size_kb": 22.2,
+  "modules": [
+   "Text - Masthead",
+   "Hero - Photo-led",
+   "Text - Opening",
+   "Text - Section",
+   "Column - Image and text",
+   "Product - 3-up grid",
+   "Comparison",
+   "Testimonial",
+   "List - Trust strip",
+   "Signal - Countdown",
+   "Button - Primary CTA",
+   "Footer - Social"
+  ],
+  "gated": true,
+  "preamble_notes": [
+   "📎 FULL · evergreen framing salvaged from the legacy Product Launch recurring template. The featured systems slot in dynamically — the positioning copy below doesn't change."
+  ],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Testimonial): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 5
+ },
+ {
+  "file": "39-nl-06.html",
+  "email": "NL-06 · Education — Density explained",
+  "status": "GREEN",
+  "size_kb": 16.3,
+  "modules": [
+   "Text - Masthead",
+   "Text - Opening",
+   "Column - Image and text",
+   "Text - Base type guidance",
+   "FAQ",
+   "Testimonial",
+   "Button - Primary CTA",
+   "Footer - Social"
+  ],
+  "gated": true,
+  "preamble_notes": [
+   "📎 FULL · evergreen. Pairs with a blog post on density selection; CTA lands on the post."
+  ],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (FAQ): 1 line(s) beyond the module's slots, appended verbatim",
+   "overflow carried into (Testimonial): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 1
+ },
+ {
+  "file": "40-nl-07.html",
+  "email": "NL-07 · Story — The first 90 days",
+  "status": "GREEN",
+  "size_kb": 18.4,
+  "modules": [
+   "Text - Masthead",
+   "Photo - Feature story",
+   "Text - Opening",
+   "Quote - Centered",
+   "Testimonial",
+   "Review stars",
+   "Stat bars",
+   "Product - Dynamic recommendations",
+   "Button - Primary CTA",
+   "Footer - Social"
+  ],
+  "gated": false,
+  "preamble_notes": [
+   "📋 TEMPLATE · real customers cannot be invented (brand rule). Feature one consented customer with a first-90-days arc.",
+   "FILL CHECKLIST (~20 min): 1. Pick the customer from Proof Bank (Permission = Yes, photo + quotes) · 2. Replace all [PULL] slots with their actual timeline · 3. Relate the Proof Bank rows via Used In · 4. Verify links/UTMs · 5. Test · 6. Schedule."
+  ],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Photo - Feature story): 1 line(s) beyond the module's slots, appended verbatim",
+   "overflow carried into (Testimonial): 6 line(s) beyond the module's slots, appended verbatim",
+   "overflow carried into (Product - Dynamic recommendations): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 6
+ },
+ {
+  "file": "41-nl-08.html",
+  "email": "NL-08 · Offer — Care kit bundle",
+  "status": "GREEN",
+  "size_kb": 21.0,
+  "modules": [
+   "Text - Masthead",
+   "Text - Offer discount",
+   "Signal - Promo code",
+   "Signal - Countdown",
+   "Grid - Collections 4",
+   "Product - 3-up grid",
+   "Testimonial",
+   "List - Trust strip",
+   "Button - Primary CTA",
+   "Footer - Standard"
+  ],
+  "gated": false,
+  "preamble_notes": [
+   "📋 TEMPLATE · offer-led — care kit bundle and/or free-shipping threshold. Figures are confirm-before-send.",
+   "FILL CHECKLIST (~20 min): 1. Confirm with Vincent: bundle contents, bundle price or discount %, free-shipping threshold, code, expiry · 2. Pull proof · 3. Replace tokens · 4. CTA → care collection + UTMs · 5. Test · 6. Schedule."
+  ],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Signal - Promo code): 1 line(s) beyond the module's slots, appended verbatim",
+   "overflow carried into (Testimonial): 1 line(s) beyond the module's slots, appended verbatim",
+   "overflow carried into (List - Trust strip): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 6
+ },
+ {
+  "file": "42-nl-09.html",
+  "email": "NL-09 · Brand — On the bench",
+  "status": "GREEN",
+  "size_kb": 14.3,
+  "modules": [
+   "Text - Masthead",
+   "Photo - Feature story",
+   "Text - Opening",
+   "Text - Section",
+   "Quote - Centered",
+   "Stat bars",
+   "Button - Primary CTA",
+   "Footer - Social"
+  ],
+  "gated": true,
+  "preamble_notes": [
+   "📎 FULL · evergreen. Behind-the-scenes build story — also quietly answers \"why does it take 3–4 weeks?\""
+  ],
+  "blockers": [],
+  "issues": [],
+  "deviations": [],
+  "loud_placeholders": 3
+ },
+ {
+  "file": "43-nl-10.html",
+  "email": "NL-10 · Launch — HS- spotlight",
+  "status": "GREEN",
+  "size_kb": 23.1,
+  "modules": [
+   "Text - Masthead",
+   "Hero - Photo-led",
+   "Text - Opening",
+   "Text - Section",
+   "Column - Image and text",
+   "Product - 3-up grid",
+   "Comparison",
+   "Testimonial",
+   "List - Trust strip",
+   "Signal - Countdown",
+   "Button - Primary CTA",
+   "Footer - Social"
+  ],
+  "gated": false,
+  "preamble_notes": [
+   "📋 TEMPLATE · deep dive on one HS- system — the featured system cannot be invented; pick it when the slot arrives.",
+   "FILL CHECKLIST (~20 min): 1. Choose the HS- system with Vincent · 2. Fill every {{ token }} with its real spec · 3. Pull an early-wearer quote from Proof Bank if one exists · 4. Verify links/UTMs · 5. Test · 6. Schedule."
+  ],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Testimonial): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 6
+ },
+ {
+  "file": "44-nl-11.html",
+  "email": "NL-11 · Education — Hairline realism",
+  "status": "GREEN",
+  "size_kb": 16.6,
+  "modules": [
+   "Text - Masthead",
+   "Text - Opening",
+   "Column - Image and text",
+   "Text - Base type guidance",
+   "FAQ",
+   "Testimonial",
+   "Button - Primary CTA",
+   "Footer - Social"
+  ],
+  "gated": true,
+  "preamble_notes": [
+   "📎 FULL · evergreen. Pairs with a blog post on hairline design; CTA lands on the post."
+  ],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (FAQ): 1 line(s) beyond the module's slots, appended verbatim",
+   "overflow carried into (Testimonial): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 1
+ },
+ {
+  "file": "45-nl-12.html",
+  "email": "NL-12 · Story — Gym, pool, travel",
+  "status": "GREEN",
+  "size_kb": 18.3,
+  "modules": [
+   "Text - Masthead",
+   "Photo - Feature story",
+   "Text - Opening",
+   "Quote - Centered",
+   "Testimonial",
+   "Review stars",
+   "Stat bars",
+   "Product - Dynamic recommendations",
+   "Button - Primary CTA",
+   "Footer - Social"
+  ],
+  "gated": false,
+  "preamble_notes": [
+   "📋 TEMPLATE · real customers cannot be invented (brand rule). Feature one consented customer with a genuinely active routine.",
+   "FILL CHECKLIST (~20 min): 1. Pick the customer from Proof Bank (Permission = Yes — must actually train/swim/travel) · 2. Replace all [PULL] slots with their real routine · 3. Relate Proof Bank rows via Used In · 4. Verify links/UTMs · 5. Test · 6. Schedule."
+  ],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Photo - Feature story): 1 line(s) beyond the module's slots, appended verbatim",
+   "overflow carried into (Testimonial): 6 line(s) beyond the module's slots, appended verbatim",
+   "overflow carried into (Product - Dynamic recommendations): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 6
+ },
+ {
+  "file": "46-nl-13.html",
+  "email": "NL-13 · Offer — Returning-customer pricing",
+  "status": "GREEN",
+  "size_kb": 21.3,
+  "modules": [
+   "Text - Masthead",
+   "Text - Offer discount",
+   "Signal - Promo code",
+   "Signal - Countdown",
+   "Grid - Collections 4",
+   "Product - 3-up grid",
+   "Testimonial",
+   "List - Trust strip",
+   "Button - Primary CTA",
+   "Footer - Standard"
+  ],
+  "gated": true,
+  "preamble_notes": [
+   "📎 FULL · evergreen prose — the explanation is the email. ⚠️ Figures are confirm-before-send: align the % and code with the returning-customer offer already used in RO-6 (RETURNING15) so the two never contradict each other in the same inbox."
+  ],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Signal - Promo code): 1 line(s) beyond the module's slots, appended verbatim",
+   "overflow carried into (Testimonial): 1 line(s) beyond the module's slots, appended verbatim",
+   "overflow carried into (List - Trust strip): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 6
+ },
+ {
+  "file": "47-nl-14.html",
+  "email": "NL-14 · Brand — Milestones + reviews",
+  "status": "GREEN",
+  "size_kb": 13.9,
+  "modules": [
+   "Text - Masthead",
+   "Photo - Feature story",
+   "Text - Opening",
+   "Text - Section",
+   "Quote - Centered",
+   "Stat bars",
+   "Button - Primary CTA",
+   "Footer - Social"
+  ],
+  "gated": false,
+  "preamble_notes": [
+   "📋 TEMPLATE · Proof Bank pull edition — this one is mostly assembled from the Proof Bank when its slot arrives. Nothing here can be invented.",
+   "FILL CHECKLIST (~20 min): 1. Pull milestones + 2–3 consented review quotes + verified stats from Proof Bank (Permission = Yes) · 2. Pick one genuinely critical review and the real fix it triggered · 3. Relate every pulled row via Used In · 4. Verify links/UTMs · 5. Test · 6. Schedule."
+  ],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Photo - Feature story): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 4
+ },
+ {
+  "file": "48-nl-15.html",
+  "email": "NL-15 · Launch — New colours & textures",
+  "status": "GREEN",
+  "size_kb": 22.9,
+  "modules": [
+   "Text - Masthead",
+   "Hero - Photo-led",
+   "Text - Opening",
+   "Text - Section",
+   "Column - Image and text",
+   "Product - 3-up grid",
+   "Comparison",
+   "Testimonial",
+   "List - Trust strip",
+   "Signal - Countdown",
+   "Button - Primary CTA",
+   "Footer - Social"
+  ],
+  "gated": false,
+  "preamble_notes": [
+   "📋 TEMPLATE · real launches cannot be invented — fill with the actual new colours/textures when they land.",
+   "FILL CHECKLIST (~20 min): 1. Confirm the real new range with Vincent (names, shades, which bases carry them) · 2. Fill every {{ token }} · 3. Pull proof if an early wearer exists · 4. Verify links/UTMs · 5. Test · 6. Schedule."
+  ],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Testimonial): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 5
+ },
+ {
+  "file": "49-nl-16.html",
+  "email": "NL-16 · Education — Maintenance myths",
+  "status": "BLOCKED",
+  "size_kb": 14.5,
+  "modules": [
+   "Text - Masthead",
+   "Text - Opening",
+   "Column - Image and text",
+   "FAQ",
+   "Testimonial",
+   "Button - Primary CTA",
+   "Footer - Social"
+  ],
+  "gated": true,
+  "preamble_notes": [
+   "📎 FULL · evergreen. Pairs with a blog post on system care; CTA lands on the post. Comparison slot is used as myth vs reality."
+  ],
+  "blockers": [
+   "BLOCKER: required module (Comparison) has no copy block"
+  ],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Column - Image and text): 1 line(s) beyond the module's slots, appended verbatim",
+   "overflow carried into (FAQ): 1 line(s) beyond the module's slots, appended verbatim",
+   "overflow carried into (Testimonial): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 1
+ },
+ {
+  "file": "50-nl-17.html",
+  "email": "NL-17 · Story — Consultation to confidence",
+  "status": "GREEN",
+  "size_kb": 18.6,
+  "modules": [
+   "Text - Masthead",
+   "Photo - Feature story",
+   "Text - Opening",
+   "Quote - Centered",
+   "Testimonial",
+   "Review stars",
+   "Stat bars",
+   "Product - Dynamic recommendations",
+   "Button - Primary CTA",
+   "Footer - Social"
+  ],
+  "gated": false,
+  "preamble_notes": [
+   "📋 TEMPLATE · real customers cannot be invented (brand rule). Feature one consented customer whose journey started with a consultation — this edition quietly supports the J5 journey's promise.",
+   "FILL CHECKLIST (~20 min): 1. Pick the customer from Proof Bank (Permission = Yes, consultation-first journey) · 2. Replace all [PULL] slots · 3. Relate Proof Bank rows via Used In · 4. CTA → consultation booking page + UTMs · 5. Test · 6. Schedule."
+  ],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Photo - Feature story): 1 line(s) beyond the module's slots, appended verbatim",
+   "overflow carried into (Testimonial): 6 line(s) beyond the module's slots, appended verbatim",
+   "overflow carried into (Product - Dynamic recommendations): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 6
+ },
+ {
+  "file": "51-nl-18.html",
+  "email": "NL-18 · Offer — Seasonal promo (slot)",
+  "status": "GREEN",
+  "size_kb": 20.6,
+  "modules": [
+   "Text - Masthead",
+   "Text - Offer discount",
+   "Signal - Promo code",
+   "Signal - Countdown",
+   "Grid - Collections 4",
+   "Product - 3-up grid",
+   "Testimonial",
+   "List - Trust strip",
+   "Button - Primary CTA",
+   "Footer - Standard"
+  ],
+  "gated": false,
+  "preamble_notes": [
+   "📋 TEMPLATE · seasonal slot — deliberately empty of specifics. Everything offer-shaped is confirm-before-send; the structure and voice rules below don't change.",
+   "FILL CHECKLIST (~20 min): 1. Confirm with Vincent: the season/occasion, discount % or mechanic, scope, code, start/expiry · 2. Write the subject as the plain offer, not a pun · 3. Pull proof · 4. CTA → the exact collection + UTMs · 5. Test · 6. Schedule.",
+   "VOICE RULES for this slot (fixed): the number leads · the end date is real and stated once · no \"last chance\" resends unless one was planned from the start · no inflated \"was\" prices."
+  ],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Signal - Promo code): 1 line(s) beyond the module's slots, appended verbatim",
+   "overflow carried into (Testimonial): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 6
+ },
+ {
+  "file": "52-nl-19.html",
+  "email": "NL-19 · Brand — What's next + reader Q&A",
+  "status": "GREEN",
+  "size_kb": 13.6,
+  "modules": [
+   "Text - Masthead",
+   "Photo - Feature story",
+   "Text - Opening",
+   "Text - Section",
+   "Quote - Centered",
+   "Stat bars",
+   "Button - Primary CTA",
+   "Footer - Social"
+  ],
+  "gated": false,
+  "preamble_notes": [
+   "📋 TEMPLATE · the Q&A must come from real reader replies and Intercom threads — questions cannot be invented (brand rule).",
+   "FILL CHECKLIST (~20 min): 1. Collect 3–5 real questions from newsletter replies + Intercom since the last Brand edition · 2. Confirm the \"what's next\" items with Vincent (only commitments we'll actually keep) · 3. Pull proof if used · 4. Verify links/UTMs · 5. Test · 6. Schedule."
+  ],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Button - Primary CTA): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 4
+ },
+ {
+  "file": "53-nl-20.html",
+  "email": "NL-20 · Launch — Accessories & tools line",
+  "status": "GREEN",
+  "size_kb": 22.4,
+  "modules": [
+   "Text - Masthead",
+   "Hero - Photo-led",
+   "Text - Opening",
+   "Text - Section",
+   "Column - Image and text",
+   "Product - 3-up grid",
+   "Comparison",
+   "Testimonial",
+   "List - Trust strip",
+   "Signal - Countdown",
+   "Button - Primary CTA",
+   "Footer - Social"
+  ],
+  "gated": false,
+  "preamble_notes": [
+   "📋 TEMPLATE · fill when the accessories & tools line actually ships — products cannot be invented (brand rule).",
+   "FILL CHECKLIST (~20 min): 1. Confirm the real line-up with Vincent (items, what each replaces, pricing) · 2. Fill every {{ token }} · 3. Pull proof if early users exist · 4. Verify links/UTMs · 5. Test · 6. Schedule."
+  ],
+  "blockers": [],
+  "issues": [],
+  "deviations": [
+   "overflow carried into (Testimonial): 1 line(s) beyond the module's slots, appended verbatim"
+  ],
+  "loud_placeholders": 6
+ }
+]

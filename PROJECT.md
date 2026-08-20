@@ -97,6 +97,83 @@ Summary of phases:
 12. `profile_hair_*` is empty in the CRM — either populate it or drop those merge fields from modules.
 
 ## Session log
+- **2026-08-19 (Claude — Phase 3 complete: all 53 emails built, 15 builder defects fixed):**
+  Picked up the CAMPAIGN-PLAN.md programme mid-Phase-3. Found Phases 0–2 committed and the
+  Phase 3 builder written (`tools/build53/`, 103 templates generated) but **never completed a
+  full run** — it crashed at email 6 of 53, and only the 5 J2 emails existed on disk with the
+  ledger holding a single entry. Now: **51 GREEN · 2 BLOCKED · 0 ISSUES across all 53**,
+  `shopify-messaging/emails/` complete, `shopify-messaging/build-ledger.json` regenerated.
+  Local artifacts only — nothing pushed, scheduled or sent (AGENTS.md §2).
+
+  The build was not merely incomplete, it was silently wrong. Fifteen defects found and fixed;
+  eleven of them changed what a subscriber would have received. Full table in
+  `shopify-messaging/BUILD-LEDGER.md` §Phase 3. The ones that matter most:
+
+  - **An unverified "4.8 out of 5" rating was hardcoded into 10 emails.** The Proof Bank is
+    44×5-star + 43×4-star (≈4.5 average) with no verified-buyer badge on any of the 87 reviews.
+    The claim was not supportable. It is now a slot that renders as a loud placeholder until a
+    real figure is supplied.
+  - **Empty-default fields never received a slot** in `gen_templates.py`, so renderers wrote into
+    slots that did not exist — `comparison`'s items, `timeline`'s labels and text, `stat_bars`
+    labels, `text_offer_discount`'s percentage and code. 21 slots recovered by aligning the HubL
+    source's tag stream against the rendered preview.
+  - **Copy was being dropped in four separate ways** — em-dash splitting keeping only one half,
+    module slot overflow discarded, a 6-slot cleanup cap, and a copy queue keyed by family name
+    when PP-7b's Body and Module Stack name the same module differently. A general
+    *no-copy-left-behind* guard now appends any line that did not reach its module, verbatim,
+    and records it as a deviation. 38 emails carry at least one.
+  - **24 emails pointed their footer logo at the HubSpot portal CDN**, a host this account no
+    longer controls. All 53 now use the Cloudinary wordmark (approved host, 16 KB, HTTP 200).
+  - `--check-links` was a dangling flag with no implementation, so the Phase 3 "every link
+    resolves 200" gate could not run. Implemented as `tools/build53/check_links.py`.
+
+  **Structural gate: 53/53 pass** — unsubscribe, physical address, hidden preheader, mobile
+  media query, transparent body/wrapper, alt on every image, zero unfilled slots, zero leftover
+  HubL, zero dead hosts, zero double-escaped entities, all under the 102 KB Gmail clip.
+
+  **Two BLOCKED, both source-data gaps needing Vincent's call** (per the plan, a missing `()`
+  module is a blocked build, not a judgement call): **RO-4** — stack requires
+  `Text - Customer snapshot`, Body has no matching block; **NL-16** — stack requires
+  `Comparison`, Body has no matching block.
+
+  **Not sendable yet, by design.** 128 loud placeholders remain across the set — every
+  `[PULL from Proof Bank ...]`, `{{ dynamic: ... }}` and `[OFFER ...]` renders visibly rather
+  than being invented. Replacing them is Phase 4. 14 emails carry the `⚠️ GATED` note (the W
+  series and the newsletter wait on the capture form). Four CTA destinations are deliberate
+  `#TODO-` placeholders: PP-1's order URL and PP-4's tracking URL are Phase 5 automation values;
+  PP-7 has no public review-submission page and PP-7b's `/pages/share-your-look` returns 404.
+
+  **Flag for Vincent:** the only image in all 53 emails is the wordmark. The five product shots
+  and four launch-day WebPs re-encoded in Phase 2 are referenced by no email — no module stack in
+  the reference file calls for them. Either the photo modules need image assignments, or Phase 2
+  was serving something other than these 53.
+
+  **Next:** Phase 0 is still the hard blocker and is still Vincent-only (Shopify sender-domain
+  CNAMEs; DKIM absent, `p=quarantine` will quarantine everything). Phase 4 (fill the 11
+  reality-dependent newsletter editions from the Proof Bank) is unblocked and can run in parallel.
+
+- **2026-08-19 (Claude — reshade batch 1 built, completing the three-batch re-shade):** Batch 1 was
+  never run (its subagent died in the crashed r2-image-migration session). Note: the folder formerly
+  named `reshade-batch-1/` was a different deliverable (the WB-1 master assembly); the lead renamed it
+  to `wb1-master-assembly/` before this session started, and it was not touched. Built
+  `reshade-batch-1/` fresh: 7 families × 3 shades (Bone/Paper/Ink) — `photo__feature_story`,
+  `product__dynamic_recommendations`, `list__questions`, `list__support_strip`, `hero__photo_led`,
+  `commerce__viewed_product`, `commerce__shipping_tracking` — plus `_batch-1.json` (name→HTML map),
+  `_index.json` (byte ledger), and contact-sheet `_preview.html`, all matching the accepted
+  batch-2/3 conventions. Copy verbatim from the resolved preview sources (`_light` for Bone/Paper,
+  `_dark` for Ink — programmatically confirmed identical text in every family). Verification: 146/146
+  checks passed via a throwaway stdlib script — transparent outer wrapper on all 21 files; balanced
+  tags with self-closed `<img/>`; palette audit confined to the 7 approved hexes
+  (#F7F1DE #EFE7D2 #15140F #ED6F5C #DDD2B6 #5A5448 #2A2620); per-family bone/paper/ink diffs confined
+  to colour values + heading letter-spacing; visible-text diff vs the resolved preview sources clean
+  for all 21 (only the contract eyebrow `—` prefix added, as in batches 2/3); hrefs/img src/alt
+  preserved exactly; stacking `<style>` block present iff multi-column (Dynamic recommendations,
+  Support strip, Shipping tracking). **Placeholders flagged:** `product__dynamic_recommendations`
+  (2×) and `commerce__viewed_product` (1×) have empty `src=""` image attributes in the source modules
+  themselves — kept verbatim per the "keep sources' image URLs exactly" rule; they need real media
+  URLs before any production use. No live/production change: local file authoring only, no HubSpot,
+  MailerLite, MailerSend, Shopify, send, or schedule action of any kind.
+
 - **2026-08-19 (Claude — reshade batches 2 + 3 completed, consolidated into real project folder):**
   The r2-image-migration worktree session hit its usage limit mid-run; two of its three re-shade
   subagents (batch 2 and batch 3) died before writing. Reconstructed both briefs from the session
