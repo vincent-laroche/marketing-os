@@ -1,0 +1,107 @@
+[
+ {
+  "module": "Text - Offer discount",
+  "surface": "Bone",
+  "bytes": 2646
+ },
+ {
+  "module": "Text - Offer discount",
+  "surface": "Paper",
+  "bytes": 2646
+ },
+ {
+  "module": "Text - Offer discount",
+  "surface": "Ink",
+  "bytes": 2645
+ },
+ {
+  "module": "Signal - Countdown",
+  "surface": "Bone",
+  "bytes": 1355
+ },
+ {
+  "module": "Signal - Countdown",
+  "surface": "Paper",
+  "bytes": 1355
+ },
+ {
+  "module": "Signal - Countdown",
+  "surface": "Ink",
+  "bytes": 1355
+ },
+ {
+  "module": "Text - Base type guidance",
+  "surface": "Bone",
+  "bytes": 1285
+ },
+ {
+  "module": "Text - Base type guidance",
+  "surface": "Paper",
+  "bytes": 1285
+ },
+ {
+  "module": "Text - Base type guidance",
+  "surface": "Ink",
+  "bytes": 1285
+ },
+ {
+  "module": "Text - Customer snapshot",
+  "surface": "Bone",
+  "bytes": 1212
+ },
+ {
+  "module": "Text - Customer snapshot",
+  "surface": "Paper",
+  "bytes": 1212
+ },
+ {
+  "module": "Text - Customer snapshot",
+  "surface": "Ink",
+  "bytes": 1212
+ },
+ {
+  "module": "Commerce - Cart line items",
+  "surface": "Bone",
+  "bytes": 3960
+ },
+ {
+  "module": "Commerce - Cart line items",
+  "surface": "Paper",
+  "bytes": 3960
+ },
+ {
+  "module": "Commerce - Cart line items",
+  "surface": "Ink",
+  "bytes": 3959
+ },
+ {
+  "module": "Photo - Founder note",
+  "surface": "Bone",
+  "bytes": 3124
+ },
+ {
+  "module": "Photo - Founder note",
+  "surface": "Paper",
+  "bytes": 3124
+ },
+ {
+  "module": "Photo - Founder note",
+  "surface": "Ink",
+  "bytes": 3123
+ },
+ {
+  "module": "Commerce - Order summary",
+  "surface": "Bone",
+  "bytes": 3968
+ },
+ {
+  "module": "Commerce - Order summary",
+  "surface": "Paper",
+  "bytes": 3968
+ },
+ {
+  "module": "Commerce - Order summary",
+  "surface": "Ink",
+  "bytes": 3967
+ }
+]

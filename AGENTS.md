@@ -28,6 +28,13 @@ which modules appear in each email. It is a Notion export of the email system.
 `brand-design-system/specs/ATELIER_ZERO_RULEBOOK_V1.md` or `specs/PLATFORM_EMAIL.md` —
 Vincent has explicitly ruled both out of scope. §4 below does not apply to email colour.
 
+**Exception — the page background is transparent, decided 2026-08-19 by Vincent.** The
+module palette above is correct for *cards and insets only*. `<body>` and the outer wrapper
+table are `background-color:transparent` on every email; `#F6EFD9` is **not** painted as a
+page background, and neither is any other value. The client's own background shows through
+the gutter, and it will go dark in dark-mode clients — that is intended, not a bug to patch.
+Reintroducing a page background in a new or rebuilt template is a regression.
+
 Consequence, recorded so it is not rediscovered: `mailerlite/ml_components.py` renders a
 *different* palette (`#F7F1DE / #EFE7D2 / #ED6F5C / #15140F / #DDD2B6`), so the 27 emails
 built from it do not match the modules. Retokenising it to the module palette above is
@@ -65,6 +72,15 @@ active subscribers", not "no recipients". Every parked draft must be assigned to
 safeguard group `⛔ DO NOT SEND — Lifecycle Drafts (parked)` (id `196158361233786451`).
 
 ## 3. Platform roles (current)
+
+**Shopify Messaging — the sending platform for the 53-email programme.** Decided
+2026-08-19 by Vincent, superseding the MailerLite-as-sender note below for this programme.
+The 53 emails in `Email Reference File/` (J1–J5, W, N) build and send from Shopify Messaging
+and Shopify Flow. This does **not** retract the consent lesson recorded under Shopify below —
+it relocates it: consent state must be verified *inside Shopify*, per channel, before any
+journey is activated. Hard blocker as of this date: no Shopify DKIM selector is published and
+DMARC is `p=quarantine`, so Shopify mail from @hairsolutions.co is quarantined until the
+store-specific sender-authentication CNAMEs are added. See `CAMPAIGN-PLAN.md` Phase 0.
 
 **MailerLite — the sending platform.** Account 2582639. Live work lives in `mailerlite/`.
 `ml_content_*.py` hold per-journey copy (verbatim from the reference file), `ml_components.py`

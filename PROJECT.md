@@ -3,18 +3,17 @@
 > Living status log. Full context/rules live in `AGENTS.md` (the project bible) — don't duplicate them
 > here. Update this file at the end of every session: what changed, what's next, who touched it.
 
-**Last updated:** 2026-08-19 by Claude (close-out of the audience-rebuild session: rules, MailerSend,
-DNS removal and modules-pilot snapshot committed after the session hit a usage limit)
-**Status:** HubSpot access lost → MailerLite is the sending platform. **Audience is now built from the
-HubSpot export only — never from Shopify** (Vincent, 2026-08-19). The Shopify shop `97521` is connected
-and `enabled: true`, but its subscriber sync imported 631 contacts into the *marketing* group without
-respecting Shopify's own consent state (95 had none), so all 631 were deleted; the sync is now
-repointed to `⛔ Shopify sync — quarantine` (resubscribe/popups off) until Vincent switches it off in
-the dashboard. Account now holds **2,212 / 2,500** subscribers across six tier groups plus a hair-professional
-segment. 23 campaigns, all draft, all parked. 2 automations, both disabled. No marketing sent or scheduled.
-Blockers: Shopify **product** sync still returns 0 (so e-commerce blocks stay empty), domain DKIM/SPF
-records, 3 photos, care-products catalog gap, empty testimonial Proof Bank, and `profile_hair_*` being
-unpopulated in the CRM (1 of 3,967).
+**Last updated:** 2026-08-19 by Claude (CAMPAIGN-PLAN.md created — 53-email programme verified,
+6-phase plan documented; Shopify Messaging confirmed as the sending platform for this
+programme, superseding MailerLite for the 53 J/W/N emails)
+**Status:** MailerLite remains the sending platform for the 27 already-built campaigns
+(drafts, parked). **The 53-email programme** (J1–J5, W, N) now lives in `CAMPAIGN-PLAN.md`
+and will send from **Shopify Messaging + Shopify Flow**. This is a deliberate split:
+MailerLite for what already exists; Shopify Messaging for the 53 reference-file emails.
+Shopify Messaging is installed, 159 Admin API scopes confirmed, Cloudflare DNS write
+proven — but **DKIM is still the hard blocker** (no Shopify selector in DNS, `p=quarantine`
+will quarantine everything until the Phase 0 CNAMEs are provisioned).
+Audience: HubSpot export only — never from Shopify (Vincent, 2026-08-19).
 
 ## Current status
 
@@ -37,37 +36,37 @@ working tree**. It stays recoverable from git history at `e892e64` and earlier.
 
 ## Next steps / open items
 
-**Vincent only (dashboard / assets):**
+**The 53-email Shopify Messaging programme — see `CAMPAIGN-PLAN.md` for the full plan.**
+Summary of phases:
 
-1. ~~Switch off the Shopify subscriber sync~~ — **there is no off switch** (confirmed 2026-08-19 in the
-   embedded app's UI: the Groups tab only repoints the sync — per-group *Select* buttons, never
-   unselect; API-SURFACE §9 shows the same at the API). Neutralised instead: sync points at
-   `⛔ Shopify sync — quarantine` (id `196200001017218918`, verified live at 0 members) with
-   `enable_resubscribe`/`enable_popups` off. The only true off is **Disconnect**, which also severs the
-   catalog sync we want to keep — quarantine IS the end state unless that changes.
-2. Get the Shopify **product** sync working — products/orders are `0`, so every e-commerce block has
-   no catalog to render. Separate toggle from subscriber sync; keep the shop connected for catalog.
-3. Verify domain DKIM/SPF in MailerLite (Cloudflare zone ready).
-4. Review `exports/mailerlite-audience/pro-candidates-REVIEW.csv` — 20 self-identified hair
-   professionals, ~4 of which read as consumers. Confirm before they join the pro segment.
-5. Close content gaps: 3 photos, care-products catalog, empty testimonial Proof Bank.
-6. Confirm provenance/consent before adding any hosted logo, customer image, quote, name or testimonial.
+- **Phase 0 — Unblock the send path (Vincent action).** Authenticate the sender domain
+  via Shopify admin → Sender email → Cloudflare auto-configuration. Four store-specific
+  CNAMEs provision DKIM + SPF; no separate TXT needed. DMARC already correct (`p=quarantine`).
+  Then seed-send to verify `dkim=pass spf=pass dmarc=pass`. Warm-up ramp: 186 engaged
+  contacts first. Resolve consent provenance for the 1,732 marketable contacts.
+  Disconnect/quarantine the MailerLite app on Shopify.
+- **Phase 1 — Build text_section module** (the one genuine gap out of 16 listed).
+- **Phase 2 — Re-encode 4 heavy images** to WebP ≤200 KB.
+- **Phase 3 — Build all 53 emails** from resolved previews, verbatim copy.
+  Order: J2 → J1 → W → J4 → J3 → J5 → N.
+- **Phase 4 — Fill the 11 reality-dependent newsletter editions** with Proof Bank data.
+- **Phase 5 — Automations, segments, consent** (depends on Phase 0 completion).
+- **Phase 6 — Measure** with per-format KPIs as written in the programme doc.
 
-**Open engineering work:**
+**Open MailerLite items (not superseded — the 27 existing campaigns remain on ML):**
 
-7. News & Offers / `W · Lead Nurture`: largely defused 2026-08-19. The trigger is
-   `subscriber_joins_group`, an **event** — existing members do not enter on enable, only future joins.
-   `HS · C · Customers` is now excluded from the trigger, so customers are doubly protected. Automation
-   remains disabled. Still open: whether News & Offers (a 1,178-strong mixed group, 306 customers +
-   186 restored records) is the right long-term trigger audience at all.
-8. Retokenise `ml_components.py` to the module palette (see AGENTS.md §1) — the 27 built emails use a
-   different palette from the reference-file modules.
-9. Migrate the 23 parked campaigns into automations; J3's shell exists (`196158522200688485`) but is
-   incomplete (`segment_id: ""`, 0 steps). J3's segment `196158509152207934` still has **no filter** and
-   matches everyone — do not wire it live.
-10. ~~Decide `mailersend/`'s fate~~ — **resolved 2026-08-19**: AGENTS.md §2 now carries the narrow
-    transactional exception (`ALLOWED_RECIPIENTS`-bounded) and §3 names MailerSend with Resend
-    decommissioned; `mailersend/` is committed. Shopify is declared catalog-only in §3.
+1. Retokenise `ml_components.py` to the module palette (see AGENTS.md §1) — the 27 built
+   emails use a different palette from the reference-file modules.
+2. Verify domain DKIM/SPF in MailerLite (Cloudflare zone ready — ML DKIM already in DNS).
+3. Get the Shopify **product** sync working — products/orders are `0`, so every
+   e-commerce block has no catalog to render.
+
+**Open decisions — unchanged:**
+
+- LAUNCH30 end date · Pruning 769 cold-intent subscribers · Cart discount: discount vs none
+- Whether the 113 previously-translated Shopify-Liquid emails retire now that the 53 are
+  the source of truth
+
 - **2026-08-19 (Claude — close-out: Shopify quarantine, W trigger defused, HubSpot DNS removal, MailerSend committed):**
   Tail of the audience-rebuild session, which hit a usage limit at ~00:43 with these changes on disk
   uncommitted; verified and committed as-written by the following session.
@@ -98,6 +97,36 @@ working tree**. It stays recoverable from git history at `e892e64` and earlier.
 12. `profile_hair_*` is empty in the CRM — either populate it or drop those merge fields from modules.
 
 ## Session log
+- **2026-08-19 (Claude — reshade batches 2 + 3 completed, consolidated into real project folder):**
+  The r2-image-migration worktree session hit its usage limit mid-run; two of its three re-shade
+  subagents (batch 2 and batch 3) died before writing. Reconstructed both briefs from the session
+  transcripts and completed them. Batch 3 (5 families × 3 shades: `review__stars`, `product__3up_grid`,
+  `commerce__quote_spec_table`, `grid__collections_4`, `timeline`) and batch 2 (7 families × 3 shades:
+  `text__offer_discount`, `signal__countdown`, `text__base_type_guidance`, `text__customer_snapshot`,
+  `commerce__cart_line_items`, `photo__founder_note`, `commerce__order_summary`) — each with
+  `_batch-N.json` name→HTML map, `_index.json`, and contact-sheet `_preview.html`. All checks passed
+  per file: transparent outer wrapper, balanced tags, palette confined to the 7 approved hexes,
+  shades differ only in colour + heading letter-spacing, copy diffed verbatim against the resolved
+  preview sources, stacking style block iff multi-column. Per Vincent, the real project folder is
+  `07_design/email_marketing/` — all three batches (`reshade-batch-1/`, `reshade-batch-2/`,
+  `reshade-batch-3/`) are now consolidated there (batch 1 copied from the worktree). Placeholders
+  added for empty source fields (offer-discount figure/code, cart rows 2–3, timeline day bodies,
+  customer-snapshot body) and flagged in the batch reports. CTAs follow the approved library
+  (coral pill + ink label on all shades) — the batch briefs' "CTA inverts" line contradicts the
+  approved `button__primary_cta` files; the files won. No HubSpot, MailerLite, Shopify, send,
+  schedule, or production change occurred.
+- **2026-08-19 (Claude — CAMPAIGN-PLAN.md created):** Vincent shared the verified
+  campaign implementation plan for the 53-email Shopify Messaging programme. Written to
+  `CAMPAIGN-PLAN.md` (479 lines, copied verbatim — no edits or additions). The plan was
+  verified against `Email Reference File/`, live DNS, R2, and the Shopify Admin API on
+  2026-08-19. Nothing live was touched. Key findings: 53 emails across 6 journeys +
+  newsletter, 102 module previews deployable as artifacts, 1 genuine module gap
+  (text_section), 4 oversized images, Shopify DKIM still the hard blocker, 1,732
+  marketable contacts with undocumented consent provenance, Proof Bank unlocked via
+  Judge.me metafield. 6 phases documented. `PROJECT.md` header and next-steps updated to
+  reference the plan. `AGENTS.md` already referenced `CAMPAIGN-PLAN.md` (line 83) — that
+  file now exists.
+
 
 - **2026-08-19 (Claude — `email-marketing` plugin installed):** Installed the `email-marketing` plugin
   (v1.0.0+codex.20260818181954) from the local `toolkit-marketplace` (`~/.claude/plugins/marketplaces/`):
