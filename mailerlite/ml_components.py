@@ -8,6 +8,9 @@ INK      = "#15140F"
 BODY_CLR = "#5A5448"
 MUTED    = "#8B8676"
 BONE_BG  = "#F7F1DE"
+# No wallpaper behind an email. Body and outer wrapper are transparent so the
+# client's own background shows through — hard rule, 2026-08-19 (AGENTS.md #5).
+PAGE_BG  = "transparent"
 CARD_BG  = "#EFE7D2"
 FILL     = "#DDD2B6"
 CORAL    = "#ED6F5C"
@@ -192,9 +195,9 @@ def shell(title, pre, body_rows):
 <style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Inter+Tight:wght@600;800&family=JetBrains+Mono:wght@400;600&display=swap');
 @media only screen and (max-width:620px){{.ml-container{{width:100%!important;}}td{{padding-left:24px!important;padding-right:24px!important;}}}}</style>
 </head>
-<body style="margin:0;padding:0;background-color:{BONE_BG};-webkit-text-size-adjust:100%;">
+<body style="margin:0;padding:0;background-color:{PAGE_BG};-webkit-text-size-adjust:100%;">
 {preheader(pre)}
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:{BONE_BG};"><tr><td align="center">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:{PAGE_BG};"><tr><td align="center">
 <table role="presentation" class="ml-container" width="600" cellpadding="0" cellspacing="0" style="width:600px;max-width:600px;background-color:{CARD_BG};">
 {header_logo()}
 {body_rows}
