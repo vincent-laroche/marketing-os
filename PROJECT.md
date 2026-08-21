@@ -126,7 +126,16 @@ Summary of phases:
   the actual run used a dedicated worker script after the agent's Playwright driver
   crashed once (EPIPE, Node 24). Remaining: ~26 out-of-scope native templates untouched by
   design; master accent color in "Customize email templates" still wrong and deliberately
-  untouched (per-template `!important` overrides carry Coral).
+  untouched (per-template `!important` overrides carry Coral). Step 10 visual check also
+  done: rendered previews of all 17 (extracted from the admin preview iframe, rendered
+  headless) eyeballed — no floating-card / big-gap failure mode; correct Paper/Ink/Coral
+  architecture everywhere. PNGs in `figma-review-renders/shopify-notifications-v7/previews/`.
+  Two cosmetic observations, both upstream Shopify-skeleton structure, not our CSS, and
+  identical in the verified-live `order_confirmation` reference: the eyebrow's 16px top
+  margin leaves a visible gap above the Paper header row (only noticeable on a white
+  client background; invisible on warm/default backgrounds), and `order_cancelled`'s
+  stock copy wraps to a bare `.-on-a-line` in narrow preview. Neither was changed — the
+  standing instruction is to match the verified reference, not "improve" it.
 - **2026-08-21 (Claude — native Shopify notification-template restyle: found and fixed a live page-background regression on 3 of 4 "done" templates, delegated the remaining 17):**
   New surface for this repo: Shopify's **native transactional notification templates**
   (Admin → Settings → Notifications → Customer notifications → Edit code), not Shopify
