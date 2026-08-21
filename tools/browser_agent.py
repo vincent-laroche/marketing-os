@@ -98,6 +98,27 @@ def _handle(page_holder, params):
     if action == "eval":
         return {"ok": True, "result": page.evaluate(params["js"][0])}
 
+    if action == "evalfile":
+        result = page.evaluate(params["js"][0])
+        path = params["path"][0]
+        text = result if isinstance(result, str) else json.dumps(result)
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(text)
+        return {"ok": True, "path": path, "len": len(text)}
+
+    if action == "setfile":
+        path = params["path"][0]
+        with open(path, "r", encoding="utf-8") as f:
+            content = f.read()
+        js = """(text) => {
+            const el = document.querySelector('.cm-content');
+            if (!el || !el.cmView) return 'no-cm';
+            const view = el.cmView.view;
+            view.dispatch({changes: {from: 0, to: view.state.doc.length, insert: text}});
+            return String(view.state.doc.length);
+        }"""
+        return {"ok": True, "result": page.evaluate(js, content)}
+
     if action == "html":
         html = page.content()
         return {"ok": True, "html": html[:MAX_HTML], "truncated": len(html) > MAX_HTML}

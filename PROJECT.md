@@ -3,8 +3,8 @@
 > Living status log. Full context/rules live in `AGENTS.md` (the project bible) — don't duplicate them
 > here. Update this file at the end of every session: what changed, what's next, who touched it.
 
-**Last updated:** 2026-08-20 by Claude (Phase 0 sender-domain authentication confirmed live;
-branches merged to bring in the three Figma-derived MailerSend service emails)
+**Last updated:** 2026-08-21 by Claude (all 17 native Shopify notification templates rebuilt
+to Atelier Zero v7 and verified live — see session log)
 **Status:** Shopify sender-domain authentication is **confirmed Authenticated** in Shopify admin
 (Settings → Notifications), managed by Cloudflare automatic DNS — see the 2026-08-20 entry below.
 MailerLite remains the sending platform for the 27 already-built campaigns (drafts, parked).
@@ -102,6 +102,89 @@ Summary of phases:
 12. `profile_hair_*` is empty in the CRM — either populate it or drop those merge fields from modules.
 
 ## Session log
+- **2026-08-21 (Claude — all 17 delegated native Shopify notification templates rebuilt to Atelier Zero v7 and verified live):**
+  Completed the delegated batch from the entry below. Method: Playwright against
+  `admin.shopify.com/store/oneheadhair/email_templates/<slug>/edit` (persistent profile
+  `~/.ml-browser-profile`, Vincent logged in interactively), driving the CodeMirror 6
+  editor via `cmView.view.dispatch` rather than clipboard paste; live source pulled and
+  re-pulled through the same JS accessor into local files. Each of the 17 was: extracted,
+  re-skinned (reference `<style>` block from the verified-live `order_confirmation` plus
+  the mandated `table.body > tr > td { background: transparent !important; }` rule,
+  `az-eyebrow` row, canonical Ink footer with per-template service-email disclaimer),
+  ASCII-gated (Shopify's own curly apostrophes in `local_delivered` /
+  `local_missed_delivery` were normalized; the `!` in stock `customer_account_welcome`
+  title dropped per the no-exclamation rule), pushed, saved, then **reloaded fresh and
+  re-extracted byte-identical** before moving on. 17/17 PASS. Verified-live copies are in
+  `figma-review-renders/shopify-notifications-v7/`. Footer variables: 12 order templates
+  use `order_name` (confirmed in each source, not assumed); `gift_card_notification` /
+  `gift_card_confirmation` use gift-card wording; `store_credit_issued` a store-credit
+  sentence; `customer_account_reset` / `customer_account_welcome` a generic account
+  sentence. The gift-card/store-credit skeletons have no header row and a different
+  `table.body` shape — eyebrow went in as a table row instead of the nested-table style.
+  `tools/browser_agent.py` gained `/evalfile` and `/setfile` endpoints (file-based, avoids
+  returning large HTML through tool results and the clipboard-mangling round trip), though
+  the actual run used a dedicated worker script after the agent's Playwright driver
+  crashed once (EPIPE, Node 24). Remaining: ~26 out-of-scope native templates untouched by
+  design; master accent color in "Customize email templates" still wrong and deliberately
+  untouched (per-template `!important` overrides carry Coral).
+- **2026-08-21 (Claude — native Shopify notification-template restyle: found and fixed a live page-background regression on 3 of 4 "done" templates, delegated the remaining 17):**
+  New surface for this repo: Shopify's **native transactional notification templates**
+  (Admin → Settings → Notifications → Customer notifications → Edit code), not Shopify
+  Messaging/MailerLite/MailerSend. Not previously documented in `AGENTS.md`; the design
+  authority for it is `brand-design-system/specs/PLATFORM_EMAIL.md` with a palette
+  (`#EFE7D2`/`#F7F1DE`/`#ED6F5C`/`#15140F`/`#DDD2B6`) — **distinct from and not governed
+  by** AGENTS.md §1's Email Reference File palette, which stays authoritative for
+  MailerLite/MailerSend/Shopify Messaging work only. Flag for Vincent: this repo's
+  `AGENTS.md` has no section for the notification-template surface yet; worth adding one
+  now that real work has landed here.
+
+  A prior session's handoff claimed 4 templates — `order_confirmation`,
+  `draft_order_invoice`, `shipping_confirmation`, `ready_for_pickup` — were "done and
+  verified live." Checked each against the actual live saved source (not against any
+  local file or doc claim). Only `order_confirmation` was correct. The other 3 had a
+  real, live bug: the Paper `#EFE7D2` background and the transparent value were
+  **swapped between selectors** — `.container` (the ~600px content column, which should
+  carry Paper) was `background-color: transparent`, while `body`, `table.body`, and
+  `table.body > tr > td` (the full-width outer wrapper, which must stay transparent)
+  carried `background-color: #EFE7D2`. That's the exact full-bleed page-background bleed
+  the architecture is designed to prevent — invisible in a narrow screenshot, live on
+  every order/shipping/pickup email sent from hairsolutions.co until fixed.
+
+  Fixed all 3 directly in Shopify admin (precise CodeMirror text replacement, not a full
+  rebuild): swapped the two values back, saved, and independently re-verified each one
+  by a **fresh page reload** reading the raw saved source (not the still-open editor
+  state) before moving to the next. All 3 confirmed correct and persisted.
+
+  Saved a byte-exact, verified-correct copy of the live `order_confirmation` source to
+  `figma-review-renders/order_confirmation_VERIFIED_REFERENCE.liquid.html`. The
+  pre-existing `figma-review-renders/order_confirmation.html` (no `_VERIFIED_REFERENCE`
+  suffix) is a **stale wrong-palette draft** from an earlier abandoned attempt (bordered
+  floating-card look, old `#F6EFD9` palette) — it does not reflect the shipped design and
+  should not be used as a reference by a future session.
+
+  Remaining 17 templates (`pickup_receipt`, `local_out_for_delivery`, `local_delivered`,
+  `local_missed_delivery`, `gift_card_notification`, `gift_card_confirmation`,
+  `store_credit_issued`, `order_invoice`, `order_edited`, `order_cancelled`,
+  `order_payment_receipt`, `refund_notification`, `shipping_update`,
+  `shipment_out_for_delivery`, `shipment_delivered`, `customer_account_reset`,
+  `customer_account_welcome`) confirmed genuinely untouched by spot-check (6 of the 17
+  checked directly: `pickup_receipt`, `local_out_for_delivery`,
+  `gift_card_notification`, `customer_account_welcome`, plus the 3 already fixed as
+  cross-reference) — old `#F6EFD9`, no eyebrow, no Coral, no Estonia address, none of
+  the rebuild markers present. `customer_account_welcome` confirmed to have no
+  `order_name` variable in its own source, consistent with needing a generic
+  account-appropriate disclaimer rather than the order-based one.
+
+  Delegated the 17-template rebuild to an external agent (Kimi K2/K3 via ClinePass) to
+  offload the extract→edit→paste-back→verify cycle; wrote a fully self-contained prompt
+  at `figma-review-renders/AGENT-PROMPT-17-templates.md` that names the verified
+  reference file, states the exact swap bug to avoid, and requires per-template
+  fresh-reload persistence verification before moving to the next — specifically because
+  this session's own experience shows a written "done" claim is not trustworthy without
+  independent verification against live source. **Next session: re-verify the delegated
+  agent's output the same way (live source, not its own status report) before treating
+  any of the 17 as shipped.**
+
 - **2026-08-19 (Claude — Phase 3 complete: all 53 emails built, 15 builder defects fixed):**
   Picked up the CAMPAIGN-PLAN.md programme mid-Phase-3. Found Phases 0–2 committed and the
   Phase 3 builder written (`tools/build53/`, 103 templates generated) but **never completed a
