@@ -154,7 +154,7 @@ custom fields:
 | Item Type | Single select | Journey, Email, Component, Operations |
 | Journey | Single select | J1, J2, J3, J4, J5, W, N, Shared |
 | Shopify Surface | Single select | Shopify Messaging, Shopify Flow, Shopify Notifications, Repository only |
-| Audience Segment | Single select | Consented Cohort 2026, Engaged Core, Purchasers, Abandoned Checkout 30d, Lapsed 60d, Consultation Interest, Newsletter Subscribers, Not Applicable, Needs Decision |
+| Audience Segment | Single select | Consented Cohort 2026, Engaged Core, Purchasers, Never Purchased, Abandoned Checkout 30d, Lapsed 60d, Consultation Interest, Newsletter Subscribers, Not Applicable, Needs Decision |
 | Relative Send Timing | Text | Lifecycle timing such as `+4 hours` or `Delivery +110d` |
 | Target Send Date | Date | Calendar date for broadcasts or explicitly dated work |
 | UTM Campaign | Text | Canonical analytics campaign code |
@@ -199,7 +199,7 @@ Populate the board from current repository evidence rather than treating every e
 - 51 are structurally green; RO-4 and NL-16 are blocked by source gaps.
 - Structural green maps to QA Status = Structural Pass, not Approved.
 - Emails with unresolved placeholders map to Content Readiness = Needs Real Data.
-- J2 and W map to Shopify Messaging; J1, J3, J4, and J5 map to Shopify Flow.
+- J2, W, and N map to Shopify Messaging; J1, J3, J4, and J5 map to Shopify Flow.
 - Nothing starts as Scheduled, Active, or activation-approved.
 - Shopify sender authentication is complete, but broad-audience consent remains gated.
 
