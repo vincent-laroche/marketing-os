@@ -94,6 +94,22 @@ The import excludes:
 The Figma plugin is included only as source and configuration if it is needed by the current email
 workflow. Dependencies and generated output are excluded.
 
+### 4.1 Approved pre-publication reconciliation
+
+Before `main` is advanced:
+
+- return CR-1 through CR-4 to the Email Reference File palette required by `AGENTS.md` while
+  preserving their functional Shopify Liquid and content corrections;
+- retain and verify the current Phase 4 Proof Bank and Phase 5 Shopify segment/tag work;
+- archive `mailerlite/`, `mailerlite-blocks/`, and their build helpers under
+  `archive/mailerlite-legacy/`;
+- include the Figma email-block plugin as source only under `tools/`;
+- retain only the final, durable email-rendering QA evidence under `docs/evidence/`;
+- remove obsolete MailerLite editor screenshots from the active tree while preserving them in Git
+  history;
+- keep local CRM exports, browser state, agent worktrees, dependencies, generated plugin bundles,
+  and intermediate proof renders out of Git.
+
 ## 5. GitHub Project architecture
 
 Create a private user-owned GitHub Project named:
