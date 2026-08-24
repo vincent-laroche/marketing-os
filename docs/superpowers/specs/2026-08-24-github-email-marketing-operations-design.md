@@ -1,8 +1,11 @@
 # GitHub Email Marketing Operations — Design
 
-**Date:** 2026-08-24  
-**Status:** Approved by Vincent  
-**Target repository:** `vincent-laroche/email-marketing`  
+**Date:** 2026-08-24
+
+**Status:** Approved by Vincent
+
+**Target repository:** `vincent-laroche/email-marketing-ops`
+
 **Target GitHub Project:** `Hair Solutions Co. — Email Marketing Operations`
 
 ## 1. Outcome
@@ -19,22 +22,21 @@ Shopify Messaging and Shopify Flow remain the sole marketing campaign and lifecy
 MailerLite remains legacy evidence only. Creating the repository and Project does not authorize an
 email send, schedule, automation activation, subscriber change, or Shopify production change.
 
-## 2. Destructive repository reset
+## 2. Existing repository continuity
 
-The existing `vincent-laroche/email-marketing` repository is intentionally replaced:
+`vincent-laroche/email-marketing-ops` is the existing private repository connected to this local
+project and becomes the canonical repository. Its history is retained.
 
-1. Change the repository from public to private before importing any project material.
-2. Build a sanitized snapshot of the current project in an isolated temporary directory.
-3. Create a new orphan `main` root commit with no parent.
-4. Force-push that root to `main`, replacing the repository's existing reachable history.
-5. Delete every other remote branch, including `shopify-sync-on-demand-only`.
-6. Verify that `main` is the only branch and that its root commit has no parent.
-7. Leave `vincent-laroche/email-marketing-ops` unchanged as recovery evidence. It is not the
-   operating repository after migration.
+1. Preserve every existing commit and avoid force-pushes or orphan branches.
+2. Reconcile the current working tree into small, verified, purpose-specific commits.
+3. Fast-forward `main` to the verified current project branch; do not rewrite `main` history.
+4. Push the resulting `main` normally to `origin`.
+5. Preserve unrelated remote branches unless they are reviewed and separately approved for
+   deletion.
+6. Verify that local `main`, `origin/main`, and the checked-out canonical revision agree.
 
-The reset removes old repository content from normal GitHub references. GitHub may retain
-unreachable objects internally for an unspecified period; this operation cannot guarantee physical
-erasure from GitHub infrastructure.
+The separate `vincent-laroche/email-marketing` repository is out of scope. Do not change its
+visibility, branches, history, files, settings, or integrations.
 
 ## 3. Credential and privacy boundary
 
@@ -47,7 +49,7 @@ erasure from GitHub infrastructure.
 
 ## 4. Sanitized repository structure
 
-The new repository contains the current operational source, authority documents, and bounded
+The canonical repository contains the current operational source, authority documents, and bounded
 evidence:
 
 ```text
@@ -98,7 +100,7 @@ Create a private user-owned GitHub Project named:
 
 **Hair Solutions Co. — Email Marketing Operations**
 
-Link it to `vincent-laroche/email-marketing`. Every tracked item is a repository Issue; draft-only
+Link it to `vincent-laroche/email-marketing-ops`. Every tracked item is a repository Issue; draft-only
 Project items are not used for durable work.
 
 ### 5.1 Item model
@@ -205,10 +207,11 @@ Populate the board from current repository evidence rather than treating every e
 
 Implementation is performed with idempotent, inspectable scripts where repetition is involved:
 
-1. Generate and validate the sanitized repository snapshot.
-2. Scan it for secrets, PII, ignored runtime state, oversized generated files, and broken paths.
-3. Create and push the orphan `main` only after the scan passes.
-4. Delete non-main branches and verify the remote branch list.
+1. Classify the current staged, unstaged, untracked, and deleted files by ownership and purpose.
+2. Exclude secrets, PII, ignored runtime state, oversized generated files, and accidental local
+   artifacts.
+3. Reconcile approved active work into small, verified commits while preserving existing history.
+4. Fast-forward `main` to the verified project revision and push normally to `origin`.
 5. Create the Project and custom fields.
 6. Create Journey, Email, Component, and Operations issues from deterministic manifests.
 7. Add every issue to the Project and populate fields by exact issue number.
@@ -224,11 +227,12 @@ not create duplicate issues, fields, or Project items.
 The migration is complete only when:
 
 - the target repository and Project are private;
-- target `main` is a new root commit and the only remote branch;
+- the complete existing `email-marketing-ops` commit history remains reachable;
+- local `main` and `origin/main` resolve to the same verified revision without a force-push;
 - the sanitized repository contains no secrets, contact-level PII, browser state, caches, or local
   agent worktrees;
-- `email-marketing-ops` remains unchanged;
-- the Project is linked to `vincent-laroche/email-marketing`;
+- the separate `vincent-laroche/email-marketing` repository remains unchanged;
+- the Project is linked to `vincent-laroche/email-marketing-ops`;
 - all 53 email issues and 7 journey issues exist exactly once;
 - shared component/operations issues exist exactly once;
 - all issues are Project items with required custom fields populated;
@@ -246,5 +250,6 @@ This migration does not:
 - modify Shopify audiences, segments, automations, products, customers, or configuration;
 - write to MailerLite, MailerSend, HubSpot, DNS, or Cloudflare;
 - invent missing copy, dates, consent, proof, metrics, or QA results;
-- delete or rewrite `vincent-laroche/email-marketing-ops`;
+- delete or rewrite history in `vincent-laroche/email-marketing-ops`;
+- modify the separate `vincent-laroche/email-marketing` repository;
 - turn every historical module or proof artifact into a Project issue.
