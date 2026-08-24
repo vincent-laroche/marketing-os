@@ -301,6 +301,13 @@ Create exactly these views in this order:
 QA, consent, risks, and blockers remain fully readable in Issue bodies and labels; they do not
 create extra saved views.
 
+### Insights after real performance data exists
+
+Project Insights may later chart Emails by Stage, Campaigns by Status, revenue by Campaign Type or
+Objective, campaigns shipped by month, Emails by Platform, and Issues by work area. Insights are an
+analytical layer behind the five views, not a sixth primary view. Do not create performance charts
+from blank or invented metrics during initial migration.
+
 ## 12. Initial-state mapping
 
 Populate from current repository evidence:
