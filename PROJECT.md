@@ -3,7 +3,7 @@
 > Living status log. Full context/rules live in `AGENTS.md` (the project bible) — don't duplicate them
 > here. Update this file at the end of every session: what changed, what's next, who touched it.
 
-**Last updated:** 2026-08-24 by Codex (Campaign OS design and implementation plan approved;
+**Last updated:** 2026-08-24 by Codex (Email Preview Gallery architecture added to Campaign OS;
 documentation only)
 
 **Status:** **All marketing campaigns and lifecycle journeys now belong to Shopify Messaging +
@@ -86,6 +86,21 @@ working tree**. It stays recoverable from git history at `e892e64` and earlier.
 ## Session log
 > Chronological record only. Older entries may describe superseded platforms, paths, counts, or
 > blockers. The current status at the top of this file and `AGENTS.md` always win.
+
+- **2026-08-24 (Codex — hybrid Email Preview Gallery architecture):** Vincent approved a static
+  fixture compiler plus GitHub Pages at `email-preview.hairsolutions.co`. Draft/review output stays
+  private in temporary, reproducible Actions artifacts; public output requires both an explicit
+  `preview_public: true` source flag and deliberate workflow dispatch. The renderer must fail closed
+  on unresolved or unsupported Shopify Liquid and produce rendered HTML plus full desktop and mobile
+  screenshots for every successful Email. Every output is bound to the exact source SHA, Email
+  Issue, pull request, fictional fixture state, compiler revision, and content digest. Added a
+  reusable fictional persona/state model, a twentieth Project field (`Preview URL`), atomic public
+  deployment, append-only publication provenance, `noindex`/`robots.txt` safeguards, and a separate
+  approval checkpoint for Pages enablement, the custom domain, and Cloudflare DNS. The five native
+  Project views remain unchanged; the gallery is a sixth interface surface, not a sixth view. The
+  earlier implementation plan is explicitly paused until Vincent reviews the written spec extension.
+  No preview was rendered or published, and no GitHub Pages, Actions, DNS, Cloudflare, Project,
+  Shopify, campaign, send, schedule, or subscriber state changed.
 
 - **2026-08-24 (Codex — Email Marketing Campaign OS design and implementation plan):** Vincent
   selected the existing private `vincent-laroche/email-marketing-ops` repository and required its

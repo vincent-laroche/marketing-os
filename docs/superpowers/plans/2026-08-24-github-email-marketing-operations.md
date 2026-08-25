@@ -1,5 +1,9 @@
 # Email Marketing Campaign OS Implementation Plan
 
+> **Status:** Paused. The approved Email Preview Gallery architecture adds a twentieth custom field,
+> strict fixture rendering, private review artifacts, GitHub Pages publication, and a separate visual
+> design gate. Revise this plan only after Vincent approves the written extension in the design spec.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Reconcile the existing email-marketing repository, make GitHub Issues and pull requests the connector-readable operating system, and create the private `Email Marketing — Campaign OS` Project with the approved hierarchy, fields, automations, and five views.
