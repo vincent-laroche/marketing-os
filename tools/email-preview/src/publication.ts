@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
-import { activePublications, appendPublication, createPublicationEntry, createWithdrawalEntry, isApprovedCanonicalUrl, validateLedger, type PublicationEvent } from "./publication-ledger.js";
+import { activePublications, appendPublication, createPublicationEntry, createWithdrawalEntry, isApprovedCanonicalUrl, validateLedger, type PublicationEntry, type PublicationEvent } from "./publication-ledger.js";
 import { assertExactSourceSha, assertCanonicalEmailCode, containsUnsafePublicUrl, sha256Bytes, validatePublicReadBack, type PublicReadBack } from "./github.js";
 import { loadConfig, repositoryRoot } from "./config.js";
 import type { PreviewSelection } from "./types.js";
@@ -10,7 +10,7 @@ import { validateProvenance } from "./provenance.js";
 import type { Provenance } from "./types.js";
 
 export interface PublicationCliArgs {
-  command: "candidate" | "withdraw-candidate" | "append" | "validate-gallery" | "validate-site" | "read-back";
+  command: "candidate" | "withdraw-preflight" | "withdraw-candidate" | "append" | "validate-gallery" | "validate-site" | "read-back";
   site?: string;
   emailCode?: string;
   sourceSha?: string;
@@ -41,7 +41,7 @@ function parsePositiveSha(values: Record<string, string>): string {
 
 export function parsePublicationArgs(argv: string[]): PublicationCliArgs {
   const command = argv[2] as PublicationCliArgs["command"] | undefined;
-  if (!command || !["candidate", "withdraw-candidate", "append", "validate-gallery", "validate-site", "read-back"].includes(command)) throw new Error("publication command is required");
+  if (!command || !["candidate", "withdraw-preflight", "withdraw-candidate", "append", "validate-gallery", "validate-site", "read-back"].includes(command)) throw new Error("publication command is required");
   const values: Record<string, string> = {};
   for (let index = 3; index < argv.length; index += 2) {
     const token = argv[index];
@@ -63,20 +63,22 @@ export function parsePublicationArgs(argv: string[]): PublicationCliArgs {
     result.workflowAttempt = getRequired(values, "workflow-attempt");
     result.publicationTimestamp = values["publication-timestamp"] || new Date().toISOString();
     result.out = getRequired(values, "out");
-  } else if (command === "withdraw-candidate") {
+  } else if (command === "withdraw-preflight" || command === "withdraw-candidate") {
     result.ledger = getRequired(values, "ledger");
     result.emailCode = assertCanonicalEmailCode(getRequired(values, "email-code"));
     result.sourceSha = parsePositiveSha(values);
     result.canonicalPr = Number.parseInt(getRequired(values, "canonical-pr"), 10);
     if (!Number.isInteger(result.canonicalPr) || result.canonicalPr < 1) throw new Error("positive --canonical-pr is required");
-    result.pagesDeploymentId = getRequired(values, "pages-deployment-id");
-    result.workflowRunId = getRequired(values, "workflow-run-id");
-    result.workflowAttempt = getRequired(values, "workflow-attempt");
-    result.publicationTimestamp = values["publication-timestamp"] || new Date().toISOString();
-    const reason = getRequired(values, "reason");
-    if (reason !== "owner-requested" && reason !== "safety-rollback") throw new Error("approved withdrawal reason is required");
-    result.reason = reason;
-    result.out = getRequired(values, "out");
+    if (command === "withdraw-candidate") {
+      result.pagesDeploymentId = getRequired(values, "pages-deployment-id");
+      result.workflowRunId = getRequired(values, "workflow-run-id");
+      result.workflowAttempt = getRequired(values, "workflow-attempt");
+      result.publicationTimestamp = values["publication-timestamp"] || new Date().toISOString();
+      const reason = getRequired(values, "reason");
+      if (reason !== "owner-requested" && reason !== "safety-rollback") throw new Error("approved withdrawal reason is required");
+      result.reason = reason;
+      result.out = getRequired(values, "out");
+    }
   } else if (command === "append") {
     result.ledger = getRequired(values, "ledger");
     result.candidate = getRequired(values, "candidate");
@@ -226,11 +228,11 @@ export function assertWithdrawalPullRequest(value: unknown, sourceSha: string, c
   const matches = value.filter(candidate => {
     if (!candidate || typeof candidate !== "object") return false;
     const pr = candidate as {number?: unknown; merged_at?: unknown; merged?: unknown; head?: {sha?: unknown}; merge_commit_sha?: unknown};
-    return pr.number === canonicalPr
-      && (typeof pr.merged_at === "string" || pr.merged === true)
+    return (typeof pr.merged_at === "string" || pr.merged === true)
       && (pr.head?.sha === sourceSha || pr.merge_commit_sha === sourceSha);
   });
   if (matches.length !== 1) throw new Error("withdrawal requires the unique merged pull request for the exact rollback revision");
+  if ((matches[0] as {number?: unknown}).number !== canonicalPr) throw new Error("withdrawal pull request does not match the unique merged rollback revision");
 }
 
 async function verifyWithdrawalPullRequest(sourceSha: string, canonicalPr: number): Promise<void> {
@@ -258,7 +260,7 @@ function assertWithdrawalRevision(sourceSha: string, active: {email_code: string
   assertWithdrawalSelection(config, active);
 }
 
-async function withdrawalCandidate(args: PublicationCliArgs): Promise<void> {
+async function withdrawalPreflight(args: PublicationCliArgs): Promise<PublicationEntry> {
   const ledger = validateLedger(JSON.parse(await fs.readFile(path.resolve(args.ledger!), "utf8")));
   const activeSet = activePublications(ledger);
   assertSoleActiveWithdrawal(activeSet, args.emailCode!);
@@ -266,6 +268,11 @@ async function withdrawalCandidate(args: PublicationCliArgs): Promise<void> {
   if (!active) throw new Error("withdrawal requires the exact active public Email");
   assertWithdrawalRevision(args.sourceSha!, active);
   await verifyWithdrawalPullRequest(args.sourceSha!, args.canonicalPr!);
+  return active;
+}
+
+async function withdrawalCandidate(args: PublicationCliArgs): Promise<void> {
+  const active = await withdrawalPreflight(args);
   const entry = createWithdrawalEntry(active, {
     sourceCommitSha: args.sourceSha!, canonicalPr: args.canonicalPr!, pagesDeploymentId: args.pagesDeploymentId!,
     workflowRunId: args.workflowRunId!, workflowAttempt: args.workflowAttempt!, reason: args.reason!,
@@ -297,6 +304,7 @@ async function readBack(args: PublicationCliArgs): Promise<void> {
 async function main(): Promise<void> {
   const args = parsePublicationArgs(process.argv);
   if (args.command === "candidate") await candidate(args);
+  else if (args.command === "withdraw-preflight") await withdrawalPreflight(args);
   else if (args.command === "withdraw-candidate") await withdrawalCandidate(args);
   else if (args.command === "append") await append(args);
   else if (args.command === "validate-gallery") await validateGallery(args.site!);

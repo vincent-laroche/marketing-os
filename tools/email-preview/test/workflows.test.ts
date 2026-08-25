@@ -67,9 +67,14 @@ test("public publication is manual, accepts only Email code and exact SHA, and s
   assert.match(workflow, /path\.resolve\("email-previews", "site", item\.email_code\)/);
   assert.match(workflow, /gallery -- "\$GITHUB_WORKSPACE\/email-previews\/site"/);
   assert.match(workflow, /"--visibility", "public"/);
+  assert.equal(workflow.match(/merge-multiple:\s*true/g)?.length, 2);
   assert.match(workflow, /\.selections\[\].*preview_public == true/);
   assert.match(workflow, /for provenance in email-previews\/site\/\*\/provenance\.json/);
   assert.match(workflow, /for candidate in publication-candidates\/\*\.json/);
+  assert.match(workflow, /map\(\.canonical_issue\)/);
+  assert.match(workflow, /Canonical Email Issues/);
+  assert.match(workflow, /map\(\.canonical_pr\)/);
+  assert.match(workflow, /Source pull requests/);
   assert.doesNotMatch(workflow, /find email-previews\/site[^\n]*\.versions/);
   assert.doesNotMatch(workflow, /gh pr edit/);
   assert.match(workflow, /merge the existing preview publication ledger PR/);

@@ -92,6 +92,10 @@ def workflow_errors(review: str, publish: str) -> List[str]:
         uses = re.findall(r"\buses:\s*([^\s]+)", text)
         if not uses or not set(uses).issubset(approved_actions[name]) or not approved_actions[name].issubset(set(uses)):
             errors.append(f"{name} workflow action set or pin is not approved")
+        download_steps = re.findall(r"(?ms)^\s*- name:.*?(?=^\s*- name:|\Z)", text)
+        for step in download_steps:
+            if "uses: actions/download-artifact@" in step and "artifact-ids:" in step and not re.search(r"(?m)^\s+merge-multiple:\s*true\s*$", step):
+                errors.append(f"{name} workflow artifact-id download does not merge into the requested root")
     if "retention-days: 14" not in review:
         errors.append("private review artifact retention is not 14 days")
     for required in ("preview_public", "git merge-base --is-ancestor", "publication-ledger.json", "read-back"):

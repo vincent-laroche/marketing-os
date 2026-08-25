@@ -122,7 +122,9 @@ green. A workflow requiring an artifact must only assert it for paths that build
 Use adversarial fixtures for trigger/job/action validation rather than string-presence checks alone.
 Reject extra jobs/actions/permissions not in the accepted contract. Ensure portable shell behavior
 across the local environment and Linux CI; avoid platform-specific transformations when structured
-manifest lookup is available.
+manifest lookup is available. For every `download-artifact` step using `artifact-ids`, require and
+semantically validate `merge-multiple: true`; verify private review, public deploy, and ledger
+consumers separately because one green workflow path does not exercise the others.
 
 ### 8. Protect publication integration
 
@@ -142,8 +144,13 @@ Model this as explicit state transitions: first publish, replacement publish, pa
 last-Email withdrawal, and republish. For each, name preconditions and expected Pages site, ledger,
 Issue, manifest, and Project field state. A rollback must prove `preview_public: false` at the exact
 merged rollback SHA and the unique associated PR. Repository-wide Pages disablement is permitted
-only when the ledger proves the target is the sole active public Email; otherwise require a
+only after a non-mutating pre-disable command proves the ledger has the target as its sole active
+public Email; otherwise require a
 selective remaining-set deployment and preserve every unrelated active URL.
+
+For rollback PR identity, first count every merged PR associated with the exact rollback SHA and
+require exactly one; only then compare its number to the supplied canonical PR. Filtering by the
+caller-supplied number before the uniqueness check is not proof of unique association.
 
 This role may implement local integration but never enables Pages, dispatches deployment, sets a
 custom domain, or changes Cloudflare without separate explicit approval.

@@ -25,6 +25,15 @@ test('publication command input accepts only controlled values', () => {
 });
 
 test('withdrawal candidate input requires exact rollback identity and an approved reason', () => {
+  const preflight = parsePublicationArgs([
+    'node', 'publication.ts', 'withdraw-preflight',
+    '--ledger', 'email-previews/publication-ledger.json',
+    '--email-code', 'CR-1',
+    '--source-sha', 'b'.repeat(40),
+    '--canonical-pr', '83',
+  ]);
+  assert.equal(preflight.command, 'withdraw-preflight');
+  assert.equal(preflight.canonicalPr, 83);
   const args = parsePublicationArgs([
     'node', 'publication.ts', 'withdraw-candidate',
     '--ledger', 'email-previews/publication-ledger.json',
@@ -71,7 +80,11 @@ test('withdrawal PR evidence binds one merged PR to the exact rollback revision'
   const sha = 'b'.repeat(40);
   assert.doesNotThrow(() => assertWithdrawalPullRequest([{number: 83, merged_at: '2026-08-25T12:00:00Z', head: {sha}, merge_commit_sha: 'c'.repeat(40)}], sha, 83));
   assert.throws(() => assertWithdrawalPullRequest([{number: 83, merged_at: null, head: {sha}, merge_commit_sha: sha}], sha, 83), /unique merged/i);
-  assert.throws(() => assertWithdrawalPullRequest([{number: 84, merged_at: '2026-08-25T12:00:00Z', head: {sha}}], sha, 83), /unique merged/i);
+  assert.throws(() => assertWithdrawalPullRequest([{number: 84, merged_at: '2026-08-25T12:00:00Z', head: {sha}}], sha, 83), /does not match/i);
+  assert.throws(() => assertWithdrawalPullRequest([
+    {number: 83, merged_at: '2026-08-25T12:00:00Z', head: {sha}},
+    {number: 84, merged_at: '2026-08-25T12:01:00Z', merge_commit_sha: sha},
+  ], sha, 83), /unique merged/i);
 });
 
 test('static-site validation rejects source, fixture, log, and private artifact leakage', async () => {

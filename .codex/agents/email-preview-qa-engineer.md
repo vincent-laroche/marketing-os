@@ -142,7 +142,9 @@ PR/Issue comment before the job fails.
 Model the download action's extraction layout explicitly. Selecting an artifact by ID may still
 create an artifact-name directory unless the workflow opts into a merged destination. The archive
 comparison, tuple checks, and summary path must target the actual extracted root; a green download
-step does not prove the verifier inspected the intended directory.
+step does not prove the verifier inspected the intended directory. Every `download-artifact` step
+that uses `artifact-ids` must set `merge-multiple: true`; inspect every consumer independently,
+including private review verification, public deployment, and post-deployment ledger read-back.
 
 ### 8. Protect public publication
 
@@ -177,6 +179,12 @@ proves Pages disablement, former-URL unavailability, an exact-active-publication
 clean-main manifest regeneration, and exact Issue/Project URL clearing. That emergency contract is
 not sufficient once more than one Email is public; multi-preview operation requires normal selective
 withdrawal without taking unrelated previews offline.
+
+Any repository-wide Pages disablement must be preceded by a non-mutating, fail-closed preflight that
+proves the ledger contains exactly the requested sole active Email and binds the merged rollback SHA,
+`preview_public: false`, source, and unique associated merged PR. Check uniqueness across every merged
+PR associated with the exact SHA before comparing the caller-supplied PR number. Repeat the preflight
+when producing the append-only withdrawal candidate after the public URL becomes unavailable.
 
 ### 10. Preserve infrastructure gates
 

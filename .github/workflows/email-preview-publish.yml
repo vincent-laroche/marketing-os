@@ -136,6 +136,7 @@ jobs:
         with:
           artifact-ids: ${{ needs.build.outputs.site_artifact_id }}
           path: email-previews/site
+          merge-multiple: true
       - name: Configure GitHub Pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b
       - name: Upload Pages artifact
@@ -176,6 +177,7 @@ jobs:
         with:
           artifact-ids: ${{ needs.build.outputs.site_artifact_id }}
           path: email-previews/site
+          merge-multiple: true
       - name: Read back every canonical public file over HTTPS
         env:
           PAGE_URL: ${{ needs.deploy.outputs.page_url }}
@@ -222,5 +224,7 @@ jobs:
             git push --set-upstream origin "$LEDGER_BRANCH"
           fi
           published="$(jq -sr 'map(.email_code) | join(", ")' publication-candidates/*.json)"
-          body="Verified public publication snapshot for Emails $published at source SHA $SOURCE_SHA. This PR changes only email-previews/publication-ledger.json; merge does not send or activate email."
+          canonical_issues="$(jq -sr 'map(.canonical_issue) | unique | map("#" + tostring) | join(", ")' publication-candidates/*.json)"
+          source_prs="$(jq -sr 'map(.canonical_pr) | unique | map("#" + tostring) | join(", ")' publication-candidates/*.json)"
+          body="Verified public publication snapshot for Emails $published at source SHA $SOURCE_SHA. Canonical Email Issues: $canonical_issues. Source pull requests: $source_prs. This PR changes only email-previews/publication-ledger.json; merge does not send or activate email."
           gh api "repos/$GITHUB_REPOSITORY/pulls" --method POST -f base=main -f head="$LEDGER_BRANCH" -f title="chore(preview): record verified public publication ledger" -f body="$body" >/dev/null

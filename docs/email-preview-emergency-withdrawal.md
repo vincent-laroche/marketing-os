@@ -23,8 +23,21 @@ It does not send, schedule, activate, or alter any Shopify email.
    owner approval. Open a dedicated rollback pull request.
 2. Set the exact Email selection's `preview_public` value to `false`. Merge that reviewed source
    change before altering public hosting. Record the merged 40-character SHA and pull request.
-3. Validate a generated zero-public gallery, then disable GitHub Pages for the repository through
-   the GitHub API. This is an approval-gated
+3. Before altering hosting, run the fail-closed withdrawal preflight from the merged rollback
+   revision. It verifies that the target is the sole active public Email, the exact rollback revision
+   is merged to `main`, that revision sets `preview_public: false`, the source remains present, and
+   exactly one merged pull request is associated with the supplied SHA and PR number:
+
+   ```sh
+   GH_TOKEN="$(gh auth token)" npx tsx tools/email-preview/src/publication.ts withdraw-preflight \
+     --ledger email-previews/publication-ledger.json \
+     --email-code CR-1 \
+     --source-sha 0000000000000000000000000000000000000000 \
+     --canonical-pr 000
+   ```
+
+   Stop before the hosting mutation if this command fails. Then validate a generated zero-public
+   gallery and disable GitHub Pages for the repository through the GitHub API. This is an approval-gated
    external write. Read the Pages endpoint back as disabled and verify the former canonical URL
    no longer returns the preview. If any public file is still reachable, the rollback has failed.
 
@@ -34,7 +47,9 @@ It does not send, schedule, activate, or alter any Shopify email.
    npx tsx tools/email-preview/src/publication.ts validate-gallery --site "$zero_site"
    trash "$zero_site"
    ```
-4. From the merged rollback revision, generate a withdrawal candidate. Use the former active
+4. After the public URL is confirmed unavailable, generate a withdrawal candidate from the same
+   merged rollback revision. Candidate generation repeats the full preflight before writing evidence.
+   Use the former active
    Email code, the merged rollback SHA and PR, the Pages disable/deployment identity, the workflow
    or manual operation identity, and one approved reason:
 
@@ -51,7 +66,7 @@ It does not send, schedule, activate, or alter any Shopify email.
      --out withdrawal.json
    ```
 
-   Candidate generation fails unless the ledger has exactly one active Email, the supplied SHA is
+   Both preflight and candidate generation fail unless the ledger has exactly one active Email, the supplied SHA is
    merged to `main`, that revision sets the exact selection to `preview_public: false`, the source
    remains present, and the supplied PR is the unique merged PR associated with that revision.
 

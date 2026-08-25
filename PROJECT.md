@@ -115,15 +115,16 @@ suite before any activation. MailerLite cleanup is legacy housekeeping, not laun
   failures, verify exact four-file tuples, download its own uploaded artifact, and compare the archive
   byte-for-byte before posting evidence. The first calibrated final-head run exposed GitHub's default
   artifact-name extraction directory; the workflow now opts into the intended merged destination and
-  the agent prompt/test preserve that runner mechanic. Public rendering now requires explicit public provenance.
+  the agent prompt/test preserve that runner mechanic for private, deploy, and ledger downloads.
+  Public rendering now requires explicit public provenance.
   Local CR-1 public-mode rehearsal passed render → materialize → gallery → validation with fictional
   data, 1440px desktop and 390px mobile captures, exact digests, no unresolved Liquid, and no unsafe
   destinations.
 
   Upgraded the publication ledger to append-only schema v2 publish/withdraw events. Withdrawal is
   bound to the exact active URL, source SHA, deployment, canonical Issue, merged rollback SHA, and
-  unique associated PR; it requires `preview_public: false`, permits repository-wide Pages disablement
-  only for the sole active preview, and supports tested zero-public and republish states. Added a
+  unique associated PR; it requires `preview_public: false` and a non-mutating sole-active preflight
+  before repository-wide Pages disablement, and supports tested zero-public and republish states. Added a
   complete emergency runbook. Campaign OS now reads back exact per-Email Project `Preview URL` values
   through GraphQL and distinguishes 69 compiled Issues from filed operational Tasks. Live dry-run
   verified 69 canonical Issues with zero drift, private Project #4 with 69 compiled + 1 filed Issue,
