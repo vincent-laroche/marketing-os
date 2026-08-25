@@ -29,6 +29,14 @@ and [GitHub Project #4](https://github.com/users/vincent-laroche/projects/4).
 
 Merge or approval never configures Shopify, schedules, activates, or sends email.
 
+## Marketing OS
+
+This repository is now the destination for the shared Hair Solutions Co. Marketing OS. The Email OS remains the protected production-grade domain, and Social Media OS is being built as a governed domain beside it. The shared operating contract is documented in [`docs/marketing-os/OPERATING-CONTRACT.md`](docs/marketing-os/OPERATING-CONTRACT.md).
+
+Social source records live under `social-media/` and use the hierarchy `Social Campaign → Content Concept → platform Publication`. Large media stays in the approved asset system; Git stores asset identity, approved URLs, fingerprints, rights, consent, and permitted-use metadata. Social previews and feed planning are inert review artifacts. No repository operation publishes or schedules social content.
+
+The Social Media OS currently includes a fail-closed source validator, deterministic source manifest builder, dry-run GitHub Issue plan compiler, publication preview generator, Instagram feed-grid generator, reusable Markdown source templates, and the imported committed social template library. The initial campaign records are clearly marked non-production fixtures and must be replaced with approved source material before production.
+
 **Nothing is tracked in prose.** Issues and pull requests are canonical (`AGENTS.md` §8). A
 finding, a defect, or a "next step" that is not in an Issue or a pull request does not exist —
 never leave one in `PROJECT.md`, a plan document, or a chat message. Open an Issue, then cite

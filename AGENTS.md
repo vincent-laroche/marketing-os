@@ -162,7 +162,18 @@ That is the intended behaviour, not a bug to patch with a background.
 conversation, never publish it. Secrets come from `~/.env` via
 `set -a && source ~/.env && set +a` — never hardcode a token.
 
-## 7. Conventions
+## 7. Marketing OS shared layer
+
+The repository now contains the shared Marketing OS control plane and a Social Media OS domain in addition to the existing Email OS. Read `docs/marketing-os/OPERATING-CONTRACT.md` before changing shared records, social schemas, cross-channel references, or platform workflows.
+
+- Keep the existing Email Reference File, `campaign-os-key` namespace, 69-record inventory, Shopify boundaries, and email preview/release gates intact.
+- Social records use the separate `social-os-key` namespace and the hierarchy Social Campaign → Content Concept → platform Publication.
+- A merged PR, approval, preview, scheduled date, or platform draft is never proof of external publication or email send.
+- Large social media stays in the approved asset system. Git stores references, checksums, rights, consent, and permitted-use metadata only.
+- Social platform operations remain disabled by default and require explicit approval, narrow scope, idempotency, external read-back, and Issue evidence.
+- The initial records under `social-media/campaigns/schema-fixture/` are non-production structural fixtures, not approved marketing content.
+
+## 8. Conventions
 
 - Python 3, stdlib-only (`urllib.request`, `csv`, `json`) — no dependency stack here.
 - Scripts are idempotent and support `--dry-run` where they touch a live account.

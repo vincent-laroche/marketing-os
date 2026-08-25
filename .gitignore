@@ -20,3 +20,13 @@ node_modules/
 tools/email-preview/node_modules/
 email-previews/review/
 email-previews/site/
+
+# Generated Social Media OS review artifacts
+social-media/previews/
+social-media/.generated/
+
+# Production social media is stored in the approved asset system, not Git
+social-media/assets/media/
+
+# Local dry-run synchronization output
+social-media/github-issue-plan.json

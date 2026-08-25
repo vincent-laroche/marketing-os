@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "name": "Hair Solutions Co. Social Template Library",
+  "brandSystem": "Atelier Zero v7.0.0",
+  "generatedBy": "scripts/build-social-templates.mjs",
+  "safeZones": {
+    "feed-square": {
+      "canvas": "1080x1080",
+      "inset": "160px"
+    },
+    "feed-portrait": {
+      "canvas": "1080x1350",
+      "inset": "160px top/bottom, 80px sides"
+    },
+    "story-reel": {
+      "canvas": "1080x1920",
+      "inset": "250px top/bottom; no key text in outer 160px"
+    }
+  },
+  "templates": [
+    {
+      "id": "hero-brand-post",
+      "category": "feed",
+      "canvas": "1080x1080",
+      "slides": 1,
+      "purpose": "Brand positioning or founder thesis"
+    },
+    {
+      "id": "single-product-post",
+      "category": "feed",
+      "canvas": "1080x1350",
+      "slides": 1,
+      "purpose": "One verified product and one useful material detail"
+    },
+    {
+      "id": "collection-post",
+      "category": "feed",
+      "canvas": "1080x1080",
+      "slides": 1,
+      "purpose": "A restrained collection or category overview"
+    },
+    {
+      "id": "quote-testimonial-post",
+      "category": "feed",
+      "canvas": "1080x1080",
+      "slides": 1,
+      "purpose": "Consented customer proof only"
+    },
+    {
+      "id": "blog-article-post",
+      "category": "feed",
+      "canvas": "1080x1080",
+      "slides": 1,
+      "purpose": "Education, myth-busting, and guides"
+    },
+    {
+      "id": "sale-promo-post",
+      "category": "feed",
+      "canvas": "1080x1080",
+      "slides": 1,
+      "purpose": "A verified offer used sparingly"
+    },
+    {
+      "id": "announcement-post",
+      "category": "feed",
+      "canvas": "1080x1080",
+      "slides": 1,
+      "purpose": "A verified launch or operational update"
+    },
+    {
+      "id": "story-product",
+      "category": "stories",
+      "canvas": "1080x1920",
+      "slides": 1,
+      "purpose": "One verified product surfaced in Stories"
+    },
+    {
+      "id": "story-quote",
+      "category": "stories",
+      "canvas": "1080x1920",
+      "slides": 1,
+      "purpose": "Consented customer proof in Story format"
+    },
+    {
+      "id": "story-sale",
+      "category": "stories",
+      "canvas": "1080x1920",
+      "slides": 1,
+      "purpose": "A verified offer in Story format"
+    },
+    {
+      "id": "how-it-works",
+      "category": "carousels",
+      "canvas": "1080x1080",
+      "slides": 5,
+      "purpose": "Hook, three verified steps, and one next step"
+    },
+    {
+      "id": "before-after",
+      "category": "carousels",
+      "canvas": "1080x1080",
+      "slides": 3,
+      "purpose": "Consented matched before, process, and after sequence"
+    },
+    {
+      "id": "drop-reveal",
+      "category": "carousels",
+      "canvas": "1080x1080",
+      "slides": 4,
+      "purpose": "Tease, two factual details, and a verified reveal"
+    },
+    {
+      "id": "testimonial-set",
+      "category": "carousels",
+      "canvas": "1080x1080",
+      "slides": 3,
+      "purpose": "Three independently consented customer quotes"
+    },
+    {
+      "id": "reel-cover",
+      "category": "reels",
+      "canvas": "1080x1350",
+      "slides": 1,
+      "purpose": "Feed-safe cover for a vertical Reel"
+    },
+    {
+      "id": "reel-storyboard",
+      "category": "reels",
+      "canvas": "1080x1920",
+      "slides": 5,
+      "purpose": "Hook, evidence, explanation, tradeoff, and next step"
+    }
+  ]
+}
