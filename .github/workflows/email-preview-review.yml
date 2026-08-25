@@ -56,7 +56,7 @@ jobs:
             '.github/workflows/email-preview-review.yml' \
             '.github/workflows/email-preview-publish.yml' > changed-preview-files.txt
           git diff --name-only "$BASE_SHA" "$HEAD_SHA" -- 'shopify-messaging/emails/*.html' > changed-email-files.txt
-          npm --prefix tools/email-preview run inventory > preview-inventory.json
+          npm --silent --prefix tools/email-preview run inventory > preview-inventory.json
           node --input-type=module <<'NODE'
           import fs from "node:fs";
           import os from "node:os";

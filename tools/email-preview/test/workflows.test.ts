@@ -30,6 +30,7 @@ test("private review workflow is pull-request-only, minimally permissioned, pinn
   assert.match(workflow, /\.\.\.summary\.successful, \.\.\.summary\.blocked/);
   assert.match(workflow, /Fail the review after preserving safe diagnostics/);
   assert.match(workflow, /change-policy/);
+  assert.match(workflow, /npm --silent --prefix tools\/email-preview run inventory > preview-inventory\.json/);
   assert.match(workflow, /filter\(code => readyCodes\.has\(code\)\)/);
   assert.doesNotMatch(workflow, /Reproduce[^\n]*email-preview-publish/);
 });
