@@ -2,7 +2,7 @@
 
 **Date:** 2026-08-24
 
-**Status:** Campaign OS approved; Email Preview Gallery architecture approved and written extension awaiting Vincent's review
+**Status:** Campaign OS, Email Preview Gallery, and Shopify readiness architecture approved; consolidated written specification awaiting Vincent's review
 
 **Target repository:** `vincent-laroche/email-marketing-ops`
 
@@ -144,10 +144,22 @@ Every Email Issue contains:
 - source links and SHA-256 source fingerprint;
 - message hierarchy, content requirements, design requirements, assets, and personalization;
 - tracking requirements and destination links;
+- Execution Mode, Shopify Messaging implementation state, Flow requirement and state, canonical
+  automation name, trigger, and safe Shopify Admin references when applicable;
 - content, desktop, mobile, client, accessibility, links, offer, tracking, audience, sender,
   subject, preheader, and test-email acceptance checks;
+- mode-specific Shopify implementation QA and dated evidence for the exact configuration reviewed;
 - linked pull requests;
 - post-send results and learnings.
+
+Implementation QA is conditional, not a universal checklist. Every Shopify Messaging Email verifies
+that the correct record exists and that the approved content/version, subject, preheader, sender,
+links, tracking, personalization/fallbacks, audience/segment, and safe test evidence are correct.
+One-time Campaign emails additionally verify schedule configuration while keeping actual scheduling
+approval-gated. Automated/lifecycle Emails additionally verify the actual orchestration attachment
+and, when relevant, the trigger, conditions, branches, delays, sequence order,
+suppressions/exclusions, safe test execution, and inactive-versus-active state. Mark irrelevant
+checks `N/A` with a reason; never manufacture a pass.
 
 The Email Reference File remains upstream copy and campaign authority. Issue copy is a synchronized
 review surface, not an independent authoring source.
@@ -169,7 +181,8 @@ Every implementation branch links at least one Issue. Pull request bodies contai
 - desktop, mobile, Gmail, Apple Mail, link, tracking, personalization, offer, subject, and
   preheader QA;
 - content, design, technical, and scheduling-approval checks;
-- authority sources, approved-copy impact, consent impact, activation impact, risks, and rollback.
+- authority sources, approved-copy impact, consent impact, Messaging impact, Flow impact,
+  activation impact, risks, and rollback.
 
 Merging accepts the deliverable into repository history. **Merge does not mean send.** Scheduling,
 sending, measuring, and completion remain separate Issue Stage transitions.
@@ -177,7 +190,7 @@ sending, measuring, and completion remain separate Issue Stage transitions.
 ## 9. Project fields
 
 Enable native Title, Assignees, Labels, Repository, Milestone, Parent Issue, Sub-issue Progress,
-Linked Pull Requests, and Reviewers fields. Use the built-in Status field plus 20 custom fields.
+Linked Pull Requests, and Reviewers fields. Use the built-in Status field plus 28 custom fields.
 
 ### 9.1 Workflow
 
@@ -203,7 +216,64 @@ Most work starts at P2. P0 is reserved for send-blocking or serious customer/rev
 
 MailerLite is intentionally absent from Platform because it is not an active execution platform.
 
-### 9.3 Dates
+### 9.3 Shopify implementation readiness
+
+| Field | Type | Values or contract |
+|---|---|---|
+| Execution Mode | Single select | One-time Campaign, Automated / Lifecycle, Transactional / System, TBD |
+| Messaging State | Single select | Not Started, Draft, Configured, Test Ready, Verified, Scheduled, Active, Sent, Blocked, N/A |
+| Shopify Messaging URL | Text | Safe direct Shopify Admin/Messaging reference when available; no credential, token, signed customer link, or PII |
+| Flow Required | Single select | Yes, No, TBD |
+| Flow State | Single select | Not Required, Not Started, Draft, Configured, Testing, Verified, Active, Paused, Blocked |
+| Shopify Flow URL | Text | Safe direct Shopify Flow/automation reference when available; no credential, token, or PII |
+| Automation Trigger | Text | Short plain-language trigger; full conditions and timing remain in the Email Issue |
+| Automation / Flow Name | Text | Canonical Shopify automation or Flow name |
+
+These fields do not replace Platform, Status, or Stage. Platform identifies the primary Shopify
+implementation/orchestration surface. Execution Mode identifies how delivery operates. Messaging
+State describes the implementation inside Shopify Messaging. Flow Required and Flow State describe
+whether separate Flow orchestration is necessary and how ready it is.
+
+Cross-field rules are fail-closed:
+
+- One-time Campaign normally requires Messaging and uses `Flow Required = No` plus
+  `Flow State = Not Required`.
+- A native Shopify Messaging automation uses `Execution Mode = Automated / Lifecycle`, tracks the
+  automation name and trigger, and may legitimately use `Flow Required = No` plus
+  `Flow State = Not Required`.
+- A Flow-orchestrated lifecycle email uses `Execution Mode = Automated / Lifecycle`, requires a
+  verified Messaging implementation, and uses `Flow Required = Yes`.
+- `Flow Required = TBD`, `Execution Mode = TBD`, or a contradictory pair blocks implementation
+  readiness and final completion.
+- `Messaging State = Verified` means the exact approved candidate and relevant configuration were
+  checked; it does not authorize scheduling, activation, or sending.
+- `Flow State = Verified` means the exact inactive workflow logic and safe test evidence were
+  checked; it does not mean Active and does not authorize activation.
+- For a one-time Campaign, `Scheduled` and `Sent` are evidence-backed customer-facing Messaging
+  states. For a continuing automation, keep Messaging State `Active` while it operates; individual
+  deliveries belong in results evidence rather than repeatedly changing the item to `Sent`.
+- Transactional/System email may use Shopify Notifications or another verified system surface and
+  may use Messaging State `N/A`; its real execution location and evidence must still be recorded.
+
+Do not create a custom Verification/Evidence field. Durable implementation evidence belongs in the
+connector-readable Email Issue and linked pull requests. The Project row already links to both.
+
+Completion semantics are explicit:
+
+- Creative complete is not Shopify implemented.
+- Shopify Messaging configured is not necessarily automation-ready or live.
+- Flow configured is not Flow verified, and Flow verified is not Flow active.
+- Scheduled or Active is not proven; actual delivery, results, and learning remain separate.
+- An automated/lifecycle Email reaches final Stage `Complete` only when its approved deliverable,
+  correct Messaging implementation, required Flow/automation implementation, applicable QA and
+  evidence, actual operational state, results or intentional waiver, and learning record are all
+  resolved.
+
+Permission to build Issues, source, previews, Messaging drafts, or Flow drafts does not authorize a
+test to real customers, audience change, campaign scheduling, campaign send, Flow activation, or
+modification of an already-live automation. Each remains a separate explicit approval boundary.
+
+### 9.4 Dates
 
 | Field | Type | Contract |
 |---|---|---|
@@ -214,7 +284,7 @@ MailerLite is intentionally absent from Platform because it is not an active exe
 Relative lifecycle timing remains in the Issue and must not be converted into invented calendar
 dates.
 
-### 9.4 Performance
+### 9.5 Performance
 
 | Field | Type | Contract |
 |---|---|---|
@@ -229,7 +299,7 @@ dates.
 
 Performance values start blank and are written only from verified Shopify evidence.
 
-### 9.5 Preview publication
+### 9.6 Preview publication
 
 | Field | Type | Contract |
 |---|---|---|
@@ -266,9 +336,10 @@ overlapping characteristics.
 Use one repository routing label, `email-marketing`, for Project auto-add. The Operations Snapshot
 inside each Issue makes Work Type and state connector-readable without duplicating them as labels.
 
-## 11. Five Project views
+## 11. Six native Project views
 
-Create exactly these views in this order:
+Preserve the five approved core views and add one Shopify-readiness view. Create exactly these six
+native views in this order:
 
 ### `01 · Campaign Portfolio`
 
@@ -309,6 +380,35 @@ Create exactly these views in this order:
   %, Click Rate %, Conversion Rate %, Revenue, Unsubscribe Rate %, Primary KPI
 - Sort: Send Date descending
 
+### `06 · Messaging & Automation Readiness`
+
+- Layout: Table
+- Filter: Work Type = Email
+- Columns: Title, Parent Issue, Execution Mode, Stage, Messaging State, Shopify Messaging URL,
+  Flow Required, Flow State, Automation / Flow Name, Automation Trigger, Shopify Flow URL, Send
+  Date, Status, Linked Pull Requests, Preview URL
+- Sort: Status, then Parent Issue, then Title
+- Question answered: are creatively completed Emails actually implemented and ready for the next
+  governed step inside Shopify?
+
+Document these reusable filter recipes. They are queries applied to this one view, not extra saved
+views, and use explicit option sets rather than treating Stage as a numeric range:
+
+- Missing Shopify implementation: Stage is Approval, Scheduled, Sent, Measuring, or Complete, but
+  Messaging State is not Verified, Scheduled, Active, or Sent; Transactional/System with verified
+  Messaging State `N/A` is excluded.
+- Missing Flow: Flow Required is Yes and Flow State is not Verified or Active.
+- Ready for activation: Automated/Lifecycle with Messaging State Verified and either a native
+  Messaging automation with Flow Not Required or a Flow-required automation with Flow State
+  Verified; neither path is active.
+- Ready for scheduling: One-time Campaign with Messaging State Verified, Flow Not Required, and no
+  scheduled customer-facing state.
+- Live automations: Automated/Lifecycle with either Messaging State Active for a native Messaging
+  automation or Flow State Active for a Flow-orchestrated automation.
+
+The Issue and linked pull requests are the Evidence destination. Do not add a redundant Evidence
+field merely to display it in this table.
+
 QA, consent, risks, and blockers remain fully readable in Issue bodies and labels; they do not
 create extra saved views.
 
@@ -316,15 +416,15 @@ create extra saved views.
 
 Project Insights may later chart Emails by Stage, Campaigns by Status, revenue by Campaign Type or
 Objective, campaigns shipped by month, Emails by Platform, and Issues by work area. Insights are an
-analytical layer behind the five views, not a sixth primary view. Do not create performance charts
-from blank or invented metrics during initial migration.
+analytical layer behind the six views, not an additional primary view. Do not create performance
+charts from blank or invented metrics during initial migration.
 
 ## 12. Email Preview Gallery extension
 
-The Email Preview Gallery is a sixth Campaign OS interface surface hosted by GitHub Pages at
-`email-preview.hairsolutions.co`. It is not a sixth native Project view: the five saved Project
-views remain exactly as defined above. The Project description, repository README, Email Issues,
-and the Preview URL field link to the gallery.
+The Email Preview Gallery is an external Campaign OS interface surface hosted by GitHub Pages at
+`email-preview.hairsolutions.co`. It is not a native Project view: the six saved Project views
+remain exactly as defined above. The Project description, repository README, Email Issues, and the
+Preview URL field link to the gallery.
 
 The default GitHub Pages URL is a deployment fallback only. The custom domain is the intended
 public address, but Pages enablement, custom-domain configuration, and Cloudflare DNS remain
@@ -552,7 +652,20 @@ Populate from current repository evidence:
   `flag:launch-blocker` because required authority copy is missing.
 - Other unresolved dynamic or reality-dependent placeholders remain explicit in Issue acceptance
   criteria and use `flag:needs-decision` only when a real Vincent decision is required.
-- J2, W, and N use Shopify Messaging; J1, J3, J4, and J5 use Shopify Flow.
+- N uses `Execution Mode = One-time Campaign`, requires Shopify Messaging, and starts
+  `Flow Required = No`, `Flow State = Not Required`.
+- J1-J5 and W use `Execution Mode = Automated / Lifecycle` and require Shopify Messaging. J2 and W
+  use native Shopify Messaging automation unless verified implementation evidence proves a Flow is
+  required; J1, J3, J4, and J5 require Shopify Flow under the current approved architecture.
+- Messaging State, Flow State, Shopify URLs, automation names, and triggers are populated only from
+  current repository or Shopify evidence. Source existence, structural green status, approval, or a
+  merged pull request never implies Shopify implementation.
+- Unless an exact current Shopify record can be matched to the approved Email, initialize Messaging
+  State `Not Started` and leave Shopify Messaging URL blank. The two inactive duplicate
+  abandoned-checkout automations remain evidence on the dedicated Bug and do not prove any Email
+  implementation until identity and ownership are resolved.
+- J1, J3, J4, and J5 initialize Flow State `Not Started` unless exact current Flow evidence proves a
+  later state. J2, W, and N initialize Flow State `Not Required` under the current architecture.
 - Campaign parents start conservatively at Status `In Progress` and their evidence-backed Stage.
 - Dates, recipients, performance, scheduling, sending, and completion fields start blank unless a
   current repository source proves a value.
@@ -569,7 +682,9 @@ Configure only obvious housekeeping:
 4. Set merged pull requests to Status `Done`.
 
 Do not automate Approval to Scheduled, scheduling, sending, Shopify activation, audience changes,
-or performance values. Do not auto-archive during initial migration.
+Messaging State, Flow State, Flow Required, or performance values. Cross-field validators may block
+or report contradictions but never advance a customer-facing state. Do not auto-archive during
+initial migration.
 
 ## 15. Sanitized repository structure
 
@@ -589,7 +704,44 @@ Before the migration pull request:
 - exclude CRM exports, browser state, agent worktrees, dependencies, generated plugin bundles,
   caches, ZIP duplicates, and intermediate proof renders.
 
-## 16. Migration mechanics
+## 16. Email Marketing OS skill contract
+
+Use the supplied `email_marketing_os_github_project_skill.zip` as source material for a new
+`email-marketing-os-github-project` skill in the canonical Shopify Marketing plugin source. The
+skill is the GitHub control-plane guide; the existing `shopify-messaging-marketing`,
+`shopify-lifecycle-automation`, and `shopify-flow-platform` skills retain execution and platform
+mechanics.
+
+The skill package contains:
+
+- a concise `SKILL.md` with control-plane semantics and routing;
+- `references/model.md` for the exact 28-field schema and hierarchy;
+- `references/views.md` for the six native views and external preview surface;
+- `references/workflows.md` for production, readiness, results, and completion;
+- `references/shopify-execution.md` for one-time, native Messaging automation,
+  Flow-orchestrated lifecycle, and Transactional/System rules;
+- `references/preview-architecture.md` for the locked fail-closed preview contract;
+- `references/templates.md` for Campaign, Email, Experiment, and pull request templates;
+- `references/governance.md` for external-action and customer-impact approval boundaries;
+- `agents/openai.yaml` for the supplied interface metadata.
+
+Reconcile the archive instead of installing it verbatim:
+
+- remove MailerLite and generic External platform options; use the approved Project vocabulary;
+- do not create a Verification/Evidence field; keep evidence in Issues and linked pull requests;
+- require exactly three user-facing preview outputs plus provenance metadata, not “at least” three;
+- require the exact `preview_public: true` gate and deliberate publication workflow;
+- remove the illustrative repository layout that conflicts with this repository;
+- distinguish native Messaging automation from Flow-required automation;
+- preserve the no-send, no-schedule, no-activation, no-audience-change, and no-publication approval
+  boundaries.
+
+Edit the canonical marketplace source, not installed caches or generated ZIPs. The marketplace
+worktree already contains unrelated in-progress changes; implementation must preserve them, modify
+only task-owned skill/package files, validate with the current skill/plugin validators, and deliver
+that repository through its own focused commit.
+
+## 17. Migration mechanics
 
 Use deterministic, inspectable, idempotent scripts:
 
@@ -599,16 +751,18 @@ Use deterministic, inspectable, idempotent scripts:
 3. Create or update 69 Issues by a hidden stable key; abort on duplicates.
 4. Link 53 Email sub-issues to seven Campaign parents.
 5. Push the current branch and open a draft migration pull request linked to the Campaign OS Task.
-6. Create the private Project, its 20 custom fields, labels, automations, and five views.
+6. Create the private Project, its 28 custom fields, labels, automations, and six views.
 7. Add all 69 Issues and the migration pull request to the Project.
 8. Mirror Issue Operations Snapshot values into Project fields and fail on drift.
 9. Build and verify the strict fixture compiler, private review workflow, three-output renderer,
     provenance system, publication ledger, and responsive static gallery in the migration pull
     request.
-10. Complete verification, mark the pull request ready, obtain passing checks, and merge normally.
-11. Re-fetch repository, Issue, pull request, parent/sub-issue, Project, field, automation, and view
+10. Build and validate the reconciled `email-marketing-os-github-project` skill in the canonical
+    Shopify Marketing plugin source and deliver it as a separate focused commit.
+11. Complete verification, mark the pull request ready, obtain passing checks, and merge normally.
+12. Re-fetch repository, Issue, pull request, parent/sub-issue, Project, field, automation, and view
     state and publish the final audit as a connector-readable Issue comment.
-12. After the separately approved external-change checkpoint, enable GitHub Pages, run the deliberate
+13. After the separately approved external-change checkpoint, enable GitHub Pages, run the deliberate
     public-publication workflow for eligible Emails, verify the public site, configure and verify
     `email-preview.hairsolutions.co` in GitHub, add the exact Cloudflare DNS record, verify HTTPS, and
     only then synchronize public Preview URLs.
@@ -616,7 +770,7 @@ Use deterministic, inspectable, idempotent scripts:
 Every state-changing command runs first as dry-run, once with `--apply`, and again as dry-run to
 prove zero-action idempotence.
 
-## 17. Acceptance criteria
+## 18. Acceptance criteria
 
 The migration is complete only when:
 
@@ -629,12 +783,24 @@ The migration is complete only when:
 - every Email is a native sub-issue of the correct Campaign;
 - the migration pull request is a Project item and appears in the PR view while open;
 - every Project field matches its Issue snapshot;
-- the built-in Status field and exactly 20 custom fields exist with approved options;
-- exactly five views exist with approved names, order, layouts, filters, fields, grouping, and sort;
+- the built-in Status field and exactly 28 custom fields exist with approved options;
+- exactly six native views exist with approved names, order, layouts, filters, fields, grouping,
+  and sort;
 - approved auto-add and housekeeping workflows are enabled without marketing-decision automation;
 - no contact PII, secret, browser state, dependency tree, cache, or agent worktree is tracked;
 - no email is incorrectly marked Scheduled, Sent, Measuring, Complete, or activation-approved;
-- final read-back is recorded in Issues or pull requests, not only in a Project-only artifact.
+- final read-back is recorded in Issues or pull requests, not only in a Project-only artifact;
+- every Email has a resolved or explicitly blocked Execution Mode and Messaging State;
+- Flow Required and Flow State pairs satisfy the approved cross-field rules;
+- creative approval, source completion, preview approval, or merge never automatically advances a
+  Shopify implementation or customer-facing state;
+- one-time, native Messaging automation, Flow-orchestrated lifecycle, and Transactional/System
+  Emails apply only their relevant QA checks;
+- an automated/lifecycle Email cannot reach Complete without its required Messaging and Flow
+  implementation evidence, known operational state, results disposition, and learning record;
+- the reconciled `email-marketing-os-github-project` skill validates successfully and contains no
+  MailerLite execution path, redundant Evidence field, stale repository layout, or weakened preview
+  and approval gates;
 - Preview URL is blank for every Email without a verified public publication;
 - each successful preview has rendered HTML plus full desktop and mobile screenshots;
 - unsupported or unresolved Liquid causes a closed failure and never a partial publication;
@@ -645,7 +811,7 @@ The migration is complete only when:
   review artifact, or unpublished Email;
 - Pages, custom-domain, and Cloudflare state change only under their separate approval gates.
 
-## 18. Non-goals
+## 19. Non-goals
 
 This work does not:
 
@@ -656,7 +822,11 @@ This work does not:
 - create an Issue for every small checklist item;
 - delete or rewrite canonical repository history;
 - change the separate `vincent-laroche/email-marketing` repository;
-- make the Project a source of truth that connectors cannot read.
+- make the Project a source of truth that connectors cannot read;
+- infer Shopify implementation from HTML, approval, merge, or preview state;
+- require Flow for a native Shopify Messaging automation that genuinely does not use Flow;
+- activate, pause, resume, schedule, send, test against real customers, or modify a live automation
+  while establishing readiness state;
 - treat Actions artifacts as permanent storage;
 - publish raw or partially rendered Shopify Liquid;
 - expose draft or review Emails through security by obscurity;

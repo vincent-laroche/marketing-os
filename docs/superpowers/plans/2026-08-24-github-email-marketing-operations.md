@@ -1,8 +1,10 @@
 # Email Marketing Campaign OS Implementation Plan
 
-> **Status:** Paused. The approved Email Preview Gallery architecture adds a twentieth custom field,
-> strict fixture rendering, private review artifacts, GitHub Pages publication, and a separate visual
-> design gate. Revise this plan only after Vincent approves the written extension in the design spec.
+> **Status:** Paused and superseded by the consolidated design review. The approved Shopify
+> readiness extension now requires 28 custom fields, six native views, conditional implementation
+> QA, cross-field validation, and the `email-marketing-os-github-project` skill. Counts and numbered
+> steps below remain historical until this plan is rewritten after Vincent approves the written
+> specification. Do not execute this plan as written.
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 

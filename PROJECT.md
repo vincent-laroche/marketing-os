@@ -3,8 +3,8 @@
 > Living status log. Full context/rules live in `AGENTS.md` (the project bible) — don't duplicate them
 > here. Update this file at the end of every session: what changed, what's next, who touched it.
 
-**Last updated:** 2026-08-24 by Codex (Email Preview Gallery architecture added to Campaign OS;
-documentation only)
+**Last updated:** 2026-08-24 by Codex (Shopify Messaging and Flow readiness extension added to the
+Campaign OS written specification; documentation only)
 
 **Status:** **All marketing campaigns and lifecycle journeys now belong to Shopify Messaging +
 Shopify Flow. MailerLite is not a campaign/lifecycle platform for this project.** Shopify
@@ -86,6 +86,25 @@ working tree**. It stays recoverable from git history at `e892e64` and earlier.
 ## Session log
 > Chronological record only. Older entries may describe superseded platforms, paths, counts, or
 > blockers. The current status at the top of this file and `AGENTS.md` always win.
+
+- **2026-08-24 (Codex — Shopify implementation/readiness layer designed):** Vincent approved a
+  minimal Campaign OS extension that keeps the existing Campaign → Email hierarchy, Status/Stage,
+  five core views, PR workflow, preview architecture, and performance model while making Shopify
+  implementation explicit. The written specification now adds eight custom fields—Execution Mode,
+  Messaging State, Shopify Messaging URL, Flow Required, Flow State, Shopify Flow URL, Automation
+  Trigger, and Automation / Flow Name—for 28 custom fields total; adds one native
+  `06 · Messaging & Automation Readiness` table for six Project views total; defines conditional
+  one-time, native Messaging automation, Flow-orchestrated lifecycle, and Transactional/System QA;
+  and makes creative completion, Shopify implementation, verification, activation/scheduling,
+  delivery, performance, and learning distinct states. Evidence remains in connector-readable
+  Issues and linked pull requests rather than a redundant Project field. Vincent supplied
+  `email_marketing_os_github_project_skill.zip` as the base for a future
+  `email-marketing-os-github-project` skill; its stale MailerLite/External fields, redundant Evidence
+  field, weakened preview wording, and illustrative repository layout are explicitly rejected in
+  favor of the approved project specification. The old implementation plan remains paused until
+  Vincent reviews the consolidated written spec. No Project, Issue, pull request, plugin, Shopify,
+  Messaging, Flow, schedule, send, audience, automation, preview, Pages, Cloudflare, or DNS state
+  changed.
 
 - **2026-08-24 (Codex — hybrid Email Preview Gallery architecture):** Vincent approved a static
   fixture compiler plus GitHub Pages at `email-preview.hairsolutions.co`. Draft/review output stays
