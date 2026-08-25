@@ -159,6 +159,57 @@ export function PostDetailCard({ post, surface = "feed" }: { post: LaunchPost; s
   );
 }
 
+export function FeedSquareCard({ post, position }: { post: LaunchPost; position: number }) {
+  const visualUrl = post.cloudinaryUrl;
+  return (
+    <article className="feedSquareCard">
+      <div className="feedSquareMedia">
+        {visualUrl ? (
+          <img src={visualUrl} alt={`Visual asset for ${post.title}`} />
+        ) : (
+          <div className="assetSlot" aria-label={`Photo slot for ${post.title}`}>
+            <span>Photo slot</span>
+            <small>{post.format}</small>
+          </div>
+        )}
+        <span className="feedSquareIndex">{String(position).padStart(2, "0")}</span>
+      </div>
+      <div className="feedSquareMeta">
+        <strong>{post.title}</strong>
+        <span>{recommendedPostTime(post)} · {post.pillar}</span>
+      </div>
+    </article>
+  );
+}
+
+export function StoryFrameStrip({ day, story }: { day: number; story: StoryDay }) {
+  const frames = [
+    { label: "Open", copy: `${story.type} / day ${day}` },
+    { label: "Context", copy: "Set the day’s message" },
+    { label: "Detail", copy: story.sticker },
+    { label: "Response", copy: "Prompt replies or saves" },
+    { label: "Close", copy: story.cta }
+  ];
+
+  return (
+    <div className="storyFrameStrip" aria-label={`Five Story frames for day ${day}`}>
+      {frames.map((frame, index) => (
+        <article className="storyFrame" key={frame.label}>
+          <div className="storyFrameCanvas">
+            <span className="storyFrameIndex">{String(index + 1).padStart(2, "0")}</span>
+            <div>
+              <small>Story frame</small>
+              <strong>{frame.label}</strong>
+            </div>
+            <span className="storyFrameSlot">Place visual</span>
+          </div>
+          <p>{frame.copy}</p>
+        </article>
+      ))}
+    </div>
+  );
+}
+
 function postCompletionPlan(post: LaunchPost) {
   const done: string[] = [];
   const pending: string[] = [];
@@ -218,6 +269,35 @@ export function StorySchedule({ story }: { story: StoryDay }) {
         <div><dt>Highlight</dt><dd>{story.highlight}</dd></div>
       </dl>
     </article>
+  );
+}
+
+export function InstagramFeedMockup({ posts }: { posts: LaunchPost[] }) {
+  const slots = Array.from({ length: 9 }, (_, index) => posts[index] || null);
+  return (
+    <section className="feedAssemblyMockup" aria-label="Instagram feed assembly mockup">
+      <header className="feedAssemblyHeader">
+        <div className="feedAvatar">HSC</div>
+        <div>
+          <strong>hairsolutions.co</strong>
+          <span>Visual assembly / 3 × 3 grid</span>
+        </div>
+        <StatusPill tone="warn">Draft only</StatusPill>
+      </header>
+      <div className="feedAssemblyGrid">
+        {slots.map((post, index) => (
+          <div className="feedAssemblyTile" key={post ? `${post.day}-${post.title}-${index}` : `empty-${index}`}>
+            {post?.cloudinaryUrl ? <img src={post.cloudinaryUrl} alt={`Assembly slot for ${post.title}`} /> : null}
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <strong>{post ? post.title : "Open slot"}</strong>
+          </div>
+        ))}
+      </div>
+      <footer className="feedAssemblyFooter">
+        <span>9 visual slots</span>
+        <span>Drag/replace photos in production workflow</span>
+      </footer>
+    </section>
   );
 }
 
