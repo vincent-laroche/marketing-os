@@ -14,7 +14,7 @@ def publication(**overrides):
         "email_code": "CR-1", "campaign_key": "campaign:J2", "source_path": "shopify-messaging/emails/01-cr-1.html",
         "source_commit_sha": SHA, "canonical_issue": 10, "canonical_pr": 72, "persona": "normal-customer",
         "states": ["missing-first-name"], "output_sha256": {"rendered.html": DIGEST, "desktop.png": DIGEST, "mobile.png": DIGEST},
-        "publication_timestamp": "2026-08-25T12:00:00Z", "canonical_url": "https://vincent-laroche.github.io/email-marketing-ops/CR-1/detail.html",
+        "publication_timestamp": "2026-08-25T12:00:00Z", "canonical_url": "https://vincent-laroche.github.io/marketing-os/CR-1/detail.html",
         "pages_deployment_id": "deploy-1", "workflow_run_id": "run-1", "workflow_attempt": "1",
     }
     value.update(overrides)
@@ -26,7 +26,7 @@ def withdrawal(**overrides):
         "event": "withdrawn", "email_code": "CR-1", "campaign_key": "campaign:J2",
         "source_path": "shopify-messaging/emails/01-cr-1.html", "source_commit_sha": "c" * 40,
         "canonical_issue": 10, "canonical_pr": 73, "publication_timestamp": "2026-08-25T13:00:00Z",
-        "former_canonical_url": "https://vincent-laroche.github.io/email-marketing-ops/CR-1/detail.html",
+        "former_canonical_url": "https://vincent-laroche.github.io/marketing-os/CR-1/detail.html",
         "withdrawn_source_commit_sha": SHA, "withdrawn_pages_deployment_id": "deploy-1",
         "pages_deployment_id": "deploy-2", "workflow_run_id": "run-2", "workflow_attempt": "1",
         "reason": "owner-requested",
@@ -41,7 +41,7 @@ class PreviewPublicationTest(unittest.TestCase):
 
     def test_verified_ledger_produces_exact_public_detail_url(self):
         result = preview_urls({"schema_version": 2, "events": [publication()]}, EXPECTED, lambda entry: None)
-        self.assertEqual("https://vincent-laroche.github.io/email-marketing-ops/CR-1/detail.html", result["CR-1"])
+        self.assertEqual("https://vincent-laroche.github.io/marketing-os/CR-1/detail.html", result["CR-1"])
 
     def test_unmerged_append_stays_blank_and_merged_history_cannot_be_rewritten(self):
         empty = {"schema_version": 2, "events": []}
@@ -95,7 +95,7 @@ class PreviewPublicationTest(unittest.TestCase):
         )
         history = {"schema_version": 2, "events": [*withdrawn["events"], republished]}
         self.assertEqual(
-            "https://vincent-laroche.github.io/email-marketing-ops/CR-1/detail.html",
+            "https://vincent-laroche.github.io/marketing-os/CR-1/detail.html",
             preview_urls(history, EXPECTED, lambda entry: None)["CR-1"],
         )
         with self.assertRaisesRegex(ValueError, "duplicate"):

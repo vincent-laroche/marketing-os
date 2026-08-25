@@ -1,48 +1,53 @@
 {
-  "browser_configuration_required": [],
-  "canonical_issue_items": 69,
+  "browser_configuration_required": [
+    "01 \u00b7 Campaign Portfolio",
+    "02 \u00b7 Email Production",
+    "03 \u00b7 Review & Pull Requests",
+    "04 \u00b7 Launch Calendar",
+    "05 \u00b7 Performance",
+    "06 \u00b7 Messaging & Automation Readiness"
+  ],
+  "canonical_issue_items": 0,
   "custom_fields_expected": 28,
-  "custom_fields_missing": [],
-  "issue_items": 70,
+  "custom_fields_missing": [
+    "Stage",
+    "Priority",
+    "Work Type",
+    "Platform",
+    "Campaign Type",
+    "Objective",
+    "Audience",
+    "Offer",
+    "Execution Mode",
+    "Messaging State",
+    "Shopify Messaging URL",
+    "Flow Required",
+    "Flow State",
+    "Shopify Flow URL",
+    "Automation Trigger",
+    "Automation / Flow Name",
+    "Production Start",
+    "Send Date",
+    "Results Review",
+    "Recipients",
+    "Open Rate %",
+    "Click Rate %",
+    "Conversion Rate %",
+    "Revenue",
+    "Unsubscribe Rate %",
+    "Primary KPI",
+    "Target KPI",
+    "Preview URL"
+  ],
+  "issue_items": 0,
   "mode": "dry-run",
   "preview_url_mismatches": [],
   "private": true,
-  "project_exists": true,
-  "project_number": 4,
-  "project_url": "https://github.com/users/vincent-laroche/projects/4",
-  "pull_request_items": 1,
-  "repository": "vincent-laroche/email-marketing-ops",
-  "views": [
-    {
-      "filter": "work-type:Campaign",
-      "layout": "TABLE_LAYOUT",
-      "name": "01 \u00b7 Campaign Portfolio"
-    },
-    {
-      "filter": "work-type:Email",
-      "layout": "BOARD_LAYOUT",
-      "name": "02 \u00b7 Email Production"
-    },
-    {
-      "filter": "status:\"In Review\"",
-      "layout": "TABLE_LAYOUT",
-      "name": "03 \u00b7 Review & Pull Requests"
-    },
-    {
-      "filter": "work-type:Campaign,Email",
-      "layout": "ROADMAP_LAYOUT",
-      "name": "04 \u00b7 Launch Calendar"
-    },
-    {
-      "filter": "stage:Sent,Measuring,Complete",
-      "layout": "TABLE_LAYOUT",
-      "name": "05 \u00b7 Performance"
-    },
-    {
-      "filter": "work-type:Email",
-      "layout": "TABLE_LAYOUT",
-      "name": "06 \u00b7 Messaging & Automation Readiness"
-    }
-  ],
+  "project_exists": false,
+  "project_number": null,
+  "project_url": null,
+  "pull_request_items": 0,
+  "repository": "vincent-laroche/marketing-os",
+  "views": [],
   "views_expected": 6
 }

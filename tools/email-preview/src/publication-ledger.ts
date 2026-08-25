@@ -3,7 +3,7 @@ import { validateProvenance } from "./provenance.js";
 import type { Provenance } from "./types.js";
 
 /** The two origins that may be approved for the public gallery. */
-export const DEFAULT_PAGES_ORIGIN = "https://vincent-laroche.github.io/email-marketing-ops";
+export const DEFAULT_PAGES_ORIGIN = "https://vincent-laroche.github.io/marketing-os";
 export const APPROVED_CUSTOM_ORIGIN = "https://email-preview.hairsolutions.co";
 
 const SHA256 = z.string().regex(/^[0-9a-f]{64}$/);
@@ -126,7 +126,7 @@ function assertEntryInvariants(entry: PublicationEntry, extraOrigins: readonly s
   if (!isApprovedCanonicalUrl(entry.canonical_url, extraOrigins)) throw new Error("canonical URL is not an approved HTTPS Pages origin");
   const canonical = new URL(entry.canonical_url);
   const expectedPath = canonical.origin === new URL(DEFAULT_PAGES_ORIGIN).origin
-    ? `/email-marketing-ops/${entry.email_code}/detail.html`
+    ? `/marketing-os/${entry.email_code}/detail.html`
     : `/${entry.email_code}/detail.html`;
   if (canonical.pathname !== expectedPath) throw new Error("canonical URL does not identify the exact Email detail page");
   if (new Set(entry.states).size !== entry.states.length) throw new Error("publication states must be unique");
@@ -138,7 +138,7 @@ function assertWithdrawalInvariants(entry: WithdrawalEntry, extraOrigins: readon
   if (!withdrawalEntrySchema.safeParse(entry).success) throw new Error("invalid withdrawal ledger entry");
   if (!isApprovedCanonicalUrl(entry.former_canonical_url, extraOrigins)) throw new Error("former canonical URL is not an approved HTTPS Pages origin");
   const expected = new URL(entry.former_canonical_url).origin === new URL(DEFAULT_PAGES_ORIGIN).origin
-    ? `/email-marketing-ops/${entry.email_code}/detail.html`
+    ? `/marketing-os/${entry.email_code}/detail.html`
     : `/${entry.email_code}/detail.html`;
   if (new URL(entry.former_canonical_url).pathname !== expected) throw new Error("former canonical URL does not identify the exact Email detail page");
 }

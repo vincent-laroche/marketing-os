@@ -95,7 +95,7 @@ def main() -> int:
         )
     payload = {
         "schema_version": 1,
-        "repository": "vincent-laroche/email-marketing-ops",
+        "repository": "vincent-laroche/marketing-os",
         "mode": "dry-run",
         "external_mutation": False,
         "issue_count": len(issues),

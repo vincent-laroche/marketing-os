@@ -9,8 +9,8 @@ when re-verified on 2026-08-24. MailerSend remains a separate, transactional-onl
 
 ## Email Marketing — Campaign OS
 
-The connector-readable operating system is live in the private
-[`vincent-laroche/email-marketing-ops` repository](https://github.com/vincent-laroche/email-marketing-ops)
+The connector-readable operating system is live in the public
+[`vincent-laroche/marketing-os` repository](https://github.com/vincent-laroche/marketing-os)
 and [GitHub Project #4](https://github.com/users/vincent-laroche/projects/4).
 
 - 69 canonical Issues: 7 Campaigns, 53 Emails, 8 Tasks, and 1 Bug;
@@ -31,11 +31,11 @@ Merge or approval never configures Shopify, schedules, activates, or sends email
 
 ## Marketing OS
 
-This repository is now the destination for the shared Hair Solutions Co. Marketing OS. The Email OS remains the protected production-grade domain, and Social Media OS is being built as a governed domain beside it. The shared operating contract is documented in [`docs/marketing-os/OPERATING-CONTRACT.md`](docs/marketing-os/OPERATING-CONTRACT.md).
+This public repository is the shared Hair Solutions Co. Marketing OS. The Email OS remains the protected production-grade domain, and Social Media OS is a governed domain beside it. The shared operating contract is documented in [`docs/marketing-os/OPERATING-CONTRACT.md`](docs/marketing-os/OPERATING-CONTRACT.md), and the concrete platform design is in [`docs/marketing-os/ARCHITECTURE.md`](docs/marketing-os/ARCHITECTURE.md).
 
-Social source records live under `social-media/` and use the hierarchy `Social Campaign → Content Concept → platform Publication`. Large media stays in the approved asset system; Git stores asset identity, approved URLs, fingerprints, rights, consent, and permitted-use metadata. Social previews and feed planning are inert review artifacts. No repository operation publishes or schedules social content.
+Email source, Campaign OS records, and fail-closed fictional previews remain under the existing Email OS paths. Social source records live under `social-media/` and use the hierarchy `Social Campaign → Content Concept → platform Publication`. The migrated read-only operator dashboard lives under `apps/social-studio/`; it is not the canonical database and must remain authenticated if hosted. Large media stays in the approved asset system; Git stores asset identity, approved URLs, fingerprints, rights, consent, and permitted-use metadata.
 
-The Social Media OS currently includes a fail-closed source validator, deterministic source manifest builder, dry-run GitHub Issue plan compiler, publication preview generator, Instagram feed-grid generator, reusable Markdown source templates, and the imported committed social template library. The initial campaign records are clearly marked non-production fixtures and must be replaced with approved source material before production.
+The Social Media OS includes a fail-closed source validator, deterministic source manifest builder, dry-run GitHub Issue plan compiler, publication preview generator, Instagram feed-grid generator, reusable Markdown source templates, the imported committed social template library, and the migrated Social Studio application. The initial campaign records are clearly marked non-production fixtures and must be replaced with approved source material before production. No repository operation publishes or schedules social content.
 
 **Nothing is tracked in prose.** Issues and pull requests are canonical (`AGENTS.md` §8). A
 finding, a defect, or a "next step" that is not in an Issue or a pull request does not exist —
@@ -74,6 +74,11 @@ python3 -m unittest tests.email_operations.test_project_agents -v
 | `Email Reference File/` | **Source of truth.** Notion export of the email system — see below. |
 | `shopify-messaging/` | Active 53-email Shopify Messaging build, ledgers, automation plan, and Shopify audience-tag tooling. |
 | `github-campaign-os/` | Generated 69-Issue manifest, 28-field Project schema, and read-back reports. |
+| `social-media/` | Social source records, templates, schemas, and references. |
+| `apps/social-studio/` | Migrated read-only operator dashboard source; not the canonical Social OS database. |
+| `docs/marketing-os/ARCHITECTURE.md` | Shared platform architecture and management contract. |
+| `docs/social-media/` | Migrated social strategy and design references. |
+| `data/social-media/` | Public-safe campaign calendar and production-matrix sources. |
 | `tools/github_campaign_os/` | Idempotent Issue/Project compiler, synchronizers, and verifiers. |
 | `tools/email-preview/` | Fail-closed Shopify Liquid preview compiler and screenshot/gallery tooling. |
 | `email-previews/publication-ledger.json` | Append-only, reviewed publication and withdrawal events for public Pages previews. Active URLs exist only after the matching event is merged to `main`. |

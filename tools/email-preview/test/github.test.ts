@@ -29,7 +29,7 @@ test('temporary evidence is marker-bounded, safe, and idempotently replaceable',
     sourceSha: 'a'.repeat(40),
     successful: ['CR-1'],
     blocked: [{emailCode: 'BR-1', category: 'unresolved-variable'}],
-    artifactUrl: 'https://github.com/vincent-laroche/email-marketing-ops/actions/runs/1/artifacts/2',
+    artifactUrl: 'https://github.com/vincent-laroche/marketing-os/actions/runs/1/artifacts/2',
     expiresAt: '2026-08-26T12:00:00.000Z',
     reproductionCommand: 'gh workflow run email-preview-publish.yml -f email_code=CR-1 -f source_sha=' + 'a'.repeat(40),
   });
@@ -38,8 +38,8 @@ test('temporary evidence is marker-bounded, safe, and idempotently replaceable',
   assert.match(first, /unresolved-variable/);
   assert.match(buildTemporaryEvidenceComment({
     sourceSha: 'a'.repeat(40), successful: [], blocked: [{emailCode: 'CR-1', category: 'render-failure'}],
-    artifactUrl: 'https://github.com/vincent-laroche/email-marketing-ops/actions/runs/1/artifacts/2', expiresAt: '2026-08-26T12:00:00.000Z',
-    reproductionCommand: 'gh run rerun 1 --repo vincent-laroche/email-marketing-ops',
+    artifactUrl: 'https://github.com/vincent-laroche/marketing-os/actions/runs/1/artifacts/2', expiresAt: '2026-08-26T12:00:00.000Z',
+    reproductionCommand: 'gh run rerun 1 --repo vincent-laroche/marketing-os',
   }), /render-failure/);
   assert.doesNotMatch(first, /fixture|rendered\.html|Alex|customer@example/i);
   const updated = replaceBoundedComment('before\n' + first + '\nafter', first.replaceAll('CR-1', 'CR-2'));
@@ -64,14 +64,14 @@ test('read-back verifies status, source SHA, digests, and no Liquid', () => {
     rendered_sha256: 'b'.repeat(64),
     outputs: ['rendered.html', 'desktop.png', 'mobile.png'],
     output_sha256: {'rendered.html': 'b'.repeat(64), 'desktop.png': 'c'.repeat(64), 'mobile.png': 'd'.repeat(64)},
-    repository: 'vincent-laroche/email-marketing-ops',
+    repository: 'vincent-laroche/marketing-os',
     campaign_key: 'campaign:J2',
     fixture_sha256: 'f'.repeat(64),
     compiler_lock_sha256: '1'.repeat(64),
     generated_at: '2026-08-25T12:00:00.000Z',
     visibility: 'public',
-    issue_url: 'https://github.com/vincent-laroche/email-marketing-ops/issues/101',
-    pr_url: 'https://github.com/vincent-laroche/email-marketing-ops/pull/202',
+    issue_url: 'https://github.com/vincent-laroche/marketing-os/issues/101',
+    pr_url: 'https://github.com/vincent-laroche/marketing-os/pull/202',
   });
   assert.doesNotThrow(() => validatePublicReadBack([{path: 'CR-1/provenance.json', status: 200, body}], {sourceSha: 'a'.repeat(40), emailCode: 'CR-1'}));
   assert.doesNotThrow(() => validatePublicReadBack([{path: 'CR-1/rendered.html', status: 200, body: '<a href="#preview-inert">Unsubscribe entirely</a>'}], {sourceSha: 'a'.repeat(40), emailCode: 'CR-1'}));

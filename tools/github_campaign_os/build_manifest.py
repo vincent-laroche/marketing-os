@@ -244,7 +244,7 @@ def project_schema() -> Dict[str, Any]:
             fields.append({"name": name, "type": "text"})
     return {
         "schema_version": 1, "title": "Email Marketing — Campaign OS", "owner": "vincent-laroche",
-        "repository": "vincent-laroche/email-marketing-ops", "private": True,
+        "repository": "vincent-laroche/marketing-os", "private": True,
         "status": ["Inbox", "Ready", "In Progress", "In Review", "Blocked", "Done"], "fields": fields,
         "views": [
             {"name": "01 · Campaign Portfolio", "layout": "TABLE_LAYOUT", "filter": "work-type:Campaign"},

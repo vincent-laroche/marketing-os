@@ -65,7 +65,7 @@ function canonicalGitHubReference(raw: string, kind: "issues" | "pull", number: 
   try {
     const url = new URL(raw);
     return url.protocol === "https:" && url.hostname === "github.com" && !url.username && !url.password && !url.search && !url.hash
-      && url.pathname === `/vincent-laroche/email-marketing-ops/${kind}/${number}`;
+      && url.pathname === `/vincent-laroche/marketing-os/${kind}/${number}`;
   } catch {
     return false;
   }

@@ -67,7 +67,7 @@ export function assertSafeRenderedHtml(html: string): void {
 function assertNoHiddenUrl(value: string): void {
   for (const url of value.match(/(?:(?:https?:|javascript:|data:|vbscript:|\/\/)[^\s"'<>)]*)/gi) ?? []) {
     if (tokenLike.test(decodeHtmlUrl(url)) || sensitiveDestination.test(url)) throw unsafe("hidden customer-specific value");
-    if (/^https:\/\/github\.com\/vincent-laroche\/email-marketing-ops\/(issues|pull)\/\d+$/i.test(url)) continue;
+    if (/^https:\/\/github\.com\/vincent-laroche\/marketing-os\/(issues|pull)\/\d+$/i.test(url)) continue;
     assertSafeUrl(url);
   }
 }

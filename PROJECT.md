@@ -7,9 +7,7 @@
 > canonical. Every open item below must name its Issue; a finding recorded only here, in a plan
 > document, or in a chat message is untracked. Open an Issue, then cite the number.
 
-**Last updated:** 2026-08-25 by Codex (GitHub Pages preview implementation merged; private-repository
-Pages enablement plan-blocked under #79; specialist calibration recorded in #83; no Shopify,
-audience, campaign, Flow, send, schedule, or activation change)
+**Last updated:** 2026-08-25 by Codex (public repository renamed to Marketing OS; Social Studio and public-safe Social OS content migrated; Social Project #5 created; Email Pages origin updated; no Shopify, audience, campaign, Flow, send, schedule, activation, or social publication change)
 
 **Status:** **All marketing campaigns and lifecycle journeys now belong to Shopify Messaging +
 Shopify Flow. MailerLite is not a campaign/lifecycle platform for this project.** Shopify
@@ -21,6 +19,14 @@ not release approval. CR-1 through CR-4 have now been retokenized to the durable
 File palette and are protected by a repository contract test.
 Phase 4 is partial; Phase 5 has its segment/tag layer but not the journey automations; Phase 6
 has not started.
+
+The repository is now public as `vincent-laroche/marketing-os`. Social Studio is migrated under
+`apps/social-studio/`, and the Social Media OS source, references, templates, fixtures, validator,
+manifest builder, previews, and dry-run Issue compiler are under their namespaced paths. The five
+non-production Social records are Issues #90–#94, linked hierarchically and added to Social Media
+OS Project #5. Email preview provenance and canonical Pages paths now use
+`https://vincent-laroche.github.io/marketing-os`; public publication remains limited to the
+existing fictional-data and `preview_public` gates.
 
 **Live MailerLite re-verification, 2026-08-24:** account 2582639 is authenticated and currently
 has **0 campaigns**, **1 disabled legacy welcome automation**, and 2,223 subscribers. Its Shopify
