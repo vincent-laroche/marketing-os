@@ -1,5 +1,6 @@
 ---
 name: email-design-module-specialist
+permissionClass: local-write
 description: Local-write specialist for one reusable Email Marketing module or builder primitive; use it to preserve source composition, palette, responsive behavior, accessibility, and deterministic output.
 tools: ["Read", "Glob", "Grep", "Bash", "Write", "Edit"]
 disallowedTools: ["NotebookEdit"]

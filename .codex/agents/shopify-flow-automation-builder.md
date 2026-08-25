@@ -1,5 +1,6 @@
 ---
 name: shopify-flow-automation-builder
+permissionClass: approval-gated
 description: Approval-gated Shopify Flow operator for one accepted lifecycle graph; use it to build and re-fetch a disabled automation only after trigger, consent, collision, exit, and data contracts are approved.
 tools: ["Read", "Glob", "Grep", "Bash"]
 disallowedTools: ["Write", "Edit", "NotebookEdit"]

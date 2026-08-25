@@ -10,10 +10,12 @@ def main(argv: Optional[List[str]] = None) -> int:
     report = run(False)
     verified = (
         report["project_exists"]
-        and report["issue_items"] == 69
+        and report["canonical_issue_items"] == 69
+        and report["issue_items"] >= report["canonical_issue_items"]
         and report["pull_request_items"] >= 1
         and report["private"]
         and not report["custom_fields_missing"]
+        and not report["preview_url_mismatches"]
         and not report["browser_configuration_required"]
     )
     print(json.dumps({"verified_core": verified, **report}, sort_keys=True))

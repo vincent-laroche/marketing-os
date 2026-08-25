@@ -1,5 +1,6 @@
 ---
 name: email-lifecycle-architect
+permissionClass: read-only
 description: Read-only Shopify lifecycle architect for one bounded journey; use it to define consent-safe triggers, branches, timing, collisions, exits, data, tests, rollback, and measurement.
 tools: ["Read", "Glob", "Grep", "Bash"]
 disallowedTools: ["Write", "Edit", "NotebookEdit"]

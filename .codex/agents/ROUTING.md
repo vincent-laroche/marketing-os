@@ -139,14 +139,28 @@ local sync/validation code, but live GitHub mutations are parent-owned unless ex
 ### E. Preview and GitHub Pages work
 
 ```text
-email-preview-qa-engineer
-  → campaign-os-engineer for Issue/Project/workflow integration
-  → email-deliverability-release-reviewer for a named public candidate
+email-preview-qa-engineer: inspect the real private artifact and rehearse render → materialize →
+gallery → validate-site with the workflow's actual cwd/path semantics
+  → campaign-os-engineer: verify workflow/ledger/Issue/Project integration and the post-ledger sync
+  → email-deliverability-release-reviewer: bind the final PR head, rollback/withdrawal path, and one
+    named public candidate
   → Vincent publication approval outside the agent suite
 ```
 
 Pages enablement, manual workflow dispatch, custom domain, and Cloudflare DNS are separate gates.
 Private artifacts do not become public because a pull request merges.
+
+Before the first public Email, require a tested withdrawal path that supports a zero-public-email
+gallery and clears the Campaign OS Preview URL only from merged canonical evidence. After a public
+ledger event merges, route back through `campaign-os-engineer` for clean-main manifest regeneration,
+Issue/Project synchronization, and exact field-value read-back. A Project shape/count check alone is
+not publication reconciliation.
+
+For the first sole public preview, a repository-wide Pages-disable rollback must prove exactly one
+active ledger publication before disablement, bind the withdrawal to `preview_public: false` at the
+exact merged rollback SHA and its unique associated PR, and verify the former URL is unavailable.
+Once multiple previews are active, route to a selective remaining-set deployment; never disable all
+Pages while withdrawing only one Campaign OS URL.
 
 ### F. Post-send measurement
 
@@ -216,3 +230,12 @@ The current agent stops and returns to the parent when:
 
 The agent names the correct next role but does not invoke it. The parent decides whether and when to
 continue.
+
+## 7. Calibration routing
+
+For the first live runs of a new or materially revised specialist, the parent may mark the invocation
+as a calibration run. Keep the production task bounded, but require the shared-contract Calibration
+audit and compare the specialist's claimed evidence to logs, artifacts, repository state, and the
+next specialist's handoff. Record durable upgrades under the owning calibration Issue. Do not treat a
+generic runtime wrapper as proof that the named role is registered; record the effective runtime and
+the exact project-local prompt files loaded.

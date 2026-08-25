@@ -2,78 +2,217 @@ name: Email preview review
 
 on:
   pull_request:
+    types: [opened, synchronize, reopened]
     paths:
       - "shopify-messaging/emails/*.html"
       - "tools/email-preview/**"
+      - ".github/workflows/email-preview-review.yml"
+      - ".github/workflows/email-preview-publish.yml"
 
 permissions:
+  actions: read
   contents: read
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: email-preview-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 jobs:
   render:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+      - name: Checkout the exact pull-request revision
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
         with:
+          ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
-      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444
+      - name: Set up Node 24
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444
         with:
           node-version: "24"
           cache: npm
           cache-dependency-path: tools/email-preview/package-lock.json
-      - name: Install locked compiler
+      - name: Install the locked compiler
         working-directory: tools/email-preview
         run: npm ci
-      - name: Install screenshot browser
+      - name: Install the locked Chromium
         working-directory: tools/email-preview
         run: npx playwright install --with-deps chromium
-      - name: Verify the compiler and its readiness report
+      - name: Verify compiler, inventory, and policy
         working-directory: tools/email-preview
         run: |
           npx tsc -p tsconfig.json --noEmit
           npm test
           npm run inventory -- --check
-      - name: List changed emails
-        id: changed
+      - name: Build a safe render plan
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
-          git diff --name-only "$BASE_SHA" "$HEAD_SHA" -- 'shopify-messaging/emails/*.html' > changed-emails.txt
-          count="$(grep -c . changed-emails.txt || true)"
-          echo "count=$count" >> "$GITHUB_OUTPUT"
-          echo "Changed email sources: $count"
-      - name: Render changed emails fail closed
-        if: steps.changed.outputs.count != '0'
+          git diff --name-only "$BASE_SHA" "$HEAD_SHA" -- \
+            'shopify-messaging/emails/*.html' \
+            'tools/email-preview/**' \
+            '.github/workflows/email-preview-review.yml' \
+            '.github/workflows/email-preview-publish.yml' > changed-preview-files.txt
+          git diff --name-only "$BASE_SHA" "$HEAD_SHA" -- 'shopify-messaging/emails/*.html' > changed-email-files.txt
+          npm --silent --prefix tools/email-preview run inventory > preview-inventory.json
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          import os from "node:os";
+          import path from "node:path";
+          import {execFileSync, spawnSync} from "node:child_process";
+          const changed = fs.readFileSync("changed-email-files.txt", "utf8").split(/\r?\n/).filter(Boolean);
+          const previewChanges = fs.readFileSync("changed-preview-files.txt", "utf8").split(/\r?\n/).filter(Boolean);
+          const inventory = JSON.parse(fs.readFileSync("preview-inventory.json", "utf8"));
+          const manifest = JSON.parse(fs.readFileSync("github-campaign-os/manifest.json", "utf8"));
+          const issues = JSON.parse(fs.readFileSync("github-campaign-os/issue-sync-report.json", "utf8")).issues;
+          const config = JSON.parse(fs.readFileSync("tools/email-preview/preview-config.json", "utf8"));
+          const byPath = new Map(manifest.records.filter(record => record.key.startsWith("email:")).flatMap(record => record.source_paths.map(source => [source, record])));
+          const sourceChanges = changed.map(source => byPath.get(source)).filter(Boolean);
+          const changedCodes = new Set(sourceChanges.map(record => record.email_code));
+          if (sourceChanges.length !== changed.length) throw new Error("changed Email source is not a canonical Campaign OS selection");
+          const broadChange = previewChanges.some(file => !file.startsWith("shopify-messaging/emails/"));
+          const buildNoteOnly = source => {
+            const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "preview-change-policy-"));
+            try {
+              const before = path.join(temporary, "before.html");
+              const after = path.join(temporary, "after.html");
+              fs.writeFileSync(before, execFileSync("git", ["show", process.env.BASE_SHA + ":" + source]));
+              fs.copyFileSync(source, after);
+              return spawnSync("npm", ["--prefix", "tools/email-preview", "run", "change-policy", "--", "--before", before, "--after", after], {stdio: "inherit"}).status === 0;
+            } catch { return false; }
+            finally { fs.rmSync(temporary, {recursive: true, force: true}); }
+          };
+          const readyCodes = new Set(inventory.sources.filter(item => item.blocker === "none").map(item => item.emailCode));
+          const codeList = broadChange || changed.length === 0 ? [...readyCodes] : sourceChanges.map(record => record.email_code).filter(code => readyCodes.has(code));
+          const selected = [...new Set(codeList)].sort((a, b) => a.localeCompare(b, undefined, {numeric: true})).map(emailCode => {
+            const source = config.selections.find(item => item.email_code === emailCode);
+            const issue = issues["email:" + emailCode];
+            if (!source || !Number.isInteger(issue) || issue < 1) throw new Error("canonical preview identity unavailable");
+            return {emailCode, source: source.source_path, campaign: source.campaign_key, persona: source.persona, states: source.states, issue};
+          });
+          const blocked = inventory.sources.filter(item => item.blocker !== "none" && (broadChange || changed.length === 0 || changedCodes.has(item.emailCode))).map(item => {
+            const issue = issues["email:" + item.emailCode];
+            if (!Number.isInteger(issue) || issue < 1) throw new Error("canonical blocked Email Issue unavailable");
+            const source = "shopify-messaging/emails/" + item.file;
+            const changedSource = changedCodes.has(item.emailCode);
+            return {emailCode: item.emailCode, category: item.blocker, issue, mustFail: changedSource && !buildNoteOnly(source)};
+          });
+          fs.writeFileSync("render-plan.json", JSON.stringify({selected, blocked}, null, 2) + "\n");
+          NODE
+      - name: Render selected Emails fail closed
         env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-          PR: ${{ github.event.pull_request.number }}
         run: |
+          rm -rf email-previews/review
           mkdir -p email-previews/review
-          while read -r source; do
-            test -n "$source" || continue
-            guess="$(basename "$source" .html | sed -E 's/^[0-9]+-//' | tr '[:lower:]' '[:upper:]')"
-            # Casing comes from the manifest, never the filename: 13-pp-7b.html is PP-7b.
-            code="$(jq -r --arg guess "$guess" '.issues | keys[] | select(startswith("email:")) | ltrimstr("email:") | select(ascii_upcase == $guess)' github-campaign-os/issue-sync-report.json)"
-            test -n "$code" || { echo "No canonical Email Issue found for $guess" >&2; exit 1; }
-            issue="$(jq -r --arg key "email:$code" '.issues[$key]' github-campaign-os/issue-sync-report.json)"
-            if npm --prefix tools/email-preview run preview -- --source "$source" --email-code "$code" --commit-sha "$HEAD_SHA" --issue "$issue" --pr "$PR" --out "email-previews/review/$code"; then
-              continue
-            fi
-            # A blocked Email may receive an incremental fix only when Git proves the
-            # entire source diff is confined to one-line BUILD NOTE comments. Any live
-            # copy change, mixed change, or new source still fails closed.
-            base_source="$(mktemp)"
-            git show "$BASE_SHA:$source" > "$base_source"
-            npm --prefix tools/email-preview run change-policy -- --before "$base_source" --after "$GITHUB_WORKSPACE/$source"
-            echo "$code: blocked after verified build-note-only change" >> email-previews/review/blocked-build-note-only.txt
-          done < changed-emails.txt
-          test -n "$(find email-previews/review -type f -print -quit)" || { echo "No review evidence was generated" >&2; exit 1; }
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        if: steps.changed.outputs.count != '0'
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          import os from "node:os";
+          import path from "node:path";
+          import {spawnSync} from "node:child_process";
+          const plan = JSON.parse(fs.readFileSync("render-plan.json", "utf8"));
+          const inventory = JSON.parse(fs.readFileSync("preview-inventory.json", "utf8"));
+          const byCode = new Map(inventory.sources.map(item => [item.emailCode, item]));
+          const successful = [];
+          const blocked = [...plan.blocked];
+          for (const item of plan.selected) {
+            const out = path.resolve("email-previews", "review", item.emailCode);
+            fs.rmSync(out, {recursive: true, force: true});
+            const args = ["--prefix", "tools/email-preview", "run", "preview", "--", "--source", item.source, "--email-code", item.emailCode, "--campaign", item.campaign, "--commit-sha", process.env.HEAD_SHA, "--issue", String(item.issue), "--pr", process.env.PR_NUMBER, "--persona", item.persona, "--states", item.states.join(","), "--visibility", "private", "--out", out];
+            const result = spawnSync("npm", args, {stdio: "inherit"});
+            if (result.status === 0) {
+              const materialized = spawnSync("npm", ["--prefix", "tools/email-preview", "run", "materialize", "--", out], {stdio: "inherit"});
+              if (materialized.status === 0) {
+                successful.push({emailCode: item.emailCode, issue: item.issue});
+                continue;
+              }
+            }
+            fs.rmSync(out, {recursive: true, force: true});
+            const report = byCode.get(item.emailCode);
+            const category = report?.blocker && report.blocker !== "none" ? report.blocker : "render-failure";
+            blocked.push({emailCode: item.emailCode, category, issue: item.issue, mustFail: true});
+          }
+          fs.writeFileSync("email-previews/review/summary.json", JSON.stringify({sourceSha: process.env.HEAD_SHA, successful, blocked: blocked.sort((a, b) => a.emailCode.localeCompare(b.emailCode, undefined, {numeric: true}))}, null, 2) + "\n");
+          NODE
+          jq -r '.successful[].emailCode' email-previews/review/summary.json | while read -r code; do
+            for output in rendered.html desktop.png mobile.png provenance.json; do
+              test -f "email-previews/review/$code/$output" || { echo "review artifact is incomplete for $code: $output" >&2; exit 1; }
+            done
+          done
+      - name: Upload one private, expiring review artifact
+        id: upload
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: email-preview-pr-${{ github.event.pull_request.number }}-${{ github.event.pull_request.head.sha }}
+          name: email-preview-pr-${{ github.event.pull_request.number }}-${{ github.event.pull_request.head.sha }}-${{ github.run_attempt }}
           path: email-previews/review
           retention-days: 14
           if-no-files-found: error
+      - name: Download and verify the exact private artifact contents
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          artifact-ids: ${{ steps.upload.outputs.artifact-id }}
+          path: downloaded-review
+          merge-multiple: true
+      - name: Compare downloaded artifact to the verified render set
+        run: |
+          diff -qr email-previews/review downloaded-review
+          test -f downloaded-review/summary.json
+          jq -e '.sourceSha == "${{ github.event.pull_request.head.sha }}"' downloaded-review/summary.json >/dev/null
+          jq -r '.successful[].emailCode' downloaded-review/summary.json | while read -r code; do
+            for output in rendered.html desktop.png mobile.png provenance.json; do
+              test -f "downloaded-review/$code/$output" || { echo "downloaded artifact is incomplete for $code: $output" >&2; exit 1; }
+            done
+          done
+      - name: Read the artifact through the GitHub API
+        id: artifact-evidence
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd
+        env:
+          ARTIFACT_ID: ${{ steps.upload.outputs.artifact-id }}
+        with:
+          script: |
+            const artifactId = Number(process.env.ARTIFACT_ID);
+            if (!Number.isInteger(artifactId) || artifactId < 1) core.setFailed("review artifact identity unavailable");
+            else {
+              const response = await github.rest.actions.getArtifact({owner: context.repo.owner, repo: context.repo.repo, artifact_id: artifactId});
+              const data = response.data;
+              if (!data.archive_download_url || !data.expires_at || data.expired) core.setFailed("review artifact is not a live private artifact");
+              else {
+                core.setOutput("url", data.archive_download_url);
+                core.setOutput("expires_at", data.expires_at);
+              }
+            }
+      - name: Update one bounded PR and Email Issue evidence comment
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd
+        env:
+          SUMMARY_FILE: email-previews/review/summary.json
+          ARTIFACT_URL: ${{ steps.artifact-evidence.outputs.url }}
+          ARTIFACT_EXPIRES_AT: ${{ steps.artifact-evidence.outputs.expires_at }}
+          SOURCE_SHA: ${{ github.event.pull_request.head.sha }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        with:
+          script: |
+            const fs = require("node:fs");
+            const summary = JSON.parse(fs.readFileSync(process.env.SUMMARY_FILE, "utf8"));
+            const start = "<!-- email-preview:begin -->";
+            const end = "<!-- email-preview:end -->";
+            const safeCode = value => /^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/.test(value);
+            const successful = summary.successful.filter(item => safeCode(item.emailCode)).map(item => item.emailCode).join(", ") || "none";
+            const blocked = summary.blocked.filter(item => safeCode(item.emailCode) && /^(build-note-comment|unresolved-variable|authoring-placeholder|render-failure|safety|unknown)$/.test(item.category)).map(item => item.emailCode + " (" + item.category + ")").join(", ") || "none";
+            const body = [start, "### Email preview review", "", "- Source SHA: [" + process.env.SOURCE_SHA + "]", "- Successful: " + successful, "- Blocked: " + blocked, "- Private artifact: " + process.env.ARTIFACT_URL, "- Artifact expires at: [" + process.env.ARTIFACT_EXPIRES_AT + "]", "- Reproduce this exact private review: [gh run rerun " + context.runId + " --repo " + context.repo.owner + "/" + context.repo.repo + "]", "", end].join("\n");
+            const upsert = async issueNumber => {
+              const comments = await github.paginate(github.rest.issues.listComments, {owner: context.repo.owner, repo: context.repo.repo, issue_number: issueNumber, per_page: 100});
+              const matches = comments.filter(comment => comment.body?.includes(start) && comment.body?.includes(end));
+              if (matches.length > 1) throw new Error("multiple bounded preview comments found");
+              if (matches.length === 1) await github.rest.issues.updateComment({owner: context.repo.owner, repo: context.repo.repo, comment_id: matches[0].id, body});
+              else await github.rest.issues.createComment({owner: context.repo.owner, repo: context.repo.repo, issue_number: issueNumber, body});
+            };
+            await upsert(Number(process.env.PR_NUMBER));
+            const affectedIssues = new Set([...summary.successful, ...summary.blocked].map(item => item.issue).filter(issue => Number.isInteger(issue) && issue > 0));
+            for (const issue of affectedIssues) await upsert(issue);
+      - name: Fail the review after preserving safe diagnostics
+        run: |
+          test "$(jq '[.blocked[] | select(.mustFail == true)] | length' email-previews/review/summary.json)" = "0" || { echo "changed or newly failing Email preview was blocked; diagnostics were preserved above" >&2; exit 1; }

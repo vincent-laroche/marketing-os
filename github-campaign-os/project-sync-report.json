@@ -1,9 +1,11 @@
 {
   "browser_configuration_required": [],
+  "canonical_issue_items": 69,
   "custom_fields_expected": 28,
   "custom_fields_missing": [],
-  "issue_items": 69,
+  "issue_items": 70,
   "mode": "dry-run",
+  "preview_url_mismatches": [],
   "private": true,
   "project_exists": true,
   "project_number": 4,

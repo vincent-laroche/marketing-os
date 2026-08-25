@@ -54,6 +54,34 @@ FORBIDDEN_SNIPPETS = (
     "39 blocked",
 )
 
+ROLE_REQUIRED_PHRASES = {
+    "email-preview-qa-engineer": (
+        "GITHUB_WORKSPACE",
+        "render-failure",
+        "download the real artifact",
+        "artifact-name directory",
+        "zero-public-email",
+        "publish → withdraw → republish",
+    ),
+    "campaign-os-engineer": (
+        "clean-main manifest regeneration",
+        "exact GraphQL read-back",
+        "publish → withdraw → republish",
+        "final PR head",
+        "preview_public: false",
+        "sole active public Email",
+        "unique associated PR",
+    ),
+    "email-deliverability-release-reviewer": (
+        "final pull-request head",
+        "downloaded private artifact",
+        "sole-preview emergency contract",
+        "exact Project field read back blank",
+        "artifact ID",
+        "GitHub Pages",
+    ),
+}
+
 
 @dataclass(frozen=True)
 class Definition:
@@ -154,6 +182,7 @@ def validate_definition(definition: Definition, permission: str) -> list[str]:
     metadata = definition.metadata
     body = definition.body
     lower = body.lower()
+    normalized = re.sub(r"\s+", " ", lower)
 
     if "parse_error" in metadata:
         return [f"{label}: {metadata['parse_error']}"]
@@ -164,6 +193,8 @@ def validate_definition(definition: Definition, permission: str) -> list[str]:
         errors.append(f"{label}: description must be precise and at least 80 characters")
     if permission not in str(description).lower():
         errors.append(f"{label}: description must name permission class {permission!r}")
+    if metadata.get("permissionClass") != permission:
+        errors.append(f"{label}: permissionClass must be exactly {permission!r}")
     max_turns = metadata.get("maxTurns")
     if not isinstance(max_turns, int) or not 25 <= max_turns <= 60:
         errors.append(f"{label}: maxTurns must be an integer from 25 through 60")
@@ -213,6 +244,9 @@ def validate_definition(definition: Definition, permission: str) -> list[str]:
     for snippet in FORBIDDEN_SNIPPETS:
         if snippet.lower() in lower:
             errors.append(f"{label}: contains forbidden stale or unsafe text {snippet!r}")
+    for phrase in ROLE_REQUIRED_PHRASES.get(definition.name, ()):
+        if re.sub(r"\s+", " ", phrase.lower()) not in normalized:
+            errors.append(f"{label}: missing calibrated workflow requirement {phrase!r}")
     return errors
 
 

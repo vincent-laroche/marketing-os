@@ -3,54 +3,228 @@ name: Publish approved email preview
 on:
   workflow_dispatch:
     inputs:
-      source_path: {description: "Repository-relative Shopify email HTML path", required: true, type: string}
-      email_code: {description: "Canonical email code", required: true, type: string}
-      commit_sha: {description: "Exact 40-character source commit SHA", required: true, type: string}
-      issue: {description: "Related Email Issue number", required: true, type: number}
-      pr: {description: "Related PR number", required: true, type: number}
+      email_code:
+        description: "Canonical Email code"
+        required: true
+        type: string
+      source_sha:
+        description: "Exact 40-character source SHA"
+        required: true
+        type: string
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+permissions: {}
 
 concurrency:
   group: email-preview-pages
   cancel-in-progress: false
 
 jobs:
-  publish:
-    environment:
-      name: github-pages
+  build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      site_artifact_id: ${{ steps.site-upload.outputs.artifact-id }}
     steps:
-      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+      - name: Checkout the exact requested revision
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
         with:
-          ref: ${{ inputs.commit_sha }}
+          ref: ${{ inputs.source_sha }}
           fetch-depth: 0
-      - name: Enforce explicit publication gate
-        env:
-          SHA: ${{ inputs.commit_sha }}
-        run: |
-          test "$(jq -r .preview_public tools/email-preview/preview-config.json)" = true || { echo "preview_public is not explicitly true" >&2; exit 1; }
-          printf '%s' "$SHA" | grep -Eq '^[0-9a-f]{40}$' || { echo "exact source SHA required" >&2; exit 1; }
-          git cat-file -e "$SHA^{commit}"
-      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444
+      - name: Set up Node 24
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444
         with:
           node-version: "24"
           cache: npm
           cache-dependency-path: tools/email-preview/package-lock.json
-      - working-directory: tools/email-preview
+      - name: Install the locked compiler
+        working-directory: tools/email-preview
         run: npm ci
-      - working-directory: tools/email-preview
+      - name: Install the locked Chromium
+        working-directory: tools/email-preview
         run: npx playwright install --with-deps chromium
-      - name: Render exact approved revision
-        run: npm --prefix tools/email-preview run preview -- --source "${{ inputs.source_path }}" --email-code "${{ inputs.email_code }}" --commit-sha "${{ inputs.commit_sha }}" --issue "${{ inputs.issue }}" --pr "${{ inputs.pr }}" --out "email-previews/site/${{ inputs.email_code }}"
-      - name: Build noindex gallery
-        run: npm --prefix tools/email-preview run gallery -- email-previews/site
-      - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b
-      - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b
+      - name: Verify exact Email gate and main ancestry
+        env:
+          EMAIL_CODE: ${{ inputs.email_code }}
+          SOURCE_SHA: ${{ inputs.source_sha }}
+          GH_TOKEN: ${{ github.token }}
+          LEDGER_BRANCH: automation/email-preview-publication-ledger
+        run: |
+          printf '%s' "$SOURCE_SHA" | grep -Eq '^[0-9a-f]{40}$' || { echo "exact source SHA required" >&2; exit 1; }
+          git fetch --no-tags origin main
+          git merge-base --is-ancestor "$SOURCE_SHA" origin/main || { echo "source SHA is not an ancestor of origin/main" >&2; exit 1; }
+          open_ledger_prs="$(gh api "repos/$GITHUB_REPOSITORY/pulls" --method GET -f state=open -f base=main -f head="vincent-laroche:$LEDGER_BRANCH" --jq 'length')"
+          test "$open_ledger_prs" = "0" || { echo "merge the existing preview publication ledger PR before another public deployment" >&2; exit 1; }
+          jq -c '[.selections[] | select(.preview_public == true)]' tools/email-preview/preview-config.json > public-selections.json
+          test "$(jq 'length' public-selections.json)" -gt 0 || { echo "no Email is approved for public preview" >&2; exit 1; }
+          test "$(jq --arg code "$EMAIL_CODE" '[.[] | select(.email_code == $code)] | length' public-selections.json)" = "1" || { echo "exact Email selection is not preview_public" >&2; exit 1; }
+          gh api --paginate "repos/$GITHUB_REPOSITORY/commits/$SOURCE_SHA/pulls" -H "Accept: application/vnd.github+json" | jq -s 'add' > associated-pulls.json
+          matches="$(jq --arg sha "$SOURCE_SHA" '[.[] | select((.merged_at != null or .merged == true) and (.head.sha == $sha or .merge_commit_sha == $sha))]' associated-pulls.json)"
+          test "$(jq 'length' <<< "$matches")" = "1" || { echo "exactly one merged pull request is required" >&2; exit 1; }
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          const selections = JSON.parse(fs.readFileSync("public-selections.json", "utf8"));
+          const issues = JSON.parse(fs.readFileSync("github-campaign-os/issue-sync-report.json", "utf8")).issues;
+          const plan = selections.map(selection => {
+            const issue = issues["email:" + selection.email_code];
+            if (!Number.isInteger(issue) || issue < 1) throw new Error("canonical Email Issue is unavailable");
+            return {...selection, issue};
+          });
+          fs.writeFileSync("public-plan.json", JSON.stringify(plan, null, 2) + "\n");
+          NODE
+          echo "PR=$(jq -r '.[0].number' <<< "$matches")" >> "$GITHUB_ENV"
+      - name: Verify compiler and complete preview suite
+        working-directory: tools/email-preview
+        run: |
+          npx tsc -p tsconfig.json --noEmit
+          npm test
+          npm run inventory -- --check
+      - name: Render the complete approved public set atomically
+        env:
+          SOURCE_SHA: ${{ inputs.source_sha }}
+        run: |
+          rm -rf email-previews/site
+          mkdir -p email-previews/site
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          import path from "node:path";
+          import {spawnSync} from "node:child_process";
+          const plan = JSON.parse(fs.readFileSync("public-plan.json", "utf8"));
+          for (const item of plan) {
+            const out = path.resolve("email-previews", "site", item.email_code);
+            const preview = spawnSync("npm", ["--prefix", "tools/email-preview", "run", "preview", "--", "--source", item.source_path, "--email-code", item.email_code, "--campaign", item.campaign_key, "--commit-sha", process.env.SOURCE_SHA, "--issue", String(item.issue), "--pr", process.env.PR, "--persona", item.persona, "--states", item.states.join(","), "--visibility", "public", "--workflow-run", process.env.GITHUB_RUN_ID, "--workflow-attempt", process.env.GITHUB_RUN_ATTEMPT, "--workflow-revision", process.env.GITHUB_SHA, "--out", out], {stdio: "inherit"});
+            if (preview.status !== 0) throw new Error("approved public Email failed closed: " + item.email_code);
+            const materialized = spawnSync("npm", ["--prefix", "tools/email-preview", "run", "materialize", "--", out], {stdio: "inherit"});
+            if (materialized.status !== 0) throw new Error("approved public Email could not be materialized: " + item.email_code);
+          }
+          NODE
+      - name: Build and validate complete static site
+        env:
+          SOURCE_SHA: ${{ inputs.source_sha }}
+        run: |
+          npm --prefix tools/email-preview run gallery -- "$GITHUB_WORKSPACE/email-previews/site"
+          for provenance in email-previews/site/*/provenance.json; do
+            code="$(jq -r '.email_code' "$provenance")"
+            npx tsx tools/email-preview/src/publication.ts validate-site --site email-previews/site --email-code "$code" --source-sha "$SOURCE_SHA"
+          done
+      - name: Upload verified build for Pages
+        id: site-upload
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
+          name: email-preview-pages-${{ github.run_id }}-${{ github.run_attempt }}
           path: email-previews/site
-      - id: deployment
+          retention-days: 1
+          if-no-files-found: error
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
+      # deploy-pages uses github.sha as pages_build_version; GitHub's Pages API
+      # accepts that exact commit SHA as the deployment identifier.
+      deployment_id: ${{ github.sha }}
+    steps:
+      - name: Download the verified build
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          artifact-ids: ${{ needs.build.outputs.site_artifact_id }}
+          path: email-previews/site
+          merge-multiple: true
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b
+        with:
+          name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
+          path: email-previews/site
+      - name: Deploy Pages artifact
+        id: deployment
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e
+        with:
+          artifact_name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
+
+  ledger:
+    needs: [build, deploy]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: read
+    steps:
+      - name: Checkout canonical main for ledger-only work
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Set up Node 24
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: tools/email-preview/package-lock.json
+      - name: Install the locked compiler
+        working-directory: tools/email-preview
+        run: npm ci
+      - name: Download the deployed build
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          artifact-ids: ${{ needs.build.outputs.site_artifact_id }}
+          path: email-previews/site
+          merge-multiple: true
+      - name: Read back every canonical public file over HTTPS
+        env:
+          PAGE_URL: ${{ needs.deploy.outputs.page_url }}
+          SOURCE_SHA: ${{ inputs.source_sha }}
+        run: |
+          for provenance in email-previews/site/*/provenance.json; do
+            code="$(jq -r '.email_code' "$provenance")"
+            npx tsx tools/email-preview/src/publication.ts read-back --site email-previews/site --email-code "$code" --source-sha "$SOURCE_SHA" --page-url "$PAGE_URL"
+          done
+      - name: Generate verified append-only ledger candidate
+        env:
+          PAGE_URL: ${{ needs.deploy.outputs.page_url }}
+          DEPLOYMENT_ID: ${{ needs.deploy.outputs.deployment_id }}
+          SOURCE_SHA: ${{ inputs.source_sha }}
+        run: |
+          mkdir publication-candidates
+          timestamp="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          for provenance in email-previews/site/*/provenance.json; do
+            code="$(jq -r '.email_code' "$provenance")"
+            npx tsx tools/email-preview/src/publication.ts candidate --site email-previews/site --email-code "$code" --source-sha "$SOURCE_SHA" --canonical-base "$PAGE_URL" --pages-deployment-id "$DEPLOYMENT_ID" --workflow-run-id "$GITHUB_RUN_ID" --workflow-attempt "$GITHUB_RUN_ATTEMPT" --publication-timestamp "$timestamp" --out "publication-candidates/$code.json"
+          done
+      - name: Open or update the ledger-only pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          LEDGER_BRANCH: automation/email-preview-publication-ledger
+          EMAIL_CODE: ${{ inputs.email_code }}
+          SOURCE_SHA: ${{ inputs.source_sha }}
+        run: |
+          git fetch origin main
+          remote_oid="$(git ls-remote origin "refs/heads/$LEDGER_BRANCH" | awk '{print $1}')"
+          git switch --force-create "$LEDGER_BRANCH" origin/main
+          for candidate in publication-candidates/*.json; do
+            npx tsx tools/email-preview/src/publication.ts append --ledger email-previews/publication-ledger.json --candidate "$candidate"
+          done
+          test "$(git diff --name-only)" = "email-previews/publication-ledger.json" || { echo "ledger workflow changed an unexpected file" >&2; exit 1; }
+          git add -- email-previews/publication-ledger.json
+          test "$(git diff --cached --name-only)" = "email-previews/publication-ledger.json" || { echo "ledger PR is not ledger-only" >&2; exit 1; }
+          git config user.name "email-preview-automation"
+          git config user.email "email-preview-automation@users.noreply.github.com"
+          git commit -m "chore(preview): record verified public publication"
+          if [ -n "$remote_oid" ]; then
+            git push --set-upstream origin "$LEDGER_BRANCH" --force-with-lease="refs/heads/$LEDGER_BRANCH:$remote_oid"
+          else
+            git push --set-upstream origin "$LEDGER_BRANCH"
+          fi
+          published="$(jq -sr 'map(.email_code) | join(", ")' publication-candidates/*.json)"
+          canonical_issues="$(jq -sr 'map(.canonical_issue) | unique | map("#" + tostring) | join(", ")' publication-candidates/*.json)"
+          source_prs="$(jq -sr 'map(.canonical_pr) | unique | map("#" + tostring) | join(", ")' publication-candidates/*.json)"
+          body="Verified public publication snapshot for Emails $published at source SHA $SOURCE_SHA. Canonical Email Issues: $canonical_issues. Source pull requests: $source_prs. This PR changes only email-previews/publication-ledger.json; merge does not send or activate email."
+          gh api "repos/$GITHUB_REPOSITORY/pulls" --method POST -f base=main -f head="$LEDGER_BRANCH" -f title="chore(preview): record verified public publication ledger" -f body="$body" >/dev/null

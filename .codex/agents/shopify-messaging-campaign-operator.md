@@ -1,5 +1,6 @@
 ---
 name: shopify-messaging-campaign-operator
+permissionClass: approval-gated
 description: Approval-gated Shopify Messaging operator for one named draft; use it only after source, audience, sender, and current write approval are complete, and stop before scheduling or sending.
 tools: ["Read", "Glob", "Grep", "Bash"]
 disallowedTools: ["Write", "Edit", "NotebookEdit"]

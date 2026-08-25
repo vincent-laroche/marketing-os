@@ -1,5 +1,6 @@
 ---
 name: shopify-notification-template-specialist
+permissionClass: approval-gated
 description: Approval-gated operator for one native Shopify transactional notification template or approved batch; use it for authority-safe edits, exact read-back, and rendered evidence without sending.
 tools: ["Read", "Glob", "Grep", "Bash"]
 disallowedTools: ["Write", "Edit", "NotebookEdit"]

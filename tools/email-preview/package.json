@@ -8,8 +8,10 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "node --import tsx --test test/*.test.ts",
     "preview": "tsx src/cli.ts",
+    "materialize": "tsx src/materialize.ts",
     "gallery": "tsx src/gallery.ts",
     "inventory": "tsx src/inventory-cli.ts",
     "change-policy": "tsx src/change-policy-cli.ts"

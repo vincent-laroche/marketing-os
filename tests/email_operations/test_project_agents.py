@@ -34,6 +34,15 @@ class ProjectAgentSuiteTest(unittest.TestCase):
                 any("read-only agent exposes write tools" in error for error in validate(root))
             )
 
+    def test_validator_rejects_missing_explicit_permission_class(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            shutil.copytree(ROOT / ".codex", root / ".codex")
+            path = root / ".codex/agents/email-project-manager.md"
+            text = path.read_text(encoding="utf-8")
+            path.write_text(text.replace("permissionClass: read-only\n", "", 1), encoding="utf-8")
+            self.assertTrue(any("permissionClass" in error for error in validate(root)))
+
     def test_validator_rejects_weak_external_operator(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
@@ -60,6 +69,15 @@ class ProjectAgentSuiteTest(unittest.TestCase):
             self.assertTrue(
                 any("forbidden stale or unsafe text" in error for error in validate(root))
             )
+
+    def test_validator_rejects_removed_calibration_requirement(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            shutil.copytree(ROOT / ".codex", root / ".codex")
+            path = root / ".codex/agents/email-preview-qa-engineer.md"
+            text = path.read_text(encoding="utf-8")
+            path.write_text(text.replace("Download the real artifact", "Inspect artifact metadata", 1), encoding="utf-8")
+            self.assertTrue(any("calibrated workflow requirement" in error for error in validate(root)))
 
 
 if __name__ == "__main__":

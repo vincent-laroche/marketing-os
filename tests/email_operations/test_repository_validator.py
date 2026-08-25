@@ -1,0 +1,49 @@
+import unittest
+
+from pathlib import Path
+
+from tools.github_campaign_os.validate_repository import ROOT, tracked_output_errors, validate, workflow_errors
+
+
+class RepositoryValidatorTest(unittest.TestCase):
+    def test_preview_publication_repository_contract_is_valid(self):
+        self.assertEqual([], validate())
+
+    def test_workflow_validator_rejects_trigger_and_permission_expansion(self):
+        review = (ROOT / ".github/workflows/email-preview-review.yml").read_text(encoding="utf-8")
+        publish = (ROOT / ".github/workflows/email-preview-publish.yml").read_text(encoding="utf-8")
+        unsafe_trigger = publish.replace("  workflow_dispatch:", "  workflow_dispatch:\n  push:")
+        self.assertTrue(any("trigger" in error for error in workflow_errors(review, unsafe_trigger)))
+        unsafe_permission = publish.replace("      pages: write", "      pages: write\n      contents: write")
+        self.assertTrue(any("permissions" in error for error in workflow_errors(review, unsafe_permission)))
+        attacker = publish.replace("actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09", "attacker/backdoor@" + "a" * 40)
+        self.assertTrue(any("action" in error for error in workflow_errors(review, attacker)))
+        nested_artifact = publish.replace("          merge-multiple: true\n", "", 1)
+        self.assertTrue(any("artifact-id download" in error for error in workflow_errors(review, nested_artifact)))
+        env_decoy = publish.replace("          merge-multiple: true\n", "        env:\n          merge-multiple: true\n", 1)
+        self.assertTrue(any("artifact-id download" in error for error in workflow_errors(review, env_decoy)))
+        comment_decoy = publish.replace("          merge-multiple: true\n", "          # merge-multiple: true\n", 1)
+        self.assertTrue(any("artifact-id download" in error for error in workflow_errors(review, comment_decoy)))
+        artifact_id_env_decoy = publish.replace("          artifact-ids: ${{ needs.build.outputs.site_artifact_id }}\n", "        env:\n          artifact-ids: ${{ needs.build.outputs.site_artifact_id }}\n", 1)
+        self.assertTrue(any("artifact-id download" in error for error in workflow_errors(review, artifact_id_env_decoy)))
+        artifact_id_comment_decoy = publish.replace("          artifact-ids: ${{ needs.build.outputs.site_artifact_id }}\n", "          # artifact-ids: ${{ needs.build.outputs.site_artifact_id }}\n", 1)
+        self.assertTrue(any("artifact-id download" in error for error in workflow_errors(review, artifact_id_comment_decoy)))
+        unnamed_download = publish.replace(
+            "    steps:\n",
+            "    steps:\n      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093\n        with:\n          artifact-ids: 123\n",
+            1,
+        )
+        self.assertTrue(any("artifact-id download" in error for error in workflow_errors(review, unnamed_download)))
+        extra_job = publish + "\n  exfiltrate:\n    runs-on: ubuntu-latest\n    permissions:\n      contents: write\n    steps: []\n"
+        self.assertTrue(any("job set" in error for error in workflow_errors(review, extra_job)))
+        quoted_permission = publish.replace("      pages: write", '      pages: write\n      "packages": write')
+        self.assertTrue(any("mapping entry" in error for error in workflow_errors(review, quoted_permission)))
+
+    def test_tracked_output_validator_rejects_public_evidence_and_binaries(self):
+        self.assertEqual([], tracked_output_errors(["email-previews/publication-ledger.json"]))
+        errors = tracked_output_errors(["email-previews/CR-1/rendered.html", "tools/email-preview/node_modules/playwright/browser.zip"])
+        self.assertEqual(2, len(errors))
+
+
+if __name__ == "__main__":
+    unittest.main()

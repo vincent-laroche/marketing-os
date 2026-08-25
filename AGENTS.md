@@ -223,3 +223,24 @@ Credentials are ephemeral. There is no GitHub token in `~/.env`; the working cre
 deliverable only. It never configures Shopify Messaging, creates or enables a Flow, changes an
 audience or consent state, schedules, activates, or sends. Creative Stage, Messaging State, and
 Flow State are deliberately independent and must never be inferred from one another.
+
+## 9. Email preview publication is explicit and ledger-backed
+
+GitHub Pages uses the Actions build source for the static Email Preview Gallery. Enabling Pages is
+installation only; it does not approve or publish an Email. The custom domain and Cloudflare DNS
+remain separate external changes and require their own current approval.
+
+- Pull-request previews are private, authenticated Actions artifacts with 14-day retention. They
+  are temporary review evidence, never a Project `Preview URL`, and must be reproducible from the
+  exact source revision after expiry.
+- Public publication requires a per-Email `preview_public: true` selection, deliberate manual
+  workflow dispatch with an exact committed `main` SHA, canonical Email Issue and merged PR
+  provenance, a complete fail-closed render of the public-approved set, and HTTPS read-back.
+- Merge, approval, Stage, scheduling, `preview_public: true` by itself, or Pages enablement never
+  triggers publication.
+- Every preview uses fictional reusable fixture personas/states. Real customer data, checkout or
+  unsubscribe tokens, customer-specific links, private artifact URLs, and unresolved or unsupported
+  Liquid are forbidden. Sensitive destinations are replaced with inert preview links.
+- A public URL becomes canonical only through `email-previews/publication-ledger.json` after its
+  ledger-only pull request merges. `tools/github_campaign_os/` derives the Issue snapshot and
+  Project `Preview URL` from that committed ledger; do not hand-edit either surface.

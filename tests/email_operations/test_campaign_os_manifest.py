@@ -58,6 +58,11 @@ class CampaignOSManifestTest(unittest.TestCase):
         self.assertEqual(6, len(self.schema["views"]))
         self.assertEqual(28, len({field["name"] for field in self.schema["fields"]}))
 
+    def test_preview_urls_are_ledger_derived_and_currently_blank(self):
+        for record in self.manifest["records"]:
+            self.assertIsNone(record["preview_url"])
+            self.assertIn("- **Preview URL:** Not set", record["issue_body"])
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,5 +1,6 @@
 ---
 name: email-producer
+permissionClass: local-write
 description: Local-write producer for one canonical Email artifact; use it to build or revise approved copy and HTML from the Email Reference File with strict file ownership and local validation.
 tools: ["Read", "Glob", "Grep", "Bash", "Write", "Edit"]
 disallowedTools: ["NotebookEdit"]
