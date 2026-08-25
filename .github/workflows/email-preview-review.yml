@@ -10,6 +10,7 @@ on:
       - ".github/workflows/email-preview-publish.yml"
 
 permissions:
+  actions: read
   contents: read
   pull-requests: write
   issues: write

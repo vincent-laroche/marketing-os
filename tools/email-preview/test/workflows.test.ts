@@ -13,6 +13,7 @@ test("private review workflow is pull-request-only, minimally permissioned, pinn
   const workflow = await readWorkflow("email-preview-review.yml");
   assert.match(workflow, /pull_request:/);
   assert.doesNotMatch(workflow, /workflow_dispatch:/);
+  assert.match(workflow, /actions:\s*read/);
   assert.match(workflow, /contents:\s*read/);
   assert.match(workflow, /pull-requests:\s*write/);
   assert.match(workflow, /issues:\s*write/);

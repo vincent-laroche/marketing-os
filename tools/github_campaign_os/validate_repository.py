@@ -50,7 +50,7 @@ def workflow_errors(review: str, publish: str) -> List[str]:
     try:
         if set(_mapping(review, "on")) != {"pull_request"}:
             errors.append("private review workflow trigger is not exactly pull_request")
-        if _mapping(review, "permissions") != {"contents": "read", "pull-requests": "write", "issues": "write"}:
+        if _mapping(review, "permissions") != {"actions": "read", "contents": "read", "pull-requests": "write", "issues": "write"}:
             errors.append("private review workflow permissions are not exact")
         if set(_mapping(review, "jobs")) != {"render"}:
             errors.append("private review workflow job set is not exact")
