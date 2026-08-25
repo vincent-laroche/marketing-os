@@ -1,15 +1,43 @@
 # Email Marketing
 
-Hair Solutions Co. email marketing. Current sending platform: **MailerLite**
-(HubSpot access was lost 2026-08; Resend is retained for transactional and now lives at
-`~/02_dev/mkt-resend`).
+Hair Solutions Co. email marketing. The sole marketing campaign and lifecycle platform is
+**Shopify Messaging + Shopify Flow**. The 53-email programme builds and ships there.
+
+MailerLite is retained only for legacy/reference assets. It is
+**not** a campaign or lifecycle platform for this project; the live account had zero campaigns
+when re-verified on 2026-08-24. MailerSend remains a separate, transactional-only experiment.
+
+## Email Marketing — Campaign OS
+
+The connector-readable operating system is live in the private
+[`vincent-laroche/email-marketing-ops` repository](https://github.com/vincent-laroche/email-marketing-ops)
+and [GitHub Project #4](https://github.com/users/vincent-laroche/projects/4).
+
+- 69 canonical Issues: 7 Campaigns, 53 Emails, 8 Tasks, and 1 Bug;
+- Email Issues are native sub-issues of their Campaign;
+- Issues and pull requests are canonical; the Project mirrors operational state;
+- 28 custom fields and six native views cover production, review, launch, performance, and
+  Shopify Messaging/Flow readiness;
+- `tools/github_campaign_os/` compiles, synchronizes, and verifies the system idempotently;
+- `.github/ISSUE_TEMPLATE/` and `.github/pull_request_template.md` govern new work;
+- `tools/email-preview/` provides a fail-closed fictional-fixture renderer that emits rendered
+  HTML, a full desktop screenshot, a full mobile screenshot, and exact provenance;
+- public preview publication remains disabled until `preview_public` is deliberately changed and
+  the manual workflow is dispatched. GitHub Pages and custom-domain enablement are separate gates.
+
+Merge or approval never configures Shopify, schedules, activates, or sends email.
 
 ## Layout
 
 | Path | What it is |
 |---|---|
 | `Email Reference File/` | **Source of truth.** Notion export of the email system — see below. |
-| `mailerlite/` | Active build + push pipeline for the MailerLite account (2582639). |
+| `shopify-messaging/` | Active 53-email Shopify Messaging build, ledgers, automation plan, and Shopify audience-tag tooling. |
+| `github-campaign-os/` | Generated 69-Issue manifest, 28-field Project schema, and read-back reports. |
+| `tools/github_campaign_os/` | Idempotent Issue/Project compiler, synchronizers, and verifiers. |
+| `tools/email-preview/` | Fail-closed Shopify Liquid preview compiler and screenshot/gallery tooling. |
+| `mailerlite/` | Legacy MailerLite builders, rendered emails, and API research. Reference only; do not create or push campaigns from it. |
+| `mailersend/` | Transactional-only service-email experiment. Never a marketing campaign path. |
 | `exports/` | HubSpot CRM exports. PII-bearing, **gitignored**. |
 | `export_hubspot.py` | One-shot full HubSpot export (workflows, contacts, deals, orders). |
 | `AGENTS.md` | Durable project context and rules. Read first. |
@@ -24,22 +52,30 @@ from here. Nothing else in this repo overrides it.
 |---|---|
 | `emails_master …_all.csv` | The emails database — every email, its journey, timing, and metadata. |
 | `modules_master …_all.csv` | The modules database — every module and which emails use it. |
-| `emails_modules_hubspot versionr/` | 58 email copy decks (`.md`, incl. 5 `Journey · … Master` docs) **and** 102 complete HubSpot module trios (`module.html` + `fields.json` + `meta.json`), light and dark. |
+| `emails_modules_hubspot versionr/` | 58 email copy decks (`.md`, incl. 5 `Journey · … Master` docs) **and** 104 complete HubSpot module trios (`module.html` + `fields.json` + `meta.json`), light and dark. |
 | `modules_master/` | 80 per-module Notion pages. |
-| `Atelier Zero — Resolved HTML Module Previews (102)/` | Rendered HTML preview of every module. |
+| `Atelier Zero — Resolved HTML Module Previews (102)/` | 104 rendered module previews. The historical folder name is retained even though the verified count is now 104. |
 
 Email families: `W-` welcome, `PP-` post-purchase, `CR-` cart recovery, `WB-` win-back,
 `RO-` reorder, `C-` consultation, `BR-` browse, `NL-01…20` newsletter.
 
-## `mailerlite/`
+## `shopify-messaging/`
+
+This is the active implementation surface for the 53 marketing emails. `emails/` holds the
+Shopify-ready HTML, `BUILD-LEDGER.md` records build evidence, and `PHASE5-PLAN.md` records the
+current segment, consent, collision, and automation state. Nothing is activated or sent merely
+because it exists here.
+
+## `mailerlite/` — legacy/reference only
 
 `ml_content_*.py` hold the per-journey copy (verbatim from the reference file);
 `ml_components.py` renders it against the Figma Email Design System v3 tokens;
 `build_emails.py` writes `emails/*.html`; `push_campaigns.py` and `configure_campaigns.py`
-create and configure drafts via the API. **Nothing in this repo sends or schedules.**
+create and configure drafts via the API. Those scripts are retained as historical implementation
+evidence; they are not part of the current Shopify campaign workflow. **Do not create, push,
+schedule, or send a marketing campaign through MailerLite from this project.**
 
-Read `mailerlite/BUILD-LEDGER.md` for what has actually been built and pushed, and
-`mailerlite/API-SURFACE.md` for the MailerLite API behaviours that cost time to discover.
+`mailerlite/BUILD-LEDGER.md` and `mailerlite/API-SURFACE.md` are historical records only.
 
 ## History
 

@@ -1,0 +1,285 @@
+{
+  "schema_version": 1,
+  "title": "Email Marketing — Campaign OS",
+  "owner": "vincent-laroche",
+  "repository": "vincent-laroche/email-marketing-ops",
+  "private": true,
+  "status": [
+    "Inbox",
+    "Ready",
+    "In Progress",
+    "In Review",
+    "Blocked",
+    "Done"
+  ],
+  "fields": [
+    {
+      "name": "Stage",
+      "type": "single_select",
+      "options": [
+        "Brief",
+        "Copy",
+        "Design",
+        "Build",
+        "QA",
+        "Approval",
+        "Scheduled",
+        "Sent",
+        "Measuring",
+        "Complete"
+      ]
+    },
+    {
+      "name": "Priority",
+      "type": "single_select",
+      "options": [
+        "P0",
+        "P1",
+        "P2",
+        "P3"
+      ]
+    },
+    {
+      "name": "Work Type",
+      "type": "single_select",
+      "options": [
+        "Campaign",
+        "Email",
+        "Task",
+        "Experiment",
+        "Bug"
+      ]
+    },
+    {
+      "name": "Platform",
+      "type": "single_select",
+      "options": [
+        "Shopify Messaging",
+        "Shopify Flow",
+        "Shopify Notifications",
+        "Repository Only",
+        "Needs Decision"
+      ]
+    },
+    {
+      "name": "Campaign Type",
+      "type": "single_select",
+      "options": [
+        "Promotion",
+        "Product Launch",
+        "Welcome",
+        "Lifecycle",
+        "Abandoned Cart",
+        "Browse Abandonment",
+        "Post-Purchase",
+        "Upsell or Cross-sell",
+        "Win-Back",
+        "Reorder",
+        "Consultation",
+        "Re-Engagement",
+        "Newsletter",
+        "Educational",
+        "Transactional",
+        "Announcement"
+      ]
+    },
+    {
+      "name": "Objective",
+      "type": "single_select",
+      "options": [
+        "Acquire",
+        "Convert",
+        "Increase AOV",
+        "Retain",
+        "Reactivate",
+        "Educate",
+        "Build Trust",
+        "Drive Traffic",
+        "Collect Feedback"
+      ]
+    },
+    {
+      "name": "Audience",
+      "type": "text"
+    },
+    {
+      "name": "Offer",
+      "type": "text"
+    },
+    {
+      "name": "Execution Mode",
+      "type": "single_select",
+      "options": [
+        "One-time Campaign",
+        "Automated / Lifecycle",
+        "Transactional / System",
+        "TBD"
+      ]
+    },
+    {
+      "name": "Messaging State",
+      "type": "single_select",
+      "options": [
+        "Not Started",
+        "Draft",
+        "Configured",
+        "Test Ready",
+        "Verified",
+        "Scheduled",
+        "Active",
+        "Sent",
+        "Blocked",
+        "N/A"
+      ]
+    },
+    {
+      "name": "Shopify Messaging URL",
+      "type": "text"
+    },
+    {
+      "name": "Flow Required",
+      "type": "single_select",
+      "options": [
+        "Yes",
+        "No",
+        "TBD"
+      ]
+    },
+    {
+      "name": "Flow State",
+      "type": "single_select",
+      "options": [
+        "Not Required",
+        "Not Started",
+        "Draft",
+        "Configured",
+        "Testing",
+        "Verified",
+        "Active",
+        "Paused",
+        "Blocked"
+      ]
+    },
+    {
+      "name": "Shopify Flow URL",
+      "type": "text"
+    },
+    {
+      "name": "Automation Trigger",
+      "type": "text"
+    },
+    {
+      "name": "Automation / Flow Name",
+      "type": "text"
+    },
+    {
+      "name": "Production Start",
+      "type": "date"
+    },
+    {
+      "name": "Send Date",
+      "type": "date"
+    },
+    {
+      "name": "Results Review",
+      "type": "date"
+    },
+    {
+      "name": "Recipients",
+      "type": "number"
+    },
+    {
+      "name": "Open Rate %",
+      "type": "number"
+    },
+    {
+      "name": "Click Rate %",
+      "type": "number"
+    },
+    {
+      "name": "Conversion Rate %",
+      "type": "number"
+    },
+    {
+      "name": "Revenue",
+      "type": "number"
+    },
+    {
+      "name": "Unsubscribe Rate %",
+      "type": "number"
+    },
+    {
+      "name": "Primary KPI",
+      "type": "single_select",
+      "options": [
+        "Revenue",
+        "Conversion Rate",
+        "CTR",
+        "Open Rate",
+        "Orders",
+        "Traffic",
+        "Engagement"
+      ]
+    },
+    {
+      "name": "Target KPI",
+      "type": "number"
+    },
+    {
+      "name": "Preview URL",
+      "type": "text"
+    }
+  ],
+  "views": [
+    {
+      "name": "01 · Campaign Portfolio",
+      "layout": "TABLE_LAYOUT",
+      "filter": "work-type:Campaign"
+    },
+    {
+      "name": "02 · Email Production",
+      "layout": "BOARD_LAYOUT",
+      "filter": "work-type:Email"
+    },
+    {
+      "name": "03 · Review & Pull Requests",
+      "layout": "TABLE_LAYOUT",
+      "filter": "status:\"In Review\""
+    },
+    {
+      "name": "04 · Launch Calendar",
+      "layout": "ROADMAP_LAYOUT",
+      "filter": "work-type:Campaign,Email"
+    },
+    {
+      "name": "05 · Performance",
+      "layout": "TABLE_LAYOUT",
+      "filter": "stage:Sent,Measuring,Complete"
+    },
+    {
+      "name": "06 · Messaging & Automation Readiness",
+      "layout": "TABLE_LAYOUT",
+      "filter": "work-type:Email"
+    }
+  ],
+  "labels": [
+    "email-marketing",
+    "area:campaign",
+    "area:automation",
+    "area:data",
+    "area:analytics",
+    "area:operations",
+    "asset:email",
+    "flag:launch-blocker",
+    "flag:needs-decision",
+    "risk:consent",
+    "risk:automation",
+    "risk:activation"
+  ],
+  "workflows": [
+    "Auto-add repository items",
+    "Set new items to Inbox",
+    "Set pull requests to In Review",
+    "Set merged pull requests to Done"
+  ]
+}

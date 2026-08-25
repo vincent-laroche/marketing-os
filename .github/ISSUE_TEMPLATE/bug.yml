@@ -1,0 +1,16 @@
+name: Bug
+description: Report a confirmed Email Marketing OS defect.
+title: "Bug — "
+labels: ["email-marketing", "risk:automation"]
+body:
+  - type: markdown
+    attributes:
+      value: "Do not include customer PII, secrets, or raw payloads. Fix approval does not authorize scheduling, activation, or sending."
+  - type: textarea
+    id: defect
+    attributes: {label: Defect, impact, and reproduction}
+    validations: {required: true}
+  - type: textarea
+    id: acceptance
+    attributes: {label: Fix acceptance, evidence, and rollback}
+    validations: {required: true}

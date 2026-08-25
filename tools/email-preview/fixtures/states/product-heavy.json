@@ -1,0 +1,10 @@
+{
+  "abandoned_checkout": {
+    "remaining_products_count": 2,
+    "line_items": [
+      {"product_title": "Fictional Lace System", "variant_title": "Sample A", "quantity": 1},
+      {"product_title": "Fictional Care Kit", "variant_title": "Sample B", "quantity": 2},
+      {"product_title": "Fictional Adhesive", "variant_title": "Sample C", "quantity": 1}
+    ]
+  }
+}

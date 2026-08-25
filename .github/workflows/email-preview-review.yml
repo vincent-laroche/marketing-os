@@ -1,0 +1,55 @@
+name: Email preview review
+
+on:
+  pull_request:
+    paths:
+      - "shopify-messaging/emails/*.html"
+      - "tools/email-preview/**"
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: tools/email-preview/package-lock.json
+      - name: Install locked compiler
+        working-directory: tools/email-preview
+        run: npm ci
+      - name: Install screenshot browser
+        working-directory: tools/email-preview
+        run: npx playwright install --with-deps chromium
+      - name: Resolve related Email Issue
+        id: issue
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          issue="$(printf '%s' "$PR_BODY" | sed -nE 's/.*(Closes|Relates to) #([0-9]+).*/\2/p' | head -1)"
+          test -n "$issue" || { echo "A connector-readable Closes # or Relates to # reference is required" >&2; exit 1; }
+          echo "number=$issue" >> "$GITHUB_OUTPUT"
+      - name: Render changed emails fail closed
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          ISSUE: ${{ steps.issue.outputs.number }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          mkdir -p email-previews/review
+          git diff --name-only "$BASE_SHA" "$HEAD_SHA" -- 'shopify-messaging/emails/*.html' | while read -r source; do
+            test -n "$source" || continue
+            code="$(basename "$source" .html | sed -E 's/^[0-9]+-//; s/.*/\U&/')"
+            npm --prefix tools/email-preview run preview -- --source "$source" --email-code "$code" --commit-sha "$HEAD_SHA" --issue "$ISSUE" --pr "$PR" --out "email-previews/review/$code"
+          done
+          test -n "$(find email-previews/review -name provenance.json -print -quit)" || { echo "No email preview was generated" >&2; exit 1; }
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: email-preview-pr-${{ github.event.pull_request.number }}-${{ github.event.pull_request.head.sha }}
+          path: email-previews/review
+          retention-days: 14
+          if-no-files-found: error

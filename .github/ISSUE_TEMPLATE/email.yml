@@ -1,0 +1,58 @@
+name: Email
+description: Plan, build, review, and evidence one outbound email.
+title: "Email — "
+labels: ["email-marketing", "asset:email"]
+body:
+  - type: markdown
+    attributes:
+      value: "Do not include customer PII, tokens, signed customer links, or real unsubscribe URLs. Creating, approving, or merging this work does not authorize scheduling, activation, or sending."
+  - type: input
+    id: campaign
+    attributes: {label: Parent Campaign Issue, placeholder: "#123"}
+    validations: {required: true}
+  - type: input
+    id: email_code
+    attributes: {label: Email code, placeholder: "CR-1"}
+    validations: {required: true}
+  - type: dropdown
+    id: execution_mode
+    attributes:
+      label: Execution Mode
+      options: ["One-time Campaign", "Automated / Lifecycle", "Transactional / System", "TBD"]
+    validations: {required: true}
+  - type: dropdown
+    id: messaging_state
+    attributes:
+      label: Messaging State
+      options: ["Not Started", "Draft", "Configured", "Test Ready", "Verified", "Scheduled", "Active", "Sent", "Blocked", "N/A"]
+    validations: {required: true}
+  - type: input
+    id: messaging_url
+    attributes: {label: Shopify Messaging URL, description: "Safe admin URL only; no tokens or PII."}
+  - type: dropdown
+    id: flow_required
+    attributes: {label: Flow Required, options: ["Yes", "No", "TBD"]}
+    validations: {required: true}
+  - type: dropdown
+    id: flow_state
+    attributes:
+      label: Flow State
+      options: ["Not Required", "Not Started", "Draft", "Configured", "Testing", "Verified", "Active", "Paused", "Blocked"]
+    validations: {required: true}
+  - type: input
+    id: flow_url
+    attributes: {label: Shopify Flow URL, description: "Safe admin URL only; no tokens or PII."}
+  - type: input
+    id: automation_trigger
+    attributes: {label: Automation Trigger}
+  - type: input
+    id: automation_name
+    attributes: {label: Automation / Flow Name}
+  - type: textarea
+    id: authority
+    attributes: {label: Authority, copy, and source paths}
+    validations: {required: true}
+  - type: textarea
+    id: qa
+    attributes: {label: Creative, Messaging, Flow, consent, audience, and rollback QA}
+    validations: {required: true}

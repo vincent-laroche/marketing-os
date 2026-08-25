@@ -3,8 +3,8 @@
 > Living status log. Full context/rules live in `AGENTS.md` (the project bible) — don't duplicate them
 > here. Update this file at the end of every session: what changed, what's next, who touched it.
 
-**Last updated:** 2026-08-24 by Codex (Shopify Messaging and Flow readiness extension added to the
-Campaign OS written specification; documentation only)
+**Last updated:** 2026-08-24 by Codex (Campaign OS built and verified in GitHub; preview compiler
+implemented locally; no Pages publication or Shopify activation)
 
 **Status:** **All marketing campaigns and lifecycle journeys now belong to Shopify Messaging +
 Shopify Flow. MailerLite is not a campaign/lifecycle platform for this project.** Shopify
@@ -12,8 +12,8 @@ sender-domain authentication is confirmed **Authenticated** in Shopify admin.
 
 The 53-email programme (J1–J5, W, N) is built locally under `shopify-messaging/`: 51 entries
 are structurally green and 2 remain source-blocked (RO-4 and NL-16). "Structurally green" is
-not release approval: CR-1 through CR-4 currently use a palette that conflicts with the durable
-Email Reference File authority in `AGENTS.md` and must be reconciled before J2 is activated.
+not release approval. CR-1 through CR-4 have now been retokenized to the durable Email Reference
+File palette and are protected by a repository contract test.
 Phase 4 is partial; Phase 5 has its segment/tag layer but not the journey automations; Phase 6
 has not started.
 
@@ -54,6 +54,13 @@ working tree**. It stays recoverable from git history at `e892e64` and earlier.
 
 **Done:**
 
+- Private GitHub Project #4 `Email Marketing — Campaign OS` created and repository-linked;
+- 69 canonical connector-readable Issues created with zero second-run drift;
+- 28 custom Project fields populated and six approved native views created and verified;
+- governed Campaign, Email, Task, Experiment, and Bug forms plus pull request template added;
+- fail-closed fictional-fixture preview compiler implemented and locally verified with rendered
+  HTML, full desktop PNG, full mobile PNG, and exact provenance;
+- private review and deliberate public-publication workflows added; publication remains gated off;
 - Phase 0 sender authentication;
 - Phase 1 `text_section` module and Phase 2 image re-encodes;
 - Phase 3 local build of all 53 emails (51 green, 2 source-blocked);
@@ -70,11 +77,13 @@ working tree**. It stays recoverable from git history at `e892e64` and earlier.
 4. Resolve the two inactive duplicate abandoned-checkout automations in Shopify Messaging.
 5. Build J2 and W in Shopify Messaging and J1/J3/J4/J5 in Shopify Flow; then run the full Phase 5
    QA suite before any activation.
-6. Reconcile CR-1 through CR-4 with the Email Reference File palette in `AGENTS.md`; the current
-   `PLATFORM_EMAIL.md` retokening conflicts with that hard rule and is not approved for activation.
-7. Start Phase 6 measurement only after the first approved Shopify sends.
-8. Treat MailerLite cleanup as legacy-system housekeeping only; it is not launch work.
-9. Decide whether to populate the empty `profile_hair_*` CRM fields or remove those merge fields
+6. Open and merge the connector-readable migration pull request after reviewing the task-owned
+   repository changes; merge still does not configure Shopify, schedule, activate, or send.
+7. Separately approve GitHub Pages enablement/first public preview only when a specific Email Issue
+   and source revision are ready; `preview_public` remains false.
+8. Start Phase 6 measurement only after the first approved Shopify sends.
+9. Treat MailerLite cleanup as legacy-system housekeeping only; it is not launch work.
+10. Decide whether to populate the empty `profile_hair_*` CRM fields or remove those merge fields
    from the Shopify email artifacts.
 
 **Open decisions — unchanged:**
@@ -86,6 +95,20 @@ working tree**. It stays recoverable from git history at `e892e64` and earlier.
 ## Session log
 > Chronological record only. Older entries may describe superseded platforms, paths, counts, or
 > blockers. The current status at the top of this file and `AGENTS.md` always win.
+
+- **2026-08-24 (Codex — Campaign OS implementation):** Built and live-verified the private
+  `Email Marketing — Campaign OS` as GitHub Project #4 linked to
+  `vincent-laroche/email-marketing-ops`. Compiled and created exactly 69 connector-readable Issues
+  (7 Campaigns, 53 Email sub-issues, 8 Tasks, 1 Bug), populated the built-in Status plus 28 custom
+  fields, and created the six approved native views with their exact layouts and filters. The
+  second Issue synchronization reported zero actions and Project read-back verified 69 items,
+  privacy, all fields, and all views. Added governed Issue forms and a PR template. Retokenized
+  CR-1 through CR-4 to the Email Reference File palette and added passing contract tests. Added a
+  locked TypeScript/LiquidJS/Playwright preview compiler using fictional reusable persona/state
+  fixtures; a local CR-1 proof produced rendered HTML, full desktop PNG, full mobile PNG, and a
+  provenance sidecar bound to the exact source SHA and Issue. Added private review and manual public
+  workflows; `preview_public` remains false, Pages was not enabled, and nothing was published.
+  No Shopify Messaging campaign, Flow, audience, schedule, activation, or send changed.
 
 - **2026-08-24 (Codex — Shopify implementation/readiness layer designed):** Vincent approved a
   minimal Campaign OS extension that keeps the existing Campaign → Email hierarchy, Status/Stage,

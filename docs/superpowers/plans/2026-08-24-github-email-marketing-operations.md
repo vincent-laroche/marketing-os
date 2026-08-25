@@ -48,7 +48,7 @@
 
 - [ ] **Step 1: Add a failing table-driven contract test**
 
-Test the four CR files for the approved role-based palette: `#EDE3CC` card surfaces, `#151411` ink, `#25221D` body copy, `#C7BFAC` rules, and `#EA6452` coral accents. Permit `#F6EFD9` only for an intentional inner inset, never the body or outer wrapper. Reject `#F7F1DE`, `#EFE7D2`, `#15140F`, `#2A2620`, `#DDD2B6`, and `#ED6F5C`. Also require transparent body and wrapper surfaces, unsubscribe and physical-address variables, HTTPS images, and Shopify abandoned-checkout Liquid.
+Test the four CR files for the approved colours `#F6EFD9`, `#151411`, `#25221D`, `#C7BFAC`, and `#EA6452`; permit `#EDE3CC` where the reference modules use it, and reject `#F7F1DE`, `#EFE7D2`, `#15140F`, `#2A2620`, `#DDD2B6`, and `#ED6F5C`. Also require transparent body and wrapper surfaces, unsubscribe and physical-address variables, HTTPS images, and Shopify abandoned-checkout Liquid.
 
 - [ ] **Step 2: Confirm the palette test fails for the expected reason**
 
@@ -64,8 +64,8 @@ Apply the exact mapping:
 
 | Superseded | Approved |
 |---|---|
-| `#F7F1DE` | `#F6EFD9` (inner inset only) |
-| `#EFE7D2` | `#EDE3CC` (card surface) |
+| `#F7F1DE` | `#EDE3CC` |
+| `#EFE7D2` | `#F6EFD9` |
 | `#15140F` | `#151411` |
 | `#2A2620` | `#25221D` |
 | `#DDD2B6` | `#C7BFAC` |

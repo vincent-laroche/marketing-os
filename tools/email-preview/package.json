@@ -1,0 +1,24 @@
+{
+  "name": "@hair-solutions/email-preview",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "engines": {"node": "24.x"},
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "node --import tsx --test test/*.test.ts",
+    "preview": "tsx src/cli.ts",
+    "gallery": "tsx src/gallery.ts"
+  },
+  "dependencies": {
+    "liquidjs": "10.29.0",
+    "parse5": "8.0.1",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.62.1",
+    "@types/node": "24.10.13",
+    "tsx": "4.23.12",
+    "typescript": "7.0.2"
+  }
+}

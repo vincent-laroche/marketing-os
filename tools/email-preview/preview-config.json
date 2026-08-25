@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "default_persona": "normal-customer",
+  "default_state": "missing-first-name",
+  "preview_public": false,
+  "allowed_source_root": "shopify-messaging/emails",
+  "outputs": ["rendered.html", "desktop.png", "mobile.png"]
+}

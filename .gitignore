@@ -13,3 +13,10 @@ exports/
 
 # Claude Code: keep project settings, ignore local worktree copies
 .claude/worktrees/
+
+# Generated Email Marketing OS artifacts
+.tmp/
+node_modules/
+tools/email-preview/node_modules/
+email-previews/review/
+email-previews/site/
