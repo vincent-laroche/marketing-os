@@ -1,6 +1,7 @@
 import argparse
 import json
 from pathlib import Path
+import re
 from typing import Any, Dict, Iterable, List, Optional
 
 from .gh_client import GitHubClient, GitHubError
@@ -96,6 +97,16 @@ def add_items(client: GitHubClient, project: Dict[str, Any], manifest: Dict[str,
     inputs = [{"projectId": project["id"], "contentId": by_key[record["key"]]["node_id"]} for record in manifest["records"] if by_key[record["key"]]["node_id"] not in existing]
     graphql_batch(client, "addProjectV2ItemById", "AddProjectV2ItemByIdInput", inputs, "item{id}")
     fresh = project_state(client, project["title"])["project"]
+    existing_content_ids = {node.get("content", {}).get("id") for node in fresh["items"]["nodes"] if node.get("content")}
+    campaign_issue_numbers = {issue["number"] for issue in by_key.values()}
+    pull_requests = client.paginate(f"/repos/{REPO}/pulls?state=all")
+    pr_inputs = []
+    for pull_request in pull_requests:
+        references = {int(value) for value in re.findall(r"#(\d+)", pull_request.get("body") or "")}
+        if references & campaign_issue_numbers and pull_request["node_id"] not in existing_content_ids:
+            pr_inputs.append({"projectId": project["id"], "contentId": pull_request["node_id"]})
+    graphql_batch(client, "addProjectV2ItemById", "AddProjectV2ItemByIdInput", pr_inputs, "item{id}")
+    fresh = project_state(client, project["title"])["project"]
     item_by_key = {}
     issue_number_to_key = {issue["number"]: key for key, issue in by_key.items()}
     for node in fresh["items"]["nodes"]:
@@ -148,11 +159,13 @@ def run(apply: bool) -> Dict[str, Any]:
     actual_field_names = set() if project is None else {field["name"] for field in project["fields"]["nodes"]}
     missing_fields = [field["name"] for field in schema["fields"] if field["name"] not in actual_field_names]
     missing_views = [view["name"] for view in expected_views if view not in actual_views]
+    issue_items = 0 if project is None else sum(node["type"] == "ISSUE" for node in project["items"]["nodes"])
+    pull_request_items = 0 if project is None else sum(node["type"] == "PULL_REQUEST" for node in project["items"]["nodes"])
     report = {
         "mode": "apply" if apply else "dry-run", "project_exists": project is not None,
         "project_number": project.get("number") if project else None, "project_url": f"https://github.com/users/{OWNER}/projects/{project['number']}" if project else None,
         "private": (not project.get("public")) if project else True, "repository": REPO,
-        "issue_items": len(project["items"]["nodes"]) if project else before_items,
+        "issue_items": issue_items if project else before_items, "pull_request_items": pull_request_items,
         "custom_fields_expected": len(schema["fields"]), "custom_fields_missing": missing_fields,
         "views_expected": len(schema["views"]), "views": actual_views,
         "browser_configuration_required": missing_views,
