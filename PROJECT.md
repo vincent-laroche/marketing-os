@@ -2,9 +2,14 @@
 
 > Living status log. Full context/rules live in `AGENTS.md` (the project bible) — don't duplicate them
 > here. Update this file at the end of every session: what changed, what's next, who touched it.
+>
+> **This file is a log, not a backlog** (`AGENTS.md` §8). GitHub Issues and pull requests are
+> canonical. Every open item below must name its Issue; a finding recorded only here, in a plan
+> document, or in a chat message is untracked. Open an Issue, then cite the number.
 
-**Last updated:** 2026-08-24 by Codex (Campaign OS built and verified in GitHub; preview compiler
-implemented locally; no Pages publication or Shopify activation)
+**Last updated:** 2026-08-24 by Claude (Campaign OS re-verified against live GitHub; stale generated
+manifest repaired; preview source-readiness measured at 9 ready / 44 blocked; no Pages publication or
+Shopify activation)
 
 **Status:** **All marketing campaigns and lifecycle journeys now belong to Shopify Messaging +
 Shopify Flow. MailerLite is not a campaign/lifecycle platform for this project.** Shopify
@@ -68,23 +73,28 @@ working tree**. It stays recoverable from git history at `e892e64` and earlier.
 - Shopify segment cleanup plus the 986-contact consent tag and 205-contact engaged-core tag;
 - 21 native Shopify notification templates restyled and verified live (4 initial + 17 delegated).
 
-**Left:**
+**Left — every item names the Issue that owns it.** Per `AGENTS.md` §8, an item with no Issue
+is not tracked; the fix is to open one, not to describe it better here.
 
-1. Resolve the RO-4 `Text - Customer snapshot` and NL-16 `Comparison` source gaps.
-2. Fill the remaining real-data placeholders: newsletter operational metrics, consented UGC
-   photos, gated story editions, offers, and dynamic journey values. Do not invent them.
-3. Finalize the journey-enrollment tag convention and wire the J1/J2/J3/J4/J5 collision/exit rules.
-4. Resolve the two inactive duplicate abandoned-checkout automations in Shopify Messaging.
-5. Build J2 and W in Shopify Messaging and J1/J3/J4/J5 in Shopify Flow; then run the full Phase 5
-   QA suite before any activation.
-6. Resolve the source emails that the new preview compiler correctly rejects for unresolved or
-   unsupported Liquid, beginning with BR-1 `last_viewed_product`.
-7. Separately approve GitHub Pages enablement/first public preview only when a specific Email Issue
-   and source revision are ready; `preview_public` remains false.
-8. Start Phase 6 measurement only after the first approved Shopify sends.
-9. Treat MailerLite cleanup as legacy-system housekeeping only; it is not launch work.
-10. Decide whether to populate the empty `profile_hair_*` CRM fields or remove those merge fields
-   from the Shopify email artifacts.
+| # | Item | Issue |
+|---|---|---|
+| 1 | RO-4 `Text - Customer snapshot` source gap | [#61](https://github.com/vincent-laroche/email-marketing-ops/issues/61) |
+| 2 | NL-16 `Comparison` source gap | [#62](https://github.com/vincent-laroche/email-marketing-ops/issues/62) |
+| 3 | Real-data placeholders: metrics, consented UGC, story editions, offers, dynamic values. Do not invent them. | [#65](https://github.com/vincent-laroche/email-marketing-ops/issues/65) |
+| 4 | Journey-enrollment tag convention and J1–J5 collision/exit rules | [#64](https://github.com/vincent-laroche/email-marketing-ops/issues/64) |
+| 5 | Two inactive duplicate abandoned-checkout automations | [#69](https://github.com/vincent-laroche/email-marketing-ops/issues/69) |
+| 6 | Shopify consent and audience verification before any activation | [#63](https://github.com/vincent-laroche/email-marketing-ops/issues/63) |
+| 7 | Launch approval and rollback governance | [#68](https://github.com/vincent-laroche/email-marketing-ops/issues/68) |
+| 8 | Phase 6 measurement, only after the first approved Shopify sends | [#66](https://github.com/vincent-laroche/email-marketing-ops/issues/66) |
+| 9 | `{{ firstname }}` left in `<!-- BUILD NOTE -->` comments — unblocks 5 emails, and is a live Shopify risk | [#73](https://github.com/vincent-laroche/email-marketing-ops/issues/73) |
+| 10 | HubSpot `deal.hsc_*` properties in C-0 and C-2 that Shopify cannot resolve | [#74](https://github.com/vincent-laroche/email-marketing-ops/issues/74) |
+| 11 | Shopify native notification templates — 21 of 47 done; scope and palette undecided | [#75](https://github.com/vincent-laroche/email-marketing-ops/issues/75) |
+| 12 | Commit the `AGENTS.md` platform-authority rewrite stranded in the dirty worktree | [#76](https://github.com/vincent-laroche/email-marketing-ops/issues/76) |
+
+Per-email preview readiness (9 ready · 44 blocked) is recorded as a comment on each canonical
+Email Issue and summarised in `shopify-messaging/PREVIEW-READINESS.md`. Build J2 and W in Shopify
+Messaging and J1/J3/J4/J5 in Shopify Flow only after #63, #64 and #68; run the full Phase 5 QA
+suite before any activation. MailerLite cleanup is legacy housekeeping, not launch work.
 
 **Open decisions — unchanged:**
 
@@ -95,6 +105,83 @@ working tree**. It stays recoverable from git history at `e892e64` and earlier.
 ## Session log
 > Chronological record only. Older entries may describe superseded platforms, paths, counts, or
 > blockers. The current status at the top of this file and `AGENTS.md` always win.
+
+- **2026-08-24 (Claude — GitHub made the system of record; findings moved out of prose):**
+  Vincent's rule: nothing is tracked in prose. Added `AGENTS.md` §8 — Issues and pull requests are
+  canonical, a finding without an Issue number does not exist, `PROJECT.md` is a log and not a
+  backlog, and every open item must name its Issue. Rewrote this file's open-items block as an
+  Issue-linked table and added the same rule to `README.md`.
+
+  Moved the previous session's findings into GitHub: per-email preview readiness posted to all 53
+  canonical Email Issues (44 blocked with their exact unresolved variables, placeholders and
+  compiler message; 9 recorded ready), and four new Task Issues opened —
+  [#73](https://github.com/vincent-laroche/email-marketing-ops/issues/73) `{{ firstname }}` in build
+  notes, [#74](https://github.com/vincent-laroche/email-marketing-ops/issues/74) HubSpot
+  `deal.hsc_*` in C-0/C-2, [#75](https://github.com/vincent-laroche/email-marketing-ops/issues/75)
+  the Shopify native notification-template surface, and
+  [#76](https://github.com/vincent-laroche/email-marketing-ops/issues/76) the stranded `AGENTS.md`
+  rewrite. Created the `flag:needs-decision` label, which `project-schema.json` declared but the
+  remote lacked.
+
+  **Corrections to the prior session's report.** A stale handoff said 5 of 47 notification templates
+  were done and listed 42 remaining; `PROJECT.md` and 17 verified-live copies in
+  `figma-review-renders/shopify-notifications-v7/` show **21 done**, and **16 of the 17** appear in
+  that "remaining" list — following it would have redone shipped work. Genuinely untouched: 26,
+  which the 2026-08-21 entry calls out-of-scope by design. The palette question was also not
+  settled: `AGENTS.md` §1 rules `PLATFORM_EMAIL.md` out of scope for *campaign* colour, while the
+  2026-08-21 session named it the authority for *this* surface. Both now sit in #75 as explicit
+  open decisions.
+
+  **Latent CI bug found and fixed.** The canonical key is `email:PP-7b`, but both the review
+  workflow and the new inventory derived the code by uppercasing the filename to `PP-7B`, so any
+  pull request touching `13-pp-7b.html` would have failed with "No canonical Email Issue found".
+  Both now resolve casing from the manifest, a test asserts every source maps to a real Issue, and
+  the workflow's GNU-only `sed \U` was replaced with portable `tr`. Verified 53/53 resolve.
+
+  Shopify Admin API has no notification-template surface: all 454 mutations were enumerated and the
+  only notification-related ones send gift cards. Browser automation is the only route — recorded in
+  #75 so it is not re-derived.
+
+  No Shopify Messaging campaign, Flow, audience, consent, schedule, activation or send changed;
+  Pages stayed disabled and `preview_public` stayed false.
+
+- **2026-08-24 (Claude — Campaign OS takeover verification and preview readiness measured):**
+  Verified the handover against live evidence rather than the handover note. `origin/main` is
+  `8a879a2`; PR #70 (`3a85ee99`) and PR #71 (`8a879a2`) are both merged; the repository holds exactly
+  69 Issues (68 open, 1 closed). `verify_issues` reported 69 remote Issues with zero drift and
+  `verify_project` reported private Project #4 with 69 Issue items, 1 pull-request item, all 28
+  custom fields, and all six views. The Python suite and the preview compiler's TypeScript build and
+  unit tests all passed.
+
+  **Drift found and fixed.** `build_manifest.py --check` failed: `github-campaign-os/manifest.json`
+  was not reproducible from the committed tree — 62 of 69 records carried a `source_fingerprint`
+  computed from file bytes that exist in no commit (it was generated in the main worktree while
+  `CAMPAIGN-PLAN.md` and `shopify-messaging/build-ledger.json` were dirty). Regenerated it; only
+  `source_fingerprint` changed, titles/bodies/field values are untouched, and `verify_issues` still
+  reports zero drift because `issue_body` does not embed the fingerprint. Added a regression test so
+  a stale generated file fails the suite instead of rotting silently.
+
+  **Drift found and reported, not changed.** The committed `AGENTS.md` on `main` is the pre-Shopify
+  version — the platform-authority rewrite described in the 2026-08-24 reconciliation entry exists
+  only as uncommitted work in the main worktree, which is left untouched. `README.md` and this file
+  are current, so the repository bible currently contradicts them. No GitHub token exists in
+  `~/.env`; the working credential is the `gh` CLI keyring, used read-only and never printed.
+  Node 24 is not installed locally (v22.22.3), so the compiler was exercised off its pinned engine;
+  CI still pins 24.
+
+  **Preview readiness measured.** The handover described "several" rejected sources. The real figure
+  is **9 ready of 53**. Added `tools/email-preview/src/inventory.ts` — a classifier that uses the
+  fail-closed renderer as ground truth and explains each rejection — plus a CLI, five tests, and the
+  generated, reproducibility-checked report `shopify-messaging/PREVIEW-READINESS.md`. Blocked sources
+  split into 5 `build-note-comment` (mechanical: an untranslated `{{ firstname }}` survives inside a
+  `<!-- BUILD NOTE -->` comment, which Liquid still parses — a live Shopify risk, not just a preview
+  artifact), 9 `unresolved-variable` (real dynamic values with no Shopify variable decided, including
+  HubSpot `deal.hsc_*` properties in C-0 and C-2), and 30 `authoring-placeholder` (the deliberate
+  Phase 4 loud placeholders). BR-1 was not unblocked: `last_viewed_product` is a HubSpot-era merge tag
+  with no decided Shopify equivalent, so a fixture alone would produce a false green — it stays
+  blocked pending Vincent's decision. No renderer gate was weakened and no business data was invented.
+  No Shopify Messaging campaign, Flow, audience, consent, schedule, activation, or send changed; Pages
+  stayed disabled and `preview_public` stayed false.
 
 - **2026-08-24 (Codex — Campaign OS implementation):** Built and live-verified the private
   `Email Marketing — Campaign OS` as GitHub Project #4 linked to

@@ -27,6 +27,11 @@ and [GitHub Project #4](https://github.com/users/vincent-laroche/projects/4).
 
 Merge or approval never configures Shopify, schedules, activates, or sends email.
 
+**Nothing is tracked in prose.** Issues and pull requests are canonical (`AGENTS.md` §8). A
+finding, a defect, or a "next step" that is not in an Issue or a pull request does not exist —
+never leave one in `PROJECT.md`, a plan document, or a chat message. Open an Issue, then cite
+the number. `PROJECT.md` is a chronological log, not a backlog.
+
 ## Layout
 
 | Path | What it is |
@@ -36,6 +41,7 @@ Merge or approval never configures Shopify, schedules, activates, or sends email
 | `github-campaign-os/` | Generated 69-Issue manifest, 28-field Project schema, and read-back reports. |
 | `tools/github_campaign_os/` | Idempotent Issue/Project compiler, synchronizers, and verifiers. |
 | `tools/email-preview/` | Fail-closed Shopify Liquid preview compiler and screenshot/gallery tooling. |
+| `shopify-messaging/PREVIEW-READINESS.md` | Generated source-readiness inventory: which of the 53 render, and why the rest do not. |
 | `mailerlite/` | Legacy MailerLite builders, rendered emails, and API research. Reference only; do not create or push campaigns from it. |
 | `mailersend/` | Transactional-only service-email experiment. Never a marketing campaign path. |
 | `exports/` | HubSpot CRM exports. PII-bearing, **gitignored**. |

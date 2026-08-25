@@ -39,6 +39,18 @@ class CampaignOSManifestTest(unittest.TestCase):
                 self.assertTrue(any(path.startswith("shopify-messaging/emails/") for path in record["source_paths"]))
                 self.assertEqual("Not Started", record["messaging_state"])
 
+    def test_generated_files_are_reproducible_from_the_committed_tree(self):
+        from tools.github_campaign_os.build_manifest import serialized
+
+        for path, content in serialized().items():
+            with self.subTest(generated=path.name):
+                self.assertTrue(path.exists(), f"{path.name} is missing")
+                self.assertEqual(
+                    content,
+                    path.read_text(encoding="utf-8"),
+                    f"{path.name} is stale; run python3 -m tools.github_campaign_os.build_manifest --write",
+                )
+
     def test_project_schema_has_28_fields_and_six_views(self):
         self.assertEqual("Email Marketing — Campaign OS", self.schema["title"])
         self.assertTrue(self.schema["private"])

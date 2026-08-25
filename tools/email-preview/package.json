@@ -3,12 +3,15 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "engines": {"node": "24.x"},
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "node --import tsx --test test/*.test.ts",
     "preview": "tsx src/cli.ts",
-    "gallery": "tsx src/gallery.ts"
+    "gallery": "tsx src/gallery.ts",
+    "inventory": "tsx src/inventory-cli.ts"
   },
   "dependencies": {
     "liquidjs": "10.29.0",

@@ -27,22 +27,41 @@ jobs:
       - name: Install screenshot browser
         working-directory: tools/email-preview
         run: npx playwright install --with-deps chromium
-      - name: Render changed emails fail closed
+      - name: Verify the compiler and its readiness report
+        working-directory: tools/email-preview
+        run: |
+          npx tsc -p tsconfig.json --noEmit
+          npm test
+          npm run inventory -- --check
+      - name: List changed emails
+        id: changed
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          git diff --name-only "$BASE_SHA" "$HEAD_SHA" -- 'shopify-messaging/emails/*.html' > changed-emails.txt
+          count="$(grep -c . changed-emails.txt || true)"
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+          echo "Changed email sources: $count"
+      - name: Render changed emails fail closed
+        if: steps.changed.outputs.count != '0'
+        env:
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           PR: ${{ github.event.pull_request.number }}
         run: |
           mkdir -p email-previews/review
-          git diff --name-only "$BASE_SHA" "$HEAD_SHA" -- 'shopify-messaging/emails/*.html' | while read -r source; do
+          while read -r source; do
             test -n "$source" || continue
-            code="$(basename "$source" .html | sed -E 's/^[0-9]+-//; s/.*/\U&/')"
-            issue="$(jq -r --arg key "email:$code" '.issues[$key] // empty' github-campaign-os/issue-sync-report.json)"
-            test -n "$issue" || { echo "No canonical Email Issue found for $code" >&2; exit 1; }
+            guess="$(basename "$source" .html | sed -E 's/^[0-9]+-//' | tr '[:lower:]' '[:upper:]')"
+            # Casing comes from the manifest, never the filename: 13-pp-7b.html is PP-7b.
+            code="$(jq -r --arg guess "$guess" '.issues | keys[] | select(startswith("email:")) | ltrimstr("email:") | select(ascii_upcase == $guess)' github-campaign-os/issue-sync-report.json)"
+            test -n "$code" || { echo "No canonical Email Issue found for $guess" >&2; exit 1; }
+            issue="$(jq -r --arg key "email:$code" '.issues[$key]' github-campaign-os/issue-sync-report.json)"
             npm --prefix tools/email-preview run preview -- --source "$source" --email-code "$code" --commit-sha "$HEAD_SHA" --issue "$issue" --pr "$PR" --out "email-previews/review/$code"
-          done
+          done < changed-emails.txt
           test -n "$(find email-previews/review -name provenance.json -print -quit)" || { echo "No email preview was generated" >&2; exit 1; }
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: steps.changed.outputs.count != '0'
         with:
           name: email-preview-pr-${{ github.event.pull_request.number }}-${{ github.event.pull_request.head.sha }}
           path: email-previews/review
