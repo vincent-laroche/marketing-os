@@ -26,6 +26,8 @@ test("rendered HTML is noindex and rejects customer-specific live URLs", () => {
   const safe = injectNoIndex("<html><head></head><body><a href=\"#preview-inert-checkout\">Preview</a></body></html>");
   assert.match(safe, /noindex,nofollow/);
   assert.doesNotThrow(() => assertSafeRenderedHtml(safe));
+  assert.doesNotThrow(() => assertSafeRenderedHtml('<html><head><meta name="robots" content="noindex"></head><body><a href="mailto:info@hairsolutions.co">Support</a></body></html>'));
+  assert.throws(() => assertSafeRenderedHtml('<html><head><meta name="robots" content="noindex"></head><body><a href="mailto:customer@example.com">Customer</a></body></html>'), /direct email address/);
   assert.throws(() => assertSafeRenderedHtml('<html><head><meta name="robots" content="noindex"></head><body><a href="https://example.com/checkout?token=real">x</a></body></html>'), /unsafe preview/);
 });
 

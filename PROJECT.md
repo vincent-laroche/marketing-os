@@ -7,8 +7,8 @@
 > canonical. Every open item below must name its Issue; a finding recorded only here, in a plan
 > document, or in a chat message is untracked. Open an Issue, then cite the number.
 
-**Last updated:** 2026-08-24 by Codex (PR #72 merged; Issue #73 fixed at the builder source;
-preview source-readiness now 12 ready / 41 blocked; no Pages publication or Shopify activation)
+**Last updated:** 2026-08-25 by Codex (PR #72 merged; Issue #73 fixed at the builder source;
+preview source-readiness now 14 ready / 39 blocked; no Pages publication or Shopify activation)
 
 **Status:** **All marketing campaigns and lifecycle journeys now belong to Shopify Messaging +
 Shopify Flow. MailerLite is not a campaign/lifecycle platform for this project.** Shopify
@@ -90,7 +90,7 @@ is not tracked; the fix is to open one, not to describe it better here.
 | 11 | Shopify native notification templates — 21 of 47 done; scope and palette undecided | [#75](https://github.com/vincent-laroche/email-marketing-ops/issues/75) |
 | 12 | Commit the `AGENTS.md` platform-authority rewrite stranded in the dirty worktree | [#76](https://github.com/vincent-laroche/email-marketing-ops/issues/76) |
 
-Per-email preview readiness (12 ready · 41 blocked) is recorded on the canonical
+Per-email preview readiness (14 ready · 39 blocked) is recorded on the canonical
 Email Issue and summarised in `shopify-messaging/PREVIEW-READINESS.md`. Build J2 and W in Shopify
 Messaging and J1/J3/J4/J5 in Shopify Flow only after #63, #64 and #68; run the full Phase 5 QA
 suite before any activation. MailerLite cleanup is legacy housekeeping, not launch work.
@@ -105,7 +105,7 @@ suite before any activation. MailerLite cleanup is legacy housekeeping, not laun
 > Chronological record only. Older entries may describe superseded platforms, paths, counts, or
 > blockers. The current status at the top of this file and `AGENTS.md` always win.
 
-- **2026-08-24 (Codex — PR #72 landed; build-note Liquid defect #73 fixed at source):**
+- **2026-08-25 (Codex — PR #72 landed; build-note Liquid defect #73 fixed at source):**
   Merged [PR #72](https://github.com/vincent-laroche/email-marketing-ops/pull/72) to `main` as
   `c761638a` after its governed preview-review check passed. No Shopify, audience, consent,
   schedule, activation, send, Pages, or public-preview state changed.
@@ -114,11 +114,12 @@ suite before any activation. MailerLite cleanup is legacy housekeeping, not laun
   untranslated `{{ firstname }}` build-note tags to `email_doc()`: module copy passed through
   `translate_tokens()`, but preamble notes were escaped and emitted directly. Added a focused
   regression test, confirmed it failed on the old path, then applied the one-line translation at
-  the preamble boundary and rebuilt the six affected sources. The generated readiness inventory
-  moved from **9 ready / 44 blocked** to **12 ready / 41 blocked**: RO-1, WB-4 and C-4 are ready;
-  WB-1 remains blocked on `months_since_last_order`; PP-7 ([#11](https://github.com/vincent-laroche/email-marketing-ops/issues/11))
-  and RO-4 ([#30](https://github.com/vincent-laroche/email-marketing-ops/issues/30)) now expose
-  the next fail-closed safety blocker, a direct email address in their dual CTA. The raw
+  the preamble boundary and rebuilt the six affected sources. A full render then exposed an
+  over-broad preview rule that rejected every `mailto:` link, including the approved public
+  `info@hairsolutions.co` support CTA in PP-7 and RO-4. Added a test-first exact allowlist for that
+  one public address; customer/personal addresses still fail closed. The generated readiness
+  inventory moved from **9 ready / 44 blocked** to **14 ready / 39 blocked**: PP-7, RO-1, RO-4,
+  WB-4 and C-4 are ready; WB-1 remains blocked on `months_since_last_order`. The raw
   `{{ firstname }}` tag is gone from all six outputs; no approved copy changed.
 
 - **2026-08-24 (Claude — GitHub made the system of record; findings moved out of prose):**
