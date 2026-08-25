@@ -33,6 +33,31 @@ finding, a defect, or a "next step" that is not in an Issue or a pull request do
 never leave one in `PROJECT.md`, a plan document, or a chat message. Open an Issue, then cite
 the number. `PROJECT.md` is a chronological log, not a backlog.
 
+## Project-local agent suite
+
+Twelve bounded specialists under `.codex/agents/` cover the programme's major workflows without
+turning agent prompts into a second database:
+
+- five read-only roles: Project management, lifecycle architecture, audience/consent,
+  deliverability/release, and performance analysis;
+- four local-write roles: Email production, reusable modules, preview/QA, and Campaign OS
+  engineering;
+- three approval-gated external operators: Shopify Messaging drafts, disabled Shopify Flow graphs,
+  and native Shopify notification templates.
+
+Every role loads `.codex/agents/EMAIL-AGENT-CONTRACT.md`, uses the deterministic routes in
+`.codex/agents/ROUTING.md`, resolves work through a canonical or filed Issue, distinguishes five
+evidence levels, and returns the same evidence packet. Specialists never spawn other specialists;
+the parent agent owns routing and integration. Draft operators default to read-only and cannot
+schedule, activate, publish, or send.
+
+Validate the installed prompts and safety invariants with:
+
+```bash
+python3 tools/validate_project_agents.py
+python3 -m unittest tests.email_operations.test_project_agents -v
+```
+
 ## Layout
 
 | Path | What it is |
@@ -43,6 +68,7 @@ the number. `PROJECT.md` is a chronological log, not a backlog.
 | `tools/github_campaign_os/` | Idempotent Issue/Project compiler, synchronizers, and verifiers. |
 | `tools/email-preview/` | Fail-closed Shopify Liquid preview compiler and screenshot/gallery tooling. |
 | `email-previews/publication-ledger.json` | Append-only, reviewed evidence of public Pages deployments. Empty until a publication is read back successfully. |
+| `.codex/agents/` | Twelve project-local specialists plus their shared operating contract and routing guide. |
 | `shopify-messaging/PREVIEW-READINESS.md` | Generated source-readiness inventory: which of the 53 render, and why the rest do not. |
 | `mailerlite/` | Legacy MailerLite builders, rendered emails, and API research. Reference only; do not create or push campaigns from it. |
 | `mailersend/` | Transactional-only service-email experiment. Never a marketing campaign path. |
