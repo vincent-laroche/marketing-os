@@ -1,20 +1,18 @@
-# Email Marketing Campaign OS Implementation Plan
-
-> **Status:** Paused and superseded by the consolidated design review. The approved Shopify
-> readiness extension now requires 28 custom fields, six native views, conditional implementation
-> QA, cross-field validation, and the `email-marketing-os-github-project` skill. Counts and numbered
-> steps below remain historical until this plan is rewritten after Vincent approves the written
-> specification. Do not execute this plan as written.
+# Email Marketing Campaign OS Core Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Reconcile the existing email-marketing repository, make GitHub Issues and pull requests the connector-readable operating system, and create the private `Email Marketing — Campaign OS` Project with the approved hierarchy, fields, automations, and five views.
+**Goal:** Reconcile the existing email-marketing repository, make GitHub Issues and pull requests the connector-readable operating system, and create the private `Email Marketing — Campaign OS` Project with the approved hierarchy, 28 custom fields, automations, and six native views.
 
-**Architecture:** The Email Reference File remains upstream campaign and copy authority. Standard-library Python compilers produce a versioned manifest and complete Issue bodies. Issues hold scope, state, decisions, evidence, and results; pull requests hold proposed changes and review history; Project fields mirror the bounded Operations Snapshot in each Issue. The existing `vincent-laroche/email-marketing-ops` history reaches `main` through a normal migration pull request.
+**Architecture:** The Email Reference File remains upstream campaign and copy authority. Standard-library Python compilers produce a versioned manifest and complete Issue bodies. Issues hold scope, Shopify implementation evidence, decisions, results, and learnings; pull requests hold proposed changes and review history; Project fields mirror the bounded Operations Snapshot in each Issue. The existing `vincent-laroche/email-marketing-ops` history reaches `main` through a normal migration pull request.
 
 **Tech Stack:** Python 3 standard library, `unittest`, Git, GitHub CLI, GitHub REST and GraphQL APIs, GitHub Issues, GitHub pull requests, GitHub Projects v2, Shopify Messaging HTML/Liquid, TypeScript for the existing Figma plugin.
 
 **Spec:** `docs/superpowers/specs/2026-08-24-github-email-marketing-operations-design.md`
+
+**Companion plans:**
+
+- `docs/superpowers/plans/2026-08-24-email-preview-gallery.md`
 
 ## Global constraints
 
@@ -25,6 +23,8 @@
 - Do not commit CRM exports, contact data, browser state, cookies, worktrees, dependencies, caches, generated plugin bundles, or secrets.
 - Use Email Reference File copy verbatim. Missing authority stays blocked.
 - Treat Issues and pull requests as canonical. Project fields are mirrors and may never be the only record of state or approval.
+- Keep creative Stage, Messaging State, and Flow State independent. No source, preview, approval, or merge event advances a Shopify implementation state automatically.
+- Use exactly 28 custom fields and six native Project views. Evidence remains in Issues and linked pull requests, not a redundant Project field.
 - Do not create Project draft items. Project items are repository Issues and pull requests.
 - Run every state-changing GitHub operation as dry-run, then once with `--apply`, then dry-run again to prove idempotence.
 - Create small, task-owned commits and preserve unrelated worktree changes.
@@ -48,7 +48,7 @@
 
 - [ ] **Step 1: Add a failing table-driven contract test**
 
-Test the four CR files for the approved colours `#F6EFD9`, `#EDE3CC`, `#151411`, `#25221D`, `#C7BFAC`, and `#EA6452`; reject `#F7F1DE`, `#EFE7D2`, `#15140F`, `#2A2620`, `#DDD2B6`, and `#ED6F5C`. Also require transparent body and wrapper surfaces, unsubscribe and physical-address variables, HTTPS images, and Shopify abandoned-checkout Liquid.
+Test the four CR files for the approved role-based palette: `#EDE3CC` card surfaces, `#151411` ink, `#25221D` body copy, `#C7BFAC` rules, and `#EA6452` coral accents. Permit `#F6EFD9` only for an intentional inner inset, never the body or outer wrapper. Reject `#F7F1DE`, `#EFE7D2`, `#15140F`, `#2A2620`, `#DDD2B6`, and `#ED6F5C`. Also require transparent body and wrapper surfaces, unsubscribe and physical-address variables, HTTPS images, and Shopify abandoned-checkout Liquid.
 
 - [ ] **Step 2: Confirm the palette test fails for the expected reason**
 
@@ -64,8 +64,8 @@ Apply the exact mapping:
 
 | Superseded | Approved |
 |---|---|
-| `#F7F1DE` | `#EDE3CC` |
-| `#EFE7D2` | `#F6EFD9` |
+| `#F7F1DE` | `#F6EFD9` (inner inset only) |
+| `#EFE7D2` | `#EDE3CC` (card surface) |
 | `#15140F` | `#151411` |
 | `#2A2620` | `#25221D` |
 | `#DDD2B6` | `#C7BFAC` |
@@ -258,7 +258,7 @@ task:launch-governance
 bug:duplicate-cart-recovery
 ```
 
-Assert every record has a predictable title, parent where applicable, complete Issue body, allowed labels, all 20 Operations Snapshot values, repository-relative source links, and SHA-256 fingerprint. Reject contact email addresses and absolute `/Users/` paths.
+Assert every record has a predictable title, parent where applicable, complete Issue body, allowed labels, all 28 Operations Snapshot values, repository-relative source links, and SHA-256 fingerprint. Reject contact email addresses and absolute `/Users/` paths.
 
 - [ ] **Step 2: Define the versioned Project schema**
 
@@ -267,9 +267,9 @@ Assert every record has a predictable title, parent where applicable, complete I
 - private Project title `Email Marketing — Campaign OS`;
 - canonical owner and repository;
 - built-in Status options `Inbox`, `Ready`, `In Progress`, `In Review`, `Blocked`, `Done`;
-- exactly 19 custom fields from the approved spec;
+- exactly 28 custom fields from the approved spec;
 - all single-select options;
-- the five numbered views with layout, filter, visible fields, grouping, and sorting;
+- the six numbered views with layout, filter, visible fields, grouping, and sorting;
 - the approved area, asset, flag, risk, and `email-marketing` labels;
 - four approved housekeeping workflows;
 - schema version `1`.
@@ -295,6 +295,14 @@ campaign_type
 objective
 audience
 offer
+execution_mode
+messaging_state
+shopify_messaging_url
+flow_required
+flow_state
+shopify_flow_url
+automation_trigger
+automation_flow_name
 production_start
 send_date
 results_review
@@ -306,6 +314,7 @@ revenue
 unsubscribe_rate
 primary_kpi
 target_kpi
+preview_url
 labels
 source_paths
 source_fingerprint
@@ -319,14 +328,14 @@ Allow null only for inapplicable or unproven dates, metrics, targets, email code
 Read the email master CSV, `shopify-messaging/build-ledger.json`, and the matching HTML artifacts. Map families:
 
 ```text
-PP -> J1 -> Shopify Flow -> Post-Purchase
-CR -> J2 -> Shopify Messaging -> Abandoned Cart
-BR -> J2 -> Shopify Messaging -> Browse Abandonment
-WB -> J3 -> Shopify Flow -> Win-Back
-RO -> J4 -> Shopify Flow -> Reorder
-C  -> J5 -> Shopify Flow -> Consultation
-W  -> W  -> Shopify Messaging -> Welcome
-NL -> N  -> Shopify Messaging -> Newsletter
+PP -> J1 -> Shopify Flow -> Automated / Lifecycle -> Flow Yes -> Post-Purchase
+CR -> J2 -> Shopify Messaging -> Automated / Lifecycle -> Flow No -> Abandoned Cart
+BR -> J2 -> Shopify Messaging -> Automated / Lifecycle -> Flow No -> Browse Abandonment
+WB -> J3 -> Shopify Flow -> Automated / Lifecycle -> Flow Yes -> Win-Back
+RO -> J4 -> Shopify Flow -> Automated / Lifecycle -> Flow Yes -> Reorder
+C  -> J5 -> Shopify Flow -> Automated / Lifecycle -> Flow Yes -> Consultation
+W  -> W  -> Shopify Messaging -> Automated / Lifecycle -> Flow No -> Welcome
+NL -> N  -> Shopify Messaging -> One-time Campaign -> Flow No -> Newsletter
 ```
 
 Build Campaign titles from the exact campaign code and canonical campaign name, and Email titles from the exact parent campaign, email code, and canonical short name. For example: `Campaign — J2 — Cart Recovery and Browse Abandonment` and `Email — J2 — CR-1 — Your Cart's Still Here`. Copy CSV Body, Subject, Preview Text, and CTA verbatim into the generated authority section. Fingerprint normalized authority fields, ledger data, and HTML digest.
@@ -353,6 +362,11 @@ Attach campaign-specific items to the appropriate parent Campaign and leave cros
 - RO-4 and NL-16: Status `Blocked`, Stage `Copy`, Priority `P0`, label `flag:launch-blocker`;
 - Campaign parents: Status `In Progress`, evidence-backed Stage, Priority `P2`;
 - missing decisions: `flag:needs-decision` only when a real Vincent decision is required;
+- all 53 Emails: Messaging State `Not Started` and Shopify Messaging URL null unless an exact
+  current Shopify record is matched to the approved Email;
+- J1, J3, J4, and J5: Flow State `Not Started`; J2, W, and N: Flow State `Not Required`;
+- automation names, triggers, URLs, and implementation evidence: null/empty unless current source
+  or Shopify evidence proves the value;
 - dates and all performance fields: null unless currently proven;
 - no email: Scheduled, Sent, Measuring, Complete, or activation-approved.
 
@@ -365,10 +379,15 @@ Each body contains:
 3. purpose, parent Campaign, and authority links;
 4. authority content bounded by `<!-- campaign-os-authority:start -->` and `<!-- campaign-os-authority:end -->`;
 5. the approved Campaign, Email, Task, Experiment, or Bug template sections;
-6. acceptance and QA checklists;
+6. mode-specific creative, Shopify Messaging, and Flow/automation acceptance and QA checklists;
 7. human-maintained Decisions, Blockers, Evidence, Results, and Learnings sections.
 
 The snapshot must show all Project values, including null values as `Not set`, so a connector can reconstruct Project state from the Issue alone.
+
+The model validator must reject `Execution Mode = TBD` as complete, `Flow Required = No` with a
+Flow State other than `Not Required`, `Flow Required = Yes` with `Flow State = Not Required`, and
+any automated/lifecycle Email at Stage `Complete` without the implementation/results/learning
+evidence required by the spec.
 
 - [ ] **Step 8: Generate, test, and commit**
 
@@ -401,7 +420,7 @@ git commit --only tools/github_campaign_os github-campaign-os/project-schema.jso
 
 - [ ] **Step 1: Add failing form and template tests**
 
-Without adding a YAML dependency, verify every form captures its approved contract, warns against contact PII, applies only `email-marketing` plus relevant characteristic labels, and never implies sending or approval. Verify the PR template requires Issue and Campaign links, deliverable type, preview, changes, QA, authority, approved-copy impact, consent impact, activation impact, risks, rollback, and approval checks.
+Without adding a YAML dependency, verify every form captures its approved contract, warns against contact PII, applies only `email-marketing` plus relevant characteristic labels, and never implies sending or approval. The Email form must capture Execution Mode, Messaging State, Flow Required, Flow State, safe Shopify URLs, automation name, trigger, and conditional implementation QA. Verify the PR template requires Issue and Campaign links, deliverable type, preview, changes, creative QA, Messaging impact, Flow impact, authority, approved-copy impact, consent impact, activation impact, risks, rollback, and approval checks.
 
 - [ ] **Step 2: Implement the five forms**
 
@@ -409,7 +428,7 @@ Use exact Work Type names. Forms gather human-authored work that can later be no
 
 - [ ] **Step 3: Implement the PR template and durable rules**
 
-The template distinguishes a closing reference such as `Closes #123` for fully satisfied acceptance criteria from a non-closing reference such as `Relates to #123` for partial work. It states that merge accepts a deliverable but does not schedule or send it. Add the connector-readable source-of-truth rule and future branch naming convention to README and AGENTS.
+The template distinguishes a closing reference such as `Closes #123` for fully satisfied acceptance criteria from a non-closing reference such as `Relates to #123` for partial work. It states that merge accepts a deliverable but does not configure Messaging, verify Flow, schedule, activate, or send. Add the connector-readable source-of-truth rule, Shopify readiness semantics, and future branch naming convention to README and AGENTS.
 
 - [ ] **Step 4: Verify and commit**
 
@@ -489,12 +508,12 @@ Using fake GraphQL responses, cover:
 
 - exact private user-owned Project resolution by owner and title;
 - hard failure on duplicate titles;
-- creation of built-in Status options and exactly 19 custom fields;
+- creation of built-in Status options and exactly 28 custom fields;
 - single-select option reconciliation without duplicate options;
 - addition of all canonical Issues and matching repository pull requests;
 - field mirroring from Issue Operations Snapshots;
 - Issue-versus-Project drift failure;
-- creation of exactly five named views with approved layouts and filters;
+- creation of exactly six named views with approved layouts and filters;
 - preservation of unrelated private Projects;
 - dry-run default, explicit `--apply`, and zero-action second dry-run.
 
@@ -502,7 +521,7 @@ Project draft items must fail validation.
 
 - [ ] **Step 2: Implement Project reconciliation**
 
-Resolve resources by stable owner, repository, Project title, Issue key, pull request number, field name, and option name. Never assume Project number `4`, even if it is currently the next likely number. The synchronizer creates the Project as private, links the repository, adds Issues and PRs, mirrors fields, and creates the five views.
+Resolve resources by stable owner, repository, Project title, Issue key, pull request number, field name, and option name. Never assume Project number `4`, even if it is currently the next likely number. The synchronizer creates the Project as private, links the repository, adds Issues and PRs, mirrors fields, and creates the six views. It validates readiness pairs but never advances Messaging State, Flow State, Stage, scheduling, activation, or sending.
 
 API-created views must use:
 
@@ -512,13 +531,14 @@ API-created views must use:
 03 · Review & Pull Requests -> TABLE_LAYOUT
 04 · Launch Calendar -> ROADMAP_LAYOUT
 05 · Performance -> TABLE_LAYOUT
+06 · Messaging & Automation Readiness -> TABLE_LAYOUT
 ```
 
 Where the current API cannot set board column field, view ordering, roadmap date fields, grouping, sorting, or built-in workflows, emit an explicit `browser_configuration_required` checklist. Never report those settings complete from intent alone.
 
 - [ ] **Step 3: Implement full read-back verification**
 
-`verify_project.py` compares remote Project state with the schema and Issue snapshots. It reports privacy, repository link, Issue count, PR count, draft-item count, native Status options, custom field count, options, view names/layouts/filters, field drift, and settings still requiring browser verification.
+`verify_project.py` compares remote Project state with the schema and Issue snapshots. It reports privacy, repository link, Issue count, PR count, draft-item count, native Status options, 28 custom fields and options, six view names/layouts/filters, readiness-pair violations, field drift, and settings still requiring browser verification.
 
 - [ ] **Step 4: Implement a repository release validator**
 
@@ -531,13 +551,15 @@ Reject:
 - manifest counts other than 69 Issues, 7 Campaigns, and 53 Emails;
 - active MailerLite execution paths;
 - stale generated manifest or Issue snapshot drift;
+- Project schema counts other than 28 custom fields and six native views;
+- contradictory Execution Mode, Messaging State, Flow Required, or Flow State combinations;
 - any active document naming MailerLite as the marketing platform.
 
 The validator prints safe path and rule names only, never file contents from secret or PII candidates.
 
 - [ ] **Step 5: Implement migration PR body rendering**
 
-Read the Issue sync report to obtain the real Campaign OS migration Task number. Render a complete PR body with a closing reference, Campaign OS scope, authority sources, changed-file groups, test evidence, privacy validation, approved-copy impact, consent impact, activation impact, risks, rollback, and the explicit statement `Merge does not send or schedule email`.
+Read the Issue sync report to obtain the real Campaign OS migration Task number. Render a complete PR body with a closing reference, Campaign OS scope, authority sources, changed-file groups, test evidence, privacy validation, approved-copy impact, consent impact, Messaging impact, Flow impact, activation impact, risks, rollback, and the explicit statement `Merge does not configure Shopify, schedule, activate, or send email`.
 
 - [ ] **Step 6: Verify locally and commit**
 
@@ -680,10 +702,10 @@ Expected first-run plan:
 
 - create one private `Email Marketing — Campaign OS` Project;
 - link `vincent-laroche/email-marketing-ops`;
-- configure built-in Status and 19 custom fields;
+- configure built-in Status and 28 custom fields;
 - add 69 Issues and the open migration PR;
 - mirror Issue snapshots into Project fields;
-- create five views;
+- create six views;
 - report browser-only configuration still outstanding.
 
 No Project with the same owner and title may already exist twice.
@@ -697,7 +719,7 @@ GH_TOKEN="$github_master_pat_value" python3 -m tools.github_campaign_os.sync_pro
 
 Expected second dry-run: zero API actions, with browser-only settings listed separately rather than misreported as API drift.
 
-- [ ] **Step 3: Configure the five views in GitHub's UI**
+- [ ] **Step 3: Configure the six views in GitHub's UI**
 
 Use the browser because current Project APIs do not expose every ordering, board-column, roadmap-date, grouping, sorting, card-field, and workflow control.
 
@@ -708,8 +730,12 @@ Configure and save:
 3. `03 · Review & Pull Requests`: Table; `is:pr is:open`; approved columns.
 4. `04 · Launch Calendar`: Roadmap; Production Start and Send Date; Month zoom; group by Campaign Type.
 5. `05 · Performance`: Table; `Work Type:Email Stage:Sent,Measuring,Complete`; approved columns; Send Date descending.
+6. `06 · Messaging & Automation Readiness`: Table; `Work Type:Email`; approved Shopify
+   implementation columns; Status, Parent Issue, then Title sort. Verify the documented filter
+   recipes for Missing Shopify implementation, Missing Flow, Ready for activation, Ready for
+   scheduling, and Live automations without saving extra views.
 
-Drag tabs into exact numerical order and delete any default extra view so exactly five remain.
+Drag tabs into exact numerical order and delete any default extra view so exactly six remain.
 
 - [ ] **Step 4: Configure approved built-in workflows**
 
@@ -721,12 +747,13 @@ In Project Workflows:
 - keep or enable merged pull request to Done;
 - leave auto-archive disabled;
 - do not create any workflow from Approval to Scheduled, sending, Shopify activation, or metrics.
+- do not create any workflow that advances Messaging State, Flow Required, or Flow State.
 
 Auto-add affects new or updated matching items, so the synchronizer remains responsible for the initial 69 Issues and migration PR.
 
 - [ ] **Step 5: Perform visual and GraphQL read-back**
 
-Verify Project privacy, repository link, five tab names/order, layouts, filters, fields, board columns, roadmap dates, group/sort settings, and workflows. Confirm the draft PR appears in Review & Pull Requests. Capture screenshots only if they contain no PII.
+Verify Project privacy, repository link, six tab names/order, layouts, filters, fields, board columns, roadmap dates, group/sort settings, and workflows. Confirm the draft PR appears in Review & Pull Requests and readiness states remain evidence-backed. Capture screenshots only if they contain no PII.
 
 - [ ] **Step 6: Write verification, update docs, commit, and push to the open PR**
 
@@ -739,7 +766,7 @@ git push origin journey-emails-v3-rebuild
 unset github_master_pat_value
 ```
 
-The report must show 69 Issue items, at least one PR item, zero draft items, built-in Status plus 19 custom fields, exactly five views, zero Issue-field drift, and the verified Project URL.
+The report must show 69 Issue items, at least one PR item, zero draft items, built-in Status plus 28 custom fields, exactly six native views, zero readiness-pair violations, zero Issue-field drift, and the verified Project URL.
 
 ---
 
@@ -804,10 +831,12 @@ Add one dated comment to the Campaign OS migration Task containing:
 - merged PR URL and revision;
 - Project URL and private status;
 - repository-link verification;
-- counts for Issues, Work Types, parent links, PR items, fields, views, and draft items;
+- counts for Issues, Work Types, parent links, PR items, 28 custom fields, six views, and draft items;
 - zero drift and zero duplicate stable keys;
 - confirmation that `vincent-laroche/email-marketing` was untouched;
 - confirmation that no email was sent, scheduled, activated, or populated with invented metrics.
+- confirmation that no source, preview, approval, or merge event was misreported as Shopify
+  implementation evidence.
 
 Unset `campaign_os_pr_number` and the PAT shell value. The final handoff must link the repository, Project, migration Issue, migration PR, design spec, implementation plan, and verification reports.
 
@@ -815,10 +844,10 @@ Unset `campaign_os_pr_number` and the PAT shell value. The final handoff must li
 
 ## Plan self-review checklist
 
-- [ ] Every approved Campaign OS work type, field, label family, hierarchy rule, automation, and view is represented.
+- [ ] Every approved Campaign OS work type, all 28 custom fields, label family, hierarchy rule, automation, and all six native views are represented.
 - [ ] Issues and pull requests remain sufficient for Notion and ChatGPT connectors without Project access.
 - [ ] Project-specific Shopify platform truth overrides the generic MailerLite example.
 - [ ] The existing canonical repository history is preserved and delivery occurs through a pull request.
 - [ ] Every live write is dry-run first, explicit apply second, and idempotence check third.
-- [ ] No step authorizes email sending, scheduling, activation, Shopify customer mutation, or invented metrics.
+- [ ] No step authorizes email sending, scheduling, activation, Shopify customer mutation, public preview publication, or invented metrics.
 - [ ] No placeholder language or unresolved implementation decision remains in this plan.
