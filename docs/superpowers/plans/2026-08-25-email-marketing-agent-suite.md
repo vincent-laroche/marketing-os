@@ -35,7 +35,7 @@
 - Consumes: `.codex/agents/*.md` runnable definitions and the expected role inventory.
 - Produces: `validate(root: Path) -> list[str]` and CLI exit code `0` only when the complete suite is safe.
 
-- [ ] **Step 1: Write failing inventory and safety tests**
+- [x] **Step 1: Write failing inventory and safety tests**
 
 Create tests that assert the exact twelve names, the shared-contract reference, required prompt
 sections, permission-specific tool boundaries, approval-gated draft safeguards, no delegation, and
@@ -56,12 +56,12 @@ class ProjectAgentSuiteTest(unittest.TestCase):
             self.assertTrue(any("read-only" in error for error in validate(suite.parent.parent)))
 ```
 
-- [ ] **Step 2: Run the focused test and verify failure**
+- [x] **Step 2: Run the focused test and verify failure**
 
 Run: `python3 -m unittest tests.email_operations.test_project_agents -v`  
 Expected: FAIL because the validator and twelve definitions do not exist.
 
-- [ ] **Step 3: Implement the stdlib parser and validator**
+- [x] **Step 3: Implement the stdlib parser and validator**
 
 Implement frontmatter extraction, JSON-style tool-list parsing, role inventory, required headings,
 shared-reference, permission-class, prohibition, stopping-condition, and operator-read-back checks.
@@ -77,12 +77,12 @@ def validate(root: Path = ROOT) -> list[str]:
     return errors
 ```
 
-- [ ] **Step 4: Run the test and verify it now fails only on missing definitions**
+- [x] **Step 4: Run the test and verify it now fails only on missing definitions**
 
 Run: `python3 -m unittest tests.email_operations.test_project_agents -v`  
 Expected: FAIL with exact missing-role and shared-file errors, proving validator behavior is active.
 
-- [ ] **Step 5: Commit the validator contract**
+- [x] **Step 5: Commit the validator contract**
 
 ```bash
 git add tools/validate_project_agents.py tests/email_operations/test_project_agents.py
@@ -99,25 +99,25 @@ git commit -m "test: define project agent safety contract"
 - Consumes: `AGENTS.md`, `PROJECT.md`, Issue #80, Campaign OS schema and current platform authority.
 - Produces: mandatory run sequence, evidence levels, permission classes, standard evidence packet, and deterministic role routing used by every definition.
 
-- [ ] **Step 1: Write the shared operating contract**
+- [x] **Step 1: Write the shared operating contract**
 
 Include authority order, Issue resolution, scope lock, evidence freshness, five evidence levels,
 concurrency, external-write gates, PII/secrets, platform boundaries, failure behavior, GitHub findings,
 and the exact standard evidence packet.
 
-- [ ] **Step 2: Write the routing guide**
+- [x] **Step 2: Write the routing guide**
 
 Define each role's positive trigger, not-applicable condition, required inputs, downstream gate, safe
 parallel groups, and prohibited overlapping writers. Include canonical sequences for local email
 production, lifecycle/Flow implementation, one-time Messaging campaigns, preview publication,
 Campaign OS maintenance, post-send analysis, and Shopify notifications.
 
-- [ ] **Step 3: Run structural validation**
+- [x] **Step 3: Run structural validation**
 
 Run: `python3 tools/validate_project_agents.py`  
 Expected: FAIL only because runnable definitions are still missing; shared-file errors are gone.
 
-- [ ] **Step 4: Commit shared coordination**
+- [x] **Step 4: Commit shared coordination**
 
 ```bash
 git add .codex/agents/EMAIL-AGENT-CONTRACT.md .codex/agents/ROUTING.md
@@ -136,33 +136,33 @@ git commit -m "docs: add shared email agent contract"
 - Consumes: shared contract, routing guide, canonical Issue, role-specific authority.
 - Produces: detailed evidence packets for Campaign OS prioritization, lifecycle contracts, local Email artifacts, and release verdicts.
 
-- [ ] **Step 1: Write the read-only project-manager prompt**
+- [x] **Step 1: Write the read-only project-manager prompt**
 
 Make GitHub reconciliation read-only and require exact proposed mutations rather than hidden `gh`
 writes. Add board-health scoring, field-evidence rules, ranked routing, stop conditions, and Issue
 payloads.
 
-- [ ] **Step 2: Write the lifecycle-architect prompt**
+- [x] **Step 2: Write the lifecycle-architect prompt**
 
 Require a complete trigger/eligibility/consent/sequence/collision/exit/data/test/rollback/measurement
 contract with Shopify Messaging versus Flow surface selection and no activation.
 
-- [ ] **Step 3: Write the local email-producer prompt**
+- [x] **Step 3: Write the local email-producer prompt**
 
 Require a file allowlist, source-deck/module traceability, builder ownership, token/data constraints,
 email-client-safe implementation, local checks, preview handoff, and no external write.
 
-- [ ] **Step 4: Write the release-reviewer prompt**
+- [x] **Step 4: Write the release-reviewer prompt**
 
 Require independent evidence for sender, consent, content, Liquid, links, render, timing, collisions,
 rollback, draft read-back, and approval; return `SHIP`, `FIX THEN REVIEW`, or `BLOCK` without sending.
 
-- [ ] **Step 5: Run focused tests**
+- [x] **Step 5: Run focused tests**
 
 Run: `python3 -m unittest tests.email_operations.test_project_agents -v`  
 Expected: FAIL only for the eight not-yet-created roles.
 
-- [ ] **Step 6: Commit the core roles**
+- [x] **Step 6: Commit the core roles**
 
 ```bash
 git add .codex/agents/email-project-manager.md .codex/agents/email-lifecycle-architect.md .codex/agents/email-producer.md .codex/agents/email-deliverability-release-reviewer.md
@@ -185,34 +185,34 @@ git commit -m "feat: add core email marketing agents"
 - Consumes: accepted upstream evidence packet and exact canonical Issue.
 - Produces: non-overlapping specialist outputs defined by the design spec; D-class operators additionally produce full post-write read-back.
 
-- [ ] **Step 1: Add the audience/consent and performance read-only prompts**
+- [x] **Step 1: Add the audience/consent and performance read-only prompts**
 
 Cover Shopify channel consent, tags/segments, suppressions, overlap/count evidence, attribution,
 metric normalization, confidence, and learning capture without customer writes.
 
-- [ ] **Step 2: Add the module and preview local-writer prompts**
+- [x] **Step 2: Add the module and preview local-writer prompts**
 
 Cover module authority, transparent page surface, responsive email constraints, builder ownership,
 fixture safety, fail-closed Liquid, desktop/mobile screenshots, provenance, Actions artifacts,
 publication ledgers, and Pages/Cloudflare gates.
 
-- [ ] **Step 3: Add the Campaign OS local-engineer prompt**
+- [x] **Step 3: Add the Campaign OS local-engineer prompt**
 
 Cover manifest reproducibility, compiled/filed Issue distinction, generated/human Issue sections,
 schema/Project drift, key casing, GitHub Actions permissions, dry-run/idempotency, and parent-owned live
 mutations.
 
-- [ ] **Step 4: Add Messaging and Flow approval-gated operator prompts**
+- [x] **Step 4: Add Messaging and Flow approval-gated operator prompts**
 
 Require current explicit draft-write approval, exact store/resource resolution, bounded write scope,
 post-write full read-back, disabled/unscheduled proof, stop-on-drift, and irreversible-action bans.
 
-- [ ] **Step 5: Add the notification-template specialist prompt**
+- [x] **Step 5: Add the notification-template specialist prompt**
 
 Require an approved template or batch, notification-specific authority resolution, pre-write backup,
 browser focus assertions, exact source read-back, rendered verification, and no notification send.
 
-- [ ] **Step 6: Run the complete agent tests and validator**
+- [x] **Step 6: Run the complete agent tests and validator**
 
 Run: `python3 -m unittest tests.email_operations.test_project_agents -v`  
 Expected: PASS.
@@ -220,7 +220,7 @@ Expected: PASS.
 Run: `python3 tools/validate_project_agents.py`  
 Expected: `12 project agents validated` and exit code 0.
 
-- [ ] **Step 7: Commit the specialist roles**
+- [x] **Step 7: Commit the specialist roles**
 
 ```bash
 git add .codex/agents/*.md
@@ -239,16 +239,16 @@ git commit -m "feat: add specialist email marketing agents"
 - Consumes: validated twelve-agent suite and Issue #80.
 - Produces: operator-facing discovery/routing documentation, chronological handoff, canonical Issue/PR evidence, and clean reviewable branch.
 
-- [ ] **Step 1: Document discovery and routing**
+- [x] **Step 1: Document discovery and routing**
 
 Add a concise README section linking the shared contract and routing guide, clarifying that the twelve
 agents are specialists rather than durable state stores.
 
-- [ ] **Step 2: Update the spec and plan status**
+- [x] **Step 2: Update the spec and plan status**
 
 Mark the design implemented and check completed plan steps only after their commands pass.
 
-- [ ] **Step 3: Run focused and full repository validation**
+- [x] **Step 3: Run focused and full repository validation**
 
 Run: `python3 tools/validate_project_agents.py`  
 Expected: PASS with twelve agents.
@@ -259,19 +259,19 @@ Expected: all tests pass.
 Run: `git diff --check`  
 Expected: no whitespace errors.
 
-- [ ] **Step 4: Update `PROJECT.md`**
+- [x] **Step 4: Update `PROJECT.md`**
 
 Add a dated session entry linked to #80 stating the exact roles installed, validation evidence, branch,
 remaining integration step, and confirmation that no platform/publication/customer state changed.
 
-- [ ] **Step 5: Commit documentation**
+- [x] **Step 5: Commit documentation**
 
 ```bash
 git add README.md PROJECT.md docs/superpowers/specs/2026-08-25-email-marketing-agent-suite-design.md docs/superpowers/plans/2026-08-25-email-marketing-agent-suite.md
 git commit -m "docs: hand off email agent suite"
 ```
 
-- [ ] **Step 6: Push, open the pull request, and update Issue #80**
+- [x] **Step 6: Push, open the pull request, and update Issue #80**
 
 Push `codex/email-agent-suite`, open one pull request against `main`, and post the validation and PR
 link to #80. Do not merge without reviewing CI and the final diff.

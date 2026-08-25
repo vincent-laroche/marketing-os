@@ -7,8 +7,8 @@
 > canonical. Every open item below must name its Issue; a finding recorded only here, in a plan
 > document, or in a chat message is untracked. Open an Issue, then cite the number.
 
-**Last updated:** 2026-08-25 by Codex (PR #72 merged; Issue #73 fixed at the builder source;
-preview source-readiness now 14 ready / 39 blocked; no Pages publication or Shopify activation)
+**Last updated:** 2026-08-25 by Codex (project-local 12-agent suite implemented under #80;
+no Shopify, audience, campaign, Flow, send, schedule, activation, Pages, or publication change)
 
 **Status:** **All marketing campaigns and lifecycle journeys now belong to Shopify Messaging +
 Shopify Flow. MailerLite is not a campaign/lifecycle platform for this project.** Shopify
@@ -102,6 +102,26 @@ suite before any activation. MailerLite cleanup is legacy housekeeping, not laun
 ## Session log
 > Chronological record only. Older entries may describe superseded platforms, paths, counts, or
 > blockers. The current status at the top of this file and `AGENTS.md` always win.
+
+- **2026-08-25 (Codex — twelve-agent Email Marketing operating suite, [#80](https://github.com/vincent-laroche/email-marketing-ops/issues/80)):**
+  Recovered the useful boundaries from the obsolete global MailerLite agent set and implemented a
+  Shopify/Campaign OS-native project suite under `.codex/agents/`: five read-only roles (Project
+  manager, lifecycle architect, audience/consent steward, deliverability/release reviewer,
+  performance analyst), four local writers (Email producer, module specialist, preview/QA engineer,
+  Campaign OS engineer), and three approval-gated external operators (Shopify Messaging draft,
+  disabled Shopify Flow graph, native notification template). Each role has a substantial,
+  workflow-specific prompt and loads one shared authority/evidence/concurrency contract plus a
+  deterministic routing guide. Operators default to read-only and can never schedule, activate,
+  publish, or send; specialists cannot delegate.
+
+  Added `tools/validate_project_agents.py` and adversarial tests that require the exact twelve-role
+  inventory, detailed prompt sections, minimum prompt depth, correct tool boundaries, canonical
+  Issue/`campaign-os-key` handling, standard evidence packets, current approval language, full
+  operator read-back, and Shopify-only marketing authority. Validation passed for all twelve prompts;
+  the full Python suite passed 18 tests. Work is isolated on `codex/email-agent-suite`; the original
+  dirty `journey-emails-v3-rebuild` checkout remains untouched. No Shopify, GitHub Project, audience,
+  customer, campaign, Flow, notification, send, schedule, activation, preview publication, Pages,
+  DNS, or Cloudflare state changed.
 
 - **2026-08-25 (Codex — PR #72 landed; build-note Liquid defect #73 fixed at source):**
   Merged [PR #72](https://github.com/vincent-laroche/email-marketing-ops/pull/72) to `main` as

@@ -3,7 +3,7 @@
 **Date:** 2026-08-25  
 **Owner:** Vincent Laroche  
 **Tracking:** [#80](https://github.com/vincent-laroche/email-marketing-ops/issues/80)  
-**Status:** Approved in chat; awaiting written-spec review before implementation
+**Status:** Implemented and locally validated on `codex/email-agent-suite`
 
 ## 1. Objective
 
