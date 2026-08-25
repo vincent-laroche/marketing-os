@@ -111,3 +111,9 @@ test("gallery refuses private artifact URLs in a public rendered output", async 
     await fs.rm(root, {recursive: true, force: true});
   }
 });
+
+test("gallery UI uses current web brand tokens rather than the Email Reference palette", async () => {
+  const css = await fs.readFile(path.resolve(import.meta.dirname, "../assets/gallery.css"), "utf8");
+  for (const token of ["#efe7d2", "#f7f1de", "#15140f", "#ed6f5c"]) assert.match(css, new RegExp(token));
+  for (const emailOnly of ["#f6efd9", "#ede3cc", "#151411", "#ea6452"]) assert.doesNotMatch(css, new RegExp(emailOnly));
+});

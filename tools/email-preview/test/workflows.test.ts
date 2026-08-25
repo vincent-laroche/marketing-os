@@ -27,6 +27,10 @@ test("private review workflow is pull-request-only, minimally permissioned, pinn
   assert.match(workflow, /github\.run_attempt/);
   assert.match(workflow, /run\", \"materialize/);
   assert.match(workflow, /gh run rerun/);
+  assert.match(workflow, /\.\.\.summary\.successful, \.\.\.summary\.blocked/);
+  assert.match(workflow, /Fail the review after preserving safe diagnostics/);
+  assert.match(workflow, /change-policy/);
+  assert.match(workflow, /filter\(code => readyCodes\.has\(code\)\)/);
   assert.doesNotMatch(workflow, /Reproduce[^\n]*email-preview-publish/);
 });
 
@@ -45,6 +49,7 @@ test("public publication is manual, accepts only Email code and exact SHA, and s
   assert.match(workflow, /id-token:\s*write/);
   assert.match(workflow, /contents:\s*write/);
   assert.match(workflow, /pull-requests:\s*write/);
+  assert.match(workflow, /pull-requests:\s*read/);
   assert.match(workflow, /actions:\s*read/);
   assert.match(workflow, /environment:\s*\n\s+name:\s+github-pages/);
   assert.match(workflow, /ledger-only|publication-ledger\.json/);
@@ -56,6 +61,9 @@ test("public publication is manual, accepts only Email code and exact SHA, and s
   assert.match(workflow, /for candidate in publication-candidates\/\*\.json/);
   assert.doesNotMatch(workflow, /find email-previews\/site[^\n]*\.versions/);
   assert.doesNotMatch(workflow, /gh pr edit/);
+  assert.match(workflow, /merge the existing preview publication ledger PR/);
+  assert.match(workflow, /git switch --force-create "\$LEDGER_BRANCH" origin\/main/);
+  assert.match(workflow, /force-with-lease/);
   assert.match(workflow, /deployment_id:\s*\$\{\{ github\.sha \}\}/);
   assert.match(workflow, /github-pages-\$\{\{ github\.run_id \}\}-\$\{\{ github\.run_attempt \}\}/);
   assert.doesNotMatch(workflow, /steps\.deployment\.outputs\.deployment_id/);

@@ -186,11 +186,12 @@ async function readBack(args: PublicationCliArgs): Promise<void> {
   for (const relative of files) {
     const response = await fetch(new URL(relative, base));
     const body = Buffer.from(await response.arrayBuffer());
-    const expected = provenance.output_sha256[relative.split("/").pop() as keyof typeof provenance.output_sha256];
+    const output = relative.split("/").pop() as keyof typeof provenance.output_sha256;
+    const expected = relative === `${args.emailCode}/${output}` ? provenance.output_sha256[output] : undefined;
     if (expected && sha256Bytes(body) !== expected) throw new Error("Pages read-back digest mismatch");
     responses.push({path: relative, status: response.status, body});
   }
-  validatePublicReadBack(responses, {sourceSha: args.sourceSha!, expectedDigests: provenance.output_sha256});
+  validatePublicReadBack(responses, {sourceSha: args.sourceSha!, emailCode: args.emailCode!, expectedDigests: provenance.output_sha256});
 }
 
 async function main(): Promise<void> {

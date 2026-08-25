@@ -22,8 +22,9 @@ and [GitHub Project #4](https://github.com/users/vincent-laroche/projects/4).
 - `.github/ISSUE_TEMPLATE/` and `.github/pull_request_template.md` govern new work;
 - `tools/email-preview/` provides a fail-closed fictional-fixture renderer that emits rendered
   HTML, a full desktop screenshot, a full mobile screenshot, and exact provenance;
-- public preview publication remains disabled until `preview_public` is deliberately changed and
-  the manual workflow is dispatched. GitHub Pages and custom-domain enablement are separate gates.
+- GitHub Pages is configured for Actions publication, but every Email remains private because all
+  `preview_public` gates are false and no public workflow has been dispatched;
+- custom-domain and Cloudflare changes remain separate, unapproved gates.
 
 Merge or approval never configures Shopify, schedules, activates, or sends email.
 
@@ -41,6 +42,7 @@ the number. `PROJECT.md` is a chronological log, not a backlog.
 | `github-campaign-os/` | Generated 69-Issue manifest, 28-field Project schema, and read-back reports. |
 | `tools/github_campaign_os/` | Idempotent Issue/Project compiler, synchronizers, and verifiers. |
 | `tools/email-preview/` | Fail-closed Shopify Liquid preview compiler and screenshot/gallery tooling. |
+| `email-previews/publication-ledger.json` | Append-only, reviewed evidence of public Pages deployments. Empty until a publication is read back successfully. |
 | `shopify-messaging/PREVIEW-READINESS.md` | Generated source-readiness inventory: which of the 53 render, and why the rest do not. |
 | `mailerlite/` | Legacy MailerLite builders, rendered emails, and API research. Reference only; do not create or push campaigns from it. |
 | `mailersend/` | Transactional-only service-email experiment. Never a marketing campaign path. |
@@ -64,6 +66,23 @@ from here. Nothing else in this repo overrides it.
 
 Email families: `W-` welcome, `PP-` post-purchase, `CR-` cart recovery, `WB-` win-back,
 `RO-` reorder, `C-` consultation, `BR-` browse, `NL-01…20` newsletter.
+
+## Email preview workflow
+
+Relevant pull requests render safe fictional-fixture previews into one authenticated GitHub Actions
+artifact that expires after 14 days. The workflow posts one bounded evidence comment to the pull
+request and every affected canonical Email Issue. Expiry is expected: rerunning the exact Actions
+run reproduces the artifact from its source revision.
+
+Public publication is a different, manual workflow. It accepts only an Email code and an exact
+40-character source SHA, then verifies that the requested Email and the complete public set carry
+`preview_public: true` at that committed `main` revision. The full set must render, materialize,
+deploy, and pass HTTPS read-back as one snapshot. A separate ledger-only pull request records the
+verified URLs; only after that ledger reaches `main` may the Campaign OS synchronize an Email's
+clickable `Preview URL`. Merge, approval, scheduling, or a true flag alone never publishes.
+
+No fixture, customer data, token, checkout URL, real unsubscribe link, or private artifact URL is
+eligible for the public gallery. Custom-domain and Cloudflare/DNS work are not part of this setup.
 
 ## `shopify-messaging/`
 

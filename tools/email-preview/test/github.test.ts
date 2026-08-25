@@ -62,9 +62,10 @@ test('read-back verifies status, source SHA, digests, and no Liquid', () => {
     issue_url: 'https://github.com/vincent-laroche/email-marketing-ops/issues/101',
     pr_url: 'https://github.com/vincent-laroche/email-marketing-ops/pull/202',
   });
-  assert.doesNotThrow(() => validatePublicReadBack([{path: 'CR-1/provenance.json', status: 200, body}], {sourceSha: 'a'.repeat(40)}));
-  assert.throws(() => validatePublicReadBack([{path: 'CR-1/rendered.html', status: 200, body: '{{ unresolved }}'}], {sourceSha: 'a'.repeat(40)}), /Liquid/i);
-  assert.throws(() => validatePublicReadBack([{path: 'CR-1/provenance.json', status: 500, body}], {sourceSha: 'a'.repeat(40)}), /HTTP/i);
+  assert.doesNotThrow(() => validatePublicReadBack([{path: 'CR-1/provenance.json', status: 200, body}], {sourceSha: 'a'.repeat(40), emailCode: 'CR-1'}));
+  assert.doesNotThrow(() => validatePublicReadBack([{path: 'CR-2/provenance.json', status: 200, body}], {sourceSha: 'a'.repeat(40), emailCode: 'CR-1', expectedDigests: {'rendered.html': '0'.repeat(64)}}));
+  assert.throws(() => validatePublicReadBack([{path: 'CR-1/rendered.html', status: 200, body: '{{ unresolved }}'}], {sourceSha: 'a'.repeat(40), emailCode: 'CR-1'}), /Liquid/i);
+  assert.throws(() => validatePublicReadBack([{path: 'CR-1/provenance.json', status: 500, body}], {sourceSha: 'a'.repeat(40), emailCode: 'CR-1'}), /HTTP/i);
 });
 
 test('ledger PR plan is restricted to one automation branch and one ledger file', () => {

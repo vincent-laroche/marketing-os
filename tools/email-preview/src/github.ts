@@ -125,11 +125,13 @@ export interface PublicReadBack {
 
 export interface ReadBackExpectation {
   sourceSha: string;
+  emailCode: string;
   expectedDigests?: Record<string, string>;
 }
 
 export function validatePublicReadBack(files: PublicReadBack[], expectation: ReadBackExpectation): void {
   assertExactSourceSha(expectation.sourceSha);
+  assertCanonicalEmailCode(expectation.emailCode);
   if (!files.length) throw new Error("public read-back returned no files");
   for (const file of files) {
     if (!/^2\d\d$/.test(String(file.status))) throw new Error("public read-back HTTP status failed");
@@ -140,7 +142,7 @@ export function validatePublicReadBack(files: PublicReadBack[], expectation: Rea
       let value: Provenance;
       try { value = validateProvenance(JSON.parse(body.toString("utf8"))); } catch { throw new Error("public read-back provenance is invalid"); }
       if (value.visibility !== "public" || value.source_commit_sha !== expectation.sourceSha) throw new Error("public read-back source SHA or visibility mismatch");
-      if (expectation.expectedDigests) {
+      if (expectation.expectedDigests && file.path === `${expectation.emailCode}/provenance.json`) {
         for (const [name, digest] of Object.entries(expectation.expectedDigests)) {
           if (value.output_sha256[name as keyof typeof value.output_sha256] !== digest) throw new Error("public read-back output digest mismatch");
         }

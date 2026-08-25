@@ -9,6 +9,7 @@ from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[2]
 LEDGER_PATH = ROOT / "email-previews" / "publication-ledger.json"
+LEDGER_REPO_PATH = "email-previews/publication-ledger.json"
 ISSUE_REPORT_PATH = ROOT / "github-campaign-os" / "issue-sync-report.json"
 
 ENTRY_KEYS = {
@@ -45,7 +46,7 @@ def _verify_commit(entry: Mapping[str, Any]) -> None:
     source = entry["source_path"]
     commands = (
         ["git", "cat-file", "-e", f"{sha}^{{commit}}"],
-        ["git", "merge-base", "--is-ancestor", sha, "HEAD"],
+        ["git", "merge-base", "--is-ancestor", sha, "origin/main"],
         ["git", "cat-file", "-e", f"{sha}:{source}"],
     )
     for command in commands:
@@ -113,5 +114,26 @@ def preview_urls(
 
 
 def load_preview_urls(expected: Mapping[str, Mapping[str, Any]]) -> Dict[str, str]:
-    ledger = json.loads(LEDGER_PATH.read_text(encoding="utf-8"))
-    return preview_urls(ledger, expected)
+    working = json.loads(LEDGER_PATH.read_text(encoding="utf-8"))
+    try:
+        merged_bytes = subprocess.run(
+            ["git", "show", f"origin/main:{LEDGER_REPO_PATH}"], cwd=ROOT, check=True, capture_output=True,
+        ).stdout
+        merged = json.loads(merged_bytes.decode("utf-8"))
+    except (subprocess.CalledProcessError, UnicodeDecodeError, json.JSONDecodeError) as error:
+        raise ValueError("canonical merged-main publication ledger is unavailable") from error
+    return merged_preview_urls(working, merged, expected)
+
+
+def merged_preview_urls(
+    working: Mapping[str, Any],
+    merged: Mapping[str, Any],
+    expected: Mapping[str, Mapping[str, Any]],
+    commit_validator: Callable[[Mapping[str, Any]], None] = _verify_commit,
+) -> Dict[str, str]:
+    preview_urls(working, expected, commit_validator)
+    merged_urls = preview_urls(merged, expected, commit_validator)
+    merged_publications = merged["publications"]
+    if working["publications"][:len(merged_publications)] != merged_publications:
+        raise ValueError("publication ledger rewrites merged append-only history")
+    return merged_urls

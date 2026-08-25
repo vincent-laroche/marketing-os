@@ -1,6 +1,6 @@
 import unittest
 
-from tools.github_campaign_os.preview_publications import preview_urls
+from tools.github_campaign_os.preview_publications import merged_preview_urls, preview_urls
 
 
 DIGEST = "a" * 64
@@ -27,6 +27,16 @@ class PreviewPublicationTest(unittest.TestCase):
     def test_verified_ledger_produces_exact_public_detail_url(self):
         result = preview_urls({"schema_version": 1, "publications": [publication()]}, EXPECTED, lambda entry: None)
         self.assertEqual("https://vincent-laroche.github.io/email-marketing-ops/CR-1/detail.html", result["CR-1"])
+
+    def test_unmerged_append_stays_blank_and_merged_history_cannot_be_rewritten(self):
+        empty = {"schema_version": 1, "publications": []}
+        working = {"schema_version": 1, "publications": [publication()]}
+        self.assertEqual({}, merged_preview_urls(working, empty, EXPECTED, lambda entry: None))
+        with self.assertRaisesRegex(ValueError, "append-only history"):
+            merged_preview_urls(empty, working, EXPECTED, lambda entry: None)
+        mutated = {"schema_version": 1, "publications": [publication(canonical_pr=73)]}
+        with self.assertRaisesRegex(ValueError, "append-only history"):
+            merged_preview_urls(mutated, working, EXPECTED, lambda entry: None)
 
     def test_identity_url_digest_and_duplicate_drift_fail_closed(self):
         cases = [

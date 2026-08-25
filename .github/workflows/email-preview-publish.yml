@@ -23,6 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      pull-requests: read
     outputs:
       site_artifact_id: ${{ steps.site-upload.outputs.artifact-id }}
     steps:
@@ -48,10 +49,13 @@ jobs:
           EMAIL_CODE: ${{ inputs.email_code }}
           SOURCE_SHA: ${{ inputs.source_sha }}
           GH_TOKEN: ${{ github.token }}
+          LEDGER_BRANCH: automation/email-preview-publication-ledger
         run: |
           printf '%s' "$SOURCE_SHA" | grep -Eq '^[0-9a-f]{40}$' || { echo "exact source SHA required" >&2; exit 1; }
           git fetch --no-tags origin main
           git merge-base --is-ancestor "$SOURCE_SHA" origin/main || { echo "source SHA is not an ancestor of origin/main" >&2; exit 1; }
+          open_ledger_prs="$(gh api "repos/$GITHUB_REPOSITORY/pulls" --method GET -f state=open -f base=main -f head="vincent-laroche:$LEDGER_BRANCH" --jq 'length')"
+          test "$open_ledger_prs" = "0" || { echo "merge the existing preview publication ledger PR before another public deployment" >&2; exit 1; }
           jq -c '[.selections[] | select(.preview_public == true)]' tools/email-preview/preview-config.json > public-selections.json
           test "$(jq 'length' public-selections.json)" -gt 0 || { echo "no Email is approved for public preview" >&2; exit 1; }
           test "$(jq --arg code "$EMAIL_CODE" '[.[] | select(.email_code == $code)] | length' public-selections.json)" = "1" || { echo "exact Email selection is not preview_public" >&2; exit 1; }
@@ -201,13 +205,8 @@ jobs:
           SOURCE_SHA: ${{ inputs.source_sha }}
         run: |
           git fetch origin main
-          if git ls-remote --exit-code origin "refs/heads/$LEDGER_BRANCH" >/dev/null 2>&1; then
-            git fetch origin "$LEDGER_BRANCH"
-            git switch --create "$LEDGER_BRANCH" "origin/$LEDGER_BRANCH"
-            git merge --ff-only origin/main
-          else
-            git switch --create "$LEDGER_BRANCH" origin/main
-          fi
+          remote_oid="$(git ls-remote origin "refs/heads/$LEDGER_BRANCH" | awk '{print $1}')"
+          git switch --force-create "$LEDGER_BRANCH" origin/main
           for candidate in publication-candidates/*.json; do
             npx tsx tools/email-preview/src/publication.ts append --ledger email-previews/publication-ledger.json --candidate "$candidate"
           done
@@ -217,12 +216,11 @@ jobs:
           git config user.name "email-preview-automation"
           git config user.email "email-preview-automation@users.noreply.github.com"
           git commit -m "chore(preview): record verified public publication"
-          git push --set-upstream origin "$LEDGER_BRANCH"
-          existing="$(gh pr list --head "$LEDGER_BRANCH" --base main --json number --jq '.[0].number')"
+          if [ -n "$remote_oid" ]; then
+            git push --set-upstream origin "$LEDGER_BRANCH" --force-with-lease="refs/heads/$LEDGER_BRANCH:$remote_oid"
+          else
+            git push --set-upstream origin "$LEDGER_BRANCH"
+          fi
           published="$(jq -sr 'map(.email_code) | join(", ")' publication-candidates/*.json)"
           body="Verified public publication snapshot for Emails $published at source SHA $SOURCE_SHA. This PR changes only email-previews/publication-ledger.json; merge does not send or activate email."
-          if [ -n "$existing" ]; then
-            gh api "repos/$GITHUB_REPOSITORY/pulls/$existing" --method PATCH -f title="chore(preview): record verified public publication ledger" -f body="$body" >/dev/null
-          else
-            gh api "repos/$GITHUB_REPOSITORY/pulls" --method POST -f base=main -f head="$LEDGER_BRANCH" -f title="chore(preview): record verified public publication ledger" -f body="$body" >/dev/null
-          fi
+          gh api "repos/$GITHUB_REPOSITORY/pulls" --method POST -f base=main -f head="$LEDGER_BRANCH" -f title="chore(preview): record verified public publication ledger" -f body="$body" >/dev/null
