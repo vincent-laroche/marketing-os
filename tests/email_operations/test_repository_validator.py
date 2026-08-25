@@ -20,6 +20,10 @@ class RepositoryValidatorTest(unittest.TestCase):
         self.assertTrue(any("action" in error for error in workflow_errors(review, attacker)))
         nested_artifact = publish.replace("          merge-multiple: true\n", "", 1)
         self.assertTrue(any("artifact-id download" in error for error in workflow_errors(review, nested_artifact)))
+        env_decoy = publish.replace("          merge-multiple: true\n", "        env:\n          merge-multiple: true\n", 1)
+        self.assertTrue(any("artifact-id download" in error for error in workflow_errors(review, env_decoy)))
+        comment_decoy = publish.replace("          merge-multiple: true\n", "          # merge-multiple: true\n", 1)
+        self.assertTrue(any("artifact-id download" in error for error in workflow_errors(review, comment_decoy)))
         extra_job = publish + "\n  exfiltrate:\n    runs-on: ubuntu-latest\n    permissions:\n      contents: write\n    steps: []\n"
         self.assertTrue(any("job set" in error for error in workflow_errors(review, extra_job)))
         quoted_permission = publish.replace("      pages: write", '      pages: write\n      "packages": write')

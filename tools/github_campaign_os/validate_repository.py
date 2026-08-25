@@ -45,6 +45,35 @@ def _job(text: str, name: str) -> str:
     return "  " + name + ":\n" + match.group(1)
 
 
+def _action_with_mapping(step: str) -> tuple[Optional[str], dict]:
+    lines = step.splitlines()
+    action: Optional[str] = None
+    action_indent: Optional[int] = None
+    with_index: Optional[int] = None
+    for index, line in enumerate(lines):
+        match = re.match(r"^( +)uses:\s*([^\s]+)\s*$", line)
+        if match:
+            action_indent = len(match.group(1))
+            action = match.group(2)
+        if action_indent is not None and line == " " * action_indent + "with:":
+            with_index = index
+            break
+    if action is None or action_indent is None or with_index is None:
+        return action, {}
+    values = {}
+    for line in lines[with_index + 1:]:
+        if not line.strip() or line.lstrip().startswith("#"):
+            continue
+        leading = len(line) - len(line.lstrip())
+        if leading <= action_indent:
+            break
+        if leading == action_indent + 2:
+            match = re.match(r"\s*([A-Za-z0-9_-]+):\s*(.*?)\s*$", line)
+            if match:
+                values[match.group(1)] = match.group(2)
+    return action, values
+
+
 def workflow_errors(review: str, publish: str) -> List[str]:
     errors: List[str] = []
     try:
@@ -92,9 +121,10 @@ def workflow_errors(review: str, publish: str) -> List[str]:
         uses = re.findall(r"\buses:\s*([^\s]+)", text)
         if not uses or not set(uses).issubset(approved_actions[name]) or not approved_actions[name].issubset(set(uses)):
             errors.append(f"{name} workflow action set or pin is not approved")
-        download_steps = re.findall(r"(?ms)^\s*- name:.*?(?=^\s*- name:|\Z)", text)
+        download_steps = re.findall(r"(?ms)^[ ]*- name:.*?(?=^[ ]*- name:|\Z)", text)
         for step in download_steps:
-            if "uses: actions/download-artifact@" in step and "artifact-ids:" in step and not re.search(r"(?m)^\s+merge-multiple:\s*true\s*$", step):
+            action, inputs = _action_with_mapping(step)
+            if action and action.startswith("actions/download-artifact@") and "artifact-ids" in inputs and inputs.get("merge-multiple") != "true":
                 errors.append(f"{name} workflow artifact-id download does not merge into the requested root")
     if "retention-days: 14" not in review:
         errors.append("private review artifact retention is not 14 days")
