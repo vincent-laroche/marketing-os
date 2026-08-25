@@ -372,11 +372,404 @@ th {
   gap: 18px;
 }
 
-.dayRow {
+.galleryLegend {
   display: grid;
-  grid-template-columns: 112px repeat(3, minmax(0, 1fr));
-  gap: 14px;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 12px;
+  margin-block: 20px;
+}
+
+.galleryLegend > div,
+.galleryMockupLink {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 14px 16px;
+}
+
+.galleryLegend strong {
+  display: block;
+  margin-block: 4px 6px;
+  font-size: 15px;
+}
+
+.galleryLegend p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.galleryMockupLink {
+  display: flex;
+  align-items: center;
+  color: var(--nav);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.dailyGalleryRow {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
   scroll-margin-block-start: 84px;
+}
+
+.galleryDayRail {
+  display: grid;
+  grid-template-columns: auto auto minmax(150px, 1fr) auto minmax(140px, 0.7fr);
+  gap: 14px;
+  align-items: center;
+  background: var(--nav);
+  color: #E5E5E5;
+  padding: 14px 16px;
+}
+
+.galleryDayRail .galleryDayLabel,
+.galleryDayRail time,
+.galleryDayRail small {
+  color: rgba(229, 229, 229, 0.7);
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.galleryDayRail strong {
+  color: #E5E5E5;
+  font-family: var(--mono);
+  font-size: 34px;
+  line-height: 1;
+}
+
+.galleryDayRail time {
+  text-transform: none;
+}
+
+.galleryDayRail small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: end;
+}
+
+.galleryDayRail .statusPill {
+  justify-self: start;
+  border-color: rgba(229, 229, 229, 0.22);
+  background: rgba(229, 229, 229, 0.08);
+  color: #E5E5E5;
+}
+
+.dailyVisualGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(360px, 0.85fr);
+  gap: 14px;
+  padding: 14px;
+}
+
+.gallerySection {
+  min-inline-size: 0;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--paper);
+  padding: 12px;
+}
+
+.gallerySectionHeader {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-block-end: 12px;
+}
+
+.gallerySectionHeader h2 {
+  margin: 3px 0 0;
+  font-size: 17px;
+}
+
+.galleryHint {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 10px;
+  text-align: end;
+  text-transform: uppercase;
+}
+
+.feedSquareGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(76px, 1fr));
+  gap: 8px;
+}
+
+.feedSquareCard {
+  min-inline-size: 0;
+}
+
+.feedSquareMedia {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1;
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  background: var(--surface-2);
+}
+
+.feedSquareMedia img,
+.feedAssemblyTile img {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+.assetSlot {
+  display: grid;
+  block-size: 100%;
+  place-content: center;
+  gap: 4px;
+  padding: 10px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.assetSlot span,
+.assetSlot small {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.assetSlot small {
+  color: var(--blue);
+  font-size: 9px;
+  line-height: 1.25;
+}
+
+.feedSquareIndex,
+.storyFrameIndex {
+  position: absolute;
+  inset-block-start: 6px;
+  inset-inline-start: 6px;
+  display: grid;
+  inline-size: 23px;
+  block-size: 20px;
+  place-items: center;
+  border-radius: 3px;
+  background: var(--nav);
+  color: #E5E5E5;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.feedSquareMeta {
+  display: grid;
+  gap: 3px;
+  padding: 7px 2px 2px;
+}
+
+.feedSquareMeta strong {
+  overflow: hidden;
+  font-size: 11px;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.feedSquareMeta span {
+  overflow: hidden;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 9px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.storyFrameStrip {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(78px, 1fr));
+  gap: 8px;
+  overflow-x: auto;
+  padding-block-end: 3px;
+}
+
+.storyFrame {
+  min-inline-size: 78px;
+}
+
+.storyFrameCanvas {
+  position: relative;
+  display: grid;
+  min-block-size: 166px;
+  align-content: space-between;
+  aspect-ratio: 9 / 16;
+  border: 1px solid var(--line-strong);
+  border-radius: 5px;
+  background: var(--nav);
+  color: #E5E5E5;
+  padding: 9px;
+}
+
+.storyFrameCanvas > div {
+  display: grid;
+  gap: 3px;
+  margin-block-start: 22px;
+}
+
+.storyFrameCanvas small {
+  color: rgba(229, 229, 229, 0.62);
+  font-family: var(--mono);
+  font-size: 8px;
+  text-transform: uppercase;
+}
+
+.storyFrameCanvas strong {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.storyFrameSlot {
+  border-block-start: 1px solid rgba(229, 229, 229, 0.25);
+  padding-block-start: 8px;
+  color: rgba(229, 229, 229, 0.7);
+  font-family: var(--mono);
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+.storyFrame p {
+  overflow: hidden;
+  margin: 7px 1px 0;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+}
+
+.feedAssemblySection {
+  margin-block: 28px 8px;
+  border-block-start: 2px solid var(--nav);
+  padding-block-start: 20px;
+}
+
+.feedAssemblySection .sectionTitleRow p:last-child {
+  max-inline-size: 680px;
+  margin-block-end: 0;
+  color: var(--muted);
+}
+
+.feedAssemblyMockup {
+  inline-size: min(100%, 500px);
+  margin-inline: auto;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 14px;
+}
+
+.feedAssemblyHeader,
+.feedAssemblyFooter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.feedAssemblyHeader {
+  margin-block-end: 14px;
+}
+
+.feedAssemblyHeader > div:nth-child(2) {
+  display: grid;
+  min-inline-size: 0;
+  gap: 2px;
+  flex: 1;
+}
+
+.feedAssemblyHeader strong {
+  overflow: hidden;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.feedAssemblyHeader span:not(.statusPill),
+.feedAssemblyFooter {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.feedAvatar {
+  display: grid;
+  inline-size: 36px;
+  block-size: 36px;
+  place-items: center;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  background: var(--nav);
+  color: #E5E5E5;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.feedAssemblyGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 3px;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  background: var(--line-strong);
+}
+
+.feedAssemblyTile {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1;
+  background: var(--surface-2);
+}
+
+.feedAssemblyTile > span,
+.feedAssemblyTile > strong {
+  position: absolute;
+  z-index: 1;
+  inset-inline-start: 7px;
+}
+
+.feedAssemblyTile > span {
+  inset-block-start: 6px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 9px;
+}
+
+.feedAssemblyTile > strong {
+  inset-block-end: 6px;
+  max-inline-size: calc(100% - 14px);
+  overflow: hidden;
+  color: var(--nav);
+  font-size: 10px;
+  line-height: 1.1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.feedAssemblyFooter {
+  justify-content: space-between;
+  gap: 12px;
+  padding-block-start: 11px;
+}
+
+.textLink {
+  color: var(--blue);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
 }
 
 .dayRail,
@@ -910,6 +1303,7 @@ dd small {
   .pageHeader,
   .statsGrid,
   .shortcutGrid,
+  .galleryLegend,
   .mockSystemStrip,
   .systemGrid {
     grid-template-columns: 1fr;
@@ -919,19 +1313,24 @@ dd small {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .dayRow {
+  .galleryDayRail {
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .galleryDayRail .galleryDayLabel {
+    grid-column: 1 / -1;
+  }
+
+  .galleryDayRail small {
+    grid-column: 2 / -1;
+  }
+
+  .dailyVisualGrid {
     grid-template-columns: 1fr;
   }
 
-  .dayRail,
-  .dayLane {
-    grid-column: auto;
-  }
-
-  .dayRail {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  .gallerySection {
+    min-inline-size: 0;
   }
 }
 
@@ -947,6 +1346,28 @@ dd small {
   .calendarBoard,
   .mockGrid {
     grid-template-columns: 1fr;
+  }
+
+  .dailyVisualGrid {
+    padding: 8px;
+  }
+
+  .gallerySectionHeader {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .galleryHint {
+    text-align: start;
+  }
+
+  .storyFrameStrip {
+    grid-template-columns: repeat(5, minmax(78px, 88px));
+  }
+
+  .feedAssemblyFooter {
+    align-items: start;
+    flex-direction: column;
   }
 
   .detailGrid div,

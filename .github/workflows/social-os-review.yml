@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - "social-media/**"
+      - "apps/social-studio/**"
       - "templates/social/**"
       - "tools/social_os/**"
       - "docs/marketing-os/**"
