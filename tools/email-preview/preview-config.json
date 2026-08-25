@@ -5,7 +5,7 @@
   "allowed_source_root": "shopify-messaging/emails",
   "outputs": ["rendered.html", "desktop.png", "mobile.png"],
   "selections": [
-    {"email_code":"CR-1","campaign_key":"campaign:J2","source_path":"shopify-messaging/emails/01-cr-1.html","persona":"normal-customer","states":["missing-first-name"],"preview_public":false},
+    {"email_code":"CR-1","campaign_key":"campaign:J2","source_path":"shopify-messaging/emails/01-cr-1.html","persona":"normal-customer","states":["missing-first-name"],"preview_public":true},
     {"email_code":"CR-2","campaign_key":"campaign:J2","source_path":"shopify-messaging/emails/02-cr-2.html","persona":"normal-customer","states":["missing-first-name"],"preview_public":false},
     {"email_code":"CR-3","campaign_key":"campaign:J2","source_path":"shopify-messaging/emails/03-cr-3.html","persona":"normal-customer","states":["missing-first-name"],"preview_public":false},
     {"email_code":"CR-4","campaign_key":"campaign:J2","source_path":"shopify-messaging/emails/04-cr-4.html","persona":"normal-customer","states":["missing-first-name"],"preview_public":false},

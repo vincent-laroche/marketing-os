@@ -22,8 +22,8 @@ and [GitHub Project #4](https://github.com/users/vincent-laroche/projects/4).
 - `.github/ISSUE_TEMPLATE/` and `.github/pull_request_template.md` govern new work;
 - `tools/email-preview/` provides a fail-closed fictional-fixture renderer that emits rendered
   HTML, a full desktop screenshot, a full mobile screenshot, and exact provenance;
-- GitHub Pages is configured for Actions publication, but every Email remains private because all
-  `preview_public` gates are false and no public workflow has been dispatched;
+- GitHub Pages is configured for Actions publication; CR-1 is the sole Email approved for the
+  first public proof, while every other Email remains private;
 - custom-domain and Cloudflare changes remain separate, unapproved gates.
 
 Merge or approval never configures Shopify, schedules, activates, or sends email.
