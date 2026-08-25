@@ -44,6 +44,7 @@ export function assertSafeRenderedHtml(html: string): void {
   for (const address of html.match(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g) ?? []) {
     if (!approvedPublicMailto.has(address.toLowerCase())) throw unsafe("direct email address");
   }
+  for (const comment of html.match(/<!--[\s\S]*?-->/g) ?? []) assertNoHiddenUrl(comment);
   const document = parse(html) as unknown as HtmlNode;
   walk(document, node => {
     const tag = node.tagName?.toLowerCase();
@@ -53,9 +54,29 @@ export function assertSafeRenderedHtml(html: string): void {
     if ([...attributes.keys()].some(name => name.startsWith("on"))) throw unsafe("event handler attribute");
     if (tag === "link" && /stylesheet/i.test(attributes.get("rel") ?? "")) throw unsafe("remote stylesheet");
     if (tag === "style" && /@import|url\s*\(/i.test(textContent(node))) throw unsafe("remote stylesheet");
-    for (const [name, raw] of attributes) if (resourceAttributes.has(name)) assertSafeUrl(raw);
-    if (tag === "img" && attributes.get("width") === "1" && attributes.get("height") === "1") throw unsafe("tracking pixel");
+    for (const [name, raw] of attributes) {
+      if (resourceAttributes.has(name)) assertSafeUrl(raw);
+      if (name === "srcset") for (const candidate of raw.split(",")) assertSafeUrl(candidate.trim().split(/\s+/, 1)[0]!);
+      if (name === "style") for (const url of cssUrls(raw)) assertSafeUrl(url);
+      if (name.startsWith("data-")) assertNoHiddenUrl(raw);
+    }
+    if (tag === "img" && isTrackingPixel(attributes)) throw unsafe("tracking pixel");
   });
+}
+
+function assertNoHiddenUrl(value: string): void {
+  for (const url of value.match(/(?:https?:|javascript:|data:|vbscript:)[^\s"'<>)]*/gi) ?? []) {
+    if (tokenLike.test(decodeHtmlUrl(url)) || sensitiveDestination.test(url)) throw unsafe("hidden customer-specific value");
+    if (/^https:\/\/github\.com\/vincent-laroche\/email-marketing-ops\/(issues|pull)\/\d+$/i.test(url)) continue;
+    assertSafeUrl(url);
+  }
+}
+function cssUrls(value: string): string[] { return [...value.matchAll(/url\(\s*(['"]?)(.*?)\1\s*\)/gi)].map(match => match[2]!); }
+function isTrackingPixel(attributes: Map<string, string>): boolean {
+  const source = decodeHtmlUrl(attributes.get("src") ?? "");
+  const width = attributes.get("width") ?? ""; const height = attributes.get("height") ?? ""; const style = attributes.get("style") ?? "";
+  const one = (value: string) => /(?:^|[^\d])1(?:px)?(?:$|[^\d])/i.test(value);
+  return /^https:/i.test(source) && ((one(width) && one(height)) || (/width\s*:\s*1(?:px)?/i.test(style) && /height\s*:\s*1(?:px)?/i.test(style)) || /(?:pixel|tracking|1x1|[,_/-]w_?1[,_/-])/i.test(source));
 }
 
 function assertSafeUrl(raw: string): void {

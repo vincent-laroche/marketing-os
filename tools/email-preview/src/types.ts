@@ -3,11 +3,12 @@ export type JsonValue = null | boolean | number | string | JsonValue[] | { [key:
 export interface PreviewArgs {
   source: string;
   emailCode: string;
+  campaign: string;
   commitSha: string;
   issue: number;
   pr: number;
   persona: string;
-  state: string;
+  states: string[];
   out: string;
   workflowRun?: string;
   workflowAttempt?: string;
@@ -31,7 +32,7 @@ export interface Provenance {
   related_issue: number;
   related_pr: number;
   persona: string;
-  state: string;
+  states: string[];
   compiler_version: string;
   source_sha256: string;
   rendered_sha256: string;

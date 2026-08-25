@@ -9,7 +9,7 @@ export function isAllowedCaptureRequest(url: string, resourceType: string): bool
   if (/^(file|data|blob):/i.test(url)) return true;
   try {
     const parsed = new URL(url);
-    return parsed.protocol === "https:" && resourceType === "image" && imageHosts.has(parsed.hostname);
+    return parsed.protocol === "https:" && resourceType === "image" && imageHosts.has(parsed.hostname) && !/(?:^|[?&])(token|key|signature|access_token|customer[_-]?id|email)=/i.test(parsed.search);
   } catch { return false; }
 }
 
@@ -32,13 +32,13 @@ export async function capture(htmlPath: string, outDir: string): Promise<void> {
   } finally {
     await browser.close();
   }
-  await Promise.all(["desktop.png", "mobile.png"].map(file => assertPng(path.join(outDir, file))));
+  await Promise.all(([ ["desktop.png", 1440], ["mobile.png", 390] ] as const).map(([file, width]) => assertPng(path.join(outDir, file), width)));
 }
 
-export async function assertPng(file: string): Promise<void> {
+export async function assertPng(file: string, expectedWidth: number): Promise<void> {
   const contents = await fs.readFile(file);
   if (contents.length < 33 || !contents.subarray(0, 8).equals(PNG_SIGNATURE)) throw new Error("invalid screenshot PNG");
   const width = contents.readUInt32BE(16);
   const height = contents.readUInt32BE(20);
-  if (width < 1 || height < 1) throw new Error("invalid screenshot dimensions");
+  if (width !== expectedWidth || height < 1) throw new Error("invalid screenshot dimensions");
 }

@@ -9,14 +9,13 @@ const selectionSchema = z.object({
   source_path: z.string().startsWith("shopify-messaging/emails/").endsWith(".html"),
   persona: z.literal("normal-customer"),
   states: z.array(z.enum(["missing-first-name", "product-heavy"])).min(1),
-  preview_public: z.literal(false)
+  preview_public: z.boolean()
 }).strict();
 
 const configSchema = z.object({
   schema_version: z.literal(1),
   default_persona: z.string().min(1),
   default_state: z.string().min(1),
-  preview_public: z.boolean(),
   allowed_source_root: z.literal("shopify-messaging/emails"),
   outputs: z.tuple([z.literal("rendered.html"), z.literal("desktop.png"), z.literal("mobile.png")]),
   selections: z.array(selectionSchema).length(53)
@@ -42,11 +41,13 @@ export function loadConfig() {
   return config;
 }
 
-export function loadFixture(persona: string, state: string): Record<string, unknown> {
-  if (persona !== "normal-customer" || !["missing-first-name", "product-heavy"].includes(state) || /[/\\]/.test(persona + state)) throw new Error("unknown fictional preview fixture");
+export function loadFixture(persona: string, states: string | string[]): Record<string, unknown> {
+  const requested = typeof states === "string" ? [states] : states;
+  if (persona !== "normal-customer" || requested.length === 0 || requested.some(state => !["missing-first-name", "product-heavy"].includes(state)) || /[/\\]/.test(persona + requested.join(""))) throw new Error("unknown fictional preview fixture");
   const base = personaSchema.parse(JSON.parse(fs.readFileSync(path.join(packageRoot, "fixtures/personas", `${persona}.json`), "utf8")));
-  const override = stateSchema.parse(JSON.parse(fs.readFileSync(path.join(packageRoot, "fixtures/states", `${state}.json`), "utf8")));
-  return deepFreeze(deepMerge(base, override));
+  const fixture = requested.reduce((current, state) => deepMerge(current, stateSchema.parse(JSON.parse(fs.readFileSync(path.join(packageRoot, "fixtures/states", `${state}.json`), "utf8")))), base as Record<string, unknown>);
+  Object.defineProperty(fixture, approvedPaths, {value: pathsOf(base), enumerable: false});
+  return deepFreeze(fixture);
 }
 
 const productSchema = z.object({product_title: z.string().startsWith("Fictional"), variant_title: z.string(), quantity: z.number().int().positive()}).strict();
@@ -81,10 +82,24 @@ function deepFreeze<T>(value: T): T {
   return value;
 }
 
-export function selectionFor(config: ReturnType<typeof loadConfig>, args: Pick<PreviewSelection, "email_code" | "source_path" | "persona"> & {state: string}): PreviewSelection {
+export function selectionFor(config: ReturnType<typeof loadConfig>, args: Pick<PreviewSelection, "email_code" | "source_path" | "persona" | "campaign_key"> & {states: string[]}): PreviewSelection {
   const selection = config.selections.find(candidate => candidate.email_code === args.email_code);
-  if (!selection || selection.source_path !== args.source_path || selection.persona !== args.persona || !selection.states.includes(args.state as "missing-first-name" | "product-heavy")) throw new Error("preview arguments do not match an approved canonical selection");
+  if (!selection || selection.source_path !== args.source_path || selection.persona !== args.persona || selection.campaign_key !== args.campaign_key || selection.states.length !== args.states.length || selection.states.some(state => !args.states.includes(state))) throw new Error("preview arguments do not match an approved canonical selection");
   return selection;
+}
+
+export const approvedPaths = Symbol("approved-fixture-paths");
+export function fixtureAllowsPath(fixture: Record<string, unknown>, dotted: string): boolean {
+  return ((fixture as Record<PropertyKey, unknown>)[approvedPaths] as Set<string> | undefined)?.has(dotted) ?? false;
+}
+function pathsOf(value: unknown, prefix = ""): Set<string> {
+  const paths = new Set<string>();
+  if (!value || typeof value !== "object") return paths;
+  for (const [key, nested] of Object.entries(value as Record<string, unknown>)) {
+    const current = prefix ? `${prefix}.${key}` : key; paths.add(current);
+    for (const child of pathsOf(nested, current)) paths.add(child);
+  }
+  return paths;
 }
 
 export function canonicalIssueFor(emailCode: string): number {

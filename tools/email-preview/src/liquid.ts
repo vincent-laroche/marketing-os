@@ -1,4 +1,5 @@
 import { Liquid } from "liquidjs";
+import { fixtureAllowsPath } from "./config.js";
 
 const engine = new Liquid({
   strictFilters: true,
@@ -40,25 +41,39 @@ function assertAllowedLiquid(source: string): void {
 }
 
 function assertKnownVariables(source: string, fixture: Record<string, unknown>): void {
-  const loopBindings = new Set<string>(["line_item", "forloop"]);
+  const loopBindings = new Map<string, unknown>([["forloop", {index: 1, index0: 0, first: true, last: false, length: 1}]]);
   for (const match of source.matchAll(/\{%\s*for\s+([A-Za-z_]\w*)\s+in\s+([A-Za-z_][\w.]*)\s+limit:\d+\s*%\}/g)) {
-    loopBindings.add(match[1]!);
-    if (!hasPath(fixture, match[2]!)) throw new Error("Liquid rendering failed closed: unknown variable");
+    if (!knownPath(fixture, match[2]!)) throw new Error("Liquid rendering failed closed: unknown variable");
+    const iterable = valueAtPath(fixture, match[2]!);
+    loopBindings.set(match[1]!, Array.isArray(iterable) ? iterable[0] : iterable);
   }
   for (const match of source.matchAll(/\{\{\s*([A-Za-z_][\w.]*)((?:\s*\|\s*default:\s*(?:"[^"]*"|'[^']*'))?)\s*\}\}/g)) {
     const expression = match[1]!;
-    const allowsBlank = /\|\s*default:/.test(match[2]!);
-    if (!loopBindings.has(expression.split(".")[0]!) && !hasPath(fixture, expression) && !allowsBlank) throw new Error("Liquid rendering failed closed: unknown variable");
+    const [root, ...rest] = expression.split(".");
+    if (loopBindings.has(root!)) {
+      if (rest.length && !hasPath(loopBindings.get(root!), rest.join("."))) throw new Error("Liquid rendering failed closed: unknown variable");
+    } else if (!knownPath(fixture, expression)) throw new Error("Liquid rendering failed closed: unknown variable");
   }
   for (const match of source.matchAll(/\{%\s*if\s+([A-Za-z_][\w.]*)\s*(?:==|!=|>|>=|<|<=)/g)) {
     const expression = match[1]!;
-    if (!loopBindings.has(expression.split(".")[0]!) && !hasPath(fixture, expression)) throw new Error("Liquid rendering failed closed: unknown variable");
+    const [root, ...rest] = expression.split(".");
+    if (loopBindings.has(root!)) {
+      if (rest.length && !hasPath(loopBindings.get(root!), rest.join("."))) throw new Error("Liquid rendering failed closed: unknown variable");
+    } else if (!knownPath(fixture, expression)) throw new Error("Liquid rendering failed closed: unknown variable");
   }
 }
 
-function hasPath(value: Record<string, unknown>, dotted: string): boolean {
+function knownPath(fixture: Record<string, unknown>, dotted: string): boolean {
+  return hasPath(fixture, dotted) || fixtureAllowsPath(fixture, dotted);
+}
+function valueAtPath(value: Record<string, unknown>, dotted: string): unknown {
+  return dotted.split(".").reduce<unknown>((current, segment) => current && typeof current === "object" ? (current as Record<string, unknown>)[segment] : undefined, value);
+}
+
+function hasPath(value: unknown, dotted: string): boolean {
   let current: unknown = value;
   for (const segment of dotted.split(".")) {
+    if (Array.isArray(current) && segment === "first") { current = current[0]; continue; }
     if (!current || typeof current !== "object" || !(segment in current)) return false;
     current = (current as Record<string, unknown>)[segment];
   }

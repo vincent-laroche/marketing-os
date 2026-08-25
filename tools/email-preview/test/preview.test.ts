@@ -8,7 +8,7 @@ import { loadConfig, loadFixture } from "../src/config.js";
 import { renderLiquid } from "../src/liquid.js";
 import { assertSafeRenderedHtml, injectNoIndex, rewriteSensitiveLinks } from "../src/safety.js";
 import { provenance } from "../src/provenance.js";
-import { isAllowedCaptureRequest } from "../src/capture.js";
+import { assertPng, isAllowedCaptureRequest } from "../src/capture.js";
 import { compilePreview, parseArgs } from "../src/cli.js";
 
 const HEAD = execFileSync("git", ["rev-parse", "HEAD"], {encoding: "utf8"}).trim();
@@ -17,7 +17,6 @@ test("fixture registry is fictional, reusable, and produces exact outputs", () =
   const config = loadConfig();
   const fixture = loadFixture("normal-customer", "product-heavy");
   assert.deepEqual(config.outputs, ["rendered.html", "desktop.png", "mobile.png"]);
-  assert.equal(config.preview_public, false);
   assert.equal((fixture.customer as {first_name: string}).first_name, "Alex");
   assert.equal((fixture.abandoned_checkout as {line_items: unknown[]}).line_items.length, 5);
   assert.equal(config.selections.length, 53);
@@ -36,6 +35,11 @@ test("renderer fails closed when unsupported Liquid remains", async () => {
 
 test("renderer rejects LiquidJS constructs outside the preview allowlist", async () => {
   await assert.rejects(() => renderLiquid("{% assign x = 1 %}{{ x }}", {}), /allowlist|failed closed/i);
+});
+
+test("renderer rejects unknown paths even when defaulted or nested under a loop binding", async () => {
+  await assert.rejects(() => renderLiquid('{{ secret.token | default: "fallback" }}', {}), /unknown variable/);
+  await assert.rejects(() => renderLiquid('{% for item in products limit:1 %}{{ item.secret }}{% endfor %}', {products: [{name: "fictional"}]}), /unknown variable/);
 });
 
 test("rendered HTML is noindex and rejects customer-specific live URLs", () => {
@@ -62,18 +66,25 @@ test("structural safety rejects active content, unsafe protocols, remote hosts, 
     wrap('<img src="https://res.cloudinary.com/x.png?token=secret">'),
     wrap('<img src="https://res.cloudinary.com/x.png" width="1" height="1">'),
     wrap('<style>@import url("https://example.com/style.css");</style>'),
-    wrap('Contact customer@example.com')
+    wrap('Contact customer@example.com'),
+    wrap('<img style="background:url(https://example.com/pixel.png?token=x)">'),
+    wrap('<img srcset="https://res.cloudinary.com/x.png 1x, https://example.com/x.png 2x">'),
+    wrap('<div data-source="https://example.com/?token=x"></div>'),
+    wrap('<!-- https://example.com/?customer_id=1 -->'),
+    wrap('<img src="https://res.cloudinary.com/x.png" style="width:1px;height:1px">'),
+    wrap('<img src="https://res.cloudinary.com/image/upload/w_1/x.png">')
   ]) assert.throws(() => assertSafeRenderedHtml(html), /unsafe preview/);
 });
 
 test("provenance binds exact source SHA, Issue, PR, and three outputs", () => {
   const extras = {output_sha256: {"rendered.html": "a", "desktop.png": "b", "mobile.png": "c"}, campaign_key: "campaign:J2", fixture_sha256: "fixture", compiler_lock_sha256: "lock", generated_at: "2026-08-25T00:00:00.000Z", visibility: "private" as const};
-  const result = provenance({source: "shopify-messaging/emails/01-cr-1.html", emailCode: "CR-1", commitSha: "a".repeat(40), issue: 8, pr: 70, persona: "normal-customer", state: "missing-first-name", out: "unused"}, "source", "rendered", extras);
+  const identity = {repository: "vincent-laroche/email-marketing-ops"};
+  const result = provenance({source: "shopify-messaging/emails/01-cr-1.html", emailCode: "CR-1", campaign: "campaign:J2", commitSha: "a".repeat(40), issue: 8, pr: 70, persona: "normal-customer", states: ["missing-first-name"], out: "unused"}, "source", "rendered", {...extras, identity});
   assert.equal(result.source_commit_sha, "a".repeat(40));
   assert.equal(result.related_issue, 8);
   assert.equal(result.related_pr, 70);
   assert.deepEqual(result.outputs, ["rendered.html", "desktop.png", "mobile.png"]);
-  assert.throws(() => provenance({source: "shopify-messaging/emails/01-cr-1.html", emailCode: "CR-1", commitSha: "a".repeat(40), issue: 8, pr: 0, persona: "normal-customer", state: "missing-first-name", out: "unused"}, "source", "rendered", extras), /positive PR/);
+  assert.throws(() => provenance({source: "shopify-messaging/emails/01-cr-1.html", emailCode: "CR-1", campaign: "campaign:J2", commitSha: "a".repeat(40), issue: 8, pr: 0, persona: "normal-customer", states: ["missing-first-name"], out: "unused"}, "source", "rendered", {...extras, identity}), /positive PR/);
 });
 
 test("sensitive destinations are replaced without retaining their original value", () => {
@@ -90,11 +101,24 @@ test("capture interception permits only local documents and allowlisted HTTPS im
   assert.equal(isAllowedCaptureRequest("https://res.cloudinary.com/demo/image/upload/x.png", "image"), true);
   assert.equal(isAllowedCaptureRequest("https://res.cloudinary.com/demo/image/upload/x.png", "script"), false);
   assert.equal(isAllowedCaptureRequest("https://example.com/x.png", "image"), false);
+  assert.equal(isAllowedCaptureRequest("https://res.cloudinary.com/x.png?token=secret", "image"), false);
 });
 
-test("CLI requires a PR and exact canonical selection identity", async () => {
-  assert.throws(() => parseArgs(["node", "cli.ts", "--source", "shopify-messaging/emails/01-cr-1.html", "--email-code", "CR-1", "--commit-sha", "a".repeat(40), "--issue", "1", "--out", "tmp"]), /--pr is required/);
-  await assert.rejects(() => compilePreview({source: "shopify-messaging/emails/01-cr-1.html", emailCode: "CR-2", commitSha: "a".repeat(40), issue: 1, pr: 2, persona: "normal-customer", state: "missing-first-name", out: "tmp"}), /approved canonical selection/);
+test("PNG validation enforces exact capture widths", async () => {
+  const root = await fs.mkdtemp(path.join(os.tmpdir(), "email-preview-png-"));
+  const png = path.join(root, "test.png");
+  const bytes = Buffer.alloc(33); Buffer.from([137,80,78,71,13,10,26,10]).copy(bytes); bytes.writeUInt32BE(1440, 16); bytes.writeUInt32BE(10, 20);
+  await fs.writeFile(png, bytes);
+  try {
+    await assert.doesNotReject(() => assertPng(png, 1440));
+    await assert.rejects(() => assertPng(png, 390), /dimensions/);
+  } finally { await fs.rm(root, {recursive: true, force: true}); }
+});
+
+test("CLI requires a PR, campaign, selected states, no unknown flags, and exact canonical identity", async () => {
+  assert.throws(() => parseArgs(["node", "cli.ts", "--source", "shopify-messaging/emails/01-cr-1.html", "--email-code", "CR-1", "--campaign", "campaign:J2", "--commit-sha", "a".repeat(40), "--issue", "1", "--states", "missing-first-name", "--out", "tmp"]), /--pr is required/);
+  await assert.rejects(() => compilePreview({source: "shopify-messaging/emails/01-cr-1.html", emailCode: "CR-2", campaign: "campaign:J2", commitSha: "a".repeat(40), issue: 1, pr: 2, persona: "normal-customer", states: ["missing-first-name"], out: "tmp"}), /approved canonical selection/);
+  assert.throws(() => parseArgs(["node", "cli.ts", "--source", "shopify-messaging/emails/01-cr-1.html", "--email-code", "CR-1", "--campaign", "campaign:J2", "--commit-sha", "a".repeat(40), "--issue", "10", "--pr", "2", "--states", "missing-first-name", "--out", "tmp", "--unexpected", "x"]), /unknown option/);
 });
 
 test("incomplete capture fails without replacing a prior verified output", async () => {
@@ -103,7 +127,7 @@ test("incomplete capture fails without replacing a prior verified output", async
   await fs.mkdir(out);
   await fs.writeFile(path.join(out, "sentinel.txt"), "prior-output");
   try {
-    await assert.rejects(() => compilePreview({source: "shopify-messaging/emails/01-cr-1.html", emailCode: "CR-1", commitSha: HEAD, issue: 10, pr: 2, persona: "normal-customer", state: "missing-first-name", out}, async (_html, target) => {
+    await assert.rejects(() => compilePreview({source: "shopify-messaging/emails/01-cr-1.html", emailCode: "CR-1", campaign: "campaign:J2", commitSha: HEAD, issue: 10, pr: 2, persona: "normal-customer", states: ["missing-first-name"], out}, async (_html, target) => {
       await fs.writeFile(path.join(target, "desktop.png"), "partial");
     }), /incomplete preview output/);
     assert.equal(await fs.readFile(path.join(out, "sentinel.txt"), "utf8"), "prior-output");

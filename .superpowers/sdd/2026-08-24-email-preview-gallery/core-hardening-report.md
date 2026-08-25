@@ -75,3 +75,48 @@ previously blocked source appear renderable.
 No release blocker. The compiler correctly remains unable to render the 39 source-blocked emails;
 that is existing source readiness, not a compiler bypass. The local smoke artifacts remain only in
 an isolated temporary directory and were not published.
+
+## Review round 1/5
+
+Addressed all review findings. Fixture-aware Liquid validation now rejects unknown defaulted paths
+and unknown nested loop paths; legitimate omitted `customer.first_name` remains known from the
+fictional fixture schema. Structural validation now examines `srcset`, inline CSS `url()`, all
+`data-*` values, and comments, rejects tokenized/non-allowlisted values, and identifies remote
+one-pixel assets via HTML/CSS dimensions and tracking-shaped URLs.
+
+PNG validation now requires signature, non-zero height, and the exact desktop/mobile widths.
+The compiler independently validates those injected capture outputs before hashing/promoting.
+The canonical output path is now an atomically switched symlink to immutable sibling versions;
+it refuses an unsafe direct-directory replacement instead of allowing a missing-output window.
+
+CLI input now requires `--campaign` and `--states`, rejects unknown options, validates the full
+selected state set against its per-Email selection, and records states in provenance. The obsolete
+global `preview_public` was removed; the per-Email boolean accepts future reviewed `true` values,
+while the committed 53 selections remain `false`.
+
+Embedded metadata now includes the complete identity before capture (source, campaign, Email,
+persona/states, source/fixture/lock digests, Issue/PR URLs, workflow, timestamp, and visibility).
+The final provenance sidecar is schema-validated and cross-checked against that embedded identity
+before promotion.
+
+### Round 1 red / green evidence
+
+The focused red run failed on the previously open bypasses: `default` accepted an unknown object
+path; loop-variable nesting accepted an unknown property; inline-style, `srcset`, `data-*`, and
+comment URL surfaces passed; exact PNG width was not enforced; tokenized image requests were
+permitted; and unknown CLI options were accepted. After implementation, the complete suite passed
+with all regressions covered and the inventory remained 14 ready / 39 blocked.
+
+```text
+npm run build
+Result: passed
+
+npm test
+Result: 21 passed, 0 failed
+
+npm run preview -- --source shopify-messaging/emails/01-cr-1.html --email-code CR-1 \
+  --campaign campaign:J2 --commit-sha b3ef91e4a19a676f99491f685a2cdaa8ccd77e77 \
+  --issue 10 --pr 78 --states missing-first-name --out <temporary path>
+Result: passed; canonical output is a symlink, exactly four artifacts are present, provenance
+records the selected state set and private visibility, and no global visibility field exists.
+```
