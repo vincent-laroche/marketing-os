@@ -1,0 +1,16 @@
+name: Experiment
+description: Define a measurable email experiment.
+title: "Experiment — "
+labels: ["email-marketing", "area:analytics"]
+body:
+  - type: markdown
+    attributes:
+      value: "Use aggregate evidence only; do not include customer PII. Approval does not authorize scheduling, activation, or sending."
+  - type: textarea
+    id: hypothesis
+    attributes: {label: Hypothesis, control, and variant}
+    validations: {required: true}
+  - type: textarea
+    id: measurement
+    attributes: {label: Metric, result, conclusion, and decision}
+    validations: {required: true}

@@ -1,0 +1,61 @@
+{
+  "_comment": "Synthetic fixture for the SVC-1 order-confirmed template. Invented order data only — no real customer record was read or copied (AGENTS.md #6). Products, prices, images and URLs are real catalogue entries. Recipient is the sole allowlisted test address.",
+
+  "order_number": "#HS-94821",
+  "customer": { "name": "Vincent", "email": "vincent@hairsolutions.co" },
+
+  "order_status_url": "https://hairsolutions.co/pages/profile",
+  "estimated_ship_date": "Wednesday 26 August",
+  "estimated_delivery_date": "Thursday 3 September",
+
+  "items": [
+    {
+      "name": "Lace Edge 180",
+      "spec": "Swiss lace, PU sides & back · 1B off-black · 6\" wavy · 8×10 · 130% density",
+      "qty": 1,
+      "price": "$289.00",
+      "image": "https://cdn.shopify.com/s/files/1/0276/9115/5508/files/product-lace-edge-180-hair-system-feature-shot-white.webp",
+      "url": "https://hairsolutions.co/products/lace-edge-180-swiss-lace-hair-system-pu-sides-back"
+    },
+    {
+      "name": "Mono Edge LF",
+      "spec": "Monofilament top, lace front · 1B20 · 5\" straight · 8×10 · 120% density",
+      "qty": 1,
+      "price": "$279.00",
+      "image": "https://cdn.shopify.com/s/files/1/0276/9115/5508/files/product-mono-edge-lf-hair-system-feature-shot-white.webp",
+      "url": "https://hairsolutions.co/products/mono-edge-lf-mens-monofilament-hair-system-pu-lace-front"
+    }
+  ],
+
+  "totals": {
+    "rows": [
+      { "label": "Subtotal", "value": "$568.00" },
+      { "label": "Base cut to size service", "value": "$15.00" },
+      { "label": "Shipping (DHL Express, tracked)", "value": "$0.00" },
+      { "label": "Tax", "value": "$0.00" }
+    ],
+    "total_label": "Total paid",
+    "total": "$583.00"
+  },
+
+  "recommendations": [
+    {
+      "name": "Thin Skin LF",
+      "label": "Backup",
+      "image": "https://cdn.shopify.com/s/files/1/0276/9115/5508/files/product-thin-skin-lf-hair-system-feature-shot-white.webp",
+      "url": "https://hairsolutions.co/products/thin-skin-lf-008mm-mens-lace-front-hair-system"
+    },
+    {
+      "name": "Micro Skin",
+      "label": "Lightest",
+      "image": "https://cdn.shopify.com/s/files/1/0276/9115/5508/files/product-micro-skin-hair-system-feature-shot-white.webp",
+      "url": "https://hairsolutions.co/products/micro-skin-006mm-v-loop-mens-thin-skin-hair-system"
+    },
+    {
+      "name": "Mono Pro",
+      "label": "Longest",
+      "image": "https://cdn.shopify.com/s/files/1/0276/9115/5508/files/product-mono-pro-hair-system-feature-shot-white.webp",
+      "url": "https://hairsolutions.co/products/mono-pro-fine-welded-monofilament-mens-hair-system"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+[
+ {
+  "module": "Review stars",
+  "surface": "Bone",
+  "bytes": 1631
+ },
+ {
+  "module": "Review stars",
+  "surface": "Paper",
+  "bytes": 1631
+ },
+ {
+  "module": "Review stars",
+  "surface": "Ink",
+  "bytes": 1631
+ },
+ {
+  "module": "Product - 3-up grid",
+  "surface": "Bone",
+  "bytes": 5137
+ },
+ {
+  "module": "Product - 3-up grid",
+  "surface": "Paper",
+  "bytes": 5137
+ },
+ {
+  "module": "Product - 3-up grid",
+  "surface": "Ink",
+  "bytes": 5136
+ },
+ {
+  "module": "Commerce - Quote and spec table",
+  "surface": "Bone",
+  "bytes": 4390
+ },
+ {
+  "module": "Commerce - Quote and spec table",
+  "surface": "Paper",
+  "bytes": 4390
+ },
+ {
+  "module": "Commerce - Quote and spec table",
+  "surface": "Ink",
+  "bytes": 4389
+ },
+ {
+  "module": "Grid - Collections 4",
+  "surface": "Bone",
+  "bytes": 7996
+ },
+ {
+  "module": "Grid - Collections 4",
+  "surface": "Paper",
+  "bytes": 7996
+ },
+ {
+  "module": "Grid - Collections 4",
+  "surface": "Ink",
+  "bytes": 7995
+ },
+ {
+  "module": "Timeline",
+  "surface": "Bone",
+  "bytes": 3704
+ },
+ {
+  "module": "Timeline",
+  "surface": "Paper",
+  "bytes": 3704
+ },
+ {
+  "module": "Timeline",
+  "surface": "Ink",
+  "bytes": 3703
+ }
+]

@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Campaign OS documentation
+    url: https://github.com/vincent-laroche/email-marketing-ops#email-marketing--campaign-os
+    about: Read the operating rules before creating work.

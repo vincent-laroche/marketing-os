@@ -1,0 +1,107 @@
+[
+ {
+  "module": "Photo - Feature story",
+  "surface": "Bone",
+  "bytes": 1749
+ },
+ {
+  "module": "Photo - Feature story",
+  "surface": "Paper",
+  "bytes": 1749
+ },
+ {
+  "module": "Photo - Feature story",
+  "surface": "Ink",
+  "bytes": 1748
+ },
+ {
+  "module": "Product - Dynamic recommendations",
+  "surface": "Bone",
+  "bytes": 3230
+ },
+ {
+  "module": "Product - Dynamic recommendations",
+  "surface": "Paper",
+  "bytes": 3230
+ },
+ {
+  "module": "Product - Dynamic recommendations",
+  "surface": "Ink",
+  "bytes": 3229
+ },
+ {
+  "module": "List - Questions",
+  "surface": "Bone",
+  "bytes": 2612
+ },
+ {
+  "module": "List - Questions",
+  "surface": "Paper",
+  "bytes": 2612
+ },
+ {
+  "module": "List - Questions",
+  "surface": "Ink",
+  "bytes": 2611
+ },
+ {
+  "module": "List - Support strip",
+  "surface": "Bone",
+  "bytes": 2816
+ },
+ {
+  "module": "List - Support strip",
+  "surface": "Paper",
+  "bytes": 2816
+ },
+ {
+  "module": "List - Support strip",
+  "surface": "Ink",
+  "bytes": 2816
+ },
+ {
+  "module": "Hero - Photo-led",
+  "surface": "Bone",
+  "bytes": 1973
+ },
+ {
+  "module": "Hero - Photo-led",
+  "surface": "Paper",
+  "bytes": 1973
+ },
+ {
+  "module": "Hero - Photo-led",
+  "surface": "Ink",
+  "bytes": 1972
+ },
+ {
+  "module": "Commerce - Viewed product",
+  "surface": "Bone",
+  "bytes": 1946
+ },
+ {
+  "module": "Commerce - Viewed product",
+  "surface": "Paper",
+  "bytes": 1946
+ },
+ {
+  "module": "Commerce - Viewed product",
+  "surface": "Ink",
+  "bytes": 1946
+ },
+ {
+  "module": "Commerce - Shipping tracking",
+  "surface": "Bone",
+  "bytes": 3512
+ },
+ {
+  "module": "Commerce - Shipping tracking",
+  "surface": "Paper",
+  "bytes": 3512
+ },
+ {
+  "module": "Commerce - Shipping tracking",
+  "surface": "Ink",
+  "bytes": 3511
+ }
+]

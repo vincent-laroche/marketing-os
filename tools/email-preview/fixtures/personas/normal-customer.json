@@ -1,0 +1,11 @@
+{
+  "customer": {"first_name": "Alex"},
+  "checkout": {"url": "#preview-inert-checkout"},
+  "unsubscribe_url": "#preview-inert-unsubscribe",
+  "abandoned_checkout": {
+    "remaining_products_count": 0,
+    "line_items": [
+      {"product_title": "Fictional Studio Hair System", "variant_title": "Sample shade · Medium", "quantity": 1}
+    ]
+  }
+}

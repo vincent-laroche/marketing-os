@@ -1,0 +1,107 @@
+[
+ {
+  "module": "Header - Centered logo",
+  "surface": "Bone",
+  "bytes": 948
+ },
+ {
+  "module": "Header - Centered logo",
+  "surface": "Paper",
+  "bytes": 948
+ },
+ {
+  "module": "Header - Centered logo",
+  "surface": "Ink",
+  "bytes": 946
+ },
+ {
+  "module": "Hero - Founder opening",
+  "surface": "Bone",
+  "bytes": 1595
+ },
+ {
+  "module": "Hero - Founder opening",
+  "surface": "Paper",
+  "bytes": 1595
+ },
+ {
+  "module": "Hero - Founder opening",
+  "surface": "Ink",
+  "bytes": 1594
+ },
+ {
+  "module": "Content - Question list",
+  "surface": "Bone",
+  "bytes": 1283
+ },
+ {
+  "module": "Content - Question list",
+  "surface": "Paper",
+  "bytes": 1283
+ },
+ {
+  "module": "Content - Question list",
+  "surface": "Ink",
+  "bytes": 1282
+ },
+ {
+  "module": "Content - Close",
+  "surface": "Bone",
+  "bytes": 1787
+ },
+ {
+  "module": "Content - Close",
+  "surface": "Paper",
+  "bytes": 1787
+ },
+ {
+  "module": "Content - Close",
+  "surface": "Ink",
+  "bytes": 1786
+ },
+ {
+  "module": "Quote - Accent bar",
+  "surface": "Bone",
+  "bytes": 1490
+ },
+ {
+  "module": "Quote - Accent bar",
+  "surface": "Paper",
+  "bytes": 1490
+ },
+ {
+  "module": "Quote - Accent bar",
+  "surface": "Ink",
+  "bytes": 1490
+ },
+ {
+  "module": "Content - Sign-off",
+  "surface": "Bone",
+  "bytes": 822
+ },
+ {
+  "module": "Content - Sign-off",
+  "surface": "Paper",
+  "bytes": 822
+ },
+ {
+  "module": "Content - Sign-off",
+  "surface": "Ink",
+  "bytes": 822
+ },
+ {
+  "module": "Footer - Preference centre",
+  "surface": "Bone",
+  "bytes": 1903
+ },
+ {
+  "module": "Footer - Preference centre",
+  "surface": "Paper",
+  "bytes": 1903
+ },
+ {
+  "module": "Footer - Preference centre",
+  "surface": "Ink",
+  "bytes": 1903
+ }
+]

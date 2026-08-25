@@ -3,39 +3,700 @@
 > Living status log. Full context/rules live in `AGENTS.md` (the project bible) — don't duplicate them
 > here. Update this file at the end of every session: what changed, what's next, who touched it.
 
-**Last updated:** 2026-08-09 by Codex
-**Status:** The recovered active Design Manager worktree now contains 60 Page 33 Paper/Ink modules
-(30 non-cart families, Light/Dark) under `email_modules/final/`; all 60 are published and read-back
-verified in HubSpot portal 50966981. No full marketing email was published or sent. The broader 104-email
-release remains blocked on real-token and inbox-client proof, consent/subscription verification,
-asset/testimonial provenance, and final owner review.
+**Last updated:** 2026-08-24 by Codex (Campaign OS built and verified in GitHub; preview compiler
+implemented locally; no Pages publication or Shopify activation)
+
+**Status:** **All marketing campaigns and lifecycle journeys now belong to Shopify Messaging +
+Shopify Flow. MailerLite is not a campaign/lifecycle platform for this project.** Shopify
+sender-domain authentication is confirmed **Authenticated** in Shopify admin.
+
+The 53-email programme (J1–J5, W, N) is built locally under `shopify-messaging/`: 51 entries
+are structurally green and 2 remain source-blocked (RO-4 and NL-16). "Structurally green" is
+not release approval. CR-1 through CR-4 have now been retokenized to the durable Email Reference
+File palette and are protected by a repository contract test.
+Phase 4 is partial; Phase 5 has its segment/tag layer but not the journey automations; Phase 6
+has not started.
+
+**Live MailerLite re-verification, 2026-08-24:** account 2582639 is authenticated and currently
+has **0 campaigns**, **1 disabled legacy welcome automation**, and 2,223 subscribers. Its Shopify
+integration is still quarantined; it currently exposes 44 products and 0 orders. These are legacy
+account facts, not the campaign programme.
+
+**Audience safety:** Shopify holds the campaign audience. The owner-attested
+`hs-consented-2026` cohort has 986 matched customers and the `hs-engaged-core` safe-start cohort
+has 205. Do not activate against Shopify's broad subscribed segment; its consent provenance remains
+unverified.
 
 ## Current status
 
-The approved source set remains ready and unchanged:
+**`Email Reference File/` is the source of truth** for campaigns, journeys, email structure and
+composition, copy, and module presence — declared by Vincent 2026-08-18. See `AGENTS.md` §1.
+The repo was cleaned to match on the same day (791 MB → 23 MB); see the session log below.
 
-- 104 approved/complete HTML emails in `emails/approved-html/`;
-- all 94 locally created modules in `modules/all/`;
-- 94 Atelier Zero module outputs in `modules/atelier-zero/`, all with complete local source trios;
-- 104 Atelier Zero email outputs in `emails/atelier-zero/`, with zero unresolved source-limited bodies;
-  the 37 historical source-repair flags remain only as conversion-history provenance;
-- current sending and lifecycle operations retained in `resend-takeover/`.
+Current working set:
+
+- `Email Reference File/` — 58 email copy decks, 104 complete HubSpot module trios (light + dark),
+  104 rendered module previews (despite the historical `(102)` folder name), and the
+  emails/modules master CSVs;
+- `shopify-messaging/` — active 53-email Shopify build, Phase 4/5 ledgers, audience-tag tooling,
+  and the J2 hand-build specification;
+- `mailerlite/` — legacy/reference builders and API research only; no live campaigns;
+- `mailersend/` — transactional-only service-email experiment, not a marketing path;
+- `exports/hubspot-2026-08-18/` — CSV-only HubSpot CRM export (JSON duplicates removed), gitignored;
+- `~/02_dev/mkt-resend` — decommissioned sender retained because the consent/engagement cohort
+  used by Shopify tagging still lives there.
+
+The HubSpot-era build (`modules/`, `emails/approved-html/`, `emails/atelier-zero/`,
+`emails/second-pass/`, `legacy-csv-snapshots-2026-07-05/`, the v3 proofs) is **no longer in the
+working tree**. It stays recoverable from git history at `e892e64` and earlier.
 
 ## Next steps / open items
 
-1. Run non-sending HubSpot upload/render checks for every module family and template, including all
-   HubL conditions and real account tokens.
-2. Verify known, unknown, blank, and malformed personalization states with real-contact previews.
-3. Review plain-text, image-blocked, Gmail, Apple Mail, Outlook for Windows, and iOS Mail output in
-   light and dark modes.
-4. Verify subscription type, consent, suppression, unsubscribe, and preference-center behavior for
-   each intended automation or broadcast.
-5. Confirm provenance and publication consent before adding any hosted logo, customer image, quote,
-   name, or testimonial; obtain final owner approval before upload or release.
-6. Review and commit the two pre-existing path/documentation changes currently local to
-   `resend-takeover/`.
+**Done:**
+
+- Private GitHub Project #4 `Email Marketing — Campaign OS` created and repository-linked;
+- 69 canonical connector-readable Issues created with zero second-run drift;
+- 28 custom Project fields populated and six approved native views created and verified;
+- governed Campaign, Email, Task, Experiment, and Bug forms plus pull request template added;
+- fail-closed fictional-fixture preview compiler implemented and locally verified with rendered
+  HTML, full desktop PNG, full mobile PNG, and exact provenance;
+- private review and deliberate public-publication workflows added; publication remains gated off;
+- Phase 0 sender authentication;
+- Phase 1 `text_section` module and Phase 2 image re-encodes;
+- Phase 3 local build of all 53 emails (51 green, 2 source-blocked);
+- 16 real Judge.me quote placements in the newsletter set;
+- Shopify segment cleanup plus the 986-contact consent tag and 205-contact engaged-core tag;
+- 21 native Shopify notification templates restyled and verified live (4 initial + 17 delegated).
+
+**Left:**
+
+1. Resolve the RO-4 `Text - Customer snapshot` and NL-16 `Comparison` source gaps.
+2. Fill the remaining real-data placeholders: newsletter operational metrics, consented UGC
+   photos, gated story editions, offers, and dynamic journey values. Do not invent them.
+3. Finalize the journey-enrollment tag convention and wire the J1/J2/J3/J4/J5 collision/exit rules.
+4. Resolve the two inactive duplicate abandoned-checkout automations in Shopify Messaging.
+5. Build J2 and W in Shopify Messaging and J1/J3/J4/J5 in Shopify Flow; then run the full Phase 5
+   QA suite before any activation.
+6. Open and merge the connector-readable migration pull request after reviewing the task-owned
+   repository changes; merge still does not configure Shopify, schedule, activate, or send.
+7. Separately approve GitHub Pages enablement/first public preview only when a specific Email Issue
+   and source revision are ready; `preview_public` remains false.
+8. Start Phase 6 measurement only after the first approved Shopify sends.
+9. Treat MailerLite cleanup as legacy-system housekeeping only; it is not launch work.
+10. Decide whether to populate the empty `profile_hair_*` CRM fields or remove those merge fields
+   from the Shopify email artifacts.
+
+**Open decisions — unchanged:**
+
+- LAUNCH30 end date · Pruning 769 cold-intent subscribers · Cart discount: discount vs none
+- Whether the 113 previously-translated Shopify-Liquid emails retire now that the 53 are
+  the source of truth
 
 ## Session log
+> Chronological record only. Older entries may describe superseded platforms, paths, counts, or
+> blockers. The current status at the top of this file and `AGENTS.md` always win.
+
+- **2026-08-24 (Codex — Campaign OS implementation):** Built and live-verified the private
+  `Email Marketing — Campaign OS` as GitHub Project #4 linked to
+  `vincent-laroche/email-marketing-ops`. Compiled and created exactly 69 connector-readable Issues
+  (7 Campaigns, 53 Email sub-issues, 8 Tasks, 1 Bug), populated the built-in Status plus 28 custom
+  fields, and created the six approved native views with their exact layouts and filters. The
+  second Issue synchronization reported zero actions and Project read-back verified 69 items,
+  privacy, all fields, and all views. Added governed Issue forms and a PR template. Retokenized
+  CR-1 through CR-4 to the Email Reference File palette and added passing contract tests. Added a
+  locked TypeScript/LiquidJS/Playwright preview compiler using fictional reusable persona/state
+  fixtures; a local CR-1 proof produced rendered HTML, full desktop PNG, full mobile PNG, and a
+  provenance sidecar bound to the exact source SHA and Issue. Added private review and manual public
+  workflows; `preview_public` remains false, Pages was not enabled, and nothing was published.
+  No Shopify Messaging campaign, Flow, audience, schedule, activation, or send changed.
+
+- **2026-08-24 (Codex — Shopify implementation/readiness layer designed):** Vincent approved a
+  minimal Campaign OS extension that keeps the existing Campaign → Email hierarchy, Status/Stage,
+  five core views, PR workflow, preview architecture, and performance model while making Shopify
+  implementation explicit. The written specification now adds eight custom fields—Execution Mode,
+  Messaging State, Shopify Messaging URL, Flow Required, Flow State, Shopify Flow URL, Automation
+  Trigger, and Automation / Flow Name—for 28 custom fields total; adds one native
+  `06 · Messaging & Automation Readiness` table for six Project views total; defines conditional
+  one-time, native Messaging automation, Flow-orchestrated lifecycle, and Transactional/System QA;
+  and makes creative completion, Shopify implementation, verification, activation/scheduling,
+  delivery, performance, and learning distinct states. Evidence remains in connector-readable
+  Issues and linked pull requests rather than a redundant Project field. Vincent supplied
+  `email_marketing_os_github_project_skill.zip` as the base for a future
+  `email-marketing-os-github-project` skill; its stale MailerLite/External fields, redundant Evidence
+  field, weakened preview wording, and illustrative repository layout are explicitly rejected in
+  favor of the approved project specification. The old implementation plan remains paused until
+  Vincent reviews the consolidated written spec. No Project, Issue, pull request, plugin, Shopify,
+  Messaging, Flow, schedule, send, audience, automation, preview, Pages, Cloudflare, or DNS state
+  changed.
+
+- **2026-08-24 (Codex — hybrid Email Preview Gallery architecture):** Vincent approved a static
+  fixture compiler plus GitHub Pages at `email-preview.hairsolutions.co`. Draft/review output stays
+  private in temporary, reproducible Actions artifacts; public output requires both an explicit
+  `preview_public: true` source flag and deliberate workflow dispatch. The renderer must fail closed
+  on unresolved or unsupported Shopify Liquid and produce rendered HTML plus full desktop and mobile
+  screenshots for every successful Email. Every output is bound to the exact source SHA, Email
+  Issue, pull request, fictional fixture state, compiler revision, and content digest. Added a
+  reusable fictional persona/state model, a twentieth Project field (`Preview URL`), atomic public
+  deployment, append-only publication provenance, `noindex`/`robots.txt` safeguards, and a separate
+  approval checkpoint for Pages enablement, the custom domain, and Cloudflare DNS. The five native
+  Project views remain unchanged; the gallery is a sixth interface surface, not a sixth view. The
+  earlier implementation plan is explicitly paused until Vincent reviews the written spec extension.
+  No preview was rendered or published, and no GitHub Pages, Actions, DNS, Cloudflare, Project,
+  Shopify, campaign, send, schedule, or subscriber state changed.
+
+- **2026-08-24 (Codex — Email Marketing Campaign OS design and implementation plan):** Vincent
+  selected the existing private `vincent-laroche/email-marketing-ops` repository and required its
+  complete history to remain intact. Approved GitHub operating model: Issues describe work, pull
+  requests contain reviewable changes, Project fields describe state, and labels describe
+  overlapping characteristics. Issues and pull requests are canonical because Notion and ChatGPT
+  connectors can read them; the private `Email Marketing — Campaign OS` Project is a synchronized
+  navigation and reporting layer. Approved hierarchy: 7 Campaign parents, 53 Email sub-issues, 8
+  independent Tasks, 1 Bug, and no invented Experiments. Approved the built-in Status plus 19
+  custom fields, native parent/sub-issues, disciplined area/asset/flag/risk labels, safe
+  housekeeping automations, and exactly five views: Campaign Portfolio, Email Production, Review
+  & Pull Requests, Launch Calendar, and Performance. The migration must reach `main` through a
+  normal PR; merge does not mean send. Design and execution plan live under `docs/superpowers/`.
+  No GitHub Issues, pull request, Project, campaign, schedule, send, Shopify state, or subscriber
+  data changed in this planning session.
+
+- **2026-08-24 (Codex — platform authority reconciled across project documentation):**
+  Re-verified MailerLite read-only before editing: account 2582639 authenticated, 0 campaigns,
+  1 disabled legacy welcome automation, 2,223 subscribers, quarantined Shopify bridge with
+  44 products and 0 orders. Updated the active project docs to make Shopify Messaging + Shopify
+  Flow the sole marketing campaign/lifecycle platform; marked the MailerLite README, automation
+  guide, API notes, and build ledger as historical/reference-only; added a current-status banner
+  to CAMPAIGN-PLAN.md; corrected J2's stale sender-authentication blocker; verified the reference
+  export now contains 104 module trios/previews despite its historical `(102)` folder name; and
+  marked the CR-1 through CR-4 palette-authority conflict as a release blocker. No campaign,
+  automation, subscriber, Shopify, DNS, send, schedule, or production state changed.
+
+- **2026-08-19 (Claude — close-out: Shopify quarantine, W trigger defused, HubSpot DNS removal, MailerSend committed):**
+  Tail of the audience-rebuild session, which hit a usage limit at ~00:43 with these changes on disk
+  uncommitted; verified and committed as-written by the following session.
+  - Shopify subscriber sync repointed from News & Offers to `⛔ Shopify sync — quarantine`
+    (id `196200001017218918`); `enable_resubscribe`/`enable_popups` off. API-SURFACE §9: the sync group
+    cannot be cleared via API, only repointed — `{"group": null}` is a 200 no-op, so read back every write.
+  - `W · Lead Nurture` trigger confirmed as a `subscriber_joins_group` **event** — enabling does not
+    sweep in existing members. `HS · C · Customers` excluded from the trigger; automation still disabled.
+    API-SURFACE §8: `name` is required on every PUT, not just campaigns.
+  - HubSpot removed from the hairsolutions.co zone (9 changes: SPF include dropped, 4 dead CNAMEs and
+    4 DKIM records removed; `customerportal` kept — it serves a live login page). Full record and
+    pre-change backup in `mailerlite/dns/HUBSPOT-DNS-REMOVAL.md`; MailerLite/MailerSend verified intact
+    after, including an end-to-end MailerSend test send (HTTP 202).
+  - `mailersend/` added: transactional sender (`send_service_email.py`, bounded by `ALLOWED_RECIPIENTS`),
+    PP-1 order-confirmation and PP-4 shipped-tracking templates, synthetic fixture. Two test sends to
+    Vincent recorded in `.send-ledger.json` (order `#HS-10428`).
+  - AGENTS.md §2/§3 amended: marketing send path still forbidden; narrow MailerSend transactional
+    exception; Resend decommissioned (repo kept on disk for the prospect CSV); Shopify declared
+    catalog-only, never contacts. This last phrase is superseded by the current platform role at the
+    top of this file and in `AGENTS.md`.
+  - `mailerlite/modules-pilot/` committed as a WIP snapshot of the parallel preview session: white
+    `#FFFFFF` canvas landed; the "thick header" is the logo PNG's ~42% baked-in transparent margin
+    (1860×822 file, 1580×473 ink); header-trim and section-padding fixes were in flight.
+  - `.playwright-mcp/` gitignored (browser automation state, may hold session cookies).
+
+- **2026-08-21 (Claude — Phase 4: filled 16 Proof Bank quote slots across the 20 newsletter editions, real reviews only, nothing invented):**
+  Built `shopify-messaging/fill_proof_bank_nl.py`, scoped to what CAMPAIGN-PLAN.md's
+  Phase 4 calls "unblocked now" — the Testimonial/quote slots, using the 87 extracted
+  published Judge.me reviews (`proof-bank/proof-bank.json`). Deliberately did **not**
+  touch two other placeholder categories that this data source cannot honestly fill:
+
+  - **"Verified figures/metrics" placeholders** (knots per system, build hours, QC
+    pass rate, average time to locked spec, re-bond interval, repeat-order rate,
+    etc.) — Judge.me review text has no such data. 9 of these left untouched across
+    8 files; need real operational numbers from Vincent, not a plausible-sounding
+    guess.
+  - **"Consented customer/UGC photo" placeholders** — `proof-bank.json` is text-only,
+    no photo asset exists to pull. 3 left untouched across 3 files.
+
+  16 of 18 quote-type placeholders filled (across `NL-01, 03, 04, 05, 06, 08, 09, 10,
+  11, 13, 14, 15, 16, 18, 19, 20` — `NL-02, 07, 12, 17` are the four Story editions,
+  genuinely blocked as the plan says, no placeholder to fill there this way). Matching:
+  keyword overlap between each placeholder's stated "angle" (e.g. "nobody noticed /
+  hairline angle", "colour-match angle") and the 26 quotable (body ≥120 char) reviews;
+  two placeholders with no specific angle ("reflects the period's theme", "single
+  strongest consented review line") fell back to the highest-rated unused review
+  rather than forcing a keyword match that didn't exist. Each review used at most
+  once — tracked via `proof_bank.json`'s `used_in` field, updated on disk, so a future
+  run won't reuse an already-placed quote. Ratings shown per quote (e.g. "5★, Mono
+  Pro") are the review's own recorded values, not invented, and none are described as
+  verified-buyer (correctly — none of the 87 carry that badge, per the known
+  Phase-3 defect this project already fixed once and isn't reintroducing).
+
+  Two module shapes existed and both got handled: a 3-slot Testimonial carousel
+  (fills only the one slot actually requested, leaves the other two empty as before —
+  not this task's scope to guess what belongs in unrequested slots) and a standalone
+  large pull-quote module (quote inserted inline, no separate byline div to fill).
+
+  **Not done, and not claimed as done:** the "aggregate rating" placeholders (none
+  appear in the 20 NL files — that phrasing is only in journey emails, out of this
+  pass's scope); the newsletter capture form's actual ship status (plan says
+  "approved 2026-08-19", not independently reverified this session); the four Story
+  editions (NL-02/07/12/17, blocked on real PP-7/PP-7b customer data, not fixable
+  from Proof Bank); the four paired Education blog posts (NL-01/06/11/16 CTAs land on
+  them — publish status not checked this session). None of Phase 4's own gate
+  ("zero unreplaced placeholders") is met yet — 12 placeholders remain, all correctly
+  gated on real data this session doesn't have, not on more matching effort.
+
+- **2026-08-21 (Claude — Phase 5 continued: engaged-core gap resolved via mkt-resend cohort, J1/J4/J3 precedence approved, duplicate automation confirmed not resolvable by this session's tooling):**
+  Follow-up to the entry below, same session. Full record in
+  `shopify-messaging/PHASE5-PLAN.md`.
+
+  **Engaged-core gap closed.** Vincent pointed to `~/02_dev/mkt-resend` (searched for
+  "resend" per his instruction). Found the real source:
+  `data/current/free-prospect-ranking/selected.json` — 1,000 contacts with genuine
+  owner-attested consent (Vincent, 2026-07-17) and real per-contact engagement data,
+  already approved and imported to MailerLite in July. Built
+  `shopify-messaging/build_engagement_tags.py`: matched 986 of 1,000 to Shopify
+  customers by email, tagged via additive `tagsAdd` (`hs-consented-2026` on all 986,
+  `hs-engaged-core` on the 205 with real opens/clicks). 0 failures. Built the two
+  segments this unlocks. 13 segments total now, all real and live.
+
+  **J1/J4 and J3/J4 precedence rules approved by Vincent** — J1 Post-Purchase runs to
+  completion before J4 Reorder can enroll a customer; J4 Reorder wins over J3
+  Win-Back while active, J3 only picks up a customer after J4 exhausts. Recorded as
+  build requirements in PHASE5-PLAN.md, to be enforced via a journey-enrollment
+  tagging convention that still needs building alongside the automations themselves.
+
+  **Duplicate abandoned-checkout automation: attempted directly, genuinely can't be
+  resolved with this session's tooling.** Tried the automations list (scroll/find/
+  text-extraction all blind to the iframe content), the template catalog page
+  (renders visually but every card is inert to clicks and hover — not a targeting
+  problem, the elements don't respond to synthetic interaction at all), and admin
+  search (doesn't index Messaging automations). This is a two-minute task for a human
+  looking at the real rendered app; it is not currently automatable. Needs Vincent.
+
+- **2026-08-21 (Claude — Phase 5 started: segment layer rebuilt and pruned, consent/Phase-0 re-verified, new blocking gaps found and documented):**
+  Full record in `shopify-messaging/PHASE5-PLAN.md` — this is the summary. Re-verified
+  rather than trusted two load-bearing facts from CAMPAIGN-PLAN.md before building
+  anything: Phase 0 sender-domain auth is genuinely still **Authenticated** (checked
+  Shopify admin directly), and the consent problem is genuinely still current (~95%
+  of ~3,960 customers marked "subscribed" in Shopify's own segment count — same order
+  of magnitude as the plan's 3,780/3,958). **Do not activate any automation against
+  the broad subscribed list** — unchanged, still the top risk in this programme.
+
+  Segment layer: pruned 8 junk Shopify-default segments (4 duplicate "Customers
+  (not) added to companies" pairs), renamed 5 existing segments into the plan's
+  `MKT | Email | <state> | <qualifier>` convention (reusing their correct queries),
+  created 2 new (`Suppressed | Not subscribed or unsubscribed`;
+  `Eligible | J5 Consultation`, tag-driven, zero members by design). 17 segments → 11,
+  all named and queryable now. Also recorded a new API gotcha:
+  `customersCount(query: ...)` silently ignores its query filter and always returns
+  the unfiltered total — do not use it for consent-state counts.
+
+  **New gap found, not in the original plan:** the plan's own recommended safe-start
+  audience (the 186-contact "engaged core") is HubSpot engagement data, not Shopify's
+  — Shopify has sent zero messages ever, so it has no native open/click facts to
+  build that segment from. It needs a one-time tag sync (HubSpot engaged contacts →
+  Shopify customer tag) before it can exist as a segment. Not built this session —
+  flagged rather than substituted with a less-safe broader audience.
+
+  **Second gap found:** the newsletter audience formula's exclusion clause ("active
+  Cart Recovery / Win-Back / J5 enrollees") needs a journey-enrollment tagging
+  convention that doesn't exist yet — Shopify segments have no "customer is
+  mid-automation" fact. Proposed a convention (`journey-j2-active` etc., applied on
+  entry, removed on exit) in PHASE5-PLAN.md; needs building into every journey
+  automation as it's built, not after.
+
+  **UI limitation found:** Shopify Messaging's automations list (where the two
+  existing duplicate "Recover abandoned checkout" / "Abandoned checkout" automations,
+  both Inactive, need resolving to one) is rendered inside an app iframe with no
+  accessibility tree exposed to browser automation — scroll, `find`, and page-text
+  extraction all failed past the onboarding-checklist card. Did not attempt to
+  blind-click-resolve it given the activation risk; needs either Vincent doing it
+  directly or a more careful pass than was safe this session.
+
+  Nothing built this session sends, activates, or enables anything — segment layer
+  only. Next: the two tagging gaps above, then the native/Flow automation builds
+  themselves, per PHASE5-PLAN.md's numbered remaining-work list. Phase 5's own gate
+  (full QA suite + explicit approval before activation) is unchanged and still applies.
+
+- **2026-08-21 (Claude — all 17 delegated native Shopify notification templates rebuilt to Atelier Zero v7 and verified live):**
+  Completed the delegated batch from the entry below. Method: Playwright against
+  `admin.shopify.com/store/oneheadhair/email_templates/<slug>/edit` (persistent profile
+  `~/.ml-browser-profile`, Vincent logged in interactively), driving the CodeMirror 6
+  editor via `cmView.view.dispatch` rather than clipboard paste; live source pulled and
+  re-pulled through the same JS accessor into local files. Each of the 17 was: extracted,
+  re-skinned (reference `<style>` block from the verified-live `order_confirmation` plus
+  the mandated `table.body > tr > td { background: transparent !important; }` rule,
+  `az-eyebrow` row, canonical Ink footer with per-template service-email disclaimer),
+  ASCII-gated (Shopify's own curly apostrophes in `local_delivered` /
+  `local_missed_delivery` were normalized; the `!` in stock `customer_account_welcome`
+  title dropped per the no-exclamation rule), pushed, saved, then **reloaded fresh and
+  re-extracted byte-identical** before moving on. 17/17 PASS. Verified-live copies are in
+  `figma-review-renders/shopify-notifications-v7/`. Footer variables: 12 order templates
+  use `order_name` (confirmed in each source, not assumed); `gift_card_notification` /
+  `gift_card_confirmation` use gift-card wording; `store_credit_issued` a store-credit
+  sentence; `customer_account_reset` / `customer_account_welcome` a generic account
+  sentence. The gift-card/store-credit skeletons have no header row and a different
+  `table.body` shape — eyebrow went in as a table row instead of the nested-table style.
+  `tools/browser_agent.py` gained `/evalfile` and `/setfile` endpoints (file-based, avoids
+  returning large HTML through tool results and the clipboard-mangling round trip), though
+  the actual run used a dedicated worker script after the agent's Playwright driver
+  crashed once (EPIPE, Node 24). Remaining: ~26 out-of-scope native templates untouched by
+  design; master accent color in "Customize email templates" still wrong and deliberately
+  untouched (per-template `!important` overrides carry Coral). Step 10 visual check also
+  done: rendered previews of all 17 (extracted from the admin preview iframe, rendered
+  headless) eyeballed — no floating-card / big-gap failure mode; correct Paper/Ink/Coral
+  architecture everywhere. PNGs in `figma-review-renders/shopify-notifications-v7/previews/`.
+  Two cosmetic observations, both upstream Shopify-skeleton structure, not our CSS, and
+  identical in the verified-live `order_confirmation` reference: the eyebrow's 16px top
+  margin leaves a visible gap above the Paper header row (only noticeable on a white
+  client background; invisible on warm/default backgrounds), and `order_cancelled`'s
+  stock copy wraps to a bare `.-on-a-line` in narrow preview. Neither was changed — the
+  standing instruction is to match the verified reference, not "improve" it.
+- **2026-08-21 (Claude — native Shopify notification-template restyle: found and fixed a live page-background regression on 3 of 4 "done" templates, delegated the remaining 17):**
+  New surface for this repo: Shopify's **native transactional notification templates**
+  (Admin → Settings → Notifications → Customer notifications → Edit code), not Shopify
+  Messaging/MailerLite/MailerSend. Not previously documented in `AGENTS.md`; the design
+  authority for it is `brand-design-system/specs/PLATFORM_EMAIL.md` with a palette
+  (`#EFE7D2`/`#F7F1DE`/`#ED6F5C`/`#15140F`/`#DDD2B6`) — **distinct from and not governed
+  by** AGENTS.md §1's Email Reference File palette, which stays authoritative for
+  MailerLite/MailerSend/Shopify Messaging work only. Flag for Vincent: this repo's
+  `AGENTS.md` has no section for the notification-template surface yet; worth adding one
+  now that real work has landed here.
+
+  A prior session's handoff claimed 4 templates — `order_confirmation`,
+  `draft_order_invoice`, `shipping_confirmation`, `ready_for_pickup` — were "done and
+  verified live." Checked each against the actual live saved source (not against any
+  local file or doc claim). Only `order_confirmation` was correct. The other 3 had a
+  real, live bug: the Paper `#EFE7D2` background and the transparent value were
+  **swapped between selectors** — `.container` (the ~600px content column, which should
+  carry Paper) was `background-color: transparent`, while `body`, `table.body`, and
+  `table.body > tr > td` (the full-width outer wrapper, which must stay transparent)
+  carried `background-color: #EFE7D2`. That's the exact full-bleed page-background bleed
+  the architecture is designed to prevent — invisible in a narrow screenshot, live on
+  every order/shipping/pickup email sent from hairsolutions.co until fixed.
+
+  Fixed all 3 directly in Shopify admin (precise CodeMirror text replacement, not a full
+  rebuild): swapped the two values back, saved, and independently re-verified each one
+  by a **fresh page reload** reading the raw saved source (not the still-open editor
+  state) before moving to the next. All 3 confirmed correct and persisted.
+
+  Saved a byte-exact, verified-correct copy of the live `order_confirmation` source to
+  `figma-review-renders/order_confirmation_VERIFIED_REFERENCE.liquid.html`. The
+  pre-existing `figma-review-renders/order_confirmation.html` (no `_VERIFIED_REFERENCE`
+  suffix) is a **stale wrong-palette draft** from an earlier abandoned attempt (bordered
+  floating-card look, old `#F6EFD9` palette) — it does not reflect the shipped design and
+  should not be used as a reference by a future session.
+
+  Remaining 17 templates (`pickup_receipt`, `local_out_for_delivery`, `local_delivered`,
+  `local_missed_delivery`, `gift_card_notification`, `gift_card_confirmation`,
+  `store_credit_issued`, `order_invoice`, `order_edited`, `order_cancelled`,
+  `order_payment_receipt`, `refund_notification`, `shipping_update`,
+  `shipment_out_for_delivery`, `shipment_delivered`, `customer_account_reset`,
+  `customer_account_welcome`) confirmed genuinely untouched by spot-check (6 of the 17
+  checked directly: `pickup_receipt`, `local_out_for_delivery`,
+  `gift_card_notification`, `customer_account_welcome`, plus the 3 already fixed as
+  cross-reference) — old `#F6EFD9`, no eyebrow, no Coral, no Estonia address, none of
+  the rebuild markers present. `customer_account_welcome` confirmed to have no
+  `order_name` variable in its own source, consistent with needing a generic
+  account-appropriate disclaimer rather than the order-based one.
+
+  Delegated the 17-template rebuild to an external agent (Kimi K2/K3 via ClinePass) to
+  offload the extract→edit→paste-back→verify cycle; wrote a fully self-contained prompt
+  at `figma-review-renders/AGENT-PROMPT-17-templates.md` that names the verified
+  reference file, states the exact swap bug to avoid, and requires per-template
+  fresh-reload persistence verification before moving to the next — specifically because
+  this session's own experience shows a written "done" claim is not trustworthy without
+  independent verification against live source. **Next session: re-verify the delegated
+  agent's output the same way (live source, not its own status report) before treating
+  any of the 17 as shipped.**
+
+- **2026-08-19 (Claude — Phase 3 complete: all 53 emails built, 15 builder defects fixed):**
+  Picked up the CAMPAIGN-PLAN.md programme mid-Phase-3. Found Phases 0–2 committed and the
+  Phase 3 builder written (`tools/build53/`, 103 templates generated) but **never completed a
+  full run** — it crashed at email 6 of 53, and only the 5 J2 emails existed on disk with the
+  ledger holding a single entry. Now: **51 GREEN · 2 BLOCKED · 0 ISSUES across all 53**,
+  `shopify-messaging/emails/` complete, `shopify-messaging/build-ledger.json` regenerated.
+  Local artifacts only — nothing pushed, scheduled or sent (AGENTS.md §2).
+
+  The build was not merely incomplete, it was silently wrong. Fifteen defects found and fixed;
+  eleven of them changed what a subscriber would have received. Full table in
+  `shopify-messaging/BUILD-LEDGER.md` §Phase 3. The ones that matter most:
+
+  - **An unverified "4.8 out of 5" rating was hardcoded into 10 emails.** The Proof Bank is
+    44×5-star + 43×4-star (≈4.5 average) with no verified-buyer badge on any of the 87 reviews.
+    The claim was not supportable. It is now a slot that renders as a loud placeholder until a
+    real figure is supplied.
+  - **Empty-default fields never received a slot** in `gen_templates.py`, so renderers wrote into
+    slots that did not exist — `comparison`'s items, `timeline`'s labels and text, `stat_bars`
+    labels, `text_offer_discount`'s percentage and code. 21 slots recovered by aligning the HubL
+    source's tag stream against the rendered preview.
+  - **Copy was being dropped in four separate ways** — em-dash splitting keeping only one half,
+    module slot overflow discarded, a 6-slot cleanup cap, and a copy queue keyed by family name
+    when PP-7b's Body and Module Stack name the same module differently. A general
+    *no-copy-left-behind* guard now appends any line that did not reach its module, verbatim,
+    and records it as a deviation. 38 emails carry at least one.
+  - **24 emails pointed their footer logo at the HubSpot portal CDN**, a host this account no
+    longer controls. All 53 now use the Cloudinary wordmark (approved host, 16 KB, HTTP 200).
+  - `--check-links` was a dangling flag with no implementation, so the Phase 3 "every link
+    resolves 200" gate could not run. Implemented as `tools/build53/check_links.py`.
+
+  **Structural gate: 53/53 pass** — unsubscribe, physical address, hidden preheader, mobile
+  media query, transparent body/wrapper, alt on every image, zero unfilled slots, zero leftover
+  HubL, zero dead hosts, zero double-escaped entities, all under the 102 KB Gmail clip.
+
+  **Two BLOCKED, both source-data gaps needing Vincent's call** (per the plan, a missing `()`
+  module is a blocked build, not a judgement call): **RO-4** — stack requires
+  `Text - Customer snapshot`, Body has no matching block; **NL-16** — stack requires
+  `Comparison`, Body has no matching block.
+
+  **Not sendable yet, by design.** 128 loud placeholders remain across the set — every
+  `[PULL from Proof Bank ...]`, `{{ dynamic: ... }}` and `[OFFER ...]` renders visibly rather
+  than being invented. Replacing them is Phase 4. 14 emails carry the `⚠️ GATED` note (the W
+  series and the newsletter wait on the capture form). Four CTA destinations are deliberate
+  `#TODO-` placeholders: PP-1's order URL and PP-4's tracking URL are Phase 5 automation values;
+  PP-7 has no public review-submission page and PP-7b's `/pages/share-your-look` returns 404.
+
+  **Flag for Vincent:** the only image in all 53 emails is the wordmark. The five product shots
+  and four launch-day WebPs re-encoded in Phase 2 are referenced by no email — no module stack in
+  the reference file calls for them. Either the photo modules need image assignments, or Phase 2
+  was serving something other than these 53.
+
+  **Next:** Phase 0 is still the hard blocker and is still Vincent-only (Shopify sender-domain
+  CNAMEs; DKIM absent, `p=quarantine` will quarantine everything). Phase 4 (fill the 11
+  reality-dependent newsletter editions from the Proof Bank) is unblocked and can run in parallel.
+
+- **2026-08-19 (Claude — reshade batch 1 built, completing the three-batch re-shade):** Batch 1 was
+  never run (its subagent died in the crashed r2-image-migration session). Note: the folder formerly
+  named `reshade-batch-1/` was a different deliverable (the WB-1 master assembly); the lead renamed it
+  to `wb1-master-assembly/` before this session started, and it was not touched. Built
+  `reshade-batch-1/` fresh: 7 families × 3 shades (Bone/Paper/Ink) — `photo__feature_story`,
+  `product__dynamic_recommendations`, `list__questions`, `list__support_strip`, `hero__photo_led`,
+  `commerce__viewed_product`, `commerce__shipping_tracking` — plus `_batch-1.json` (name→HTML map),
+  `_index.json` (byte ledger), and contact-sheet `_preview.html`, all matching the accepted
+  batch-2/3 conventions. Copy verbatim from the resolved preview sources (`_light` for Bone/Paper,
+  `_dark` for Ink — programmatically confirmed identical text in every family). Verification: 146/146
+  checks passed via a throwaway stdlib script — transparent outer wrapper on all 21 files; balanced
+  tags with self-closed `<img/>`; palette audit confined to the 7 approved hexes
+  (#F7F1DE #EFE7D2 #15140F #ED6F5C #DDD2B6 #5A5448 #2A2620); per-family bone/paper/ink diffs confined
+  to colour values + heading letter-spacing; visible-text diff vs the resolved preview sources clean
+  for all 21 (only the contract eyebrow `—` prefix added, as in batches 2/3); hrefs/img src/alt
+  preserved exactly; stacking `<style>` block present iff multi-column (Dynamic recommendations,
+  Support strip, Shipping tracking). **Placeholders flagged:** `product__dynamic_recommendations`
+  (2×) and `commerce__viewed_product` (1×) have empty `src=""` image attributes in the source modules
+  themselves — kept verbatim per the "keep sources' image URLs exactly" rule; they need real media
+  URLs before any production use. No live/production change: local file authoring only, no HubSpot,
+  MailerLite, MailerSend, Shopify, send, or schedule action of any kind.
+
+- **2026-08-19 (Claude — reshade batches 2 + 3 completed, consolidated into real project folder):**
+  The r2-image-migration worktree session hit its usage limit mid-run; two of its three re-shade
+  subagents (batch 2 and batch 3) died before writing. Reconstructed both briefs from the session
+  transcripts and completed them. Batch 3 (5 families × 3 shades: `review__stars`, `product__3up_grid`,
+  `commerce__quote_spec_table`, `grid__collections_4`, `timeline`) and batch 2 (7 families × 3 shades:
+  `text__offer_discount`, `signal__countdown`, `text__base_type_guidance`, `text__customer_snapshot`,
+  `commerce__cart_line_items`, `photo__founder_note`, `commerce__order_summary`) — each with
+  `_batch-N.json` name→HTML map, `_index.json`, and contact-sheet `_preview.html`. All checks passed
+  per file: transparent outer wrapper, balanced tags, palette confined to the 7 approved hexes,
+  shades differ only in colour + heading letter-spacing, copy diffed verbatim against the resolved
+  preview sources, stacking style block iff multi-column. Per Vincent, the real project folder is
+  `07_design/email_marketing/` — all three batches (`reshade-batch-1/`, `reshade-batch-2/`,
+  `reshade-batch-3/`) are now consolidated there (batch 1 copied from the worktree). Placeholders
+  added for empty source fields (offer-discount figure/code, cart rows 2–3, timeline day bodies,
+  customer-snapshot body) and flagged in the batch reports. CTAs follow the approved library
+  (coral pill + ink label on all shades) — the batch briefs' "CTA inverts" line contradicts the
+  approved `button__primary_cta` files; the files won. No HubSpot, MailerLite, Shopify, send,
+  schedule, or production change occurred.
+- **2026-08-19 (Claude — CAMPAIGN-PLAN.md created):** Vincent shared the verified
+  campaign implementation plan for the 53-email Shopify Messaging programme. Written to
+  `CAMPAIGN-PLAN.md` (479 lines, copied verbatim — no edits or additions). The plan was
+  verified against `Email Reference File/`, live DNS, R2, and the Shopify Admin API on
+  2026-08-19. Nothing live was touched. Key findings: 53 emails across 6 journeys +
+  newsletter, 102 module previews deployable as artifacts, 1 genuine module gap
+  (text_section), 4 oversized images, Shopify DKIM still the hard blocker, 1,732
+  marketable contacts with undocumented consent provenance, Proof Bank unlocked via
+  Judge.me metafield. 6 phases documented. `PROJECT.md` header and next-steps updated to
+  reference the plan. `AGENTS.md` already referenced `CAMPAIGN-PLAN.md` (line 83) — that
+  file now exists.
+
+
+- **2026-08-19 (Claude — `email-marketing` plugin installed):** Installed the `email-marketing` plugin
+  (v1.0.0+codex.20260818181954) from the local `toolkit-marketplace` (`~/.claude/plugins/marketplaces/`):
+  registered in `installed_plugins.json` (scope user, commit `904045ee`), enabled in
+  `~/.claude/settings.json`, cleared the cache orphan marker so the sweep keeps the payload. Ships 13
+  skills (incl. `email-marketing-preflight`, `mailerlite-campaign-drafting`, `mailerlite-release`), 8
+  paired Claude+Codex agents, the MailerLite OAuth MCP (`mcp.mailerlite.com/mcp` — authorizes on first
+  use), and safety hooks (session preflight, Bash guard, MailerLite write guard, post-edit validator).
+  Refreshed all 8 Codex agents in `~/.codex/agents/` via `install_codex_agents.py` (were stale;
+  `--check` now passes 8/8). Known nit: `session_preflight.py` hardcodes project path
+  `/Users/vMac/04_marketing/email` (reports "Project available: no") — real project is
+  `/Users/vMac/04_marketing/email_marketing`; flagged for a marketplace-side fix, not patched here.
+
+- **2026-08-19 (Claude — three MailerSend service emails built from Figma):** Vincent subscribed to
+  MailerSend for a month to test transactional mail and asked for the three service emails drawn in
+  the Figma **Email Design System**, canvas `225:357`. Built `SVC-1-order-confirmed` (frame
+  `284:21673`, V2 *Structured & Detailed*), `SVC-2-specification-review` (`284:21682`, V3 *Branded &
+  Warm* — the production update) and `SVC-3-reorder-received` (`284:21691`), all generated by the new
+  `mailersend/build_service_emails.py` rather than hand-written, so the shared card/inset/grid
+  vocabulary stays one definition. `send_service_email.py` gained the three types, the optional
+  `summary_rows` / `recommendations` / `resources` blocks with their `has_*` flags, and grid-arity
+  validation. All three sent to the allowlisted address and confirmed `delivered`
+  (`6a85fc98…`, `6a85fca1…`, `6a85fca2…`).
+  - **The catalogue gap bit here.** The comps name six care products — cleanser, scalp spray, lace
+    bond, bond remover, scalp tape — and **none of them exist**: `products.json` is hair systems,
+    order add-ons and services only, and the add-ons carry no images. The recommendation and resource
+    grids are therefore fully data-driven and collapse when the payload sends nothing; the fixtures use
+    real catalogue products and real guide pages. This is open item 5, seen from the template side.
+  - Six other deliberate departures from the comps (no pure-white surfaces, no unsubscribe on service
+    mail, real postal address, totals card added, text social links, font stacks) are recorded with
+    their reasoning in `mailersend/DESIGN-NOTES.md`. Read that before "fixing" one back.
+  - `SVC-1` and the older hand-written `PP-1` now cover the same order-confirmation ground in two
+    different designs. Both left in place — picking the canonical one is Vincent's call.
+
+- **2026-08-19 (Claude — no wallpaper behind an email, repo-wide):** Vincent banned the coloured page
+  background outright, on every email, both platforms. Now AGENTS.md #5, a hard rule: `<body>` and the
+  outer wrapper are `background-color:transparent` and colour belongs only to cards and their insets.
+  Enforced at the source — `PAGE_BG` in `mailerlite/ml_components.py`, `PAGE` in
+  `mailersend/build_service_emails.py` — plus inline in the two hand-written MailerSend templates.
+  All 27 MailerLite emails rebuilt and revalidated; the three `SVC-*` rebuilt, re-sent and confirmed
+  `delivered`. **The pushed MailerLite drafts still carry the old background** — they are rebuilt
+  locally but not re-pushed; that is a live write and needs preflight.
+  - Found and fixed while doing it: `idempotency_key()` fingerprinted the payload but not the
+    template, so a redesigned template resent nothing — the order data was unchanged, the key matched,
+    and the send was skipped as a duplicate. The template body is now part of the key. This
+    invalidates every ledger entry written before the change, which is the correct outcome.
+
+- **2026-08-19 (Claude — audience rebuilt from HubSpot, Shopify contacts purged):** Vincent connected
+  the Shopify shop, then asked why products weren't populating the e-commerce blocks. Live check showed
+  the shop `enabled: true` but **products 0 / orders 0** — only *customers* had synced, and into
+  **News & Offers** (the marketing group) rather than Shopify Customers. Cross-referencing the Shopify
+  Admin API found the integration ignores Shopify's marketing-consent state: of 631 synced, **95 had no
+  affirmative consent** (93 `unsubscribed`, 2 `not_subscribed`). MailerLite's own `accepts_marketing`
+  flag showed only 47 because it covers just the 246 order-bearing customers.
+  Vincent's decision: delete every Shopify-sourced contact, ignore Shopify as a contact source entirely,
+  and build the audience from the HubSpot export instead.
+  - `purge_shopify_subscribers.py` deleted all 631; verified zero remain.
+  - `select_audience.py` tiers the 3,967 HubSpot contacts. Absolute suppression (130): crisis/chargeback/
+    angry/lost, hard bounce, subscription opt-out, `hs_email_optout`, `suppress_never_market`,
+    internal/supplier, invalid email. Held back: `hold_review` 1,237, `keep_non_marketing` 397.
+  - `upload_audience.py` upserted 2,188 into six new groups (A promote_now 71, B promote_next_cycle 352,
+    C customers 306, D warm 690, E cold 769, hair professionals 89) and deleted 8 suppressed contacts
+    already present. 5 addresses were refused by MailerLite itself.
+  - Vincent ruled `comm_marketing_status_manual` worthless outside HubSpot mid-session; the selection was
+    rebuilt on `marketing_contact_intent` + `intent_tier_static` instead. An initial reading that treated
+    `comm_marketing_status_manual=false` as "do not market" was wrong — it is HubSpot's *current* status,
+    which is why 382 `promote_now`/`promote_next_cycle` contacts carried it.
+  - Hair professionals segmented on `contact_type` (89). A free-text keyword sweep was **rejected** — it
+    produced ~29% false positives because consumers routinely write "looking for a stylist near me". 20
+    self-identified candidates went to a review file rather than the segment.
+  - Two API behaviours recorded in `API-SURFACE.md` §6/§7: campaign group assignment reads back on
+    `filter` not `groups`; and `DELETE /subscribers/{id}` is a **soft** delete that a later upsert
+    resurrects, restoring original `id`/`created_at`/`source` **and prior group membership**. 186 records
+    read `source: ecommerce` for this reason despite arriving via the HubSpot upload — `source` is not
+    provenance.
+  - Found `profile_hair_*` populated in 1 of 3,967 contacts; any module merging those fields renders blank.
+  - Nothing was sent or scheduled. 23 campaigns remain draft and parked; both automations remain disabled.
+
+
+- **2026-08-18 (Claude — repo cleanup against the new source of truth):** Vincent declared
+  `Email Reference File/` the absolute source of truth for campaigns, journeys, email structure and
+  composition, copy, and module presence, and asked for a full cleanup of everything it made
+  obsolete. Repo went **791 MB → 23 MB**. What changed:
+  - **Moved out:** `mkt-resend/` (522 MB) → `~/02_dev/mkt-resend`, alongside the existing
+    `mkt-content-factory` / `mkt-social`. It was a nested git repo with its own GitHub remote, so it
+    never belonged inside this one. Its `node_modules` (231 MB) was dropped as reinstallable. Its 3
+    uncommitted local changes were preserved untouched. `mailerlite/import_prospects.py` was
+    repointed at the new location and made overridable via `PROSPECT_IMPORT_DIR`.
+  - **Trimmed:** `exports/hubspot-2026-08-18/` 141 MB → 11 MB by deleting the five full-fidelity
+    JSONs (`contacts` alone was 88 MB) whose content is duplicated by the CSVs the importer actually
+    reads. `import_hubspot_audience.py` had a broken absolute path (`07_design/email/…`) — fixed to
+    resolve relative to the repo.
+  - **Deleted from the working tree (all recoverable at `e892e64`):** `modules/` (all trees, old
+    `billing_payment_details`-style naming superseded by the reference file's 102 renamed trios),
+    `emails/` (`approved-html` 118, `atelier-zero` 107, `second-pass` v3 build pipeline),
+    `legacy-csv-snapshots-2026-07-05/`, `surface-system-proof.html`,
+    `journey-emails-second-pass.html`, `MASTER-EMAIL-BLUEPRINTS.md`, `docs/superpowers/`,
+    `.superpowers/`. Verified first that `emails/second-pass/source-v3/` was an *older* copy of the
+    same Notion export — the reference file is a strict superset, adding NL-01…20.
+  - **Folded in:** `emails_master/` — 33 of its 38 files were byte-identical to the reference file;
+    the 5 unique `Journey · … Master` docs were moved into
+    `Email Reference File/emails_modules_hubspot versionr/` before deleting the folder.
+  - **Junk:** 41 `.DS_Store`, `.pytest_cache`, `.ruff_cache`, `__pycache__`, a prunable 15 MB
+    `.claude/worktrees/` copy, `mailerlite/.browser-profile` (88 MB), and two empty dirs.
+  - **Docs:** `README.md` rewritten (it described `records/`, `archive/`, `resend-takeover/` — none
+    of which existed). `AGENTS.md` rewritten from generic `01_projects` boilerplate into real
+    project rules, with the source-of-truth rule as §1 and the stale "HubSpot connector is
+    write-capable" claim corrected. `.gitignore` extended for `.browser-profile/`.
+  - Nothing in the live MailerLite account was touched.
+
+- **2026-08-18 (Claude — campaign/automation audit against live MailerLite account, in progress):**
+  Vincent asked to verify all email drafts have the right campaigns associated and all automations are
+  built/published, using `Email Reference File/` as the content bible. Audited live account 2582639
+  against `mailerlite/BUILD-LEDGER.md` and `AUTOMATION-ASSEMBLY.md`. Findings:
+  1. All 27 pushed campaigns exist with matching subjects; all correctly still `draft`.
+  2. **Real risk found and fixed:** 23 campaigns (PP-1…7b, CR-1…4, WB-1…4, RO-1…6, W-4) had no
+     group/segment assigned, which MailerLite silently treats as "all active subscribers" (1,000
+     prospects) rather than "no recipients." Created safeguard group
+     `⛔ DO NOT SEND — Lifecycle Drafts (parked)` (id `196158361233786451`, 0 subscribers) and
+     reassigned all 23 to it via direct API PUT (`{name, groups}` only — content/subject untouched).
+     Verified each now reads `all_active_subscribers: false`. This does not fix the underlying issue
+     (these are lifecycle emails that belong inside automations, not as broadcast campaigns) — it only
+     removes the accidental-send risk until they're properly migrated.
+  3. **W-series double-send risk confirmed, not yet resolved:** W-1/2/3/5 exist both as broadcast
+     campaigns targeting News & Offers (1,000) and as steps inside the built `W · Lead Nurture ·
+     Prospects` automation (id `196153754951615684`, disabled, dry-run 7/7 would-execute, 4/4 emails
+     designed — this automation itself is correctly built and untouched). Pick one delivery path
+     before ever enabling that automation.
+  4. **J1/J2/J4 automations: not built, and cannot be via API right now.** `AUTOMATION-ASSEMBLY.md`
+     cites shell IDs (196137612884313321 etc.) that do not exist in this account — stale references
+     from before the 2026-08-18 from-scratch rebuild. Root blocker: the Shopify shop connection is not
+     actually live (see corrected status note above) — J1's "purchase" trigger has no equivalent in the
+     available automation-builder trigger types at all (dashboard-only), and J2's `abandoned_cart`
+     trigger validates against shop `97521` but won't fire while it's disabled/unconnected.
+  5. **J3 (Win-Back) partially built:** created segment `J3 · Win-Back Candidates — configure rule in
+     dashboard (last order 180+ days, no engagement 90 days)` (id `196158509152207934`) — **currently
+     has no filter and matches all 1,000 subscribers; do not wire it live until the real rule is set in
+     the dashboard segment builder** (engagement conditions aren't settable via the simple API filter
+     format). The automation shell itself (WB-1→4 + delays, trigger on this segment) was **not
+     completed** — the tool platform's safety-classifier service went down mid-build (affecting all
+     MCP and networked Bash calls, not specific to this action) right after the first `create_automation`
+     attempt errored on the `trigger_config` shape (`"At least one segment is required"` — likely a
+     payload-key mismatch, not a real blocker; untried alternate shapes remain to try).
+  6. Confirmed 42 custom fields now exist (BUILD-LEDGER only documented 18) — segmentation-ready fields
+     (`customer_status`, `months_since_last_order`, `months_since_delivery`, `order_band`, `value_band`,
+     `warm_up_wave`, `migration_cohort`, `intent_tier`, `buyer_type`) were added at some point without a
+     ledger update.
+
+  **Tooling outage diagnosed (not project-related):** confirmed by isolation testing that Auto Mode's
+  tool-safety classifier (model `claude-sonnet-5[1m]`) was down, not any specific action of mine.
+  Evidence: trivial local commands (`echo`, `date`, `whoami`, `ls`) succeeded throughout; anything
+  requiring classification — plain outbound network access (`curl https://example.com`, no secrets
+  involved), reading `~/.env` alone (no network), and every MailerLite MCP call including a no-op auth
+  check — failed identically with "claude-sonnet-5[1m] is temporarily unavailable." This explains why
+  the J3 automation build stalled: the `create_automation` 422 error (`"At least one segment is
+  required"`) happened on the *first* attempt with `trigger_config: {"segment_id": "..."}`, before any
+  alternate payload shape was tried — the outage then blocked every retry, including a retry of that
+  exact same unmodified call. So it's still genuinely unknown whether `{"segment_id": "..."}` is the
+  wrong key/shape or would have worked on a clean retry.
+
+  **Next steps (pick up here):** (a) once tools are responsive, first just retry `create_automation`
+  for J3 with the *exact same* payload already used (name `J3 · Win-Back → Sunset`, trigger_type
+  `subscriber_joins_segment`, `trigger_config: {"segment_id": "196158509152207934"}`, 7 steps: email
+  "Checking in — Vincent here" / delay 7d / email "What's changed since you last ordered" / delay 7d /
+  email "20% off, if you want to try again" / delay 7d / email "Last email from us") — the 422 may not
+  reproduce once the classifier is back. Only if it still 422s, try alternate `trigger_config` shapes
+  (e.g. `segment_ids: [...]` as an array, matching the plural wording in the error message). (b) the
+  sunset step (delay 7d → condition: no engagement → remove from marketing groups) has no branch/action
+  step in the automation-builder API — must be added manually in the MailerLite dashboard regardless;
+  (c) Vincent needs to reconnect/re-enable the Shopify shop in the dashboard before J1/J2/J4 can be
+  attempted at all; (d) once J3/J1/J2/J4 have real automation homes, move each parked campaign's
+  content into the matching automation step (dashboard paste — API can't author automation-step HTML)
+  and only then delete the 23 parked draft campaigns; (e) resolve the W-series dual-path decision before
+  enabling the W automation.
+
+- **2026-08-18 (Cline — MailerLite migration, Phase 0–2 for 4 journeys):** Figma audit (subagent) of
+  `Email-Design-System` page 291:724: 28 journey emails, design tokens, 21 section types. Decision
+  recorded: design-in-MailerLite/send-in-Resend hybrid is not viable (no HTML export; Shopify blocks
+  render server-side at send time); MailerLite = marketing/lifecycle lane, Resend = transactional.
+  API-built foundation: Shopify shop 97496 **enabled** → group Shopify Customers; groups News & Offers /
+  Order & Shipping Updates / Hair Care Guidance / Customer Service Communication; 18 custom fields;
+  automation shells J1–J4 (**disabled**); domain mail.hairsolutions.co added (unverified — records only
+  visible in UI). Verified SHOPIFY_ADMIN_API_TOKEN is dead, SHOPIFY_APP_ADMIN_TOKEN works (44 products,
+  all hair systems — care products absent). Built `mailerlite/` (component library, content modules,
+  `build_emails.py` renderer+validator) → 22 HTML emails, 3–10 KB, `{$field}` syntax, validated. Docs:
+  `mailerlite/BUILD-LEDGER.md`, `mailerlite/AUTOMATION-ASSEMBLY.md`, `mailerlite/README.md`.
+  No sends, no contact imports, all automations disabled.
 
 - **2026-08-09 (Codex — complete 84-module HubSpot-to-Figma conversion):** Recovered the previously missing exact source trios with read-only calls to the published HubSpot Design Manager source tree: `email_modules/header-adaptive/`, `hero-adaptive/`, `cart-recovery/`, and `email-design-system/`. Created the remaining **39** editable Figma components on page `164:2` of `Email-Design-System` (`9Il504CQE8jLaUTBVzphqc`) and relocated the already-built **CTA - Consultation compact** reference (`188:3`) into its matching CTA section. The catalogue now contains **84/84** screenshot previews paired to exactly one editable 600px component in the same Figma section. Final read-back audit: **84 expected / 84 valid / 0 mapping errors / 0 duplicates**. Every component has the Module Header → transparent Module Shell → Card hierarchy, all three full source files in its description, approved font families only, and an instance of `Email / CTA Button` when its source uses `cta_label`. Rich-text defaults were normalised to editable plain copy. No HubSpot file, module, email, send, schedule, campaign, CRM record, or production surface changed.
 

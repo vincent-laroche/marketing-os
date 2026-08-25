@@ -1,0 +1,58 @@
+{
+  "16255feda0b46b2cb0be5f1a4e4a86f6": {
+    "message_id": "6a85fca27f7212b147684864",
+    "order_number": "#HS-95160",
+    "sent_at": "2026-08-19T18:57:38+00:00",
+    "to": "vincent@hairsolutions.co",
+    "type": "reorder-received"
+  },
+  "288c1fccfa827eec0488d0abd1e604bf": {
+    "message_id": "6a85fca144a4be822472c187",
+    "order_number": "#HS-94821",
+    "sent_at": "2026-08-19T18:57:37+00:00",
+    "to": "vincent@hairsolutions.co",
+    "type": "specification-review"
+  },
+  "4878162308cc23d356803be7bf504e06": {
+    "message_id": "6a85fdabbfcf81d6fa8a6cf6",
+    "order_number": "#HS-94821",
+    "sent_at": "2026-08-19T19:02:04+00:00",
+    "to": "vincent@hairsolutions.co",
+    "type": "order-confirmed"
+  },
+  "6cb0af4ac6f4f6d7a4c54bf311d397ce": {
+    "message_id": "6a85fdacfd2bf5872fbe3adb",
+    "order_number": "#HS-94821",
+    "sent_at": "2026-08-19T19:02:05+00:00",
+    "to": "vincent@hairsolutions.co",
+    "type": "specification-review"
+  },
+  "8915704a4b4bf1a80371816605ae2dff": {
+    "message_id": "6a851c1c77ae976484a53a4b",
+    "order_number": "#HS-10428",
+    "sent_at": "2026-08-19T02:59:40+00:00",
+    "to": "vincent@hairsolutions.co",
+    "type": "order-confirmation"
+  },
+  "a262f07fe2e675024a7985e3f60fa349": {
+    "message_id": "6a85fc984804be2a92c90119",
+    "order_number": "#HS-94821",
+    "sent_at": "2026-08-19T18:57:28+00:00",
+    "to": "vincent@hairsolutions.co",
+    "type": "order-confirmed"
+  },
+  "e670e5676332e685d948e672b6425406": {
+    "message_id": "6a85fdad3f693f4794a2a2b3",
+    "order_number": "#HS-95160",
+    "sent_at": "2026-08-19T19:02:05+00:00",
+    "to": "vincent@hairsolutions.co",
+    "type": "reorder-received"
+  },
+  "f52c24b8dab4c88a885b7d5dfb964063": {
+    "message_id": "6a851ae960b7e2c600316362",
+    "order_number": "#HS-10428",
+    "sent_at": "2026-08-19T02:54:33+00:00",
+    "to": "vincent@hairsolutions.co",
+    "type": "shipping-confirmation"
+  }
+}

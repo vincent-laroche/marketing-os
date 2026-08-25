@@ -1,0 +1,23 @@
+name: Campaign
+description: Plan and govern one email campaign or journey.
+title: "Campaign — "
+labels: ["email-marketing", "area:campaign"]
+body:
+  - type: markdown
+    attributes:
+      value: "Do not include customer PII. Creating or approving this Issue does not authorize scheduling, activation, or sending."
+  - type: input
+    id: campaign_code
+    attributes: {label: Campaign code, placeholder: "J2"}
+    validations: {required: true}
+  - type: textarea
+    id: objective
+    attributes: {label: Objective and audience}
+    validations: {required: true}
+  - type: textarea
+    id: sequence
+    attributes: {label: Email sequence and acceptance criteria}
+    validations: {required: true}
+  - type: textarea
+    id: evidence
+    attributes: {label: Decisions, blockers, evidence, results, and learnings}

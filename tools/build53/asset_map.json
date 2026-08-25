@@ -1,0 +1,32 @@
+{
+  "_comment": "Phase 2 asset map for the 53-email build. Old PNG key -> new WebP key. Reference images ONLY by raw /v1/public/<key> URL - never ?variant= (AVIF). Base: https://assets.hairsolutions.co/v1/public/",
+  "launch-day": {
+    "hero": {
+      "old": "approved/marketing/launch-day/1896e7bd0cde32066647ed25c8e18372c3f540a81f0a9149b60793283bdeceaf.png",
+      "new": "approved/marketing/launch-day/15d29fa43166728d13a4eb021c515a230b27624bcc7658f797cae4e8be957b9f.webp",
+      "bytes_before": 658132, "bytes_after": 42990, "dimensions": "640x800"
+    },
+    "square-a": {
+      "old": "approved/marketing/launch-day/d7b7090d195a0dd1eb598c35383b3bb6c0e3a49a42a80494809fd9f67908156e.png",
+      "new": "approved/marketing/launch-day/eb688762ff7ff7c6c34fc5df1a2dcf0d8cf25145239bd08d7c48c508a018e94c.webp",
+      "bytes_before": 2069533, "bytes_after": 104330, "dimensions": "1200x1200"
+    },
+    "square-b": {
+      "old": "approved/marketing/launch-day/b4a144d060461a2bd329279f3fec4af4fffb494ab98346b13314b84ef83dff07.png",
+      "new": "approved/marketing/launch-day/9eea83eb4d06541c98500bf1dea924b7edabf2ddcbe4a308f7d05dc443205f50.webp",
+      "bytes_before": 2178191, "bytes_after": 124010, "dimensions": "1200x1200"
+    },
+    "square-c": {
+      "old": "approved/marketing/launch-day/31f36885a35536d04c60ba9ab774222cdcf079223b649d6936d72b6b54b6594c.png",
+      "new": "approved/marketing/launch-day/ec31b7fbf02b92f64715594e2086147a22064cd8460c7e79794cf44b6499b5e9.webp",
+      "bytes_before": 2180252, "bytes_after": 142166, "dimensions": "1200x1200"
+    }
+  },
+  "products": {
+    "lace-elite": "approved/products/lace-elite/e207b4ac67ca4f36be3e8366734ab33fee2327e1cee3fd80d5cd6d4288900170.webp",
+    "lace-pro-ld": "approved/products/lace-pro-ld/86e7e7e765820cecc2df9d06f27a007449c8c6e8869a3e9f3d1e161649c7e0f3.webp",
+    "micro-skin-md": "approved/products/micro-skin-md/d29da587cc353ab7df05bc61c48ed9f36e806daeaa2d328716ab27d559b47536.webp",
+    "mono-fusion-lf": "approved/products/mono-fusion-lf/5eeaf8380075484e5fba4c0983b56fb98a75a18c23a08a4b27f63a3163ed0adb.webp",
+    "mono-pro": "approved/products/mono-pro/13b047050cb089fb5e44f34b2cc0c69385708004423768f6b363966ba64b6725.webp"
+  }
+}

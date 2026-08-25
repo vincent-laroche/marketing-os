@@ -1,0 +1,15 @@
+name: Task
+description: Track independently owned supporting work.
+title: "Task — "
+labels: ["email-marketing", "area:operations"]
+body:
+  - type: markdown
+    attributes:
+      value: "Do not include customer PII. Completing this Task does not authorize scheduling, activation, or sending."
+  - type: textarea
+    id: outcome
+    attributes: {label: Required outcome and acceptance criteria}
+    validations: {required: true}
+  - type: textarea
+    id: evidence
+    attributes: {label: Evidence, blockers, decisions, and rollback}

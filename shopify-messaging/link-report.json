@@ -1,0 +1,669 @@
+[
+ {
+  "url": "mailto:info@hairsolutions.co",
+  "status": "MAILTO",
+  "http": null,
+  "emails": [
+   "12-pp-7.html",
+   "22-ro-4.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "01-cr-1.html",
+   "02-cr-2.html",
+   "03-cr-3.html",
+   "04-cr-4.html",
+   "05-br-1.html",
+   "06-pp-1.html",
+   "07-pp-2.html",
+   "08-pp-3.html",
+   "09-pp-4.html",
+   "10-pp-5.html",
+   "11-pp-6.html",
+   "12-pp-7.html",
+   "13-pp-7b.html",
+   "15-w-2.html",
+   "17-w-4.html",
+   "19-ro-1.html",
+   "20-ro-2.html",
+   "21-ro-3.html",
+   "22-ro-4.html",
+   "23-ro-5.html",
+   "24-ro-6.html",
+   "25-wb-1.html",
+   "26-wb-2.html",
+   "27-wb-3.html",
+   "28-wb-4.html",
+   "29-c-0.html",
+   "30-c-1.html",
+   "31-c-2.html",
+   "32-c-3.html",
+   "33-c-4.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/collections/all?utm_source=shopify_email&utm_medium=email&utm_campaign=nl-20",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "53-nl-20.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/collections/all?utm_source=shopify_email&utm_medium=email&utm_campaign=ro-2",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "20-ro-2.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/collections/best-sellers?utm_source=shopify_email&utm_medium=email&utm_campaign=nl-03",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "36-nl-03.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/collections/best-sellers?utm_source=shopify_email&utm_medium=email&utm_campaign=nl-08",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "41-nl-08.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/collections/best-sellers?utm_source=shopify_email&utm_medium=email&utm_campaign=nl-18",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "51-nl-18.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/collections/best-sellers?utm_source=shopify_email&utm_medium=email&utm_campaign=pp-6",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "11-pp-6.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/collections/best-sellers?utm_source=shopify_email&utm_medium=email&utm_campaign=w-3",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "16-w-3.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/collections/mens-hair-systems?utm_source=shopify_email&utm_medium=email&utm_campaign=nl-05",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "38-nl-05.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/collections/mens-hair-systems?utm_source=shopify_email&utm_medium=email&utm_campaign=nl-10",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "43-nl-10.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/collections/mens-hair-systems?utm_source=shopify_email&utm_medium=email&utm_campaign=nl-13",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "46-nl-13.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/collections/mens-hair-systems?utm_source=shopify_email&utm_medium=email&utm_campaign=nl-15",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "48-nl-15.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/collections/mens-hair-systems?utm_source=shopify_email&utm_medium=email&utm_campaign=ro-3",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "21-ro-3.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/collections/mens-hair-systems?utm_source=shopify_email&utm_medium=email&utm_campaign=ro-4",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "22-ro-4.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/collections/mens-hair-systems?utm_source=shopify_email&utm_medium=email&utm_campaign=ro-6",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "24-ro-6.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/collections/mens-hair-systems?utm_source=shopify_email&utm_medium=email&utm_campaign=wb-3",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "27-wb-3.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/pages/base-materials-explained-lace-skin-mono-and-hybrid?utm_source=shopify_email&utm_medium=email&utm_campaign=br-1",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "05-br-1.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/pages/base-materials-explained-lace-skin-mono-and-hybrid?utm_source=shopify_email&utm_medium=email&utm_campaign=nl-01",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "34-nl-01.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/pages/blog?utm_source=shopify_email&utm_medium=email&utm_campaign=nl-04",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "37-nl-04.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/pages/blog?utm_source=shopify_email&utm_medium=email&utm_campaign=wb-2",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "26-wb-2.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/pages/complete-hair-system-maintenance-guide?utm_source=shopify_email&utm_medium=email&utm_campaign=nl-16",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "49-nl-16.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/pages/complete-hair-system-maintenance-guide?utm_source=shopify_email&utm_medium=email&utm_campaign=pp-5",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "10-pp-5.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/pages/contact-us",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "13-pp-7b.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/pages/contact-us?utm_source=shopify_email&utm_medium=email&utm_campaign=c-0",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "29-c-0.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/pages/contact-us?utm_source=shopify_email&utm_medium=email&utm_campaign=c-1",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "30-c-1.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/pages/contact-us?utm_source=shopify_email&utm_medium=email&utm_campaign=c-2",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "31-c-2.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/pages/contact-us?utm_source=shopify_email&utm_medium=email&utm_campaign=c-3",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "32-c-3.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/pages/contact-us?utm_source=shopify_email&utm_medium=email&utm_campaign=cr-3",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "03-cr-3.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/pages/contact-us?utm_source=shopify_email&utm_medium=email&utm_campaign=nl-17",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "50-nl-17.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/pages/contact-us?utm_source=shopify_email&utm_medium=email&utm_campaign=ro-5",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "23-ro-5.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/pages/contact-us?utm_source=shopify_email&utm_medium=email&utm_campaign=w-5",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "18-w-5.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/pages/edit-notifications",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "01-cr-1.html",
+   "02-cr-2.html",
+   "03-cr-3.html",
+   "04-cr-4.html",
+   "05-br-1.html",
+   "06-pp-1.html",
+   "07-pp-2.html",
+   "08-pp-3.html",
+   "09-pp-4.html",
+   "10-pp-5.html",
+   "11-pp-6.html",
+   "12-pp-7.html",
+   "13-pp-7b.html",
+   "14-w-1.html",
+   "15-w-2.html",
+   "16-w-3.html",
+   "17-w-4.html",
+   "18-w-5.html",
+   "19-ro-1.html",
+   "20-ro-2.html",
+   "21-ro-3.html",
+   "22-ro-4.html",
+   "23-ro-5.html",
+   "24-ro-6.html",
+   "25-wb-1.html",
+   "26-wb-2.html",
+   "27-wb-3.html",
+   "28-wb-4.html",
+   "29-c-0.html",
+   "30-c-1.html",
+   "31-c-2.html",
+   "32-c-3.html",
+   "33-c-4.html",
+   "34-nl-01.html",
+   "35-nl-02.html",
+   "36-nl-03.html",
+   "37-nl-04.html",
+   "38-nl-05.html",
+   "39-nl-06.html",
+   "40-nl-07.html",
+   "41-nl-08.html",
+   "42-nl-09.html",
+   "43-nl-10.html",
+   "44-nl-11.html",
+   "45-nl-12.html",
+   "46-nl-13.html",
+   "47-nl-14.html",
+   "48-nl-15.html",
+   "49-nl-16.html",
+   "50-nl-17.html",
+   "51-nl-18.html",
+   "52-nl-19.html",
+   "53-nl-20.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/pages/hair-density-color-hair-type-and-hairline-options?utm_source=shopify_email&utm_medium=email&utm_campaign=nl-06",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "39-nl-06.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/pages/how-to-choose-your-first-hair-system?utm_source=shopify_email&utm_medium=email&utm_campaign=w-1",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "14-w-1.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/pages/lace-front-hair-systems-complete-guide?utm_source=shopify_email&utm_medium=email&utm_campaign=nl-11",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "44-nl-11.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/pages/production-times-shipping-times-and-package-tracking?utm_source=shopify_email&utm_medium=email&utm_campaign=nl-09",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "42-nl-09.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/pages/production-times-shipping-times-and-package-tracking?utm_source=shopify_email&utm_medium=email&utm_campaign=pp-3",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "08-pp-3.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/pages/scalp-preparation-and-patch-testing-before-attachment?utm_source=shopify_email&utm_medium=email&utm_campaign=pp-2",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "07-pp-2.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/pages/what-is-a-hair-system-and-how-does-it-work?utm_source=shopify_email&utm_medium=email&utm_campaign=w-2",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "15-w-2.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/policies/privacy-policy",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "01-cr-1.html",
+   "02-cr-2.html",
+   "03-cr-3.html",
+   "04-cr-4.html",
+   "05-br-1.html",
+   "06-pp-1.html",
+   "07-pp-2.html",
+   "08-pp-3.html",
+   "09-pp-4.html",
+   "10-pp-5.html",
+   "11-pp-6.html",
+   "12-pp-7.html",
+   "13-pp-7b.html",
+   "14-w-1.html",
+   "15-w-2.html",
+   "16-w-3.html",
+   "17-w-4.html",
+   "18-w-5.html",
+   "19-ro-1.html",
+   "20-ro-2.html",
+   "21-ro-3.html",
+   "22-ro-4.html",
+   "23-ro-5.html",
+   "24-ro-6.html",
+   "25-wb-1.html",
+   "26-wb-2.html",
+   "27-wb-3.html",
+   "28-wb-4.html",
+   "29-c-0.html",
+   "30-c-1.html",
+   "31-c-2.html",
+   "32-c-3.html",
+   "33-c-4.html",
+   "34-nl-01.html",
+   "35-nl-02.html",
+   "36-nl-03.html",
+   "37-nl-04.html",
+   "38-nl-05.html",
+   "39-nl-06.html",
+   "40-nl-07.html",
+   "41-nl-08.html",
+   "42-nl-09.html",
+   "43-nl-10.html",
+   "44-nl-11.html",
+   "45-nl-12.html",
+   "46-nl-13.html",
+   "47-nl-14.html",
+   "48-nl-15.html",
+   "49-nl-16.html",
+   "50-nl-17.html",
+   "51-nl-18.html",
+   "52-nl-19.html",
+   "53-nl-20.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/products/lace-elite-full-swiss-lace-mens-hair-system?utm_source=shopify_email&utm_medium=email&utm_campaign=cr-2",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "02-cr-2.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/products/lace-elite-full-swiss-lace-mens-hair-system?utm_source=shopify_email&utm_medium=email&utm_campaign=nl-02",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "35-nl-02.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/products/lace-elite-full-swiss-lace-mens-hair-system?utm_source=shopify_email&utm_medium=email&utm_campaign=nl-07",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "40-nl-07.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/products/lace-elite-full-swiss-lace-mens-hair-system?utm_source=shopify_email&utm_medium=email&utm_campaign=nl-12",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "45-nl-12.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/products/lace-elite-full-swiss-lace-mens-hair-system?utm_source=shopify_email&utm_medium=email&utm_campaign=nl-14",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "47-nl-14.html"
+  ]
+ },
+ {
+  "url": "https://hairsolutions.co/products/lace-elite-full-swiss-lace-mens-hair-system?utm_source=shopify_email&utm_medium=email&utm_campaign=w-4",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "17-w-4.html"
+  ]
+ },
+ {
+  "url": "https://res.cloudinary.com/dtmizxj1n/image/upload/e_trim/f_png/w_640,c_limit/v1785220022/HAIR_SOLUTIONS_MEDIA_LIBRARY/01_BRAND/logos/wordmark-dark-on-transparent-bg.png",
+  "status": "OK",
+  "http": 200,
+  "emails": [
+   "01-cr-1.html",
+   "02-cr-2.html",
+   "03-cr-3.html",
+   "04-cr-4.html",
+   "05-br-1.html",
+   "06-pp-1.html",
+   "07-pp-2.html",
+   "08-pp-3.html",
+   "09-pp-4.html",
+   "10-pp-5.html",
+   "11-pp-6.html",
+   "12-pp-7.html",
+   "13-pp-7b.html",
+   "14-w-1.html",
+   "15-w-2.html",
+   "16-w-3.html",
+   "17-w-4.html",
+   "18-w-5.html",
+   "19-ro-1.html",
+   "20-ro-2.html",
+   "21-ro-3.html",
+   "22-ro-4.html",
+   "23-ro-5.html",
+   "24-ro-6.html",
+   "25-wb-1.html",
+   "26-wb-2.html",
+   "27-wb-3.html",
+   "28-wb-4.html",
+   "29-c-0.html",
+   "30-c-1.html",
+   "31-c-2.html",
+   "32-c-3.html",
+   "33-c-4.html",
+   "34-nl-01.html",
+   "35-nl-02.html",
+   "37-nl-04.html",
+   "38-nl-05.html",
+   "39-nl-06.html",
+   "40-nl-07.html",
+   "42-nl-09.html",
+   "43-nl-10.html",
+   "44-nl-11.html",
+   "45-nl-12.html",
+   "47-nl-14.html",
+   "48-nl-15.html",
+   "49-nl-16.html",
+   "50-nl-17.html",
+   "52-nl-19.html",
+   "53-nl-20.html"
+  ]
+ },
+ {
+  "url": "#TODO-customer-order-url",
+  "status": "TODO",
+  "http": null,
+  "emails": [
+   "06-pp-1.html"
+  ]
+ },
+ {
+  "url": "#TODO-review-destination",
+  "status": "TODO",
+  "http": null,
+  "emails": [
+   "12-pp-7.html"
+  ]
+ },
+ {
+  "url": "#TODO-tracking-url",
+  "status": "TODO",
+  "http": null,
+  "emails": [
+   "09-pp-4.html"
+  ]
+ },
+ {
+  "url": "#TODO-ugc-upload-destination",
+  "status": "TODO",
+  "http": null,
+  "emails": [
+   "13-pp-7b.html"
+  ]
+ },
+ {
+  "url": "{{ checkout.url }}",
+  "status": "TOKEN",
+  "http": null,
+  "emails": [
+   "01-cr-1.html",
+   "04-cr-4.html"
+  ]
+ },
+ {
+  "url": "{{ unsubscribe_url }}",
+  "status": "TOKEN",
+  "http": null,
+  "emails": [
+   "01-cr-1.html",
+   "02-cr-2.html",
+   "03-cr-3.html",
+   "04-cr-4.html",
+   "05-br-1.html",
+   "06-pp-1.html",
+   "07-pp-2.html",
+   "08-pp-3.html",
+   "09-pp-4.html",
+   "10-pp-5.html",
+   "11-pp-6.html",
+   "12-pp-7.html",
+   "13-pp-7b.html",
+   "14-w-1.html",
+   "15-w-2.html",
+   "16-w-3.html",
+   "17-w-4.html",
+   "18-w-5.html",
+   "19-ro-1.html",
+   "20-ro-2.html",
+   "21-ro-3.html",
+   "22-ro-4.html",
+   "23-ro-5.html",
+   "24-ro-6.html",
+   "25-wb-1.html",
+   "26-wb-2.html",
+   "27-wb-3.html",
+   "28-wb-4.html",
+   "29-c-0.html",
+   "30-c-1.html",
+   "31-c-2.html",
+   "32-c-3.html",
+   "33-c-4.html",
+   "34-nl-01.html",
+   "35-nl-02.html",
+   "36-nl-03.html",
+   "37-nl-04.html",
+   "38-nl-05.html",
+   "39-nl-06.html",
+   "40-nl-07.html",
+   "41-nl-08.html",
+   "42-nl-09.html",
+   "43-nl-10.html",
+   "44-nl-11.html",
+   "45-nl-12.html",
+   "46-nl-13.html",
+   "47-nl-14.html",
+   "48-nl-15.html",
+   "49-nl-16.html",
+   "50-nl-17.html",
+   "51-nl-18.html",
+   "52-nl-19.html",
+   "53-nl-20.html"
+  ]
+ }
+]

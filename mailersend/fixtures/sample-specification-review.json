@@ -1,0 +1,31 @@
+{
+  "_comment": "Synthetic fixture for the SVC-2 specification-review template (the production update). Status-only: no basket, no totals. Guide pages and images are real.",
+
+  "order_number": "#HS-94821",
+  "customer": { "name": "Vincent", "email": "vincent@hairsolutions.co" },
+
+  "order_status_url": "https://hairsolutions.co/pages/profile",
+  "view_in_browser_url": "https://hairsolutions.co/pages/help-center-orders-shipping",
+
+  "summary_rows": [
+    { "label": "Order number",      "value": "#HS-94821" },
+    { "label": "Current status",    "value": "Order received" },
+    { "label": "Next step",         "value": "Specification review" },
+    { "label": "Production window", "value": "3–4 weeks" }
+  ],
+
+  "resources": [
+    {
+      "title": "Care Guide",
+      "cta_label": "Read",
+      "image": "https://cdn.shopify.com/s/files/1/0276/9115/5508/files/product-lace-elite-hair-system-feature-shot-white.webp",
+      "url": "https://hairsolutions.co/pages/complete-hair-system-maintenance-guide"
+    },
+    {
+      "title": "Attachment & Adhesives",
+      "cta_label": "Read",
+      "image": "https://cdn.shopify.com/s/files/1/0276/9115/5508/files/product-lace-pro-hair-system-feature-shot-white.jpg",
+      "url": "https://hairsolutions.co/pages/adhesives-tapes-and-removers-safety-and-selection"
+    }
+  ]
+}
