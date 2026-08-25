@@ -1,0 +1,60 @@
+name: Social Media OS review
+
+on:
+  pull_request:
+    paths:
+      - "social-media/**"
+      - "templates/social/**"
+      - "tools/social_os/**"
+      - "docs/marketing-os/**"
+      - ".github/workflows/social-os-review.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: social-os-review-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-and-preview:
+    name: Validate and build inert review artifacts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Validate Social Media OS source
+        run: python tools/social_os/validate_social_os.py
+
+      - name: Build source manifest
+        run: python tools/social_os/build_manifest.py --output /tmp/social-manifest.json
+
+      - name: Build inert publication previews
+        run: python tools/social_os/build_previews.py --output /tmp/social-publication-previews
+
+      - name: Build inert Instagram feed grid
+        run: python tools/social_os/build_feed_grid.py --output /tmp/instagram-feed.html
+
+      - name: Build dry-run GitHub Issue plan
+        run: python tools/social_os/build_issue_plan.py --output /tmp/social-issue-plan.json
+
+      - name: Upload Social Media OS review artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: social-os-review-${{ github.sha }}
+          retention-days: 14
+          path: |
+            /tmp/social-manifest.json
+            /tmp/social-publication-previews/
+            /tmp/instagram-feed.html
+            /tmp/instagram-feed.provenance.json
+            /tmp/social-issue-plan.json
