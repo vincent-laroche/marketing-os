@@ -7,7 +7,7 @@
 > canonical. Every open item below must name its Issue; a finding recorded only here, in a plan
 > document, or in a chat message is untracked. Open an Issue, then cite the number.
 
-**Last updated:** 2026-08-25 by Codex (public repository renamed to Marketing OS; Social Studio and public-safe Social OS content migrated; Social Project #5 created; Email Pages origin updated; no Shopify, audience, campaign, Flow, send, schedule, activation, or social publication change)
+**Last updated:** 2026-08-25 by Codex (public Marketing OS platform build merged; Social Project #5 configured; GitHub Pages enabled; CR-1 fictional preview published; no Shopify, audience, campaign, Flow, send, schedule, activation, or social platform publication change)
 
 **Status:** **All marketing campaigns and lifecycle journeys now belong to Shopify Messaging +
 Shopify Flow. MailerLite is not a campaign/lifecycle platform for this project.** Shopify
@@ -26,7 +26,12 @@ manifest builder, previews, and dry-run Issue compiler are under their namespace
 non-production Social records are Issues #90–#94, linked hierarchically and added to Social Media
 OS Project #5. Email preview provenance and canonical Pages paths now use
 `https://vincent-laroche.github.io/marketing-os`; public publication remains limited to the
-existing fictional-data and `preview_public` gates.
+existing fictional-data and `preview_public` gates. Pages is now enabled from the `main` branch.
+The first bounded publication succeeded in workflow run `32862790415`: CR-1 is live at
+`https://vincent-laroche.github.io/marketing-os/CR-1/detail.html`, with provenance tied to
+source SHA `aa2d992850fbf3ecf4f529a2e64c050d08eca54e`, Email Issue #10, and source PR #95.
+The workflow could not open its ledger PR because Actions PR creation is disabled in this
+repository, so the verified one-file ledger branch was manually opened as PR #96 and merged.
 
 **Live MailerLite re-verification, 2026-08-24:** account 2582639 is authenticated and currently
 has **0 campaigns**, **1 disabled legacy welcome automation**, and 2,223 subscribers. Its Shopify
