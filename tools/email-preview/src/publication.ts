@@ -252,7 +252,7 @@ async function verifyWithdrawalPullRequest(sourceSha: string, canonicalPr: numbe
   const token = process.env.GH_TOKEN;
   if (!token) throw new Error("GH_TOKEN is required to verify the withdrawal pull request");
   const candidates: unknown[] = [];
-  let next: string | undefined = `https://api.github.com/repos/vincent-laroche/email-marketing-ops/commits/${sourceSha}/pulls?per_page=100`;
+  let next: string | undefined = `https://api.github.com/repos/vincent-laroche/marketing-os/commits/${sourceSha}/pulls?per_page=100`;
   while (next) {
     const response = await fetch(next, {
       headers: {

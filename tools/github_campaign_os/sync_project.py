@@ -13,7 +13,7 @@ SCHEMA_PATH = ROOT / "github-campaign-os" / "project-schema.json"
 MANIFEST_PATH = ROOT / "github-campaign-os" / "manifest.json"
 REPORT_PATH = ROOT / "github-campaign-os" / "project-sync-report.json"
 OWNER = "vincent-laroche"
-REPO = "vincent-laroche/email-marketing-ops"
+REPO = "vincent-laroche/marketing-os"
 
 RECORD_TO_FIELD = {
     "Stage": "stage", "Priority": "priority", "Work Type": "work_type", "Platform": "platform",
@@ -37,7 +37,7 @@ PROJECT_QUERY = """query($login:String!,$title:String!){
       content{... on Issue{id number body repository{nameWithOwner}} ... on PullRequest{id number repository{nameWithOwner}}}}}
     views(first:20){nodes{id name layout filter}}
   }}}
-  repository(owner:"vincent-laroche",name:"email-marketing-ops"){id isPrivate}
+  repository(owner:"vincent-laroche",name:"marketing-os"){id isPrivate}
 }"""
 
 
@@ -226,7 +226,7 @@ def run(apply: bool) -> Dict[str, Any]:
 
 
 def main(argv: Optional[List[str]] = None) -> int:
-    parser = argparse.ArgumentParser(description="Synchronize the private Campaign OS Project")
+    parser = argparse.ArgumentParser(description="Synchronize the Campaign OS Project")
     parser.add_argument("--apply", action="store_true")
     args = parser.parse_args(argv)
     print(json.dumps(run(args.apply), sort_keys=True))

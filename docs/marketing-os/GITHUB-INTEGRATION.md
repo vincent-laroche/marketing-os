@@ -4,7 +4,7 @@
 
 The Social Media OS integration is currently **source-and-artifact only**. Local tooling validates records, builds provenance, and emits a dry-run Issue plan. It does not create, update, close, schedule, or publish anything in GitHub or on a social platform.
 
-The destination repository is `vincent-laroche/email-marketing-ops`. The existing Email Marketing Campaign OS and Project #4 remain authoritative for the Email domain. Social records use the independent `social-os-key` namespace and must not be added to the existing 69-record email invariant.
+The destination repository is the public `vincent-laroche/marketing-os` repository. The existing Email Marketing Campaign OS and Project #4 remain authoritative for the Email domain. Social records use the independent `social-os-key` namespace and must not be added to the existing 69-record email invariant. Social records are managed in [Social Media OS Project #5](https://github.com/users/vincent-laroche/projects/5).
 
 ## Issue hierarchy
 
@@ -24,7 +24,7 @@ Assets and experiments are independent Issues unless they are explicitly attache
 
 ## Shared fields
 
-These fields should be represented once in the eventual shared Marketing OS Project or reused from the existing Project where technically possible:
+These fields belong to the separate Social Media OS GitHub Project. They remain distinct from Email Project #4 so the 69-record Email invariant cannot be polluted by Social records:
 
 | Field | Values / type | Meaning |
 |---|---|---|
@@ -73,7 +73,7 @@ The eventual Social Media OS navigation should answer distinct questions rather 
 9. **Performance & Learnings** — Published, Measuring, and Complete records with metrics and learnings.
 10. **Evergreen & Repurpose** — Evergreen records and high-reuse Content Concepts.
 
-Creating these views is a separate, approval-gated Project operation. The repository source and local validators do not assume that a Project or its fields already exist.
+The Social Media OS Project is created and managed separately from Email Project #4. Project creation, field changes, view changes, and item synchronization are explicit external mutations: each requires a dry-run, exact scope, and read-back. The repository source and local validators do not assume that a Project or its fields already exist.
 
 ## External mutation rules
 
@@ -88,4 +88,4 @@ A future GitHub writer must satisfy all of the following before applying a plan:
 - a read-back of every created or changed Issue and parent relationship;
 - an evidence report linked to the relevant pull request.
 
-Project creation, Project field changes, social platform accounts, scheduling, and publishing are not part of the local Social Media OS build. They require separate approval and separate platform evidence.
+Social Project creation and field/view configuration are the approved next external integration step for this build. Social platform accounts, scheduling, and publishing remain out of scope and require separate approval and separate platform evidence.

@@ -42,7 +42,7 @@ def _exact_canonical_url(raw: str, email_code: str) -> bool:
     if parsed.scheme != "https" or parsed.username or parsed.password or parsed.port or parsed.query or parsed.fragment:
         return False
     expected = {
-        ("vincent-laroche.github.io", f"/email-marketing-ops/{email_code}/detail.html"),
+        ("vincent-laroche.github.io", f"/marketing-os/{email_code}/detail.html"),
         ("email-preview.hairsolutions.co", f"/{email_code}/detail.html"),
     }
     return (parsed.hostname, parsed.path) in expected

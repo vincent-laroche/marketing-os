@@ -1,12 +1,11 @@
-# Email Marketing — Agent Instructions
+# Marketing OS — Agent Instructions
 
 > Durable context and hard rules for this project. Read this first, then `PROJECT.md` for
 > current status. If something will still be true next month it belongs here; "what happened
 > this session / what's next" belongs in `PROJECT.md`.
 
-Location: `/Users/vMac/04_marketing/email_marketing`. Follows the standard project convention —
-`AGENTS.md` (rules) + `CLAUDE.md` (`@AGENTS.md` pointer) + `PROJECT.md` (living status log).
-Update `PROJECT.md` at the end of every session; only touch this file when a rule changes.
+Repository: `https://github.com/vincent-laroche/marketing-os` (public). The local worktree path may vary; resolve it with `git rev-parse --show-toplevel`. Follows the standard project convention — `AGENTS.md` (rules) + `CLAUDE.md` (`@AGENTS.md` pointer) + `PROJECT.md` (living status log).
+Update `PROJECT.md` at the end of every session; only touch this file when a durable rule changes.
 
 ## 1. `Email Reference File/` is the source of truth
 
@@ -182,9 +181,10 @@ The repository now contains the shared Marketing OS control plane and a Social M
 
 ## 8. GitHub is the operating system — nothing is tracked in prose
 
-**Hard rule, set 2026-08-24 by Vincent.** The Campaign OS is live: the private
-`vincent-laroche/email-marketing-ops` repository and GitHub Project #4. Issues and pull
-requests are **canonical**, because external connectors read them. Project #4 mirrors state.
+**Hard rule, set 2026-08-24 by Vincent.** The Campaign OS is live in the public
+`vincent-laroche/marketing-os` repository and Email GitHub Project #4. Social Media OS now uses
+separate GitHub Project #5. Issues and pull requests are **canonical**, because external
+connectors read them; Projects #4 and #5 mirror their respective domain records.
 
 **A finding that is not in an Issue or a pull request does not exist.** This is the whole
 rule, and it binds every agent and every session:

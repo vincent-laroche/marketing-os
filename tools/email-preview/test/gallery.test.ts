@@ -49,14 +49,14 @@ async function writePreview(root: string, options: {visibility: "public" | "priv
       "desktop.png": sha256(desktop),
       "mobile.png": sha256(mobile),
     },
-    repository: "vincent-laroche/email-marketing-ops",
+    repository: "vincent-laroche/marketing-os",
     campaign_key: options.campaign ?? "campaign:J2",
     fixture_sha256: sha256("fixture"),
     compiler_lock_sha256: sha256("lock"),
     generated_at: "2026-08-25T12:00:00.000Z",
     visibility: options.visibility,
-    issue_url: "https://github.com/vincent-laroche/email-marketing-ops/issues/101",
-    pr_url: "https://github.com/vincent-laroche/email-marketing-ops/pull/202",
+    issue_url: "https://github.com/vincent-laroche/marketing-os/issues/101",
+    pr_url: "https://github.com/vincent-laroche/marketing-os/pull/202",
   }, null, 2));
 }
 

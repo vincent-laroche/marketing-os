@@ -92,7 +92,7 @@ test("structural safety rejects active content, unsafe protocols, remote hosts, 
 
 test("provenance binds exact source SHA, Issue, PR, and three outputs", () => {
   const extras = {output_sha256: {"rendered.html": "a", "desktop.png": "b", "mobile.png": "c"}, campaign_key: "campaign:J2", fixture_sha256: "fixture", compiler_lock_sha256: "lock", generated_at: "2026-08-25T00:00:00.000Z", visibility: "private" as const};
-  const identity = {repository: "vincent-laroche/email-marketing-ops"};
+  const identity = {repository: "vincent-laroche/marketing-os"};
   const result = provenance({source: "shopify-messaging/emails/01-cr-1.html", emailCode: "CR-1", campaign: "campaign:J2", commitSha: "a".repeat(40), issue: 8, pr: 70, persona: "normal-customer", states: ["missing-first-name"], out: "unused", visibility: "private"}, "source", "rendered", {...extras, identity});
   assert.equal(result.source_commit_sha, "a".repeat(40));
   assert.equal(result.related_issue, 8);

@@ -30,3 +30,11 @@ social-media/assets/media/
 
 # Local dry-run synchronization output
 social-media/github-issue-plan.json
+
+# Migrated Social Studio local/build artifacts
+apps/social-studio/node_modules/
+apps/social-studio/.next/
+apps/social-studio/dist/
+apps/social-studio/.vinext/
+apps/social-studio/.wrangler/
+apps/social-studio/*.tsbuildinfo

@@ -10,7 +10,7 @@ from .gh_client import GitHubClient, GitHubError
 ROOT = Path(__file__).resolve().parents[2]
 MANIFEST = ROOT / "github-campaign-os" / "manifest.json"
 REPORT = ROOT / "github-campaign-os" / "issue-sync-report.json"
-REPO = "vincent-laroche/email-marketing-ops"
+REPO = "vincent-laroche/marketing-os"
 KEY_RE = re.compile(r"<!-- campaign-os-key: ([^ ]+) -->")
 
 
@@ -67,8 +67,8 @@ def run(apply: bool, write_report: bool = True) -> Dict[str, Any]:
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     client = GitHubClient()
     repository = client.request("GET", f"/repos/{REPO}")
-    if not repository.get("private"):
-        raise GitHubError("Campaign OS repository must be private")
+    if repository.get("private"):
+        raise GitHubError("Campaign OS repository must be public")
     issues = [item for item in client.paginate(f"/repos/{REPO}/issues?state=all") if "pull_request" not in item]
     actions, by_key = plan(manifest, issues)
     if apply:
@@ -98,7 +98,7 @@ def run(apply: bool, write_report: bool = True) -> Dict[str, Any]:
     current = [item for item in client.paginate(f"/repos/{REPO}/issues?state=all") if "pull_request" not in item] if apply else issues
     current_by_key = {key_from_body(item.get("body")): item for item in current if key_from_body(item.get("body"))}
     report = {
-        "repository": REPO, "private": True, "mode": "apply" if apply else "dry-run",
+        "repository": REPO, "private": False, "mode": "apply" if apply else "dry-run",
         "manifest_records": len(manifest["records"]), "remote_campaign_os_issues": len(current_by_key),
         "planned_actions": [{"action": item["action"], "key": item["key"]} for item in actions],
         "issues": {key: item["number"] for key, item in sorted(current_by_key.items())},

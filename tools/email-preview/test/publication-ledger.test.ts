@@ -86,14 +86,14 @@ test("publication entry binds only public provenance and approved deployment ide
     rendered_sha256: digest,
     outputs: ["rendered.html", "desktop.png", "mobile.png"] as ["rendered.html", "desktop.png", "mobile.png"],
     output_sha256: {"rendered.html": digest, "desktop.png": digest, "mobile.png": digest},
-    repository: "vincent-laroche/email-marketing-ops" as const,
+    repository: "vincent-laroche/marketing-os" as const,
     campaign_key: "campaign:J2",
     fixture_sha256: digest,
     compiler_lock_sha256: digest,
     generated_at: "2026-08-25T12:00:00.000Z",
     visibility: "public" as const,
-    issue_url: "https://github.com/vincent-laroche/email-marketing-ops/issues/101",
-    pr_url: "https://github.com/vincent-laroche/email-marketing-ops/pull/202",
+    issue_url: "https://github.com/vincent-laroche/marketing-os/issues/101",
+    pr_url: "https://github.com/vincent-laroche/marketing-os/pull/202",
   };
   const created = createPublicationEntry(provenance, {
     canonicalUrl: "https://email-preview.hairsolutions.co/CR-1/detail.html",

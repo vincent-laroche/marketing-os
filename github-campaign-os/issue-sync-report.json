@@ -73,7 +73,7 @@
   "manifest_records": 69,
   "mode": "dry-run",
   "planned_actions": [],
-  "private": true,
+  "private": false,
   "remote_campaign_os_issues": 69,
-  "repository": "vincent-laroche/email-marketing-ops"
+  "repository": "vincent-laroche/marketing-os"
 }
