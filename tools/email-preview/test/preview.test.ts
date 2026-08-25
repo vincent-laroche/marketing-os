@@ -42,6 +42,11 @@ test("renderer rejects unknown paths even when defaulted or nested under a loop 
   await assert.rejects(() => renderLiquid('{% for item in products limit:1 %}{{ item.secret }}{% endfor %}', {products: [{name: "fictional"}]}), /unknown variable/);
 });
 
+test("loop bindings are lexical and nested loops validate against their enclosing item", async () => {
+  await assert.rejects(() => renderLiquid('{% for item in products limit:1 %}{{ item.title }}{% endfor %}{{ item.title }}', {products: [{title: "Fictional", variants: [{title: "Fictional variant"}]}]}), /unknown variable/);
+  await assert.doesNotReject(() => renderLiquid('{% for item in products limit:1 %}{% for variant in item.variants limit:1 %}{{ variant.title }}{% endfor %}{% endfor %}', {products: [{title: "Fictional", variants: [{title: "Fictional variant"}]}]}));
+});
+
 test("rendered HTML is noindex and rejects customer-specific live URLs", () => {
   const safe = injectNoIndex("<html><head></head><body><a href=\"#preview-inert-checkout\">Preview</a></body></html>");
   assert.match(safe, /noindex,nofollow/);
@@ -73,6 +78,9 @@ test("structural safety rejects active content, unsafe protocols, remote hosts, 
     wrap('<!-- https://example.com/?customer_id=1 -->'),
     wrap('<img src="https://res.cloudinary.com/x.png" style="width:1px;height:1px">'),
     wrap('<img src="https://res.cloudinary.com/image/upload/w_1/x.png">')
+    ,wrap('<a href="//example.com/customer?token=x">x</a>')
+    ,wrap('<!-- //example.com/customer?token=x -->')
+    ,wrap('<div style="background:url(https://res.cloudinary.com/pixel.png);width:1px;height:1px"></div>')
   ]) assert.throws(() => assertSafeRenderedHtml(html), /unsafe preview/);
 });
 
@@ -102,6 +110,7 @@ test("capture interception permits only local documents and allowlisted HTTPS im
   assert.equal(isAllowedCaptureRequest("https://res.cloudinary.com/demo/image/upload/x.png", "script"), false);
   assert.equal(isAllowedCaptureRequest("https://example.com/x.png", "image"), false);
   assert.equal(isAllowedCaptureRequest("https://res.cloudinary.com/x.png?token=secret", "image"), false);
+  assert.equal(isAllowedCaptureRequest("//res.cloudinary.com/x.png", "image"), false);
 });
 
 test("PNG validation enforces exact capture widths", async () => {
@@ -119,6 +128,8 @@ test("CLI requires a PR, campaign, selected states, no unknown flags, and exact 
   assert.throws(() => parseArgs(["node", "cli.ts", "--source", "shopify-messaging/emails/01-cr-1.html", "--email-code", "CR-1", "--campaign", "campaign:J2", "--commit-sha", "a".repeat(40), "--issue", "1", "--states", "missing-first-name", "--out", "tmp"]), /--pr is required/);
   await assert.rejects(() => compilePreview({source: "shopify-messaging/emails/01-cr-1.html", emailCode: "CR-2", campaign: "campaign:J2", commitSha: "a".repeat(40), issue: 1, pr: 2, persona: "normal-customer", states: ["missing-first-name"], out: "tmp"}), /approved canonical selection/);
   assert.throws(() => parseArgs(["node", "cli.ts", "--source", "shopify-messaging/emails/01-cr-1.html", "--email-code", "CR-1", "--campaign", "campaign:J2", "--commit-sha", "a".repeat(40), "--issue", "10", "--pr", "2", "--states", "missing-first-name", "--out", "tmp", "--unexpected", "x"]), /unknown option/);
+  assert.throws(() => parseArgs(["node", "cli.ts", "--source", "shopify-messaging/emails/01-cr-1.html", "--email-code", "CR-1", "--campaign", "campaign:J2", "--commit-sha", "a".repeat(40), "--issue", "10", "--pr", "2", "--states", "missing-first-name", "--out", "tmp", "--unexpected"]), /unknown option/);
+  assert.throws(() => parseArgs(["node", "cli.ts", "--source", "shopify-messaging/emails/01-cr-1.html", "--email-code", "CR-1", "--campaign", "campaign:J2", "--commit-sha", "a".repeat(40), "--issue", "10", "--pr"]), /--pr is required/);
 });
 
 test("incomplete capture fails without replacing a prior verified output", async () => {

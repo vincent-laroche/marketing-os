@@ -60,12 +60,12 @@ export function assertSafeRenderedHtml(html: string): void {
       if (name === "style") for (const url of cssUrls(raw)) assertSafeUrl(url);
       if (name.startsWith("data-")) assertNoHiddenUrl(raw);
     }
-    if (tag === "img" && isTrackingPixel(attributes)) throw unsafe("tracking pixel");
+    if (isTrackingPixel(attributes)) throw unsafe("tracking pixel");
   });
 }
 
 function assertNoHiddenUrl(value: string): void {
-  for (const url of value.match(/(?:https?:|javascript:|data:|vbscript:)[^\s"'<>)]*/gi) ?? []) {
+  for (const url of value.match(/(?:(?:https?:|javascript:|data:|vbscript:|\/\/)[^\s"'<>)]*)/gi) ?? []) {
     if (tokenLike.test(decodeHtmlUrl(url)) || sensitiveDestination.test(url)) throw unsafe("hidden customer-specific value");
     if (/^https:\/\/github\.com\/vincent-laroche\/email-marketing-ops\/(issues|pull)\/\d+$/i.test(url)) continue;
     assertSafeUrl(url);
@@ -73,15 +73,17 @@ function assertNoHiddenUrl(value: string): void {
 }
 function cssUrls(value: string): string[] { return [...value.matchAll(/url\(\s*(['"]?)(.*?)\1\s*\)/gi)].map(match => match[2]!); }
 function isTrackingPixel(attributes: Map<string, string>): boolean {
-  const source = decodeHtmlUrl(attributes.get("src") ?? "");
+  const sources = [attributes.get("src") ?? "", ...cssUrls(attributes.get("style") ?? ""), ...(attributes.get("srcset") ?? "").split(",").map(candidate => candidate.trim().split(/\s+/, 1)[0]!)].map(decodeHtmlUrl).filter(value => /^https:/i.test(value));
   const width = attributes.get("width") ?? ""; const height = attributes.get("height") ?? ""; const style = attributes.get("style") ?? "";
   const one = (value: string) => /(?:^|[^\d])1(?:px)?(?:$|[^\d])/i.test(value);
-  return /^https:/i.test(source) && ((one(width) && one(height)) || (/width\s*:\s*1(?:px)?/i.test(style) && /height\s*:\s*1(?:px)?/i.test(style)) || /(?:pixel|tracking|1x1|[,_/-]w_?1[,_/-])/i.test(source));
+  return sources.some(source => (one(width) && one(height)) || (/width\s*:\s*1(?:px)?/i.test(style) && /height\s*:\s*1(?:px)?/i.test(style)) || /(?:pixel|tracking|1x1|[,_/-]w_?1[,_/-])/i.test(source));
 }
 
 function assertSafeUrl(raw: string): void {
   const value = decodeHtmlUrl(raw).trim();
-  if (!value || value.startsWith("#") || value.startsWith("/")) return;
+  if (!value || value.startsWith("#")) return;
+  if (value.startsWith("//")) throw unsafe("unsafe protocol-relative URL");
+  if (value.startsWith("/")) return;
   if (value.toLowerCase().startsWith("mailto:")) {
     const address = value.slice(7).split("?", 1)[0]!.toLowerCase();
     if (!approvedPublicMailto.has(address) || value.includes("?")) throw unsafe("direct email address");

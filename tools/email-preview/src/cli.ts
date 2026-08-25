@@ -10,9 +10,16 @@ import {assertPng, capture} from "./capture.js";
 import type {PreviewArgs} from "./types.js";
 
 export function parseArgs(argv: string[]): PreviewArgs {
-  const values = Object.fromEntries(argv.slice(2).flatMap((value, index, all) => value.startsWith("--") && all[index + 1] ? [[value.slice(2), all[index + 1]!]] : []));
   const allowed = new Set(["source", "email-code", "campaign", "commit-sha", "issue", "pr", "persona", "states", "out", "workflow-run", "workflow-attempt", "workflow-revision"]);
-  for (const key of Object.keys(values)) if (!allowed.has(key)) throw new Error("unknown option");
+  const values: Record<string, string> = {};
+  for (let index = 2; index < argv.length; index += 2) {
+    const token = argv[index];
+    if (!token?.startsWith("--") || !allowed.has(token.slice(2))) throw new Error("unknown option");
+    const key = token.slice(2); const value = argv[index + 1];
+    if (!value || value.startsWith("--")) throw new Error(`--${key} is required`);
+    if (key in values) throw new Error("duplicate option");
+    values[key] = value;
+  }
   const required = ["source", "email-code", "campaign", "commit-sha", "issue", "pr", "states", "out"];
   for (const name of required) if (!values[name]) throw new Error(`--${name} is required`);
   const issue = Number(values.issue);

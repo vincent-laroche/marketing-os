@@ -120,3 +120,34 @@ npm run preview -- --source shopify-messaging/emails/01-cr-1.html --email-code C
 Result: passed; canonical output is a symlink, exactly four artifacts are present, provenance
 records the selected state set and private visibility, and no global visibility field exists.
 ```
+
+## Review round 2/5
+
+Liquid validation now processes tags and outputs in source order with a stack of lexical loop
+scopes. A loop variable ceases to exist at its matching `endfor`; nested loops resolve their
+iterable against the enclosing item, including a legitimate `item.variants` path.
+
+URL validation rejects protocol-relative values before root-relative references are allowed, in
+normal attributes and hidden data/comment values. CLI parsing now consumes strict option/value
+pairs: every unknown flag, including a trailing flag, is rejected, and any missing value has a
+deterministic `--name is required` error. Tracking-pixel detection now evaluates remote `src`,
+`srcset`, and CSS `url()` sources for 1px/hidden dimensions and tracking-shaped URLs on every
+element, including a background-image `div`.
+
+### Round 2 red / green evidence
+
+The new red tests demonstrated that a loop variable remained valid after `endfor`, nested loop
+paths were not scope-resolved, protocol-relative URLs passed through both visible and hidden
+surfaces, a trailing unknown option was ignored, and a CSS background pixel on a non-image element
+was accepted. After the fixes:
+
+```text
+npm run build
+Result: passed
+
+npm test
+Result: 22 passed, 0 failed
+
+npm run inventory -- --check
+Result: passed; 14 ready, 39 blocked
+```

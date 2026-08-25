@@ -41,41 +41,27 @@ function assertAllowedLiquid(source: string): void {
 }
 
 function assertKnownVariables(source: string, fixture: Record<string, unknown>): void {
-  const loopBindings = new Map<string, unknown>([["forloop", {index: 1, index0: 0, first: true, last: false, length: 1}]]);
-  for (const match of source.matchAll(/\{%\s*for\s+([A-Za-z_]\w*)\s+in\s+([A-Za-z_][\w.]*)\s+limit:\d+\s*%\}/g)) {
-    if (!knownPath(fixture, match[2]!)) throw new Error("Liquid rendering failed closed: unknown variable");
-    const iterable = valueAtPath(fixture, match[2]!);
-    loopBindings.set(match[1]!, Array.isArray(iterable) ? iterable[0] : iterable);
+  const scopes: Array<Map<string, unknown>> = [new Map([["forloop", {index: 1, index0: 0, first: true, last: false, length: 1}]])];
+  for (const match of source.matchAll(/\{%\s*([\s\S]*?)\s*%\}|\{\{\s*([\s\S]*?)\s*\}\}/g)) {
+    const tag = match[1]?.trim(); const output = match[2]?.trim();
+    if (output) { assertPath(output.split("|")[0]!.trim(), fixture, scopes); continue; }
+    if (tag === "endfor") { if (scopes.length === 1) throw new Error("Liquid rendering failed closed: unbalanced loop"); scopes.pop(); continue; }
+    const loop = tag?.match(/^for\s+([A-Za-z_]\w*)\s+in\s+([A-Za-z_][\w.]*)\s+limit:\d+$/);
+    if (loop) { const iterable = resolvePath(loop[2]!, fixture, scopes); if (iterable === undefined) throw unknown(); scopes.push(new Map([[loop[1]!, Array.isArray(iterable) ? iterable[0] : iterable], ["forloop", {index: 1, index0: 0, first: true, last: false, length: 1}]])); continue; }
+    const condition = tag?.match(/^if\s+([A-Za-z_][\w.]*)\s*(?:==|!=|>|>=|<|<=)/);
+    if (condition) assertPath(condition[1]!, fixture, scopes);
   }
-  for (const match of source.matchAll(/\{\{\s*([A-Za-z_][\w.]*)((?:\s*\|\s*default:\s*(?:"[^"]*"|'[^']*'))?)\s*\}\}/g)) {
-    const expression = match[1]!;
-    const [root, ...rest] = expression.split(".");
-    if (loopBindings.has(root!)) {
-      if (rest.length && !hasPath(loopBindings.get(root!), rest.join("."))) throw new Error("Liquid rendering failed closed: unknown variable");
-    } else if (!knownPath(fixture, expression)) throw new Error("Liquid rendering failed closed: unknown variable");
-  }
-  for (const match of source.matchAll(/\{%\s*if\s+([A-Za-z_][\w.]*)\s*(?:==|!=|>|>=|<|<=)/g)) {
-    const expression = match[1]!;
-    const [root, ...rest] = expression.split(".");
-    if (loopBindings.has(root!)) {
-      if (rest.length && !hasPath(loopBindings.get(root!), rest.join("."))) throw new Error("Liquid rendering failed closed: unknown variable");
-    } else if (!knownPath(fixture, expression)) throw new Error("Liquid rendering failed closed: unknown variable");
-  }
+  if (scopes.length !== 1) throw new Error("Liquid rendering failed closed: unbalanced loop");
 }
 
-function knownPath(fixture: Record<string, unknown>, dotted: string): boolean {
-  return hasPath(fixture, dotted) || fixtureAllowsPath(fixture, dotted);
+function assertPath(path: string, fixture: Record<string, unknown>, scopes: Array<Map<string, unknown>>): void { if (resolvePath(path, fixture, scopes) === undefined && !fixtureAllowsPath(fixture, path)) throw unknown(); }
+function resolvePath(dotted: string, fixture: Record<string, unknown>, scopes: Array<Map<string, unknown>>): unknown {
+  const [root, ...rest] = dotted.split(".");
+  for (let index = scopes.length - 1; index >= 0; index--) if (scopes[index]!.has(root!)) return rest.length ? valueAtPath(scopes[index]!.get(root!), rest.join(".")) : scopes[index]!.get(root!);
+  return valueAtPath(fixture, dotted);
 }
-function valueAtPath(value: Record<string, unknown>, dotted: string): unknown {
-  return dotted.split(".").reduce<unknown>((current, segment) => current && typeof current === "object" ? (current as Record<string, unknown>)[segment] : undefined, value);
-}
+function unknown(): Error { return new Error("Liquid rendering failed closed: unknown variable"); }
 
-function hasPath(value: unknown, dotted: string): boolean {
-  let current: unknown = value;
-  for (const segment of dotted.split(".")) {
-    if (Array.isArray(current) && segment === "first") { current = current[0]; continue; }
-    if (!current || typeof current !== "object" || !(segment in current)) return false;
-    current = (current as Record<string, unknown>)[segment];
-  }
-  return true;
+function valueAtPath(value: unknown, dotted: string): unknown {
+  return dotted.split(".").reduce<unknown>((current, segment) => Array.isArray(current) && segment === "first" ? current[0] : current && typeof current === "object" ? (current as Record<string, unknown>)[segment] : undefined, value);
 }
