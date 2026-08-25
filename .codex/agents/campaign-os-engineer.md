@@ -125,6 +125,7 @@ across the local environment and Linux CI; avoid platform-specific transformatio
 manifest lookup is available. For every `download-artifact` step using `artifact-ids`, require and
 semantically validate `merge-multiple: true`; verify private review, public deploy, and ledger
 consumers separately because one green workflow path does not exercise the others.
+Inspect named and unnamed Actions steps; a validator that recognizes only `- name:` steps is bypassable.
 
 ### 8. Protect publication integration
 

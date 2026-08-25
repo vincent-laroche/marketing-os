@@ -28,6 +28,12 @@ class RepositoryValidatorTest(unittest.TestCase):
         self.assertTrue(any("artifact-id download" in error for error in workflow_errors(review, artifact_id_env_decoy)))
         artifact_id_comment_decoy = publish.replace("          artifact-ids: ${{ needs.build.outputs.site_artifact_id }}\n", "          # artifact-ids: ${{ needs.build.outputs.site_artifact_id }}\n", 1)
         self.assertTrue(any("artifact-id download" in error for error in workflow_errors(review, artifact_id_comment_decoy)))
+        unnamed_download = publish.replace(
+            "    steps:\n",
+            "    steps:\n      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093\n        with:\n          artifact-ids: 123\n",
+            1,
+        )
+        self.assertTrue(any("artifact-id download" in error for error in workflow_errors(review, unnamed_download)))
         extra_job = publish + "\n  exfiltrate:\n    runs-on: ubuntu-latest\n    permissions:\n      contents: write\n    steps: []\n"
         self.assertTrue(any("job set" in error for error in workflow_errors(review, extra_job)))
         quoted_permission = publish.replace("      pages: write", '      pages: write\n      "packages": write')

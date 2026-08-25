@@ -45,6 +45,27 @@ def _job(text: str, name: str) -> str:
     return "  " + name + ":\n" + match.group(1)
 
 
+def _action_steps(text: str) -> List[str]:
+    lines = text.splitlines()
+    steps: List[str] = []
+    for index, line in enumerate(lines):
+        match = re.match(r"^( *)(?:- )?uses:\s*([^\s]+)\s*$", line)
+        if not match:
+            continue
+        key_indent = len(match.group(1)) + (2 if line.lstrip().startswith("- ") else 0)
+        normalized = [" " * key_indent + "uses: " + match.group(2)]
+        for candidate in lines[index + 1:]:
+            if not candidate.strip():
+                normalized.append(candidate)
+                continue
+            leading = len(candidate) - len(candidate.lstrip())
+            if leading < key_indent:
+                break
+            normalized.append(candidate)
+        steps.append("\n".join(normalized))
+    return steps
+
+
 def _action_with_mapping(step: str) -> tuple[Optional[str], dict]:
     lines = step.splitlines()
     action: Optional[str] = None
@@ -121,8 +142,7 @@ def workflow_errors(review: str, publish: str) -> List[str]:
         uses = re.findall(r"\buses:\s*([^\s]+)", text)
         if not uses or not set(uses).issubset(approved_actions[name]) or not approved_actions[name].issubset(set(uses)):
             errors.append(f"{name} workflow action set or pin is not approved")
-        download_steps = re.findall(r"(?ms)^[ ]*- name:.*?(?=^[ ]*- name:|\Z)", text)
-        for step in download_steps:
+        for step in _action_steps(text):
             action, inputs = _action_with_mapping(step)
             if action and action.startswith("actions/download-artifact@") and (not inputs.get("artifact-ids") or inputs.get("merge-multiple") != "true"):
                 errors.append(f"{name} workflow artifact-id download does not merge into the requested root")

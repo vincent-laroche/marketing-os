@@ -145,6 +145,7 @@ comparison, tuple checks, and summary path must target the actual extracted root
 step does not prove the verifier inspected the intended directory. Every `download-artifact` step
 that uses `artifact-ids` must set `merge-multiple: true`; inspect every consumer independently,
 including private review verification, public deployment, and post-deployment ledger read-back.
+Treat named and unnamed Actions steps identically when enumerating download consumers.
 
 ### 8. Protect public publication
 
