@@ -120,7 +120,7 @@ jobs:
           const successful = [];
           const blocked = [...plan.blocked];
           for (const item of plan.selected) {
-            const out = path.join("email-previews", "review", item.emailCode);
+            const out = path.resolve("email-previews", "review", item.emailCode);
             fs.rmSync(out, {recursive: true, force: true});
             const args = ["--prefix", "tools/email-preview", "run", "preview", "--", "--source", item.source, "--email-code", item.emailCode, "--campaign", item.campaign, "--commit-sha", process.env.HEAD_SHA, "--issue", String(item.issue), "--pr", process.env.PR_NUMBER, "--persona", item.persona, "--states", item.states.join(","), "--out", out];
             const result = spawnSync("npm", args, {stdio: "inherit"});

@@ -32,6 +32,7 @@ test("private review workflow is pull-request-only, minimally permissioned, pinn
   assert.match(workflow, /Fail the review after preserving safe diagnostics/);
   assert.match(workflow, /change-policy/);
   assert.match(workflow, /npm --silent --prefix tools\/email-preview run inventory > preview-inventory\.json/);
+  assert.match(workflow, /path\.resolve\("email-previews", "review", item\.emailCode\)/);
   assert.match(workflow, /filter\(code => readyCodes\.has\(code\)\)/);
   assert.doesNotMatch(workflow, /Reproduce[^\n]*email-preview-publish/);
 });
@@ -58,6 +59,7 @@ test("public publication is manual, accepts only Email code and exact SHA, and s
   assert.match(workflow, /pull request|pull-request/i);
   assert.match(workflow, /"run", "materialize"/);
   assert.match(workflow, /complete approved public set/);
+  assert.match(workflow, /path\.resolve\("email-previews", "site", item\.email_code\)/);
   assert.match(workflow, /\.selections\[\].*preview_public == true/);
   assert.match(workflow, /for provenance in email-previews\/site\/\*\/provenance\.json/);
   assert.match(workflow, /for candidate in publication-candidates\/\*\.json/);
