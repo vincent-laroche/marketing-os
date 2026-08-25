@@ -85,10 +85,8 @@ is not tracked; the fix is to open one, not to describe it better here.
 | 6 | Shopify consent and audience verification before any activation | [#63](https://github.com/vincent-laroche/email-marketing-ops/issues/63) |
 | 7 | Launch approval and rollback governance | [#68](https://github.com/vincent-laroche/email-marketing-ops/issues/68) |
 | 8 | Phase 6 measurement, only after the first approved Shopify sends | [#66](https://github.com/vincent-laroche/email-marketing-ops/issues/66) |
-| 9 | `{{ firstname }}` left in `<!-- BUILD NOTE -->` comments — builder fix complete; verification and merge tracked in the Issue | [#73](https://github.com/vincent-laroche/email-marketing-ops/issues/73) |
-| 10 | HubSpot `deal.hsc_*` properties in C-0 and C-2 that Shopify cannot resolve | [#74](https://github.com/vincent-laroche/email-marketing-ops/issues/74) |
-| 11 | Shopify native notification templates — 21 of 47 done; scope and palette undecided | [#75](https://github.com/vincent-laroche/email-marketing-ops/issues/75) |
-| 12 | Commit the `AGENTS.md` platform-authority rewrite stranded in the dirty worktree | [#76](https://github.com/vincent-laroche/email-marketing-ops/issues/76) |
+| 9 | HubSpot `deal.hsc_*` properties in C-0 and C-2 that Shopify cannot resolve | [#74](https://github.com/vincent-laroche/email-marketing-ops/issues/74) |
+| 10 | Shopify native notification templates — 21 of 47 done; scope and palette undecided | [#75](https://github.com/vincent-laroche/email-marketing-ops/issues/75) |
 
 Per-email preview readiness (14 ready · 39 blocked) is recorded on the canonical
 Email Issue and summarised in `shopify-messaging/PREVIEW-READINESS.md`. Build J2 and W in Shopify
@@ -128,6 +126,14 @@ suite before any activation. MailerLite cleanup is legacy housekeeping, not laun
   comments. Any live-copy change, mixed change, new source, or broader blocked-Email edit still
   fails closed. WB-1 therefore keeps its real variable blocker while the unsafe build-note tag can
   be removed without weakening review of its live content.
+
+  For [#76](https://github.com/vincent-laroche/email-marketing-ops/issues/76), isolated the
+  existing platform-authority rewrite from the 239-entry `journey-emails-v3-rebuild` worktree and
+  applied it to current `main` without carrying any unrelated work. The rewritten §1–§7 is
+  byte-identical to the stranded source, while the newer §8 GitHub governance section remains
+  intact. `AGENTS.md`, `README.md`, and this file now agree that Shopify Messaging + Shopify Flow
+  are the sole marketing platform, MailerLite is legacy/reference only, and the reference contains
+  104 complete module trios. The dirty worktree remains untouched.
 
 - **2026-08-24 (Claude — GitHub made the system of record; findings moved out of prose):**
   Vincent's rule: nothing is tracked in prose. Added `AGENTS.md` §8 — Issues and pull requests are
