@@ -1,4 +1,28 @@
 {
   "schema_version": 2,
-  "events": []
+  "events": [
+    {
+      "event": "published",
+      "email_code": "CR-1",
+      "campaign_key": "campaign:J2",
+      "source_path": "shopify-messaging/emails/01-cr-1.html",
+      "source_commit_sha": "aa2d992850fbf3ecf4f529a2e64c050d08eca54e",
+      "canonical_issue": 10,
+      "canonical_pr": 95,
+      "persona": "normal-customer",
+      "states": [
+        "missing-first-name"
+      ],
+      "output_sha256": {
+        "rendered.html": "3a8327c26ba8013bdbb51d8bf55511ca4958c18f89886acebca3367ffa1bf6ab",
+        "desktop.png": "2df875e8729d557495ba665aa52aca66d3a206c1c82ac3fadc97a32ead4a3248",
+        "mobile.png": "2670ccc5bd65a94483f237447fb6350e41ad32fd64ebfffc6dca868d951d59f0"
+      },
+      "publication_timestamp": "2026-08-25T14:59:42Z",
+      "canonical_url": "https://vincent-laroche.github.io/marketing-os/CR-1/detail.html",
+      "pages_deployment_id": "aa2d992850fbf3ecf4f529a2e64c050d08eca54e",
+      "workflow_run_id": "32862790415",
+      "workflow_attempt": "1"
+    }
+  ]
 }
