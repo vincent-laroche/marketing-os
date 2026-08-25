@@ -6,17 +6,17 @@
 A source is **ready** only when the fail-closed preview compiler renders it against the
 fictional fixtures and it clears every safety gate. Nothing here is a send approval.
 
-**9 ready · 44 blocked · 53 total.**
+**12 ready · 41 blocked · 53 total.**
 
 | Blocker | Emails | Remediation |
 |---|---:|---|
-| Ready | 9 | None. |
-| `build-note-comment` | 5 | Mechanical. The live copy is clean; a build note still carries an untranslated merge tag. |
+| Ready | 12 | None. |
+| `build-note-comment` | 0 | Mechanical. The live copy is clean; a build note still carries an untranslated merge tag. |
 | `unresolved-variable` | 9 | Decide the Shopify variable, then add a fictional fixture value. Requires Vincent. |
 | `authoring-placeholder` | 30 | Supply the real business data. Must stay blocked until then. |
-| `safety` | 0 | Fix the source. Never relax the gate. |
+| `safety` | 2 | Fix the source. Never relax the gate. |
 
-## Ready (9)
+## Ready (12)
 
 | Email | Source | Live variables | Live placeholders | Build-note variables |
 |---|---|---|---|---|
@@ -27,18 +27,11 @@ fictional fixtures and it clears every safety gate. Nothing here is a send appro
 | PP-2 | `07-pp-2.html` | — | — | — |
 | W-2 | `15-w-2.html` | — | — | — |
 | W-4 | `17-w-4.html` | — | — | — |
+| RO-1 | `19-ro-1.html` | — | — | — |
+| WB-4 | `28-wb-4.html` | — | — | — |
 | C-1 | `30-c-1.html` | — | — | — |
 | C-3 | `32-c-3.html` | — | — | — |
-
-## Blocked only by a `<!-- BUILD NOTE -->` comment (5)
-
-| Email | Source | Live variables | Live placeholders | Build-note variables |
-|---|---|---|---|---|
-| PP-7 | `12-pp-7.html` | — | — | `firstname` |
-| RO-1 | `19-ro-1.html` | — | — | `firstname` |
-| RO-4 | `22-ro-4.html` | — | — | `firstname` |
-| WB-4 | `28-wb-4.html` | — | — | `firstname` |
-| C-4 | `33-c-4.html` | — | — | `firstname` |
+| C-4 | `33-c-4.html` | — | — | — |
 
 ## Blocked by an undecided dynamic variable in live copy (9)
 
@@ -51,7 +44,7 @@ fictional fixtures and it clears every safety gate. Nothing here is a send appro
 | RO-3 | `21-ro-3.html` | `last_order_specification`<br>`production_lead_time` | — | — |
 | RO-5 | `23-ro-5.html` | `recommended_interval`<br>`reorder_count` | — | — |
 | RO-6 | `24-ro-6.html` | `last_order_specification`<br>`months_since_delivery` | — | — |
-| WB-1 | `25-wb-1.html` | `months_since_last_order` | — | `firstname`<br>`months_since_last_order` |
+| WB-1 | `25-wb-1.html` | `months_since_last_order` | — | `months_since_last_order` |
 | WB-3 | `27-wb-3.html` | `last_order_specification` | — | — |
 
 ## Blocked by a loud placeholder standing in for real business data (30)
@@ -88,3 +81,10 @@ fictional fixtures and it clears every safety gate. Nothing here is a send appro
 | NL-18 | `51-nl-18.html` | — | `countdown to offer expiry`<br>`dynamic: 3 bestsellers within the offer`<br>`dynamic: the 4 collections this offer applies to`<br>`promo code — auto-apply at checkout`<br>`the offer in one plain sentence — no teasing` | — |
 | NL-19 | `52-nl-19.html` | — | `2–4 things genuinely in progress — new bases, process changes, service improvements. Only commitments we'll keep; nothing aspirational.`<br>`image: the workshop, or whatever "what's next" actually looks like right now`<br>`plain answer`<br>`plain answer — including "we don't do that" if that's the answer`<br>`real reader question 1`<br>`real reader question 2`<br>`real reader question 3` | — |
 | NL-20 | `53-nl-20.html` | — | `countdown — only if a real launch window applies; otherwise drop the module`<br>`dynamic: kit vs bought-separately — contents, price, what's included`<br>`dynamic: the 3 core items in the line`<br>`for each item (3–5): the routine problem it solves → what people were using instead → what changes. Plain statements, no gadget language. Example shape: "The application tool exists because fingers apply adhesive unevenly at the temples — the one spot where evenness matters most."`<br>`image + text: one hero tool in use — mid-routine, not product photography`<br>`image: the accessories &amp; tools line, laid out plainly` | `token` |
+
+## Blocked by a safety gate (2)
+
+| Email | Source | Live variables | Live placeholders | Build-note variables |
+|---|---|---|---|---|
+| PP-7 | `12-pp-7.html` | — | — | — |
+| RO-4 | `22-ro-4.html` | — | — | — |

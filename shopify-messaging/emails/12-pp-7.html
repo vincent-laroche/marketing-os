@@ -31,7 +31,7 @@
 
 </head>
 <body style="margin:0;padding:0;background-color:transparent;">
-<!-- BUILD NOTE: Hi <span style="background-color:#F6EFD9;border-bottom:2px dashed #EA6452;font-family:'Courier New',Courier,monospace;font-size:90%;">{{ firstname }}</span>, -->
+<!-- BUILD NOTE: Hi {{ customer.first_name | default: "there" }}, -->
 <!-- BUILD NOTE: You've had your system about five weeks now — long enough to know how you feel about it. -->
 <!-- BUILD NOTE: How's it going? -->
 <!-- BUILD NOTE: If it's going well, the first button takes you to a review page. Reviews are how people in the same position you were in five weeks ago decide whether to trust us. -->

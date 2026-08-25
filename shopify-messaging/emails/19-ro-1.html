@@ -31,7 +31,7 @@
 
 </head>
 <body style="margin:0;padding:0;background-color:transparent;">
-<!-- BUILD NOTE: Hi <span style="background-color:#F6EFD9;border-bottom:2px dashed #EA6452;font-family:'Courier New',Courier,monospace;font-size:90%;">{{ firstname }}</span>, -->
+<!-- BUILD NOTE: Hi {{ customer.first_name | default: "there" }}, -->
 <!-- BUILD NOTE: Six weeks is the point where a system starts telling you how it's going to age. Two things worth checking this week. -->
 <!-- BUILD NOTE: The front perimeter. Hold it to the light and look along the very front edge. Fine splits there are normal wear, but they spread. Catching one now is a repair; catching it in a month is a replacement. -->
 <!-- BUILD NOTE: The knots at the crown. If hair is shedding faster than it was, that's usually cleaning technique rather than a fault — too much friction on the base. -->

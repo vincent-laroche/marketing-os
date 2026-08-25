@@ -981,7 +981,7 @@ def assemble(row):
 def email_doc(row, preamble, modules, styles):
     name = row["Email name"]
     preheader = esc(row["Preview Text"].strip()) or ""
-    comments = "\n".join("<!-- BUILD NOTE: " + esc(p) + " -->" for p in preamble)
+    comments = "\n".join("<!-- BUILD NOTE: " + esc(translate_tokens(p)) + " -->" for p in preamble)
     style_block = "\n".join(dict.fromkeys(styles.values()))
     parts = ["<!-- module: " + fam + " -->\n" + frag for fam, frag in modules]
     body_inner = "\n".join(parts)
@@ -1170,4 +1170,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
