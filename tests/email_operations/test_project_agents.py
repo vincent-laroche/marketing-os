@@ -41,7 +41,7 @@ class ProjectAgentSuiteTest(unittest.TestCase):
             path = root / ".codex/agents/shopify-messaging-campaign-operator.md"
             text = path.read_text(encoding="utf-8")
             path.write_text(
-                text.replace("explicit current-task approval", "owner permission", 1),
+                text.replace("explicit current-task approval", "owner permission"),
                 encoding="utf-8",
             )
             self.assertTrue(
