@@ -54,7 +54,15 @@ function assertKnownVariables(source: string, fixture: Record<string, unknown>):
   if (scopes.length !== 1) throw new Error("Liquid rendering failed closed: unbalanced loop");
 }
 
-function assertPath(path: string, fixture: Record<string, unknown>, scopes: Array<Map<string, unknown>>): void { if (resolvePath(path, fixture, scopes) === undefined && !fixtureAllowsPath(fixture, path)) throw unknown(); }
+function assertPath(path: string, fixture: Record<string, unknown>, scopes: Array<Map<string, unknown>>): void {
+  const [root] = path.split(".");
+  if (resolvePath(path, fixture, scopes) === undefined && (hasBinding(root!, scopes) || !fixtureAllowsPath(fixture, path))) throw unknown();
+}
+
+function hasBinding(root: string, scopes: Array<Map<string, unknown>>): boolean {
+  return scopes.some(scope => scope.has(root));
+}
+
 function resolvePath(dotted: string, fixture: Record<string, unknown>, scopes: Array<Map<string, unknown>>): unknown {
   const [root, ...rest] = dotted.split(".");
   for (let index = scopes.length - 1; index >= 0; index--) if (scopes[index]!.has(root!)) return rest.length ? valueAtPath(scopes[index]!.get(root!), rest.join(".")) : scopes[index]!.get(root!);

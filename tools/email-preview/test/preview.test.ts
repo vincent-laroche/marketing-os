@@ -47,6 +47,11 @@ test("loop bindings are lexical and nested loops validate against their enclosin
   await assert.doesNotReject(() => renderLiquid('{% for item in products limit:1 %}{% for variant in item.variants limit:1 %}{{ variant.title }}{% endfor %}{% endfor %}', {products: [{title: "Fictional", variants: [{title: "Fictional variant"}]}]}));
 });
 
+test("loop bindings shadow approved fixture roots", async () => {
+  const fixture = loadFixture("normal-customer", "missing-first-name");
+  await assert.rejects(() => renderLiquid('{% for customer in abandoned_checkout.line_items limit:1 %}{{ customer.first_name }}{% endfor %}', fixture), /unknown variable/);
+});
+
 test("rendered HTML is noindex and rejects customer-specific live URLs", () => {
   const safe = injectNoIndex("<html><head></head><body><a href=\"#preview-inert-checkout\">Preview</a></body></html>");
   assert.match(safe, /noindex,nofollow/);

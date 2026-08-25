@@ -151,3 +151,31 @@ Result: 22 passed, 0 failed
 npm run inventory -- --check
 Result: passed; 14 ready, 39 blocked
 ```
+
+## Review round 3/5
+
+Loop bindings now shadow fixture-root names for the duration of their lexical scope. If a
+binding named `customer` is in scope, `customer.first_name` is resolved only against that
+binding; an approved fixture-root path cannot make the missing loop-item property pass.
+Nested item-schema loops remain valid.
+
+### Round 3 red / green evidence
+
+The focused red regression showed that `{% for customer in abandoned_checkout.line_items
+limit:1 %}{{ customer.first_name }}{% endfor %}` accepted `customer.first_name` from the
+fixture-root approval set even though a line item has no such property. The fixed validator
+rejects the path while retaining the existing valid nested-loop test.
+
+```text
+npm test -- --test-name-pattern='loop bindings'
+Red result: 22 passed, 1 failed (Missing expected rejection: loop bindings shadow approved fixture roots)
+
+npm run build
+Result: passed
+
+npm test
+Result: 23 passed, 0 failed
+
+npm run inventory -- --check
+Result: passed; 14 ready, 39 blocked
+```
