@@ -21,7 +21,7 @@ test("fixture registry is fictional, reusable, and produces exact outputs", () =
   assert.equal((fixture.abandoned_checkout as {line_items: unknown[]}).line_items.length, 5);
   assert.equal(config.selections.length, 53);
   const approved = config.selections.filter((selection: {preview_public: boolean}) => selection.preview_public);
-  assert.deepEqual(approved.map((selection: {email_code: string}) => selection.email_code), ["CR-1"]);
+  assert.deepEqual(approved.map((selection: {email_code: string}) => selection.email_code), ["CR-1", "CR-2", "CR-3", "CR-4", "PP-2", "PP-7", "W-2", "W-4", "RO-1", "RO-4", "WB-4", "C-1", "C-3", "C-4"]);
   assert.equal("first_name" in (loadFixture("normal-customer", "missing-first-name").customer as object), false);
   assert.throws(() => Object.assign(fixture, { customer: {} }), /read only|frozen|extensible/i);
 });
