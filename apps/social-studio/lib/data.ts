@@ -1,3 +1,12 @@
+/**
+ * PUBLIC REFERENCE / PRODUCTION QUARANTINE.
+ *
+ * This module contains migrated historical seed data. It is not an approved
+ * content library, current catalogue, pricing authority, consent register, or
+ * publication queue. Verify claims, rights, consent, and currentness before
+ * any reuse; this data never authorises social posting or scheduling.
+ * See docs/social-media/PUBLIC-CONTENT-AUDIT.md and Issue #102.
+ */
 export type LaunchPost = {
   day: number;
   title: string;
