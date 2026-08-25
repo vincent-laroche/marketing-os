@@ -56,12 +56,15 @@ test("public publication is manual, accepts only Email code and exact SHA, and s
   assert.match(workflow, /pages:\s*write/);
   assert.match(workflow, /id-token:\s*write/);
   assert.match(workflow, /contents:\s*write/);
-  assert.match(workflow, /pull-requests:\s*write/);
+  assert.doesNotMatch(workflow, /pull-requests:\s*write/);
   assert.match(workflow, /pull-requests:\s*read/);
   assert.match(workflow, /actions:\s*read/);
   assert.match(workflow, /environment:\s*\n\s+name:\s+github-pages/);
   assert.match(workflow, /ledger-only|publication-ledger\.json/);
   assert.match(workflow, /pull request|pull-request/i);
+  assert.match(workflow, /Push ledger-only candidate branch for manual pull request/);
+  assert.match(workflow, /ledger_pr_required=true/);
+  assert.match(workflow, /GITHUB_STEP_SUMMARY/);
   assert.match(workflow, /"run", "materialize"/);
   assert.match(workflow, /complete approved public set/);
   assert.match(workflow, /path\.resolve\("email-previews", "site", item\.email_code\)/);

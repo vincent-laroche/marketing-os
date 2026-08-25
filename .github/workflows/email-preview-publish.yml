@@ -153,9 +153,11 @@ jobs:
   ledger:
     needs: [build, deploy]
     runs-on: ubuntu-latest
+    outputs:
+      ledger_branch: ${{ steps.push-ledger.outputs.ledger_branch }}
+      ledger_pr_required: ${{ steps.push-ledger.outputs.ledger_pr_required }}
     permissions:
       contents: write
-      pull-requests: write
       actions: read
     steps:
       - name: Checkout canonical main for ledger-only work
@@ -199,11 +201,10 @@ jobs:
             code="$(jq -r '.email_code' "$provenance")"
             npx tsx tools/email-preview/src/publication.ts candidate --site email-previews/site --email-code "$code" --source-sha "$SOURCE_SHA" --canonical-base "$PAGE_URL" --pages-deployment-id "$DEPLOYMENT_ID" --workflow-run-id "$GITHUB_RUN_ID" --workflow-attempt "$GITHUB_RUN_ATTEMPT" --publication-timestamp "$timestamp" --out "publication-candidates/$code.json"
           done
-      - name: Open or update the ledger-only pull request
+      - name: Push ledger-only candidate branch for manual pull request
+        id: push-ledger
         env:
-          GH_TOKEN: ${{ github.token }}
           LEDGER_BRANCH: automation/email-preview-publication-ledger
-          EMAIL_CODE: ${{ inputs.email_code }}
           SOURCE_SHA: ${{ inputs.source_sha }}
         run: |
           git fetch origin main
@@ -226,5 +227,18 @@ jobs:
           published="$(jq -sr 'map(.email_code) | join(", ")' publication-candidates/*.json)"
           canonical_issues="$(jq -sr 'map(.canonical_issue) | unique | map("#" + tostring) | join(", ")' publication-candidates/*.json)"
           source_prs="$(jq -sr 'map(.canonical_pr) | unique | map("#" + tostring) | join(", ")' publication-candidates/*.json)"
-          body="Verified public publication snapshot for Emails $published at source SHA $SOURCE_SHA. Canonical Email Issues: $canonical_issues. Source pull requests: $source_prs. This PR changes only email-previews/publication-ledger.json; merge does not send or activate email."
-          gh api "repos/$GITHUB_REPOSITORY/pulls" --method POST -f base=main -f head="$LEDGER_BRANCH" -f title="chore(preview): record verified public publication ledger" -f body="$body" >/dev/null
+          compare_url="https://github.com/$GITHUB_REPOSITORY/compare/main...$GITHUB_REPOSITORY_OWNER:$LEDGER_BRANCH?expand=1"
+          {
+            echo "ledger_branch=$LEDGER_BRANCH" >> "$GITHUB_OUTPUT"
+            echo "ledger_pr_required=true" >> "$GITHUB_OUTPUT"
+            echo "### Manual ledger pull request required"
+            echo
+            echo "Pages deployment and HTTPS read-back completed. The verified append-only ledger candidate was pushed to [$LEDGER_BRANCH]($compare_url)."
+            echo
+            echo "Open the compare link, confirm the pull request changes only email-previews/publication-ledger.json, and merge it after review. This merge records publication; it does not send or activate email."
+            echo
+            echo "Published emails: $published"
+            echo "Source SHA: $SOURCE_SHA"
+            echo "Canonical Email Issues: $canonical_issues"
+            echo "Source pull requests: $source_prs"
+          } >> "$GITHUB_STEP_SUMMARY"
