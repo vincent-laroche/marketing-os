@@ -7,7 +7,7 @@
 > canonical. Every open item below must name its Issue; a finding recorded only here, in a plan
 > document, or in a chat message is untracked. Open an Issue, then cite the number.
 
-**Last updated:** 2026-08-25 by Codex (Marketing OS reconciliation complete; 14 fictional Email previews published; workflow handoff fixed; Social content quarantined; no Shopify, audience, campaign, Flow, send, schedule, activation, or social platform publication change)
+**Last updated:** 2026-08-25 by Codex (Marketing OS reconciliation complete; 14 fictional Email previews published; sanitized Social display gallery deployed; workflow handoff fixed; Social content quarantined; no Shopify, audience, campaign, Flow, send, schedule, activation, or social platform publication change)
 
 **Status:** **All marketing campaigns and lifecycle journeys now belong to Shopify Messaging +
 Shopify Flow. MailerLite is not a campaign/lifecycle platform for this project.** Shopify
@@ -39,8 +39,10 @@ Project #5 is private, linked to the same repository, and contains only canonica
 #90–#94 with the separate Social hierarchy. Duplicate partial fixtures #88 and #89 were closed
 as superseded without deleting history. The migrated Social Studio/data audit is classified as
 public historical/reference material under Issue #102 and `docs/social-media/PUBLIC-CONTENT-AUDIT.md`;
-that audit PR is merged. Social Studio remains undeployed because dependency/security and
+that audit PR is merged. The internal Social Studio operator app remains undeployed because dependency/security and
 hosting review is still open in Issue #104.
+
+**2026-08-25 public gallery deployment:** A separate no-login `apps/social-studio/public-gallery/` build was added in PR #108 and its Worker-first security-header correction was merged in PR #109. It contains only sanitized structural fixtures: 30 day rows, three grid slots per day, five Story slots per day, and a separate 3 × 3 feed assembly; it has no Notion runtime, internal seed data, operator controls, customer data, testimonials, prices, claims, or publishing/scheduling actions. The dedicated Cloudflare Worker `social-marketing-studio` is permanently attached to `https://social-marketing-studio.hairsolutions.co/` from main SHA `f67065f6909d3e67b3a6da1fe2941682d040d377`, version `08b0369d-c246-4f4f-aae7-9c3746216b30`. Issue #107 records the HTTPS read-back: root `200`, unmatched route `404`, noindex and security headers on all tested assets, and the sanitized data boundary. The connected browser reached the application title; headless Chromium encountered Cloudflare’s bot-verification interstitial, so no screenshot-based live visual approval is claimed.
 
 **Live MailerLite re-verification, 2026-08-24:** account 2582639 is authenticated and currently
 has **0 campaigns**, **1 disabled legacy welcome automation**, and 2,223 subscribers. Its Shopify
