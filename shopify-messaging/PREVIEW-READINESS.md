@@ -6,17 +6,17 @@
 A source is **ready** only when the fail-closed preview compiler renders it against the
 fictional fixtures and it clears every safety gate. Nothing here is a send approval.
 
-**9 ready · 44 blocked · 53 total.**
+**14 ready · 39 blocked · 53 total.**
 
 | Blocker | Emails | Remediation |
 |---|---:|---|
-| Ready | 9 | None. |
-| `build-note-comment` | 5 | Mechanical. The live copy is clean; a build note still carries an untranslated merge tag. |
+| Ready | 14 | None. |
+| `build-note-comment` | 0 | Mechanical. The live copy is clean; a build note still carries an untranslated merge tag. |
 | `unresolved-variable` | 9 | Decide the Shopify variable, then add a fictional fixture value. Requires Vincent. |
 | `authoring-placeholder` | 30 | Supply the real business data. Must stay blocked until then. |
 | `safety` | 0 | Fix the source. Never relax the gate. |
 
-## Ready (9)
+## Ready (14)
 
 | Email | Source | Live variables | Live placeholders | Build-note variables |
 |---|---|---|---|---|
@@ -25,20 +25,15 @@ fictional fixtures and it clears every safety gate. Nothing here is a send appro
 | CR-3 | `03-cr-3.html` | — | — | — |
 | CR-4 | `04-cr-4.html` | — | — | — |
 | PP-2 | `07-pp-2.html` | — | — | — |
+| PP-7 | `12-pp-7.html` | — | — | — |
 | W-2 | `15-w-2.html` | — | — | — |
 | W-4 | `17-w-4.html` | — | — | — |
+| RO-1 | `19-ro-1.html` | — | — | — |
+| RO-4 | `22-ro-4.html` | — | — | — |
+| WB-4 | `28-wb-4.html` | — | — | — |
 | C-1 | `30-c-1.html` | — | — | — |
 | C-3 | `32-c-3.html` | — | — | — |
-
-## Blocked only by a `<!-- BUILD NOTE -->` comment (5)
-
-| Email | Source | Live variables | Live placeholders | Build-note variables |
-|---|---|---|---|---|
-| PP-7 | `12-pp-7.html` | — | — | `firstname` |
-| RO-1 | `19-ro-1.html` | — | — | `firstname` |
-| RO-4 | `22-ro-4.html` | — | — | `firstname` |
-| WB-4 | `28-wb-4.html` | — | — | `firstname` |
-| C-4 | `33-c-4.html` | — | — | `firstname` |
+| C-4 | `33-c-4.html` | — | — | — |
 
 ## Blocked by an undecided dynamic variable in live copy (9)
 
@@ -51,7 +46,7 @@ fictional fixtures and it clears every safety gate. Nothing here is a send appro
 | RO-3 | `21-ro-3.html` | `last_order_specification`<br>`production_lead_time` | — | — |
 | RO-5 | `23-ro-5.html` | `recommended_interval`<br>`reorder_count` | — | — |
 | RO-6 | `24-ro-6.html` | `last_order_specification`<br>`months_since_delivery` | — | — |
-| WB-1 | `25-wb-1.html` | `months_since_last_order` | — | `firstname`<br>`months_since_last_order` |
+| WB-1 | `25-wb-1.html` | `months_since_last_order` | — | `months_since_last_order` |
 | WB-3 | `27-wb-3.html` | `last_order_specification` | — | — |
 
 ## Blocked by a loud placeholder standing in for real business data (30)

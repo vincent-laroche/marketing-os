@@ -31,7 +31,7 @@
 
 </head>
 <body style="margin:0;padding:0;background-color:transparent;">
-<!-- BUILD NOTE: Hi <span style="background-color:#F6EFD9;border-bottom:2px dashed #EA6452;font-family:'Courier New',Courier,monospace;font-size:90%;">{{ firstname }}</span>, -->
+<!-- BUILD NOTE: Hi {{ customer.first_name | default: "there" }}, -->
 <!-- BUILD NOTE: This is the last marketing email you'll get from us. -->
 <!-- BUILD NOTE: You haven't opened anything in a while, and I'd rather stop than keep arriving in an inbox where I'm not wanted. In a week I'll quietly remove you from our marketing list. You don't need to do anything. -->
 <!-- BUILD NOTE: If you'd like to stay, one click keeps you on. -->

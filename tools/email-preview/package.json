@@ -11,7 +11,8 @@
     "test": "node --import tsx --test test/*.test.ts",
     "preview": "tsx src/cli.ts",
     "gallery": "tsx src/gallery.ts",
-    "inventory": "tsx src/inventory-cli.ts"
+    "inventory": "tsx src/inventory-cli.ts",
+    "change-policy": "tsx src/change-policy-cli.ts"
   },
   "dependencies": {
     "liquidjs": "10.29.0",
