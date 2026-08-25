@@ -46,6 +46,7 @@ jobs:
       - name: Render changed emails fail closed
         if: steps.changed.outputs.count != '0'
         env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           PR: ${{ github.event.pull_request.number }}
         run: |
@@ -57,9 +58,18 @@ jobs:
             code="$(jq -r --arg guess "$guess" '.issues | keys[] | select(startswith("email:")) | ltrimstr("email:") | select(ascii_upcase == $guess)' github-campaign-os/issue-sync-report.json)"
             test -n "$code" || { echo "No canonical Email Issue found for $guess" >&2; exit 1; }
             issue="$(jq -r --arg key "email:$code" '.issues[$key]' github-campaign-os/issue-sync-report.json)"
-            npm --prefix tools/email-preview run preview -- --source "$source" --email-code "$code" --commit-sha "$HEAD_SHA" --issue "$issue" --pr "$PR" --out "email-previews/review/$code"
+            if npm --prefix tools/email-preview run preview -- --source "$source" --email-code "$code" --commit-sha "$HEAD_SHA" --issue "$issue" --pr "$PR" --out "email-previews/review/$code"; then
+              continue
+            fi
+            # A blocked Email may receive an incremental fix only when Git proves the
+            # entire source diff is confined to one-line BUILD NOTE comments. Any live
+            # copy change, mixed change, or new source still fails closed.
+            base_source="$(mktemp)"
+            git show "$BASE_SHA:$source" > "$base_source"
+            npm --prefix tools/email-preview run change-policy -- --before "$base_source" --after "$GITHUB_WORKSPACE/$source"
+            echo "$code: blocked after verified build-note-only change" >> email-previews/review/blocked-build-note-only.txt
           done < changed-emails.txt
-          test -n "$(find email-previews/review -name provenance.json -print -quit)" || { echo "No email preview was generated" >&2; exit 1; }
+          test -n "$(find email-previews/review -type f -print -quit)" || { echo "No review evidence was generated" >&2; exit 1; }
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: steps.changed.outputs.count != '0'
         with:

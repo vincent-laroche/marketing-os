@@ -122,6 +122,13 @@ suite before any activation. MailerLite cleanup is legacy housekeeping, not laun
   WB-4 and C-4 are ready; WB-1 remains blocked on `months_since_last_order`. The raw
   `{{ firstname }}` tag is gone from all six outputs; no approved copy changed.
 
+  CI also exposed that its all-or-nothing render loop could not merge a comment-only cleanup to an
+  Email with a separate live blocker. Added a tested, narrow change policy: a blocked source may
+  pass review only when Git proves the entire diff is confined to one-line `<!-- BUILD NOTE -->`
+  comments. Any live-copy change, mixed change, new source, or broader blocked-Email edit still
+  fails closed. WB-1 therefore keeps its real variable blocker while the unsafe build-note tag can
+  be removed without weakening review of its live content.
+
 - **2026-08-24 (Claude — GitHub made the system of record; findings moved out of prose):**
   Vincent's rule: nothing is tracked in prose. Added `AGENTS.md` §8 — Issues and pull requests are
   canonical, a finding without an Issue number does not exist, `PROJECT.md` is a log and not a
