@@ -3,8 +3,9 @@
 > Living status log. Full context/rules live in `AGENTS.md` (the project bible) — don't duplicate them
 > here. Update this file at the end of every session: what changed, what's next, who touched it.
 
-**Last updated:** 2026-08-24 by Codex (Campaign OS built and verified in GitHub; preview compiler
-implemented locally; no Pages publication or Shopify activation)
+**Last updated:** 2026-08-24 by Claude (Campaign OS re-verified against live GitHub; stale generated
+manifest repaired; preview source-readiness measured at 9 ready / 44 blocked; no Pages publication or
+Shopify activation)
 
 **Status:** **All marketing campaigns and lifecycle journeys now belong to Shopify Messaging +
 Shopify Flow. MailerLite is not a campaign/lifecycle platform for this project.** Shopify
@@ -77,8 +78,13 @@ working tree**. It stays recoverable from git history at `e892e64` and earlier.
 4. Resolve the two inactive duplicate abandoned-checkout automations in Shopify Messaging.
 5. Build J2 and W in Shopify Messaging and J1/J3/J4/J5 in Shopify Flow; then run the full Phase 5
    QA suite before any activation.
-6. Resolve the source emails that the new preview compiler correctly rejects for unresolved or
-   unsupported Liquid, beginning with BR-1 `last_viewed_product`.
+6. Work the preview source-readiness backlog in `shopify-messaging/PREVIEW-READINESS.md`
+   (9 ready · 44 blocked). In remediation order: (a) the 5 `build-note-comment` emails, whose live
+   copy is already clean — fix the `{{ firstname }}` translation in `<!-- BUILD NOTE -->` comments at
+   the builder, per `CAMPAIGN-PLAN.md` §310; (b) the 9 `unresolved-variable` emails, which need the
+   Shopify variable decided before a fictional fixture can be added — BR-1 `last_viewed_product` is
+   the first, and C-0/C-2 still carry HubSpot `deal.hsc_*` properties that Shopify cannot resolve;
+   (c) the 30 `authoring-placeholder` emails, which stay blocked until real business data exists.
 7. Separately approve GitHub Pages enablement/first public preview only when a specific Email Issue
    and source revision are ready; `preview_public` remains false.
 8. Start Phase 6 measurement only after the first approved Shopify sends.
@@ -95,6 +101,44 @@ working tree**. It stays recoverable from git history at `e892e64` and earlier.
 ## Session log
 > Chronological record only. Older entries may describe superseded platforms, paths, counts, or
 > blockers. The current status at the top of this file and `AGENTS.md` always win.
+
+- **2026-08-24 (Claude — Campaign OS takeover verification and preview readiness measured):**
+  Verified the handover against live evidence rather than the handover note. `origin/main` is
+  `8a879a2`; PR #70 (`3a85ee99`) and PR #71 (`8a879a2`) are both merged; the repository holds exactly
+  69 Issues (68 open, 1 closed). `verify_issues` reported 69 remote Issues with zero drift and
+  `verify_project` reported private Project #4 with 69 Issue items, 1 pull-request item, all 28
+  custom fields, and all six views. The Python suite and the preview compiler's TypeScript build and
+  unit tests all passed.
+
+  **Drift found and fixed.** `build_manifest.py --check` failed: `github-campaign-os/manifest.json`
+  was not reproducible from the committed tree — 62 of 69 records carried a `source_fingerprint`
+  computed from file bytes that exist in no commit (it was generated in the main worktree while
+  `CAMPAIGN-PLAN.md` and `shopify-messaging/build-ledger.json` were dirty). Regenerated it; only
+  `source_fingerprint` changed, titles/bodies/field values are untouched, and `verify_issues` still
+  reports zero drift because `issue_body` does not embed the fingerprint. Added a regression test so
+  a stale generated file fails the suite instead of rotting silently.
+
+  **Drift found and reported, not changed.** The committed `AGENTS.md` on `main` is the pre-Shopify
+  version — the platform-authority rewrite described in the 2026-08-24 reconciliation entry exists
+  only as uncommitted work in the main worktree, which is left untouched. `README.md` and this file
+  are current, so the repository bible currently contradicts them. No GitHub token exists in
+  `~/.env`; the working credential is the `gh` CLI keyring, used read-only and never printed.
+  Node 24 is not installed locally (v22.22.3), so the compiler was exercised off its pinned engine;
+  CI still pins 24.
+
+  **Preview readiness measured.** The handover described "several" rejected sources. The real figure
+  is **9 ready of 53**. Added `tools/email-preview/src/inventory.ts` — a classifier that uses the
+  fail-closed renderer as ground truth and explains each rejection — plus a CLI, five tests, and the
+  generated, reproducibility-checked report `shopify-messaging/PREVIEW-READINESS.md`. Blocked sources
+  split into 5 `build-note-comment` (mechanical: an untranslated `{{ firstname }}` survives inside a
+  `<!-- BUILD NOTE -->` comment, which Liquid still parses — a live Shopify risk, not just a preview
+  artifact), 9 `unresolved-variable` (real dynamic values with no Shopify variable decided, including
+  HubSpot `deal.hsc_*` properties in C-0 and C-2), and 30 `authoring-placeholder` (the deliberate
+  Phase 4 loud placeholders). BR-1 was not unblocked: `last_viewed_product` is a HubSpot-era merge tag
+  with no decided Shopify equivalent, so a fixture alone would produce a false green — it stays
+  blocked pending Vincent's decision. No renderer gate was weakened and no business data was invented.
+  No Shopify Messaging campaign, Flow, audience, consent, schedule, activation, or send changed; Pages
+  stayed disabled and `preview_public` stayed false.
 
 - **2026-08-24 (Codex — Campaign OS implementation):** Built and live-verified the private
   `Email Marketing — Campaign OS` as GitHub Project #4 linked to
