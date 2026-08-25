@@ -93,12 +93,12 @@ test("structural safety rejects active content, unsafe protocols, remote hosts, 
 test("provenance binds exact source SHA, Issue, PR, and three outputs", () => {
   const extras = {output_sha256: {"rendered.html": "a", "desktop.png": "b", "mobile.png": "c"}, campaign_key: "campaign:J2", fixture_sha256: "fixture", compiler_lock_sha256: "lock", generated_at: "2026-08-25T00:00:00.000Z", visibility: "private" as const};
   const identity = {repository: "vincent-laroche/email-marketing-ops"};
-  const result = provenance({source: "shopify-messaging/emails/01-cr-1.html", emailCode: "CR-1", campaign: "campaign:J2", commitSha: "a".repeat(40), issue: 8, pr: 70, persona: "normal-customer", states: ["missing-first-name"], out: "unused"}, "source", "rendered", {...extras, identity});
+  const result = provenance({source: "shopify-messaging/emails/01-cr-1.html", emailCode: "CR-1", campaign: "campaign:J2", commitSha: "a".repeat(40), issue: 8, pr: 70, persona: "normal-customer", states: ["missing-first-name"], out: "unused", visibility: "private"}, "source", "rendered", {...extras, identity});
   assert.equal(result.source_commit_sha, "a".repeat(40));
   assert.equal(result.related_issue, 8);
   assert.equal(result.related_pr, 70);
   assert.deepEqual(result.outputs, ["rendered.html", "desktop.png", "mobile.png"]);
-  assert.throws(() => provenance({source: "shopify-messaging/emails/01-cr-1.html", emailCode: "CR-1", campaign: "campaign:J2", commitSha: "a".repeat(40), issue: 8, pr: 0, persona: "normal-customer", states: ["missing-first-name"], out: "unused"}, "source", "rendered", {...extras, identity}), /positive PR/);
+  assert.throws(() => provenance({source: "shopify-messaging/emails/01-cr-1.html", emailCode: "CR-1", campaign: "campaign:J2", commitSha: "a".repeat(40), issue: 8, pr: 0, persona: "normal-customer", states: ["missing-first-name"], out: "unused", visibility: "private"}, "source", "rendered", {...extras, identity}), /positive PR/);
 });
 
 test("sensitive destinations are replaced without retaining their original value", () => {
@@ -132,10 +132,13 @@ test("PNG validation enforces exact capture widths", async () => {
 
 test("CLI requires a PR, campaign, selected states, no unknown flags, and exact canonical identity", async () => {
   assert.throws(() => parseArgs(["node", "cli.ts", "--source", "shopify-messaging/emails/01-cr-1.html", "--email-code", "CR-1", "--campaign", "campaign:J2", "--commit-sha", "a".repeat(40), "--issue", "1", "--states", "missing-first-name", "--out", "tmp"]), /--pr is required/);
-  await assert.rejects(() => compilePreview({source: "shopify-messaging/emails/01-cr-1.html", emailCode: "CR-2", campaign: "campaign:J2", commitSha: "a".repeat(40), issue: 1, pr: 2, persona: "normal-customer", states: ["missing-first-name"], out: "tmp"}), /approved canonical selection/);
+  await assert.rejects(() => compilePreview({source: "shopify-messaging/emails/01-cr-1.html", emailCode: "CR-2", campaign: "campaign:J2", commitSha: "a".repeat(40), issue: 1, pr: 2, persona: "normal-customer", states: ["missing-first-name"], out: "tmp", visibility: "private"}), /approved canonical selection/);
   assert.throws(() => parseArgs(["node", "cli.ts", "--source", "shopify-messaging/emails/01-cr-1.html", "--email-code", "CR-1", "--campaign", "campaign:J2", "--commit-sha", "a".repeat(40), "--issue", "10", "--pr", "2", "--states", "missing-first-name", "--out", "tmp", "--unexpected", "x"]), /unknown option/);
   assert.throws(() => parseArgs(["node", "cli.ts", "--source", "shopify-messaging/emails/01-cr-1.html", "--email-code", "CR-1", "--campaign", "campaign:J2", "--commit-sha", "a".repeat(40), "--issue", "10", "--pr", "2", "--states", "missing-first-name", "--out", "tmp", "--unexpected"]), /unknown option/);
   assert.throws(() => parseArgs(["node", "cli.ts", "--source", "shopify-messaging/emails/01-cr-1.html", "--email-code", "CR-1", "--campaign", "campaign:J2", "--commit-sha", "a".repeat(40), "--issue", "10", "--pr"]), /--pr is required/);
+  const valid = parseArgs(["node", "cli.ts", "--source", "shopify-messaging/emails/01-cr-1.html", "--email-code", "CR-1", "--campaign", "campaign:J2", "--commit-sha", "a".repeat(40), "--issue", "10", "--pr", "2", "--states", "missing-first-name", "--visibility", "private", "--out", "tmp"]);
+  assert.equal(valid.visibility, "private");
+  assert.throws(() => parseArgs(["node", "cli.ts", "--source", "shopify-messaging/emails/01-cr-1.html", "--email-code", "CR-1", "--campaign", "campaign:J2", "--commit-sha", "a".repeat(40), "--issue", "10", "--pr", "2", "--states", "missing-first-name", "--visibility", "approved", "--out", "tmp"]), /visibility/i);
 });
 
 test("incomplete capture fails without replacing a prior verified output", async () => {
@@ -144,7 +147,7 @@ test("incomplete capture fails without replacing a prior verified output", async
   await fs.mkdir(out);
   await fs.writeFile(path.join(out, "sentinel.txt"), "prior-output");
   try {
-    await assert.rejects(() => compilePreview({source: "shopify-messaging/emails/01-cr-1.html", emailCode: "CR-1", campaign: "campaign:J2", commitSha: HEAD, issue: 10, pr: 2, persona: "normal-customer", states: ["missing-first-name"], out}, async (_html, target) => {
+    await assert.rejects(() => compilePreview({source: "shopify-messaging/emails/01-cr-1.html", emailCode: "CR-1", campaign: "campaign:J2", commitSha: HEAD, issue: 10, pr: 2, persona: "normal-customer", states: ["missing-first-name"], out, visibility: "private"}, async (_html, target) => {
       await fs.writeFile(path.join(target, "desktop.png"), "partial");
     }), /incomplete preview output/);
     assert.equal(await fs.readFile(path.join(out, "sentinel.txt"), "utf8"), "prior-output");

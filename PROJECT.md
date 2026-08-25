@@ -7,8 +7,8 @@
 > canonical. Every open item below must name its Issue; a finding recorded only here, in a plan
 > document, or in a chat message is untracked. Open an Issue, then cite the number.
 
-**Last updated:** 2026-08-25 by Codex (project-local 12-agent suite implemented under #80;
-no Shopify, audience, campaign, Flow, send, schedule, activation, Pages, or publication change)
+**Last updated:** 2026-08-25 by Codex (GitHub Pages preview release candidate and specialist-agent
+calibration under #79/#83; no Shopify, audience, campaign, Flow, send, schedule, or activation change)
 
 **Status:** **All marketing campaigns and lifecycle journeys now belong to Shopify Messaging +
 Shopify Flow. MailerLite is not a campaign/lifecycle platform for this project.** Shopify
@@ -102,6 +102,38 @@ suite before any activation. MailerLite cleanup is legacy housekeeping, not laun
 ## Session log
 > Chronological record only. Older entries may describe superseded platforms, paths, counts, or
 > blockers. The current status at the top of this file and `AGENTS.md` always win.
+
+- **2026-08-25 (Codex — GitHub Pages preview release candidate + specialist calibration,
+  [#79](https://github.com/vincent-laroche/email-marketing-ops/issues/79),
+  [#83](https://github.com/vincent-laroche/email-marketing-ops/issues/83),
+  [PR #82](https://github.com/vincent-laroche/email-marketing-ops/pull/82)):** Re-ran the new Preview
+  QA, Campaign OS, and Deliverability/Release specialists as controlled school runs. Their artifact,
+  workflow, rollback, provenance, and Project-state findings were converted into tracked prompt,
+  shared-contract, routing, validator, and regression-test changes rather than left in chat.
+
+  Hardened the private review workflow to emit explicitly private provenance, classify runtime
+  failures, verify exact four-file tuples, download its own uploaded artifact, and compare the archive
+  byte-for-byte before posting evidence. Public rendering now requires explicit public provenance.
+  Local CR-1 public-mode rehearsal passed render → materialize → gallery → validation with fictional
+  data, 1440px desktop and 390px mobile captures, exact digests, no unresolved Liquid, and no unsafe
+  destinations.
+
+  Upgraded the publication ledger to append-only schema v2 publish/withdraw events. Withdrawal is
+  bound to the exact active URL, source SHA, deployment, canonical Issue, merged rollback SHA, and
+  unique associated PR; it requires `preview_public: false`, permits repository-wide Pages disablement
+  only for the sole active preview, and supports tested zero-public and republish states. Added a
+  complete emergency runbook. Campaign OS now reads back exact per-Email Project `Preview URL` values
+  through GraphQL and distinguishes 69 compiled Issues from filed operational Tasks. Live dry-run
+  verified 69 canonical Issues with zero drift, private Project #4 with 69 compiled + 1 filed Issue,
+  and every current Preview URL blank.
+
+  The project-local prompt files validate as twelve roles, but this calibration proved only the named
+  release reviewer is directly registered in the current agent runtime; Preview QA and Campaign OS
+  ran through generic wrappers that loaded their tracked prompts. Runtime discovery remains recorded
+  in #83 and is not misreported as full named-role registration. Pages remained disabled during this
+  repository work; enabling it and the first CR-1 dispatch remain the next separately verified live
+  steps under #79. No custom domain, Cloudflare, DNS, Shopify, audience, send, schedule, or activation
+  state changed.
 
 - **2026-08-25 (Codex — twelve-agent Email Marketing operating suite, [#80](https://github.com/vincent-laroche/email-marketing-ops/issues/80)):**
   Recovered the useful boundaries from the obsolete global MailerLite agent set and implemented a

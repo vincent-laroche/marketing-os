@@ -17,7 +17,7 @@ export async function renderLiquid(source: string, fixture: Record<string, unkno
   } catch (error) {
     throw new Error("Liquid rendering failed closed");
   }
-  if (/{{|{%|}}|%}/.test(rendered)) {
+  if (/\{\{|\{%/.test(rendered)) {
     throw new Error("Liquid rendering failed closed: unresolved Liquid remains");
   }
   return rendered;

@@ -122,7 +122,7 @@ jobs:
           for (const item of plan.selected) {
             const out = path.resolve("email-previews", "review", item.emailCode);
             fs.rmSync(out, {recursive: true, force: true});
-            const args = ["--prefix", "tools/email-preview", "run", "preview", "--", "--source", item.source, "--email-code", item.emailCode, "--campaign", item.campaign, "--commit-sha", process.env.HEAD_SHA, "--issue", String(item.issue), "--pr", process.env.PR_NUMBER, "--persona", item.persona, "--states", item.states.join(","), "--out", out];
+            const args = ["--prefix", "tools/email-preview", "run", "preview", "--", "--source", item.source, "--email-code", item.emailCode, "--campaign", item.campaign, "--commit-sha", process.env.HEAD_SHA, "--issue", String(item.issue), "--pr", process.env.PR_NUMBER, "--persona", item.persona, "--states", item.states.join(","), "--visibility", "private", "--out", out];
             const result = spawnSync("npm", args, {stdio: "inherit"});
             if (result.status === 0) {
               const materialized = spawnSync("npm", ["--prefix", "tools/email-preview", "run", "materialize", "--", out], {stdio: "inherit"});
@@ -133,10 +133,16 @@ jobs:
             }
             fs.rmSync(out, {recursive: true, force: true});
             const report = byCode.get(item.emailCode);
-            blocked.push({emailCode: item.emailCode, category: report?.blocker || "safety", issue: item.issue, mustFail: true});
+            const category = report?.blocker && report.blocker !== "none" ? report.blocker : "render-failure";
+            blocked.push({emailCode: item.emailCode, category, issue: item.issue, mustFail: true});
           }
           fs.writeFileSync("email-previews/review/summary.json", JSON.stringify({sourceSha: process.env.HEAD_SHA, successful, blocked: blocked.sort((a, b) => a.emailCode.localeCompare(b.emailCode, undefined, {numeric: true}))}, null, 2) + "\n");
           NODE
+          jq -r '.successful[].emailCode' email-previews/review/summary.json | while read -r code; do
+            for output in rendered.html desktop.png mobile.png provenance.json; do
+              test -f "email-previews/review/$code/$output" || { echo "review artifact is incomplete for $code: $output" >&2; exit 1; }
+            done
+          done
       - name: Upload one private, expiring review artifact
         id: upload
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -145,6 +151,21 @@ jobs:
           path: email-previews/review
           retention-days: 14
           if-no-files-found: error
+      - name: Download and verify the exact private artifact contents
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          artifact-ids: ${{ steps.upload.outputs.artifact-id }}
+          path: downloaded-review
+      - name: Compare downloaded artifact to the verified render set
+        run: |
+          diff -qr email-previews/review downloaded-review
+          test -f downloaded-review/summary.json
+          jq -e '.sourceSha == "${{ github.event.pull_request.head.sha }}"' downloaded-review/summary.json >/dev/null
+          jq -r '.successful[].emailCode' downloaded-review/summary.json | while read -r code; do
+            for output in rendered.html desktop.png mobile.png provenance.json; do
+              test -f "downloaded-review/$code/$output" || { echo "downloaded artifact is incomplete for $code: $output" >&2; exit 1; }
+            done
+          done
       - name: Read the artifact through the GitHub API
         id: artifact-evidence
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd
@@ -179,7 +200,7 @@ jobs:
             const end = "<!-- email-preview:end -->";
             const safeCode = value => /^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/.test(value);
             const successful = summary.successful.filter(item => safeCode(item.emailCode)).map(item => item.emailCode).join(", ") || "none";
-            const blocked = summary.blocked.filter(item => safeCode(item.emailCode) && /^(build-note-comment|unresolved-variable|authoring-placeholder|safety|unknown)$/.test(item.category)).map(item => item.emailCode + " (" + item.category + ")").join(", ") || "none";
+            const blocked = summary.blocked.filter(item => safeCode(item.emailCode) && /^(build-note-comment|unresolved-variable|authoring-placeholder|render-failure|safety|unknown)$/.test(item.category)).map(item => item.emailCode + " (" + item.category + ")").join(", ") || "none";
             const body = [start, "### Email preview review", "", "- Source SHA: [" + process.env.SOURCE_SHA + "]", "- Successful: " + successful, "- Blocked: " + blocked, "- Private artifact: " + process.env.ARTIFACT_URL, "- Artifact expires at: [" + process.env.ARTIFACT_EXPIRES_AT + "]", "- Reproduce this exact private review: [gh run rerun " + context.runId + " --repo " + context.repo.owner + "/" + context.repo.repo + "]", "", end].join("\n");
             const upsert = async issueNumber => {
               const comments = await github.paginate(github.rest.issues.listComments, {owner: context.repo.owner, repo: context.repo.repo, issue_number: issueNumber, per_page: 100});

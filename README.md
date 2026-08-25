@@ -22,8 +22,9 @@ and [GitHub Project #4](https://github.com/users/vincent-laroche/projects/4).
 - `.github/ISSUE_TEMPLATE/` and `.github/pull_request_template.md` govern new work;
 - `tools/email-preview/` provides a fail-closed fictional-fixture renderer that emits rendered
   HTML, a full desktop screenshot, a full mobile screenshot, and exact provenance;
-- GitHub Pages is configured for Actions publication; CR-1 is the sole Email approved for the
-  first public proof, while every other Email remains private;
+- the GitHub Pages Actions publication workflow is configured; CR-1 is the sole Email approved for
+  the first public proof, while repository Pages enablement and the live deployment remain separate
+  verified states under Issue #79;
 - custom-domain and Cloudflare changes remain separate, unapproved gates.
 
 Merge or approval never configures Shopify, schedules, activates, or sends email.
@@ -67,7 +68,7 @@ python3 -m unittest tests.email_operations.test_project_agents -v
 | `github-campaign-os/` | Generated 69-Issue manifest, 28-field Project schema, and read-back reports. |
 | `tools/github_campaign_os/` | Idempotent Issue/Project compiler, synchronizers, and verifiers. |
 | `tools/email-preview/` | Fail-closed Shopify Liquid preview compiler and screenshot/gallery tooling. |
-| `email-previews/publication-ledger.json` | Append-only, reviewed evidence of public Pages deployments. Empty until a publication is read back successfully. |
+| `email-previews/publication-ledger.json` | Append-only, reviewed publication and withdrawal events for public Pages previews. Active URLs exist only after the matching event is merged to `main`. |
 | `.codex/agents/` | Twelve project-local specialists plus their shared operating contract and routing guide. |
 | `shopify-messaging/PREVIEW-READINESS.md` | Generated source-readiness inventory: which of the 53 render, and why the rest do not. |
 | `mailerlite/` | Legacy MailerLite builders, rendered emails, and API research. Reference only; do not create or push campaigns from it. |

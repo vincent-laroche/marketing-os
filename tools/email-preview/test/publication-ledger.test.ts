@@ -2,6 +2,8 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   appendPublication,
+  activePublications,
+  createWithdrawalEntry,
   createPublicationEntry,
   emptyLedger,
   validateLedger,
@@ -14,6 +16,7 @@ const sourceSha = "b".repeat(40);
 function entry(overrides: Partial<PublicationEntry> = {}): PublicationEntry {
   return {
     email_code: "CR-1",
+    event: "published",
     campaign_key: "campaign:J2",
     source_path: "shopify-messaging/emails/01-cr-1.html",
     source_commit_sha: sourceSha,
@@ -33,7 +36,7 @@ function entry(overrides: Partial<PublicationEntry> = {}): PublicationEntry {
 
 test("empty ledger validates and append is deterministic", () => {
   const first = appendPublication(emptyLedger(), entry());
-  assert.equal(first.publications.length, 1);
+  assert.equal(first.events.length, 1);
   assert.deepEqual(appendPublication(emptyLedger(), entry()), first);
   assert.doesNotThrow(() => validateLedger(first));
 });
@@ -41,7 +44,7 @@ test("empty ledger validates and append is deterministic", () => {
 test("ledger rejects duplicate Email plus source SHA identities and mutated history", () => {
   const first = appendPublication(emptyLedger(), entry());
   assert.throws(() => appendPublication(first, entry()), /duplicate Email.*source SHA/i);
-  assert.throws(() => validateLedger({schema_version: 1, publications: [entry(), entry({publication_timestamp: "2026-08-25T12:01:00.000Z"})]}), /duplicate Email.*source SHA/i);
+  assert.throws(() => validateLedger({schema_version: 2, events: [entry(), entry({publication_timestamp: "2026-08-25T12:01:00.000Z"})]}), /duplicate Email.*source SHA/i);
 });
 
 test("ledger rejects malformed digests, non-HTTPS URLs, unapproved origins, and noncanonical paths", () => {
@@ -51,7 +54,21 @@ test("ledger rejects malformed digests, non-HTTPS URLs, unapproved origins, and 
     entry({canonical_url: "https://evil.example/CR-1/"}),
     entry({canonical_url: "https://email-preview.hairsolutions.co/CR-1/"}),
     entry({canonical_url: "https://email-preview.hairsolutions.co/other/detail.html"}),
-  ]) assert.throws(() => validateLedger({schema_version: 1, publications: [candidate]}));
+  ]) assert.throws(() => validateLedger({schema_version: 2, events: [candidate]}));
+});
+
+test("publish, withdraw, and republish reduce to the latest active state", () => {
+  const published = entry();
+  const withdrawn = createWithdrawalEntry(published, {
+    sourceCommitSha: "c".repeat(40), canonicalPr: 203, pagesDeploymentId: "pages-124",
+    workflowRunId: "457", workflowAttempt: "1", reason: "owner-requested",
+    publicationTimestamp: "2026-08-25T13:00:00.000Z",
+  });
+  const afterWithdrawal = appendPublication(appendPublication(emptyLedger(), published), withdrawn);
+  assert.equal(activePublications(afterWithdrawal).size, 0);
+  assert.throws(() => appendPublication(emptyLedger(), withdrawn), /exact active public Email/i);
+  const republished = entry({source_commit_sha: "d".repeat(40), canonical_pr: 204, publication_timestamp: "2026-08-25T14:00:00.000Z"});
+  assert.equal(activePublications(appendPublication(afterWithdrawal, republished)).get("CR-1")?.canonical_pr, 204);
 });
 
 test("publication entry binds only public provenance and approved deployment identity", () => {

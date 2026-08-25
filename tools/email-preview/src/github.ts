@@ -6,10 +6,15 @@ export const REVIEW_COMMENT_START = "<!-- email-preview:begin -->";
 export const REVIEW_COMMENT_END = "<!-- email-preview:end -->";
 const SHA = /^[0-9a-f]{40}$/;
 const EMAIL_CODE = /^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/;
-const SAFE_CATEGORY = /^(build-note-comment|unresolved-variable|authoring-placeholder|safety|unknown)$/;
-const LIQUID = /\{\{|\}\}|\{%|%\}/;
+const SAFE_CATEGORY = /^(build-note-comment|unresolved-variable|authoring-placeholder|render-failure|safety|unknown)$/;
+const LIQUID = /\{\{|\{%/;
 const PRIVATE_URL = /(?:actions\/runs\/\d+\/artifacts\/\d+|actions\/artifacts\/\d+|artifact-url|actions\/download-artifact)/i;
-const UNSAFE_URL = /(?:javascript:|vbscript:|data:|customer[_-]?id=|token=|unsubscribe|checkout\.shopify\.com)/i;
+const UNSAFE_URL = /(?:javascript:|vbscript:|data:|customer[_-]?id=|token=|checkout\.shopify\.com)/i;
+const UNSAFE_UNSUBSCRIBE_URL = /(?:https?:\/\/|\/\/|(?:href|src|action)\s*=\s*["']|url\(\s*["']?)[^"'\s)>]*unsubscribe/i;
+
+export function containsUnsafePublicUrl(value: string): boolean {
+  return UNSAFE_URL.test(value) || UNSAFE_UNSUBSCRIBE_URL.test(value);
+}
 
 export interface CanonicalIssueCandidate {
   key: string;
@@ -136,7 +141,7 @@ export function validatePublicReadBack(files: PublicReadBack[], expectation: Rea
   for (const file of files) {
     if (!/^2\d\d$/.test(String(file.status))) throw new Error("public read-back HTTP status failed");
     const body = Buffer.isBuffer(file.body) ? file.body : Buffer.from(file.body);
-    if (PRIVATE_URL.test(body.toString("utf8")) || UNSAFE_URL.test(body.toString("utf8"))) throw new Error("public read-back contains an unsafe URL");
+    if (PRIVATE_URL.test(body.toString("utf8")) || containsUnsafePublicUrl(body.toString("utf8"))) throw new Error("public read-back contains an unsafe URL");
     if (file.path.endsWith(".html") && LIQUID.test(body.toString("utf8"))) throw new Error("public read-back contains Liquid");
     if (file.path.endsWith("provenance.json")) {
       let value: Provenance;

@@ -3,11 +3,17 @@ import test from 'node:test';
 import {
   buildLedgerPullRequestPlan,
   buildTemporaryEvidenceComment,
+  containsUnsafePublicUrl,
   replaceBoundedComment,
   resolveCanonicalEmailIssue,
   resolveMergedPullRequest,
   validatePublicReadBack,
 } from '../src/github.js';
+
+test('public URL safety distinguishes visible unsubscribe copy from a destination', () => {
+  assert.equal(containsUnsafePublicUrl('<a href="#preview-inert">Unsubscribe entirely</a>'), false);
+  assert.equal(containsUnsafePublicUrl('<a href="https://example.com/unsubscribe">Unsubscribe entirely</a>'), true);
+});
 
 test('canonical Issue and merged pull request resolution fail closed on ambiguity', () => {
   assert.equal(resolveCanonicalEmailIssue([{key: 'email:CR-1', number: 101}]).number, 101);
@@ -30,6 +36,11 @@ test('temporary evidence is marker-bounded, safe, and idempotently replaceable',
   assert.match(first, /<!-- email-preview:begin -->/);
   assert.match(first, /<!-- email-preview:end -->/);
   assert.match(first, /unresolved-variable/);
+  assert.match(buildTemporaryEvidenceComment({
+    sourceSha: 'a'.repeat(40), successful: [], blocked: [{emailCode: 'CR-1', category: 'render-failure'}],
+    artifactUrl: 'https://github.com/vincent-laroche/email-marketing-ops/actions/runs/1/artifacts/2', expiresAt: '2026-08-26T12:00:00.000Z',
+    reproductionCommand: 'gh run rerun 1 --repo vincent-laroche/email-marketing-ops',
+  }), /render-failure/);
   assert.doesNotMatch(first, /fixture|rendered\.html|Alex|customer@example/i);
   const updated = replaceBoundedComment('before\n' + first + '\nafter', first.replaceAll('CR-1', 'CR-2'));
   assert.match(updated, /^before\n/);
@@ -63,6 +74,9 @@ test('read-back verifies status, source SHA, digests, and no Liquid', () => {
     pr_url: 'https://github.com/vincent-laroche/email-marketing-ops/pull/202',
   });
   assert.doesNotThrow(() => validatePublicReadBack([{path: 'CR-1/provenance.json', status: 200, body}], {sourceSha: 'a'.repeat(40), emailCode: 'CR-1'}));
+  assert.doesNotThrow(() => validatePublicReadBack([{path: 'CR-1/rendered.html', status: 200, body: '<a href="#preview-inert">Unsubscribe entirely</a>'}], {sourceSha: 'a'.repeat(40), emailCode: 'CR-1'}));
+  assert.doesNotThrow(() => validatePublicReadBack([{path: 'assets/gallery.css', status: 200, body: '@media(max-width:560px){body{margin:0}}'}], {sourceSha: 'a'.repeat(40), emailCode: 'CR-1'}));
+  assert.throws(() => validatePublicReadBack([{path: 'CR-1/rendered.html', status: 200, body: '<a href="https://example.com/unsubscribe">Unsubscribe entirely</a>'}], {sourceSha: 'a'.repeat(40), emailCode: 'CR-1'}), /unsafe URL/i);
   assert.doesNotThrow(() => validatePublicReadBack([{path: 'CR-2/provenance.json', status: 200, body}], {sourceSha: 'a'.repeat(40), emailCode: 'CR-1', expectedDigests: {'rendered.html': '0'.repeat(64)}}));
   assert.throws(() => validatePublicReadBack([{path: 'CR-1/rendered.html', status: 200, body: '{{ unresolved }}'}], {sourceSha: 'a'.repeat(40), emailCode: 'CR-1'}), /Liquid/i);
   assert.throws(() => validatePublicReadBack([{path: 'CR-1/provenance.json', status: 500, body}], {sourceSha: 'a'.repeat(40), emailCode: 'CR-1'}), /HTTP/i);

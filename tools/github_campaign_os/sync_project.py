@@ -30,9 +30,11 @@ COLORS = ["BLUE", "GREEN", "PURPLE", "ORANGE", "RED", "YELLOW", "PINK", "GRAY"]
 
 
 PROJECT_QUERY = """query($login:String!,$title:String!){
-  user(login:$login){ id projectsV2(first:50,query:$title){nodes{id number title closed public
+  user(login:$login){ id projectsV2(first:10,query:$title){nodes{id number title closed public
     fields(first:100){nodes{... on ProjectV2FieldCommon{id name dataType} ... on ProjectV2SingleSelectField{id name dataType options{id name}}}}
-    items(first:100){nodes{id type content{... on Issue{id number body repository{nameWithOwner}} ... on PullRequest{id number repository{nameWithOwner}}}}}
+    items(first:100){nodes{id type
+      fieldValues(first:100){nodes{... on ProjectV2ItemFieldTextValue{text field{... on ProjectV2FieldCommon{name}}}}}
+      content{... on Issue{id number body repository{nameWithOwner}} ... on PullRequest{id number repository{nameWithOwner}}}}}
     views(first:20){nodes{id name layout filter}}
   }}}
   repository(owner:"vincent-laroche",name:"email-marketing-ops"){id isPrivate}
@@ -124,6 +126,38 @@ def preview_url_clear_inputs(project_id: str, field_id: str, manifest: Dict[str,
     ]
 
 
+def preview_url_readback_mismatches(project: Dict[str, Any], manifest: Dict[str, Any]) -> List[Dict[str, Any]]:
+    expected = {
+        record["key"]: record.get("preview_url") or None
+        for record in manifest["records"]
+        if record["key"].startswith("email:")
+    }
+    actual: Dict[str, Optional[str]] = {}
+    duplicate_values: set[str] = set()
+    for node in project.get("items", {}).get("nodes", []):
+        content = node.get("content") or {}
+        if content.get("repository", {}).get("nameWithOwner") != REPO:
+            continue
+        match = KEY_RE.search(content.get("body") or "")
+        if not match or match.group(1) not in expected:
+            continue
+        key = match.group(1)
+        values = [
+            value.get("text") or None
+            for value in node.get("fieldValues", {}).get("nodes", [])
+            if (value.get("field") or {}).get("name") == "Preview URL"
+        ]
+        if len(values) > 1:
+            duplicate_values.add(key)
+        actual[key] = values[0] if values else None
+    mismatches = []
+    for key, expected_url in sorted(expected.items()):
+        actual_url = actual.get(key)
+        if key not in actual or key in duplicate_values or actual_url != expected_url:
+            mismatches.append({"key": key, "expected": expected_url, "actual": actual_url, "duplicate": key in duplicate_values})
+    return mismatches
+
+
 def update_values(client: GitHubClient, project: Dict[str, Any], manifest: Dict[str, Any], item_by_key: Dict[str, str]) -> None:
     fields = {field["name"]: field for field in project["fields"]["nodes"]}
     updates = []
@@ -170,13 +204,20 @@ def run(apply: bool) -> Dict[str, Any]:
     missing_fields = [field["name"] for field in schema["fields"] if field["name"] not in actual_field_names]
     missing_views = [view["name"] for view in expected_views if view not in actual_views]
     issue_items = 0 if project is None else sum(node["type"] == "ISSUE" for node in project["items"]["nodes"])
+    canonical_issue_items = 0 if project is None else sum(
+        node["type"] == "ISSUE" and bool(KEY_RE.search((node.get("content") or {}).get("body") or ""))
+        for node in project["items"]["nodes"]
+    )
     pull_request_items = 0 if project is None else sum(node["type"] == "PULL_REQUEST" for node in project["items"]["nodes"])
+    preview_url_mismatches = [] if project is None else preview_url_readback_mismatches(project, manifest)
     report = {
         "mode": "apply" if apply else "dry-run", "project_exists": project is not None,
         "project_number": project.get("number") if project else None, "project_url": f"https://github.com/users/{OWNER}/projects/{project['number']}" if project else None,
         "private": (not project.get("public")) if project else True, "repository": REPO,
-        "issue_items": issue_items if project else before_items, "pull_request_items": pull_request_items,
+        "issue_items": issue_items if project else before_items, "canonical_issue_items": canonical_issue_items,
+        "pull_request_items": pull_request_items,
         "custom_fields_expected": len(schema["fields"]), "custom_fields_missing": missing_fields,
+        "preview_url_mismatches": preview_url_mismatches,
         "views_expected": len(schema["views"]), "views": actual_views,
         "browser_configuration_required": missing_views,
     }

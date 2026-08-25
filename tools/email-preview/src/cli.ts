@@ -10,7 +10,7 @@ import {assertPng, capture} from "./capture.js";
 import type {PreviewArgs} from "./types.js";
 
 export function parseArgs(argv: string[]): PreviewArgs {
-  const allowed = new Set(["source", "email-code", "campaign", "commit-sha", "issue", "pr", "persona", "states", "out", "workflow-run", "workflow-attempt", "workflow-revision"]);
+  const allowed = new Set(["source", "email-code", "campaign", "commit-sha", "issue", "pr", "persona", "states", "out", "visibility", "workflow-run", "workflow-attempt", "workflow-revision"]);
   const values: Record<string, string> = {};
   for (let index = 2; index < argv.length; index += 2) {
     const token = argv[index];
@@ -20,7 +20,7 @@ export function parseArgs(argv: string[]): PreviewArgs {
     if (key in values) throw new Error("duplicate option");
     values[key] = value;
   }
-  const required = ["source", "email-code", "campaign", "commit-sha", "issue", "pr", "states", "out"];
+  const required = ["source", "email-code", "campaign", "commit-sha", "issue", "pr", "states", "out", "visibility"];
   for (const name of required) if (!values[name]) throw new Error(`--${name} is required`);
   const issue = Number(values.issue);
   const pr = Number(values.pr);
@@ -30,7 +30,9 @@ export function parseArgs(argv: string[]): PreviewArgs {
   if (workflow.some(Boolean) && workflow.some(value => !value)) throw new Error("workflow provenance requires run, attempt, and revision");
   const states = [...new Set(values.states!.split(",").map(state => state.trim()).filter(Boolean))].sort();
   if (!states.length) throw new Error("at least one selected state is required");
-  return {source: values.source!, emailCode: values["email-code"]!, campaign: values.campaign!, commitSha: values["commit-sha"]!, issue, pr, persona: values.persona || "normal-customer", states, out: values.out!, workflowRun: values["workflow-run"], workflowAttempt: values["workflow-attempt"], workflowRevision: values["workflow-revision"]};
+  const visibility = values.visibility;
+  if (visibility !== "private" && visibility !== "public") throw new Error("--visibility must be private or public");
+  return {source: values.source!, emailCode: values["email-code"]!, campaign: values.campaign!, commitSha: values["commit-sha"]!, issue, pr, persona: values.persona || "normal-customer", states, out: values.out!, visibility, workflowRun: values["workflow-run"], workflowAttempt: values["workflow-attempt"], workflowRevision: values["workflow-revision"]};
 }
 
 export async function compilePreview(args: PreviewArgs, capturePreview: typeof capture = capture): Promise<void> {
@@ -48,8 +50,9 @@ export async function compilePreview(args: PreviewArgs, capturePreview: typeof c
   if (!Buffer.from(sourceContents).equals(committedSource)) throw new Error("source does not match the requested commit");
   const fixture = loadFixture(args.persona, args.states);
   const selection = selectionFor(config, {email_code: args.emailCode, source_path: source, campaign_key: args.campaign, persona: args.persona, states: args.states});
+  if (args.visibility === "public" && !selection.preview_public) throw new Error("public provenance requires preview_public approval");
   const lock = await fs.readFile(path.join(packageRoot, "package-lock.json"));
-  const identity = {repository: "vincent-laroche/email-marketing-ops", campaign: selection.campaign_key, email: args.emailCode, source_path: source, source_sha256: sha256(sourceContents), commit: args.commitSha, issue: args.issue, pr: args.pr, issue_url: `https://github.com/vincent-laroche/email-marketing-ops/issues/${args.issue}`, pr_url: `https://github.com/vincent-laroche/email-marketing-ops/pull/${args.pr}`, persona: args.persona, states: args.states, fixture_sha256: sha256(JSON.stringify(fixture)), compiler_version: "1.0.0", compiler_lock_sha256: sha256(lock), generated_at: new Date().toISOString(), visibility: selection.preview_public ? ("public" as const) : ("private" as const), workflow: args.workflowRun ? {run: args.workflowRun!, attempt: args.workflowAttempt!, revision: args.workflowRevision!} : undefined};
+  const identity = {repository: "vincent-laroche/email-marketing-ops", campaign: selection.campaign_key, email: args.emailCode, source_path: source, source_sha256: sha256(sourceContents), commit: args.commitSha, issue: args.issue, pr: args.pr, issue_url: `https://github.com/vincent-laroche/email-marketing-ops/issues/${args.issue}`, pr_url: `https://github.com/vincent-laroche/email-marketing-ops/pull/${args.pr}`, persona: args.persona, states: args.states, fixture_sha256: sha256(JSON.stringify(fixture)), compiler_version: "1.0.0", compiler_lock_sha256: sha256(lock), generated_at: new Date().toISOString(), visibility: args.visibility, workflow: args.workflowRun ? {run: args.workflowRun!, attempt: args.workflowAttempt!, revision: args.workflowRevision!} : undefined};
   const metadata = JSON.stringify(identity);
   const rendered = `<!-- preview-provenance:${metadata} -->\n${rewriteSensitiveLinks(injectNoIndex(await renderLiquid(sourceContents, fixture)))}`;
   assertSafeRenderedHtml(rendered);

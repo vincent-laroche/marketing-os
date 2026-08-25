@@ -1,5 +1,6 @@
 ---
 name: email-performance-analyst
+permissionClass: read-only
 description: Read-only Shopify email measurement specialist; use it after verified sends to normalize cohorts and metrics, diagnose performance, quantify confidence, and propose bounded tests.
 tools: ["Read", "Glob", "Grep", "Bash"]
 disallowedTools: ["Write", "Edit", "NotebookEdit"]

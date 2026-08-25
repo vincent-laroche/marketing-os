@@ -93,7 +93,7 @@ jobs:
           const plan = JSON.parse(fs.readFileSync("public-plan.json", "utf8"));
           for (const item of plan) {
             const out = path.resolve("email-previews", "site", item.email_code);
-            const preview = spawnSync("npm", ["--prefix", "tools/email-preview", "run", "preview", "--", "--source", item.source_path, "--email-code", item.email_code, "--campaign", item.campaign_key, "--commit-sha", process.env.SOURCE_SHA, "--issue", String(item.issue), "--pr", process.env.PR, "--persona", item.persona, "--states", item.states.join(","), "--workflow-run", process.env.GITHUB_RUN_ID, "--workflow-attempt", process.env.GITHUB_RUN_ATTEMPT, "--workflow-revision", process.env.GITHUB_SHA, "--out", out], {stdio: "inherit"});
+            const preview = spawnSync("npm", ["--prefix", "tools/email-preview", "run", "preview", "--", "--source", item.source_path, "--email-code", item.email_code, "--campaign", item.campaign_key, "--commit-sha", process.env.SOURCE_SHA, "--issue", String(item.issue), "--pr", process.env.PR, "--persona", item.persona, "--states", item.states.join(","), "--visibility", "public", "--workflow-run", process.env.GITHUB_RUN_ID, "--workflow-attempt", process.env.GITHUB_RUN_ATTEMPT, "--workflow-revision", process.env.GITHUB_SHA, "--out", out], {stdio: "inherit"});
             if (preview.status !== 0) throw new Error("approved public Email failed closed: " + item.email_code);
             const materialized = spawnSync("npm", ["--prefix", "tools/email-preview", "run", "materialize", "--", out], {stdio: "inherit"});
             if (materialized.status !== 0) throw new Error("approved public Email could not be materialized: " + item.email_code);
@@ -103,7 +103,7 @@ jobs:
         env:
           SOURCE_SHA: ${{ inputs.source_sha }}
         run: |
-          npm --prefix tools/email-preview run gallery -- email-previews/site
+          npm --prefix tools/email-preview run gallery -- "$GITHUB_WORKSPACE/email-previews/site"
           for provenance in email-previews/site/*/provenance.json; do
             code="$(jq -r '.email_code' "$provenance")"
             npx tsx tools/email-preview/src/publication.ts validate-site --site email-previews/site --email-code "$code" --source-sha "$SOURCE_SHA"

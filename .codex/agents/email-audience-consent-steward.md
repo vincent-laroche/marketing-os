@@ -1,5 +1,6 @@
 ---
 name: email-audience-consent-steward
+permissionClass: read-only
 description: Read-only Shopify audience and consent specialist; use it to verify channel eligibility, provenance, exclusions, suppressions, overlap, containment, and safe audience briefs.
 tools: ["Read", "Glob", "Grep", "Bash"]
 disallowedTools: ["Write", "Edit", "NotebookEdit"]

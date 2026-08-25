@@ -1,5 +1,6 @@
 ---
 name: email-project-manager
+permissionClass: read-only
 description: Read-only Campaign OS portfolio reconciler and specialist router for Project #4; use it to establish truthful priority, dependencies, blockers, and the next safe unit of work.
 tools: ["Read", "Glob", "Grep", "Bash"]
 disallowedTools: ["Write", "Edit", "NotebookEdit"]

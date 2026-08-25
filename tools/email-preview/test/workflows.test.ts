@@ -19,7 +19,7 @@ test("private review workflow is pull-request-only, minimally permissioned, pinn
   assert.match(workflow, /issues:\s*write/);
   assert.doesNotMatch(workflow, /pages:\s*(write|read)/);
   assert.match(workflow, /retention-days:\s*14/);
-  for (const action of ["actions/checkout", "actions/setup-node", "actions/upload-artifact", "actions/github-script"]) {
+  for (const action of ["actions/checkout", "actions/setup-node", "actions/upload-artifact", "actions/download-artifact", "actions/github-script"]) {
     assert.match(workflow, new RegExp(`${action.replace(/[/.]/g, "[\\/.]")}@[0-9a-f]{40}`));
   }
   assert.match(workflow, /<!-- email-preview:begin -->/);
@@ -33,6 +33,10 @@ test("private review workflow is pull-request-only, minimally permissioned, pinn
   assert.match(workflow, /change-policy/);
   assert.match(workflow, /npm --silent --prefix tools\/email-preview run inventory > preview-inventory\.json/);
   assert.match(workflow, /path\.resolve\("email-previews", "review", item\.emailCode\)/);
+  assert.match(workflow, /review artifact is incomplete for \$code/);
+  assert.match(workflow, /"--visibility", "private"/);
+  assert.match(workflow, /diff -qr email-previews\/review downloaded-review/);
+  assert.match(workflow, /render-failure/);
   assert.match(workflow, /filter\(code => readyCodes\.has\(code\)\)/);
   assert.doesNotMatch(workflow, /Reproduce[^\n]*email-preview-publish/);
 });
@@ -60,6 +64,8 @@ test("public publication is manual, accepts only Email code and exact SHA, and s
   assert.match(workflow, /"run", "materialize"/);
   assert.match(workflow, /complete approved public set/);
   assert.match(workflow, /path\.resolve\("email-previews", "site", item\.email_code\)/);
+  assert.match(workflow, /gallery -- "\$GITHUB_WORKSPACE\/email-previews\/site"/);
+  assert.match(workflow, /"--visibility", "public"/);
   assert.match(workflow, /\.selections\[\].*preview_public == true/);
   assert.match(workflow, /for provenance in email-previews\/site\/\*\/provenance\.json/);
   assert.match(workflow, /for candidate in publication-candidates\/\*\.json/);

@@ -28,7 +28,7 @@ const REQUIRED_OUTPUTS = ["rendered.html", "desktop.png", "mobile.png"] as const
 const ROBOTS = "User-agent: *\nDisallow: /\n";
 const CSP = "default-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; img-src 'self'; style-src 'self'; script-src 'self'";
 const PRIVATE_ARTIFACT = /(?:actions\/runs\/\d+\/artifacts\/\d+|actions\/artifacts\/\d+|artifact-url|actions\/download-artifact)/i;
-const LIQUID = /\{\{|\}\}|\{%|%\}/;
+const LIQUID = /\{\{|\{%/;
 
 /** Escape every value that came from provenance or the Campaign OS config. */
 export function escapeHtml(value: string): string {

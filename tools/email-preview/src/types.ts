@@ -10,6 +10,7 @@ export interface PreviewArgs {
   persona: string;
   states: string[];
   out: string;
+  visibility: "private" | "public";
   workflowRun?: string;
   workflowAttempt?: string;
   workflowRevision?: string;

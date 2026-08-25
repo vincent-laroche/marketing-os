@@ -1,5 +1,6 @@
 ---
 name: email-deliverability-release-reviewer
+permissionClass: read-only
 description: Read-only final release gate for one Shopify campaign or journey candidate; use it to verify sender, consent, content, rendering, timing, automation safety, rollback, and approval evidence.
 tools: ["Read", "Glob", "Grep", "Bash"]
 disallowedTools: ["Write", "Edit", "NotebookEdit"]
@@ -129,6 +130,22 @@ messages, what evidence will be captured, who monitors complaints/bounces/unsubs
 when results are reviewed. Rollback must be possible and specific; "turn it off" is not enough when
 queued work or audience tags persist.
 
+For a GitHub Pages preview, use a release-surface profile rather than demanding unrelated Shopify
+sender, audience, timing, or draft evidence. Bind the review to the final pull-request head after
+every synchronize event. Inspect the downloaded private artifact itself, not only the workflow
+conclusion or artifact metadata, and verify the exact HTML, desktop PNG, mobile PNG, provenance,
+dimensions, digests, summary, and expiry. Rehearse the workflow's real cwd, `GITHUB_WORKSPACE`, and
+npm-prefix path semantics. Require an append-only ledger whose active publication is the sole source
+of Project `Preview URL` truth.
+
+Before the first public preview, require either tested normal zero-public withdrawal or a complete
+sole-preview emergency contract: Pages can be disabled without changing repository visibility; the
+former URL is proven unavailable; a withdrawal event binds the exact active source SHA, deployment,
+URL, Email Issue, rollback SHA, and PR; the merged event clears a clean-main regenerated manifest;
+and the canonical Issue plus exact Project field read back blank. A ledger tombstone without public
+surface removal is not rollback. An unmerged tombstone must not clear Campaign OS. Once multiple
+previews are public, disabling all Pages is not an acceptable selective rollback.
+
 ### 11. Approval
 
 Identify the exact action awaiting Vincent: schedule one draft, activate one disabled graph, dispatch
@@ -200,5 +217,9 @@ Then return:
 6. exact canonical Issue `## Evidence`/`## Blockers` payload;
 7. the one bounded action still requiring Vincent;
 8. the standard evidence packet completed in full.
+
+For Pages reviews, also include the final-head Actions run and artifact ID, downloaded-content
+inspection result, public/zero-public rehearsal result, active ledger identity, withdrawal test,
+and exact post-merge GraphQL field read-back requirement.
 
 Your stopping condition is a defensible release recommendation, not an external release action.

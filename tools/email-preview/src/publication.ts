@@ -1,15 +1,16 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { appendPublication, createPublicationEntry, isApprovedCanonicalUrl, validateLedger, type PublicationEntry } from "./publication-ledger.js";
-import { assertExactSourceSha, assertCanonicalEmailCode, sha256Bytes, validatePublicReadBack, type PublicReadBack } from "./github.js";
-import { loadConfig } from "./config.js";
+import { execFileSync } from "node:child_process";
+import { activePublications, appendPublication, createPublicationEntry, createWithdrawalEntry, isApprovedCanonicalUrl, validateLedger, type PublicationEvent } from "./publication-ledger.js";
+import { assertExactSourceSha, assertCanonicalEmailCode, containsUnsafePublicUrl, sha256Bytes, validatePublicReadBack, type PublicReadBack } from "./github.js";
+import { loadConfig, repositoryRoot } from "./config.js";
 import type { PreviewSelection } from "./types.js";
 import { validateProvenance } from "./provenance.js";
 import type { Provenance } from "./types.js";
 
 export interface PublicationCliArgs {
-  command: "candidate" | "append" | "validate-site" | "read-back";
+  command: "candidate" | "withdraw-candidate" | "append" | "validate-gallery" | "validate-site" | "read-back";
   site?: string;
   emailCode?: string;
   sourceSha?: string;
@@ -22,9 +23,11 @@ export interface PublicationCliArgs {
   ledger?: string;
   candidate?: string;
   pageUrl?: string;
+  canonicalPr?: number;
+  reason?: "owner-requested" | "safety-rollback";
 }
 
-const FLAGS = new Set(["site", "email-code", "source-sha", "canonical-base", "pages-deployment-id", "workflow-run-id", "workflow-attempt", "publication-timestamp", "out", "ledger", "candidate", "page-url"]);
+const FLAGS = new Set(["site", "email-code", "source-sha", "canonical-base", "pages-deployment-id", "workflow-run-id", "workflow-attempt", "publication-timestamp", "out", "ledger", "candidate", "page-url", "canonical-pr", "reason"]);
 
 function getRequired(values: Record<string, string>, name: string): string {
   const value = values[name];
@@ -38,7 +41,7 @@ function parsePositiveSha(values: Record<string, string>): string {
 
 export function parsePublicationArgs(argv: string[]): PublicationCliArgs {
   const command = argv[2] as PublicationCliArgs["command"] | undefined;
-  if (!command || !["candidate", "append", "validate-site", "read-back"].includes(command)) throw new Error("publication command is required");
+  if (!command || !["candidate", "withdraw-candidate", "append", "validate-gallery", "validate-site", "read-back"].includes(command)) throw new Error("publication command is required");
   const values: Record<string, string> = {};
   for (let index = 3; index < argv.length; index += 2) {
     const token = argv[index];
@@ -60,9 +63,25 @@ export function parsePublicationArgs(argv: string[]): PublicationCliArgs {
     result.workflowAttempt = getRequired(values, "workflow-attempt");
     result.publicationTimestamp = values["publication-timestamp"] || new Date().toISOString();
     result.out = getRequired(values, "out");
+  } else if (command === "withdraw-candidate") {
+    result.ledger = getRequired(values, "ledger");
+    result.emailCode = assertCanonicalEmailCode(getRequired(values, "email-code"));
+    result.sourceSha = parsePositiveSha(values);
+    result.canonicalPr = Number.parseInt(getRequired(values, "canonical-pr"), 10);
+    if (!Number.isInteger(result.canonicalPr) || result.canonicalPr < 1) throw new Error("positive --canonical-pr is required");
+    result.pagesDeploymentId = getRequired(values, "pages-deployment-id");
+    result.workflowRunId = getRequired(values, "workflow-run-id");
+    result.workflowAttempt = getRequired(values, "workflow-attempt");
+    result.publicationTimestamp = values["publication-timestamp"] || new Date().toISOString();
+    const reason = getRequired(values, "reason");
+    if (reason !== "owner-requested" && reason !== "safety-rollback") throw new Error("approved withdrawal reason is required");
+    result.reason = reason;
+    result.out = getRequired(values, "out");
   } else if (command === "append") {
     result.ledger = getRequired(values, "ledger");
     result.candidate = getRequired(values, "candidate");
+  } else if (command === "validate-gallery") {
+    result.site = getRequired(values, "site");
   } else if (command === "validate-site") {
     result.site = getRequired(values, "site");
     result.emailCode = assertCanonicalEmailCode(getRequired(values, "email-code"));
@@ -95,6 +114,14 @@ async function walkFiles(root: string, directory = root): Promise<string[]> {
   return files.sort();
 }
 
+export function resolveLocalSiteTarget(reference: string, filePath: string): string {
+  let resolved: URL;
+  try { resolved = new URL(reference, `https://preview.invalid/${filePath}`); } catch { throw new Error("public site contains an invalid local link"); }
+  const target = decodeURIComponent(resolved.pathname).replace(/^\/+/, "");
+  if (!target) return "index.html";
+  return target.endsWith("/") ? target + "index.html" : target;
+}
+
 function assertLocalLinks(files: string[], htmlFiles: Array<{path: string; text: string}>): void {
   const available = new Set(files);
   const attribute = /\b(?:href|src|action)=["']([^"']+)["']/gi;
@@ -103,10 +130,7 @@ function assertLocalLinks(files: string[], htmlFiles: Array<{path: string; text:
       const reference = match[1]!;
       if (reference.startsWith("#") || /^(?:mailto:|tel:|https?:)/i.test(reference)) continue;
       if (/^(?:javascript:|vbscript:|data:|\/\/)/i.test(reference)) throw new Error("public site contains an unsafe URL");
-      let resolved: URL;
-      try { resolved = new URL(reference, `https://preview.invalid/${file.path}`); } catch { throw new Error("public site contains an invalid local link"); }
-      const target = decodeURIComponent(resolved.pathname).replace(/^\/+/, "");
-      const candidate = target.endsWith("/") ? target + "index.html" : target;
+      const candidate = resolveLocalSiteTarget(reference, file.path);
       if (!available.has(candidate)) throw new Error("public site contains a broken local link");
     }
   }
@@ -125,19 +149,8 @@ export async function validateStaticSite(siteDirectory: string, emailCode: strin
   const site = path.resolve(siteDirectory);
   assertCanonicalEmailCode(emailCode);
   assertExactSourceSha(sourceSha);
+  await validateGallery(site);
   const files = await walkFiles(site);
-  if (!files.includes("index.html") || !files.includes("robots.txt")) throw new Error("public site is incomplete");
-  if (files.some(file => /(?:^|\/)(?:fixtures?|logs?|source(?:s)?|node_modules|private)(?:\/|$)|(?:^|\/)[^/]*\.versions(?:\/|$)|\.map$|\.log$/i.test(file))) throw new Error("public site contains private build files");
-  const textFiles = files.filter(file => /\.(?:html|json|txt|css|js)$/i.test(file));
-  const htmlFiles: Array<{path: string; text: string}> = [];
-  for (const file of textFiles) {
-    const text = await fs.readFile(path.join(site, file), "utf8");
-    if (file.endsWith(".html")) htmlFiles.push({path: file, text});
-    if (/\{\{|\}\}|\{%|%\}/.test(text)) throw new Error("public site contains Liquid");
-    if (/(?:actions\/runs\/\d+\/artifacts\/\d+|actions\/artifacts\/\d+|artifact-url|actions\/download-artifact)/i.test(text)) throw new Error("public site contains a private artifact URL");
-    if (/(?:javascript:|vbscript:|data:|customer[_-]?id=|token=|unsubscribe|checkout\.shopify\.com)/i.test(text)) throw new Error("public site contains an unsafe URL");
-  }
-  assertLocalLinks(files, htmlFiles);
   const provenancePath = path.join(site, emailCode, "provenance.json");
   let provenance: Provenance;
   try { provenance = validateProvenance(JSON.parse(await fs.readFile(provenancePath, "utf8"))); } catch { throw new Error("public site provenance is invalid"); }
@@ -148,11 +161,30 @@ export async function validateStaticSite(siteDirectory: string, emailCode: strin
     const actual = await fs.readFile(outputPath).catch(() => { throw new Error("public site output is missing"); });
     if (sha256Bytes(actual) !== provenance.output_sha256[output]) throw new Error("public site output digest does not match provenance");
   }
+  if (!files.includes(`${emailCode}/detail.html`)) throw new Error("public site Email detail page is missing");
+  return provenance;
+}
+
+/** Validate site-wide public safety, including the deliberate zero-Email gallery. */
+export async function validateGallery(siteDirectory: string): Promise<void> {
+  const site = path.resolve(siteDirectory);
+  const files = await walkFiles(site);
+  if (!files.includes("index.html") || !files.includes("robots.txt")) throw new Error("public site is incomplete");
+  if (files.some(file => /(?:^|\/)(?:fixtures?|logs?|source(?:s)?|node_modules|private)(?:\/|$)|(?:^|\/)[^/]*\.versions(?:\/|$)|\.map$|\.log$/i.test(file))) throw new Error("public site contains private build files");
+  const textFiles = files.filter(file => /\.(?:html|json|txt|css|js)$/i.test(file));
+  const htmlFiles: Array<{path: string; text: string}> = [];
+  for (const file of textFiles) {
+    const text = await fs.readFile(path.join(site, file), "utf8");
+    if (file.endsWith(".html")) htmlFiles.push({path: file, text});
+    if (/\{\{|\{%/.test(text)) throw new Error("public site contains Liquid");
+    if (/(?:actions\/runs\/\d+\/artifacts\/\d+|actions\/artifacts\/\d+|artifact-url|actions\/download-artifact)/i.test(text)) throw new Error("public site contains a private artifact URL");
+    if (containsUnsafePublicUrl(text)) throw new Error("public site contains an unsafe URL");
+  }
+  assertLocalLinks(files, htmlFiles);
   const index = await fs.readFile(path.join(site, "index.html"), "utf8");
   if (!/noindex\s*,\s*nofollow\s*,\s*noarchive/i.test(index) || !/Content-Security-Policy/i.test(index)) throw new Error("public site index lacks indexing and CSP safeguards");
   const robots = await fs.readFile(path.join(site, "robots.txt"), "utf8");
   if (!/Disallow:\s*\//i.test(robots)) throw new Error("public site robots policy is not restrictive");
-  return provenance;
 }
 
 async function candidate(args: PublicationCliArgs): Promise<void> {
@@ -169,9 +201,77 @@ async function candidate(args: PublicationCliArgs): Promise<void> {
 
 async function append(args: PublicationCliArgs): Promise<void> {
   const ledger = validateLedger(JSON.parse(await fs.readFile(path.resolve(args.ledger!), "utf8")));
-  const entry = JSON.parse(await fs.readFile(path.resolve(args.candidate!), "utf8")) as PublicationEntry;
+  const entry = JSON.parse(await fs.readFile(path.resolve(args.candidate!), "utf8")) as PublicationEvent;
   const updated = appendPublication(ledger, entry);
   await fs.writeFile(path.resolve(args.ledger!), JSON.stringify(updated, null, 2) + "\n");
+}
+
+export function assertWithdrawalSelection(value: unknown, active: {email_code: string; campaign_key: string; source_path: string}): void {
+  if (!value || typeof value !== "object" || !Array.isArray((value as {selections?: unknown}).selections)) throw new Error("rollback revision preview configuration is invalid");
+  const matches = (value as {selections: Array<Record<string, unknown>>}).selections.filter(selection => selection.email_code === active.email_code);
+  if (
+    matches.length !== 1
+    || matches[0]!.preview_public !== false
+    || matches[0]!.campaign_key !== active.campaign_key
+    || matches[0]!.source_path !== active.source_path
+  ) throw new Error("withdrawal requires preview_public false for the exact active public Email");
+}
+
+export function assertSoleActiveWithdrawal(active: Map<string, unknown>, emailCode: string): void {
+  if (active.size !== 1 || !active.has(emailCode)) throw new Error("Pages-disable withdrawal requires the exact sole active public Email");
+}
+
+export function assertWithdrawalPullRequest(value: unknown, sourceSha: string, canonicalPr: number): void {
+  if (!Array.isArray(value)) throw new Error("withdrawal pull-request evidence is invalid");
+  const matches = value.filter(candidate => {
+    if (!candidate || typeof candidate !== "object") return false;
+    const pr = candidate as {number?: unknown; merged_at?: unknown; merged?: unknown; head?: {sha?: unknown}; merge_commit_sha?: unknown};
+    return pr.number === canonicalPr
+      && (typeof pr.merged_at === "string" || pr.merged === true)
+      && (pr.head?.sha === sourceSha || pr.merge_commit_sha === sourceSha);
+  });
+  if (matches.length !== 1) throw new Error("withdrawal requires the unique merged pull request for the exact rollback revision");
+}
+
+async function verifyWithdrawalPullRequest(sourceSha: string, canonicalPr: number): Promise<void> {
+  const token = process.env.GH_TOKEN;
+  if (!token) throw new Error("GH_TOKEN is required to verify the withdrawal pull request");
+  const response = await fetch(`https://api.github.com/repos/vincent-laroche/email-marketing-ops/commits/${sourceSha}/pulls`, {
+    headers: {
+      Accept: "application/vnd.github+json",
+      Authorization: `Bearer ${token}`,
+      "X-GitHub-Api-Version": "2022-11-28",
+    },
+  });
+  if (!response.ok) throw new Error("withdrawal pull-request verification failed closed");
+  assertWithdrawalPullRequest(await response.json(), sourceSha, canonicalPr);
+}
+
+function assertWithdrawalRevision(sourceSha: string, active: {email_code: string; campaign_key: string; source_path: string}): void {
+  let config: unknown;
+  try {
+    const raw = execFileSync("git", ["show", `${sourceSha}:tools/email-preview/preview-config.json`], {cwd: repositoryRoot, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"]});
+    config = JSON.parse(raw);
+    execFileSync("git", ["cat-file", "-e", `${sourceSha}:${active.source_path}`], {cwd: repositoryRoot, stdio: "ignore"});
+    execFileSync("git", ["merge-base", "--is-ancestor", sourceSha, "origin/main"], {cwd: repositoryRoot, stdio: "ignore"});
+  } catch { throw new Error("withdrawal revision must be a merged commit with the exact Email source and preview configuration"); }
+  assertWithdrawalSelection(config, active);
+}
+
+async function withdrawalCandidate(args: PublicationCliArgs): Promise<void> {
+  const ledger = validateLedger(JSON.parse(await fs.readFile(path.resolve(args.ledger!), "utf8")));
+  const activeSet = activePublications(ledger);
+  assertSoleActiveWithdrawal(activeSet, args.emailCode!);
+  const active = activeSet.get(args.emailCode!);
+  if (!active) throw new Error("withdrawal requires the exact active public Email");
+  assertWithdrawalRevision(args.sourceSha!, active);
+  await verifyWithdrawalPullRequest(args.sourceSha!, args.canonicalPr!);
+  const entry = createWithdrawalEntry(active, {
+    sourceCommitSha: args.sourceSha!, canonicalPr: args.canonicalPr!, pagesDeploymentId: args.pagesDeploymentId!,
+    workflowRunId: args.workflowRunId!, workflowAttempt: args.workflowAttempt!, reason: args.reason!,
+    publicationTimestamp: args.publicationTimestamp,
+  });
+  await fs.writeFile(path.resolve(args.out!), JSON.stringify(entry, null, 2) + "\n");
 }
 
 async function readBack(args: PublicationCliArgs): Promise<void> {
@@ -197,7 +297,9 @@ async function readBack(args: PublicationCliArgs): Promise<void> {
 async function main(): Promise<void> {
   const args = parsePublicationArgs(process.argv);
   if (args.command === "candidate") await candidate(args);
+  else if (args.command === "withdraw-candidate") await withdrawalCandidate(args);
   else if (args.command === "append") await append(args);
+  else if (args.command === "validate-gallery") await validateGallery(args.site!);
   else if (args.command === "validate-site") await validateStaticSite(args.site!, args.emailCode!, args.sourceSha!);
   else await readBack(args);
 }

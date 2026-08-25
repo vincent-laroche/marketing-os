@@ -75,6 +75,7 @@ def workflow_errors(review: str, publish: str) -> List[str]:
             "actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
             "actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444",
             "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+            "actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093",
             "actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd",
         },
         "publish": {

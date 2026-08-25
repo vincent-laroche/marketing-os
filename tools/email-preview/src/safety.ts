@@ -39,7 +39,7 @@ export function rewriteSensitiveLinks(html: string): string {
 }
 
 export function assertSafeRenderedHtml(html: string): void {
-  if (/\{\{|\{%|}}|%}/.test(html)) throw unsafe("unresolved Liquid");
+  if (/\{\{|\{%/.test(html)) throw unsafe("unresolved Liquid");
   if (!/<meta[^>]+name=["']robots["'][^>]+content=["'][^"']*noindex[^"']*nofollow[^"']*noarchive/i.test(html)) throw unsafe("missing preview robots policy");
   for (const address of html.match(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g) ?? []) {
     if (!approvedPublicMailto.has(address.toLowerCase())) throw unsafe("direct email address");

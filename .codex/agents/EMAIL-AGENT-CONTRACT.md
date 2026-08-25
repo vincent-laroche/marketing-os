@@ -79,6 +79,13 @@ May not write local files, mutate GitHub, modify Shopify, change customers/audie
 change another external system. When canonical recording is required, return an exact bounded Issue
 comment or filed-Issue payload to the parent.
 
+One narrow inspection exception is allowed: a read-only reviewer may download an already-existing,
+authorized private artifact into a newly created OS temporary directory solely to inspect its exact
+contents, dimensions, digests, or screenshots. It must never write into the repository, retain or
+re-publish the artifact, expose its private URL, or use customer data. Record the artifact ID,
+expiry, inspection time, and whether visual inspection was actually possible. Temporary download
+capability is evidence access, not permission to build, mutate, upload, publish, or release.
+
 ### Local-write
 
 May edit only the named repository files required by the accepted scope. It may run local builds,
@@ -277,9 +284,10 @@ Permission class:
 Owned files or external resources:
 Authority sources:
 Base and inspected/result SHA:
+Dirty state and concurrent work:
 Work performed or findings:
 Checks and read-back:
-Highest evidence level:
+Evidence level by surface:
 External state changed: yes/no; exact resource if yes
 Blockers and decisions:
 Canonical GitHub update required:
@@ -311,3 +319,20 @@ An agent is complete only when it has:
 
 Difficulty, elapsed time, or token pressure is not completion. A blocked run is useful when the
 blocker is exact, safely contained, and routed to the correct decision owner.
+
+## 15. Calibration runs
+
+When the parent marks a run as calibration, the specialist must study its own operating experience
+as well as the assigned system. Append a concise `Calibration audit` containing:
+
+- instructions that materially improved the result;
+- ambiguous, redundant, missing, or over-restrictive instructions;
+- tools or access that were unavailable but needed, and access granted but unnecessary;
+- evidence the agent could not verify and why;
+- exact proposed prompt, contract, routing, validator, or regression-test changes.
+
+Calibration is not permission to self-edit, broaden scope, or weaken a gate. The parent owns
+integration. A repeated obstacle should become a tracked configuration/test change under the
+calibration Issue rather than informal memory. If the agent was invoked through a generic runtime
+because its named project role was unavailable, record both the effective runtime role and the
+project-local prompt that supplied its specialist identity.
