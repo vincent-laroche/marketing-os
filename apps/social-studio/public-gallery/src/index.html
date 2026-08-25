@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="googlebot" content="noindex, nofollow" />
+    <meta name="description" content="Hair Solutions Co. Social display gallery — a read-only visual assembly surface." />
+    <title>Social display gallery | Hair Solutions Co.</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="siteHeader">
+      <a class="brand" href="#top" aria-label="Hair Solutions Co. Social display gallery home">
+        <span class="brandMark">HSC</span>
+        <span>
+          <strong>Hair Solutions Co.</strong>
+          <small>Social display gallery</small>
+        </span>
+      </a>
+      <nav aria-label="Gallery navigation">
+        <a href="#daily-gallery">Daily gallery</a>
+        <a href="#feed-assembly">Feed assembly</a>
+      </nav>
+      <span class="publicFlag">Read-only / draft</span>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">Public visual assembly</p>
+          <h1 id="page-title">Instagram planner / 30-day visual</h1>
+          <p class="lede">A clean display surface for confirming each day’s three grid posts and five Stories before final photos are placed into the slots.</p>
+        </div>
+        <aside class="boundaryCard" aria-label="Data boundary">
+          <span class="eyebrow">Data boundary</span>
+          <strong>Sanitized structural fixture</strong>
+          <p>No customer data, Notion sync, publishing controls, claims, prices, or testimonials are included in this public build.</p>
+        </aside>
+      </section>
+
+      <section class="legend" aria-label="Gallery rules">
+        <div>
+          <span class="eyebrow">01 / Day row</span>
+          <strong>Grid first, Stories alongside</strong>
+          <p>Every calendar day is grouped into one horizontal visual unit.</p>
+        </div>
+        <div>
+          <span class="eyebrow">02 / Photo slots</span>
+          <strong>Place approved visuals later</strong>
+          <p>Blank slots are intentional. This shell does not invent or imply final assets.</p>
+        </div>
+        <div>
+          <span class="eyebrow">03 / Schedule</span>
+          <strong>Date and time are unset</strong>
+          <p>Publish timing is shown only after it is explicitly supplied in the approved source.</p>
+        </div>
+      </section>
+
+      <section class="gallerySection" id="daily-gallery" aria-labelledby="daily-title">
+        <div class="sectionIntro">
+          <div>
+            <p class="eyebrow">Daily confirmation view</p>
+            <h2 id="daily-title">Day-by-day Instagram + Stories</h2>
+          </div>
+          <p class="sectionNote">30 days · 3 grid slots · 5 Story slots per day</p>
+        </div>
+        <nav id="dayJump" class="dayJump" aria-label="Jump to day"></nav>
+        <div id="dailyRows" class="dailyRows"></div>
+      </section>
+
+      <section class="feedAssemblySection" id="feed-assembly" aria-labelledby="assembly-title">
+        <div class="sectionIntro">
+          <div>
+            <p class="eyebrow">Separate mockup surface</p>
+            <h2 id="assembly-title">Instagram feed assembly</h2>
+          </div>
+          <p class="sectionNote">A reusable 3 × 3 frame for checking the grid rhythm apart from the calendar.</p>
+        </div>
+        <div class="feedAssembly" aria-label="Instagram feed assembly mockup">
+          <header class="feedHeader">
+            <span class="feedAvatar">HSC</span>
+            <span>
+              <strong>hairsolutions.co</strong>
+              <small>Visual assembly / 3 × 3 grid</small>
+            </span>
+            <span class="draftPill">Draft only</span>
+          </header>
+          <div id="feedGrid" class="feedGrid"></div>
+          <footer class="feedFooter">
+            <span>9 visual slots</span>
+            <span>Replace with approved imagery in production</span>
+          </footer>
+        </div>
+      </section>
+    </main>
+
+    <footer class="siteFooter">
+      <span>Hair Solutions Co. · Social Media OS</span>
+      <span>Read-only public gallery · no publishing surface</span>
+    </footer>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

@@ -12,6 +12,9 @@
     "start": "vinext start",
     "lint": "tsc --noEmit",
     "verify": "npm run lint && npm run build",
+    "build:public-gallery": "node public-gallery/build.mjs",
+    "verify:public-gallery": "npm run build:public-gallery && node public-gallery/verify.mjs",
+    "deploy:public-gallery": "npm run verify:public-gallery && wrangler deploy --config public-gallery/wrangler.jsonc",
     "deploy:worker:legacy": "cd dist/server && wrangler deploy --config wrangler.json --name social-marketing-studio --domain social-marketing-studio.hairsolutions.co --keep-vars"
   },
   "dependencies": {
