@@ -116,9 +116,18 @@ def add_items(client: GitHubClient, project: Dict[str, Any], manifest: Dict[str,
     return item_by_key
 
 
+def preview_url_clear_inputs(project_id: str, field_id: str, manifest: Dict[str, Any], item_by_key: Dict[str, str]) -> List[Dict[str, str]]:
+    return [
+        {"projectId": project_id, "itemId": item_by_key[record["key"]], "fieldId": field_id}
+        for record in manifest["records"]
+        if record.get("preview_url") in (None, "")
+    ]
+
+
 def update_values(client: GitHubClient, project: Dict[str, Any], manifest: Dict[str, Any], item_by_key: Dict[str, str]) -> None:
     fields = {field["name"]: field for field in project["fields"]["nodes"]}
     updates = []
+    preview_clears = preview_url_clear_inputs(project["id"], fields["Preview URL"]["id"], manifest, item_by_key)
     for record in manifest["records"]:
         field_values = {"Status": record["status"]}
         field_values.update({name: record[key] for name, key in RECORD_TO_FIELD.items()})
@@ -139,6 +148,7 @@ def update_values(client: GitHubClient, project: Dict[str, Any], manifest: Dict[
                 encoded = {"text": str(value)[:1024]}
             updates.append({"projectId": project["id"], "itemId": item_by_key[record["key"]], "fieldId": field["id"], "value": encoded})
     graphql_batch(client, "updateProjectV2ItemFieldValue", "UpdateProjectV2ItemFieldValueInput", updates, "projectV2Item{id}")
+    graphql_batch(client, "clearProjectV2ItemFieldValue", "ClearProjectV2ItemFieldValueInput", preview_clears, "projectV2Item{id}")
 
 
 def run(apply: bool) -> Dict[str, Any]:

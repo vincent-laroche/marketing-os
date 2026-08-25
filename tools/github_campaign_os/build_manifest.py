@@ -7,6 +7,7 @@ import sys
 from typing import Any, Dict, Iterable, List, Optional
 
 from .model import Record, fingerprint
+from .preview_publications import ISSUE_REPORT_PATH, load_preview_urls
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -182,6 +183,17 @@ def make_record(key: str, title: str, work_type: str, campaign: Optional[str], p
 def build_records() -> List[Record]:
     rows = load_rows()
     ledger = load_ledger()
+    issue_numbers = json.loads(ISSUE_REPORT_PATH.read_text(encoding="utf-8"))["issues"]
+    preview_authority: Dict[str, Dict[str, Any]] = {}
+    for row in rows:
+        code = code_from_name(row["Email name"])
+        campaign = SERIES_TO_CAMPAIGN[row["Series"]]
+        preview_authority[code] = {
+            "campaign_key": f"campaign:{campaign}",
+            "source_path": str(html_for(code).relative_to(ROOT)),
+            "canonical_issue": issue_numbers[f"email:{code}"],
+        }
+    preview_urls = load_preview_urls(preview_authority)
     records: List[Record] = []
     authority_path = str(CSV_PATH.relative_to(ROOT))
     for code, (name, kind, objective) in CAMPAIGNS.items():
@@ -201,6 +213,7 @@ def build_records() -> List[Record]:
             "Platform": platform, "Campaign Type": campaign_type, "Objective": CAMPAIGNS[campaign][2], "Offer": row["CTA"] or "None",
             "Execution Mode": execution, "Messaging State": "Not Started", "Flow Required": flow_required,
             "Flow State": "Not Started" if flow_required == "Yes" else "Not Required",
+            "Preview URL": preview_urls.get(code),
         })
         sources = [authority_path, html_rel, "shopify-messaging/build-ledger.json"]
         authority = f"**Email:** {row['Email name']}\n\n**Subject:** {row['Subject']}\n\n**Preview text:** {row['Preview Text']}\n\n**CTA:** {row['CTA']}\n\n{row['Body']}"
