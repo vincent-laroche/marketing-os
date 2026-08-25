@@ -61,7 +61,7 @@ fictional fixtures and it clears every safety gate. Nothing here is a send appro
 | PP-3 | `08-pp-3.html` | — | `image: the bench — a unit mid-ventilation, natural light, no staging` | — |
 | PP-5 | `10-pp-5.html` | — | `products: remover, sulphate-free shampoo, scalp prep — matched to base type` | — |
 | PP-6 | `11-pp-6.html` | — | `products: the four essentials, matched to base type` | — |
-| PP-7B | `13-pp-7b.html` | — | `dynamic: product ordered — name, base type, order date`<br>`image: example of a good customer submission` | — |
+| PP-7b | `13-pp-7b.html` | — | `dynamic: product ordered — name, base type, order date`<br>`image: example of a good customer submission` | — |
 | W-1 | `14-w-1.html` | — | `dynamic: the three questions new subscribers ask — do I need a consultation first, what does a system cost, how natural does it look` | — |
 | W-3 | `16-w-3.html` | — | `image: customer style shot — textured crop, natural daylight, no staging`<br>`products: three HS- systems that carry these styles` | — |
 | W-5 | `18-w-5.html` | — | `products: based on browsing history, or the three most-ordered first systems` | — |

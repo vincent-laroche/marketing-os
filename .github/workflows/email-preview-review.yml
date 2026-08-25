@@ -52,9 +52,11 @@ jobs:
           mkdir -p email-previews/review
           while read -r source; do
             test -n "$source" || continue
-            code="$(basename "$source" .html | sed -E 's/^[0-9]+-//; s/.*/\U&/')"
-            issue="$(jq -r --arg key "email:$code" '.issues[$key] // empty' github-campaign-os/issue-sync-report.json)"
-            test -n "$issue" || { echo "No canonical Email Issue found for $code" >&2; exit 1; }
+            guess="$(basename "$source" .html | sed -E 's/^[0-9]+-//' | tr '[:lower:]' '[:upper:]')"
+            # Casing comes from the manifest, never the filename: 13-pp-7b.html is PP-7b.
+            code="$(jq -r --arg guess "$guess" '.issues | keys[] | select(startswith("email:")) | ltrimstr("email:") | select(ascii_upcase == $guess)' github-campaign-os/issue-sync-report.json)"
+            test -n "$code" || { echo "No canonical Email Issue found for $guess" >&2; exit 1; }
+            issue="$(jq -r --arg key "email:$code" '.issues[$key]' github-campaign-os/issue-sync-report.json)"
             npm --prefix tools/email-preview run preview -- --source "$source" --email-code "$code" --commit-sha "$HEAD_SHA" --issue "$issue" --pr "$PR" --out "email-previews/review/$code"
           done < changed-emails.txt
           test -n "$(find email-previews/review -name provenance.json -print -quit)" || { echo "No email preview was generated" >&2; exit 1; }

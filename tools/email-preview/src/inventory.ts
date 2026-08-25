@@ -1,4 +1,5 @@
 import fs from "node:fs/promises";
+import fsSync from "node:fs";
 import path from "node:path";
 import { loadConfig, loadFixture, repositoryRoot } from "./config.js";
 import { renderLiquid } from "./liquid.js";
@@ -54,9 +55,28 @@ const OUTPUT = /\{\{([\s\S]*?)\}\}/g;
 /** A Liquid output expression: an identifier path, optionally filtered. */
 const EXPRESSION = /^[A-Za-z_][A-Za-z0-9_]*(\.[A-Za-z_][A-Za-z0-9_]*)*(\s*\|[\s\S]+)?$/;
 
-/** `04-cr-4.html` becomes `CR-4`, the canonical code used by the Campaign OS manifest. */
-export function emailCodeFor(file: string): string {
-  return path.basename(file, ".html").replace(/^\d+-/, "").toUpperCase();
+/**
+ * `04-cr-4.html` becomes `CR-4`, the canonical code used by the Campaign OS manifest.
+ *
+ * Casing comes from the manifest, never from the filename: `13-pp-7b.html` is `PP-7b`,
+ * not `PP-7B`. Blind uppercasing silently breaks the Issue lookup for that one email.
+ */
+export function emailCodeFor(file: string, canonical: ReadonlySet<string> = canonicalEmailCodes()): string {
+  const guess = path.basename(file, ".html").replace(/^\d+-/, "").toUpperCase();
+  for (const code of canonical) if (code.toUpperCase() === guess) return code;
+  return guess;
+}
+
+/** Canonical email codes, read from the compiled Campaign OS manifest. */
+export function canonicalEmailCodes(): Set<string> {
+  const manifest = JSON.parse(
+    fsSync.readFileSync(path.resolve(repositoryRoot, "github-campaign-os/manifest.json"), "utf8")
+  ) as { records: { key: string }[] };
+  return new Set(
+    manifest.records
+      .filter(record => record.key.startsWith("email:"))
+      .map(record => record.key.slice("email:".length))
+  );
 }
 
 export function classifyToken(body: string, resolvable: ReadonlySet<string>): TokenKind {
@@ -81,6 +101,7 @@ export async function inventory(): Promise<Inventory> {
   const files = (await fs.readdir(directory)).filter(file => file.endsWith(".html")).sort();
   const fixture = loadFixture(config.default_persona, config.default_state);
   const resolvable = resolvableRoots(fixture);
+  const canonical = canonicalEmailCodes();
 
   const sources: SourceReport[] = [];
   for (const file of files) {
@@ -116,7 +137,7 @@ export async function inventory(): Promise<Inventory> {
 
     sources.push({
       file,
-      emailCode: emailCodeFor(file),
+      emailCode: emailCodeFor(file, canonical),
       blocker,
       message,
       liveUnresolvedVariables,

@@ -167,3 +167,58 @@ conversation, never publish it. Secrets come from `~/.env` via
 - Scripts are idempotent and support `--dry-run` where they touch a live account.
 - `trash` over `rm`.
 - Read before editing; minimal diffs; flag breaking changes before making them.
+
+## 8. GitHub is the operating system — nothing is tracked in prose
+
+**Hard rule, set 2026-08-24 by Vincent.** The Campaign OS is live: the private
+`vincent-laroche/email-marketing-ops` repository and GitHub Project #4. Issues and pull
+requests are **canonical**, because external connectors read them. Project #4 mirrors state.
+
+**A finding that is not in an Issue or a pull request does not exist.** This is the whole
+rule, and it binds every agent and every session:
+
+- Never end a turn with "I found X" / "someone should do Y next" / "flagging Z for later"
+  as prose. Open an Issue, or comment on the canonical Issue, or put it in the pull request
+  that carries the change. Then cite the number.
+- Every claim in a session report must carry its `#number`. A finding without one is
+  incomplete work, not a finding.
+- Discovered a defect while doing something else? File it before you report it. Out of scope
+  is a reason to open an Issue, never a reason to leave it in chat.
+- Work on an Email or Campaign belongs on that canonical Issue — use its `## Blockers`,
+  `## Evidence`, `## Decisions`, `## Results` and `## Learnings` sections. The synchronizers
+  preserve human-maintained sections; generated sections are rewritten, so never hand-edit
+  those.
+- A new surface with no Issue (as the native Shopify notification templates were) gets a Task
+  Issue before work starts, not after.
+
+`PROJECT.md` remains the chronological session log and it is **not a backlog**. Every open
+item it lists must name the Issue that owns it. If an item has no Issue, the fix is to open
+one, not to write a better paragraph. Anything tracked only in `PROJECT.md`, `README.md`, a
+plan document, or a chat message is by definition untracked.
+
+**Issue and Project mechanics.** Two kinds of Issue exist, and they must not be confused:
+
+- **Compiled Issues** — the 69 canonical records (7 Campaigns, 53 Emails, 8 Tasks, 1 Bug) built by
+  `tools/github_campaign_os/` from the Email Reference File and the build ledger. Each carries a
+  hidden `<!-- campaign-os-key: … -->`. Never hand-create one and never hand-edit its generated
+  snapshot or authority blocks; the synchronizers rewrite those and preserve everything else.
+- **Filed Issues** — new Tasks, Bugs, and Experiments discovered while working. File these through
+  `.github/ISSUE_TEMPLATE/`. They must **not** carry a `campaign-os-key`, because that marker is
+  what makes `verify_issues` count an Issue as canonical; adding one to a hand-written Issue breaks
+  the 69-record invariant.
+
+Regenerate the manifest with `python3 -m tools.github_campaign_os.build_manifest --write` and never
+hand-edit `github-campaign-os/*.json` — a stale generated file is a defect and the test suite fails
+on it. Generate from a **clean** worktree: the manifest fingerprints source bytes, so generating
+while another worktree is dirty produces fingerprints that match no commit.
+
+Canonical email codes come from the manifest, never from a filename. `13-pp-7b.html` is `PP-7b`,
+not `PP-7B`; uppercasing a filename silently breaks the Issue lookup for that one email.
+
+Credentials are ephemeral. There is no GitHub token in `~/.env`; the working credential is the
+`gh` CLI keyring (`gh auth token`). Never print, persist, or commit it.
+
+**Merge is not activation.** Closing an Issue or merging a pull request accepts a repository
+deliverable only. It never configures Shopify Messaging, creates or enables a Flow, changes an
+audience or consent state, schedules, activates, or sends. Creative Stage, Messaging State, and
+Flow State are deliberately independent and must never be inferred from one another.

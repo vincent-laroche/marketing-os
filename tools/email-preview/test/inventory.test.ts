@@ -20,8 +20,18 @@ test("token classifier separates real variables from authoring placeholders", ()
 
 test("email codes match the canonical Campaign OS codes", () => {
   assert.equal(emailCodeFor("04-cr-4.html"), "CR-4");
-  assert.equal(emailCodeFor("13-pp-7b.html"), "PP-7B");
+  assert.equal(emailCodeFor("13-pp-7b.html"), "PP-7b", "casing must come from the manifest, not the filename");
   assert.equal(emailCodeFor("34-nl-01.html"), "NL-01");
+});
+
+test("every email code resolves to a canonical Campaign OS Issue", async () => {
+  const report = await inventory();
+  const issues = JSON.parse(
+    await fs.readFile(path.resolve(repositoryRoot, "github-campaign-os/issue-sync-report.json"), "utf8")
+  ).issues as Record<string, number>;
+  for (const source of report.sources) {
+    assert.ok(issues[`email:${source.emailCode}`], `no canonical Issue for ${source.emailCode}`);
+  }
 });
 
 test("inventory covers all 53 sources and never reports a blocked source as ready", async () => {
