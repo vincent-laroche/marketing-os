@@ -7,8 +7,9 @@
 > canonical. Every open item below must name its Issue; a finding recorded only here, in a plan
 > document, or in a chat message is untracked. Open an Issue, then cite the number.
 
-**Last updated:** 2026-08-25 by Codex (GitHub Pages preview release candidate and specialist-agent
-calibration under #79/#83; no Shopify, audience, campaign, Flow, send, schedule, or activation change)
+**Last updated:** 2026-08-25 by Codex (GitHub Pages preview implementation merged; private-repository
+Pages enablement plan-blocked under #79; specialist calibration recorded in #83; no Shopify,
+audience, campaign, Flow, send, schedule, or activation change)
 
 **Status:** **All marketing campaigns and lifecycle journeys now belong to Shopify Messaging +
 Shopify Flow. MailerLite is not a campaign/lifecycle platform for this project.** Shopify
@@ -64,7 +65,8 @@ working tree**. It stays recoverable from git history at `e892e64` and earlier.
 - governed Campaign, Email, Task, Experiment, and Bug forms plus pull request template added;
 - fail-closed fictional-fixture preview compiler implemented and locally verified with rendered
   HTML, full desktop PNG, full mobile PNG, and exact provenance;
-- private review and deliberate public-publication workflows added; publication remains gated off;
+- private review and deliberate public-publication workflows merged in PR #82; publication remains
+  gated off because the current GitHub plan rejected Pages for this private repository;
 - Phase 0 sender authentication;
 - Phase 1 `text_section` module and Phase 2 image re-encodes;
 - Phase 3 local build of all 53 emails (51 green, 2 source-blocked);
@@ -87,6 +89,7 @@ is not tracked; the fix is to open one, not to describe it better here.
 | 8 | Phase 6 measurement, only after the first approved Shopify sends | [#66](https://github.com/vincent-laroche/email-marketing-ops/issues/66) |
 | 9 | HubSpot `deal.hsc_*` properties in C-0 and C-2 that Shopify cannot resolve | [#74](https://github.com/vincent-laroche/email-marketing-ops/issues/74) |
 | 10 | Shopify native notification templates — 21 of 47 done; scope and palette undecided | [#75](https://github.com/vincent-laroche/email-marketing-ops/issues/75) |
+| 11 | Enable Pages after the private repository has an eligible plan, then run the bounded CR-1 proof | [#79](https://github.com/vincent-laroche/email-marketing-ops/issues/79) |
 
 Per-email preview readiness (14 ready · 39 blocked) is recorded on the canonical
 Email Issue and summarised in `shopify-messaging/PREVIEW-READINESS.md`. Build J2 and W in Shopify
@@ -102,6 +105,20 @@ suite before any activation. MailerLite cleanup is legacy housekeeping, not laun
 ## Session log
 > Chronological record only. Older entries may describe superseded platforms, paths, counts, or
 > blockers. The current status at the top of this file and `AGENTS.md` always win.
+
+- **2026-08-25 (Codex — GitHub Pages implementation merged, live enablement plan-blocked,
+  [#79](https://github.com/vincent-laroche/email-marketing-ops/issues/79),
+  [#83](https://github.com/vincent-laroche/email-marketing-ops/issues/83),
+  [PR #82](https://github.com/vincent-laroche/email-marketing-ops/pull/82)):** Merged the complete
+  fail-closed preview implementation as `70dfd52b8ec34703a6b3cb91cd939a407c7ea676` after Campaign
+  OS READY, Preview QA PREVIEW READY, Release Review SHIP, exact-head CI run `32845536932`, and
+  private artifact `9562199287`. The final suite passed 52 preview tests, 35 Python tests, strict
+  type-checking, 12 agent validators, 69-Issue zero-drift verification, and exact Project Preview URL
+  read-back. The authorized Pages creation request with `build_type=workflow` then returned HTTP 422:
+  `Your current plan does not support GitHub Pages for this repository.` The repository remained
+  private, Pages remained disabled (API HTTP 404), CR-1 was not dispatched, and no ledger, manifest,
+  Issue, or Project Preview URL was created. The safe next step is an eligible private-repository
+  Pages plan, then repeat #79; making the repository public is not an accepted workaround.
 
 - **2026-08-25 (Codex — GitHub Pages preview release candidate + specialist calibration,
   [#79](https://github.com/vincent-laroche/email-marketing-ops/issues/79),
