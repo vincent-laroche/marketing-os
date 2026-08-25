@@ -37,6 +37,7 @@ assert(worker.includes('headers.set("X-Robots-Tag", "noindex, nofollow")'), "Wor
 assert(worker.includes("connect-src 'none'"), "Worker CSP must disable network connections");
 assert(wrangler.includes('"custom_domain": true'), "custom domain must be configured");
 assert(wrangler.includes('"preview_urls": false'), "preview URLs must stay disabled");
+assert(wrangler.includes('"run_worker_first": true'), "Worker must run first for security headers");
 
 for (const file of ["index.html", "styles.css", "app.js", "data.js", "robots.txt"]) {
   await access(resolve(output, file));
