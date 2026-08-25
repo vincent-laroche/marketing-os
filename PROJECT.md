@@ -7,7 +7,7 @@
 > canonical. Every open item below must name its Issue; a finding recorded only here, in a plan
 > document, or in a chat message is untracked. Open an Issue, then cite the number.
 
-**Last updated:** 2026-08-25 by Codex (public Marketing OS platform build merged; Social Project #5 configured; GitHub Pages enabled; CR-1 fictional preview published; no Shopify, audience, campaign, Flow, send, schedule, activation, or social platform publication change)
+**Last updated:** 2026-08-25 by Codex (Marketing OS reconciliation complete; 14 fictional Email previews published; workflow handoff fixed; Social content quarantined; no Shopify, audience, campaign, Flow, send, schedule, activation, or social platform publication change)
 
 **Status:** **All marketing campaigns and lifecycle journeys now belong to Shopify Messaging +
 Shopify Flow. MailerLite is not a campaign/lifecycle platform for this project.** Shopify
@@ -26,12 +26,21 @@ manifest builder, previews, and dry-run Issue compiler are under their namespace
 non-production Social records are Issues #90–#94, linked hierarchically and added to Social Media
 OS Project #5. Email preview provenance and canonical Pages paths now use
 `https://vincent-laroche.github.io/marketing-os`; public publication remains limited to the
-existing fictional-data and `preview_public` gates. Pages is now enabled from the `main` branch.
-The first bounded publication succeeded in workflow run `32862790415`: CR-1 is live at
-`https://vincent-laroche.github.io/marketing-os/CR-1/detail.html`, with provenance tied to
-source SHA `aa2d992850fbf3ecf4f529a2e64c050d08eca54e`, Email Issue #10, and source PR #95.
-The workflow could not open its ledger PR because Actions PR creation is disabled in this
-repository, so the verified one-file ledger branch was manually opened as PR #96 and merged.
+fictional-data and `preview_public` gates. Pages is enabled from the `main` branch. The first
+bounded publication succeeded in workflow run `32862790415` for CR-1; the complete render-ready
+set of 14 was then published by workflow run `32865679611` at merged source SHA
+`c0ee6e5e8b090e63eac03cfde06351cbfd3d8ef7`. All 14 live directories were read back over HTTPS,
+with ledger/provenance digests, noindex markers, and unsafe-template checks passing. The
+corresponding ledger-only PRs #96 and #101 were manually reviewed and merged. PR #99 and Issue
+#98 now document the explicit manual ledger-PR handoff because Actions PR creation is disabled.
+
+**2026-08-25 reconciliation:** Email Project #4 is private and linked to `marketing-os`. Social
+Project #5 is private, linked to the same repository, and contains only canonical fixture Issues
+#90–#94 with the separate Social hierarchy. Duplicate partial fixtures #88 and #89 were closed
+as superseded without deleting history. The migrated Social Studio/data audit is classified as
+public historical/reference material under Issue #102 and `docs/social-media/PUBLIC-CONTENT-AUDIT.md`;
+that audit PR is merged. Social Studio remains undeployed because dependency/security and
+hosting review is still open in Issue #104.
 
 **Live MailerLite re-verification, 2026-08-24:** account 2582639 is authenticated and currently
 has **0 campaigns**, **1 disabled legacy welcome automation**, and 2,223 subscribers. Its Shopify
