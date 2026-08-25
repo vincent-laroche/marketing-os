@@ -77,8 +77,8 @@ working tree**. It stays recoverable from git history at `e892e64` and earlier.
 4. Resolve the two inactive duplicate abandoned-checkout automations in Shopify Messaging.
 5. Build J2 and W in Shopify Messaging and J1/J3/J4/J5 in Shopify Flow; then run the full Phase 5
    QA suite before any activation.
-6. Open and merge the connector-readable migration pull request after reviewing the task-owned
-   repository changes; merge still does not configure Shopify, schedule, activate, or send.
+6. Resolve the source emails that the new preview compiler correctly rejects for unresolved or
+   unsupported Liquid, beginning with BR-1 `last_viewed_product`.
 7. Separately approve GitHub Pages enablement/first public preview only when a specific Email Issue
    and source revision are ready; `preview_public` remains false.
 8. Start Phase 6 measurement only after the first approved Shopify sends.
@@ -108,6 +108,10 @@ working tree**. It stays recoverable from git history at `e892e64` and earlier.
   fixtures; a local CR-1 proof produced rendered HTML, full desktop PNG, full mobile PNG, and a
   provenance sidecar bound to the exact source SHA and Issue. Added private review and manual public
   workflows; `preview_public` remains false, Pages was not enabled, and nothing was published.
+  Migration PR #70 was merged normally to `main` as `3a85ee99`; its linked migration Issue #67
+  closed automatically and the PR was added to Project #4. The preview review check remained red by
+  design because BR-1 still contains unresolved `last_viewed_product`; no partial artifact was
+  uploaded or published.
   No Shopify Messaging campaign, Flow, audience, schedule, activation, or send changed.
 
 - **2026-08-24 (Codex — Shopify implementation/readiness layer designed):** Vincent approved a

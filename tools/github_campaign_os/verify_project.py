@@ -11,6 +11,7 @@ def main(argv: Optional[List[str]] = None) -> int:
     verified = (
         report["project_exists"]
         and report["issue_items"] == 69
+        and report["pull_request_items"] >= 1
         and report["private"]
         and not report["custom_fields_missing"]
         and not report["browser_configuration_required"]
