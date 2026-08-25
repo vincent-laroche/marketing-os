@@ -184,7 +184,8 @@ Any repository-wide Pages disablement must be preceded by a non-mutating, fail-c
 proves the ledger contains exactly the requested sole active Email and binds the merged rollback SHA,
 `preview_public: false`, source, and unique associated merged PR. Check uniqueness across every merged
 PR associated with the exact SHA before comparing the caller-supplied PR number. Repeat the preflight
-when producing the append-only withdrawal candidate after the public URL becomes unavailable.
+when producing the append-only withdrawal candidate after the public URL becomes unavailable. Fetch
+every paginated association result; first-page uniqueness is not repository-wide uniqueness.
 
 ### 10. Preserve infrastructure gates
 

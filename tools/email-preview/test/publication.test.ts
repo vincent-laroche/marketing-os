@@ -3,7 +3,7 @@ import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
-import { assertSoleActiveWithdrawal, assertWithdrawalPullRequest, assertWithdrawalSelection, canonicalEmailUrl, parsePublicationArgs, resolveLocalSiteTarget, validateGallery } from '../src/publication.js';
+import { assertSoleActiveWithdrawal, assertWithdrawalPullRequest, assertWithdrawalSelection, canonicalEmailUrl, nextGitHubPage, parsePublicationArgs, resolveLocalSiteTarget, validateGallery } from '../src/publication.js';
 
 test('local site link resolution maps the root form action to the gallery index', () => {
   assert.equal(resolveLocalSiteTarget('./', 'index.html'), 'index.html');
@@ -85,6 +85,13 @@ test('withdrawal PR evidence binds one merged PR to the exact rollback revision'
     {number: 83, merged_at: '2026-08-25T12:00:00Z', head: {sha}},
     {number: 84, merged_at: '2026-08-25T12:01:00Z', merge_commit_sha: sha},
   ], sha, 83), /unique merged/i);
+});
+
+test('withdrawal PR pagination follows only the GitHub next link', () => {
+  const next = 'https://api.github.com/repositories/123/commits/' + 'b'.repeat(40) + '/pulls?page=2';
+  assert.equal(nextGitHubPage(`<${next}>; rel="next", <${next.replace('page=2', 'page=4')}>; rel="last"`), next);
+  assert.equal(nextGitHubPage(`<${next}>; rel="prev"`), undefined);
+  assert.throws(() => nextGitHubPage('<https://evil.example/page=2>; rel="next"'), /pagination URL is invalid/i);
 });
 
 test('static-site validation rejects source, fixture, log, and private artifact leakage', async () => {

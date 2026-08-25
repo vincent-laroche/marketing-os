@@ -235,18 +235,39 @@ export function assertWithdrawalPullRequest(value: unknown, sourceSha: string, c
   if ((matches[0] as {number?: unknown}).number !== canonicalPr) throw new Error("withdrawal pull request does not match the unique merged rollback revision");
 }
 
+export function nextGitHubPage(linkHeader: string | null): string | undefined {
+  if (!linkHeader) return undefined;
+  for (const entry of linkHeader.split(",")) {
+    const match = entry.trim().match(/^<([^>]+)>;\s*rel="([^"]+)"$/);
+    if (match?.[2]?.split(/\s+/).includes("next")) {
+      const url = new URL(match[1]);
+      if (url.protocol !== "https:" || url.hostname !== "api.github.com") throw new Error("withdrawal pull-request pagination URL is invalid");
+      return url.toString();
+    }
+  }
+  return undefined;
+}
+
 async function verifyWithdrawalPullRequest(sourceSha: string, canonicalPr: number): Promise<void> {
   const token = process.env.GH_TOKEN;
   if (!token) throw new Error("GH_TOKEN is required to verify the withdrawal pull request");
-  const response = await fetch(`https://api.github.com/repos/vincent-laroche/email-marketing-ops/commits/${sourceSha}/pulls`, {
-    headers: {
-      Accept: "application/vnd.github+json",
-      Authorization: `Bearer ${token}`,
-      "X-GitHub-Api-Version": "2022-11-28",
-    },
-  });
-  if (!response.ok) throw new Error("withdrawal pull-request verification failed closed");
-  assertWithdrawalPullRequest(await response.json(), sourceSha, canonicalPr);
+  const candidates: unknown[] = [];
+  let next: string | undefined = `https://api.github.com/repos/vincent-laroche/email-marketing-ops/commits/${sourceSha}/pulls?per_page=100`;
+  while (next) {
+    const response = await fetch(next, {
+      headers: {
+        Accept: "application/vnd.github+json",
+        Authorization: `Bearer ${token}`,
+        "X-GitHub-Api-Version": "2022-11-28",
+      },
+    });
+    if (!response.ok) throw new Error("withdrawal pull-request verification failed closed");
+    const page = await response.json();
+    if (!Array.isArray(page)) throw new Error("withdrawal pull-request verification failed closed");
+    candidates.push(...page);
+    next = nextGitHubPage(response.headers.get("link"));
+  }
+  assertWithdrawalPullRequest(candidates, sourceSha, canonicalPr);
 }
 
 function assertWithdrawalRevision(sourceSha: string, active: {email_code: string; campaign_key: string; source_path: string}): void {

@@ -158,6 +158,7 @@ previews are public, disabling all Pages is not an acceptable selective rollback
 The emergency contract must execute a non-mutating sole-active preflight before the Pages API write.
 Its PR proof must require exactly one merged PR across all associations to the exact rollback SHA,
 then match that PR number; filtering by a supplied PR number before counting is insufficient.
+Require all GitHub API pages to be exhausted before treating the association as unique.
 
 ### 11. Approval
 

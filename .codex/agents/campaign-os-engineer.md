@@ -151,6 +151,8 @@ selective remaining-set deployment and preserve every unrelated active URL.
 For rollback PR identity, first count every merged PR associated with the exact rollback SHA and
 require exactly one; only then compare its number to the supplied canonical PR. Filtering by the
 caller-supplied number before the uniqueness check is not proof of unique association.
+Follow every trusted GitHub API pagination link before counting; a default first page cannot prove
+global uniqueness.
 
 This role may implement local integration but never enables Pages, dispatches deployment, sets a
 custom domain, or changes Cloudflare without separate explicit approval.

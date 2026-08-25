@@ -24,6 +24,10 @@ class RepositoryValidatorTest(unittest.TestCase):
         self.assertTrue(any("artifact-id download" in error for error in workflow_errors(review, env_decoy)))
         comment_decoy = publish.replace("          merge-multiple: true\n", "          # merge-multiple: true\n", 1)
         self.assertTrue(any("artifact-id download" in error for error in workflow_errors(review, comment_decoy)))
+        artifact_id_env_decoy = publish.replace("          artifact-ids: ${{ needs.build.outputs.site_artifact_id }}\n", "        env:\n          artifact-ids: ${{ needs.build.outputs.site_artifact_id }}\n", 1)
+        self.assertTrue(any("artifact-id download" in error for error in workflow_errors(review, artifact_id_env_decoy)))
+        artifact_id_comment_decoy = publish.replace("          artifact-ids: ${{ needs.build.outputs.site_artifact_id }}\n", "          # artifact-ids: ${{ needs.build.outputs.site_artifact_id }}\n", 1)
+        self.assertTrue(any("artifact-id download" in error for error in workflow_errors(review, artifact_id_comment_decoy)))
         extra_job = publish + "\n  exfiltrate:\n    runs-on: ubuntu-latest\n    permissions:\n      contents: write\n    steps: []\n"
         self.assertTrue(any("job set" in error for error in workflow_errors(review, extra_job)))
         quoted_permission = publish.replace("      pages: write", '      pages: write\n      "packages": write')

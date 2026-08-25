@@ -124,7 +124,7 @@ def workflow_errors(review: str, publish: str) -> List[str]:
         download_steps = re.findall(r"(?ms)^[ ]*- name:.*?(?=^[ ]*- name:|\Z)", text)
         for step in download_steps:
             action, inputs = _action_with_mapping(step)
-            if action and action.startswith("actions/download-artifact@") and "artifact-ids" in inputs and inputs.get("merge-multiple") != "true":
+            if action and action.startswith("actions/download-artifact@") and (not inputs.get("artifact-ids") or inputs.get("merge-multiple") != "true"):
                 errors.append(f"{name} workflow artifact-id download does not merge into the requested root")
     if "retention-days: 14" not in review:
         errors.append("private review artifact retention is not 14 days")
