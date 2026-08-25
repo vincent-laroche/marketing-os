@@ -36,6 +36,7 @@ test("private review workflow is pull-request-only, minimally permissioned, pinn
   assert.match(workflow, /review artifact is incomplete for \$code/);
   assert.match(workflow, /"--visibility", "private"/);
   assert.match(workflow, /diff -qr email-previews\/review downloaded-review/);
+  assert.match(workflow, /merge-multiple:\s*true/);
   assert.match(workflow, /render-failure/);
   assert.match(workflow, /filter\(code => readyCodes\.has\(code\)\)/);
   assert.doesNotMatch(workflow, /Reproduce[^\n]*email-preview-publish/);

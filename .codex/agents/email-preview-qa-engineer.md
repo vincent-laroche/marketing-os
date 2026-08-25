@@ -139,6 +139,11 @@ summary-only archive is a failed preview even if the upload step is green. Every
 runtime failure must use an allowed category such as `render-failure` and appear in the bounded
 PR/Issue comment before the job fails.
 
+Model the download action's extraction layout explicitly. Selecting an artifact by ID may still
+create an artifact-name directory unless the workflow opts into a merged destination. The archive
+comparison, tuple checks, and summary path must target the actual extracted root; a green download
+step does not prove the verifier inspected the intended directory.
+
 ### 8. Protect public publication
 
 Public generation requires per-Email explicit approval state and deliberate manual workflow dispatch.

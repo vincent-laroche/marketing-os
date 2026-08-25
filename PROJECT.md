@@ -113,7 +113,9 @@ suite before any activation. MailerLite cleanup is legacy housekeeping, not laun
 
   Hardened the private review workflow to emit explicitly private provenance, classify runtime
   failures, verify exact four-file tuples, download its own uploaded artifact, and compare the archive
-  byte-for-byte before posting evidence. Public rendering now requires explicit public provenance.
+  byte-for-byte before posting evidence. The first calibrated final-head run exposed GitHub's default
+  artifact-name extraction directory; the workflow now opts into the intended merged destination and
+  the agent prompt/test preserve that runner mechanic. Public rendering now requires explicit public provenance.
   Local CR-1 public-mode rehearsal passed render → materialize → gallery → validation with fictional
   data, 1440px desktop and 390px mobile captures, exact digests, no unresolved Liquid, and no unsafe
   destinations.

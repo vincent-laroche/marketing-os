@@ -59,6 +59,7 @@ ROLE_REQUIRED_PHRASES = {
         "GITHUB_WORKSPACE",
         "render-failure",
         "download the real artifact",
+        "artifact-name directory",
         "zero-public-email",
         "publish → withdraw → republish",
     ),

@@ -156,6 +156,7 @@ jobs:
         with:
           artifact-ids: ${{ steps.upload.outputs.artifact-id }}
           path: downloaded-review
+          merge-multiple: true
       - name: Compare downloaded artifact to the verified render set
         run: |
           diff -qr email-previews/review downloaded-review
