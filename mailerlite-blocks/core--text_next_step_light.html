@@ -1,0 +1,75 @@
+<style>
+@media only screen and (max-width:480px){
+  .az-module-shell{width:100%!important;max-width:100%!important;}
+  .az-module-shell .az-mobile-pad{padding-left:24px!important;padding-right:24px!important;}
+  .az-module-shell .az-stack{display:block!important;width:100%!important;box-sizing:border-box!important;}
+  .az-module-shell li{font-size:16px!important;line-height:1.6!important;}
+  .az-module-shell td{max-width:100%!important;box-sizing:border-box!important;overflow-wrap:anywhere!important;}
+  .az-module-shell img{max-width:100%!important;height:auto!important;}
+}
+</style>
+<!-- Atelier Zero v7 -->
+<table border="0" cellpadding="0" cellspacing="0" data-module-frame="core-card" role="presentation" style="background-color:transparent;border-collapse:collapse;margin:0;" width="100%"><tr><td align="center" style="padding:0 16px;"><table border="0" cellpadding="0" cellspacing="0" class="az-module-shell" role="presentation" style="max-width:568px;background-color:#EFE7D2;border:none;border-radius:16px;border-collapse:separate;" width="100%"><tr><td style="padding:28px 30px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
+<!--
+  templateType: "none"
+  isAvailableForNewContent: false
+-->
+{#
+  lifespan_next_step
+  Used in: J3-E8 (Review & Next Steps), J4-E2 (Replacement Nudge)
+
+  Inputs:
+    contact.last_known_system_family  — branded model name e.g. "Lace Pro"
+    module.predicted_reorder_date   — uses native next_expected_reorder_date
+    contact.reorder_readiness        — enum: active_now|30_days|60_days|90+_days|unknown|not_applicable
+    contact.base_preference          — for lifespan range copy
+    contact.density_preference       — for optional refinement prompt
+    contact.experience_level         — first_system|some_experience|experienced_wearer
+
+  Rule: all business logic precomputed by workflow before email sends.
+        This module only renders what is already in CRM properties.
+        Never calculate dates inside this template.
+#}
+
+
+
+
+
+
+
+{#-- Lifespan range by base group --#}
+
+ 
+ 
+
+
+<table cellpadding="0" cellspacing="0" role="presentation" style="background-color:transparent;margin:0 0 24px 0;" width="100%">
+<tr>
+<td class="az-content-pad" style="background:#EFE7D2;border-left:4px solid #DDD2B6;padding:20px 24px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
+
+ {#-- System name header if available --#}
+ 
+
+ {#-- Lifespan section --#}
+ <p style="margin:0 0 6px 0;font-size:16px;font-weight:700;color:#15140F;text-transform:uppercase;letter-spacing:0.5px;line-height:1.6;">Typical lifespan</p>
+<p style="margin:0 0 14px 0;font-size:16px;font-weight:700;color:#15140F;line-height:1.6;">6–12 weeks</p>
+
+ {#-- Reorder timing message --#}
+ 
+ <p style="margin:0 0 14px 0;font-size:16px;color:#2A2620;line-height:1.6;">
+ Order early enough to allow for the current processing and delivery timing.
+ </p>
+ 
+
+ {#-- Density refinement prompt for experienced wearers --#}
+ 
+
+ {#-- First-system encouragement — only for first_system level --#}
+ 
+ <p style="margin:14px 0 0 0;font-size:16px;color:#2A2620;border-top:1px solid #DDD2B6;padding-top:14px;line-height:1.6;">Practice makes the routine more familiar. If something has not clicked, reply and we will help.</p>
+ 
+
+ </td>
+</tr>
+</table>
+</td></tr></table></td></tr></table>

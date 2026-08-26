@@ -1,0 +1,4 @@
+# Native Codex roles below enforce the project-specific scope and external-write
+# gates. This file deliberately does not enable any campaign, Flow, or sender tool.
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
