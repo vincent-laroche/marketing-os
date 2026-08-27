@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { SOURCES, WORKER_MANAGED_FIELDS, entityKey, hmacSignature, slug, sourceFingerprint, stableProperties, syncProperties } from "../src/contract.mjs";
+import { SOURCES, WORKER_MANAGED_FIELDS, entityKey, hmacSignature, relationshipRefs, slug, sourceFingerprint, stableProperties, syncProperties } from "../src/contract.mjs";
 
 const samplePage = {
   id: "page-1",
@@ -59,4 +59,13 @@ test("limits a bounded Worker invocation to a conservative batch that fits a que
 test("treats shared campaign and parent keys as stable text relationship anchors rather than editable business relations", () => {
   assert.ok(!WORKER_MANAGED_FIELDS.includes("Marketing OS Parent Key"));
   assert.ok(!WORKER_MANAGED_FIELDS.includes("Marketing OS Shared Campaign Key"));
+});
+
+test("extracts only declared existing native relation references and does not infer cross-channel links", () => {
+  const page = { properties: { "Modules Used": { relation: [{ id: "module-a" }, { id: "module-b" }] } } };
+  assert.deepEqual(relationshipRefs("canonical_email", page), [
+    { relationName: "Modules Used", targetScope: "email_module", targetPageId: "module-a" },
+    { relationName: "Modules Used", targetScope: "email_module", targetPageId: "module-b" }
+  ]);
+  assert.deepEqual(relationshipRefs("social", page), []);
 });

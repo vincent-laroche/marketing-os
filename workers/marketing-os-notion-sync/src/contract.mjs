@@ -23,6 +23,12 @@ export const SOURCES = [
   { scope: "social", dataSourceId: "e59a1965-1b0a-42ca-bfa2-86904b604e3e", keyPrefix: "social:template" }
 ];
 
+export const NATIVE_RELATION_FIELDS = {
+  canonical_email: [{ property: "Modules Used", targetScope: "email_module" }],
+  email_module: [{ property: "Used In Emails", targetScope: "canonical_email" }],
+  proof: [{ property: "Used In", targetScope: "canonical_email" }]
+};
+
 export function slug(value) {
   return String(value || "")
     .normalize("NFKD")
@@ -59,6 +65,18 @@ export function existingKey(page) {
 
 export function entityKey(source, page) {
   return existingKey(page) || `${source.keyPrefix}:${slug(pageTitle(page) || page?.id)}`;
+}
+
+export function relationshipRefs(sourceScope, page) {
+  return (NATIVE_RELATION_FIELDS[sourceScope] || []).flatMap(({ property, targetScope }) => {
+    const related = page?.properties?.[property]?.relation;
+    if (!Array.isArray(related)) return [];
+    return related.filter(reference => typeof reference?.id === "string").map(reference => ({
+      relationName: property,
+      targetScope,
+      targetPageId: reference.id
+    }));
+  });
 }
 
 export function stableProperties(properties = {}) {

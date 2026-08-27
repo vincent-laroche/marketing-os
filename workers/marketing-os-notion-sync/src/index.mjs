@@ -1,4 +1,4 @@
-import { NOTION_VERSION, SOURCES, entityKey, hmacSignature, sourceFingerprint, syncProperties } from "./contract.mjs";
+import { NOTION_VERSION, SOURCES, entityKey, hmacSignature, relationshipRefs, sourceFingerprint, syncProperties } from "./contract.mjs";
 
 const NOTION_BASE = "https://api.notion.com/v1";
 const MAX_PAGES_PER_INVOCATION = 15;
@@ -87,6 +87,15 @@ async function ensureSchema(db) {
       status TEXT NOT NULL,
       error TEXT,
       PRIMARY KEY (run_id, scope)
+    )`),
+    db.prepare(`CREATE TABLE IF NOT EXISTS marketing_notion_relation (
+      source_scope TEXT NOT NULL,
+      source_key TEXT NOT NULL,
+      relation_name TEXT NOT NULL,
+      target_scope TEXT NOT NULL,
+      target_page_id TEXT NOT NULL,
+      observed_at INTEGER NOT NULL,
+      PRIMARY KEY (source_scope, source_key, relation_name, target_scope, target_page_id)
     )`)
   ]);
 }
@@ -104,6 +113,19 @@ async function createRunIfAbsent(env, runId) {
   return "running";
 }
 
+async function persistNativeRelationships(env, source, key, page) {
+  const references = relationshipRefs(source.scope, page);
+  const statements = [
+    env.SYNC_DB.prepare(`DELETE FROM marketing_notion_relation WHERE source_scope = ? AND source_key = ?`)
+      .bind(source.scope, key),
+    ...references.map(reference => env.SYNC_DB.prepare(`INSERT INTO marketing_notion_relation
+      (source_scope, source_key, relation_name, target_scope, target_page_id, observed_at)
+      VALUES (?, ?, ?, ?, ?, ?)`)
+      .bind(source.scope, key, reference.relationName, reference.targetScope, reference.targetPageId, Date.now()))
+  ];
+  await env.SYNC_DB.batch(statements);
+}
+
 async function syncPage(env, source, page, timestamp) {
   const key = entityKey(source, page);
   const fingerprint = await sourceFingerprint(page);
@@ -113,6 +135,7 @@ async function syncPage(env, source, page, timestamp) {
   if (existing?.source_fingerprint === fingerprint) {
     await env.SYNC_DB.prepare(`UPDATE marketing_notion_mapping SET parent_key = ?, notion_page_id = ?, notion_url = ? WHERE scope = ? AND entity_key = ?`)
       .bind(parentKey, page.id, page.url, source.scope, key).run();
+    await persistNativeRelationships(env, source, key, page);
     return { key, changed: false };
   }
   if (existing && existing.last_write_source !== "notion") {
@@ -135,8 +158,9 @@ async function syncPage(env, source, page, timestamp) {
       parent_key = excluded.parent_key,
       last_write_source = excluded.last_write_source,
       last_write_at = excluded.last_write_at,
-      sync_state = excluded.sync_state`
+    sync_state = excluded.sync_state`
   ).bind(source.scope, key, page.id, page.url, fingerprint, parentKey, Date.parse(timestamp)).run();
+  await persistNativeRelationships(env, source, key, page);
   return { key, changed: true };
 }
 

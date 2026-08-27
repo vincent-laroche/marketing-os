@@ -6,10 +6,13 @@ This Worker performs **field-scoped metadata synchronization** for the approved 
 
 The Worker reads approved Notion data-source records into its isolated `marketing_*` D1 tables. It writes back only the six declared worker-managed metadata properties: `Marketing OS Key`, `Marketing OS Sync State`, `Marketing OS Source Fingerprint`, `Marketing OS Last Synced`, `Marketing OS Sync Error`, and `Marketing OS Worker Managed Fields`.
 
+It also reads existing native Notion relationships into `marketing_notion_relation` without making any corresponding Notion write. The declared mappings are canonical email `Modules Used` → Email module, Email module `Used In Emails` → canonical email, and Proof Bank `Used In` → canonical email. Stable text keys are read from `Marketing OS Shared Campaign Key` and `Marketing OS Parent Key`; they are not populated, changed, or inferred by this Worker.
+
 | Concern | Control |
 | --- | --- |
 | Source identity | Stable per-source keys and Notion page IDs. |
 | Idempotency | Source fingerprints exclude worker-managed properties. Unchanged records do not generate metadata writes. |
+| Native relationships | Existing Notion relation references are persisted in D1 by source page ID and resolved against the matching source mapping. |
 | Conflicts | A source change after a non-Notion writer is fail-closed and recorded in `marketing_sync_errors`. |
 | Scale | Reconciliation uses a durable Cloudflare Queue as a sequential, 15-record continuation consumer. |
 | Worker-to-app evidence | Only aggregate receipts are sent to the HMAC-protected Marketing OS endpoint. |
