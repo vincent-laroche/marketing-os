@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { SOURCES, WORKER_MANAGED_FIELDS, entityKey, hmacSignature, relationshipRefs, slug, sourceFingerprint, stableProperties, syncProperties } from "../src/contract.mjs";
+import { SOURCES, WORKER_MANAGED_FIELDS, entityKey, hmacSignature, isEligibleWebhookEvent, relationshipRefs, slug, sourceFingerprint, stableProperties, syncProperties } from "../src/contract.mjs";
 
 const samplePage = {
   id: "page-1",
@@ -68,4 +68,12 @@ test("extracts only declared existing native relation references and does not in
     { relationName: "Modules Used", targetScope: "email_module", targetPageId: "module-b" }
   ]);
   assert.deepEqual(relationshipRefs("social", page), []);
+});
+
+test("allows only approved source-level events and mapped-page candidate events into the webhook gate", () => {
+  const sourceIds = new Set(SOURCES.map(source => source.dataSourceId));
+  assert.equal(isEligibleWebhookEvent({ id: "event-1", type: "data_source.content_updated", entity: { id: SOURCES[0].dataSourceId, type: "data_source" } }, sourceIds), true);
+  assert.equal(isEligibleWebhookEvent({ id: "event-2", type: "data_source.content_updated", entity: { id: "outside-source", type: "data_source" } }, sourceIds), false);
+  assert.equal(isEligibleWebhookEvent({ id: "event-3", type: "page.properties_updated", entity: { id: "candidate-page", type: "page" } }, sourceIds), true);
+  assert.equal(isEligibleWebhookEvent({ id: "event-4", type: "page.created", entity: { id: "candidate-page", type: "page" } }, sourceIds), false);
 });

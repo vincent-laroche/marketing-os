@@ -1,8 +1,11 @@
-import { NOTION_VERSION, SOURCES, entityKey, hmacSignature, relationshipRefs, sourceFingerprint, syncProperties } from "./contract.mjs";
+import { NOTION_VERSION, SOURCES, entityKey, hmacSignature, isEligibleWebhookEvent, relationshipRefs, sourceFingerprint, syncProperties } from "./contract.mjs";
 
 const NOTION_BASE = "https://api.notion.com/v1";
 const MAX_PAGES_PER_INVOCATION = 15;
 const MAX_NOTION_RETRIES = 2;
+const WEBHOOK_TOKEN_TTL_MS = 10 * 60 * 1000;
+const encoder = new TextEncoder();
+const APPROVED_DATA_SOURCE_IDS = new Set(SOURCES.map(source => source.dataSourceId));
 
 function notionHeaders(token) {
   return {
@@ -14,6 +17,30 @@ function notionHeaders(token) {
 
 function pause(milliseconds) {
   return new Promise(resolve => setTimeout(resolve, milliseconds));
+}
+
+function base64(bytes) {
+  return btoa(String.fromCharCode(...bytes));
+}
+
+function bytesFromBase64(value) {
+  return Uint8Array.from(atob(value), character => character.charCodeAt(0));
+}
+
+async function webhookEncryptionKey(secret) {
+  const keyMaterial = await crypto.subtle.digest("SHA-256", encoder.encode(secret));
+  return crypto.subtle.importKey("raw", keyMaterial, { name: "AES-GCM" }, false, ["encrypt", "decrypt"]);
+}
+
+async function encryptWebhookToken(token, secret) {
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const encrypted = await crypto.subtle.encrypt({ name: "AES-GCM", iv }, await webhookEncryptionKey(secret), encoder.encode(token));
+  return { ciphertext: base64(new Uint8Array(encrypted)), iv: base64(iv) };
+}
+
+async function decryptWebhookToken(ciphertext, iv, secret) {
+  const plaintext = await crypto.subtle.decrypt({ name: "AES-GCM", iv: bytesFromBase64(iv) }, await webhookEncryptionKey(secret), bytesFromBase64(ciphertext));
+  return new TextDecoder().decode(plaintext);
 }
 
 function plainTextProperty(page, propertyName) {
@@ -96,6 +123,21 @@ async function ensureSchema(db) {
       target_page_id TEXT NOT NULL,
       observed_at INTEGER NOT NULL,
       PRIMARY KEY (source_scope, source_key, relation_name, target_scope, target_page_id)
+    )`),
+    db.prepare(`CREATE TABLE IF NOT EXISTS marketing_webhook_verification (
+      singleton INTEGER PRIMARY KEY CHECK (singleton = 1),
+      token_ciphertext TEXT NOT NULL,
+      token_iv TEXT NOT NULL,
+      expires_at INTEGER NOT NULL
+    )`),
+    db.prepare(`CREATE TABLE IF NOT EXISTS marketing_webhook_events (
+      event_id TEXT PRIMARY KEY,
+      subscription_id TEXT NOT NULL,
+      event_type TEXT NOT NULL,
+      entity_id TEXT NOT NULL,
+      outcome TEXT NOT NULL,
+      run_id TEXT,
+      received_at INTEGER NOT NULL
     )`)
   ]);
 }
@@ -301,6 +343,41 @@ async function syncStatus(env) {
   return { ok: true, service: "marketing-os-notion-sync", operations: "disabled", latestRun: latestRun || null, mappings: mappingState.results || [] };
 }
 
+async function captureWebhookVerificationToken(env, token) {
+  const encrypted = await encryptWebhookToken(token, env.NOTION_API_KEY);
+  await env.SYNC_DB.prepare(`INSERT INTO marketing_webhook_verification (singleton, token_ciphertext, token_iv, expires_at)
+    VALUES (1, ?, ?, ?)
+    ON CONFLICT(singleton) DO UPDATE SET token_ciphertext = excluded.token_ciphertext, token_iv = excluded.token_iv, expires_at = excluded.expires_at`)
+    .bind(encrypted.ciphertext, encrypted.iv, Date.now() + WEBHOOK_TOKEN_TTL_MS).run();
+}
+
+async function consumeWebhookVerificationToken(env) {
+  await ensureSchema(env.SYNC_DB);
+  const stored = await env.SYNC_DB.prepare(`SELECT token_ciphertext, token_iv, expires_at FROM marketing_webhook_verification WHERE singleton = 1`).first();
+  if (!stored || Number(stored.expires_at) < Date.now()) {
+    await env.SYNC_DB.prepare(`DELETE FROM marketing_webhook_verification WHERE singleton = 1`).run();
+    return null;
+  }
+  await env.SYNC_DB.prepare(`DELETE FROM marketing_webhook_verification WHERE singleton = 1`).run();
+  return decryptWebhookToken(stored.token_ciphertext, stored.token_iv, env.NOTION_API_KEY);
+}
+
+async function approvedWebhookEvent(env, payload) {
+  if (!isEligibleWebhookEvent(payload, APPROVED_DATA_SOURCE_IDS)) return false;
+  if (payload.entity.type === "data_source") return true;
+  const mapped = await env.SYNC_DB.prepare(`SELECT 1 FROM marketing_notion_mapping WHERE notion_page_id = ? LIMIT 1`)
+    .bind(payload.entity.id).first();
+  return Boolean(mapped);
+}
+
+async function recordWebhookEvent(env, payload, outcome, runId = null) {
+  const result = await env.SYNC_DB.prepare(`INSERT OR IGNORE INTO marketing_webhook_events
+    (event_id, subscription_id, event_type, entity_id, outcome, run_id, received_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?)`)
+    .bind(payload.id, payload.subscription_id || "unknown", payload.type, payload.entity.id, outcome, runId, Date.now()).run();
+  return Number(result.meta?.changes || 0) === 1;
+}
+
 async function validWebhook(request, env, rawBody) {
   if (!env.NOTION_WEBHOOK_VERIFICATION_TOKEN) return false;
   const supplied = request.headers.get("X-Notion-Signature") || "";
@@ -330,6 +407,11 @@ export default {
     const url = new URL(request.url);
     if (request.method === "GET" && url.pathname === "/health") return Response.json({ ok: true, service: "marketing-os-notion-sync", operations: "disabled" });
     if (request.method === "GET" && url.pathname === "/status") return Response.json(await syncStatus(env));
+    if (request.method === "GET" && url.pathname === "/webhooks/notion/pending-token") {
+      if (!trustedSyncRequest(request, env)) return new Response("Unauthorized", { status: 401 });
+      const token = await consumeWebhookVerificationToken(env);
+      return token ? Response.json({ verification_token: token }, { headers: { "Cache-Control": "no-store" } }) : new Response("No pending verification token", { status: 404 });
+    }
     if (request.method === "POST" && url.pathname === "/sync") {
       if (!trustedSyncRequest(request, env)) return new Response("Unauthorized", { status: 401 });
       const continuationId = request.headers.get("X-Marketing-OS-Continuation");
@@ -346,9 +428,19 @@ export default {
     } catch {
       return new Response("Invalid JSON", { status: 400 });
     }
-    if (payload.verification_token) return Response.json({ ok: true });
+    if (typeof payload.verification_token === "string" && payload.verification_token) {
+      await ensureSchema(env.SYNC_DB);
+      await captureWebhookVerificationToken(env, payload.verification_token);
+      return Response.json({ ok: true });
+    }
     if (!(await validWebhook(request, env, rawBody))) return new Response("Invalid webhook signature", { status: 401 });
+    await ensureSchema(env.SYNC_DB);
+    if (!(await approvedWebhookEvent(env, payload))) {
+      await recordWebhookEvent(env, payload, "ignored");
+      return Response.json({ accepted: false, ignored: true });
+    }
     const runId = crypto.randomUUID();
+    if (!(await recordWebhookEvent(env, payload, "accepted", runId))) return Response.json({ accepted: false, duplicate: true });
     ctx.waitUntil(runSyncBatch(env, runId));
     return Response.json({ accepted: true, runId }, { status: 202 });
   },

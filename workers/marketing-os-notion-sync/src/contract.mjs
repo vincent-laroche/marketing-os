@@ -117,6 +117,10 @@ export function syncProperties({ key, fingerprint, timestamp, status = "Synced",
   };
 }
 
-export function isEligibleWebhookEvent(event, sourcePageIds) {
-  return Boolean(event?.id && event?.entity?.id && ["page.created", "page.properties_updated", "page.content_updated", "data_source.content_updated"].includes(event.type) && sourcePageIds.has(event.entity.id));
+export function isEligibleWebhookEvent(event, sourceDataSourceIds) {
+  if (!event?.id || !event?.entity?.id) return false;
+  if (["data_source.content_updated", "data_source.schema_updated"].includes(event.type)) {
+    return event.entity.type === "data_source" && sourceDataSourceIds.has(event.entity.id);
+  }
+  return ["page.properties_updated", "page.content_updated"].includes(event.type) && event.entity.type === "page";
 }

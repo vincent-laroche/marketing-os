@@ -13,6 +13,7 @@ It also reads existing native Notion relationships into `marketing_notion_relati
 | Source identity | Stable per-source keys and Notion page IDs. |
 | Idempotency | Source fingerprints exclude worker-managed properties. Unchanged records do not generate metadata writes. |
 | Native relationships | Existing Notion relation references are persisted in D1 by source page ID and resolved against the matching source mapping. |
+| Webhook audit | Every verified event is recorded by event ID, subscription ID, type, entity ID, outcome, and run ID only. Payload content and signatures are never stored. |
 | Conflicts | A source change after a non-Notion writer is fail-closed and recorded in `marketing_sync_errors`. |
 | Scale | Reconciliation uses a durable Cloudflare Queue as a sequential, 15-record continuation consumer. |
 | Worker-to-app evidence | Only aggregate receipts are sent to the HMAC-protected Marketing OS endpoint. |
@@ -22,7 +23,7 @@ It also reads existing native Notion relationships into `marketing_notion_relati
 
 Use the authenticated **Sync Health** control in Marketing OS to request a reconciliation. The response means the run was accepted, not that it completed. Review aggregate-only status on the same screen after the Worker posts its receipt. The recurring Worker schedule is intentionally paused until Notion webhook verification and any further approved relationship data are available.
 
-The Worker’s public status endpoint exposes only run-level aggregates and mapping-state counts. It does not disclose source record content or credentials. The Notion webhook endpoint must not be enabled until a verification token is stored as a Worker secret and Notion’s signed-event handshake has been completed.
+The Worker’s public status endpoint exposes only run-level aggregates and mapping-state counts. It does not disclose source record content or credentials. During the Notion verification handshake only, the incoming verification token is encrypted in D1 with a 10-minute expiry and can be consumed once by an authenticated operator endpoint. It must immediately be rebound as the Worker’s `NOTION_WEBHOOK_VERIFICATION_TOKEN` secret; it is never returned by the public webhook endpoint, placed in a receipt, logged, or committed. After rebinding, complete the Notion UI verification. All later webhook events require the raw-body HMAC signature.
 
 ## Verification and recovery
 
