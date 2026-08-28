@@ -7,7 +7,40 @@
 > canonical. Every open item below must name its Issue; a finding recorded only here, in a plan
 > document, or in a chat message is untracked. Open an Issue, then cite the number.
 
-**Last updated:** 2026-08-28 by Claude (module-availability manifest for all 36 declared blockers; two pre-existing generated/validator defects repaired; Worker re-verified; no Shopify, audience, campaign, Flow, send, schedule, activation, or social platform publication change)
+**Last updated:** 2026-08-28 by Claude (repository consolidated to one checkout and one repo; recovered uncommitted consent, rights and proof work; no Shopify, audience, campaign, Flow, send, schedule, activation, or social platform publication change)
+
+## 2026-08-28 (later) — Repository consolidation
+
+Moved the project off its Manus-era layout onto a normal local-repo → GitHub-repo → Project
+workflow. Four semi-connected local folders became one, two repositories became one.
+
+**Folders.** `~/04_marketing/email_marketing` renamed to `~/04_marketing/marketing-os` and kept
+as the single checkout. `email_marketing_merge` was a *worktree*, not a folder, and its 4 commits
+had no files absent from `main` — removed. `vincent-laroche:marketing-os` was not a git repo at
+all — harvested and trashed. `social_media_marketing` consolidated in and its repository archived.
+Ten `.claude/worktrees/` worktrees removed. 516M → 268M.
+
+**Recovered work that was uncommitted and single-copy.** This was the real risk, and it was
+larger than expected:
+- `shopify-messaging/PHASE5-PLAN.md` — the consent-tag authority cited by three tracked
+  documents, in no commit on any branch (#127, closed).
+- `proof-bank` — four divergent copies; the 16 rights assignments survived in one, and its own
+  JSON and CSV disagreed (16 vs 0). Reconciled (#128).
+- 16 Newsletter emails with real review quotes replacing proof placeholders, plus the generator
+  `fill_proof_bank_nl.py` — found seconds before the checkout was switched (PR #130, open).
+- `.claude/skills/` — ten authored email skills that `~/.claude/skills` symlinks back into.
+- `shopify-messaging/build_engagement_tags.py` — the script that applied the consent tags.
+
+**Filed:** #129, `extract_proof_bank.py` writes `used_in` empty and would silently erase every
+assignment on a re-run.
+
+**Still open.** #118 reopened — its data half merged in #124, but the `canonical.ts` classifier
+is unfixed and needs the app in git. #119 likewise. Phases 4–5 of the plan wait on a structured
+Manus re-export into `apps/marketing-os/`; the 245-file flat dump is archived at
+`~/08_warehouse/marketing-os-cleanup-2026-08-28/` and cannot prove completeness on its own.
+
+Verification: 45 tests / 341 subtests, manifest reproducible, Social OS PASS (5 records),
+one worktree, clean tree, remote on `marketing-os.git`.
 
 ## 2026-08-28 — Marketing OS audit blockers (#117)
 
