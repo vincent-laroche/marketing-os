@@ -1,0 +1,2582 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hair Solutions Co. — 30-Day Social Creative — First Draft</title>
+    <link rel="icon" href="data:," />
+    <style>
+      @font-face {
+        font-family: "Inter Tight";
+        src: url("../../../../08_brand/brand-design-system/fonts/InterTight-Roman-VariableFont.woff2")
+          format("woff2");
+        font-weight: 100 900;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Inter";
+        src: url("../../../../08_brand/brand-design-system/fonts/Inter-Roman-VariableFont.woff2")
+          format("woff2");
+        font-weight: 100 900;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Playfair Display";
+        src: url("../../../../08_brand/brand-design-system/fonts/PlayfairDisplay-Italic-VariableFont.woff2")
+          format("woff2");
+        font-weight: 400 900;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "JetBrains Mono";
+        src: url("../../../../08_brand/brand-design-system/fonts/JetBrainsMono-VariableFont.woff2")
+          format("woff2");
+        font-weight: 100 800;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      :root {
+        --az-paper: #eae0c9;
+        --az-paper-warm: #ede3cc;
+        --az-paper-dark: #e4dbc4;
+        --az-ink: #151411;
+        --az-ink-soft: #25221d;
+        --az-ink-mute: #807b6b;
+        --az-ink-faint: #918c7b;
+        --az-coral: #ea6452;
+        --az-coral-soft: #ea6452;
+        --az-mustard: #807b6b;
+        --az-olive: #25221d;
+        --az-bone: #f6efd9;
+        --az-line: #c7bfac;
+        --az-line-soft: rgba(21, 20, 17, 0.08);
+        --az-line-strong: #807b6b;
+        --az-shadow: none;
+        --az-shadow-btn: none;
+        --az-overlay: rgba(24, 23, 20, 0.68);
+        --az-overlay-soft: rgba(21, 20, 17, 0.12);
+        --az-paper-glass: #f6efd9;
+        --az-bone-muted: #ede3cc;
+        --az-clear: rgba(0, 0, 0, 0);
+        --f-sans: "Inter Tight", "Inter", sans-serif;
+        --f-body: "Inter", sans-serif;
+        --f-serif: "Playfair Display", serif;
+        --f-mono: "JetBrains Mono", monospace;
+        --r-xs: 0;
+        --r-sm: 4px;
+        --r-md: 12px;
+        --r-lg: 20px;
+        --r-pill: 999px;
+        --s-1: 4px;
+        --s-2: 8px;
+        --s-3: 12px;
+        --s-4: 16px;
+        --s-5: 24px;
+        --s-6: 32px;
+        --s-7: 48px;
+        --s-8: 64px;
+        --s-9: 96px;
+        --scale-square: 0.285;
+        --scale-portrait: 0.228;
+        --scale-story: 0.17;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--az-paper);
+        color: var(--az-ink);
+        font-family: var(--f-body);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      button,
+      select {
+        font: inherit;
+      }
+
+      button:focus-visible,
+      select:focus-visible,
+      a:focus-visible {
+        outline: 3px solid var(--az-mustard);
+        outline-offset: 3px;
+      }
+
+      .page-header {
+        min-height: 72vh;
+        padding: var(--s-9) clamp(var(--s-5), 6vw, var(--s-9));
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+        gap: var(--s-9);
+        align-items: end;
+        background: var(--az-ink);
+        color: var(--az-bone);
+      }
+
+      .eyebrow,
+      .micro,
+      .asset-meta,
+      .art-meta,
+      .counter,
+      .status-label,
+      .sticker,
+      .proof-hold,
+      .day-kicker,
+      .format-heading,
+      .filter-label {
+        font-family: var(--f-mono);
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+      }
+
+      .eyebrow {
+        display: flex;
+        align-items: center;
+        gap: var(--s-3);
+        margin: 0 0 var(--s-4);
+        font-size: 12px;
+        color: var(--az-paper-dark);
+      }
+
+      .eyebrow::before {
+        width: 28px;
+        height: 2px;
+        background: var(--az-coral);
+        content: "";
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        margin: 0;
+        font-family: var(--f-sans);
+        letter-spacing: -0.03em;
+      }
+
+      h1 {
+        max-width: 860px;
+        font-size: clamp(58px, 7.2vw, 112px);
+        line-height: 0.93;
+        font-weight: 800;
+      }
+
+      h1 em,
+      h2 em,
+      .art-title em,
+      .art-quote em {
+        font-family: var(--f-serif);
+        font-weight: 500;
+        font-style: italic;
+      }
+
+      .header-lead {
+        max-width: 600px;
+        margin: var(--s-6) 0 0;
+        color: var(--az-bone-muted);
+        font-size: 19px;
+        line-height: 1.55;
+      }
+
+      .header-card {
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: var(--s-6);
+        border: 1px solid var(--az-line-strong);
+        border-radius: var(--r-lg);
+        background: var(--az-ink-soft);
+      }
+
+      .header-card h2 {
+        max-width: 460px;
+        font-size: clamp(34px, 3vw, 48px);
+        line-height: 1.02;
+      }
+
+      .header-card p {
+        margin: var(--s-5) 0 0;
+        color: var(--az-paper-dark);
+        line-height: 1.55;
+      }
+
+      .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--s-3);
+        margin-top: var(--s-8);
+      }
+
+      .summary-stat {
+        padding-top: var(--s-4);
+        border-top: 1px solid var(--az-line-strong);
+      }
+
+      .summary-stat strong {
+        display: block;
+        font-family: var(--f-sans);
+        font-size: 40px;
+        line-height: 1;
+      }
+
+      .summary-stat span {
+        display: block;
+        margin-top: var(--s-2);
+        color: var(--az-paper-dark);
+        font: 11px/1.4 var(--f-mono);
+        text-transform: uppercase;
+        letter-spacing: 0.11em;
+      }
+
+      .toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--s-3);
+        padding: var(--s-4) clamp(var(--s-5), 5vw, var(--s-8));
+        border-bottom: 1px solid var(--az-line);
+        background: var(--az-paper-glass);
+        backdrop-filter: blur(14px);
+      }
+
+      .filter-label {
+        margin-right: var(--s-2);
+        font-size: 10px;
+        color: var(--az-ink-mute);
+      }
+
+      .filter-button,
+      .safe-button,
+      .day-select {
+        min-height: 40px;
+        padding: 0 16px;
+        border: 1px solid var(--az-line);
+        border-radius: var(--r-pill);
+        background: var(--az-clear);
+        color: var(--az-ink);
+        font-family: var(--f-sans);
+        font-size: 13px;
+        font-weight: 650;
+        cursor: pointer;
+      }
+
+      .filter-button.active {
+        border-color: var(--az-coral);
+        background: var(--az-coral);
+        box-shadow: var(--az-shadow-btn);
+      }
+
+      .safe-button {
+        margin-left: auto;
+      }
+
+      .safe-button.active {
+        border-color: var(--az-ink);
+        background: var(--az-ink);
+        color: var(--az-bone);
+      }
+
+      .day-select {
+        padding-right: 34px;
+        background: var(--az-bone);
+      }
+
+      .gallery {
+        padding: var(--s-8) clamp(var(--s-5), 5vw, var(--s-8)) var(--s-9);
+      }
+
+      .phase-rule {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: var(--s-5);
+        align-items: center;
+        margin: 0 0 var(--s-7);
+      }
+
+      .phase-rule::before,
+      .phase-rule::after {
+        height: 1px;
+        background: var(--az-line);
+        content: "";
+      }
+
+      .phase-rule strong {
+        font-family: var(--f-sans);
+        font-size: 14px;
+      }
+
+      .day-section {
+        scroll-margin-top: 92px;
+        padding: var(--s-8) 0;
+        border-top: 1px solid var(--az-line);
+      }
+
+      .day-section:first-of-type {
+        border-top: 0;
+        padding-top: 0;
+      }
+
+      .day-header {
+        display: grid;
+        grid-template-columns: 120px minmax(0, 1fr) minmax(220px, auto);
+        gap: var(--s-6);
+        align-items: end;
+        margin-bottom: var(--s-7);
+      }
+
+      .day-number {
+        font-family: var(--f-sans);
+        font-size: 104px;
+        font-weight: 800;
+        line-height: 0.8;
+        letter-spacing: -0.07em;
+      }
+
+      .day-kicker {
+        display: block;
+        margin-bottom: var(--s-3);
+        color: var(--az-ink-mute);
+        font-size: 10px;
+      }
+
+      .day-header h2 {
+        max-width: 780px;
+        font-size: clamp(38px, 4vw, 64px);
+        line-height: 0.98;
+      }
+
+      .day-header-side {
+        display: grid;
+        gap: var(--s-2);
+        justify-items: end;
+        text-align: right;
+      }
+
+      .pillar-chip,
+      .status-chip {
+        display: inline-flex;
+        align-items: center;
+        min-height: 28px;
+        padding: 0 12px;
+        border: 1px solid var(--az-line);
+        border-radius: var(--r-pill);
+        font: 10px/1 var(--f-mono);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      .status-chip {
+        color: var(--az-olive);
+      }
+
+      .status-chip.blocked {
+        color: var(--az-ink);
+        border-color: var(--az-mustard);
+        background: var(--az-bone);
+      }
+
+      .format-group {
+        margin-top: var(--s-7);
+      }
+
+      .format-group:first-of-type {
+        margin-top: 0;
+      }
+
+      .format-heading {
+        display: flex;
+        align-items: center;
+        gap: var(--s-3);
+        margin: 0 0 var(--s-5);
+        color: var(--az-ink-mute);
+        font-size: 10px;
+      }
+
+      .format-heading::after {
+        flex: 1;
+        height: 1px;
+        background: var(--az-line);
+        content: "";
+      }
+
+      .board-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(305px, 1fr));
+        gap: var(--s-7) var(--s-5);
+        align-items: start;
+      }
+
+      .board-grid.vertical-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      }
+
+      .asset-card {
+        min-width: 0;
+      }
+
+      .asset-card[hidden],
+      .day-section[hidden],
+      .format-group[hidden] {
+        display: none;
+      }
+
+      .artboard-shell {
+        --art-w: 1080px;
+        --art-h: 1080px;
+        --art-scale: var(--scale-square);
+        width: calc(var(--art-w) * var(--art-scale));
+        height: calc(var(--art-h) * var(--art-scale));
+        margin: 0 auto;
+        overflow: visible;
+      }
+
+      .artboard-shell.portrait {
+        --art-h: 1350px;
+        --art-scale: var(--scale-portrait);
+      }
+
+      .artboard-shell.story {
+        --art-h: 1920px;
+        --art-scale: var(--scale-story);
+      }
+
+      .artboard {
+        position: relative;
+        width: var(--art-w);
+        height: var(--art-h);
+        overflow: hidden;
+        transform: scale(var(--art-scale));
+        transform-origin: top left;
+        border-radius: var(--r-lg);
+        background: var(--az-paper);
+        color: var(--az-ink);
+        box-shadow: var(--az-shadow);
+        isolation: isolate;
+      }
+
+      .artboard.ink {
+        background: var(--az-ink);
+        color: var(--az-bone);
+      }
+
+      .artboard.paper-dark {
+        background: var(--az-paper-dark);
+      }
+
+      .artboard.bone {
+        background: var(--az-bone);
+      }
+
+      .artboard::after {
+        position: absolute;
+        inset: 0;
+        z-index: 20;
+        pointer-events: none;
+        content: "";
+        border: 1px solid var(--az-line-soft);
+        border-radius: inherit;
+      }
+
+      .safe-zone {
+        position: absolute;
+        z-index: 18;
+        display: none;
+        pointer-events: none;
+        border: 3px dashed var(--az-coral);
+        border-radius: var(--r-md);
+      }
+
+      .safe-zone.square {
+        inset: 160px;
+      }
+
+      .safe-zone.portrait {
+        inset: 160px 80px;
+      }
+
+      .safe-zone.story {
+        inset: 250px 160px;
+      }
+
+      body.show-safe .safe-zone {
+        display: block;
+      }
+
+      .brand-logo {
+        position: absolute;
+        z-index: 12;
+        top: 56px;
+        left: 64px;
+        width: 174px;
+        height: 98px;
+        object-fit: contain;
+      }
+
+      .brand-logo.centered {
+        top: 250px;
+        left: 50%;
+        width: 480px;
+        height: 300px;
+        transform: translateX(-50%);
+      }
+
+      .art-meta {
+        position: absolute;
+        z-index: 12;
+        top: 66px;
+        right: 64px;
+        font-size: 18px;
+        color: var(--az-ink-mute);
+      }
+
+      .ink .art-meta {
+        color: var(--az-paper-dark);
+      }
+
+      .art-title {
+        position: relative;
+        z-index: 6;
+        margin: 0;
+        max-width: 860px;
+        font: 800 104px/0.93 var(--f-sans);
+        letter-spacing: -0.045em;
+      }
+
+      .art-title.display {
+        font-size: 132px;
+        line-height: 0.9;
+      }
+
+      .art-title.compact {
+        font-size: 76px;
+        line-height: 0.98;
+      }
+
+      .art-copy {
+        position: relative;
+        z-index: 6;
+        max-width: 720px;
+        margin: 30px 0 0;
+        font: 400 34px/1.42 var(--f-body);
+        color: var(--az-ink-mute);
+      }
+
+      .ink .art-copy {
+        color: var(--az-paper-dark);
+      }
+
+      .art-quote {
+        position: relative;
+        z-index: 6;
+        max-width: 820px;
+        margin: 0;
+        font: 800 86px/1.02 var(--f-sans);
+        letter-spacing: -0.035em;
+      }
+
+      .art-quote em {
+        color: var(--az-coral-soft);
+      }
+
+      .accent-rule {
+        position: relative;
+        z-index: 6;
+        display: block;
+        width: 92px;
+        height: 10px;
+        margin-bottom: 40px;
+        background: var(--az-coral);
+      }
+
+      .coral-disc {
+        position: absolute;
+        z-index: 1;
+        width: 212px;
+        height: 212px;
+        border-radius: var(--r-pill);
+        background: var(--az-coral);
+      }
+
+      .outline-disc {
+        position: absolute;
+        z-index: 1;
+        width: 280px;
+        height: 280px;
+        border: 4px solid var(--az-coral);
+        border-radius: var(--r-pill);
+      }
+
+      .art-footer {
+        position: absolute;
+        z-index: 12;
+        right: 64px;
+        bottom: 56px;
+        left: 64px;
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 32px;
+        padding-top: 24px;
+        border-top: 2px solid var(--az-line);
+        font: 18px/1.3 var(--f-mono);
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--az-ink-mute);
+      }
+
+      .ink .art-footer {
+        border-top-color: var(--az-line-strong);
+        color: var(--az-paper-dark);
+      }
+
+      .typographic-layout {
+        position: absolute;
+        inset: 210px 80px 140px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .typographic-layout.top {
+        justify-content: flex-start;
+      }
+
+      .typographic-layout.bottom {
+        justify-content: flex-end;
+      }
+
+      .wordmark-layout {
+        position: absolute;
+        inset: 520px 80px 130px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .wordmark-layout .art-copy {
+        max-width: 650px;
+        color: var(--az-paper-dark);
+      }
+
+      .product-layout {
+        position: absolute;
+        inset: 150px 64px 136px;
+        display: grid;
+        grid-template-columns: minmax(0, 1.17fr) minmax(300px, 0.83fr);
+        gap: 44px;
+        align-items: stretch;
+      }
+
+      .product-photo,
+      .media-photo {
+        position: relative;
+        min-width: 0;
+        overflow: hidden;
+        border-radius: var(--r-lg);
+        background: var(--az-bone);
+      }
+
+      .product-photo {
+        box-shadow: var(--az-shadow);
+      }
+
+      .product-photo img,
+      .media-photo img,
+      .media-fill img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .product-photo img {
+        object-fit: contain;
+      }
+
+      .product-copy {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 36px 0 54px;
+      }
+
+      .product-kicker {
+        margin-bottom: 22px;
+        font: 18px/1 var(--f-mono);
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--az-ink-mute);
+      }
+
+      .product-copy h3 {
+        font-size: 76px;
+        line-height: 0.94;
+      }
+
+      .product-price {
+        margin-top: 26px;
+        font: 500 26px/1.3 var(--f-mono);
+      }
+
+      .product-detail {
+        max-width: 340px;
+        margin-top: 24px;
+        font: 400 28px/1.42 var(--f-body);
+        color: var(--az-ink-mute);
+      }
+
+      .media-fill {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background: var(--az-paper-dark);
+      }
+
+      .media-fill::after {
+        position: absolute;
+        inset: 0;
+        background: var(--az-overlay-soft);
+        content: "";
+      }
+
+      .media-fill.dark-overlay::after {
+        background: var(--az-overlay);
+      }
+
+      .media-caption {
+        position: absolute;
+        z-index: 8;
+        right: 64px;
+        bottom: 64px;
+        left: 64px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 30px;
+        align-items: end;
+      }
+
+      .headline-card {
+        max-width: 810px;
+        padding: 42px 48px;
+        border-radius: var(--r-lg);
+        background: var(--az-paper-glass);
+        color: var(--az-ink);
+        box-shadow: var(--az-shadow);
+      }
+
+      .headline-card h3 {
+        font-size: 72px;
+        line-height: 0.98;
+      }
+
+      .shot-label {
+        position: absolute;
+        z-index: 7;
+        top: 50%;
+        left: 50%;
+        max-width: 620px;
+        padding: 26px 32px;
+        transform: translate(-50%, -50%);
+        border: 2px solid var(--az-line-strong);
+        border-radius: var(--r-md);
+        background: var(--az-paper-glass);
+        color: var(--az-ink);
+        font: 20px/1.4 var(--f-mono);
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+
+      .primary-pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 68px;
+        padding: 0 32px;
+        border-radius: var(--r-pill);
+        background: var(--az-coral);
+        color: var(--az-ink);
+        box-shadow: var(--az-shadow-btn);
+        font: 700 22px/1 var(--f-sans);
+        white-space: nowrap;
+      }
+
+      .quote-layout {
+        position: absolute;
+        inset: 230px 90px 160px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .quote-source {
+        margin-top: 42px;
+        font: 20px/1.4 var(--f-mono);
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--az-ink-mute);
+      }
+
+      .ink .quote-source {
+        color: var(--az-paper-dark);
+      }
+
+      .proof-hold {
+        position: absolute;
+        z-index: 14;
+        right: 64px;
+        bottom: 60px;
+        left: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 58px;
+        border: 2px solid var(--az-mustard);
+        border-radius: var(--r-pill);
+        background: var(--az-bone);
+        color: var(--az-ink);
+        font-size: 16px;
+        text-align: center;
+      }
+
+      .blocked-layout {
+        position: absolute;
+        inset: 210px 80px 170px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: left;
+      }
+
+      .blocked-layout .art-title {
+        max-width: 800px;
+      }
+
+      .blocked-layout .art-copy {
+        max-width: 760px;
+      }
+
+      .carousel-number {
+        position: absolute;
+        z-index: 2;
+        top: 155px;
+        right: 70px;
+        font: 800 240px/0.8 var(--f-sans);
+        letter-spacing: -0.08em;
+        color: var(--az-paper-dark);
+      }
+
+      .ink .carousel-number {
+        color: var(--az-ink-soft);
+      }
+
+      .carousel-layout {
+        position: absolute;
+        inset: 230px 80px 150px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .carousel-layout .art-title {
+        max-width: 820px;
+        font-size: 84px;
+        line-height: 0.98;
+      }
+
+      .carousel-media {
+        width: 100%;
+        height: 270px;
+        margin-top: 44px;
+        overflow: hidden;
+        border-radius: var(--r-lg);
+        background: var(--az-paper-dark);
+      }
+
+      .carousel-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .reel-layout {
+        position: absolute;
+        inset: 160px 80px 150px;
+        z-index: 7;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+
+      .reel-layout .art-title {
+        max-width: 760px;
+        padding: 34px 38px;
+        border-radius: var(--r-lg);
+        background: var(--az-paper-glass);
+        color: var(--az-ink);
+        box-shadow: var(--az-shadow);
+        font-size: 82px;
+      }
+
+      .reel-play {
+        position: absolute;
+        z-index: 9;
+        right: 74px;
+        bottom: 176px;
+        display: flex;
+        width: 96px;
+        height: 96px;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--r-pill);
+        background: var(--az-coral);
+        color: var(--az-ink);
+        box-shadow: var(--az-shadow-btn);
+        font: 700 34px/1 var(--f-sans);
+      }
+
+      .reel-caption {
+        position: absolute;
+        z-index: 9;
+        right: 160px;
+        bottom: 310px;
+        left: 160px;
+        padding: 26px 30px;
+        border-radius: var(--r-md);
+        background: var(--az-paper-glass);
+        color: var(--az-ink);
+        font: 700 44px/1.14 var(--f-sans);
+        text-align: center;
+      }
+
+      .story-layout {
+        position: absolute;
+        z-index: 7;
+        inset: 330px 170px 320px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .story-layout .art-title {
+        max-width: 740px;
+        font-size: 92px;
+        line-height: 0.98;
+      }
+
+      .story-layout .art-copy {
+        font-size: 36px;
+      }
+
+      .story-progress {
+        position: absolute;
+        z-index: 12;
+        top: 64px;
+        right: 64px;
+        left: 64px;
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 1fr;
+        gap: 10px;
+      }
+
+      .story-progress i {
+        height: 5px;
+        border-radius: var(--r-pill);
+        background: var(--az-paper-dark);
+      }
+
+      .story-progress i.active {
+        background: var(--az-coral);
+      }
+
+      .story-wordmark {
+        position: absolute;
+        z-index: 12;
+        top: 104px;
+        left: 160px;
+        width: 190px;
+        height: 110px;
+        object-fit: contain;
+      }
+
+      .sticker {
+        position: absolute;
+        z-index: 12;
+        right: 190px;
+        bottom: 280px;
+        left: 190px;
+        display: flex;
+        min-height: 78px;
+        align-items: center;
+        justify-content: center;
+        padding: 16px 24px;
+        border: 2px solid var(--az-coral);
+        border-radius: var(--r-pill);
+        background: var(--az-bone);
+        color: var(--az-ink);
+        font-size: 18px;
+        text-align: center;
+      }
+
+      .asset-meta {
+        width: min(100%, 420px);
+        margin: var(--s-4) auto 0;
+        font-size: 10px;
+        line-height: 1.45;
+        color: var(--az-ink-mute);
+      }
+
+      .asset-meta strong {
+        display: block;
+        margin-top: var(--s-2);
+        font-family: var(--f-sans);
+        font-size: 15px;
+        line-height: 1.2;
+        text-transform: none;
+        letter-spacing: -0.01em;
+        color: var(--az-ink);
+      }
+
+      .asset-meta .hold {
+        color: var(--az-olive);
+      }
+
+      .asset-meta .blocked {
+        color: var(--az-ink);
+        text-decoration: underline;
+        text-decoration-color: var(--az-mustard);
+        text-decoration-thickness: 3px;
+        text-underline-offset: 3px;
+      }
+
+      .source-note {
+        margin-top: var(--s-8);
+        padding: var(--s-6);
+        border-radius: var(--r-lg);
+        background: var(--az-bone);
+        box-shadow: var(--az-shadow);
+      }
+
+      .source-note h2 {
+        font-size: 34px;
+      }
+
+      .source-note p {
+        max-width: 960px;
+        margin: var(--s-4) 0 0;
+        color: var(--az-ink-mute);
+        line-height: 1.55;
+      }
+
+      .page-footer {
+        padding: var(--s-7) clamp(var(--s-5), 5vw, var(--s-8));
+        background: var(--az-ink);
+        color: var(--az-paper-dark);
+        font: 11px/1.6 var(--f-mono);
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+
+      @media (max-width: 960px) {
+        :root {
+          --scale-square: 0.26;
+          --scale-portrait: 0.208;
+          --scale-story: 0.155;
+        }
+
+        .page-header {
+          grid-template-columns: 1fr;
+          gap: var(--s-7);
+        }
+
+        .header-card {
+          min-height: 420px;
+        }
+
+        .day-header {
+          grid-template-columns: 92px minmax(0, 1fr);
+        }
+
+        .day-number {
+          font-size: 80px;
+        }
+
+        .day-header-side {
+          grid-column: 2;
+          justify-items: start;
+          text-align: left;
+        }
+
+        .safe-button {
+          margin-left: 0;
+        }
+      }
+
+      @media (max-width: 640px) {
+        :root {
+          --scale-square: 0.265;
+          --scale-portrait: 0.212;
+          --scale-story: 0.16;
+        }
+
+        .page-header {
+          min-height: auto;
+          padding: var(--s-8) var(--s-5);
+        }
+
+        h1 {
+          font-size: 58px;
+        }
+
+        .gallery {
+          padding-inline: var(--s-4);
+        }
+
+        .day-header {
+          grid-template-columns: 1fr;
+        }
+
+        .day-header-side {
+          grid-column: 1;
+        }
+
+        .board-grid,
+        .board-grid.vertical-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .toolbar {
+          position: relative;
+          padding-inline: var(--s-4);
+        }
+
+        .filter-label {
+          width: 100%;
+        }
+
+        .day-select,
+        .safe-button {
+          width: 100%;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">Launch campaign · Days 01–30</p>
+        <h1>The grid, <em>made real.</em></h1>
+        <p class="header-lead">
+          A first visual draft of every planned feed post, carousel slide, Reel
+          cover and beat, and Story frame. The system carries the warm editorial
+          tension of the storefront while keeping social assets useful, calm,
+          and legible.
+        </p>
+      </div>
+      <aside class="header-card">
+        <div>
+          <p class="eyebrow">Draft posture</p>
+          <h2>Real compositions. Honest production holds.</h2>
+          <p>
+            Approved live product photography is used where it is available.
+            Founder, studio, customer, and testimonial moments remain visibly
+            gated until the exact source media and consent record exist.
+          </p>
+        </div>
+        <div class="summary-grid" id="summary-grid"></div>
+      </aside>
+    </header>
+
+    <nav class="toolbar" aria-label="Creative filters">
+      <span class="filter-label">Show</span>
+      <button class="filter-button active" type="button" data-filter="all">
+        All
+      </button>
+      <button class="filter-button" type="button" data-filter="feed">
+        Feed
+      </button>
+      <button class="filter-button" type="button" data-filter="carousel">
+        Carousels
+      </button>
+      <button class="filter-button" type="button" data-filter="reel">
+        Reels
+      </button>
+      <button class="filter-button" type="button" data-filter="story">
+        Stories
+      </button>
+      <button class="filter-button" type="button" data-filter="blocked">
+        Production holds
+      </button>
+      <select
+        class="day-select"
+        id="day-select"
+        aria-label="Jump to a campaign day"
+      >
+        <option value="all">All 30 days</option>
+      </select>
+      <button class="safe-button" type="button" id="safe-toggle">
+        Show safe zones
+      </button>
+    </nav>
+
+    <main class="gallery">
+      <div class="phase-rule">
+        <strong>Opening week · 3 feed posts per day</strong>
+      </div>
+      <div id="gallery"></div>
+      <aside class="source-note">
+        <p class="eyebrow">Production note</p>
+        <h2>This is the vibe draft, not a publishing queue.</h2>
+        <p>
+          Product names and prices shown here were cross-checked against the
+          current storefront during this draft. They still require a fresh live
+          check before scheduling. Customer images, customer quotes, DMs,
+          before-and-after media, and founder or studio photography are not
+          invented; those frames stay on hold until the real approved source is
+          attached.
+        </p>
+      </aside>
+    </main>
+
+    <footer class="page-footer">
+      Hair Solutions Co. · Atelier Zero · 30-day social creative · first draft ·
+      no publishing action taken
+    </footer>
+
+    <script>
+      const ASSETS = {
+        logoDark:
+          "../../../../08_brand/logos/wordmark-dark-on-transparent-bg.png",
+        logoLight:
+          "../../../../08_brand/logos/wordmark-light-on-dark-bg.png",
+        collage: "",
+        abstractOne: "",
+        abstractTwo: "",
+        products: {
+          "Lace Elite": {
+            price: "Verify current price",
+            detail: "Swiss lace · light, breathable construction",
+            image:
+              "https://hairsolutions.co/cdn/shop/files/product-lace-elite-hair-system-feature-shot-white.webp?v=1782978800&width=1200",
+          },
+          "Thin Skin Pro": {
+            price: "Verify current price",
+            detail: "0.08 mm skin base · a smooth everyday option",
+            image:
+              "https://hairsolutions.co/cdn/shop/files/product-thin-skin-pro-hair-system-feature-shot-white.webp?v=1782978833&width=1200",
+          },
+          "Mono Pro": {
+            price: "Verify current price",
+            detail: "Fine welded mono · structure and breathability",
+            image:
+              "https://hairsolutions.co/cdn/shop/files/product-mono-pro-hair-system-feature-shot-white.webp?v=1782978818&width=1200",
+          },
+          "Micro Skin": {
+            price: "Verify current price",
+            detail: "0.06 mm skin base · a lower-profile edge",
+            image:
+              "https://hairsolutions.co/cdn/shop/files/product-micro-skin-hair-system-feature-shot-white.webp?v=1782978809&width=1200",
+          },
+          "Skin Frontal": {
+            price: "Verify current price",
+            detail: "Frontal coverage · focused where it counts",
+            image:
+              "https://hairsolutions.co/cdn/shop/files/product-skin-frontal-hair-system-feature-shot-white.webp?v=1782978823&width=1200",
+          },
+          "Nano Skin": {
+            price: "Verify current price",
+            detail: "Ultra-thin skin construction · verify current spec",
+            image:
+              "https://hairsolutions.co/cdn/shop/files/product-nano-skin-hair-system-feature-shot-white.webp?width=1200",
+          },
+          "Lace Fusion VF": {
+            price: "Verify current price",
+            detail: "Hybrid lace · clear PU perimeter",
+            image:
+              "https://hairsolutions.co/cdn/shop/files/product-lace-fusion-vlf-hair-system-feature-shot-white.webp?v=1782978803&width=1200",
+          },
+        },
+      };
+
+      const DAYS = [
+        {
+          d: 1,
+          date: "Aug 3",
+          wd: "Mon",
+          pillar: "Brand",
+          theme: "Silence → statement",
+          feed: [
+            ["static", "wordmark", "A new chapter starts today.", "", "ink"],
+            ["static", "quote", "Same company. New standard.", "", ""],
+            [
+              "static",
+              "typo",
+              "Not louder. Not different. Just clearer.",
+              "",
+              "",
+            ],
+          ],
+          stories: [
+            "[ink] Hair Solutions Co.",
+            "Something changed.",
+            "Eight years of OneHead Hair becomes Hair Solutions Co.|Quote share",
+            "What is your biggest question about hair systems?|Question box",
+          ],
+          label: "Launch day · founder",
+        },
+        {
+          d: 2,
+          date: "Aug 4",
+          wd: "Tue",
+          pillar: "Brand",
+          theme: "Manifesto",
+          feed: [
+            [
+              "carousel",
+              "carousel-cover",
+              "For the man who wants to look like himself again.",
+              "Not louder. Not different. Just himself, on an ordinary day.|A hair system is a decision to stop thinking about your hair and start thinking about your day.|We build for quiet confidence, not attention.|Save this. Start with the guide.",
+              "",
+            ],
+            ["static", "typo", "Confidence is not loud.", "", ""],
+            [
+              "static",
+              "quote",
+              "We build for quiet confidence, not attention.",
+              "",
+              "",
+            ],
+          ],
+          stories: [
+            "Manifesto, line by line.",
+            "Every man deserves to recognise himself in the mirror.|Quote share",
+            "A hair system is a costume, a decision, or neither|Quiz",
+            "Save the guide. DM START to begin.|Link",
+          ],
+          label: "Education",
+        },
+        {
+          d: 3,
+          date: "Aug 5",
+          wd: "Wed",
+          pillar: "Founder",
+          theme: "Portrait + Reel",
+          feed: [
+            [
+              "reel",
+              "photo",
+              "I wear what I sell.",
+              "0–2s|I wear what I sell. Vincent to camera.|2–8s|Every system we sell, I have worn myself.|8–15s|Product on desk, hands adjusting, natural light.|15–20s|Daylight hairline close crop, no filter.|20–25s|Ask me directly. DM START.",
+              "Vincent portrait",
+            ],
+            ["static", "typo", "Made for grown men.", "", "ink"],
+            [
+              "static",
+              "photo",
+              "The desk where every system gets checked before it ships.",
+              "",
+              "QC desk",
+            ],
+          ],
+          stories: [
+            "[hatch:Portrait session] Behind the portrait.",
+            "Behind the Reel — one take, natural light.",
+            "Questions about wearing one daily?|Link",
+          ],
+          label: "Product",
+        },
+        {
+          d: 4,
+          date: "Aug 6",
+          wd: "Thu",
+          pillar: "Education",
+          theme: "Plain-English explainer",
+          feed: [
+            [
+              "reel",
+              "photo",
+              "What makes a hair system different.",
+              "0–2s|A hair system, up close.|Beat|Base macro in natural light.|Beat|Hairline close-up, unfiltered.|Beat|On-head crop in an everyday setting.|Close|Save this before you compare options.",
+              "Macro base",
+            ],
+            [
+              "static",
+              "product",
+              "Thin Skin Pro",
+              "$279|0.08 mm skin base",
+              "Macro edge",
+            ],
+            [
+              "static",
+              "product",
+              "Mono Pro",
+              "$299|Fine welded monofilament",
+              "Macro weave",
+            ],
+          ],
+          stories: [
+            "You asked. We answer plainly.",
+            "A hair system is built around a base, colour, density, and fit.",
+            "Will people notice? The choices at the hairline matter most.",
+            "How long does it last? Base and care both matter.",
+            "More questions?|Question box",
+          ],
+          label: "Q&A",
+        },
+        {
+          d: 5,
+          date: "Aug 7",
+          wd: "Fri",
+          pillar: "Product",
+          theme: "First product moment",
+          feed: [
+            [
+              "static",
+              "product",
+              "Lace Elite",
+              "Swiss lace|Photographed honestly.",
+              "Lace Elite hero",
+            ],
+            [
+              "static",
+              "product",
+              "Lace Fusion VF",
+              "$289|Hybrid lace with clear PU perimeter",
+              "Macro front",
+            ],
+            [
+              "static",
+              "product",
+              "Micro Skin",
+              "$219|0.06 mm skin base",
+              "Macro edge",
+            ],
+          ],
+          stories: [
+            "[hatch:Lace Elite] Shooting in soft daylight.",
+            "[hatch:Hairline] Macro, no filter.",
+            "Which base are you curious about? Lace or skin|Poll",
+            "Specs and fit questions.|Link",
+          ],
+          label: "Behind the scenes",
+        },
+        {
+          d: 6,
+          date: "Aug 8",
+          wd: "Sat",
+          pillar: "Education",
+          theme: "Hairline realism",
+          feed: [
+            [
+              "carousel",
+              "carousel-cover",
+              "What makes a front hairline look real?",
+              "Realism is five choices working together.|Base — lace and skin fronts sit closer to the scalp.|Density — match your natural hair, not more.|Colour and cut-in matter.|Save this before your first order. DM HAIRLINE.",
+              "",
+            ],
+            [
+              "static",
+              "quote",
+              "A hairline should survive daylight.",
+              "",
+              "Hairline macro",
+            ],
+            [
+              "static",
+              "product",
+              "Skin Frontal",
+              "$169|Coverage where it counts",
+              "Frontal",
+            ],
+          ],
+          stories: [
+            "The question we hear most: will the hairline look real?",
+            "How confident are you spotting a system in the wild?|Slider",
+            "The practical answer is in today’s carousel.|Link",
+          ],
+          label: "Founder",
+        },
+        {
+          d: 7,
+          date: "Aug 9",
+          wd: "Sun",
+          pillar: "Social proof",
+          theme: "Week preview",
+          flag: "Real consented quote required. Swap with Day 8 QC Reel if unavailable.",
+          feed: [
+            [
+              "reel",
+              "quote",
+              "Customer proof, in his words.",
+              "Open|Consented quote frame.|Beat|Approved product b-roll.|Beat|Daylight hairline detail.|Close|Source attribution.",
+              "",
+            ],
+            [
+              "static",
+              "typo",
+              "Ordering online should not feel like gambling.",
+              "",
+              "",
+            ],
+            [
+              "static",
+              "product",
+              "Nano Skin",
+              "$269|Ultra-thin skin construction",
+              "Macro base",
+            ],
+          ],
+          stories: [
+            "Week one, done. Seven rows on the grid.",
+            "What should we go deeper on? Bases or colour|Poll",
+            "Next week: QC, decisions, and the first transformation.",
+            "Monday’s QC Reel.|Countdown",
+          ],
+          label: "Week preview",
+        },
+        {
+          d: 8,
+          date: "Aug 10",
+          wd: "Mon",
+          pillar: "Founder / QC",
+          theme: "QC Reel",
+          feed: [
+            [
+              "reel",
+              "photo",
+              "Before it ships, I check this.",
+              "Hook|Before it ships, I check this.|Beat|Density against the order sheet.|Beat|Colour in daylight.|Beat|Hairline knots, up close.|Close|DM QC for the checklist.",
+              "QC desk",
+            ],
+          ],
+          stories: [
+            "The standard is personal. Every order gets checked.|Quote share",
+            "[hatch:QC desk] Monday, 8am.",
+            "The checklist is in today’s Reel.|Link",
+          ],
+          label: "Motivation",
+        },
+        {
+          d: 9,
+          date: "Aug 11",
+          wd: "Tue",
+          pillar: "Education",
+          theme: "Decision carousel",
+          feed: [
+            [
+              "carousel",
+              "carousel-cover",
+              "New here? Start with these 5 decisions.",
+              "1 · Base — how it looks, feels, and bonds.|2 · Density — match your natural hair, not more.|3 · Colour — match at the temples, in daylight.|4 · Budget — choose with upkeep in mind.|5 · Wear style — daily remove or longer bond.|DM START and we will point you to the right guide.",
+              "",
+            ],
+          ],
+          stories: [
+            "Decide base first. Everything else follows.",
+            "Which decision is blocking you?|Question box",
+            "Save today’s guide.|Link",
+          ],
+          label: "Tips",
+        },
+        {
+          d: 10,
+          date: "Aug 12",
+          wd: "Wed",
+          pillar: "Product",
+          theme: "Mono Pro",
+          feed: [
+            [
+              "static",
+              "product",
+              "Mono Pro",
+              "$299|Structured. Breathable. Built for daily wear.",
+              "Mono Pro hero",
+            ],
+          ],
+          stories: [
+            "Mono Pro — breathable, durable, structured.",
+            "[hatch:Macro weave] Product detail.",
+            "See current specs.|Link",
+          ],
+          label: "Product spotlight",
+        },
+        {
+          d: 11,
+          date: "Aug 13",
+          wd: "Thu",
+          pillar: "Social proof",
+          theme: "Real quote required",
+          flag: "Written consent and exact customer quote required. Swap with education if unavailable.",
+          feed: [
+            [
+              "static",
+              "quote",
+              "Customer proof belongs to the customer.",
+              "Real quote required",
+              "",
+            ],
+          ],
+          stories: [
+            "Answering this week’s real customer questions.",
+            "Does it work at the gym? Attachment and prep matter.",
+            "What does a first system cost? Start with the live catalogue.",
+            "Ask for next week.|Question box",
+          ],
+          label: "Q&A",
+        },
+        {
+          d: 12,
+          date: "Aug 14",
+          wd: "Fri",
+          pillar: "Education",
+          theme: "Education editorial",
+          feed: [
+            [
+              "static",
+              "typo",
+              "Why modern hair systems are different.",
+              "The build is different. The fit is specific. The result depends on the choices.",
+              "",
+            ],
+          ],
+          stories: [
+            "[hatch:Studio] Friday at the work table.",
+            "Writing next week’s education posts.",
+            "More myth-busting? Yes or keep going|Poll",
+            "Weekend: the first transformation preview.",
+          ],
+          label: "Behind the scenes",
+        },
+        {
+          d: 13,
+          date: "Aug 15",
+          wd: "Sat",
+          pillar: "Product",
+          theme: "Product macro Reel",
+          feed: [
+            [
+              "reel",
+              "photo",
+              "Lace Elite. Knot to tip.",
+              "Hook|Extreme macro of a single knot.|Beat|Rack focus along the hairline.|Beat|Light across the lace.|Close|Full system, quiet wordmark.",
+              "Lace Elite",
+            ],
+          ],
+          stories: [
+            "[hatch:Rio] Saturday. Rio. Coffee first.|Slider",
+            "The macro Reel is live.|Link",
+          ],
+          label: "Lifestyle",
+        },
+        {
+          d: 14,
+          date: "Aug 16",
+          wd: "Sun",
+          pillar: "Transformation",
+          theme: "Consent gate",
+          flag: "Real before-and-after images and written consent required.",
+          feed: [
+            [
+              "carousel",
+              "carousel-cover",
+              "Same man. Different mirror.",
+              "Before — consented customer image.|Matched. Cut in. Worn.|After — real quote and approved image.",
+              "",
+            ],
+          ],
+          stories: [
+            "Week two begins: built to disappear.",
+            "Want the full transformation story?|Poll",
+            "Monday’s brand note.|Countdown",
+          ],
+          label: "Week preview",
+        },
+        {
+          d: 15,
+          date: "Aug 17",
+          wd: "Mon",
+          pillar: "Brand",
+          theme: "Built to disappear",
+          feed: [
+            [
+              "static",
+              "typo",
+              "Built to disappear.",
+              "The best systems are the ones that let the rest of your day take over.",
+              "",
+            ],
+          ],
+          stories: [
+            "Built to disappear. Worn to live.|Quote share",
+            "The point is not attention. It is getting on with the day.",
+            "This week: bases, application, proof.",
+          ],
+          label: "Motivation",
+        },
+        {
+          d: 16,
+          date: "Aug 18",
+          wd: "Tue",
+          pillar: "Education",
+          theme: "Base types",
+          feed: [
+            [
+              "carousel",
+              "carousel-cover",
+              "Four base types. One right priority for you.",
+              "Lace — breathability and a natural front.|Skin / poly — a smooth base and easier cleanup.|Mono — structure and durability.|Hybrid — a natural front with a practical perimeter.|DM BASE and tell us what matters most.",
+              "",
+            ],
+          ],
+          stories: [
+            "Start with your priority: hairline, breathability, durability, or upkeep.",
+            "Which base leads on breathability? Lace, skin, or mono|Quiz",
+            "The practical breakdown is in today’s carousel.|Link",
+          ],
+          label: "Tips",
+        },
+        {
+          d: 17,
+          date: "Aug 19",
+          wd: "Wed",
+          pillar: "Product",
+          theme: "Apply and go",
+          feed: [
+            [
+              "reel",
+              "photo",
+              "A clear routine, step by step.",
+              "Hook|Morning light and a clean setup.|Beat|Prep and two thin adhesive passes.|Beat|Frontal placed and pressed.|Beat|Comb through and check the edge.|Close|Save the sequence.",
+              "Skin Frontal",
+            ],
+          ],
+          stories: [
+            "Skin Frontal — coverage where it counts.",
+            "[hatch:Application] Step-by-step setup.",
+            "Watch the full application.|Link",
+          ],
+          label: "Product",
+        },
+        {
+          d: 18,
+          date: "Aug 20",
+          wd: "Thu",
+          pillar: "Social proof",
+          theme: "Real quote required",
+          flag: "Real quote required. Any shipping answer must use current store policy.",
+          feed: [
+            [
+              "static",
+              "quote",
+              "Customer proof belongs to the customer.",
+              "Real quote required",
+              "",
+            ],
+          ],
+          stories: [
+            "DM answers, round three.",
+            "Can I swim with it? The honest answer depends on attachment and care.",
+            "How fast is shipping? Check current policy before answering.",
+            "Ask anything.|Question box",
+          ],
+          label: "Q&A",
+        },
+        {
+          d: 19,
+          date: "Aug 21",
+          wd: "Fri",
+          pillar: "Behind the scenes",
+          theme: "Studio table",
+          feed: [
+            [
+              "reel",
+              "photo",
+              "What is on the table this week.",
+              "Hook|Overhead of the workbench.|Beat|Systems in the QC queue.|Beat|Swatch book and order sheets.|Close|Every order gets a final check.",
+              "Studio table",
+            ],
+          ],
+          stories: [
+            "[hatch:Workbench] Friday wrap.",
+            "Today’s shipping count goes here after the live check.",
+            "More behind-the-scenes?|Poll",
+            "Tomorrow: Thin Skin Pro.",
+          ],
+          label: "Behind the scenes",
+        },
+        {
+          d: 20,
+          date: "Aug 22",
+          wd: "Sat",
+          pillar: "Product",
+          theme: "Thin Skin Pro",
+          feed: [
+            [
+              "static",
+              "product",
+              "Thin Skin Pro",
+              "$279|0.08 mm skin base. A smooth everyday option.",
+              "Thin Skin hero",
+            ],
+          ],
+          stories: [
+            "[hatch:Grooming bench] Saturday.|Slider",
+            "Thin Skin Pro, up close.|Link",
+          ],
+          label: "Lifestyle",
+        },
+        {
+          d: 21,
+          date: "Aug 23",
+          wd: "Sun",
+          pillar: "Education",
+          theme: "First-system guide",
+          feed: [
+            [
+              "carousel",
+              "carousel-cover",
+              "How to choose your first system in 5 minutes.",
+              "Minute 1 — the hairline you want.|Minutes 2–3 — base by lifestyle, not trend.|Minutes 4–5 — colour at the temples, in daylight.|Still unsure? DM FIRST for a real answer.",
+              "",
+            ],
+          ],
+          stories: [
+            "Week three: colour, QC, and a personal note from Rio.",
+            "How long should choosing take? Five minutes or weeks|Quiz",
+            "Monday’s note.|Countdown",
+          ],
+          label: "Week preview",
+        },
+        {
+          d: 22,
+          date: "Aug 24",
+          wd: "Mon",
+          pillar: "Brand",
+          theme: "Discretion",
+          feed: [
+            [
+              "static",
+              "typo",
+              "No one has to know. That is the point.",
+              "",
+              "ink",
+            ],
+          ],
+          stories: [
+            "Discretion is part of the product.|Quote share",
+            "A good hairline does not ask for attention.",
+            "Colour week starts tomorrow.",
+          ],
+          label: "Motivation",
+        },
+        {
+          d: 23,
+          date: "Aug 25",
+          wd: "Tue",
+          pillar: "Education",
+          theme: "Colour",
+          feed: [
+            [
+              "static",
+              "typo",
+              "Colour matching, honestly explained.",
+              "Match at the temples, in daylight. Small differences matter.",
+              "",
+            ],
+          ],
+          stories: [
+            "Match at the temples, not the top.",
+            "[hatch:Swatch ring] Daylight.",
+            "DM COLOR with a daylight photo for a colour check.|Link",
+          ],
+          label: "Tips",
+        },
+        {
+          d: 24,
+          date: "Aug 26",
+          wd: "Wed",
+          pillar: "Product",
+          theme: "Lace Fusion VF",
+          feed: [
+            [
+              "static",
+              "product",
+              "Lace Fusion VF",
+              "$289|Lace at the front. A clear PU perimeter around it.",
+              "Fusion hero",
+            ],
+          ],
+          stories: [
+            "Lace Fusion VF — hybrid, practical, considered.",
+            "[hatch:Clear PU perimeter] Product detail.",
+            "See current product details.|Link",
+          ],
+          label: "Product",
+        },
+        {
+          d: 25,
+          date: "Aug 27",
+          wd: "Thu",
+          pillar: "Social proof",
+          theme: "Testimonial Reel",
+          flag: "Real customer, exact quote, approved before-and-after media, and written consent required.",
+          feed: [
+            [
+              "reel",
+              "quote",
+              "His words, not ours.",
+              "Hook|Consented customer quote.|Beat|Approved before-and-after b-roll.|Beat|Quiet daylight detail.|Close|Wordmark and source attribution.",
+              "",
+            ],
+          ],
+          stories: [
+            "This week’s real questions, answered.",
+            "Start with base and lifestyle.",
+            "Match colour at the temples in daylight.",
+            "Your question for next week?|Question box",
+          ],
+          label: "Q&A",
+        },
+        {
+          d: 26,
+          date: "Aug 28",
+          wd: "Fri",
+          pillar: "Lifestyle",
+          theme: "Rio editorial",
+          feed: [
+            [
+              "static",
+              "photo",
+              "Rio, 6am — why I work before the city wakes.",
+              "",
+              "Rio, 6am",
+            ],
+          ],
+          stories: [
+            "[hatch:Sunrise balcony] Soft natural light.",
+            "Current order update goes here after the live check.",
+            "Morning person or slow start?|Poll",
+          ],
+          label: "Behind the scenes",
+        },
+        {
+          d: 27,
+          date: "Aug 29",
+          wd: "Sat",
+          pillar: "Product",
+          theme: "Care kit",
+          flag: "Verify the current live product name, contents, and price before production.",
+          feed: [
+            [
+              "static",
+              "product",
+              "Care kit",
+              "Live catalogue verification required|The essentials, clearly explained.",
+              "Kit flat lay",
+            ],
+          ],
+          stories: [
+            "[hatch:Grooming bench] Care setup.|Slider",
+            "The care kit, explained after catalogue verification.|Link",
+          ],
+          label: "Lifestyle",
+        },
+        {
+          d: 28,
+          date: "Aug 30",
+          wd: "Sun",
+          pillar: "Transformation",
+          theme: "Consent gate",
+          flag: "Real customer images and written consent required.",
+          feed: [
+            [
+              "carousel",
+              "carousel-cover",
+              "Customer No. 1 — the full arc.",
+              "Before — consented photo.|Consult. Match. Cut in.|After — approved image and real quote.",
+              "",
+            ],
+          ],
+          stories: [
+            "Month one closes this week.",
+            "What did week three miss?|Poll",
+            "Monday’s fit guide.|Countdown",
+          ],
+          label: "Week preview",
+        },
+        {
+          d: 29,
+          date: "Aug 31",
+          wd: "Mon",
+          pillar: "Founder education",
+          theme: "Fit Reel",
+          feed: [
+            [
+              "reel",
+              "collage",
+              "How a system actually fits.",
+              "Hook|60 seconds on fit.|Beat|Perimeter and bond line on the bust.|Beat|Why fit leads realism.|Close|Fit questions — DM FIT.",
+              "Vincent + bust",
+            ],
+          ],
+          stories: [
+            "Fit first. Everything else second.|Quote share",
+            "[hatch:Bust demonstration] Fit guide.",
+            "The fit guide is in today’s Reel.|Link",
+          ],
+          label: "Motivation",
+        },
+        {
+          d: 30,
+          date: "Sep 1",
+          wd: "Tue",
+          pillar: "Brand",
+          theme: "Month anchor",
+          feed: [
+            [
+              "static",
+              "typo",
+              "September 1. New month, same standard.",
+              "",
+              "ink",
+            ],
+          ],
+          stories: [
+            "Month two: education goes deeper.",
+            "[hatch:Recap] 30 days, 44 feed posts.",
+            "Tell us what to teach next.|Question box",
+          ],
+          label: "Tips",
+        },
+      ];
+
+      const esc = (value = "") =>
+        String(value).replace(
+          /[&<>"']/g,
+          (char) =>
+            ({
+              "&": "&amp;",
+              "<": "&lt;",
+              ">": "&gt;",
+              '"': "&quot;",
+              "'": "&#39;",
+            })[char],
+        );
+
+      function logo(dark = false, centered = false, story = false) {
+        return `<img class="${story ? "story-wordmark" : `brand-logo${centered ? " centered" : ""}`}" src="${dark ? ASSETS.logoLight : ASSETS.logoDark}" alt="Hair Solutions Co.">`;
+      }
+
+      function safeZone(format) {
+        return `<span class="safe-zone ${format}" aria-hidden="true"></span>`;
+      }
+
+      function shell(
+        content,
+        {
+          format = "square",
+          classes = "",
+          label = "",
+          type = "feed",
+          blocked = false,
+        } = {},
+      ) {
+        const shellClass = format === "square" ? "" : format;
+        const dimensions =
+          format === "square"
+            ? "1080 × 1080"
+            : format === "portrait"
+              ? "1080 × 1350"
+              : "1080 × 1920";
+        return `
+        <article class="asset-card" data-type="${esc(type)}" data-blocked="${blocked ? "true" : "false"}">
+          <div class="artboard-shell ${shellClass}">
+            <div class="artboard ${classes}">
+              ${content}
+              ${safeZone(format)}
+            </div>
+          </div>
+          <p class="asset-meta">${dimensions} · ${esc(type)}<strong>${esc(label)}</strong>${blocked ? `<span class="blocked">Production hold · do not publish</span>` : `<span class="hold">Vibe draft</span>`}</p>
+        </article>`;
+      }
+
+      function meta(day, index, dark = false) {
+        return `${logo(dark)}<span class="art-meta">D${String(day).padStart(2, "0")} · ${String(index + 1).padStart(2, "0")}</span>`;
+      }
+
+      function wordsWithEmphasis(text) {
+        const parts = String(text).split(" ");
+        if (parts.length < 4) return esc(text);
+        const emphasisLength = parts.length > 9 ? 3 : 2;
+        const lead = parts.slice(0, -emphasisLength).join(" ");
+        const emphasis = parts.slice(-emphasisLength).join(" ");
+        return `${esc(lead)} <em>${esc(emphasis)}</em>`;
+      }
+
+      function wordmarkPost(day, item, index) {
+        const content = `
+        ${logo(true, true)}
+        <div class="wordmark-layout">
+          <p class="art-copy">${esc(item[2])}</p>
+        </div>
+        <span class="coral-disc" style="right:100px;top:90px"></span>
+        <div class="art-footer"><span>A new chapter</span><span>Hair Solutions Co.</span></div>`;
+        return shell(content, { classes: "ink", label: item[2], type: "feed" });
+      }
+
+      function typographicPost(day, item, index) {
+        const dark = item[4] === "ink" || item[3] === "ink" || index % 5 === 4;
+        const position =
+          index % 3 === 0 ? "top" : index % 3 === 1 ? "" : "bottom";
+        const content = `
+        ${meta(day, index, dark)}
+        <span class="${dark ? "outline-disc" : "coral-disc"}" style="right:${index % 2 ? "120" : "70"}px;top:${index % 2 ? "210" : "165"}px"></span>
+        <div class="typographic-layout ${position}">
+          <h3 class="art-title ${item[2].length > 52 ? "compact" : "display"}">${wordsWithEmphasis(item[2])}</h3>
+          ${item[3] ? `<p class="art-copy">${esc(item[3])}</p>` : ""}
+        </div>
+        <div class="art-footer"><span>${esc(DAYS[day - 1].pillar)}</span><span>Hair Solutions Co.</span></div>`;
+        return shell(content, {
+          classes: dark ? "ink" : "",
+          label: item[2],
+          type: "feed",
+        });
+      }
+
+      function quotePost(day, item, index, dayBlocked) {
+        const itemBlocked =
+          dayBlocked ||
+          /required/i.test(item[3]) ||
+          /customer proof belongs/i.test(item[2]);
+        if (itemBlocked) {
+          const content = `
+          ${meta(day, index, false)}
+          <div class="blocked-layout">
+            <span class="accent-rule"></span>
+            <h3 class="art-title">Proof stays empty <em>until it is real.</em></h3>
+            <p class="art-copy">Attach the exact customer quote, channel-specific written consent, and approved source media before this composition advances.</p>
+          </div>
+          <div class="proof-hold">Customer source + written consent required</div>`;
+          return shell(content, {
+            classes: "bone",
+            label: "Customer proof slot",
+            type: "feed",
+            blocked: true,
+          });
+        }
+        const content = `
+        ${meta(day, index, index % 2 === 0)}
+        <div class="quote-layout">
+          <span class="accent-rule"></span>
+          <p class="art-quote">${wordsWithEmphasis(item[2])}</p>
+          <p class="quote-source">Hair Solutions Co. · Brand statement</p>
+        </div>`;
+        return shell(content, {
+          classes: index % 2 === 0 ? "ink" : "bone",
+          label: item[2],
+          type: "feed",
+        });
+      }
+
+      function productFor(name) {
+        return ASSETS.products[name] || null;
+      }
+
+      function productPost(day, item, index, dayBlocked) {
+        const product = productFor(item[2]);
+        const blocked = dayBlocked || !product;
+        if (!product) {
+          const content = `
+          ${meta(day, index, false)}
+          <div class="product-layout">
+            <div class="product-photo"><div class="shot-label">${esc(item[4] || "Approved product photograph")}</div></div>
+            <div class="product-copy">
+              <p class="product-kicker">Catalogue check</p>
+              <h3>${esc(item[2])}</h3>
+              <p class="product-detail">Verify the current product name, contents, price, and approved photography before production.</p>
+            </div>
+          </div>
+          <div class="proof-hold">Live catalogue verification required</div>`;
+          return shell(content, {
+            classes: "paper-dark",
+            label: item[2],
+            type: "feed",
+            blocked: true,
+          });
+        }
+        const content = `
+        ${meta(day, index, false)}
+        <div class="product-layout">
+          <figure class="product-photo"><img src="${product.image}" alt="${esc(item[2])} product photograph"></figure>
+          <div class="product-copy">
+            <p class="product-kicker">Product study · ${esc(item[4] || "feature shot")}</p>
+            <h3>${esc(item[2])}</h3>
+            <p class="product-price">${esc(product.price)}</p>
+            <p class="product-detail">${esc(product.detail)}</p>
+          </div>
+        </div>
+        ${blocked ? `<div class="proof-hold">Fresh catalogue check required before scheduling</div>` : `<div class="art-footer"><span>Photographed honestly</span><span>Current storefront image</span></div>`}`;
+        return shell(content, {
+          classes: "paper-dark",
+          label: item[2],
+          type: "feed",
+          blocked,
+        });
+      }
+
+      function editorialAsset(shot, day, index) {
+        const productName = Object.keys(ASSETS.products).find((name) =>
+          `${shot}`.toLowerCase().includes(name.toLowerCase()),
+        );
+        if (productName) return ASSETS.products[productName].image;
+        if (/lace/i.test(shot)) return ASSETS.products["Lace Elite"].image;
+        if (/skin frontal|application/i.test(shot))
+          return ASSETS.products["Skin Frontal"].image;
+        if (/bust|fit/i.test(shot)) return ASSETS.collage;
+        return index % 2 ? ASSETS.abstractTwo : ASSETS.abstractOne;
+      }
+
+      function mediaPost(day, item, index, dayBlocked) {
+        const shot = item[4] || "Approved source photograph";
+        const source = editorialAsset(shot, day, index);
+        const needsSource =
+          /Vincent|QC desk|studio table|Rio|portrait|workbench/i.test(shot);
+        const content = `
+        <div class="media-fill ${needsSource || !source ? "dark-overlay" : ""}">${source ? `<img src="${source}" alt="">` : `<div class="shot-label">${esc(shot)} · approved source required</div>`}</div>
+        ${meta(day, index, needsSource)}
+        ${needsSource ? `<div class="shot-label">${esc(shot)} · approved source insert</div>` : ""}
+        <div class="media-caption">
+          <div class="headline-card"><h3>${esc(item[2])}</h3></div>
+          <span class="primary-pill">Read the note</span>
+        </div>
+        ${dayBlocked || needsSource ? `<div class="proof-hold">${needsSource ? "Approved source photograph required" : "Production approval required"}</div>` : ""}`;
+        const blocked = dayBlocked || needsSource;
+        return shell(content, {
+          classes: needsSource ? "ink" : "",
+          label: item[2],
+          type: "feed",
+          blocked,
+        });
+      }
+
+      function renderStatic(day, item, index) {
+        if (item[1] === "wordmark") return wordmarkPost(day.d, item, index);
+        if (item[1] === "typo" || item[1] === "carousel-cover")
+          return typographicPost(day.d, item, index);
+        if (item[1] === "quote")
+          return quotePost(day.d, item, index, Boolean(day.flag));
+        if (item[1] === "product")
+          return productPost(day.d, item, index, Boolean(day.flag));
+        return mediaPost(day.d, item, index, Boolean(day.flag));
+      }
+
+      function carouselSlide(day, text, index, total, dayBlocked) {
+        const cover = index === 0;
+        const final = index === total - 1;
+        const proofFrame =
+          /before|after|quote|customer/i.test(text) && dayBlocked;
+        if (proofFrame) {
+          const content = `
+          ${meta(day.d, index, false)}
+          <span class="carousel-number">${String(index + 1).padStart(2, "0")}</span>
+          <div class="blocked-layout">
+            <span class="accent-rule"></span>
+            <h3 class="art-title compact">Approved customer media goes here.</h3>
+            <p class="art-copy">Keep this frame blocked until the exact image and written consent record are attached.</p>
+          </div>
+          <div class="proof-hold">Customer media + consent required</div>`;
+          return shell(content, {
+            classes: "bone",
+            label: text,
+            type: "carousel",
+            blocked: true,
+          });
+        }
+        const dark = cover || final;
+        const content = `
+        ${meta(day.d, index, dark)}
+        <span class="carousel-number">${String(index + 1).padStart(2, "0")}</span>
+        <div class="carousel-layout">
+          ${cover ? `<span class="accent-rule"></span>` : ""}
+          <h3 class="art-title ${cover ? "" : "compact"}">${cover ? wordsWithEmphasis(text) : esc(text)}</h3>
+          ${!cover && !final ? `<div class="carousel-media"><img src="${index % 2 ? ASSETS.abstractOne : ASSETS.abstractTwo}" alt=""></div>` : ""}
+          ${final ? `<div style="margin-top:48px"><span class="primary-pill">Save the guide</span></div>` : ""}
+        </div>
+        <div class="art-footer"><span>Swipe ${index + 1} / ${total}</span><span>${esc(day.pillar)}</span></div>`;
+        return shell(content, {
+          classes: dark ? "ink" : "bone",
+          label: text,
+          type: "carousel",
+        });
+      }
+
+      function renderCarousel(day, item) {
+        const slides = [item[2], ...item[3].split("|")].filter(Boolean);
+        return slides
+          .map((slide, index) =>
+            carouselSlide(day, slide, index, slides.length, Boolean(day.flag)),
+          )
+          .join("");
+      }
+
+      function reelCover(day, item) {
+        const blocked = Boolean(day.flag) || item[1] === "quote";
+        const source = editorialAsset(`${item[2]} ${item[4]}`, day.d, 0);
+        const needsSource = /Vincent|QC desk|studio table/i.test(item[4] || "");
+        const content = `
+        <div class="media-fill dark-overlay"><img src="${source}" alt=""></div>
+        ${logo(true)}
+        <span class="art-meta">D${String(day.d).padStart(2, "0")} · Reel cover</span>
+        ${blocked || needsSource ? `<div class="shot-label">${blocked ? "Customer media + consent required" : `${esc(item[4])} · approved source insert`}</div>` : ""}
+        <div class="reel-layout"><h3 class="art-title">${wordsWithEmphasis(item[2])}</h3></div>
+        <span class="reel-play">▶</span>
+        ${blocked || needsSource ? `<div class="proof-hold">Production hold</div>` : ""}`;
+        return shell(content, {
+          format: "portrait",
+          classes: "ink",
+          label: `${item[2]} · Reel cover`,
+          type: "reel",
+          blocked: blocked || needsSource,
+        });
+      }
+
+      function reelBeat(day, item, beat, beatIndex, total) {
+        const blocked = Boolean(day.flag) || item[1] === "quote";
+        const source = editorialAsset(
+          `${item[2]} ${item[4]}`,
+          day.d,
+          beatIndex,
+        );
+        const needsSource = /Vincent|QC desk|studio table/i.test(item[4] || "");
+        const content = `
+        <div class="media-fill dark-overlay"><img src="${source}" alt=""></div>
+        ${logo(true, false, true)}
+        <div class="story-progress">${Array.from({ length: total }, (_, i) => `<i class="${i <= beatIndex ? "active" : ""}"></i>`).join("")}</div>
+        ${blocked || needsSource ? `<div class="shot-label">${blocked ? "Approved customer footage required" : `${esc(item[4])} · approved footage insert`}</div>` : ""}
+        <div class="reel-caption">${esc(beat.copy)}</div>
+        <div class="art-footer"><span>${esc(beat.time)}</span><span>Burned-in caption</span></div>
+        ${blocked || needsSource ? `<div class="proof-hold">Production hold</div>` : ""}`;
+        return shell(content, {
+          format: "story",
+          classes: "ink",
+          label: `${item[2]} · ${beat.time}`,
+          type: "reel",
+          blocked: blocked || needsSource,
+        });
+      }
+
+      function renderReel(day, item) {
+        const raw = item[3].split("|");
+        const beats = [];
+        for (let i = 0; i < raw.length - 1; i += 2)
+          beats.push({ time: raw[i], copy: raw[i + 1] });
+        return {
+          cover: reelCover(day, item),
+          beats: beats
+            .map((beat, index) =>
+              reelBeat(day, item, beat, index, beats.length),
+            )
+            .join(""),
+        };
+      }
+
+      function storyFrame(day, raw, index, total) {
+        const parts = raw.split("|");
+        let text = parts[0];
+        const sticker = parts[1] || "";
+        const dark = text.startsWith("[ink]");
+        const hatch = text.match(/^\[hatch:([^\]]+)\]\s*/);
+        text = text.replace(/^\[(ink|hatch:[^\]]+)\]\s*/, "");
+        const media = Boolean(hatch);
+        const liveCheck = /goes here|current|shipping count/i.test(text);
+        const content = `
+        ${media ? `<div class="media-fill dark-overlay"><img src="${index % 2 ? ASSETS.abstractOne : ASSETS.abstractTwo}" alt=""></div>` : ""}
+        ${logo(dark || media, false, true)}
+        <div class="story-progress">${Array.from({ length: total }, (_, i) => `<i class="${i <= index ? "active" : ""}"></i>`).join("")}</div>
+        ${media ? `<div class="shot-label">${esc(hatch[1])} · approved source insert</div>` : ""}
+        <div class="story-layout">
+          ${!media ? `<span class="accent-rule"></span>` : ""}
+          <h3 class="art-title ${text.length > 75 ? "compact" : ""}">${wordsWithEmphasis(text)}</h3>
+        </div>
+        ${sticker ? `<div class="sticker">${esc(sticker)}</div>` : ""}
+        <div class="art-footer"><span>D${String(day.d).padStart(2, "0")} · ${index + 1}/${total}</span><span>${esc(day.label)}</span></div>
+        ${media || liveCheck ? `<div class="proof-hold">${liveCheck ? "Live operational detail required" : "Approved source photograph required"}</div>` : ""}`;
+        const blocked = media || liveCheck;
+        return shell(content, {
+          format: "story",
+          classes: dark || media ? "ink" : "bone",
+          label: text,
+          type: "story",
+          blocked,
+        });
+      }
+
+      function renderStories(day) {
+        return day.stories
+          .map((story, index) =>
+            storyFrame(day, story, index, day.stories.length),
+          )
+          .join("");
+      }
+
+      function renderDay(day) {
+        const statics = [];
+        const carousels = [];
+        const reelCovers = [];
+        const reelBeats = [];
+
+        day.feed.forEach((item, index) => {
+          if (item[0] === "carousel") {
+            carousels.push(renderCarousel(day, item));
+          } else if (item[0] === "reel") {
+            const reel = renderReel(day, item);
+            reelCovers.push(reel.cover);
+            reelBeats.push(reel.beats);
+          } else {
+            statics.push(renderStatic(day, item, index));
+          }
+        });
+
+        const blocked = Boolean(day.flag);
+        return `
+        <section class="day-section" id="day-${day.d}" data-day="${day.d}">
+          <header class="day-header">
+            <span class="day-number">${String(day.d).padStart(2, "0")}</span>
+            <div>
+              <span class="day-kicker">${esc(day.date)} · ${esc(day.wd)} · ${esc(day.theme)}</span>
+              <h2>${wordsWithEmphasis(day.theme)}</h2>
+            </div>
+            <div class="day-header-side">
+              <span class="pillar-chip">${esc(day.pillar)}</span>
+              <span class="status-chip ${blocked ? "blocked" : ""}">${blocked ? "Production gate" : "Draft ready"}</span>
+            </div>
+          </header>
+          ${statics.length ? `<section class="format-group" data-group="feed"><h3 class="format-heading">Feed posts</h3><div class="board-grid">${statics.join("")}</div></section>` : ""}
+          ${carousels.length ? `<section class="format-group" data-group="carousel"><h3 class="format-heading">Carousel · every slide</h3><div class="board-grid">${carousels.join("")}</div></section>` : ""}
+          ${reelCovers.length ? `<section class="format-group" data-group="reel"><h3 class="format-heading">Reel covers · feed crop</h3><div class="board-grid">${reelCovers.join("")}</div></section>` : ""}
+          ${reelBeats.length ? `<section class="format-group" data-group="reel"><h3 class="format-heading">Reel storyboard · vertical frames</h3><div class="board-grid vertical-grid">${reelBeats.join("")}</div></section>` : ""}
+          <section class="format-group" data-group="story"><h3 class="format-heading">Stories · every frame</h3><div class="board-grid vertical-grid">${renderStories(day)}</div></section>
+        </section>`;
+      }
+
+      const gallery = document.querySelector("#gallery");
+      gallery.innerHTML = DAYS.map(renderDay).join("");
+
+      const daySelect = document.querySelector("#day-select");
+      DAYS.forEach((day) => {
+        const option = document.createElement("option");
+        option.value = String(day.d);
+        option.textContent = `Day ${String(day.d).padStart(2, "0")} · ${day.date} · ${day.theme}`;
+        daySelect.appendChild(option);
+      });
+
+      const feedCount = DAYS.reduce((sum, day) => sum + day.feed.length, 0);
+      const carouselCount = DAYS.reduce(
+        (sum, day) =>
+          sum + day.feed.filter((item) => item[0] === "carousel").length,
+        0,
+      );
+      const reelCount = DAYS.reduce(
+        (sum, day) =>
+          sum + day.feed.filter((item) => item[0] === "reel").length,
+        0,
+      );
+      const storyCount = DAYS.reduce((sum, day) => sum + day.stories.length, 0);
+      document.querySelector("#summary-grid").innerHTML = [
+        [feedCount, "Feed posts"],
+        [carouselCount, "Carousels"],
+        [reelCount, "Reels"],
+        [storyCount, "Story frames"],
+      ]
+        .map(
+          ([value, label]) =>
+            `<div class="summary-stat"><strong>${value}</strong><span>${label}</span></div>`,
+        )
+        .join("");
+
+      let currentFilter = "all";
+
+      function applyFilters() {
+        const selectedDay = daySelect.value;
+        document.querySelectorAll(".day-section").forEach((section) => {
+          const dayMatch =
+            selectedDay === "all" || section.dataset.day === selectedDay;
+          section.querySelectorAll(".asset-card").forEach((card) => {
+            const typeMatch =
+              currentFilter === "all" ||
+              card.dataset.type === currentFilter ||
+              (currentFilter === "feed" && card.dataset.type === "feed") ||
+              (currentFilter === "blocked" && card.dataset.blocked === "true");
+            card.hidden = !typeMatch;
+          });
+          section.querySelectorAll(".format-group").forEach((group) => {
+            group.hidden = !Array.from(
+              group.querySelectorAll(".asset-card"),
+            ).some((card) => !card.hidden);
+          });
+          const hasVisibleAsset = Array.from(
+            section.querySelectorAll(".asset-card"),
+          ).some((card) => !card.hidden);
+          section.hidden = !dayMatch || !hasVisibleAsset;
+        });
+      }
+
+      document.querySelectorAll(".filter-button").forEach((button) => {
+        button.addEventListener("click", () => {
+          currentFilter = button.dataset.filter;
+          document
+            .querySelectorAll(".filter-button")
+            .forEach((item) =>
+              item.classList.toggle("active", item === button),
+            );
+          applyFilters();
+        });
+      });
+
+      daySelect.addEventListener("change", () => {
+        applyFilters();
+        if (daySelect.value !== "all")
+          document
+            .querySelector(`#day-${daySelect.value}`)
+            ?.scrollIntoView({ behavior: "smooth" });
+      });
+
+      document
+        .querySelector("#safe-toggle")
+        .addEventListener("click", (event) => {
+          document.body.classList.toggle("show-safe");
+          const active = document.body.classList.contains("show-safe");
+          event.currentTarget.classList.toggle("active", active);
+          event.currentTarget.textContent = active
+            ? "Hide safe zones"
+            : "Show safe zones";
+        });
+    </script>
+  </body>
+</html>

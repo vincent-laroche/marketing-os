@@ -1,0 +1,2134 @@
+{
+  "schemaVersion": 2,
+  "campaign": "2026 rebrand launch",
+  "operationalOwner": "Notion Content Production Board",
+  "snapshotDate": "2026-07-27",
+  "window": "Aug 3 - Oct 31, 2026",
+  "calendar": {
+    "sourceArtifact": "03-content-calendar.xlsx",
+    "dayCount": 90,
+    "rowCount": 104,
+    "rows": [
+      {
+        "day": 1,
+        "date": "Mon Aug 03, 2026",
+        "weekday": "Mon",
+        "phase": "1 - Opening Week",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "wordmark (ink)",
+        "hookHeadline": "A new chapter starts today.",
+        "pillar": "Brand",
+        "storiesConceptFramesStickers": "Launch day (Founder) - 4 frames: ink wordmark / Something's changed / lineage line (QUOTE-SHARE) / biggest question (Q-BOX)",
+        "status": "Planned"
+      },
+      {
+        "day": 1,
+        "date": "Mon Aug 03, 2026",
+        "weekday": "Mon",
+        "phase": "1 - Opening Week",
+        "slot": "Filler",
+        "format": "Static",
+        "archetype": "quote",
+        "hookHeadline": "Same company. New standard.",
+        "pillar": "Brand"
+      },
+      {
+        "day": 1,
+        "date": "Mon Aug 03, 2026",
+        "weekday": "Mon",
+        "phase": "1 - Opening Week",
+        "slot": "Filler",
+        "format": "Static",
+        "archetype": "typo",
+        "hookHeadline": "Not louder. Not different. Just clearer.",
+        "pillar": "Brand"
+      },
+      {
+        "day": 2,
+        "date": "Tue Aug 04, 2026",
+        "weekday": "Tue",
+        "phase": "1 - Opening Week",
+        "slot": "Hero",
+        "format": "Carousel x5",
+        "archetype": "manifesto carousel",
+        "hookHeadline": "For the man who wants to look like himself again.",
+        "pillar": "Brand",
+        "storiesConceptFramesStickers": "Education - 4 frames: manifesto intro / mirror line (QUOTE-SHARE) / quiz (QUIZ) / save the guide (LINK)"
+      },
+      {
+        "day": 2,
+        "date": "Tue Aug 04, 2026",
+        "weekday": "Tue",
+        "phase": "1 - Opening Week",
+        "slot": "Filler",
+        "format": "Static",
+        "archetype": "typo",
+        "hookHeadline": "Confidence is not loud.",
+        "pillar": "Brand"
+      },
+      {
+        "day": 2,
+        "date": "Tue Aug 04, 2026",
+        "weekday": "Tue",
+        "phase": "1 - Opening Week",
+        "slot": "Filler",
+        "format": "Static",
+        "archetype": "quote",
+        "hookHeadline": "We build for quiet confidence, not attention.",
+        "pillar": "Brand"
+      },
+      {
+        "day": 3,
+        "date": "Wed Aug 05, 2026",
+        "weekday": "Wed",
+        "phase": "1 - Opening Week",
+        "slot": "Hero",
+        "format": "Reel ~25s",
+        "archetype": "founder reel",
+        "hookHeadline": "I wear what I sell.",
+        "pillar": "Founder",
+        "storiesConceptFramesStickers": "Product/About - 3 frames: portrait BTS / one take natural light / daily-wear questions (LINK)"
+      },
+      {
+        "day": 3,
+        "date": "Wed Aug 05, 2026",
+        "weekday": "Wed",
+        "phase": "1 - Opening Week",
+        "slot": "Filler",
+        "format": "Static",
+        "archetype": "typo (ink)",
+        "hookHeadline": "Made for grown men.",
+        "pillar": "Brand"
+      },
+      {
+        "day": 3,
+        "date": "Wed Aug 05, 2026",
+        "weekday": "Wed",
+        "phase": "1 - Opening Week",
+        "slot": "Filler",
+        "format": "Static",
+        "archetype": "photo",
+        "hookHeadline": "The desk where every system gets checked before it ships.",
+        "pillar": "Founder"
+      },
+      {
+        "day": 4,
+        "date": "Thu Aug 06, 2026",
+        "weekday": "Thu",
+        "phase": "1 - Opening Week",
+        "slot": "Hero",
+        "format": "Reel ~20s",
+        "archetype": "explainer reel",
+        "hookHeadline": "This is not a wig.",
+        "pillar": "Education",
+        "storiesConceptFramesStickers": "Q&A - 5 frames: intro / is it a wig / will people notice / how long it lasts / question box (Q-BOX)"
+      },
+      {
+        "day": 4,
+        "date": "Thu Aug 06, 2026",
+        "weekday": "Thu",
+        "phase": "1 - Opening Week",
+        "slot": "Filler",
+        "format": "Static",
+        "archetype": "product",
+        "hookHeadline": "Thin Skin Pro - $279 - 0.08mm poly base",
+        "pillar": "Product",
+        "flags": "Verify price"
+      },
+      {
+        "day": 4,
+        "date": "Thu Aug 06, 2026",
+        "weekday": "Thu",
+        "phase": "1 - Opening Week",
+        "slot": "Filler",
+        "format": "Static",
+        "archetype": "product",
+        "hookHeadline": "Mono Pro - $299 - fine welded monofilament",
+        "pillar": "Product",
+        "flags": "Verify price"
+      },
+      {
+        "day": 5,
+        "date": "Fri Aug 07, 2026",
+        "weekday": "Fri",
+        "phase": "1 - Opening Week",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "product hero",
+        "hookHeadline": "Lace Elite, photographed honestly. (Swiss lace)",
+        "pillar": "Product",
+        "storiesConceptFramesStickers": "BTS/QC - 4 frames: shooting Lace Elite / daylight hairline macro / base poll (POLL) / ask anything (LINK)",
+        "flags": "Verify price"
+      },
+      {
+        "day": 5,
+        "date": "Fri Aug 07, 2026",
+        "weekday": "Fri",
+        "phase": "1 - Opening Week",
+        "slot": "Filler",
+        "format": "Static",
+        "archetype": "product",
+        "hookHeadline": "Lace Fusion VF - $289 - lace front, clear PU perimeter",
+        "pillar": "Product",
+        "flags": "Verify price"
+      },
+      {
+        "day": 5,
+        "date": "Fri Aug 07, 2026",
+        "weekday": "Fri",
+        "phase": "1 - Opening Week",
+        "slot": "Filler",
+        "format": "Static",
+        "archetype": "product",
+        "hookHeadline": "Micro Skin - $219 - 0.06mm V-loop",
+        "pillar": "Product",
+        "flags": "Verify price"
+      },
+      {
+        "day": 6,
+        "date": "Sat Aug 08, 2026",
+        "weekday": "Sat",
+        "phase": "1 - Opening Week",
+        "slot": "Hero",
+        "format": "Carousel x6",
+        "archetype": "how-it-works",
+        "hookHeadline": "Will the hairline look real?",
+        "pillar": "Education",
+        "storiesConceptFramesStickers": "Founder - 3 frames: most-asked question / spotting-a-system slider (SLIDER) / carousel pointer (LINK)"
+      },
+      {
+        "day": 6,
+        "date": "Sat Aug 08, 2026",
+        "weekday": "Sat",
+        "phase": "1 - Opening Week",
+        "slot": "Filler",
+        "format": "Static",
+        "archetype": "quote over macro",
+        "hookHeadline": "A hairline should survive daylight.",
+        "pillar": "Education"
+      },
+      {
+        "day": 6,
+        "date": "Sat Aug 08, 2026",
+        "weekday": "Sat",
+        "phase": "1 - Opening Week",
+        "slot": "Filler",
+        "format": "Static",
+        "archetype": "product",
+        "hookHeadline": "Skin Frontal - $169 - partial front piece",
+        "pillar": "Product",
+        "flags": "Verify price"
+      },
+      {
+        "day": 7,
+        "date": "Sun Aug 09, 2026",
+        "weekday": "Sun",
+        "phase": "1 - Opening Week",
+        "slot": "Hero",
+        "format": "Reel ~10s",
+        "archetype": "testimonial reel",
+        "hookHeadline": "I forgot I was wearing it.",
+        "pillar": "Social Proof",
+        "storiesConceptFramesStickers": "Week preview - 4 frames: week one done / deeper-topic poll (POLL) / next week tease / Monday countdown (COUNTDOWN)",
+        "flags": "BLOCKED: real consented quote required; swap with Day 8 QC reel if not ready"
+      },
+      {
+        "day": 7,
+        "date": "Sun Aug 09, 2026",
+        "weekday": "Sun",
+        "phase": "1 - Opening Week",
+        "slot": "Filler",
+        "format": "Static",
+        "archetype": "typo",
+        "hookHeadline": "Ordering online should not feel like gambling.",
+        "pillar": "Brand",
+        "flags": "No refund/shipping claims"
+      },
+      {
+        "day": 7,
+        "date": "Sun Aug 09, 2026",
+        "weekday": "Sun",
+        "phase": "1 - Opening Week",
+        "slot": "Filler",
+        "format": "Static",
+        "archetype": "product",
+        "hookHeadline": "Nano Skin - $269 - 0.03mm ultra-thin poly",
+        "pillar": "Product",
+        "flags": "Verify price"
+      },
+      {
+        "day": 8,
+        "date": "Mon Aug 10, 2026",
+        "weekday": "Mon",
+        "phase": "2 - Foundation",
+        "slot": "Hero",
+        "format": "Reel ~30s",
+        "archetype": "founder QC reel",
+        "hookHeadline": "Before it ships, I check this. (3 things I check)",
+        "pillar": "Founder",
+        "storiesConceptFramesStickers": "Motivation - 3 frames: standard is personal (QUOTE-SHARE) / QC desk / reel pointer (LINK)"
+      },
+      {
+        "day": 9,
+        "date": "Tue Aug 11, 2026",
+        "weekday": "Tue",
+        "phase": "2 - Foundation",
+        "slot": "Hero",
+        "format": "Carousel x7",
+        "archetype": "decision carousel",
+        "hookHeadline": "New here? Start with these 5 decisions.",
+        "pillar": "Education",
+        "storiesConceptFramesStickers": "Tips - 3 frames: base first / blocking decision (Q-BOX) / save guide (LINK)"
+      },
+      {
+        "day": 10,
+        "date": "Wed Aug 12, 2026",
+        "weekday": "Wed",
+        "phase": "2 - Foundation",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "product",
+        "hookHeadline": "Mono Pro - Silent, breathable, structured.",
+        "pillar": "Product",
+        "storiesConceptFramesStickers": "Product - 3 frames: benefits / macro weave / specs (LINK)",
+        "flags": "Verify price"
+      },
+      {
+        "day": 11,
+        "date": "Thu Aug 13, 2026",
+        "weekday": "Thu",
+        "phase": "2 - Foundation",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "quote",
+        "hookHeadline": "Three months in. My wife noticed first.",
+        "pillar": "Social Proof",
+        "storiesConceptFramesStickers": "Q&A - 4 frames: intro / gym question / first-time cost / question box (Q-BOX)",
+        "flags": "REQUIRES REAL QUOTE + consent"
+      },
+      {
+        "day": 12,
+        "date": "Fri Aug 14, 2026",
+        "weekday": "Fri",
+        "phase": "2 - Foundation",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "typo editorial",
+        "hookHeadline": "Why hair systems aren't toupees.",
+        "pillar": "Education",
+        "storiesConceptFramesStickers": "BTS - 4 frames: studio Friday / writing education / myth poll (POLL) / weekend tease"
+      },
+      {
+        "day": 13,
+        "date": "Sat Aug 15, 2026",
+        "weekday": "Sat",
+        "phase": "2 - Foundation",
+        "slot": "Hero",
+        "format": "Reel ~10s",
+        "archetype": "product macro reel",
+        "hookHeadline": "Lace Elite. Knot to tip.",
+        "pillar": "Product",
+        "storiesConceptFramesStickers": "Lifestyle - 2 frames: Rio Saturday (SLIDER) / reel live (LINK)"
+      },
+      {
+        "day": 14,
+        "date": "Sun Aug 16, 2026",
+        "weekday": "Sun",
+        "phase": "2 - Foundation",
+        "slot": "Hero",
+        "format": "Carousel x3",
+        "archetype": "before-after",
+        "hookHeadline": "Same man. Different mirror.",
+        "pillar": "Transformation",
+        "storiesConceptFramesStickers": "Week preview - 3 frames: week 2 tease / story poll (POLL) / countdown (COUNTDOWN)",
+        "flags": "Real photos + written consent"
+      },
+      {
+        "day": 15,
+        "date": "Mon Aug 17, 2026",
+        "weekday": "Mon",
+        "phase": "2 - Foundation",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "typo",
+        "hookHeadline": "Built to disappear.",
+        "pillar": "Brand",
+        "storiesConceptFramesStickers": "Motivation - 3 frames: built to disappear (QUOTE-SHARE) / founder note / week tease"
+      },
+      {
+        "day": 16,
+        "date": "Tue Aug 18, 2026",
+        "weekday": "Tue",
+        "phase": "2 - Foundation",
+        "slot": "Hero",
+        "format": "Carousel x7",
+        "archetype": "how-it-works",
+        "hookHeadline": "The five base types, explained.",
+        "pillar": "Education",
+        "storiesConceptFramesStickers": "Tips - 3 frames: mono tip / base quiz (QUIZ) / carousel pointer (LINK)"
+      },
+      {
+        "day": 17,
+        "date": "Wed Aug 19, 2026",
+        "weekday": "Wed",
+        "phase": "2 - Foundation",
+        "slot": "Hero",
+        "format": "Reel ~25s",
+        "archetype": "apply-and-go reel",
+        "hookHeadline": "On. Out the door. (Skin Frontal)",
+        "pillar": "Product",
+        "storiesConceptFramesStickers": "Product - 3 frames: coverage line / application step / full apply (LINK)"
+      },
+      {
+        "day": 18,
+        "date": "Thu Aug 20, 2026",
+        "weekday": "Thu",
+        "phase": "2 - Foundation",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "quote",
+        "hookHeadline": "Best money I've spent on myself in a decade.",
+        "pillar": "Social Proof",
+        "storiesConceptFramesStickers": "Q&A - 4 frames: intro / swim question / shipping (live policy only) / question box (Q-BOX)",
+        "flags": "REQUIRES REAL QUOTE + consent"
+      },
+      {
+        "day": 19,
+        "date": "Fri Aug 21, 2026",
+        "weekday": "Fri",
+        "phase": "2 - Foundation",
+        "slot": "Hero",
+        "format": "Reel ~30s",
+        "archetype": "BTS reel",
+        "hookHeadline": "What's on the table this week.",
+        "pillar": "Lifestyle",
+        "storiesConceptFramesStickers": "BTS - 4 frames: Friday wrap / shipped today / BTS poll (POLL) / tomorrow tease"
+      },
+      {
+        "day": 20,
+        "date": "Sat Aug 22, 2026",
+        "weekday": "Sat",
+        "phase": "2 - Foundation",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "product",
+        "hookHeadline": "Thin Skin Pro - 0.08mm poly, lighter feel at the edge.",
+        "pillar": "Product",
+        "storiesConceptFramesStickers": "Lifestyle - 2 frames: grooming bench (SLIDER) / up close (LINK)",
+        "flags": "Verify price"
+      },
+      {
+        "day": 21,
+        "date": "Sun Aug 23, 2026",
+        "weekday": "Sun",
+        "phase": "2 - Foundation",
+        "slot": "Hero",
+        "format": "Carousel x5",
+        "archetype": "how-it-works",
+        "hookHeadline": "How to choose your first system in 5 minutes.",
+        "pillar": "Education",
+        "storiesConceptFramesStickers": "Week preview - 3 frames: week 3 tease / quiz (QUIZ) / countdown (COUNTDOWN)"
+      },
+      {
+        "day": 22,
+        "date": "Mon Aug 24, 2026",
+        "weekday": "Mon",
+        "phase": "2 - Foundation",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "typo (ink)",
+        "hookHeadline": "No one has to know. That's the point.",
+        "pillar": "Brand",
+        "storiesConceptFramesStickers": "Motivation - 3 frames: discretion line (QUOTE-SHARE) / founder note / color week tease",
+        "flags": "9-tile check before posting"
+      },
+      {
+        "day": 23,
+        "date": "Tue Aug 25, 2026",
+        "weekday": "Tue",
+        "phase": "2 - Foundation",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "typo editorial",
+        "hookHeadline": "Color matching, honestly explained.",
+        "pillar": "Education",
+        "storiesConceptFramesStickers": "Tips - 3 frames: temples tip / swatch ring / DM COLOR (LINK)"
+      },
+      {
+        "day": 24,
+        "date": "Wed Aug 26, 2026",
+        "weekday": "Wed",
+        "phase": "2 - Foundation",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "product",
+        "hookHeadline": "Lace Fusion VF - lace comfort, easier bonding.",
+        "pillar": "Product",
+        "storiesConceptFramesStickers": "Product - 3 frames: benefits / PU perimeter macro / specs (LINK)",
+        "flags": "Verify price"
+      },
+      {
+        "day": 25,
+        "date": "Thu Aug 27, 2026",
+        "weekday": "Thu",
+        "phase": "2 - Foundation",
+        "slot": "Hero",
+        "format": "Reel ~30s",
+        "archetype": "testimonial reel",
+        "hookHeadline": "His words, not ours. (customer voiceover)",
+        "pillar": "Social Proof",
+        "storiesConceptFramesStickers": "Q&A - 4 frames: intro / 2 answered DMs / question box (Q-BOX)",
+        "flags": "REAL CUSTOMER + consent"
+      },
+      {
+        "day": 26,
+        "date": "Fri Aug 28, 2026",
+        "weekday": "Fri",
+        "phase": "2 - Foundation",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "photo editorial",
+        "hookHeadline": "Rio, 6am - why I work before the city wakes.",
+        "pillar": "Lifestyle",
+        "storiesConceptFramesStickers": "BTS - 3 frames: sunrise balcony / packed before 9 / morning poll (POLL)"
+      },
+      {
+        "day": 27,
+        "date": "Sat Aug 29, 2026",
+        "weekday": "Sat",
+        "phase": "2 - Foundation",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "product",
+        "hookHeadline": "Hair Care Kit - what every wearer actually needs.",
+        "pillar": "Product",
+        "storiesConceptFramesStickers": "Lifestyle - 2 frames: grooming bench (SLIDER) / kit explained (LINK)",
+        "flags": "Verify kit name/price"
+      },
+      {
+        "day": 28,
+        "date": "Sun Aug 30, 2026",
+        "weekday": "Sun",
+        "phase": "2 - Foundation",
+        "slot": "Hero",
+        "format": "Carousel x3",
+        "archetype": "before-after",
+        "hookHeadline": "Customer No. 1 - the full arc.",
+        "pillar": "Transformation",
+        "storiesConceptFramesStickers": "Week preview - 3 frames: month one closes / feedback poll (POLL) / countdown (COUNTDOWN)",
+        "flags": "Real photos + written consent"
+      },
+      {
+        "day": 29,
+        "date": "Mon Aug 31, 2026",
+        "weekday": "Mon",
+        "phase": "2 - Foundation",
+        "slot": "Hero",
+        "format": "Reel ~60s",
+        "archetype": "founder education reel",
+        "hookHeadline": "How a system actually fits.",
+        "pillar": "Founder",
+        "storiesConceptFramesStickers": "Motivation - 3 frames: fit first (QUOTE-SHARE) / bust demo / reel pointer (LINK)"
+      },
+      {
+        "day": 30,
+        "date": "Tue Sep 01, 2026",
+        "weekday": "Tue",
+        "phase": "2 - Foundation",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "typo (ink)",
+        "hookHeadline": "September 1. New month, same standard.",
+        "pillar": "Brand",
+        "storiesConceptFramesStickers": "Tips - 3 frames: month 2 tease / 30-day recap / what to teach (Q-BOX)",
+        "flags": "9-tile check before posting"
+      },
+      {
+        "day": 31,
+        "date": "Wed Sep 02, 2026",
+        "weekday": "Wed",
+        "phase": "3 - Resonance",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "product",
+        "hookHeadline": "Lace Pro (French lace, $279) - Refined. Photographable.",
+        "pillar": "Product",
+        "storiesConceptFramesStickers": "Weekly rhythm: Product spotlight (LINK) - 2-5 frames",
+        "flags": "Verify price"
+      },
+      {
+        "day": 32,
+        "date": "Thu Sep 03, 2026",
+        "weekday": "Thu",
+        "phase": "3 - Resonance",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "quote",
+        "hookHeadline": "I stopped wearing hats.",
+        "pillar": "Social Proof",
+        "storiesConceptFramesStickers": "Weekly rhythm: Community Q&A (Q-BOX) - 2-5 frames",
+        "flags": "REQUIRES REAL QUOTE + consent"
+      },
+      {
+        "day": 33,
+        "date": "Fri Sep 04, 2026",
+        "weekday": "Fri",
+        "phase": "3 - Resonance",
+        "slot": "Hero",
+        "format": "Reel",
+        "archetype": "BTS reel",
+        "hookHeadline": "Photoshoot day with Barry.",
+        "pillar": "Lifestyle",
+        "storiesConceptFramesStickers": "Weekly rhythm: Behind the scenes (POLL) - 2-5 frames"
+      },
+      {
+        "day": 34,
+        "date": "Sat Sep 05, 2026",
+        "weekday": "Sat",
+        "phase": "3 - Resonance",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "product",
+        "hookHeadline": "Mono workhorse - The everyday one.",
+        "pillar": "Product",
+        "storiesConceptFramesStickers": "Weekly rhythm: Lifestyle (SLIDER) - 2-5 frames",
+        "flags": "Verify product name"
+      },
+      {
+        "day": 35,
+        "date": "Sun Sep 06, 2026",
+        "weekday": "Sun",
+        "phase": "3 - Resonance",
+        "slot": "Hero",
+        "format": "Carousel x3",
+        "archetype": "before-after",
+        "hookHeadline": "Customer No. 2 - six months in.",
+        "pillar": "Transformation",
+        "storiesConceptFramesStickers": "Weekly rhythm: Week preview (COUNTDOWN) - 2-5 frames",
+        "flags": "Real photos + consent"
+      },
+      {
+        "day": 36,
+        "date": "Mon Sep 07, 2026",
+        "weekday": "Mon",
+        "phase": "3 - Resonance",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "typo",
+        "hookHeadline": "We don't sell hair. We sell mornings.",
+        "pillar": "Brand",
+        "storiesConceptFramesStickers": "Weekly rhythm: Motivation (QUOTE-SHARE) - 2-5 frames",
+        "flags": "Labor Day caption"
+      },
+      {
+        "day": 37,
+        "date": "Tue Sep 08, 2026",
+        "weekday": "Tue",
+        "phase": "3 - Resonance",
+        "slot": "Hero",
+        "format": "Carousel x5",
+        "archetype": "how-it-works",
+        "hookHeadline": "What to gift the man rebuilding his look.",
+        "pillar": "Lifestyle",
+        "storiesConceptFramesStickers": "Weekly rhythm: Tips (LINK) - 2-5 frames"
+      },
+      {
+        "day": 38,
+        "date": "Wed Sep 09, 2026",
+        "weekday": "Wed",
+        "phase": "3 - Resonance",
+        "slot": "Hero",
+        "format": "Reel",
+        "archetype": "product routine reel",
+        "hookHeadline": "The full care routine, 30 seconds.",
+        "pillar": "Product",
+        "storiesConceptFramesStickers": "Weekly rhythm: Product spotlight (LINK) - 2-5 frames"
+      },
+      {
+        "day": 39,
+        "date": "Thu Sep 10, 2026",
+        "weekday": "Thu",
+        "phase": "3 - Resonance",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "quote",
+        "hookHeadline": "Took me a year to try. Wish I'd done it sooner.",
+        "pillar": "Social Proof",
+        "storiesConceptFramesStickers": "Weekly rhythm: Community Q&A (Q-BOX) - 2-5 frames",
+        "flags": "REQUIRES REAL QUOTE + consent"
+      },
+      {
+        "day": 40,
+        "date": "Fri Sep 11, 2026",
+        "weekday": "Fri",
+        "phase": "3 - Resonance",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "photo editorial",
+        "hookHeadline": "What we got right and wrong this season.",
+        "pillar": "Lifestyle",
+        "storiesConceptFramesStickers": "Weekly rhythm: Behind the scenes (POLL) - 2-5 frames"
+      },
+      {
+        "day": 41,
+        "date": "Sat Sep 12, 2026",
+        "weekday": "Sat",
+        "phase": "3 - Resonance",
+        "slot": "Hero",
+        "format": "Reel",
+        "archetype": "transformation reel",
+        "hookHeadline": "3-second reveal, slow-mo turn.",
+        "pillar": "Transformation",
+        "storiesConceptFramesStickers": "Weekly rhythm: Lifestyle (SLIDER) - 2-5 frames",
+        "flags": "Consent; ink cover"
+      },
+      {
+        "day": 42,
+        "date": "Sun Sep 13, 2026",
+        "weekday": "Sun",
+        "phase": "3 - Resonance",
+        "slot": "Hero",
+        "format": "Carousel x5",
+        "archetype": "how-it-works",
+        "hookHeadline": "Density 80 / 100 / 130 - what each actually looks like.",
+        "pillar": "Education",
+        "storiesConceptFramesStickers": "Weekly rhythm: Week preview (COUNTDOWN) - 2-5 frames"
+      },
+      {
+        "day": 43,
+        "date": "Mon Sep 14, 2026",
+        "weekday": "Mon",
+        "phase": "3 - Resonance",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "typo",
+        "hookHeadline": "Made by hand. Inspected by one.",
+        "pillar": "Brand",
+        "storiesConceptFramesStickers": "Weekly rhythm: Motivation (QUOTE-SHARE) - 2-5 frames"
+      },
+      {
+        "day": 44,
+        "date": "Tue Sep 15, 2026",
+        "weekday": "Tue",
+        "phase": "3 - Resonance",
+        "slot": "Hero",
+        "format": "Carousel x5",
+        "archetype": "how-it-works",
+        "hookHeadline": "Color match in 4 minutes, without leaving your bathroom.",
+        "pillar": "Education",
+        "storiesConceptFramesStickers": "Weekly rhythm: Tips (LINK) - 2-5 frames"
+      },
+      {
+        "day": 45,
+        "date": "Wed Sep 16, 2026",
+        "weekday": "Wed",
+        "phase": "3 - Resonance",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "product",
+        "hookHeadline": "Micro Skin ($219) - The thinnest edge we offer.",
+        "pillar": "Product",
+        "storiesConceptFramesStickers": "Weekly rhythm: Product spotlight (LINK) - 2-5 frames",
+        "flags": "Verify price"
+      },
+      {
+        "day": 46,
+        "date": "Thu Sep 17, 2026",
+        "weekday": "Thu",
+        "phase": "3 - Resonance",
+        "slot": "Hero",
+        "format": "Reel",
+        "archetype": "Q&A reel",
+        "hookHeadline": "5 DMs I got this week - answered.",
+        "pillar": "Social Proof",
+        "storiesConceptFramesStickers": "Weekly rhythm: Community Q&A (Q-BOX) - 2-5 frames"
+      },
+      {
+        "day": 47,
+        "date": "Fri Sep 18, 2026",
+        "weekday": "Fri",
+        "phase": "3 - Resonance",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "typo editorial",
+        "hookHeadline": "How long a system actually lasts (and what kills them faster).",
+        "pillar": "Education",
+        "storiesConceptFramesStickers": "Weekly rhythm: Behind the scenes (POLL) - 2-5 frames"
+      },
+      {
+        "day": 48,
+        "date": "Sat Sep 19, 2026",
+        "weekday": "Sat",
+        "phase": "3 - Resonance",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "product",
+        "hookHeadline": "Adhesive Remover - The unsung hero.",
+        "pillar": "Product",
+        "storiesConceptFramesStickers": "Weekly rhythm: Lifestyle (SLIDER) - 2-5 frames",
+        "flags": "Verify name/price"
+      },
+      {
+        "day": 49,
+        "date": "Sun Sep 20, 2026",
+        "weekday": "Sun",
+        "phase": "3 - Resonance",
+        "slot": "Hero",
+        "format": "Carousel x3",
+        "archetype": "before-after",
+        "hookHeadline": "Customer No. 3 - the first system.",
+        "pillar": "Transformation",
+        "storiesConceptFramesStickers": "Weekly rhythm: Week preview (COUNTDOWN) - 2-5 frames",
+        "flags": "Real photos + consent"
+      },
+      {
+        "day": 50,
+        "date": "Mon Sep 21, 2026",
+        "weekday": "Mon",
+        "phase": "3 - Resonance",
+        "slot": "Hero",
+        "format": "Reel",
+        "archetype": "founder reel",
+        "hookHeadline": "Day 50. What I've learned posting every day.",
+        "pillar": "Founder",
+        "storiesConceptFramesStickers": "Weekly rhythm: Motivation (QUOTE-SHARE) - 2-5 frames"
+      },
+      {
+        "day": 51,
+        "date": "Tue Sep 22, 2026",
+        "weekday": "Tue",
+        "phase": "3 - Resonance",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "typo editorial",
+        "hookHeadline": "Why I don't recommend the cheapest system on the market.",
+        "pillar": "Education",
+        "storiesConceptFramesStickers": "Weekly rhythm: Tips (LINK) - 2-5 frames"
+      },
+      {
+        "day": 52,
+        "date": "Wed Sep 23, 2026",
+        "weekday": "Wed",
+        "phase": "3 - Resonance",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "product",
+        "hookHeadline": "Nano Skin ($269) - 0.03mm. Our lowest profile.",
+        "pillar": "Product",
+        "storiesConceptFramesStickers": "Weekly rhythm: Product spotlight (LINK) - 2-5 frames",
+        "flags": "Verify price"
+      },
+      {
+        "day": 53,
+        "date": "Thu Sep 24, 2026",
+        "weekday": "Thu",
+        "phase": "3 - Resonance",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "quote",
+        "hookHeadline": "Vincent answered my DM at 2am. From Brazil.",
+        "pillar": "Social Proof",
+        "storiesConceptFramesStickers": "Weekly rhythm: Community Q&A (Q-BOX) - 2-5 frames",
+        "flags": "REQUIRES REAL QUOTE + consent"
+      },
+      {
+        "day": 54,
+        "date": "Fri Sep 25, 2026",
+        "weekday": "Fri",
+        "phase": "3 - Resonance",
+        "slot": "Hero",
+        "format": "Reel",
+        "archetype": "BTS reel",
+        "hookHeadline": "Packing week - what ships on Friday.",
+        "pillar": "Lifestyle",
+        "storiesConceptFramesStickers": "Weekly rhythm: Behind the scenes (POLL) - 2-5 frames"
+      },
+      {
+        "day": 55,
+        "date": "Sat Sep 26, 2026",
+        "weekday": "Sat",
+        "phase": "3 - Resonance",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "typo",
+        "hookHeadline": "Independence - the small kind.",
+        "pillar": "Brand",
+        "storiesConceptFramesStickers": "Weekly rhythm: Lifestyle (SLIDER) - 2-5 frames"
+      },
+      {
+        "day": 56,
+        "date": "Sun Sep 27, 2026",
+        "weekday": "Sun",
+        "phase": "3 - Resonance",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "promo",
+        "hookHeadline": "A welcome, not a sale. 10% off your first system this week. CODE FIRST10",
+        "pillar": "Sale",
+        "storiesConceptFramesStickers": "Weekly rhythm: Week preview (COUNTDOWN) - 2-5 frames",
+        "flags": "Cream tile; no urgency theater"
+      },
+      {
+        "day": 57,
+        "date": "Mon Sep 28, 2026",
+        "weekday": "Mon",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "typo",
+        "hookHeadline": "Two months in. Same standard.",
+        "pillar": "Brand",
+        "storiesConceptFramesStickers": "Weekly rhythm: Motivation (QUOTE-SHARE) - 2-5 frames"
+      },
+      {
+        "day": 58,
+        "date": "Tue Sep 29, 2026",
+        "weekday": "Tue",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Carousel x5",
+        "archetype": "how-it-works",
+        "hookHeadline": "Sweat, gym, and hair systems - what actually works.",
+        "pillar": "Education",
+        "storiesConceptFramesStickers": "Weekly rhythm: Tips (LINK) - 2-5 frames"
+      },
+      {
+        "day": 59,
+        "date": "Wed Sep 30, 2026",
+        "weekday": "Wed",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Reel",
+        "archetype": "product macro reel",
+        "hookHeadline": "Skin Frontal - texture, up close.",
+        "pillar": "Product",
+        "storiesConceptFramesStickers": "Weekly rhythm: Product spotlight (LINK) - 2-5 frames"
+      },
+      {
+        "day": 60,
+        "date": "Thu Oct 01, 2026",
+        "weekday": "Thu",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "quote",
+        "hookHeadline": "The first hairline that fooled my barber.",
+        "pillar": "Social Proof",
+        "storiesConceptFramesStickers": "Weekly rhythm: Community Q&A (Q-BOX) - 2-5 frames",
+        "flags": "REQUIRES REAL QUOTE + consent"
+      },
+      {
+        "day": 61,
+        "date": "Fri Oct 02, 2026",
+        "weekday": "Fri",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Reel",
+        "archetype": "BTS reel",
+        "hookHeadline": "Studio note - Yago's first photoshoot.",
+        "pillar": "Lifestyle",
+        "storiesConceptFramesStickers": "Weekly rhythm: Behind the scenes (POLL) - 2-5 frames"
+      },
+      {
+        "day": 62,
+        "date": "Sat Oct 03, 2026",
+        "weekday": "Sat",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "product",
+        "hookHeadline": "Custom Hair System - The made-for-you tier.",
+        "pillar": "Product",
+        "storiesConceptFramesStickers": "Weekly rhythm: Lifestyle (SLIDER) - 2-5 frames",
+        "flags": "Verify offering"
+      },
+      {
+        "day": 63,
+        "date": "Sun Oct 04, 2026",
+        "weekday": "Sun",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Carousel x3",
+        "archetype": "before-after",
+        "hookHeadline": "Customer No. 4 - ninety days.",
+        "pillar": "Transformation",
+        "storiesConceptFramesStickers": "Weekly rhythm: Week preview (COUNTDOWN) - 2-5 frames",
+        "flags": "Real photos + consent"
+      },
+      {
+        "day": 64,
+        "date": "Mon Oct 05, 2026",
+        "weekday": "Mon",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "typo (ink)",
+        "hookHeadline": "The best compliment is silence.",
+        "pillar": "Brand",
+        "storiesConceptFramesStickers": "Weekly rhythm: Motivation (QUOTE-SHARE) - 2-5 frames",
+        "flags": "9-tile check"
+      },
+      {
+        "day": 65,
+        "date": "Tue Oct 06, 2026",
+        "weekday": "Tue",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "typo editorial",
+        "hookHeadline": "The 5 questions to ask before buying your first system.",
+        "pillar": "Education",
+        "storiesConceptFramesStickers": "Weekly rhythm: Tips (LINK) - 2-5 frames"
+      },
+      {
+        "day": 66,
+        "date": "Wed Oct 07, 2026",
+        "weekday": "Wed",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "product",
+        "hookHeadline": "Micro Skin MD ($269)",
+        "pillar": "Product",
+        "storiesConceptFramesStickers": "Weekly rhythm: Product spotlight (LINK) - 2-5 frames",
+        "flags": "Verify claim wording - no medical claims"
+      },
+      {
+        "day": 67,
+        "date": "Thu Oct 08, 2026",
+        "weekday": "Thu",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Reel",
+        "archetype": "testimonial reel",
+        "hookHeadline": "Customer on camera - 30s, no script.",
+        "pillar": "Social Proof",
+        "storiesConceptFramesStickers": "Weekly rhythm: Community Q&A (Q-BOX) - 2-5 frames",
+        "flags": "Real customer + consent"
+      },
+      {
+        "day": 68,
+        "date": "Fri Oct 09, 2026",
+        "weekday": "Fri",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "photo editorial",
+        "hookHeadline": "Rio at sunrise - why I shoot product before 7am.",
+        "pillar": "Lifestyle",
+        "storiesConceptFramesStickers": "Weekly rhythm: Behind the scenes (POLL) - 2-5 frames"
+      },
+      {
+        "day": 69,
+        "date": "Sat Oct 10, 2026",
+        "weekday": "Sat",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Reel",
+        "archetype": "transformation reel",
+        "hookHeadline": "Side-by-side reveal, 8 seconds.",
+        "pillar": "Transformation",
+        "storiesConceptFramesStickers": "Weekly rhythm: Lifestyle (SLIDER) - 2-5 frames",
+        "flags": "Consent; ink cover"
+      },
+      {
+        "day": 70,
+        "date": "Sun Oct 11, 2026",
+        "weekday": "Sun",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Carousel x5",
+        "archetype": "how-it-works",
+        "hookHeadline": "Make a system last twice as long.",
+        "pillar": "Education",
+        "storiesConceptFramesStickers": "Weekly rhythm: Week preview (COUNTDOWN) - 2-5 frames"
+      },
+      {
+        "day": 71,
+        "date": "Mon Oct 12, 2026",
+        "weekday": "Mon",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Reel",
+        "archetype": "founder reel",
+        "hookHeadline": "Why I personally inspect every order.",
+        "pillar": "Founder",
+        "storiesConceptFramesStickers": "Weekly rhythm: Motivation (QUOTE-SHARE) - 2-5 frames"
+      },
+      {
+        "day": 72,
+        "date": "Tue Oct 13, 2026",
+        "weekday": "Tue",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Carousel x5",
+        "archetype": "how-it-works",
+        "hookHeadline": "Maintenance - daily, weekly, monthly.",
+        "pillar": "Education",
+        "storiesConceptFramesStickers": "Weekly rhythm: Tips (LINK) - 2-5 frames"
+      },
+      {
+        "day": 73,
+        "date": "Wed Oct 14, 2026",
+        "weekday": "Wed",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "product",
+        "hookHeadline": "Tape & Adhesive Set - The bond, simplified.",
+        "pillar": "Product",
+        "storiesConceptFramesStickers": "Weekly rhythm: Product spotlight (LINK) - 2-5 frames",
+        "flags": "Verify name/price"
+      },
+      {
+        "day": 74,
+        "date": "Thu Oct 15, 2026",
+        "weekday": "Thu",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "quote",
+        "hookHeadline": "Six months. Still my system. Still my confidence.",
+        "pillar": "Social Proof",
+        "storiesConceptFramesStickers": "Weekly rhythm: Community Q&A (Q-BOX) - 2-5 frames",
+        "flags": "REQUIRES REAL QUOTE + consent"
+      },
+      {
+        "day": 75,
+        "date": "Fri Oct 16, 2026",
+        "weekday": "Fri",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Reel",
+        "archetype": "BTS reel",
+        "hookHeadline": "Packing your order - the last 10 minutes.",
+        "pillar": "Lifestyle",
+        "storiesConceptFramesStickers": "Weekly rhythm: Behind the scenes (POLL) - 2-5 frames"
+      },
+      {
+        "day": 76,
+        "date": "Sat Oct 17, 2026",
+        "weekday": "Sat",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "product",
+        "hookHeadline": "Lace Elite ($329) - Top of the lace range.",
+        "pillar": "Product",
+        "storiesConceptFramesStickers": "Weekly rhythm: Lifestyle (SLIDER) - 2-5 frames",
+        "flags": "Verify price"
+      },
+      {
+        "day": 77,
+        "date": "Sun Oct 18, 2026",
+        "weekday": "Sun",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Carousel x3",
+        "archetype": "before-after",
+        "hookHeadline": "Customer No. 5.",
+        "pillar": "Transformation",
+        "storiesConceptFramesStickers": "Weekly rhythm: Week preview (COUNTDOWN) - 2-5 frames",
+        "flags": "Real photos + consent"
+      },
+      {
+        "day": 78,
+        "date": "Mon Oct 19, 2026",
+        "weekday": "Mon",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "typo",
+        "hookHeadline": "There's no version of you that needs to apologize for this.",
+        "pillar": "Brand",
+        "storiesConceptFramesStickers": "Weekly rhythm: Motivation (QUOTE-SHARE) - 2-5 frames"
+      },
+      {
+        "day": 79,
+        "date": "Tue Oct 20, 2026",
+        "weekday": "Tue",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "typo editorial",
+        "hookHeadline": "Hair transplants vs hair systems - the honest comparison.",
+        "pillar": "Education",
+        "storiesConceptFramesStickers": "Weekly rhythm: Tips (LINK) - 2-5 frames",
+        "flags": "No medical claims"
+      },
+      {
+        "day": 80,
+        "date": "Wed Oct 21, 2026",
+        "weekday": "Wed",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Reel",
+        "archetype": "product film",
+        "hookHeadline": "Lace Pro - 12s editorial film.",
+        "pillar": "Product",
+        "storiesConceptFramesStickers": "Weekly rhythm: Product spotlight (LINK) - 2-5 frames"
+      },
+      {
+        "day": 81,
+        "date": "Thu Oct 22, 2026",
+        "weekday": "Thu",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "quote",
+        "hookHeadline": "Wore it on my wedding day. No one knew.",
+        "pillar": "Social Proof",
+        "storiesConceptFramesStickers": "Weekly rhythm: Community Q&A (Q-BOX) - 2-5 frames",
+        "flags": "REQUIRES REAL QUOTE + consent"
+      },
+      {
+        "day": 82,
+        "date": "Fri Oct 23, 2026",
+        "weekday": "Fri",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "promo",
+        "hookHeadline": "Fall note: 15% off select systems through Oct 29. CODE FALL15",
+        "pillar": "Sale",
+        "storiesConceptFramesStickers": "Weekly rhythm: Behind the scenes (POLL) - 2-5 frames",
+        "flags": "Cream tile; pair with Day 83 reel"
+      },
+      {
+        "day": 83,
+        "date": "Sat Oct 24, 2026",
+        "weekday": "Sat",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Reel",
+        "archetype": "sale support reel",
+        "hookHeadline": "Featured systems on sale - 6s x 3 cuts.",
+        "pillar": "Sale",
+        "storiesConceptFramesStickers": "Weekly rhythm: Lifestyle (SLIDER) - 2-5 frames"
+      },
+      {
+        "day": 84,
+        "date": "Sun Oct 25, 2026",
+        "weekday": "Sun",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Carousel x5",
+        "archetype": "how-it-works",
+        "hookHeadline": "The case for owning two - building a rotation.",
+        "pillar": "Education",
+        "storiesConceptFramesStickers": "Weekly rhythm: Week preview (COUNTDOWN) - 2-5 frames"
+      },
+      {
+        "day": 85,
+        "date": "Mon Oct 26, 2026",
+        "weekday": "Mon",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Reel",
+        "archetype": "founder reel",
+        "hookHeadline": "Day 85. Looking back at the first seven posts.",
+        "pillar": "Founder",
+        "storiesConceptFramesStickers": "Weekly rhythm: Motivation (QUOTE-SHARE) - 2-5 frames"
+      },
+      {
+        "day": 86,
+        "date": "Tue Oct 27, 2026",
+        "weekday": "Tue",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Carousel x5",
+        "archetype": "before-after",
+        "hookHeadline": "Five transformations from this season.",
+        "pillar": "Transformation",
+        "storiesConceptFramesStickers": "Weekly rhythm: Tips (LINK) - 2-5 frames",
+        "flags": "Real photos + consent"
+      },
+      {
+        "day": 87,
+        "date": "Wed Oct 28, 2026",
+        "weekday": "Wed",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "product",
+        "hookHeadline": "Care & Maintenance Bundle.",
+        "pillar": "Product",
+        "storiesConceptFramesStickers": "Weekly rhythm: Product spotlight (LINK) - 2-5 frames",
+        "flags": "Verify name/price"
+      },
+      {
+        "day": 88,
+        "date": "Thu Oct 29, 2026",
+        "weekday": "Thu",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "quote",
+        "hookHeadline": "Closing quote slot.",
+        "pillar": "Social Proof",
+        "storiesConceptFramesStickers": "Weekly rhythm: Community Q&A (Q-BOX) - 2-5 frames",
+        "flags": "REQUIRES REAL QUOTE + consent"
+      },
+      {
+        "day": 89,
+        "date": "Fri Oct 30, 2026",
+        "weekday": "Fri",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Reel",
+        "archetype": "BTS reel",
+        "hookHeadline": "What's next - 30 seconds of season two.",
+        "pillar": "Brand",
+        "storiesConceptFramesStickers": "Weekly rhythm: Behind the scenes (POLL) - 2-5 frames"
+      },
+      {
+        "day": 90,
+        "date": "Sat Oct 31, 2026",
+        "weekday": "Sat",
+        "phase": "4 - Conversion",
+        "slot": "Hero",
+        "format": "Static",
+        "archetype": "photo typo",
+        "hookHeadline": "Ninety days. Same standard. Different chapter.",
+        "pillar": "Brand",
+        "storiesConceptFramesStickers": "Weekly rhythm: Lifestyle (SLIDER) - 2-5 frames"
+      }
+    ]
+  },
+  "creativeDraft": {
+    "sourceArtifact": "05-30-day-creative-draft.html",
+    "dayCount": 30,
+    "feedItemCount": 44,
+    "storyFrameCount": 98,
+    "days": [
+      {
+        "d": 1,
+        "date": "Aug 3",
+        "wd": "Mon",
+        "pillar": "Brand",
+        "theme": "Silence → statement",
+        "feed": [
+          [
+            "static",
+            "wordmark",
+            "A new chapter starts today.",
+            "",
+            "ink"
+          ],
+          [
+            "static",
+            "quote",
+            "Same company. New standard.",
+            "",
+            ""
+          ],
+          [
+            "static",
+            "typo",
+            "Not louder. Not different. Just clearer.",
+            "",
+            ""
+          ]
+        ],
+        "stories": [
+          "[ink] Hair Solutions Co.",
+          "Something changed.",
+          "Eight years of OneHead Hair becomes Hair Solutions Co.|Quote share",
+          "What is your biggest question about hair systems?|Question box"
+        ],
+        "label": "Launch day · founder"
+      },
+      {
+        "d": 2,
+        "date": "Aug 4",
+        "wd": "Tue",
+        "pillar": "Brand",
+        "theme": "Manifesto",
+        "feed": [
+          [
+            "carousel",
+            "carousel-cover",
+            "For the man who wants to look like himself again.",
+            "Not louder. Not different. Just himself, on an ordinary day.|A hair system is a decision to stop thinking about your hair and start thinking about your day.|We build for quiet confidence, not attention.|Save this. Start with the guide.",
+            ""
+          ],
+          [
+            "static",
+            "typo",
+            "Confidence is not loud.",
+            "",
+            ""
+          ],
+          [
+            "static",
+            "quote",
+            "We build for quiet confidence, not attention.",
+            "",
+            ""
+          ]
+        ],
+        "stories": [
+          "Manifesto, line by line.",
+          "Every man deserves to recognise himself in the mirror.|Quote share",
+          "A hair system is a costume, a decision, or neither|Quiz",
+          "Save the guide. DM START to begin.|Link"
+        ],
+        "label": "Education"
+      },
+      {
+        "d": 3,
+        "date": "Aug 5",
+        "wd": "Wed",
+        "pillar": "Founder",
+        "theme": "Portrait + Reel",
+        "feed": [
+          [
+            "reel",
+            "photo",
+            "I wear what I sell.",
+            "0–2s|I wear what I sell. Vincent to camera.|2–8s|Every system we sell, I have worn myself.|8–15s|Product on desk, hands adjusting, natural light.|15–20s|Daylight hairline close crop, no filter.|20–25s|Ask me directly. DM START.",
+            "Vincent portrait"
+          ],
+          [
+            "static",
+            "typo",
+            "Made for grown men.",
+            "",
+            "ink"
+          ],
+          [
+            "static",
+            "photo",
+            "The desk where every system gets checked before it ships.",
+            "",
+            "QC desk"
+          ]
+        ],
+        "stories": [
+          "[hatch:Portrait session] Behind the portrait.",
+          "Behind the Reel — one take, natural light.",
+          "Questions about wearing one daily?|Link"
+        ],
+        "label": "Product"
+      },
+      {
+        "d": 4,
+        "date": "Aug 6",
+        "wd": "Thu",
+        "pillar": "Education",
+        "theme": "Plain-English explainer",
+        "feed": [
+          [
+            "reel",
+            "photo",
+            "What makes a hair system different.",
+            "0–2s|A hair system, up close.|Beat|Base macro in natural light.|Beat|Hairline close-up, unfiltered.|Beat|On-head crop in an everyday setting.|Close|Save this before you compare options.",
+            "Macro base"
+          ],
+          [
+            "static",
+            "product",
+            "Thin Skin Pro",
+            "$279|0.08 mm skin base",
+            "Macro edge"
+          ],
+          [
+            "static",
+            "product",
+            "Mono Pro",
+            "$299|Fine welded monofilament",
+            "Macro weave"
+          ]
+        ],
+        "stories": [
+          "You asked. We answer plainly.",
+          "A hair system is built around a base, colour, density, and fit.",
+          "Will people notice? The choices at the hairline matter most.",
+          "How long does it last? Base and care both matter.",
+          "More questions?|Question box"
+        ],
+        "label": "Q&A"
+      },
+      {
+        "d": 5,
+        "date": "Aug 7",
+        "wd": "Fri",
+        "pillar": "Product",
+        "theme": "First product moment",
+        "feed": [
+          [
+            "static",
+            "product",
+            "Lace Elite",
+            "Swiss lace|Photographed honestly.",
+            "Lace Elite hero"
+          ],
+          [
+            "static",
+            "product",
+            "Lace Fusion VF",
+            "$289|Hybrid lace with clear PU perimeter",
+            "Macro front"
+          ],
+          [
+            "static",
+            "product",
+            "Micro Skin",
+            "$219|0.06 mm skin base",
+            "Macro edge"
+          ]
+        ],
+        "stories": [
+          "[hatch:Lace Elite] Shooting in soft daylight.",
+          "[hatch:Hairline] Macro, no filter.",
+          "Which base are you curious about? Lace or skin|Poll",
+          "Specs and fit questions.|Link"
+        ],
+        "label": "Behind the scenes"
+      },
+      {
+        "d": 6,
+        "date": "Aug 8",
+        "wd": "Sat",
+        "pillar": "Education",
+        "theme": "Hairline realism",
+        "feed": [
+          [
+            "carousel",
+            "carousel-cover",
+            "What makes a front hairline look real?",
+            "Realism is five choices working together.|Base — lace and skin fronts sit closer to the scalp.|Density — match your natural hair, not more.|Colour and cut-in matter.|Save this before your first order. DM HAIRLINE.",
+            ""
+          ],
+          [
+            "static",
+            "quote",
+            "A hairline should survive daylight.",
+            "",
+            "Hairline macro"
+          ],
+          [
+            "static",
+            "product",
+            "Skin Frontal",
+            "$169|Coverage where it counts",
+            "Frontal"
+          ]
+        ],
+        "stories": [
+          "The question we hear most: will the hairline look real?",
+          "How confident are you spotting a system in the wild?|Slider",
+          "The practical answer is in today’s carousel.|Link"
+        ],
+        "label": "Founder"
+      },
+      {
+        "d": 7,
+        "date": "Aug 9",
+        "wd": "Sun",
+        "pillar": "Social proof",
+        "theme": "Week preview",
+        "flag": "Real consented quote required. Swap with Day 8 QC Reel if unavailable.",
+        "feed": [
+          [
+            "reel",
+            "quote",
+            "Customer proof, in his words.",
+            "Open|Consented quote frame.|Beat|Approved product b-roll.|Beat|Daylight hairline detail.|Close|Source attribution.",
+            ""
+          ],
+          [
+            "static",
+            "typo",
+            "Ordering online should not feel like gambling.",
+            "",
+            ""
+          ],
+          [
+            "static",
+            "product",
+            "Nano Skin",
+            "$269|Ultra-thin skin construction",
+            "Macro base"
+          ]
+        ],
+        "stories": [
+          "Week one, done. Seven rows on the grid.",
+          "What should we go deeper on? Bases or colour|Poll",
+          "Next week: QC, decisions, and the first transformation.",
+          "Monday’s QC Reel.|Countdown"
+        ],
+        "label": "Week preview"
+      },
+      {
+        "d": 8,
+        "date": "Aug 10",
+        "wd": "Mon",
+        "pillar": "Founder / QC",
+        "theme": "QC Reel",
+        "feed": [
+          [
+            "reel",
+            "photo",
+            "Before it ships, I check this.",
+            "Hook|Before it ships, I check this.|Beat|Density against the order sheet.|Beat|Colour in daylight.|Beat|Hairline knots, up close.|Close|DM QC for the checklist.",
+            "QC desk"
+          ]
+        ],
+        "stories": [
+          "The standard is personal. Every order gets checked.|Quote share",
+          "[hatch:QC desk] Monday, 8am.",
+          "The checklist is in today’s Reel.|Link"
+        ],
+        "label": "Motivation"
+      },
+      {
+        "d": 9,
+        "date": "Aug 11",
+        "wd": "Tue",
+        "pillar": "Education",
+        "theme": "Decision carousel",
+        "feed": [
+          [
+            "carousel",
+            "carousel-cover",
+            "New here? Start with these 5 decisions.",
+            "1 · Base — how it looks, feels, and bonds.|2 · Density — match your natural hair, not more.|3 · Colour — match at the temples, in daylight.|4 · Budget — choose with upkeep in mind.|5 · Wear style — daily remove or longer bond.|DM START and we will point you to the right guide.",
+            ""
+          ]
+        ],
+        "stories": [
+          "Decide base first. Everything else follows.",
+          "Which decision is blocking you?|Question box",
+          "Save today’s guide.|Link"
+        ],
+        "label": "Tips"
+      },
+      {
+        "d": 10,
+        "date": "Aug 12",
+        "wd": "Wed",
+        "pillar": "Product",
+        "theme": "Mono Pro",
+        "feed": [
+          [
+            "static",
+            "product",
+            "Mono Pro",
+            "$299|Structured. Breathable. Built for daily wear.",
+            "Mono Pro hero"
+          ]
+        ],
+        "stories": [
+          "Mono Pro — breathable, durable, structured.",
+          "[hatch:Macro weave] Product detail.",
+          "See current specs.|Link"
+        ],
+        "label": "Product spotlight"
+      },
+      {
+        "d": 11,
+        "date": "Aug 13",
+        "wd": "Thu",
+        "pillar": "Social proof",
+        "theme": "Real quote required",
+        "flag": "Written consent and exact customer quote required. Swap with education if unavailable.",
+        "feed": [
+          [
+            "static",
+            "quote",
+            "Customer proof belongs to the customer.",
+            "Real quote required",
+            ""
+          ]
+        ],
+        "stories": [
+          "Answering this week’s real customer questions.",
+          "Does it work at the gym? Attachment and prep matter.",
+          "What does a first system cost? Start with the live catalogue.",
+          "Ask for next week.|Question box"
+        ],
+        "label": "Q&A"
+      },
+      {
+        "d": 12,
+        "date": "Aug 14",
+        "wd": "Fri",
+        "pillar": "Education",
+        "theme": "Education editorial",
+        "feed": [
+          [
+            "static",
+            "typo",
+            "Why modern hair systems are different.",
+            "The build is different. The fit is specific. The result depends on the choices.",
+            ""
+          ]
+        ],
+        "stories": [
+          "[hatch:Studio] Friday at the work table.",
+          "Writing next week’s education posts.",
+          "More myth-busting? Yes or keep going|Poll",
+          "Weekend: the first transformation preview."
+        ],
+        "label": "Behind the scenes"
+      },
+      {
+        "d": 13,
+        "date": "Aug 15",
+        "wd": "Sat",
+        "pillar": "Product",
+        "theme": "Product macro Reel",
+        "feed": [
+          [
+            "reel",
+            "photo",
+            "Lace Elite. Knot to tip.",
+            "Hook|Extreme macro of a single knot.|Beat|Rack focus along the hairline.|Beat|Light across the lace.|Close|Full system, quiet wordmark.",
+            "Lace Elite"
+          ]
+        ],
+        "stories": [
+          "[hatch:Rio] Saturday. Rio. Coffee first.|Slider",
+          "The macro Reel is live.|Link"
+        ],
+        "label": "Lifestyle"
+      },
+      {
+        "d": 14,
+        "date": "Aug 16",
+        "wd": "Sun",
+        "pillar": "Transformation",
+        "theme": "Consent gate",
+        "flag": "Real before-and-after images and written consent required.",
+        "feed": [
+          [
+            "carousel",
+            "carousel-cover",
+            "Same man. Different mirror.",
+            "Before — consented customer image.|Matched. Cut in. Worn.|After — real quote and approved image.",
+            ""
+          ]
+        ],
+        "stories": [
+          "Week two begins: built to disappear.",
+          "Want the full transformation story?|Poll",
+          "Monday’s brand note.|Countdown"
+        ],
+        "label": "Week preview"
+      },
+      {
+        "d": 15,
+        "date": "Aug 17",
+        "wd": "Mon",
+        "pillar": "Brand",
+        "theme": "Built to disappear",
+        "feed": [
+          [
+            "static",
+            "typo",
+            "Built to disappear.",
+            "The best systems are the ones that let the rest of your day take over.",
+            ""
+          ]
+        ],
+        "stories": [
+          "Built to disappear. Worn to live.|Quote share",
+          "The point is not attention. It is getting on with the day.",
+          "This week: bases, application, proof."
+        ],
+        "label": "Motivation"
+      },
+      {
+        "d": 16,
+        "date": "Aug 18",
+        "wd": "Tue",
+        "pillar": "Education",
+        "theme": "Base types",
+        "feed": [
+          [
+            "carousel",
+            "carousel-cover",
+            "Four base types. One right priority for you.",
+            "Lace — breathability and a natural front.|Skin / poly — a smooth base and easier cleanup.|Mono — structure and durability.|Hybrid — a natural front with a practical perimeter.|DM BASE and tell us what matters most.",
+            ""
+          ]
+        ],
+        "stories": [
+          "Start with your priority: hairline, breathability, durability, or upkeep.",
+          "Which base leads on breathability? Lace, skin, or mono|Quiz",
+          "The practical breakdown is in today’s carousel.|Link"
+        ],
+        "label": "Tips"
+      },
+      {
+        "d": 17,
+        "date": "Aug 19",
+        "wd": "Wed",
+        "pillar": "Product",
+        "theme": "Apply and go",
+        "feed": [
+          [
+            "reel",
+            "photo",
+            "A clear routine, step by step.",
+            "Hook|Morning light and a clean setup.|Beat|Prep and two thin adhesive passes.|Beat|Frontal placed and pressed.|Beat|Comb through and check the edge.|Close|Save the sequence.",
+            "Skin Frontal"
+          ]
+        ],
+        "stories": [
+          "Skin Frontal — coverage where it counts.",
+          "[hatch:Application] Step-by-step setup.",
+          "Watch the full application.|Link"
+        ],
+        "label": "Product"
+      },
+      {
+        "d": 18,
+        "date": "Aug 20",
+        "wd": "Thu",
+        "pillar": "Social proof",
+        "theme": "Real quote required",
+        "flag": "Real quote required. Any shipping answer must use current store policy.",
+        "feed": [
+          [
+            "static",
+            "quote",
+            "Customer proof belongs to the customer.",
+            "Real quote required",
+            ""
+          ]
+        ],
+        "stories": [
+          "DM answers, round three.",
+          "Can I swim with it? The honest answer depends on attachment and care.",
+          "How fast is shipping? Check current policy before answering.",
+          "Ask anything.|Question box"
+        ],
+        "label": "Q&A"
+      },
+      {
+        "d": 19,
+        "date": "Aug 21",
+        "wd": "Fri",
+        "pillar": "Behind the scenes",
+        "theme": "Studio table",
+        "feed": [
+          [
+            "reel",
+            "photo",
+            "What is on the table this week.",
+            "Hook|Overhead of the workbench.|Beat|Systems in the QC queue.|Beat|Swatch book and order sheets.|Close|Every order gets a final check.",
+            "Studio table"
+          ]
+        ],
+        "stories": [
+          "[hatch:Workbench] Friday wrap.",
+          "Today’s shipping count goes here after the live check.",
+          "More behind-the-scenes?|Poll",
+          "Tomorrow: Thin Skin Pro."
+        ],
+        "label": "Behind the scenes"
+      },
+      {
+        "d": 20,
+        "date": "Aug 22",
+        "wd": "Sat",
+        "pillar": "Product",
+        "theme": "Thin Skin Pro",
+        "feed": [
+          [
+            "static",
+            "product",
+            "Thin Skin Pro",
+            "$279|0.08 mm skin base. A smooth everyday option.",
+            "Thin Skin hero"
+          ]
+        ],
+        "stories": [
+          "[hatch:Grooming bench] Saturday.|Slider",
+          "Thin Skin Pro, up close.|Link"
+        ],
+        "label": "Lifestyle"
+      },
+      {
+        "d": 21,
+        "date": "Aug 23",
+        "wd": "Sun",
+        "pillar": "Education",
+        "theme": "First-system guide",
+        "feed": [
+          [
+            "carousel",
+            "carousel-cover",
+            "How to choose your first system in 5 minutes.",
+            "Minute 1 — the hairline you want.|Minutes 2–3 — base by lifestyle, not trend.|Minutes 4–5 — colour at the temples, in daylight.|Still unsure? DM FIRST for a real answer.",
+            ""
+          ]
+        ],
+        "stories": [
+          "Week three: colour, QC, and a personal note from Rio.",
+          "How long should choosing take? Five minutes or weeks|Quiz",
+          "Monday’s note.|Countdown"
+        ],
+        "label": "Week preview"
+      },
+      {
+        "d": 22,
+        "date": "Aug 24",
+        "wd": "Mon",
+        "pillar": "Brand",
+        "theme": "Discretion",
+        "feed": [
+          [
+            "static",
+            "typo",
+            "No one has to know. That is the point.",
+            "",
+            "ink"
+          ]
+        ],
+        "stories": [
+          "Discretion is part of the product.|Quote share",
+          "A good hairline does not ask for attention.",
+          "Colour week starts tomorrow."
+        ],
+        "label": "Motivation"
+      },
+      {
+        "d": 23,
+        "date": "Aug 25",
+        "wd": "Tue",
+        "pillar": "Education",
+        "theme": "Colour",
+        "feed": [
+          [
+            "static",
+            "typo",
+            "Colour matching, honestly explained.",
+            "Match at the temples, in daylight. Small differences matter.",
+            ""
+          ]
+        ],
+        "stories": [
+          "Match at the temples, not the top.",
+          "[hatch:Swatch ring] Daylight.",
+          "DM COLOR with a daylight photo for a colour check.|Link"
+        ],
+        "label": "Tips"
+      },
+      {
+        "d": 24,
+        "date": "Aug 26",
+        "wd": "Wed",
+        "pillar": "Product",
+        "theme": "Lace Fusion VF",
+        "feed": [
+          [
+            "static",
+            "product",
+            "Lace Fusion VF",
+            "$289|Lace at the front. A clear PU perimeter around it.",
+            "Fusion hero"
+          ]
+        ],
+        "stories": [
+          "Lace Fusion VF — hybrid, practical, considered.",
+          "[hatch:Clear PU perimeter] Product detail.",
+          "See current product details.|Link"
+        ],
+        "label": "Product"
+      },
+      {
+        "d": 25,
+        "date": "Aug 27",
+        "wd": "Thu",
+        "pillar": "Social proof",
+        "theme": "Testimonial Reel",
+        "flag": "Real customer, exact quote, approved before-and-after media, and written consent required.",
+        "feed": [
+          [
+            "reel",
+            "quote",
+            "His words, not ours.",
+            "Hook|Consented customer quote.|Beat|Approved before-and-after b-roll.|Beat|Quiet daylight detail.|Close|Wordmark and source attribution.",
+            ""
+          ]
+        ],
+        "stories": [
+          "This week’s real questions, answered.",
+          "Start with base and lifestyle.",
+          "Match colour at the temples in daylight.",
+          "Your question for next week?|Question box"
+        ],
+        "label": "Q&A"
+      },
+      {
+        "d": 26,
+        "date": "Aug 28",
+        "wd": "Fri",
+        "pillar": "Lifestyle",
+        "theme": "Rio editorial",
+        "feed": [
+          [
+            "static",
+            "photo",
+            "Rio, 6am — why I work before the city wakes.",
+            "",
+            "Rio, 6am"
+          ]
+        ],
+        "stories": [
+          "[hatch:Sunrise balcony] Soft natural light.",
+          "Current order update goes here after the live check.",
+          "Morning person or slow start?|Poll"
+        ],
+        "label": "Behind the scenes"
+      },
+      {
+        "d": 27,
+        "date": "Aug 29",
+        "wd": "Sat",
+        "pillar": "Product",
+        "theme": "Care kit",
+        "flag": "Verify the current live product name, contents, and price before production.",
+        "feed": [
+          [
+            "static",
+            "product",
+            "Care kit",
+            "Live catalogue verification required|The essentials, clearly explained.",
+            "Kit flat lay"
+          ]
+        ],
+        "stories": [
+          "[hatch:Grooming bench] Care setup.|Slider",
+          "The care kit, explained after catalogue verification.|Link"
+        ],
+        "label": "Lifestyle"
+      },
+      {
+        "d": 28,
+        "date": "Aug 30",
+        "wd": "Sun",
+        "pillar": "Transformation",
+        "theme": "Consent gate",
+        "flag": "Real customer images and written consent required.",
+        "feed": [
+          [
+            "carousel",
+            "carousel-cover",
+            "Customer No. 1 — the full arc.",
+            "Before — consented photo.|Consult. Match. Cut in.|After — approved image and real quote.",
+            ""
+          ]
+        ],
+        "stories": [
+          "Month one closes this week.",
+          "What did week three miss?|Poll",
+          "Monday’s fit guide.|Countdown"
+        ],
+        "label": "Week preview"
+      },
+      {
+        "d": 29,
+        "date": "Aug 31",
+        "wd": "Mon",
+        "pillar": "Founder education",
+        "theme": "Fit Reel",
+        "feed": [
+          [
+            "reel",
+            "collage",
+            "How a system actually fits.",
+            "Hook|60 seconds on fit.|Beat|Perimeter and bond line on the bust.|Beat|Why fit leads realism.|Close|Fit questions — DM FIT.",
+            "Vincent + bust"
+          ]
+        ],
+        "stories": [
+          "Fit first. Everything else second.|Quote share",
+          "[hatch:Bust demonstration] Fit guide.",
+          "The fit guide is in today’s Reel.|Link"
+        ],
+        "label": "Motivation"
+      },
+      {
+        "d": 30,
+        "date": "Sep 1",
+        "wd": "Tue",
+        "pillar": "Brand",
+        "theme": "Month anchor",
+        "feed": [
+          [
+            "static",
+            "typo",
+            "September 1. New month, same standard.",
+            "",
+            "ink"
+          ]
+        ],
+        "stories": [
+          "Month two: education goes deeper.",
+          "[hatch:Recap] 30 days, 44 feed posts.",
+          "Tell us what to teach next.|Question box"
+        ],
+        "label": "Tips"
+      }
+    ]
+  },
+  "storiesRhythm": [
+    {
+      "weekday": "Monday",
+      "concept": "Motivation - quote or founder note",
+      "frames": "3-5",
+      "sticker": "Quote share",
+      "feedsHighlight": "Start Here / About"
+    },
+    {
+      "weekday": "Tuesday",
+      "concept": "Tips - one specific care tip",
+      "frames": "3-4",
+      "sticker": "Save reminder + link",
+      "feedsHighlight": "Guides"
+    },
+    {
+      "weekday": "Wednesday",
+      "concept": "Product spotlight - one product, 3 benefits",
+      "frames": "2-3",
+      "sticker": "Link to product page",
+      "feedsHighlight": "Products"
+    },
+    {
+      "weekday": "Thursday",
+      "concept": "Community Q&A - 3-5 anonymized DMs",
+      "frames": "5+",
+      "sticker": "Question box",
+      "feedsHighlight": "FAQ"
+    },
+    {
+      "weekday": "Friday",
+      "concept": "Behind the scenes - studio, QC, packing, Rio",
+      "frames": "4-6",
+      "sticker": "Poll",
+      "feedsHighlight": "About"
+    },
+    {
+      "weekday": "Saturday",
+      "concept": "Lifestyle - weekend, grooming, Rio life",
+      "frames": "2-3",
+      "sticker": "Emoji slider",
+      "feedsHighlight": "-"
+    },
+    {
+      "weekday": "Sunday",
+      "concept": "Week preview - tease Monday",
+      "frames": "3-4",
+      "sticker": "Countdown",
+      "feedsHighlight": "Start Here"
+    },
+    {
+      "weekday": "Highlights to build on Day 1: Start Here, Products, Reviews, Guides, Results, FAQ, Offers, About (ink + cream covers, line icons)."
+    }
+  ]
+}

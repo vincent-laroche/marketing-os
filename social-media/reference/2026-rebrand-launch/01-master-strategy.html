@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hair Solutions Co — Master Campaign Strategy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Patrick+Hand&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #fbf6ec; --paper-tint: #f5eedf; --ink: #2b2620; --pencil: #4d473d;
+      --rule: #c8bfa9; --grid: #e3d8b8; --accent: #d8482b; --highlight: #f9d27c;
+      --note-yellow: #fff19a; --note-pink: #ffd5c9; --ochre: #d9a441; --blue: #3b6e8e;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --hand: 'Patrick Hand', 'Caveat', cursive;
+      --hand-bold: 'Caveat', 'Patrick Hand', cursive;
+      --mono: 'IBM Plex Mono', ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink);
+      background: radial-gradient(circle, rgba(43,38,32,0.04) 1px, transparent 1.4px) 0 0 / 22px 22px, var(--paper);
+      font: 16px/1.5 var(--hand); }
+    .page { padding: 32px 48px 72px; max-width: 1320px; margin: 0 auto; }
+    .head { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; padding-bottom: 14px; border-bottom: 2px solid var(--ink); }
+    .head h1 { font: 800 52px/1.05 var(--serif); margin: 0; letter-spacing: -0.005em; }
+    .head h1 em { font-style: italic; }
+    .pin { display: inline-flex; align-items: center; gap: 8px; font: 12px/1 var(--mono); padding: 6px 10px; border: 1.5px dashed var(--accent); color: var(--accent); transform: rotate(-2.2deg); letter-spacing: 0.18em; background: var(--paper); vertical-align: middle; margin-left: 14px; }
+    .pin .x { width: 6px; height: 6px; background: var(--accent); transform: rotate(45deg); }
+    .head .sub { font: 18px/1.4 var(--hand); color: var(--pencil); margin-top: 8px; }
+    .head .meta { font: 11px/1.6 var(--mono); color: var(--pencil); letter-spacing: 0.14em; text-align: right; text-transform: uppercase; }
+    .head .meta b { color: var(--ink); }
+    .canvas { position: relative; margin-top: 26px;
+      background: repeating-linear-gradient(0deg, var(--grid) 0 1px, transparent 1px 24px),
+        repeating-linear-gradient(90deg, var(--grid) 0 1px, transparent 1px 24px), var(--paper-tint);
+      border: 3px solid var(--ink); border-radius: 14px; padding: 26px 26px 32px;
+      box-shadow: 6px 8px 0 -4px rgba(43,38,32,0.18); }
+    .section-label { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+    .canvas h2 { font: 800 30px/1 var(--serif); margin: 0; }
+    .pill { font: 12px/1 var(--mono); padding: 5px 9px; border: 1.5px solid var(--pencil); border-radius: 999px; color: var(--pencil); letter-spacing: 0.12em; transform: rotate(1.2deg); }
+    .pill.red { border-color: var(--accent); color: var(--accent); }
+    .lede { font: 17px/1.5 var(--hand); color: var(--pencil); margin: 0 0 18px; max-width: 78ch; }
+    .panels { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .panels.three { grid-template-columns: 1fr 1fr 1fr; }
+    .panel { border: 2px solid var(--pencil); border-radius: 10px; padding: 14px 16px; background: var(--paper); position: relative; }
+    .panel h3 { font: 700 14px/1 var(--mono); letter-spacing: 0.12em; text-transform: uppercase; margin: 0 0 12px; color: var(--pencil); display: flex; align-items: center; gap: 8px; }
+    .panel h3 .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    .panel p { margin: 6px 0; font: 16px/1.45 var(--hand); }
+    .panel ul { padding-left: 20px; margin: 6px 0; font: 15.5px/1.5 var(--hand); }
+    .panel li { margin: 4px 0; }
+    .tilt-1 { transform: rotate(-0.5deg); } .tilt-2 { transform: rotate(0.4deg); } .tilt-3 { transform: rotate(-0.25deg); }
+    /* Display serif stays outside cards; card detail copy uses the readable hand/mono system. */
+    .big-line { font: 700 26px/1.25 var(--hand-bold); margin: 4px 0 10px; }
+    .big-line em { font-style: italic; color: var(--accent); }
+    .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 4px 0 18px; }
+    .kpi { border: 2px solid var(--pencil); border-radius: 10px; padding: 14px; background: var(--paper); }
+    .kpi .label { font: 12px/1 var(--mono); color: var(--pencil); letter-spacing: 0.14em; text-transform: uppercase; }
+    .kpi .value { font: 700 38px/1.05 var(--hand-bold); margin-top: 8px; color: var(--accent); }
+    .kpi .value.ink { color: var(--ink); } .kpi .value.blue { color: var(--blue); }
+    .kpi .small { font: 13px/1.4 var(--hand); color: var(--pencil); margin-top: 6px; }
+    .swatches { display: flex; gap: 14px; flex-wrap: wrap; margin: 8px 0 4px; }
+    .swatch { text-align: center; width: 92px; }
+    .swatch .chip { width: 64px; height: 64px; border-radius: 50%; border: 2px solid var(--ink); margin: 0 auto 6px; box-shadow: 3px 4px 0 -2px rgba(43,38,32,0.25); }
+    .swatch .nm { font: 700 14px/1.2 var(--hand-bold); }
+    .swatch .hx { font: 11px/1 var(--mono); color: var(--pencil); }
+    table.sheet { width: 100%; border-collapse: collapse; background: var(--paper); border: 2px solid var(--pencil); border-radius: 8px; overflow: hidden; }
+    table.sheet th { font: 700 11.5px/1.3 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--pencil); border-bottom: 2px solid var(--pencil); padding: 8px 10px; text-align: left; background: var(--paper-tint); }
+    table.sheet td { font: 15px/1.4 var(--hand); padding: 7px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+    table.sheet tr:last-child td { border-bottom: none; }
+    .tag { display: inline-block; font: 12px/1 var(--mono); padding: 3px 7px; border: 1.5px solid var(--pencil); border-radius: 999px; color: var(--pencil); letter-spacing: 0.06em; }
+    .tag.red { border-color: var(--accent); color: var(--accent); }
+    .tag.gold { border-color: var(--ochre); color: #a6791f; }
+    .hl { background: var(--highlight); padding: 0 4px; }
+    .sticky { position: absolute; padding: 10px 12px; font: 15px/1.3 var(--hand); box-shadow: 4px 6px 0 -2px rgba(43,38,32,0.18); max-width: 230px; z-index: 2; }
+    .sticky .tape { position: absolute; top: -10px; left: 30px; width: 70px; height: 18px; background: rgba(43,38,32,0.18); transform: rotate(-4deg); }
+    .sticky b { font-family: var(--hand-bold); font-weight: 700; }
+    .sticky.yellow { background: var(--note-yellow); transform: rotate(2.2deg); }
+    .sticky.pink { background: var(--note-pink); transform: rotate(-2.6deg); }
+    .next-step { display: flex; flex-direction: column; gap: 6px; padding: 12px 14px; border: 2px solid var(--accent); border-radius: 10px; background: var(--paper); margin-top: 16px; }
+    .next-step .nhead { font: 13px/1 var(--mono); letter-spacing: 0.16em; color: var(--accent); text-transform: uppercase; }
+    .next-step ul { padding: 0 0 0 18px; margin: 6px 0 0; font: 15.5px/1.5 var(--hand); }
+    .timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 8px; }
+    .phase { border: 2px solid var(--pencil); border-radius: 10px; background: var(--paper); padding: 12px 14px; position: relative; }
+    .phase .ph { font: 700 20px/1.1 var(--hand-bold); }
+    .phase .dates { font: 11px/1.4 var(--mono); color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin: 4px 0 8px; }
+    .phase p { font: 14.5px/1.45 var(--hand); margin: 0; color: var(--pencil); }
+    .rulebox { border: 2px dashed var(--pencil); border-radius: 10px; background: var(--paper); padding: 12px 16px; margin-top: 14px; }
+    .rulebox .label { font: 12px/1 var(--mono); letter-spacing: 0.14em; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; }
+    .panel :is(p, ul, li, .hookline), .kpi, .phase, .rulebox, .next-step, .sticky { font-family: var(--hand); }
+    .stack-list { list-style: none; padding: 0; margin: 6px 0; display: grid; gap: 7px; }
+    .stack-list li { margin: 0; padding: 0 0 7px; border-bottom: 1px solid var(--rule); }
+    .stack-list li:last-child { padding-bottom: 0; border-bottom: 0; }
+    .stack-list .detail { display: block; margin-top: 2px; color: var(--pencil); }
+    .phase .stack-list { margin-top: 8px; font-size: 14.5px; line-height: 1.45; }
+    .stack-note { display: grid; gap: 3px; margin-top: 5px; }
+    .stack-note span { display: block; }
+    .grid9 { display: grid; grid-template-columns: repeat(3, 44px); gap: 4px; margin: 8px 0; }
+    .grid9 span { width: 44px; height: 44px; border: 1.5px solid var(--pencil); background: var(--paper); }
+    .grid9 span.dark { background: var(--ink); }
+    .grid9 span.coral { background: var(--accent); opacity: 0.75; }
+    .grid9 span.hatch { background: repeating-linear-gradient(45deg, transparent 0 4px, rgba(43,38,32,0.35) 4px 5px); }
+    footer { margin-top: 30px; font: 11px/1.7 var(--mono); color: var(--pencil); letter-spacing: 0.1em; text-transform: uppercase; border-top: 2px solid var(--ink); padding-top: 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    @media (max-width: 1000px) { .panels, .panels.three, .kpis, .timeline { grid-template-columns: 1fr 1fr; } .sticky { display: none; } }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="head">
+    <div>
+      <h1><em>Hair Solutions Co.</em> — Master Campaign <span class="pin"><span class="x"></span>FINAL v1.0</span></h1>
+      <div class="sub">The single source of truth. Merges the 90-Day Rebrand Strategy, the Week 1 Launch Batch, the Punch-List fixes, the Social Design Analysis, and the Atelier Zero visual system. All previous documents are retired.</div>
+    </div>
+    <div class="meta"><b>DATE</b> 2026-07-19 · <b>WINDOW</b> AUG 3 → OCT 31 · <b>OWNER</b> VINCENT<br/><b>CHANNEL</b> INSTAGRAM (MIRROR: FACEBOOK) · <b>DOCS</b> 1 OF 4</div>
+  </div>
+
+  <!-- 00 · INTENT -->
+  <div class="canvas">
+    <div class="section-label"><h2>00 · Strategic Intent</h2><span class="pill">THE WHY</span></div>
+    <p class="lede">This is a brand restart, not a content calendar. Ninety days that make Hair Solutions Co. read as a premium editorial men's brand — and end with a conversion engine where every product has a matching reel, carousel, and objection-handling post.</p>
+    <div class="kpis">
+      <div class="kpi tilt-1"><div class="label">Launch</div><div class="value">Aug 3</div><div class="small">Monday. Day 1 of 90.</div></div>
+      <div class="kpi tilt-2"><div class="label">Feed posts</div><div class="value ink">104</div><div class="small">3/day Week 1 (21) + 1/day Days 8–90 (83)</div></div>
+      <div class="kpi tilt-3"><div class="label">Reels</div><div class="value blue">~30</div><div class="small">woven into the feed cadence</div></div>
+      <div class="kpi tilt-1"><div class="label">Sale moments</div><div class="value">2</div><div class="small">Day 56<br/>Day 82<br/>That is the ceiling.</div></div>
+    </div>
+    <div class="panels three">
+      <div class="panel tilt-1"><h3><span class="dot"></span>1 · Reframe</h3><p>Anyone landing on the grid in Week 2 should feel they found a serious men's brand, not an ecommerce store. Week 1 fills the first 7 rows fast (3 posts/day) so the grid looks established from day one.</p></div>
+      <div class="panel tilt-2"><h3><span class="dot"></span>2 · Re-earn</h3><p>Old OneHead followers get the lineage line on Day 1 — <span class="hl">"Eight years ago, this was OneHead Hair."</span> Educate, don't sell, for the first 55 days. Trust earns the right to sell.</p></div>
+      <div class="panel tilt-3"><h3><span class="dot"></span>3 · Convert</h3><p>By Day 90 every product page has a matching reel and carousel; every objection has a post. The grid becomes a sales asset that compounds.</p></div>
+    </div>
+    <div class="rulebox">
+      <div class="label">● The filter every post must pass</div>
+      <div class="big-line">If a post can't earn its place by being <em>beautiful</em>, <em>useful</em>, or <em>honest</em> — don't post it.</div>
+    </div>
+    <div class="sticky yellow" style="top: 18px; right: 26px;"><div class="tape"></div><b>Decisions locked 2026-07-19:</b><div class="stack-note"><span>Aug 3 start</span><span>3/day Week 1</span><span>Atelier Zero visual world</span><span>Days 1–30 fully wireframed</span></div></div>
+  </div>
+
+  <!-- 01 · VISUAL WORLD -->
+  <div class="canvas">
+    <div class="section-label"><h2>01 · Visual World — Atelier Zero</h2><span class="pill">LOCKED</span></div>
+    <p class="lede">The chosen design system: warm cream paper, coral sun, ochre accents, the ceramic mannequin bust wearing real hair, torn-paper and stone textures, big serif statements with italic emphasis, and small technical mono metadata in the margins. Editorial atelier — never ecommerce.</p>
+    <div class="swatches">
+      <div class="swatch"><div class="chip" style="background:#F2E8D5;"></div><div class="nm">Cream</div><div class="hx">#F2E8D5</div></div>
+      <div class="swatch"><div class="chip" style="background:#1A1917;"></div><div class="nm">Ink</div><div class="hx">#1A1917</div></div>
+      <div class="swatch"><div class="chip" style="background:#E8603C;"></div><div class="nm">Coral</div><div class="hx">#E8603C</div></div>
+      <div class="swatch"><div class="chip" style="background:#D9A441;"></div><div class="nm">Ochre</div><div class="hx">#D9A441</div></div>
+      <div class="swatch"><div class="chip" style="background:#8A8A85;"></div><div class="nm">Stone</div><div class="hx">#8A8A85</div></div>
+      <div class="swatch"><div class="chip" style="background:#B0A99B;"></div><div class="nm">Concrete</div><div class="hx">#B0A99B</div></div>
+    </div>
+    <div class="panels" style="margin-top:12px;">
+      <div class="panel tilt-1"><h3><span class="dot"></span>Motifs (use 1–2 per asset, never all)</h3>
+        <ul>
+          <li><b>Coral sun</b> — one large textured circle, off-center, behind the subject</li>
+          <li><b>The bust</b> — ceramic mannequin head wearing a real hair system (our signature — replaces Atelier Zero's broken Greek bust)</li>
+          <li><b>Torn paper + cracked stone</b> — collage edges, one corner only</li>
+          <li><b>Dotted grid + thin circles</b> — technical margin drawings</li>
+          <li><b>Ochre blot</b> — small painted accent, never dominant</li>
+          <li><b>Margin metadata</b> — vertical mono text: series no., issue, date</li>
+        </ul>
+      </div>
+      <div class="panel tilt-2"><h3><span class="dot"></span>Typography &amp; format rules (carried over)</h3>
+        <ul>
+          <li>Display serif 64–96pt, <b>italic for the emphasized word</b>, bold sans for hard statements</li>
+          <li>Sans/mono minimum 22pt at export</li>
+          <li>Wordmark on every asset (top-left or top-center)</li>
+          <li>Feed 1080×1080 with an 80px safe area</li>
+          <li>Story 1080×1920 with 250px top + 280px bottom reserved</li>
+          <li>Reel cover 1080×1920 with type centered for the 1080×1350 feed crop</li>
+          <li><b>One idea per asset.</b> The product, the man, or the message — never all three</li>
+          <li>Ink tiles are contrast moments only — no two adjacent in any 9-tile view</li>
+        </ul>
+      </div>
+    </div>
+    <div class="rulebox">
+      <div class="label">● The 9-tile check (after Week 1, every Saturday)</div>
+      <div style="display:flex; gap:24px; align-items:center; flex-wrap:wrap;">
+        <div class="grid9"><span class="dark"></span><span></span><span class="hatch"></span><span></span><span class="coral"></span><span></span><span class="hatch"></span><span></span><span class="dark"></span></div>
+        <div style="max-width:56ch; margin:0;"><p style="font:15.5px/1.5 var(--hand); color:var(--pencil); margin:0;">Pull the most recent 9 tiles.</p><ul class="stack-list"><li>No two ink tiles touching</li><li>At least one cream typographic tile per row</li><li>One product moment and one human/bust moment in every 9</li></ul><p style="font:15.5px/1.5 var(--hand); color:var(--pencil); margin:8px 0 0;">If it fails, swap the next post's archetype. Week 1 is exempt (locked tile-by-tile).</p></div>
+      </div>
+    </div>
+    <div class="sticky pink" style="top: 20px; right: 30px;"><div class="tape"></div>Reference folders stay: <b>Atelier Zero</b> originals + mannequin swaps + backgrounds = the mood board for every shoot.</div>
+  </div>
+
+  <!-- 02 · PILLARS -->
+  <div class="canvas">
+    <div class="section-label"><h2>02 · Content Pillars</h2><span class="pill">EVERYTHING FITS ONE</span></div>
+    <table class="sheet">
+      <tr><th>Pillar</th><th>Purpose</th><th>Share of 90 days</th><th>Primary archetypes</th></tr>
+      <tr><td><b>Brand &amp; Founder</b></td><td>Identity, voice, trust — Vincent is the face</td><td>~18%</td><td>hero-brand tile · founder reel</td></tr>
+      <tr><td><b>Product</b></td><td>Specs, materials, hero shots — photographed with respect</td><td>~22%</td><td>single-product tile · macro reel</td></tr>
+      <tr><td><b>Education</b></td><td>Bases, density, color, care — the most thoughtful brand in the category</td><td>~22%</td><td>editorial tile · how-it-works carousel</td></tr>
+      <tr><td><b>Transformation</b></td><td>Before/after journeys <span class="tag red">real photos + consent only</span></td><td>~14%</td><td>before-after carousel · reveal reel</td></tr>
+      <tr><td><b>Social Proof</b></td><td>Quotes, reviews <span class="tag red">real quotes + consent only</span></td><td>~11%</td><td>quote tile · testimonial reel</td></tr>
+      <tr><td><b>Lifestyle / BTS</b></td><td>Rio, the studio, QC desk, packing bench</td><td>~9%</td><td>photo editorial tile · BTS reel</td></tr>
+      <tr><td><b>Sale / Promo</b></td><td>Two restrained moments. Cream, never loud.</td><td>~4%</td><td>promo tile (paper, no urgency theater)</td></tr>
+    </table>
+  </div>
+
+  <!-- 03 · PHASES -->
+  <div class="canvas">
+    <div class="section-label"><h2>03 · The Four Phases</h2><span class="pill">AUG 3 → OCT 31</span></div>
+    <div class="timeline">
+      <div class="phase tilt-1"><div class="ph">1 · Opening Week</div><div class="dates">Days 1–7 · Aug 3–9</div><p>The density sprint: 3 posts/day (hero + 2 fillers) = 21 tiles = 7 full rows.</p><ul class="stack-list"><li>Silence</li><li>Statement</li><li>Story</li><li>Showroom</li><li>Substance</li><li>Voice</li><li>Forward</li></ul><p>Locked tile-by-tile in the wireframes. Untouchable.</p></div>
+      <div class="phase tilt-2"><div class="ph">2 · Foundation</div><div class="dates">Days 8–30 · Aug 10 – Sep 1</div><p>1/day. Weekly rhythm:</p><ul class="stack-list"><li>Mon — brand</li><li>Tue — education</li><li>Wed — product</li><li>Thu — proof</li><li>Fri — BTS</li><li>Sat — product/transformation</li><li>Sun — carousel</li></ul><p>Zero sales pressure.</p></div>
+      <div class="phase tilt-3"><div class="ph">3 · Resonance</div><div class="dates">Days 31–56 · Sep 2–27</div><p>Go deeper: named customer stories, bolder editorials, more reels. First soft promo Day 56 (Sep 27): FIRST10 — framed as a welcome, not a sale.</p></div>
+      <div class="phase tilt-1"><div class="ph">4 · Conversion</div><div class="dates">Days 57–90 · Sep 28 – Oct 31</div><p>Community proof, objection-handling editorials, second promo Day 82 (Oct 23): FALL15 + support reel. Day 90 closes the chapter and teases season two.</p></div>
+    </div>
+    <div class="panels" style="margin-top:14px;">
+      <div class="panel tilt-2"><h3><span class="dot"></span>Sale calendar (the ceiling: two)</h3>
+        <ul>
+          <li><b>Day 56 · Sun Sep 27</b><span class="detail"><span class="hl">FIRST10</span> — 10% off first system</span><span class="detail">7 days</span><span class="detail">Cream tile</span><span class="detail">“A welcome, not a sale.”</span></li>
+          <li><b>Day 82 · Fri Oct 23</b><span class="detail"><span class="hl">FALL15</span> — 15% off select systems</span><span class="detail">Through Oct 29</span><span class="detail">Paired with Day 83 support reel</span></li>
+          <li>No discount stacking</li>
+          <li>No urgency theater</li>
+          <li>No countdown-clock design</li>
+        </ul>
+      </div>
+      <div class="panel tilt-1"><h3><span class="dot"></span>Season notes (dates re-based to Aug–Oct)</h3>
+        <ul>
+          <li>Labor Day (Sep 7, Day 36) — brand tile "We don't sell hair. We sell mornings." with a work-themed caption</li>
+          <li>All Father's Day / July 4 content from the old calendar is retired or re-themed (gift guide is now evergreen, Day 37)</li>
+          <li>Summer-care carousel became "Sweat, gym, and hair systems" (Day 58) — evergreen</li>
+          <li>Day 90 lands Oct 31 — we close on the brand, not on Halloween</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 · VOICE + GUARDRAILS -->
+  <div class="canvas">
+    <div class="section-label"><h2>04 · Voice &amp; Guardrails</h2><span class="pill red">NON-NEGOTIABLE</span></div>
+    <div class="panels">
+      <div class="panel tilt-1"><h3><span class="dot"></span>Voice</h3>
+        <ul>
+          <li>Grown, quiet, precise. Short sentences. No hype.</li>
+          <li>First person from Vincent — "I inspect every order" — the founder is the proof</li>
+          <li>Understatement over superlatives: "photographed honestly" beats "stunning"</li>
+          <li>The mission line: <span class="hl">"For the man who wants to look like himself again."</span></li>
+        </ul>
+      </div>
+      <div class="panel tilt-2"><h3><span class="dot"></span>Hard guardrails (from the Week 1 batch — now global)</h3>
+        <ul>
+          <li>No exclamation marks</li>
+          <li>No emoji in feed copy</li>
+          <li>No medical claims</li>
+          <li>No guaranteed-transformation language</li>
+          <li>No invented product, refund, or shipping claims</li>
+          <li><b>No fabricated testimonials — ever.</b> Every quote/before-after post ships only with a real, consented source. Slots are flagged in the calendar.</li>
+          <li>No engagement bait (“tag a friend”, “drop a 🔥”)</li>
+          <li>No reposting old OneHead content</li>
+          <li>Product names, specs, and prices verified against the live Shopify catalog before posting</li>
+        </ul>
+      </div>
+    </div>
+    <div class="panels" style="margin-top:14px;">
+      <div class="panel tilt-2"><h3><span class="dot"></span>Verified catalog (as of Jul 2026 — re-verify at launch)</h3>
+        <ul class="stack-list" style="font:14px/1.5 var(--mono); color:var(--pencil);"><li>Lace Elite (Swiss lace)</li><li>Lace Pro (French lace, $279)</li><li>Lace Fusion VF ($289)</li><li>Thin Skin Pro ($279)</li><li>Nano Skin ($269)</li><li>Micro Skin ($219)</li><li>Micro Skin MD ($269)</li><li>Mono Pro ($299)</li><li>Skin Frontal ($169)</li><li>Care line: kit, adhesives, remover</li></ul>
+      </div>
+      <div class="panel tilt-1"><h3><span class="dot"></span>Hashtag system (rotate, never one 30-tag block)</h3>
+        <ul>
+          <li><b>A · Education</b> — #hairsystem #lacefront #menshair #hairloss #hairreplacement #hairsystemguide #mensconfidence</li>
+          <li><b>B · Product</b> — #hairsystem #lacefront #monohair #skinhair #premiumhair #handmadehair #naturalhairline #mensgrooming</li>
+          <li><b>C · Brand / lifestyle</b> — #hairsolutionsco #menshair #riodejaneiro #foundersjourney</li>
+          <li>1–2 contextual tags per post</li>
+          <li>6–8 tags maximum</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 · PRODUCTION -->
+  <div class="canvas">
+    <div class="section-label"><h2>05 · Solo-Founder Production Engine</h2><span class="pill">BATCH OR DIE</span></div>
+    <div class="panels three">
+      <div class="panel tilt-1"><h3><span class="dot"></span>Weekly rhythm</h3>
+        <ul>
+          <li><b>Sun 4–6pm</b> — plan week, confirm captions, schedule (Meta Business Suite / Later)</li>
+          <li><b>Mon 8–10am</b> — shoot the week's product photography (3–4 setups)</li>
+          <li><b>Wed 8–10am</b> — film the week's reels (1–2)</li>
+          <li><b>Thu 6–7pm</b> — pull DMs for next Q&amp;A</li>
+          <li><b>Fri 5–6pm</b> — build next week's tiles from templates</li>
+          <li><b>Sat am</b> — 9-tile grid check on the live profile</li>
+        </ul>
+      </div>
+      <div class="panel tilt-2"><h3><span class="dot"></span>Pre-launch checklist (before Aug 3)</h3>
+        <ul>
+          <li>Build the 14 master templates (7 square + 3 story + 4 carousel kits) in Atelier Zero style</li>
+          <li>Shoot Vincent portrait</li>
+          <li>Shoot Lace Elite on paper card</li>
+          <li>Shoot bust-with-system hero series</li>
+          <li>Film the 25s founder reel (Day 3) + plain-English explainer (Day 4)</li>
+          <li>Secure at least one real, consented customer quote (unblocks Day 7)</li>
+          <li>Archive the old OneHead grid the evening of Aug 2</li>
+          <li>Build the 8 highlight covers (ink + cream, line icons)</li>
+        </ul>
+      </div>
+      <div class="panel tilt-3"><h3><span class="dot"></span>Toolchain</h3>
+        <ul>
+          <li><b>Templates</b> — Canva file "Hair Solutions Co — Social Templates v2" (14 pages, one per archetype)</li>
+          <li><b>Photo</b> — Lightroom mobile, consistent cream toning</li>
+          <li><b>Reels</b> — CapCut, burned-in captions (most viewers watch muted)</li>
+          <li><b>Scheduling</b> — Meta Business Suite or Later</li>
+          <li><b>Links</b> — UTM: ?utm_source=ig&amp;utm_medium=organic&amp;utm_campaign=rebrand-launch-2026</li>
+        </ul>
+      </div>
+    </div>
+    <div class="next-step">
+      <div class="nhead">● Ecosystem hooks</div>
+      <ul>
+        <li>HubSpot: mirror the manifesto in a launch email on Tue Aug 4</li>
+        <li>HubSpot: give blog posts matching editorial tiles</li>
+        <li>Shopify: every product spotlight pre-links the live product handle</li>
+        <li>Shopify: pin key posts to highlights</li>
+        <li>Intercom: update the chat welcome message with the manifesto language on Sun Aug 2</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <span>HAIR SOLUTIONS CO · MASTER CAMPAIGN · FINAL v1.0</span>
+    <span>DOC 1/4 · SEE: 02 WIREFRAMES · 03 CALENDAR · 04 PLAYBOOK</span>
+    <span>2026-07-19 · VL</span>
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hair Solutions Co — Social Media Playbook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Patrick+Hand&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper:#fbf6ec; --paper-tint:#f5eedf; --ink:#2b2620; --pencil:#4d473d;
+      --rule:#c8bfa9; --grid:#e3d8b8; --accent:#d8482b; --highlight:#f9d27c;
+      --note-yellow:#fff19a; --note-pink:#ffd5c9; --ochre:#d9a441; --blue:#3b6e8e;
+      --serif:'DM Serif Display',Georgia,serif; --hand:'Patrick Hand','Caveat',cursive;
+      --hand-bold:'Caveat',cursive; --mono:'IBM Plex Mono',monospace;
+    }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); font:16px/1.5 var(--hand);
+      background: radial-gradient(circle, rgba(43,38,32,0.04) 1px, transparent 1.4px) 0 0 / 22px 22px, var(--paper); }
+    .page { padding:32px 48px 72px; max-width:1320px; margin:0 auto; }
+    .head { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding-bottom:14px; border-bottom:2px solid var(--ink); }
+    .head h1 { font:800 52px/1.05 var(--serif); margin:0; } .head h1 em { font-style:italic; }
+    .pin { display:inline-flex; align-items:center; gap:8px; font:12px/1 var(--mono); padding:6px 10px; border:1.5px dashed var(--accent); color:var(--accent); transform:rotate(-2.2deg); letter-spacing:0.18em; background:var(--paper); vertical-align:middle; margin-left:14px; }
+    .pin .x { width:6px; height:6px; background:var(--accent); transform:rotate(45deg); }
+    .head .sub { font:18px/1.4 var(--hand); color:var(--pencil); margin-top:8px; }
+    .head .meta { font:11px/1.6 var(--mono); color:var(--pencil); letter-spacing:0.14em; text-align:right; text-transform:uppercase; }
+    .head .meta b { color:var(--ink); }
+    .canvas { position:relative; margin-top:26px;
+      background: repeating-linear-gradient(0deg, var(--grid) 0 1px, transparent 1px 24px),
+        repeating-linear-gradient(90deg, var(--grid) 0 1px, transparent 1px 24px), var(--paper-tint);
+      border:3px solid var(--ink); border-radius:14px; padding:26px 26px 32px;
+      box-shadow:6px 8px 0 -4px rgba(43,38,32,0.18); }
+    .section-label { display:flex; align-items:center; gap:12px; margin-bottom:12px; flex-wrap:wrap; }
+    .canvas h2 { font:800 30px/1 var(--serif); margin:0; }
+    .pill { font:12px/1 var(--mono); padding:5px 9px; border:1.5px solid var(--pencil); border-radius:999px; color:var(--pencil); letter-spacing:0.12em; transform:rotate(1.2deg); }
+    .pill.red { border-color:var(--accent); color:var(--accent); }
+    .lede { font:17px/1.5 var(--hand); color:var(--pencil); margin:0 0 18px; max-width:78ch; }
+    .panels { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .panels.three { grid-template-columns:1fr 1fr 1fr; }
+    .panels.five { grid-template-columns:repeat(5,1fr); }
+    .panel { border:2px solid var(--pencil); border-radius:10px; padding:14px 16px; background:var(--paper); position:relative; }
+    .panel h3 { font:700 14px/1 var(--mono); letter-spacing:0.12em; text-transform:uppercase; margin:0 0 12px; color:var(--pencil); display:flex; align-items:center; gap:8px; }
+    .panel h3 .dot { width:10px; height:10px; border-radius:50%; background:var(--accent); flex-shrink:0; }
+    .panel p { margin:6px 0; font:15.5px/1.45 var(--hand); }
+    .panel ul { padding-left:20px; margin:6px 0; font:15px/1.5 var(--hand); }
+    .panel li { margin:4px 0; }
+    .tilt-1 { transform:rotate(-0.5deg);} .tilt-2 { transform:rotate(0.4deg);} .tilt-3 { transform:rotate(-0.25deg);}
+    .hl { background:var(--highlight); padding:0 4px; }
+    .tag { display:inline-block; font:12px/1 var(--mono); padding:3px 7px; border:1.5px solid var(--pencil); border-radius:999px; color:var(--pencil); letter-spacing:0.06em; margin:2px 2px 2px 0; }
+    .tag.red { border-color:var(--accent); color:var(--accent); }
+    table.sheet { width:100%; border-collapse:collapse; background:var(--paper); border:2px solid var(--pencil); border-radius:8px; overflow:hidden; }
+    table.sheet th { font:700 11.5px/1.3 var(--mono); letter-spacing:0.1em; text-transform:uppercase; color:var(--pencil); border-bottom:2px solid var(--pencil); padding:8px 10px; text-align:left; background:var(--paper-tint); }
+    table.sheet td { font:15px/1.4 var(--hand); padding:7px 10px; border-bottom:1px solid var(--rule); vertical-align:top; }
+    table.sheet tr:last-child td { border-bottom:none; }
+    .sticky { position:absolute; padding:10px 12px; font:15px/1.3 var(--hand); box-shadow:4px 6px 0 -2px rgba(43,38,32,0.18); max-width:230px; z-index:2; }
+    .sticky .tape { position:absolute; top:-10px; left:30px; width:70px; height:18px; background:rgba(43,38,32,0.18); transform:rotate(-4deg); }
+    .sticky b { font-family:var(--hand-bold); font-weight:700; }
+    .sticky.yellow { background:var(--note-yellow); transform:rotate(2.2deg); }
+    .sticky.pink { background:var(--note-pink); transform:rotate(-2.6deg); }
+    .rulebox { border:2px dashed var(--pencil); border-radius:10px; background:var(--paper); padding:12px 16px; margin-top:14px; }
+    .rulebox .label { font:12px/1 var(--mono); letter-spacing:0.14em; color:var(--accent); text-transform:uppercase; margin-bottom:8px; }
+    /* Display serif stays outside cards; card detail copy uses the readable hand/mono system. */
+    .big-line { font:700 24px/1.3 var(--hand-bold); margin:4px 0 6px; } .big-line em { font-style:italic; color:var(--accent); }
+    .mixbar { display:flex; height:34px; border:2px solid var(--pencil); border-radius:8px; overflow:hidden; margin:10px 0 6px; background:var(--paper); }
+    .mixbar span { display:flex; align-items:center; justify-content:center; font:11px/1 var(--mono); color:var(--paper); letter-spacing:0.06em; }
+    .mixkey { font:13px/1.6 var(--hand); color:var(--pencil); }
+    .hookline { border-bottom:1px solid var(--rule); padding:6px 2px; font:15.5px/1.4 var(--hand); }
+    .hookline b { font-family:var(--hand-bold); }
+    .hookline:last-child { border-bottom:none; }
+    .panel :is(p, ul, li, .hookline), .rulebox, .sticky, table.sheet { font-family:var(--hand); }
+    .stack-list { list-style:none; padding:0; margin:6px 0; display:grid; gap:7px; }
+    .stack-list li { margin:0; padding:0 0 7px; border-bottom:1px solid var(--rule); }
+    .stack-list li:last-child { padding-bottom:0; border-bottom:0; }
+    .stack-list .detail { display:block; margin-top:2px; color:var(--pencil); }
+    footer { margin-top:30px; font:11px/1.7 var(--mono); color:var(--pencil); letter-spacing:0.1em; text-transform:uppercase; border-top:2px solid var(--ink); padding-top:12px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+    @media (max-width:1000px){ .panels,.panels.three,.panels.five { grid-template-columns:1fr 1fr; } .sticky { display:none; } }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="head">
+    <div>
+      <h1><em>Hair Solutions Co.</em> — Social Playbook <span class="pin"><span class="x"></span>FINAL v1.0</span></h1>
+      <div class="sub">The repeatable operating system behind the feed. If the calendar says what to post, this says how — voice, hooks, captions, stories, DMs, and the weekly loop that keeps a solo founder shipping daily.</div>
+    </div>
+    <div class="meta"><b>DATE</b> 2026-07-19 · <b>CHANNEL</b> INSTAGRAM + FB MIRROR<br/><b>OWNER</b> VINCENT · <b>DOC</b> 4 OF 4</div>
+  </div>
+
+  <!-- SYSTEM AT A GLANCE -->
+  <div class="canvas">
+    <div class="section-label"><h2>01 · The System at a Glance</h2><span class="pill">FIVE BLOCKS</span></div>
+    <div class="panels five">
+      <div class="panel tilt-1"><h3><span class="dot"></span>Voice</h3><p>Grown, quiet, precise. Short sentences. Understatement over superlatives. First person from Vincent.</p></div>
+      <div class="panel tilt-2"><h3><span class="dot"></span>Audience</h3><p>Men 28–55 weighing their first system, current wearers upgrading, and the researchers who lurk for months before a DM.</p></div>
+      <div class="panel tilt-3"><h3><span class="dot"></span>Pillars</h3><ul class="stack-list"><li>Brand &amp; Founder</li><li>Product</li><li>Education</li><li>Transformation</li><li>Social Proof</li><li>Lifestyle/BTS</li><li>Rare promo</li></ul></div>
+      <div class="panel tilt-1"><h3><span class="dot"></span>Cadence</h3><ul class="stack-list"><li><b>Week 1</b><span class="detail">3 feed posts/day</span></li><li><b>After Week 1</b><span class="detail">1 feed post/day</span><span class="detail">Daily stories</span><span class="detail">2–3 reels/week</span></li></ul></div>
+      <div class="panel tilt-2"><h3><span class="dot"></span>Goal</h3><p>Reframe the brand, earn trust through education, convert through proof. DMs are the funnel.</p></div>
+    </div>
+    <div style="margin-top:16px;">
+      <div class="mixbar">
+        <span style="width:37%; background:#2b2620;">REELS 37%</span>
+        <span style="width:26%; background:#d8482b;">STATICS 26%</span>
+        <span style="width:22%; background:#d9a441;">CAROUSELS 22%</span>
+        <span style="width:15%; background:#8a8a85;">QUOTES 15%</span>
+      </div>
+      <div class="mixkey">Feed format mix across the 90 days. Stories run daily on top of this — they are the conversation, the grid is the brand.</div>
+    </div>
+    <div class="sticky yellow" style="top:18px; right:26px;"><div class="tape"></div><b>One rule above all:</b> beautiful, useful, or honest — or it doesn't post.</div>
+  </div>
+
+  <!-- HOOK BANK -->
+  <div class="canvas">
+    <div class="section-label"><h2>02 · Hook Bank</h2><span class="pill">STEAL FROM YOURSELF</span></div>
+    <p class="lede">Approved openers by pillar. Rotate; never reuse within 3 weeks. All follow the voice: no exclamation marks, no emoji, no hype.</p>
+    <div class="panels">
+      <div class="panel tilt-1"><h3><span class="dot"></span>Education</h3>
+        <div class="hookline">"This is not a wig." <b>— pattern: blunt correction</b></div>
+        <div class="hookline">"Will the hairline look real?" <b>— pattern: the exact question they typed</b></div>
+        <div class="hookline">"New here? Start with these 5 decisions." <b>— pattern: orientation</b></div>
+        <div class="hookline">"Density 80 / 100 / 130 — what each actually looks like." <b>— pattern: honest comparison</b></div>
+        <div class="hookline">"Why I don't recommend the cheapest system on the market." <b>— pattern: costly honesty</b></div>
+      </div>
+      <div class="panel tilt-2"><h3><span class="dot"></span>Founder / Brand</h3>
+        <div class="hookline">"I wear what I sell." <b>— pattern: skin in the game</b></div>
+        <div class="hookline">"Before it ships, I check this." <b>— pattern: standard as story</b></div>
+        <div class="hookline">"Built to disappear." <b>— pattern: product paradox</b></div>
+        <div class="hookline">"No one has to know. That's the point." <b>— pattern: discretion as value</b></div>
+        <div class="hookline">"We don't sell hair. We sell mornings." <b>— pattern: reframe the category</b></div>
+      </div>
+      <div class="panel tilt-3"><h3><span class="dot"></span>Proof (real quotes only)</h3>
+        <div class="hookline">"I forgot I was wearing it." <b>— the gold standard of proof</b></div>
+        <div class="hookline">"The first hairline that fooled my barber."</div>
+        <div class="hookline">"Took me a year to try. Wish I'd done it sooner." <b>— pattern: hesitancy reframe</b></div>
+        <p style="color:var(--pencil);">Every proof post carries a consent record. No real quote, no post — swap in education instead.</p>
+      </div>
+      <div class="panel tilt-1"><h3><span class="dot"></span>Product</h3>
+        <div class="hookline">"[Name], photographed honestly." <b>— pattern: anti-marketing</b></div>
+        <div class="hookline">"[Name], up close." <b>— pattern: macro respect</b></div>
+        <div class="hookline">"The everyday one." <b>— pattern: role, not specs</b></div>
+        <div class="hookline">"The unsung hero." <b>— pattern: role, not specs</b></div>
+        <p style="color:var(--pencil);">One product per post. Specs in the caption, never crowding the tile.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAPTION FRAMEWORKS -->
+  <div class="canvas">
+    <div class="section-label"><h2>03 · Caption Frameworks</h2><span class="pill">PLUG AND PLAY</span></div>
+    <div class="panels three">
+      <div class="panel tilt-1"><h3><span class="dot"></span>Education post</h3>
+        <ul><li><b>Line 1</b> — restate the hook plainly</li><li><b>Middle</b> — 2–4 short sentences, one idea each; no lists of five things</li><li><b>Close</b> — save prompt or specific DM keyword ("DM BASE")</li><li>6–8 hashtags from Bundle A</li></ul></div>
+      <div class="panel tilt-2"><h3><span class="dot"></span>Product post</h3>
+        <ul><li><b>Line 1</b> — name + one-line role ("Mono Pro. Silent, breathable, structured.")</li><li><b>Middle</b> — base, density options, honest trade-off</li><li><b>Close</b> — "Specs and colors → link in bio" + UTM</li><li>Bundle B tags</li></ul></div>
+      <div class="panel tilt-3"><h3><span class="dot"></span>Founder / BTS post</h3>
+        <ul><li><b>Line 1</b> — first person, present tense</li><li><b>Middle</b> — one concrete detail (the swatch, the 6am light, the box)</li><li><b>Close</b> — "DM me — I read every one."</li><li>Bundle C tags</li></ul></div>
+    </div>
+    <div class="rulebox">
+      <div class="label">● DM keywords (the quiet funnel)</div>
+      <ul class="stack-list" style="font:15.5px/1.6 var(--hand);"><li><span class="tag">START</span> new-buyer guide</li><li><span class="tag">BASE</span> base chooser</li><li><span class="tag">COLOR</span> free color check (daylight photo)</li><li><span class="tag">FIT</span> fit questions</li><li><span class="tag">QC</span> inspection checklist</li><li><span class="tag">HAIRLINE</span> realism guide</li><li><span class="tag">PROOF</span> reviews</li></ul><p style="margin:8px 0 0; font:15.5px/1.6 var(--hand);">Every keyword gets a saved reply written in the brand voice — set all seven up before Aug 3.</p>
+    </div>
+  </div>
+
+  <!-- STORIES + WEEKLY LOOP -->
+  <div class="canvas">
+    <div class="section-label"><h2>04 · Stories Engine &amp; Weekly Loop</h2><span class="pill">DAILY, LIGHT, ALIVE</span></div>
+    <div class="panels">
+      <div class="panel tilt-1"><h3><span class="dot"></span>Stories rhythm (every week, forever)</h3>
+        <table class="sheet">
+          <tr><th>Day</th><th>Concept</th><th>Frames</th><th>Sticker</th></tr>
+          <tr><td>Mon</td><td>Motivation — quote or founder note</td><td>3–5</td><td>Quote share</td></tr>
+          <tr><td>Tue</td><td>Tips — one specific care tip</td><td>3–4</td><td>Save + link</td></tr>
+          <tr><td>Wed</td><td>Product spotlight — one product, 3 benefits</td><td>2–3</td><td>Link</td></tr>
+          <tr><td>Thu</td><td>Q&amp;A — 3–5 anonymized DMs</td><td>5+</td><td>Question box</td></tr>
+          <tr><td>Fri</td><td>BTS — studio, QC, packing, Rio</td><td>4–6</td><td>Poll</td></tr>
+          <tr><td>Sat</td><td>Lifestyle — weekend, grooming, Rio</td><td>2–3</td><td>Slider</td></tr>
+          <tr><td>Sun</td><td>Week preview — tease Monday</td><td>3–4</td><td>Countdown</td></tr>
+        </table>
+        <p style="margin-top:8px; color:var(--pencil);">Every story drops into a highlight by end of day:</p><ul class="stack-list"><li>Start Here</li><li>Products</li><li>Reviews</li><li>Guides</li><li>Results</li><li>FAQ</li><li>Offers</li><li>About</li></ul>
+      </div>
+      <div class="panel tilt-2"><h3><span class="dot"></span>The solo-founder weekly loop</h3>
+        <ul>
+          <li><b>Sun 4–6pm</b> — plan + schedule the week (Meta Business Suite)</li>
+          <li><b>Mon 8–10am</b> — product photography, 3–4 setups</li>
+          <li><b>Wed 8–10am</b> — film 1–2 reels (captions burned in via CapCut)</li>
+          <li><b>Thu 6–7pm</b> — pull DMs for next Q&amp;A; screenshot the good ones</li>
+          <li><b>Fri 5–6pm</b> — build next week's tiles from the 14 Canva templates</li>
+          <li><b>Sat am</b> — 9-tile grid check; swap next archetype if two ink tiles touch</li>
+        </ul>
+        <div class="rulebox" style="margin-top:12px;">
+          <div class="label">● Reel rules</div>
+          <ul style="margin:4px 0; padding-left:18px; font:15px/1.5 var(--hand);">
+            <li>Native 1080×1920 + separate 1080×1350 cover, 22pt minimum text</li>
+            <li>Captions on the reel always — most viewers watch muted</li>
+            <li>Quiet original or minimal trending audio; never loud meme audio</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="sticky pink" style="top:20px; right:28px;"><div class="tape"></div><b>Batch or die.</b> Nothing is designed the day it posts.</div>
+  </div>
+
+  <!-- MEASUREMENT + GUARDRAILS -->
+  <div class="canvas">
+    <div class="section-label"><h2>05 · Measurement &amp; Guardrails</h2><span class="pill red">CHECK MONTHLY</span></div>
+    <div class="panels">
+      <div class="panel tilt-1"><h3><span class="dot"></span>What to measure (one axis at a time)</h3>
+        <ul>
+          <li><b>Reach engine</b> — reel views + non-follower reach % (reels are the growth lever)</li>
+          <li><b>Trust</b> — saves on education carousels; profile visits after founder posts</li>
+          <li><b>Funnel</b> — DM keyword volume per week; link-in-bio clicks (UTM: rebrand-launch-2026)</li>
+          <li><b>Conversion</b> — code redemptions FIRST10 / FALL15; Shopify sessions from IG</li>
+          <li><b>Monthly review</b><span class="detail">Day 30</span><span class="detail">Day 60</span><span class="detail">Day 90</span><span class="detail">Double down on the top pillar; do not add new ones.</span></li>
+        </ul>
+      </div>
+      <div class="panel tilt-2"><h3><span class="dot"></span>Never (the standing list)</h3>
+        <ul>
+          <li>No emoji or exclamation marks in feed copy</li>
+          <li>No engagement bait</li>
+          <li>No giveaways</li>
+          <li>No medical claims</li>
+          <li>No guaranteed-transformation language</li>
+          <li>No fabricated testimonials — real, consented sources only</li>
+          <li>No invented product, refund, or shipping claims — live store policy is the only source</li>
+          <li>No discount stacking — two promos per 90 days is the ceiling</li>
+          <li>No reposting old OneHead content — clean slate means clean slate</li>
+        </ul>
+      </div>
+    </div>
+    <div class="rulebox">
+      <div class="label">● If a week collapses (it will)</div>
+      <p style="margin:4px 0; font:16px/1.55 var(--hand);">Priority order when time runs out:</p><ol class="stack-list" style="padding-left:20px; list-style:decimal;"><li><span class="hl">Daily story</span></li><li><span class="hl">Scheduled feed post</span></li><li><span class="hl">Reel</span></li></ol><p style="margin:8px 0 0; font:16px/1.55 var(--hand);">A missed reel is a gap; a broken daily streak is a signal. Fillers from the quote bank can hold any feed slot for 48 hours.</p>
+    </div>
+  </div>
+
+  <footer>
+    <span>HAIR SOLUTIONS CO · SOCIAL PLAYBOOK · FINAL v1.0</span>
+    <span>DOC 4/4 · SEE: 01 STRATEGY · 02 WIREFRAMES · 03 CALENDAR</span>
+    <span>2026-07-19 · VL</span>
+  </footer>
+</div>
+</body>
+</html>
