@@ -58,10 +58,22 @@ class CampaignOSManifestTest(unittest.TestCase):
         self.assertEqual(6, len(self.schema["views"]))
         self.assertEqual(28, len({field["name"] for field in self.schema["fields"]}))
 
-    def test_preview_urls_are_ledger_derived_and_currently_blank(self):
+    def test_preview_urls_are_derived_only_from_the_committed_publication_ledger(self):
+        ledger = json.loads((ROOT / "email-previews" / "publication-ledger.json").read_text(encoding="utf-8"))
+        published = {
+            event["email_code"]: event["canonical_url"]
+            for event in ledger["events"]
+            if event["event"] == "published"
+        }
         for record in self.manifest["records"]:
-            self.assertIsNone(record["preview_url"])
-            self.assertIn("- **Preview URL:** Not set", record["issue_body"])
+            with self.subTest(key=record["key"]):
+                code = record["key"].split(":", 1)[1] if record["key"].startswith("email:") else None
+                expected = published.get(code) if code else None
+                self.assertEqual(expected, record["preview_url"])
+                if expected is None:
+                    self.assertIn("- **Preview URL:** Not set", record["issue_body"])
+                else:
+                    self.assertIn(f"- **Preview URL:** {expected}", record["issue_body"])
 
 
 if __name__ == "__main__":

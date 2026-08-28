@@ -113,7 +113,7 @@ def workflow_errors(review: str, publish: str) -> List[str]:
         expected_jobs = {
             "build": {"contents": "read", "pull-requests": "read"},
             "deploy": {"pages": "write", "id-token": "write"},
-            "ledger": {"contents": "write", "pull-requests": "write", "actions": "read"},
+            "ledger": {"contents": "write", "actions": "read"},
         }
         for name, expected in expected_jobs.items():
             if _mapping(_job(publish, name), "permissions", 4) != expected:
