@@ -4,7 +4,7 @@ Stays alive so follow-up scripts can attach via connect_over_cdp."""
 import time
 from playwright.sync_api import sync_playwright
 
-PROFILE = "/Users/vMac/07_design/email/mailerlite/.browser-profile"
+PROFILE = "/Users/vMac/04_marketing/email/mailerlite/.browser-profile"
 CDP = "http://localhost:9223"
 
 with sync_playwright() as pw:

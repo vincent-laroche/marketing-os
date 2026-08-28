@@ -3,8 +3,16 @@
 > Living status log. Full context/rules live in `AGENTS.md` (the project bible) — don't duplicate them
 > here. Update this file at the end of every session: what changed, what's next, who touched it.
 
-**Last updated:** 2026-08-24 by Codex (Campaign OS built and verified in GitHub; preview compiler
-implemented locally; no Pages publication or Shopify activation)
+**Last updated:** 2026-08-25 by Cline (wired Cline CLI into the existing agent config: 12 workspace
+agents exposed at `.cline/agents/*.yaml` — Cline requires `.yml/.yaml`, not `.md`; 6 hook bridges in
+`~/.cline/hooks/` feed Cline session events into the Claude `live_session_tracker.py`; 4 MCP servers in
+`~/.cline/data/settings/cline_mcp_settings.json`; `~/.cline/skills/` now symlinks all 143 skills from
+`~/.claude/skills/`. No campaign, audience, sender, or platform change)
+
+**Project management:** `email-project-manager` now owns Campaign OS Project #4 planning hygiene,
+evidence-backed priority/status corrections, dependency reconciliation, and ranked next-task
+recommendations. It cannot send, schedule, activate, publish, alter audiences, or change platform
+evidence fields without direct proof and the separately required approval.
 
 **Status:** **All marketing campaigns and lifecycle journeys now belong to Shopify Messaging +
 Shopify Flow. MailerLite is not a campaign/lifecycle platform for this project.** Shopify
@@ -95,6 +103,8 @@ working tree**. It stays recoverable from git history at `e892e64` and earlier.
 ## Session log
 > Chronological record only. Older entries may describe superseded platforms, paths, counts, or
 > blockers. The current status at the top of this file and `AGENTS.md` always win.
+
+- **2026-08-25 (Codex — project agent setup):** Added three project-scoped Codex agent definitions under `.codex/agents/`: read-only `email-lifecycle-architect`, local-only `email-producer`, and read-only `email-deliverability-release-reviewer`. The producer may edit only explicitly scoped local artifacts; no definition can send, schedule, publish, activate an automation, alter sender settings, or change customer/audience data. This setup did not touch the active rebuild files, Shopify, MailerLite, MailerSend, HubSpot, or GitHub. Next: invoke these roles only for a named, source-grounded scope and retain a human approval gate for activation or send.
 
 - **2026-08-24 (Codex — Campaign OS implementation):** Built and live-verified the private
   `Email Marketing — Campaign OS` as GitHub Project #4 linked to
@@ -997,6 +1007,8 @@ working tree**. It stays recoverable from git history at `e892e64` and earlier.
   arrived here from the dissolved `Project Last Mile/` project (now in `reference/`), and the
   hubspot/Email-Marketing folder-structure question was settled — this stays a sibling project, not
   nested under `hubspot/`.
+
+**2026-08-26 — Codex:** Added the approved twelve-role native Codex Email Marketing team beside its existing human-readable Markdown contracts: Campaign OS engineer; audience/consent; deliverability/release; design/modules; lifecycle; performance; preview QA; producer; project manager; Shopify Flow; Shopify Messaging; and Shopify notification-template roles. All execution roles remain local-output-only unless a current task gives explicit, named approval for an external action; no send, schedule, activation, deployment, customer-data change, or credential change was made. Added a local `.codex/config.toml` policy baseline and retained the Markdown routing/contract documents as migration support rather than a competing source of policy.
 
 **Note on `Email Marketing Studio/`:** per Vincent, this Next.js/Cloudflare app (deployed at
 email-marketing-studio.hairsolutions.co) is not part of the actual day-to-day workflow either — real work

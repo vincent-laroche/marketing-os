@@ -4,7 +4,7 @@
 > current status. If something will still be true next month it belongs here; "what happened
 > this session / what's next" belongs in `PROJECT.md`.
 
-Location: `~/07_design/email_marketing`. Follows the standard project convention —
+Location: `/Users/vMac/04_marketing/email_marketing`. Follows the standard project convention —
 `AGENTS.md` (rules) + `CLAUDE.md` (`@AGENTS.md` pointer) + `PROJECT.md` (living status log).
 Update `PROJECT.md` at the end of every session; only touch this file when a rule changes.
 
@@ -46,19 +46,19 @@ Contents:
 |---|---|
 | `emails_master …_all.csv` | Emails database — every email, journey, timing, metadata. |
 | `modules_master …_all.csv` | Modules database — every module and which emails use it. |
-| `emails_modules_hubspot versionr/` | 58 email copy decks (`.md`, incl. 5 `Journey · … Master`) + 102 complete HubSpot module trios (`module.html` + `fields.json` + `meta.json`), light and dark. |
+| `emails_modules_hubspot versionr/` | 58 email copy decks (`.md`, incl. 5 `Journey · … Master`) + 104 complete HubSpot module trios (`module.html` + `fields.json` + `meta.json`), light and dark. |
 | `modules_master/` | 80 per-module Notion pages. |
-| `Atelier Zero — Resolved HTML Module Previews (102)/` | Rendered HTML preview of every module. |
+| `Atelier Zero — Resolved HTML Module Previews (102)/` | 104 rendered module previews. The folder name is historical and must not be treated as the current count. |
 
 Email families: `W-` welcome, `PP-` post-purchase, `CR-` cart recovery, `WB-` win-back,
 `RO-` reorder, `C-` consultation, `BR-` browse, `NL-01…20` newsletter.
 
 ## 2. No marketing send path
 
-No script in this repo sends or schedules **marketing** email. Campaigns are created and
-configured as **drafts** only. Sending and scheduling marketing are manual, deliberate,
-out-of-band acts by Vincent. This is a standing safety rule, not a current limitation — do
-not add a marketing send path.
+No script in this repo sends or schedules **marketing** email. All marketing campaigns and
+lifecycle journeys are built for Shopify Messaging + Shopify Flow, and activation/sending remains
+a manual, deliberate, out-of-band act by Vincent. This is a standing safety rule, not a current
+limitation — do not add a marketing send path.
 
 **Narrow, deliberate exception — transactional only.** `mailersend/send_service_email.py`
 does send, because order confirmations and shipping notices are service mail a customer is
@@ -67,28 +67,26 @@ immediately before the request is issued; no flag, environment variable or paylo
 extend it, and any other address aborts before a socket opens. Widening that allowlist is a
 deliberate decision, never a side effect. Everything else in this repo remains send-free.
 
-Related standing hazard: MailerLite treats a campaign with **no group/segment** as "all
-active subscribers", not "no recipients". Every parked draft must be assigned to the
-safeguard group `⛔ DO NOT SEND — Lifecycle Drafts (parked)` (id `196158361233786451`).
+Historical MailerLite hazard: a campaign with **no group/segment** can mean "all active
+subscribers", not "no recipients". The live account had zero campaigns on 2026-08-24. Do not
+create or restore MailerLite campaigns for this programme. If Vincent explicitly reopens a
+MailerLite campaign scope later, every draft must use the safeguard group
+`⛔ DO NOT SEND — Lifecycle Drafts (parked)` (id `196158361233786451`).
 
 ## 3. Platform roles (current)
 
-**Shopify Messaging — the sending platform for the 53-email programme.** Decided
-2026-08-19 by Vincent, superseding the MailerLite-as-sender note below for this programme.
-The 53 emails in `Email Reference File/` (J1–J5, W, N) build and send from Shopify Messaging
-and Shopify Flow. This does **not** retract the consent lesson recorded under Shopify below —
-it relocates it: consent state must be verified *inside Shopify*, per channel, before any
-journey is activated. Hard blocker as of this date: no Shopify DKIM selector is published and
-DMARC is `p=quarantine`, so Shopify mail from @hairsolutions.co is quarantined until the
-store-specific sender-authentication CNAMEs are added. See `CAMPAIGN-PLAN.md` Phase 0.
+**Shopify Messaging + Shopify Flow — the sole marketing campaign and lifecycle platform.**
+Decided 2026-08-19 by Vincent. The 53 emails in `Email Reference File/` (J1–J5, W, N)
+build and send from Shopify. Sender-domain authentication was confirmed **Authenticated** in
+Shopify admin on 2026-08-21. Consent must still be verified *inside Shopify*, per channel,
+before any journey is activated; the broad subscribed segment is not safe to activate.
 
-**MailerLite — the sending platform.** Account 2582639. Live work lives in `mailerlite/`.
-`ml_content_*.py` hold per-journey copy (verbatim from the reference file), `ml_components.py`
-renders it against Figma Email Design System v3 tokens, `build_emails.py` writes
-`mailerlite/emails/*.html`, `push_campaigns.py` / `configure_campaigns.py` create and
-configure drafts. `BUILD-LEDGER.md` records what has actually been built and pushed;
-`API-SURFACE.md` records API behaviours that cost real time to discover — read both before
-touching the account.
+**MailerLite — legacy/reference only.** Account 2582639 is not a
+campaign or lifecycle platform for this project. Live re-verification on 2026-08-24 found zero
+campaigns and one disabled legacy welcome automation. `mailerlite/` preserves old builders,
+rendered emails, account mechanics, and migration evidence only. Do not push, restore, or create
+MailerLite campaigns or lifecycle automations unless Vincent explicitly reopens that platform
+scope in a future conversation.
 
 **MailerSend — transactional only.** Replaced Resend 2026-08-19 (Vincent), consolidating
 onto MailerLite's sibling platform. Lives in `mailersend/`: `send_service_email.py` plus six
@@ -109,10 +107,13 @@ canonical is Vincent's call, not a cleanup.
 reads its prospect CSV. Override that location with `PROSPECT_IMPORT_DIR`. Do not delete
 that repo without first rehoming the CSV.
 
-**Shopify — catalog only, never contacts.** Set 2026-08-19 by Vincent after the integration
+**MailerLite's Shopify integration — quarantine/catalog bridge only, never an audience source.**
+Set 2026-08-19 by Vincent after the integration
 synced 631 subscribers into the *marketing* group while ignoring Shopify's own consent
-state (95 had none). **Contacts never come from Shopify.** The audience is built from the
-HubSpot export by `select_audience.py`. The shop connection is retained only so product data
+state (95 had none). **This integration must never source a MailerLite audience.** The historical
+MailerLite audience was built from the HubSpot export by `select_audience.py`. Current Shopify
+campaign audiences remain inside Shopify and are gated by the consent tags documented in
+`shopify-messaging/PHASE5-PLAN.md`. The MailerLite shop connection is retained only so product data
 can populate e-commerce blocks; its subscriber sync is pointed at
 `⛔ Shopify sync — quarantine` (id `196200001017218918`) with resubscribe and popups off, so
 anything it imports lands somewhere inert. Never point it at a sending group.
@@ -122,7 +123,7 @@ connector token is expired and only `HUBSPOT_SERVICE_KEY` works, which is what
 `export_hubspot.py` uses. Earlier notes in this file claiming a write-capable HubSpot
 connector are obsolete. The entire HubSpot module/email build (`modules/`, `emails/`) was
 removed from the working tree 2026-08-18; it remains in git history at `e892e64` and
-earlier. The 102 module trios that survived that migration live in the reference file.
+earlier. The 104 module trios that survived that migration live in the reference file.
 
 **Figma — review surface.** Where Vincent looks at a complete HTML email before it ships.
 Not where email HTML is authored, stored, or sent from. The v3 design tokens originate here.
@@ -146,7 +147,7 @@ cards and to insets inside cards — never to the surface behind them.
 This is not a palette question and does not reopen one: no value is correct there, including
 Bone `#F7F1DE`, Paper `#EFE7D2` and `#F6EFD9`. Those remain correct as *card* surfaces.
 
-Applies to every email in this repo, both platforms. Enforced at the source, not per file:
+Applies to every email artifact in this repo. Enforced at the source, not per file:
 `mailerlite/ml_components.py` (`PAGE_BG`) and `mailersend/build_service_emails.py` (`PAGE`).
 The two hand-written MailerSend templates, `PP-1` and `PP-4`, carry it inline. A rebuilt or
 new template that reintroduces a page background is a regression.

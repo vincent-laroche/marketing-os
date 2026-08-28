@@ -59,7 +59,7 @@ def wb1_modular_html():
     Copy is verbatim to emails_master (gate 1 verified); surfaces alternate Paper/Ink; radius is
     role-based. Built by scripts/build_wb1.py in the browser-tools worktree.
     """
-    p = ("/Users/vMac/07_design/email_marketing/.claude/worktrees/"
+    p = ("/Users/vMac/04_marketing/email_marketing/.claude/worktrees/"
          "browser-tools-fast-dev-f3b771/mailerlite-blocks/_wb1_payload.json")
     if not os.path.exists(p):
         return None

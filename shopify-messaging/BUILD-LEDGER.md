@@ -61,8 +61,9 @@ Machine-readable mapping for the Phase 3 build: `tools/build53/asset_map.json`.
 ### Phase 3 — the 53 email builds (2026-08-19)
 
 `python3 tools/build53/build_emails.py` assembles all 53 from the resolved previews and the
-`emails_master` Body column. **51 GREEN · 2 BLOCKED · 0 ISSUES.** Local artifacts only —
-nothing pushed, scheduled or sent.
+`emails_master` Body column. **51 structurally GREEN · 2 BLOCKED.** Local artifacts only —
+nothing pushed, scheduled or sent. Structural GREEN is not release approval: CR-1 through CR-4
+currently have a documented palette-authority conflict and must be reconciled before activation.
 
 | Series | Emails | GREEN | BLOCKED | Avg size |
 |---|---|---|---|---|
@@ -164,3 +165,106 @@ Defects 3–13 each silently changed what a subscriber would have received.
 **Trap:** the storefront returns HTTP 429 under parallel probing — a first pass with 8 threads
 reported 30 false failures. The checker probes serially with backoff for this reason. A 429 from
 hairsolutions.co is rate limiting, never a broken link.
+
+## Phase 3.5 — J2 Cart Recovery: finishing pass (2026-08-21)
+
+Vincent asked for the first fully complete, reviewed flow — content and automation both ready
+to build manually in the Shopify Messaging UI. Picked J2 (CR-1…CR-4) as the highest-priority
+build-order item per CAMPAIGN-PLAN.md §Phase 3. Scope is CR-1–CR-4 only; BR-1 (browse
+abandonment) is a different Shopify Messaging automation type and stays out of this pass.
+
+**Found and fixed, all 4 files — real defects, not cosmetic:**
+
+- `{{ cart_contents }}` (CR-1, CR-2, CR-4) and `{{ last_viewed_product }}` (CR-3) were never
+  real Shopify Liquid — placeholder tokens left over from the HubSpot-era source, rendering as
+  loud dashed-border boxes next to a fully empty static line-items table. Replaced with a real
+  `{% for line_item in abandoned_checkout.line_items limit:5 %}` loop (product title, variant,
+  quantity, plus a `remaining_products_count` overflow line) — confirmed against
+  shopify.dev's Custom Liquid reference and against the CTA's own already-correct
+  `{{ checkout.url }}`, which independently confirms this flow targets the **abandoned
+  checkout** automation type (matches `MKT | Email | Eligible | Abandoned checkout 30d`,
+  built in Phase 5), not the separate native "abandoned cart" template.
+- **CR-2: both CTAs were hardcoded to one static product URL**
+  (`/products/lace-elite-full-swiss-lace-mens-hair-system`) instead of the customer's actual
+  checkout. Every recipient would have landed on the same product regardless of what was
+  really in their cart. Fixed to `{{ checkout.url }}`.
+- **CR-2: Testimonial module was completely empty** — three blank quote slots plus a
+  `[PULL from Proof Bank...]` loud placeholder. The Proof Bank now exists
+  (`proof-bank/proof-bank.json`, Phase 4) — filled it with a real, on-topic published review
+  (Scott S., 5-star: *"No one can tell it's a system..."*) and removed the two unused empty
+  slots rather than leave them blank.
+- **CR-2 and CR-3: List - Trust strip rendered 3 of its 4 columns completely empty** — a
+  four-column template with all three real phrases crammed into column 1. Rebuilt as 3 clean
+  columns, one phrase each.
+- **CR-3: Text - Reassurance had 3 fully empty divider rows** — dead markup with nothing
+  between the rules. Removed.
+- **CR-4: "Valid for 72 hours" is a false urgency claim** — confirmed live via the Admin API
+  that `FREESHIP` has `endsAt: null` (no expiry, unlimited use, standing since March 2026).
+  It also directly contradicted the same email's own body copy: *"the code will be honoured
+  whenever you come back."* Reworded to *"Apply it at checkout — no expiry"* — matches brand
+  compliance §7 (no fake urgency) and makes the email internally consistent.
+- **CR-4: 9 dead `<!-- BUILD NOTE -->` HTML comments** left over from the build tool, sitting
+  right after `<body>`. Removed.
+- **Palette authority conflict, all 4 files.** CR-1 through CR-4 were retokened from the
+  Email Reference File module palette (`#F6EFD9`/`#151411`/`#25221D`/`#EA6452`/`#C7BFAC`/
+  `#EDE3CC`) to the `PLATFORM_EMAIL.md` v1 palette (`#EFE7D2`/`#15140F`/`#2A2620`/
+  `#ED6F5C`/`#DDD2B6`/`#F7F1DE`). That retokening conflicts with the durable hard rule in
+  `AGENTS.md` §1, which explicitly makes the Email Reference File palette authoritative and
+  rules `PLATFORM_EMAIL.md` out of scope. The current four files therefore remain unresolved;
+  do not retoken the other 49 to match them.
+
+**Result:** CR-1–CR-4 loud-placeholder count now 0/4 (was 1/1/0/1). `build-ledger.json`
+updated to match. Structural gate (unsubscribe, address, alt text, mobile block, no leftover
+HubL) unaffected — these were content/correctness fixes on top of an already-passing
+structural build.
+
+**Activation status:**
+
+1. **Palette authority must be reconciled.** CR-1 through CR-4 conflict with `AGENTS.md` §1.
+   This is a release blocker even though structural checks pass.
+2. **Sender domain authentication is complete.** Shopify admin showed **Authenticated** on
+   2026-08-21; Phase 0 is no longer a blocker.
+3. **Two duplicate automations already exist in Shopify Messaging** — "Recover abandoned
+   checkout" and "Abandoned checkout", both Inactive (found in Phase 5, 2026-08-21). Confirmed
+   not resolvable via browser automation (see PHASE5-PLAN.md) — needs Vincent directly in the
+   UI: keep one, delete the other, before activating the real J2 automation.
+4. **Cart discount is an open decision** (CAMPAIGN-PLAN.md §5, unresolved): CR-4's copy already
+   assumes FREESHIP. Left as-is since it's real, active, and now honestly worded — but this was
+   never actually decided, only defaulted to by the original copy draft. Confirm or change
+   before activating.
+5. **Segment is built and ready:** `MKT | Email | Eligible | Abandoned checkout 30d` (Phase 5).
+   No further segment work needed for J2 specifically.
+
+Nothing was pushed, scheduled, sent, or activated. Local file edits only.
+
+### Phase 3.5 addendum — real rendered QA (2026-08-21, same day)
+
+The first pass above was text/structure-only (grep, tag-balance) — never actually rendered.
+Vincent opened CR-3 himself and caught a real broken card. Correct call: a QA pass that never
+renders the output isn't a QA pass. Redone properly this time — served all 4 files over a local
+HTTP server (not `file://`, which silently drops cross-origin images and gave a false "broken
+logo" impression) and screenshotted every module in every email before calling anything done.
+
+**Found and fixed, beyond the first pass:**
+
+- **CR-3's "Text - Base type guidance" module was structurally broken** — its card closed right
+  after the CTA button, and the guidance paragraph sat *after* that closing tag, rendering
+  outside any card, directly on the raw page background. This is exactly what Vincent's
+  screenshot showed. Rebuilt as one card: paragraph, then button, both properly nested.
+- **CR-3's "Commerce - Viewed product" module used a floating left-aligned button table** sitting
+  directly beside cramped, wrapping paragraph text — a genuinely bad, hard-to-read layout.
+  Rebuilt as a plain two-line "what's in your cart" card with no button (see next point).
+- **Redundant back-to-back CTAs, 3 of 4 files.** CR-1, CR-3, and CR-4 each repeated the exact
+  same CTA in two cards in a row with nothing between them — a mechanical artifact of the
+  original module-stack build, not a deliberate design choice. Removed the standalone duplicate
+  in each; CR-2 keeps its second CTA because real content (Q&A, trust strip, testimonial) sits
+  between the two instances there, which is a legitimate "recap CTA" pattern, not a duplicate.
+- **The footer preference-centre description was double-HTML-escaped in all 4 files** — it
+  rendered as literal `<p>...</p>` text instead of a sentence. Unescaped.
+- **The logo not rendering in Vincent's screenshot was a local-preview artifact, not a real
+  defect** — confirmed the Cloudinary URL itself returns HTTP 200, and it renders correctly once
+  served over an actual HTTP origin instead of opened as a bare `file://` path.
+
+All 4 re-screenshotted end-to-end after fixes: every card properly bounded, no overlapping or
+escaped content, one CTA per email except CR-2's intentional two, real cart-Liquid where the
+placeholders used to be. This is now an actual visual QA pass, not a structural-only one.

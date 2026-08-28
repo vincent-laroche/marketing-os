@@ -1,4 +1,9 @@
-# MailerLite email-creation surface — verified 2026-08-18
+# Historical MailerLite email-creation surface — verified 2026-08-18
+
+> **Historical research only, 2026-08-24:** MailerLite is no longer the campaign/lifecycle
+> platform. Several account facts below describe earlier accounts and are not current authority.
+> The currently connected account is 2582639; live reads, not this file, govern any future
+> explicitly approved MailerLite work.
 
 Empirically probed against the live account (`2582372`) with `MAILERLITE_API_TOKEN`,
 plus a visual pass through the dashboard. Supersedes the README's claim that

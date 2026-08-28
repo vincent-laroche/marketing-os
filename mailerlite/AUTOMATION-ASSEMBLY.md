@@ -1,8 +1,13 @@
-# Automation Assembly Guide — MailerLite UI
+# Historical Automation Assembly Guide — MailerLite UI
 
-Automation steps/emails **cannot be created via the API** (only draft shells). Build each
-automation in the MailerLite dashboard following the specs below (verbatim from the 4 journey
-masters). For every email step: **Email step → Custom HTML editor → paste the full content of
+> **Superseded, 2026-08-24:** do not assemble these journeys in MailerLite. The active automation
+> plan is `../shopify-messaging/PHASE5-PLAN.md`, implemented through Shopify Messaging + Shopify
+> Flow. The content below is preserved only as historical migration evidence.
+
+Do not follow this guide for current work. Historically, automation steps/emails
+**could not be created via the API** (only draft shells), so each automation had to be assembled
+in the MailerLite dashboard following the specs below (verbatim from the 4 journey masters).
+For every email step: **Email step → Custom HTML editor → paste the full content of
 `emails/<file>.html` → set Subject + Preview text from the ledger → save.**
 
 Keep every automation **disabled** until: domain authenticated → seed test → Vincent's approval.
@@ -73,4 +78,3 @@ Keep every automation **disabled** until: domain authenticated → seed test →
 3. Send each email as a test to Vincent + seed list; verify merge fields, links, images, mobile.
 4. Vincent approves each journey explicitly → enable that automation only.
 5. Watch first 50 sends per journey before calling it done.
-

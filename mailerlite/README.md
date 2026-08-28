@@ -1,9 +1,14 @@
-# mailerlite/ — Journey emails for MailerLite
+# mailerlite/ — Legacy MailerLite artifacts (superseded)
 
-22 journey emails (PP ×8, CR ×4, WB ×4, RO ×6) rebuilt for MailerLite from the
+> **Superseded platform path, 2026-08-24:** all marketing campaigns and lifecycle journeys now
+> live in Shopify Messaging + Shopify Flow. The live MailerLite account has zero campaigns.
+> This folder is retained as legacy build output, migration evidence, and API reference only.
+> Do not create, push, restore, or activate campaigns/automations from these instructions unless
+> Vincent explicitly reopens MailerLite scope.
+
+Twenty-two journey emails (PP ×8, CR ×4, WB ×4, RO ×6) were previously rebuilt for MailerLite from the
 authoritative copy deck `../Email Reference File/emails_modules_hubspot versionr/` and the Figma Email Design System v3
-(`9Il504CQE8jLaUTBVzphqc`, page 291:724). Nothing sends from here — all automations
-stay disabled until the gates in `AUTOMATION-ASSEMBLY.md` pass.
+(`9Il504CQE8jLaUTBVzphqc`, page 291:724). They are no longer an active delivery path.
 
 ## Files
 
@@ -15,7 +20,7 @@ stay disabled until the gates in `AUTOMATION-ASSEMBLY.md` pass.
 - `BUILD-LEDGER.md` — account state, per-email flags, blockers
 - `AUTOMATION-ASSEMBLY.md` — exact MailerLite UI steps for the 4 journey automations
 
-## How the emails get into MailerLite
+## Historical MailerLite creation mechanics
 
 All 22 are pushed as **draft campaigns** via `POST /api/campaigns` with inline HTML
 (`push_campaigns.py`) — see `API-SURFACE.md`. Automation *steps* can also be created via the

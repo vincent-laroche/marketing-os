@@ -1,5 +1,14 @@
 # Campaign Implementation Plan — the 53-email programme
 
+> **Execution status, 2026-08-24:** Shopify Messaging + Shopify Flow is the sole marketing
+> campaign/lifecycle platform. This document is the approved 2026-08-19 baseline plan, not the
+> current status ledger. Since it was written: Phase 0 sender authentication was completed;
+> Phases 1–3 produced all 53 artifacts (51 structurally green, 2 source-blocked); Phase 4 is
+> partially complete; Phase 5 has segments and consent tags but
+> not the journey automations; Phase 6 has not started. Use `PROJECT.md` and
+> `shopify-messaging/PHASE5-PLAN.md` for current state. Any later statement below that Shopify
+> authentication is blocked or that work is "not done" is historical to 2026-08-19.
+
 > Source of truth: `Email Reference File/` (AGENTS.md §1). Everything below was verified against
 > that folder and against live DNS/R2/API on 2026-08-19. Nothing live was touched.
 
@@ -67,7 +76,7 @@ One 2 MB PNG timed out mid-transfer at 12s. Email images want ≤200 KB. Use raw
 `/v1/public/<key>` URLs, never `?variant=` — the variant transform emits AVIF, which
 many email clients cannot render.
 
-### Sender authentication — still the hard blocker (re-verified directly)
+### Sender authentication — historical Phase 0 snapshot; now complete
 
 ```
 SPF    v=spf1 include:_spf.google.com a mx include:_spf.mlsend.com
@@ -76,8 +85,9 @@ DMARC  v=DMARC1; p=quarantine; rua=mailto:admin@hairsolutions.co
 DKIM   shopifyemail1/2._domainkey → none    shopify1/2._domainkey → none
 ```
 
-Google, MailerLite, MailerSend are authorized. Shopify is not. With `p=quarantine`,
-Shopify mail from @hairsolutions.co is quarantined today.
+This was the verified 2026-08-19 starting state. Shopify admin subsequently showed the sender
+domain as **Authenticated** on 2026-08-21, so these missing-selector observations are historical
+and must not be treated as a current blocker.
 
 `shops.shopify.com` publishes `v=spf1 ~all` — it authorizes nothing, so an SPF include
 is not the fix. Shopify's real records are store-specific CNAMEs shown in the admin.
@@ -218,8 +228,9 @@ built from zero through Forms and checkout opt-in before any journey can use it.
 
 **Platform: Shopify Messaging.** The 53 emails build and send from Shopify Messaging and
 Shopify Flow. AGENTS.md §3 updated to record this, superseding the MailerLite-as-sender
-note for this programme. The consent lesson behind "Shopify — catalog only, never
-contacts" is not retracted, it relocates: consent state must be verified *inside Shopify*,
+note for this programme. The consent lesson behind "MailerLite's Shopify sync is
+quarantine/catalog-only, never an audience source" is not retracted, it relocates:
+consent state must be verified *inside Shopify*,
 per channel, before any journey activates (Phase 0.5). Phases 1–4 were written platform-
 neutral and are unaffected.
 
