@@ -38,3 +38,21 @@ apps/social-studio/dist/
 apps/social-studio/.vinext/
 apps/social-studio/.wrangler/
 apps/social-studio/*.tsbuildinfo
+
+# Local tool state — generated or machine-specific, not project source
+.claude/agents/
+.claude/hooks/
+.claude/settings.json.bak-*
+.claude/worktrees/
+.cline/
+.kiro/
+
+# Vendored or scratch workspaces — dependencies and build output, never repo content
+beefree-sdk/
+figma-plugin/
+mailerlite-blocks/
+proof-email/
+
+# Skill package: authored under .claude/skills, distributed separately
+email-marketing-os-github-project/
+email_marketing_os_github_project_skill.zip

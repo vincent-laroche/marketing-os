@@ -1,0 +1,4 @@
+interface:
+  display_name: "Email Marketing Design Science Audit"
+  short_description: "Science-backed email design audits"
+  default_prompt: "Use $email-marketing-design-science-audit to audit this HubSpot marketing email for design, accessibility, color, UX, rendering, and deliverability risk."

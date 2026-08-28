@@ -1,0 +1,4 @@
+interface:
+  display_name: "HubSpot Email Builder UI"
+  short_description: "Assemble HubSpot emails in the UI."
+  default_prompt: "Use the HubSpot Email Builder UI workflow to assemble this marketing email from modules."
