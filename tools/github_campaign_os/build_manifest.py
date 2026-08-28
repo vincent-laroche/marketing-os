@@ -7,6 +7,7 @@ import sys
 from typing import Any, Dict, Iterable, List, Optional
 
 from .model import Record, fingerprint
+from .module_availability import build as build_module_availability
 from .preview_publications import ISSUE_REPORT_PATH, load_preview_urls
 
 
@@ -264,6 +265,7 @@ def serialized() -> Dict[Path, str]:
     return {
         OUT / "manifest.json": json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
         OUT / "project-schema.json": json.dumps(project_schema(), ensure_ascii=False, indent=2) + "\n",
+        OUT / "module-availability.json": json.dumps(build_module_availability(), ensure_ascii=False, indent=2) + "\n",
     }
 
 

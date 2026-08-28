@@ -1,0 +1,1038 @@
+{
+  "schema_version": 1,
+  "authority": "Email Reference File/emails_master 831f4e0d84e0831992d481ae881cfede_all.csv",
+  "artifact_root": "Email Reference File/emails_modules_hubspot versionr",
+  "aliases": {
+    "Review stars": "Signal - Review stars",
+    "Signal - Countdown": "Signal - Offer deadline"
+  },
+  "artifacts": {
+    "Button - Final CTA": {
+      "variants": {
+        "light": "button_final_cta_light.module",
+        "dark": "button_final_cta_dark.module"
+      },
+      "fingerprint": "f1173c792d45382b17825c17e5d8a3fc1aea8fd26c3cb5b325b50e64ca098467"
+    },
+    "Button - Primary CTA": {
+      "variants": {
+        "light": "button_primary_cta_light.module",
+        "dark": "button_primary_cta_dark.module"
+      },
+      "fingerprint": "37bf0a4f7e3e57ef0ebe39bbcf97b83b1c2ce401370ef9d9d2b0033ab0435e62"
+    },
+    "Column - Image and text": {
+      "variants": {
+        "light": "column_image_and_text_light.module",
+        "dark": "column_image_and_text_dark.module"
+      },
+      "fingerprint": "ad5b2c3395c0208c68e2047f70594cb998fe8ef50f1f1f5ff44649419ca1f3f7"
+    },
+    "Commerce - Billing details": {
+      "variants": {
+        "light": "commerce_billing_details_light.module",
+        "dark": "commerce_billing_details_dark.module"
+      },
+      "fingerprint": "e77f81e21fd9fe66a1e0ef737125fa3d463caaba0d947b3a76fba5252bcf9688"
+    },
+    "Commerce - Cart line items": {
+      "variants": {
+        "light": "commerce_cart_line_items_light.module",
+        "dark": "commerce_cart_line_items_dark.module"
+      },
+      "fingerprint": "d9ed6713a48b0e6412366d4056f80d7d47892bcfd605d246aa4245c848f29673"
+    },
+    "Commerce - Checkout summary": {
+      "variants": {
+        "light": "commerce_checkout_summary_light.module",
+        "dark": "commerce_checkout_summary_dark.module"
+      },
+      "fingerprint": "dfc52fe2c5db1c942da2eb63d7a5f4ae3e26e44c751ef9b02671b69f9a515608"
+    },
+    "Commerce - Order summary": {
+      "variants": {
+        "light": "commerce_order_summary_light.module",
+        "dark": "commerce_order_summary_dark.module"
+      },
+      "fingerprint": "3bcc51ae578928cb79ae4d8b95bef7aa321e445dea779c8d7d6a7bec16e680c3"
+    },
+    "Commerce - Quote and spec table": {
+      "variants": {
+        "light": "commerce_quote_spec_table_light.module",
+        "dark": "commerce_quote_spec_table_dark.module"
+      },
+      "fingerprint": "8cd522faee7f150c9b5d54b6e6b3f35d228c274355f197fbe4f5187ad849b235"
+    },
+    "Commerce - Shipping tracking": {
+      "variants": {
+        "light": "commerce_shipping_tracking_light.module",
+        "dark": "commerce_shipping_tracking_dark.module"
+      },
+      "fingerprint": "ad14ca9627f53220fac9b9acf2ab11cec8da42f1356456e97053efbd3c8dac7a"
+    },
+    "Commerce - Viewed product": {
+      "variants": {
+        "light": "commerce_viewed_product_light.module",
+        "dark": "commerce_viewed_product_dark.module"
+      },
+      "fingerprint": "ab145dd9d754c16790edecbe3998793ce97acdb20cdf771b18d81ec10c24466e"
+    },
+    "Comparison": {
+      "variants": {
+        "light": "comparison_light.module",
+        "dark": "comparison_dark.module"
+      },
+      "fingerprint": "1f2edb966f322cde193c174d00ab22d7ba91c84b552bc5e02f75c7dd6e0f7f8f"
+    },
+    "FAQ": {
+      "variants": {
+        "light": "faq_light.module",
+        "dark": "faq_dark.module"
+      },
+      "fingerprint": "882e26052bfe5aa05b59aa5f35988397188b971ffc7d4bedf7dba60bd3c92c5d"
+    },
+    "Footer - Preference centre": {
+      "variants": {
+        "light": "footer_preference_centre_light.module",
+        "dark": "footer_preference_centre_dark.module"
+      },
+      "fingerprint": "71a70b8253fc74fddb664045ff7b92d48c89f056388cb5a13111a94c57847b27"
+    },
+    "Footer - Social": {
+      "variants": {
+        "light": "footer_social_light.module",
+        "dark": "footer_social_dark.module"
+      },
+      "fingerprint": "3bf12de885123b2e1a05e1ae38aaf24cde77ccae5cc078ad6dda104ba5dd26a0"
+    },
+    "Footer - Standard": {
+      "variants": {
+        "light": "footer_standard_light.module",
+        "dark": "footer_standard_dark.module"
+      },
+      "fingerprint": "d5620484376d8da302f16907ff64672b05f0e7780b8a16eaba66f50d69639f0d"
+    },
+    "Footer - Wide": {
+      "variants": {
+        "light": "footer_wide_light.module",
+        "dark": "footer_wide_dark.module"
+      },
+      "fingerprint": "7955d07af32657ef016eb538e229e41e9d641075f55abc48cebb68e8e0509d30"
+    },
+    "Grid - Collections (4)": {
+      "variants": {
+        "light": "grid_collections_4_light.module",
+        "dark": "grid_collections_4_dark.module"
+      },
+      "fingerprint": "12cde87f7365ed3baddd173d7298a06b7de627c3bfa8a467d2095bc8f7e53514"
+    },
+    "Grid - Collections (6)": {
+      "variants": {
+        "light": "grid_collections_6_light.module",
+        "dark": "grid_collections_6_dark.module"
+      },
+      "fingerprint": "d06dc2fb9c738df83422c7314510c6f46353c3e16f81dfcfbb6809d584ce8d0b"
+    },
+    "Header - Centered logo": {
+      "variants": {
+        "light": "header_centered_logo_light.module",
+        "dark": "header_centered_logo_dark.module"
+      },
+      "fingerprint": "ef7ffe8a1c2c57e106386bbf01457fcb145226c99947bc90361e483a577dcc78"
+    },
+    "Hero - Photo-led": {
+      "variants": {
+        "light": "hero_photo_led_light.module",
+        "dark": "hero_photo_led_dark.module"
+      },
+      "fingerprint": "8b71c741487ff9360080013ef99484bab92e26eeef24defa179dcfa638660923"
+    },
+    "Hero - Text-led": {
+      "variants": {
+        "light": "hero_text_led_light.module",
+        "dark": "hero_text_led_dark.module"
+      },
+      "fingerprint": "774d08982188356144d89dda003bb966d59eb330aeaf64ea1716a65d1246caf9"
+    },
+    "Layout - Plain-text founder wrapper": {
+      "variants": {
+        "light": "layout_founder_wrapper_light.module",
+        "dark": "layout_founder_wrapper_dark.module"
+      },
+      "fingerprint": "cdfdd4d8bdaddca0451611b8ab2af203c70f94ccd27a2671d321773b5e1a27a5"
+    },
+    "List - Belief": {
+      "variants": {
+        "light": "list_belief_light.module",
+        "dark": "list_belief_dark.module"
+      },
+      "fingerprint": "604353a0bfe83bf185f0ad9f7776ad59b0ef2ccfe815de147c28dee1c3f96812"
+    },
+    "List - Questions": {
+      "variants": {
+        "light": "list_questions_light.module",
+        "dark": "list_questions_dark.module"
+      },
+      "fingerprint": "d765cd8ee6d8daacfbacb18f2ad2d78d386076c00bcdd3fd977c780b557b917e"
+    },
+    "List - Support strip": {
+      "variants": {
+        "light": "list_support_strip_light.module",
+        "dark": "list_support_strip_dark.module"
+      },
+      "fingerprint": "e48e016b9d278ae8e121d915a5ef23b535998e84e3bc1e885879fc708748d4ce"
+    },
+    "List - Trust strip": {
+      "variants": {
+        "light": "list_trust_strip_light.module",
+        "dark": "list_trust_strip_dark.module"
+      },
+      "fingerprint": "e6ca706c9daa32f647b173581caa4b6108e65920faf4bc3b693487c1a8ea9d00"
+    },
+    "Photo - Feature story": {
+      "variants": {
+        "light": "photo_feature_story_light.module",
+        "dark": "photo_feature_story_dark.module"
+      },
+      "fingerprint": "4b9e1226eb49e877742613a5059a0b43bc88bfb003449770fc95829a57bb4f42"
+    },
+    "Photo - Founder note": {
+      "variants": {
+        "light": "photo_founder_note_light.module",
+        "dark": "photo_founder_note_dark.module"
+      },
+      "fingerprint": "45d293db525351f1badd5f9ce1740aacff9f45ba9bea79a872085356b826c9dc"
+    },
+    "Photo - Logo system": {
+      "variants": {
+        "light": "photo_logo_system_light.module",
+        "dark": "photo_logo_system_dark.module"
+      },
+      "fingerprint": "1a270fbb9c4d35564d106c37014b17438b59d3f3765fdadfbe258ac873ca27a1"
+    },
+    "Product - 3-up grid": {
+      "variants": {
+        "light": "product_3up_grid_light.module",
+        "dark": "product_3up_grid_dark.module"
+      },
+      "fingerprint": "5f863acc8f99b56f2269343e98c95c9ae0a0db40cefe9f49fb2d392d3b4223c3"
+    },
+    "Product - Dynamic recommendations": {
+      "variants": {
+        "light": "product_dynamic_recommendations_light.module",
+        "dark": "product_dynamic_recommendations_dark.module"
+      },
+      "fingerprint": "b1cd279b3986598d506c7f780ec2220fec8c4ed0440de99c9d1f9db01e747a5e"
+    },
+    "Product - Goal-based recommendation": {
+      "variants": {
+        "light": "product_goal_based_recommendation_light.module",
+        "dark": "product_goal_based_recommendation_dark.module"
+      },
+      "fingerprint": "4ece8568a89378efdf1fa1d3fd218686795ce69dc85f869c602bc4d9f1da3e11"
+    },
+    "Proof": {
+      "variants": {
+        "light": "proof_light.module",
+        "dark": "proof_dark.module"
+      },
+      "fingerprint": "5f181790b7caa5ce0058de9577954f3791a4b1782824187a93ae1027034ef95c"
+    },
+    "Quote - Accent bar": {
+      "variants": {
+        "light": "quote_accent_bar_light.module",
+        "dark": "quote_accent_bar_dark.module"
+      },
+      "fingerprint": "a21b7fc85de70504f0553a7b7f716423c592b5c436fd505b4ab2d2b9b74e9169"
+    },
+    "Quote - Centered": {
+      "variants": {
+        "light": "quote_centered_light.module",
+        "dark": "quote_centered_dark.module"
+      },
+      "fingerprint": "53f19bfef21e512db0c54d1e6c386a8acea2e9d5a1285db3b14d8f0c5eb1a707"
+    },
+    "Signal - Offer deadline": {
+      "variants": {
+        "light": "signal_offer_deadline_light.module",
+        "dark": "signal_offer_deadline_dark.module"
+      },
+      "fingerprint": "08276386f8761705339b6f690b0033efa524f10d06e930a831f75282985de31c"
+    },
+    "Signal - Promo code": {
+      "variants": {
+        "light": "signal_promo_code_light.module",
+        "dark": "signal_promo_code_dark.module"
+      },
+      "fingerprint": "e92a8da874faee665d42b2311e563dd711efa624a34f745cfeaaa85f31da33bd"
+    },
+    "Signal - Review stars": {
+      "variants": {
+        "light": "signal_review_stars_light.module",
+        "dark": "signal_review_stars_dark.module"
+      },
+      "fingerprint": "58879d8435931117876120965b69c3b2d22a71fc2c8184df4bcbbf815a80b006"
+    },
+    "Stat bars": {
+      "variants": {
+        "light": "stat_bars_light.module",
+        "dark": "stat_bars_dark.module"
+      },
+      "fingerprint": "74541b1ad93b7ed23b0cc79732971242ccecaaa47a21a868166a96455669dab1"
+    },
+    "Testimonial": {
+      "variants": {
+        "light": "testimonial_light.module",
+        "dark": "testimonial_dark.module"
+      },
+      "fingerprint": "292b829e52243b080eec929eafaf7fb075941b247a9937512d07321617ae9b69"
+    },
+    "Text - Base type guidance": {
+      "variants": {
+        "light": "text_base_type_guidance_light.module",
+        "dark": "text_base_type_guidance_dark.module"
+      },
+      "fingerprint": "0fc8ea33f16d9f7a3acfa615422952405259fd052a019dde1e26e135199583ac"
+    },
+    "Text - Customer snapshot": {
+      "variants": {
+        "light": "text_customer_snapshot_light.module",
+        "dark": "text_customer_snapshot_dark.module"
+      },
+      "fingerprint": "8ba913aaf16d3db9c0e343771cb4bef4d540e2fce535a32d6d507f7b6d673f40"
+    },
+    "Text - Five changes": {
+      "variants": {
+        "light": "text_five_changes_light.module",
+        "dark": "text_five_changes_dark.module"
+      },
+      "fingerprint": "6b35dedfdba70bfb2a508e06169dce66f8adc02bf4fa4fab8738831287c6812f"
+    },
+    "Text - Founder pillars": {
+      "variants": {
+        "light": "text_founder_pillars_light.module",
+        "dark": "text_founder_pillars_dark.module"
+      },
+      "fingerprint": "10c9c99121ebfb5a1e460c21fbf0b60c9fd6e46fba0422767f26c8914f14ee84"
+    },
+    "Text - Masthead": {
+      "variants": {
+        "light": "text_masthead_light.module",
+        "dark": "text_masthead_dark.module"
+      },
+      "fingerprint": "435f8acee7897900a32e46c44fb0564d425fe9a3edfc38a154bb342152935226"
+    },
+    "Text - Next step": {
+      "variants": {
+        "light": "text_next_step_light.module",
+        "dark": "text_next_step_dark.module"
+      },
+      "fingerprint": "e5955d55bdf4fc0692d358f87acb217bdd609cd75fff5e5d56a76179c4dd7a25"
+    },
+    "Text - Offer discount": {
+      "variants": {
+        "light": "text_offer_discount_light.module",
+        "dark": "text_offer_discount_dark.module"
+      },
+      "fingerprint": "55ac714dafdfda62a61ba309ed4f02434bc1573362bdef04af54c41a8a9bebfd"
+    },
+    "Text - Opening": {
+      "variants": {
+        "light": "text_opening_light.module",
+        "dark": "text_opening_dark.module"
+      },
+      "fingerprint": "3b5a99b1177d3438180f78831c4067539569fe6057be6d5a831c3eba24b81d01"
+    },
+    "Text - Reassurance": {
+      "variants": {
+        "light": "text_reassurance_light.module",
+        "dark": "text_reassurance_dark.module"
+      },
+      "fingerprint": "51c6f16a52ab2d16436610ee50e46544ecda78989588d62930bdb39db3e0ce58"
+    },
+    "Text - Section": {
+      "variants": {
+        "light": "text_section_light.module",
+        "dark": "text_section_dark.module"
+      },
+      "fingerprint": "092dbb89a9d3d2dc52d8b76e2b2952428f912274fbcb9746a166d252e6848af3"
+    },
+    "Text - Why it matters": {
+      "variants": {
+        "light": "text_why_it_matters_light.module",
+        "dark": "text_why_it_matters_dark.module"
+      },
+      "fingerprint": "c766810fc44a943a72a98d14bb1393398054dea23cd0b93c4f2daa4c2542d6e1"
+    },
+    "Timeline": {
+      "variants": {
+        "light": "timeline_light.module",
+        "dark": "timeline_dark.module"
+      },
+      "fingerprint": "f216560166a47feea8b8b9b293e48d1c92f72490fbd63dda6e2548744ebec02b"
+    }
+  },
+  "emails": [
+    {
+      "email_code": "CR-2",
+      "resolved": [
+        {
+          "required": "List - Trust strip",
+          "artifact": "List - Trust strip",
+          "mode": "exact-label"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "RO-3",
+      "resolved": [
+        {
+          "required": "Review stars",
+          "artifact": "Signal - Review stars",
+          "mode": "documented-alias"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "RO-6",
+      "resolved": [
+        {
+          "required": "Review stars",
+          "artifact": "Signal - Review stars",
+          "mode": "documented-alias"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "WB-2",
+      "resolved": [
+        {
+          "required": "Review stars",
+          "artifact": "Signal - Review stars",
+          "mode": "documented-alias"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "WB-3",
+      "resolved": [
+        {
+          "required": "Review stars",
+          "artifact": "Signal - Review stars",
+          "mode": "documented-alias"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "PP-6",
+      "resolved": [
+        {
+          "required": "Review stars",
+          "artifact": "Signal - Review stars",
+          "mode": "documented-alias"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "CR-3",
+      "resolved": [
+        {
+          "required": "List - Trust strip",
+          "artifact": "List - Trust strip",
+          "mode": "exact-label"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "C-2",
+      "resolved": [
+        {
+          "required": "Comparison",
+          "artifact": "Comparison",
+          "mode": "exact-label"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "C-0",
+      "resolved": [
+        {
+          "required": "Timeline",
+          "artifact": "Timeline",
+          "mode": "exact-label"
+        },
+        {
+          "required": "FAQ",
+          "artifact": "FAQ",
+          "mode": "exact-label"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "C-1",
+      "resolved": [
+        {
+          "required": "List - Trust strip",
+          "artifact": "List - Trust strip",
+          "mode": "exact-label"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "C-3",
+      "resolved": [
+        {
+          "required": "Signal - Countdown",
+          "artifact": "Signal - Offer deadline",
+          "mode": "documented-alias"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "W-1",
+      "resolved": [
+        {
+          "required": "Text - Masthead",
+          "artifact": "Text - Masthead",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Text - Section",
+          "artifact": "Text - Section",
+          "mode": "exact-label"
+        },
+        {
+          "required": "FAQ",
+          "artifact": "FAQ",
+          "mode": "exact-label"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "W-3",
+      "resolved": [
+        {
+          "required": "Text - Masthead",
+          "artifact": "Text - Masthead",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Column - Image and text",
+          "artifact": "Column - Image and text",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Product - 3-up grid",
+          "artifact": "Product - 3-up grid",
+          "mode": "exact-label"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "W-2",
+      "resolved": [
+        {
+          "required": "Photo - Founder note",
+          "artifact": "Photo - Founder note",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Comparison",
+          "artifact": "Comparison",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Timeline",
+          "artifact": "Timeline",
+          "mode": "exact-label"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "W-4",
+      "resolved": [
+        {
+          "required": "Quote - Accent bar",
+          "artifact": "Quote - Accent bar",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Stat bars",
+          "artifact": "Stat bars",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Review stars",
+          "artifact": "Signal - Review stars",
+          "mode": "documented-alias"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "W-5",
+      "resolved": [
+        {
+          "required": "Text - Masthead",
+          "artifact": "Text - Masthead",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Timeline",
+          "artifact": "Timeline",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Photo - Founder note",
+          "artifact": "Photo - Founder note",
+          "mode": "exact-label"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "NL-02",
+      "resolved": [
+        {
+          "required": "Text - Masthead",
+          "artifact": "Text - Masthead",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Quote - Centered",
+          "artifact": "Quote - Centered",
+          "mode": "exact-label"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "NL-03",
+      "resolved": [
+        {
+          "required": "Text - Masthead",
+          "artifact": "Text - Masthead",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Signal - Countdown",
+          "artifact": "Signal - Offer deadline",
+          "mode": "documented-alias"
+        },
+        {
+          "required": "Grid - Collections 4",
+          "artifact": "Grid - Collections (4)",
+          "mode": "folded-label"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "NL-05",
+      "resolved": [
+        {
+          "required": "Text - Masthead",
+          "artifact": "Text - Masthead",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Hero - Photo-led",
+          "artifact": "Hero - Photo-led",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Text - Section",
+          "artifact": "Text - Section",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Column - Image and text",
+          "artifact": "Column - Image and text",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Product - 3-up grid",
+          "artifact": "Product - 3-up grid",
+          "mode": "exact-label"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "NL-01",
+      "resolved": [
+        {
+          "required": "Text - Masthead",
+          "artifact": "Text - Masthead",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Column - Image and text",
+          "artifact": "Column - Image and text",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Comparison",
+          "artifact": "Comparison",
+          "mode": "exact-label"
+        },
+        {
+          "required": "FAQ",
+          "artifact": "FAQ",
+          "mode": "exact-label"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "NL-04",
+      "resolved": [
+        {
+          "required": "Text - Masthead",
+          "artifact": "Text - Masthead",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Text - Section",
+          "artifact": "Text - Section",
+          "mode": "exact-label"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "NL-06",
+      "resolved": [
+        {
+          "required": "Text - Masthead",
+          "artifact": "Text - Masthead",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Column - Image and text",
+          "artifact": "Column - Image and text",
+          "mode": "exact-label"
+        },
+        {
+          "required": "FAQ",
+          "artifact": "FAQ",
+          "mode": "exact-label"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "NL-10",
+      "resolved": [
+        {
+          "required": "Text - Masthead",
+          "artifact": "Text - Masthead",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Hero - Photo-led",
+          "artifact": "Hero - Photo-led",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Text - Section",
+          "artifact": "Text - Section",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Column - Image and text",
+          "artifact": "Column - Image and text",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Product - 3-up grid",
+          "artifact": "Product - 3-up grid",
+          "mode": "exact-label"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "NL-07",
+      "resolved": [
+        {
+          "required": "Text - Masthead",
+          "artifact": "Text - Masthead",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Quote - Centered",
+          "artifact": "Quote - Centered",
+          "mode": "exact-label"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "NL-08",
+      "resolved": [
+        {
+          "required": "Text - Masthead",
+          "artifact": "Text - Masthead",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Signal - Countdown",
+          "artifact": "Signal - Offer deadline",
+          "mode": "documented-alias"
+        },
+        {
+          "required": "Grid - Collections 4",
+          "artifact": "Grid - Collections (4)",
+          "mode": "folded-label"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "NL-09",
+      "resolved": [
+        {
+          "required": "Text - Masthead",
+          "artifact": "Text - Masthead",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Text - Section",
+          "artifact": "Text - Section",
+          "mode": "exact-label"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "NL-15",
+      "resolved": [
+        {
+          "required": "Text - Masthead",
+          "artifact": "Text - Masthead",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Hero - Photo-led",
+          "artifact": "Hero - Photo-led",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Text - Section",
+          "artifact": "Text - Section",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Column - Image and text",
+          "artifact": "Column - Image and text",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Product - 3-up grid",
+          "artifact": "Product - 3-up grid",
+          "mode": "exact-label"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "NL-12",
+      "resolved": [
+        {
+          "required": "Text - Masthead",
+          "artifact": "Text - Masthead",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Quote - Centered",
+          "artifact": "Quote - Centered",
+          "mode": "exact-label"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "NL-11",
+      "resolved": [
+        {
+          "required": "Text - Masthead",
+          "artifact": "Text - Masthead",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Column - Image and text",
+          "artifact": "Column - Image and text",
+          "mode": "exact-label"
+        },
+        {
+          "required": "FAQ",
+          "artifact": "FAQ",
+          "mode": "exact-label"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "NL-13",
+      "resolved": [
+        {
+          "required": "Text - Masthead",
+          "artifact": "Text - Masthead",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Signal - Countdown",
+          "artifact": "Signal - Offer deadline",
+          "mode": "documented-alias"
+        },
+        {
+          "required": "Grid - Collections 4",
+          "artifact": "Grid - Collections (4)",
+          "mode": "folded-label"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "NL-14",
+      "resolved": [
+        {
+          "required": "Text - Masthead",
+          "artifact": "Text - Masthead",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Text - Section",
+          "artifact": "Text - Section",
+          "mode": "exact-label"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "NL-17",
+      "resolved": [
+        {
+          "required": "Text - Masthead",
+          "artifact": "Text - Masthead",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Quote - Centered",
+          "artifact": "Quote - Centered",
+          "mode": "exact-label"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "NL-19",
+      "resolved": [
+        {
+          "required": "Text - Masthead",
+          "artifact": "Text - Masthead",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Text - Section",
+          "artifact": "Text - Section",
+          "mode": "exact-label"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "NL-16",
+      "resolved": [
+        {
+          "required": "Text - Masthead",
+          "artifact": "Text - Masthead",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Column - Image and text",
+          "artifact": "Column - Image and text",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Comparison",
+          "artifact": "Comparison",
+          "mode": "exact-label"
+        },
+        {
+          "required": "FAQ",
+          "artifact": "FAQ",
+          "mode": "exact-label"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "NL-18",
+      "resolved": [
+        {
+          "required": "Text - Masthead",
+          "artifact": "Text - Masthead",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Signal - Countdown",
+          "artifact": "Signal - Offer deadline",
+          "mode": "documented-alias"
+        },
+        {
+          "required": "Grid - Collections 4",
+          "artifact": "Grid - Collections (4)",
+          "mode": "folded-label"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "email_code": "NL-20",
+      "resolved": [
+        {
+          "required": "Text - Masthead",
+          "artifact": "Text - Masthead",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Hero - Photo-led",
+          "artifact": "Hero - Photo-led",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Text - Section",
+          "artifact": "Text - Section",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Column - Image and text",
+          "artifact": "Column - Image and text",
+          "mode": "exact-label"
+        },
+        {
+          "required": "Product - 3-up grid",
+          "artifact": "Product - 3-up grid",
+          "mode": "exact-label"
+        }
+      ],
+      "unresolved": []
+    }
+  ]
+}
