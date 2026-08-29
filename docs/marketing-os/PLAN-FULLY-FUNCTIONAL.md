@@ -128,21 +128,28 @@ Only three Manus seams exist. Replace each; everything else is ordinary Node/Rea
 | Login | Manus OAuth, `users.openId` in `drizzle/schema.ts` | **Cloudflare Access** — see below |
 | Database | `DATABASE_URL`, MySQL via `drizzle-orm/mysql2` | Managed MySQL via **Hyperdrive** |
 
-**Auth — DECIDED 2026-08-28 by Vincent: drop Manus OAuth, use Cloudflare Access.**
-The `users` table and `openId` column go; no other table holds a foreign key to `users`,
-so it drops cleanly. Full constraints are recorded on #132 — read that comment before
-touching auth. The three that matter most:
+**Auth — DECIDED 2026-08-28 by Vincent: no authentication at all. Risk explicitly assumed.**
+Drop Manus OAuth and add nothing in its place — no login gate, no Cloudflare Access policy.
+The `users` table, `openId`, and the admin/user role model all go. Full record on #132.
 
-- **The app is two-tier, not logged-in/logged-out.** `server/trpc.ts` `adminProcedure` is the
-  real enforcement; `src/SyncHealth.tsx` gates manual reconciliation on `role === "admin"`;
-  `syncHealthSurface.test.tsx` asserts non-admins can read health but not reconcile. That test
-  must still pass with its identity source swapped, not its expectation weakened.
-- **Verify the Access JWT** (`Cf-Access-Jwt-Assertion`) and lock the origin to Access. Trusting
-  the raw `Cf-Access-Authenticated-User-Email` header on a directly reachable Worker is a full
-  authentication bypass on a workspace holding consent and audience evidence.
-- **Sequence the `users` drop as a seventh migration *after* the data migration**, so the
-  cutover is not carrying a schema change and a host change at once. Rework
-  `auth.logout.test.ts` deliberately — cookie logout is meaningless under Access.
+Checked before recording: the schema carries **no customer PII**. Every column across the
+twelve tables is campaign metadata; the only `email` / `name` / `openId` columns are on
+`users`, which this drops. What becomes public is Hair Solutions' own marketing operations
+data. That is the owner's to expose, and it is deliberate — **do not reintroduce a login.**
+
+Two consequences the executing agent must handle:
+
+- **`src/SyncHealth.tsx` has a "Run reconciliation" button that queues the Worker.** With no
+  identity, `server/trpc.ts` `adminProcedure` guards nothing and that endpoint becomes a
+  publicly callable trigger for Notion writes — an integrity and abuse vector, not a leak.
+  **Prefer removing the button**; the `*/30 * * * *` cron already reconciles and the trigger
+  is a convenience, not a dependency. A shared-secret header is the fallback. Not a login.
+- **Rewrite `syncHealthSurface.test.tsx` rather than swapping its identity source.** Its
+  admin/non-admin distinction ceases to exist; a test asserting a role that no longer exists
+  is worse than no test. Same for `auth.logout.test.ts` — cookie logout is meaningless now.
+
+Sequence the `users` drop as a seventh Drizzle migration **after** the data migration, so
+cutover is not carrying a schema change and a host change at once.
 
 **Database.** Provision managed MySQL (PlanetScale or Neon-compatible). The six existing
 Drizzle migrations apply unchanged — do not convert to D1/SQLite, which would mean rewriting
