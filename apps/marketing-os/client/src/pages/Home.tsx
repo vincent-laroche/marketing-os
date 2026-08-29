@@ -1,0 +1,28 @@
+import React from "react";
+import { AccessGate } from "@/components/AccessGate";
+import { startLogin } from "@/const";
+import { useAuth } from "@/_core/hooks/useAuth";
+import { trpc } from "@/lib/trpc";
+import { AlertTriangle, ArrowRight, Layers3, Loader2, LockKeyhole, Mail } from "lucide-react";
+import { Link } from "wouter";
+
+export default function Home() {
+  const { isAuthenticated, loading } = useAuth();
+  const portfolio = trpc.campaigns.portfolio.useQuery(undefined, { enabled: isAuthenticated });
+  if (loading) return <div className="page-loader"><Loader2 className="h-5 w-5 animate-spin" />Checking Marketing OS access…</div>;
+  if (!isAuthenticated) return <AccessGate onSignIn={() => startLogin()} />;
+  if (portfolio.isLoading) return <div className="page-loader"><Loader2 className="h-5 w-5 animate-spin" />Loading command-center evidence…</div>;
+  if (portfolio.isError) return <div className="page-loader page-error"><AlertTriangle className="h-5 w-5" />{portfolio.error.message}</div>;
+
+  const emails = portfolio.data ?? [];
+  const ready = emails.filter(email => email.sourceStatus === "ready").length;
+  const blocked = emails.length - ready;
+  const journeys = new Set(emails.map(email => email.series)).size;
+
+  return <div className="marketing-page command-center">
+    <header className="page-heading marketing-heading command-heading"><div><p>Shared marketing control plane</p><h1>Marketing OS</h1><span>One calm command center for strategy, decisions, shared assets, and results—while Email OS and Social Media OS remain specialist workspaces.</span></div><div className="heading-actions"><span className="warning-chip">Concept-to-production boundary</span><Link href="/initiatives" className="quiet-button"><Layers3 className="h-4 w-4" />Open initiatives</Link></div></header>
+    <section className="command-metrics"><article><span>Open owner decisions</span><strong>4</strong><small>Consent, source authority, social pilot, and initiative scope</small></article><article className="email"><span>Email production records</span><strong>{emails.length}</strong><small>{journeys} journeys with canonical source evidence</small></article><article className="social"><span>Social production records</span><strong>0</strong><small>Social remains a branch-owned source-backed build</small></article><article className="verified"><span>Authorized releases</span><strong>0</strong><small>No email send or social publication is authorized here</small></article></section>
+    <section className="specialist-grid"><article className="specialist-card email-specialist"><div className="specialist-title"><Mail className="h-5 w-5" /><div><p>Specialist workspace</p><h2>Email OS</h2><span>Governed production, previews, consent, Shopify Messaging, and Flow readiness.</span></div></div><div className="specialist-stats"><span><strong>{emails.length}</strong>canonical emails</span><span><strong>{journeys}</strong>journeys</span><span><strong>{ready}</strong>source-ready</span><span><strong>{blocked}</strong>blocked</span></div><div className="specialist-actions"><i className="locked-chip">Activation locked</i><Link href="/email">Open Email OS <ArrowRight className="h-3.5 w-3.5" /></Link></div></article><article className="specialist-card social-specialist"><div className="specialist-title"><Layers3 className="h-5 w-5" /><div><p>Specialist workspace</p><h2>Social Media OS</h2><span>Campaigns, concepts, platform publications, creative review, and repurposing.</span></div></div><div className="social-boundary"><LockKeyhole className="h-4 w-4" /><div><strong>Read-model branch in progress</strong><span>Social records remain outside this Email-owned implementation until their source-backed branch is merged.</span></div></div><div className="specialist-actions"><i className="warning-chip">Publishing disabled</i><Link href="/social">View boundary <ArrowRight className="h-3.5 w-3.5" /></Link></div></article></section>
+    <section className="command-bottom"><article className="needs-vincent"><div className="section-card-head"><div><h2>Needs Vincent</h2><p>Only decisions that unlock source-backed work belong here.</p></div><span className="state-pill">4 decisions</span></div><ol><li><b>01</b><div><strong>Reverify email consent before any activation</strong><span>Audience and consent are a separate release gate.</span></div><i>Required</i></li><li><b>02</b><div><strong>Resolve remaining Email source and real-data dependencies</strong><span>{blocked} canonical records remain deliberately blocked.</span></div><i>Decision</i></li><li><b>03</b><div><strong>Approve the first production Social Campaign source</strong><span>Replace the non-production fixture only with approved source evidence.</span></div><i>Not started</i></li><li><b>04</b><div><strong>Choose the first shared cross-channel initiative</strong><span>Link strategy first; do not synchronize specialist internals.</span></div><i>Proposed</i></li></ol></article><article className="system-health"><div className="section-card-head"><div><h2>System health</h2><p>Freshness, provenance, and execution boundaries.</p></div><span className="state-pill">Healthy</span></div><div className="health-list"><div><strong>Repository source</strong><span>Current</span><i><b style={{ width: "100%" }} /></i></div><div><strong>Email canonical inventory</strong><span>Verified</span><i><b style={{ width: "100%" }} /></i></div><div><strong>Social production source</strong><span>Branch pending</span><i className="warning"><b style={{ width: "32%" }} /></i></div><div><strong>External execution</strong><span>Locked</span><i><b style={{ width: "100%" }} /></i></div></div></article></section>
+  </div>;
+}

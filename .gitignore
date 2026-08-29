@@ -58,3 +58,7 @@ proof-email/
 # Skill package: authored under .claude/skills, distributed separately
 email-marketing-os-github-project/
 email_marketing_os_github_project_skill.zip
+
+# Marketing OS app build output and dependencies
+apps/marketing-os/node_modules/
+apps/marketing-os/dist/
