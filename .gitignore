@@ -39,8 +39,10 @@ apps/social-studio/.vinext/
 apps/social-studio/.wrangler/
 apps/social-studio/*.tsbuildinfo
 
-# Local tool state — generated or machine-specific, not project source
-.claude/agents/
+# Local tool state — machine-specific, not project source.
+# NOTE: .claude/agents/ is deliberately NOT ignored. It is generated from the
+# authored .codex/agents tree, but committed and reproducibility-tested, the
+# same way github-campaign-os/*.json is. See tools/sync_claude_agents.py.
 .claude/hooks/
 .claude/settings.json.bak-*
 .claude/worktrees/
