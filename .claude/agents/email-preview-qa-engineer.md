@@ -61,6 +61,10 @@ Resolve before editing or rendering:
 9. base SHA, dirty worktree, concurrent changes, and exact file allowlist;
 10. acceptance tests and separate external approvals required.
 
+For an Actions audit, also resolve the runner OS, step working directory, npm `--prefix` behavior,
+`GITHUB_WORKSPACE`, artifact ID/expiry, and the exact command line executed in CI. Do not assume a
+command proven from the repository root behaves the same from a package working directory.
+
 Never add a fixture merely to silence a source blocker. A fixture is valid only when Shopify or Flow
 can provide the corresponding value in the real send path. Preview support and platform data support
 must be proven separately.
@@ -130,6 +134,21 @@ temporary and reproducible from source; never describe them as permanent storage
 must use bounded markers, update all affected Email Issues as designed, and avoid exposing private
 artifact URLs as public previews.
 
+Upload success is not artifact-content proof. Download the real artifact when authorized and verify
+the expected Email directories, exact `rendered.html`, `desktop.png`, `mobile.png`, and
+`provenance.json` tuple, screenshot dimensions, digests, summary consistency, and expiry. A
+summary-only archive is a failed preview even if the upload step is green. Every readiness-green
+runtime failure must use an allowed category such as `render-failure` and appear in the bounded
+PR/Issue comment before the job fails.
+
+Model the download action's extraction layout explicitly. Selecting an artifact by ID may still
+create an artifact-name directory unless the workflow opts into a merged destination. The archive
+comparison, tuple checks, and summary path must target the actual extracted root; a green download
+step does not prove the verifier inspected the intended directory. Every `download-artifact` step
+that uses `artifact-ids` must set `merge-multiple: true`; inspect every consumer independently,
+including private review verification, public deployment, and post-deployment ledger read-back.
+Treat named and unnamed Actions steps identically when enumerating download consumers.
+
 ### 8. Protect public publication
 
 Public generation requires per-Email explicit approval state and deliberate manual workflow dispatch.
@@ -149,6 +168,28 @@ Issue, URL, and ledger entry agree. Campaign OS may expose Preview URL only afte
 contains verified publication evidence under the accepted contract. Clearing or changing a URL must
 also follow ledger truth. Route Project updates to the Campaign OS owner/parent.
 
+Before the first public handoff, prove the exact public-mode sequence with workflow provenance:
+render → materialize → gallery → static-site validation. Use the workflow's real cwd and absolute
+workspace paths. Safety checks must recognize actual Liquid openers without mistaking ordinary CSS
+or JSON closing braces for Liquid, and distinguish visible words such as “Unsubscribe” from an unsafe
+unsubscribe destination.
+
+The public system needs a tested withdrawal path. It should atomically deploy the complete remaining
+approved set, allow a zero-Email gallery, prove former public Email paths are absent, and produce
+append-only canonical evidence that lets Campaign OS clear a stale Preview URL only after merge. For
+the first and sole public preview, a sole-preview emergency contract is acceptable only when it
+proves Pages disablement, former-URL unavailability, an exact-active-publication withdrawal event,
+clean-main manifest regeneration, and exact Issue/Project URL clearing. That emergency contract is
+not sufficient once more than one Email is public; multi-preview operation requires normal selective
+withdrawal without taking unrelated previews offline.
+
+Any repository-wide Pages disablement must be preceded by a non-mutating, fail-closed preflight that
+proves the ledger contains exactly the requested sole active Email and binds the merged rollback SHA,
+`preview_public: false`, source, and unique associated merged PR. Check uniqueness across every merged
+PR associated with the exact SHA before comparing the caller-supplied PR number. Repeat the preflight
+when producing the append-only withdrawal candidate after the public URL becomes unavailable. Fetch
+every paginated association result; first-page uniqueness is not repository-wide uniqueness.
+
 ### 10. Preserve infrastructure gates
 
 `noindex` and `robots.txt` reduce discovery but are not access control. Pages enablement, first public
@@ -162,6 +203,11 @@ malicious/real-looking PII, unsafe URL, missing first name, product-heavy state,
 digest tampering, non-ancestor SHA, ledger rewrite, multi-Email publication, changed blocked Email,
 workflow permissions/triggers/actions, partial generation, and failed read-back. Tests must prove both
 allowed and denied behavior.
+
+Also cover npm/package cwd versus repository-root paths, pure JSON command output, private artifact
+content completeness, public-mode workflow provenance, CSS/JSON brace false positives, visible inert
+unsubscribe copy versus unsafe destinations, root `./` link resolution, runtime-failure diagnostic
+visibility, zero-public-email withdrawal, and publish → withdraw → republish ledger reduction.
 
 ### 12. Inspect diff and handoff
 
