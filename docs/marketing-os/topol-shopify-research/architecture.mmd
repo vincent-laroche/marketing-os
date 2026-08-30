@@ -1,0 +1,17 @@
+flowchart LR
+  M[Merchant in Shopify Admin] -->|Embedded App Home| A[Hosted App UI]
+  A -->|init/load/save| T[Topol Editor]
+  A -->|Shopify App Bridge / authenticated routes| B[App Backend]
+  T -->|CORS + app auth header| B
+  B --> DB[(Tenant DB\nshops, templates, campaigns, runs)]
+  B --> S[(Object Storage\nimages, previews, HTML snapshots)]
+  B --> G[Shopify GraphQL Admin API]
+  B --> R[Topol JSON to HTML API\nserver-side secret]
+  B --> Q[Queue / Worker]
+  Q --> P[Email Provider\nSMTP or ESP API]
+  P -->|events| WH[Provider Webhooks]
+  WH --> B
+  G -->|Flow Action runtime\nHMAC POST| F[Flow Action Endpoint]
+  F --> Q
+  B -->|external activity + engagement metrics| G
+  G --> SEG[Shopify Customer Segments]
