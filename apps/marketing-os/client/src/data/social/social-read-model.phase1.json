@@ -1,0 +1,305 @@
+{
+  "schemaVersion": "social.read-model.v1",
+  "generatedBy": "scripts/compile-social-model.mjs",
+  "source": {
+    "path": "social-media/source/social-records.json",
+    "fingerprint": "83d428a802c85b1d423f6d930db4ecab4933c3caa41c485a1c9c5f29c595e01d",
+    "recordCount": 5,
+    "freshness": "canonical repository source",
+    "externalWrites": false
+  },
+  "counts": {
+    "campaigns": 1,
+    "concepts": 1,
+    "publications": 3,
+    "approved": 0,
+    "scheduled": 0,
+    "published": 0,
+    "verifiedLive": 0
+  },
+  "campaigns": [
+    {
+      "recordKey": "campaign:phase-1-fixture",
+      "name": "Phase 1 fixture campaign",
+      "sourcePath": "social-media/source/social-records.json",
+      "sourceFingerprint": "83d428a802c85b1d423f6d930db4ecab4933c3caa41c485a1c9c5f29c595e01d",
+      "parentRecordKey": null,
+      "childRecordKeys": [
+        "concept:phase-1-fixture"
+      ],
+      "stage": "fixture",
+      "lifecycleState": "planned",
+      "fixture": true,
+      "ownerDecision": "Fixture only. No production campaign has been approved for this workspace.",
+      "source": "Repository fixture authored for Social Media OS Phase 1",
+      "previewReference": null,
+      "evidenceStrength": "fixture",
+      "verifiedExternalState": {
+        "status": "not-verified",
+        "verified": false,
+        "evidence": "No external campaign state is claimed by this read model."
+      },
+      "sourceFreshness": "Current at compile time; refresh by running npm run social:compile."
+    }
+  ],
+  "concepts": [
+    {
+      "recordKey": "concept:phase-1-fixture",
+      "name": "A quiet, platform-aware introduction",
+      "sourcePath": "social-media/source/social-records.json",
+      "sourceFingerprint": "83d428a802c85b1d423f6d930db4ecab4933c3caa41c485a1c9c5f29c595e01d",
+      "parentRecordKey": "campaign:phase-1-fixture",
+      "childRecordKeys": [
+        "publication:instagram:phase-1-fixture",
+        "publication:tiktok:phase-1-fixture",
+        "publication:facebook:phase-1-fixture"
+      ],
+      "stage": "fixture",
+      "lifecycleState": "planned",
+      "fixture": true,
+      "objective": "Fixture master concept for demonstrating the Social workspace hierarchy.",
+      "pillar": "Brand / founder",
+      "audience": "Not specified in source evidence.",
+      "coreIdea": "A single master idea should be adapted into distinct platform publications rather than copied into a gallery.",
+      "approvedCopyState": "not-approved",
+      "source": "Repository fixture authored for Social Media OS Phase 1",
+      "asset": {
+        "status": "not-supplied",
+        "reference": "No approved asset reference in source evidence."
+      },
+      "claim": {
+        "status": "not-approved",
+        "summary": "No customer, outcome, or product-performance claim is approved for this fixture."
+      },
+      "rights": {
+        "status": "not-cleared",
+        "summary": "No people, testimonial, music, or other usage-rights evidence is attached."
+      },
+      "readinessGates": [
+        {
+          "gate": "copy",
+          "status": "blocked",
+          "evidence": "Evidence is not present in canonical source."
+        },
+        {
+          "gate": "asset",
+          "status": "blocked",
+          "evidence": "Evidence is not present in canonical source."
+        },
+        {
+          "gate": "claims",
+          "status": "blocked",
+          "evidence": "Evidence is not present in canonical source."
+        },
+        {
+          "gate": "rights",
+          "status": "blocked",
+          "evidence": "Evidence is not present in canonical source."
+        }
+      ],
+      "previewReference": "No approved asset reference in source evidence.",
+      "evidenceStrength": "fixture",
+      "verifiedExternalState": {
+        "status": "not-verified",
+        "verified": false,
+        "evidence": "No external concept state is claimed by this read model."
+      },
+      "sourceFreshness": "Current at compile time; refresh by running npm run social:compile."
+    }
+  ],
+  "publications": [
+    {
+      "recordKey": "publication:instagram:phase-1-fixture",
+      "sourcePath": "social-media/source/social-records.json",
+      "sourceFingerprint": "83d428a802c85b1d423f6d930db4ecab4933c3caa41c485a1c9c5f29c595e01d",
+      "parentRecordKey": "concept:phase-1-fixture",
+      "childRecordKeys": [],
+      "stage": "fixture",
+      "lifecycleState": "planned",
+      "fixture": true,
+      "platform": "Instagram",
+      "format": "Reel",
+      "safeArea": "4:5 feed and 9:16 Reel safe areas are required; template verification is missing.",
+      "cover": "Not supplied.",
+      "onScreenText": "Not supplied.",
+      "cta": "Not supplied.",
+      "destination": "Not supplied.",
+      "feedOrder": null,
+      "plannedDate": null,
+      "readinessGates": [
+        {
+          "gate": "copy",
+          "status": "blocked",
+          "evidence": "Evidence is not present in canonical source."
+        },
+        {
+          "gate": "asset",
+          "status": "blocked",
+          "evidence": "Evidence is not present in canonical source."
+        },
+        {
+          "gate": "accessibility",
+          "status": "blocked",
+          "evidence": "Evidence is not present in canonical source."
+        },
+        {
+          "gate": "tracking",
+          "status": "blocked",
+          "evidence": "Evidence is not present in canonical source."
+        },
+        {
+          "gate": "claims",
+          "status": "blocked",
+          "evidence": "Evidence is not present in canonical source."
+        },
+        {
+          "gate": "rights",
+          "status": "blocked",
+          "evidence": "Evidence is not present in canonical source."
+        },
+        {
+          "gate": "explicitOperationApproval",
+          "status": "blocked",
+          "evidence": "Evidence is not present in canonical source."
+        }
+      ],
+      "previewReference": null,
+      "evidenceStrength": "fixture",
+      "verifiedExternalState": {
+        "status": "not-published",
+        "verified": false,
+        "evidence": "No external platform verification is present in repository evidence."
+      },
+      "sourceFreshness": "Current at compile time; refresh by running npm run social:compile."
+    },
+    {
+      "recordKey": "publication:tiktok:phase-1-fixture",
+      "sourcePath": "social-media/source/social-records.json",
+      "sourceFingerprint": "83d428a802c85b1d423f6d930db4ecab4933c3caa41c485a1c9c5f29c595e01d",
+      "parentRecordKey": "concept:phase-1-fixture",
+      "childRecordKeys": [],
+      "stage": "fixture",
+      "lifecycleState": "planned",
+      "fixture": true,
+      "platform": "TikTok",
+      "format": "Vertical video",
+      "safeArea": "Central 9:16 safe zone is required; template verification is missing.",
+      "cover": "Not supplied.",
+      "onScreenText": "Not supplied.",
+      "cta": "Not supplied.",
+      "destination": "Not supplied.",
+      "feedOrder": null,
+      "plannedDate": null,
+      "readinessGates": [
+        {
+          "gate": "copy",
+          "status": "blocked",
+          "evidence": "Evidence is not present in canonical source."
+        },
+        {
+          "gate": "asset",
+          "status": "blocked",
+          "evidence": "Evidence is not present in canonical source."
+        },
+        {
+          "gate": "accessibility",
+          "status": "blocked",
+          "evidence": "Evidence is not present in canonical source."
+        },
+        {
+          "gate": "tracking",
+          "status": "blocked",
+          "evidence": "Evidence is not present in canonical source."
+        },
+        {
+          "gate": "claims",
+          "status": "blocked",
+          "evidence": "Evidence is not present in canonical source."
+        },
+        {
+          "gate": "rights",
+          "status": "blocked",
+          "evidence": "Evidence is not present in canonical source."
+        },
+        {
+          "gate": "explicitOperationApproval",
+          "status": "blocked",
+          "evidence": "Evidence is not present in canonical source."
+        }
+      ],
+      "previewReference": null,
+      "evidenceStrength": "fixture",
+      "verifiedExternalState": {
+        "status": "not-published",
+        "verified": false,
+        "evidence": "No external platform verification is present in repository evidence."
+      },
+      "sourceFreshness": "Current at compile time; refresh by running npm run social:compile."
+    },
+    {
+      "recordKey": "publication:facebook:phase-1-fixture",
+      "sourcePath": "social-media/source/social-records.json",
+      "sourceFingerprint": "83d428a802c85b1d423f6d930db4ecab4933c3caa41c485a1c9c5f29c595e01d",
+      "parentRecordKey": "concept:phase-1-fixture",
+      "childRecordKeys": [],
+      "stage": "fixture",
+      "lifecycleState": "planned",
+      "fixture": true,
+      "platform": "Facebook",
+      "format": "Video",
+      "safeArea": "Keep key text away from platform UI edges; template verification is missing.",
+      "cover": "Not supplied.",
+      "onScreenText": "Not supplied.",
+      "cta": "Not supplied.",
+      "destination": "Not supplied.",
+      "feedOrder": null,
+      "plannedDate": null,
+      "readinessGates": [
+        {
+          "gate": "copy",
+          "status": "blocked",
+          "evidence": "Evidence is not present in canonical source."
+        },
+        {
+          "gate": "asset",
+          "status": "blocked",
+          "evidence": "Evidence is not present in canonical source."
+        },
+        {
+          "gate": "accessibility",
+          "status": "blocked",
+          "evidence": "Evidence is not present in canonical source."
+        },
+        {
+          "gate": "tracking",
+          "status": "blocked",
+          "evidence": "Evidence is not present in canonical source."
+        },
+        {
+          "gate": "claims",
+          "status": "blocked",
+          "evidence": "Evidence is not present in canonical source."
+        },
+        {
+          "gate": "rights",
+          "status": "blocked",
+          "evidence": "Evidence is not present in canonical source."
+        },
+        {
+          "gate": "explicitOperationApproval",
+          "status": "blocked",
+          "evidence": "Evidence is not present in canonical source."
+        }
+      ],
+      "previewReference": null,
+      "evidenceStrength": "fixture",
+      "verifiedExternalState": {
+        "status": "not-published",
+        "verified": false,
+        "evidence": "No external platform verification is present in repository evidence."
+      },
+      "sourceFreshness": "Current at compile time; refresh by running npm run social:compile."
+    }
+  ],
+  "nextEvidence": "Attach approved copy, an approved asset reference, accessibility text, tracking destination, claims review, rights evidence, and explicit operation approval to each Publication before any platform link becomes available."
+}

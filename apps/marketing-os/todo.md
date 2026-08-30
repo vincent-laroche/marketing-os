@@ -1,0 +1,96 @@
+# Project TODO
+
+- [x] Model campaigns, emails, revisions, QA runs, export packages, Shopify handoff evidence, Flow recipes, and audit events in the database.
+- [x] Import the 53 canonical email records with source provenance, lifecycle series, Shopify surface, blockers, dependencies, and fail-closed readiness states.
+- [x] Build authenticated Campaign OS tRPC procedures for portfolio reads, revision persistence, QA, export package preparation, and audit history.
+- [x] Preserve a provider-adapter boundary and integrate the existing Beefree editor session flow without exposing vendor secrets to the browser.
+- [x] Build the elegant Campaign Portfolio dashboard with lifecycle grouping, source provenance, blockers, dependencies, Shopify surfaces, and readiness metrics.
+- [x] Build an email workspace with canonical-source panel, durable revision persistence, editor surface, saved HTML/JSON evidence, and safety-first actions.
+- [x] Add Shopify catalog snapshot interfaces and a controlled, read-only product lookup integration boundary.
+- [x] Implement deterministic pre-handoff QA for copy fidelity, required modules, placeholders, personalization, URLs/UTMs, legal footer, transparent email wrapper, image budget, responsiveness, and clipping risk.
+- [x] Generate immutable export package records with HTML, provider document, campaign metadata, manifests, checksums, QA results, responsive screenshot evidence, and Shopify handoff checklist.
+- [x] Build controlled Shopify Messaging handoff views that open the workspace and record draft/read-back evidence without sending, scheduling, activating, or modifying audiences.
+- [x] Generate versioned Shopify Flow and native Messaging recipes for J1–J5, J2, W, and newsletter pathways with approved collision/exit/frequency rules.
+- [x] Build a release-readiness dashboard that visibly blocks consent-unverified audiences and unresolved source dependencies.
+- [x] Add owner notifications for QA failures, blocked sources, and ready-for-review handoff packages without creating any automated marketing action.
+- [x] Add backend and UI tests for safety gates, state transitions, QA evaluation, export-package integrity, and control visibility.
+- [x] Verify desktop and mobile UI and update this checklist.
+- [x] Save a delivery checkpoint after final checklist review.
+- [x] Save the final hardened delivery checkpoint.
+- [x] Persist an immutable linked screenshot-evidence manifest for each export package and expose it in package readback.
+- [x] Add real component tests for the visible release gate, protected access state, and handoff safety controls.
+- [x] Add a real component test for the protected-access state that prevents canonical campaign content from rendering before authentication.
+- [x] Add real component tests for handoff controls that keep package preparation, draft evidence, and screenshot upload unavailable until their safe prerequisites are present.
+- [x] Test the mounted workspace-shell authentication boundary so canonical campaign content is not rendered before sign-in.
+- [x] Test the concrete screenshot-upload gate so the upload input is absent until an export package exists.
+- [x] Fix production inclusion of the canonical email source so deployed Campaign OS does not read a missing build-time CSV path.
+- [x] Validate every Campaign OS navigation surface and protected access state against the deployed runtime before redelivery.
+- [x] Save a corrected production-validated delivery checkpoint.
+- [x] Replace the overloaded single-page dashboard with focused Portfolio, Release Readiness, Flow Recipes, Handoff Packages, and Audit Ledger routes.
+- [x] Redesign the operations shell with a compact executive overview, progressive disclosure, reduced card density, and clear visual hierarchy.
+- [x] Test desktop and mobile rendering for every redesigned route before delivery.
+- [x] Save a final redesigned, route-validated delivery checkpoint after the user-approved authenticated test matrix and public access-gate matrix.
+- [x] Validate every deployed route using the user-approved authenticated test matrix plus public access-gate matrix.
+- [x] Verify production SPA deep-link fallback so every focused Campaign OS route loads directly on the deployed domain.
+- [x] Correct the mobile Campaign OS header so navigation does not overflow the 375 px viewport.
+- [x] Extract the supplied Marketing OS architecture, pasted requirements, and approved visual references into an implementation boundary for Email OS and Social Media OS.
+- [x] Produce a branch-scoped prompt for a second agent to implement the Social Media OS and repair the social GitHub project without modifying Campaign OS email logic.
+- [x] Replace the Campaign OS shell with the shared Marketing OS Command Center navigation and read-only governance indicators.
+- [x] Rebuild the signed-in Email OS overview around the approved journey portfolio, production pulse, preview readiness, and release-gate layout using canonical evidence only.
+- [x] Add Email OS routing for campaign journeys, library, production queue, review and QA, preview gallery, Messaging and Flow, audience and consent, and performance without adding marketing execution controls.
+- [x] Test all shared and Email OS routes at desktop and mobile widths, including authenticated and access-gated behavior, before publishing.
+- [x] Remove the excess mobile navigation height revealed by Marketing OS route screenshots while retaining scrollable compact navigation.
+- [x] Publish the Marketing OS / Email OS restructure and validate the deployed access-gated routes before delivery.
+- [x] Capture explicit unauthenticated access-gate evidence for the restructured shared and Email OS routes.
+- [x] Validate every deployed shared route in unauthenticated mode with explicit AccessGate read-back evidence.
+- [x] Validate every deployed Email route in unauthenticated mode with explicit AccessGate read-back evidence.
+- [x] Capture explicit authenticated route-by-route evidence for all shared and Email OS pages at desktop and mobile widths.
+- [x] Capture text-verifiable authenticated desktop and mobile read-back for every shared Marketing OS route.
+- [x] Capture text-verifiable authenticated desktop and mobile read-back for every Email OS route.
+- [x] Add authenticated desktop and mobile read-back coverage for the Command Center, Email overview, Review and QA, and Messaging and Flow routes.
+- [x] Add mobile authenticated read-back coverage for Initiatives, Master Calendar, Social workspace boundary, Production Queue, Preview Gallery, Audience and Consent, and Performance.
+- [x] Validate the deployed shared and Email OS routes using the user-approved authenticated route matrix and public access-gate matrix before the delivery checkpoint.
+- [x] Extract the completed Marketing OS V2 page architecture and separate shared, Email-owned, and Social-owned implementation scope.
+- [x] Audit the selected GitHub repositories and existing Projects to identify the correct non-destructive placement for shared, Email, and Social work records.
+- [x] Create and link evidence-scoped GitHub Project items for the approved Marketing OS V2 architecture, page implementation backlog, and delegated Social workstream.
+- [x] Replace interim shared governance and Email surface routes with the approved V2 page structures without fabricating source, consent, rights, performance, or release evidence.
+- [x] Revalidate the completed-page routes, access gates, responsive shell, and related GitHub Project records before publication.
+- [x] Superseded by user: do not pursue a Project 2 to Bible Project 3 transfer; continue the Marketing OS workstream and keep Email Marketing Project 4 protected.
+- [x] Superseded by user: do not prepare a Project 2 transfer prompt or retire Project 2 as part of this task.
+- [x] Superseded by user: retain Email Marketing Project 4 as a separate protected operating record while Marketing OS V2 work continues.
+- [x] Continue the approved Marketing OS V2 shared governance and Email-owned page implementation with traceable task records.
+- [x] Adapt the Email-only V2 tasks in Email Marketing Project 4 and verify their item-level read-back; do not use Project 2.
+- [x] Adapt the delegated Social-only V2 task in Social Media Project 5 and verify its item-level read-back; do not use Project 2.
+- [x] Use the authorized GitHub master token to add the scoped Email records to Project 4 and the scoped Social record to Project 5, then verify all Project item placements.
+- [x] Record the user-approved authenticated route test matrix and public access-gate matrix as the final application validation basis.
+- [x] Inspect the completed Social Media OS builder delivery and capture its routes, data model, branch state, and validation evidence.
+- [x] Compare the Social delivery against Social Media Project 5 ownership, Marketing OS shared-shell contracts, and no-publish/no-fabrication boundaries.
+- [x] Integrate the approved Social Media OS Phase 1 compiled read model into Marketing OS without altering Email Marketing Project 4 or Email canonical records.
+- [x] Test the combined Marketing OS at desktop and mobile widths with Social and Email safety boundaries intact.
+- [x] Save the Social Media OS integration checkpoint and validate the published Social routes remain authentication-gated.
+- [x] Add a concise Social Phase 1 integration audit note to Social Media Project 5 Issue #113 without touching Email Project 4 or Project 2.
+- [x] Add a responsive Social Media OS navigation group and Social-aware breadcrumb context without changing Email OS navigation.
+- [x] Correct specialist root-route matching so active navigation and breadcrumbs identify the current Social or Email child surface.
+- [x] Superseded by user: do not pursue a Project 2 to Bible Project 3 transfer as part of the Marketing OS workstream.
+- [x] Superseded by user: do not prepare a Project 2 transfer prompt or retire Project 2 in this task.
+- [x] Superseded by user: continue Marketing OS implementation using Email Project 4 and Social Project 5 only.
+- [x] Inspect the available Notion integration and worker synchronization capabilities without enabling or changing any connector.
+- [x] Inventory Notion databases and related pages that are materially linked to the Marketing OS, Email OS, or Social Media OS.
+- [x] Complete the Notion sync gap analysis with a definitive property-level ownership matrix for Email, Social, shared Campaigns, assets, approvals, consent, and KPI records.
+- [x] Inspect the Social Template Catalog schema through an alternate read-only route and verify whether it can anchor concepts, publications, or approval sync.
+- [x] Define explicit direction rules for each source: read-only projection, Notion-owned planning field, or externally authoritative field.
+- [x] Prepare a non-destructive Notion synchronization proposal that preserves Email canonical-source, consent, rights, manual-release, and Social fixture-only boundaries.
+- [x] Inspect the existing approved worker implementation and current Marketing OS database contracts before selecting the runtime and mapping-store boundary.
+- [x] Extend existing Notion sources with only approved worker-managed sync metadata; do not create duplicate source-of-truth databases.
+- [x] Verify the approved stable-key relationship-field schema in existing Notion structures. Schema read-back confirms `Marketing OS Shared Campaign Key` / `Marketing OS Parent Key` fields and existing native Email-module/proof relations; this is not a completed populated Notion relation graph.
+- [x] Deferred by user: leave shared-campaign, Social, asset, and governed-evidence cross-channel anchors unresolved; do not populate, infer, or create Notion relationship values. Existing native Email-module relationship extraction remains active and validated.
+- [x] Deferred by user: do not add populated shared cross-channel anchor validation while those links are intentionally unresolved. Native Email-module relation resolution remains fully validated and fail-closed for future changes.
+- [x] Implement an idempotent field-scoped Marketing OS and Notion metadata synchronization worker with an internal mapping store, revision tracking, conflict capture, durable queue continuations, signed aggregate receipts, and no-operation guards.
+- [x] Run and validate controlled metadata synchronization with source-fingerprint, conflict, privacy, canonical-email, consent, asset-rights, and Social-fixture safety coverage. The 192-record run completed with zero blocked records; canonical 53-email and Social 16-fixture fingerprint parity passed. Cross-channel anchors remain correctly unresolved rather than inferred.
+- [x] Add a read-only Marketing OS Sync Health surface, desktop/mobile and authenticated/access-gated tests, and audited owner-only manual run control without enabling marketing sends, scheduling, publishing, activation, or audience changes.
+- [x] Checkpoint and publish the verified Notion synchronization implementation with the operation runbook and recovery instructions. Checkpoint `b27b4650` is live; the Worker runbook and recovery controls are committed and pushed in the dedicated synchronization pull request.
+- [x] Rotate the dedicated Worker to the replacement Notion credential and verify read access to all 11 approved sources plus write metadata access for every existing source record before resuming reconciliation. Proof Bank and Media & Asset Library were empty, so no record-level metadata write was possible or attempted there.
+- [x] Validate one signed Notion webhook event against the active subscription and confirm only approved-source reconciliation is queued. A controlled Social fixture metadata update produced an accepted `page.properties_updated` event; its 192-record reconciliation completed with zero blocked records and persisted an aggregate receipt.
+- [x] Verify the active Notion webhook subscription has only the four approved event types and no non-approved categories/events selected through text-verifiable live readback. User confirmed exactly `page.content_updated`, `page.properties_updated`, `data_source.content_updated`, and `data_source.schema_updated`; Database, View, Comment, and File upload have none.
+- [x] Revalidate the enabled `*/30 * * * *` Worker schedule against text-verifiable exact webhook-event-name evidence. Cloudflare readback confirms exactly one schedule, and the user’s exact event-name confirmation establishes the approved minimal subscription scope.
+- [x] Capture text-verifiable evidence of the active Notion webhook subscription naming exactly `page.properties_updated`, `page.content_updated`, `data_source.content_updated`, and `data_source.schema_updated`, with all other event categories disabled. User provided the exact event names and confirmed no Database, View, Comment, or File upload events.

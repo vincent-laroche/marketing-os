@@ -1,0 +1,55 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1787673740635,
+      "tag": "0000_free_exiles",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1787674124440,
+      "tag": "0001_heavy_rick_jones",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1787682871381,
+      "tag": "0002_jittery_kid_colt",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1787683566425,
+      "tag": "0003_foamy_infant_terrible",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1787683985770,
+      "tag": "0004_brown_mother_askani",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1787684239540,
+      "tag": "0005_chief_warpath",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1787792804857,
+      "tag": "0006_brainy_zodiak",
+      "breakpoints": true
+    }
+  ]
+}
