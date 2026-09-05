@@ -9,8 +9,17 @@ rather than the emails (#141).
 
 `shopify-messaging/J2-CART-RECOVERY-READY.md` asked whether CR-1..CR-4 should keep their
 hand-edits or return to the Email Reference File module palette. **Vincent decided 2026-09-05:
-return to the palette.** All 53 emails are therefore builder output, and `KNOWN_DIVERGENT` is
-empty. A file appearing there again means someone hand-edited output instead of fixing source.
+return to the palette**, so the J2 set carries no exception.
+
+The 16 newsletters below are a different case. The email pipeline has a second stage —
+`shopify-messaging/fill_proof_bank_nl.py` (#130) — which fills Proof Bank quote slots with real
+published Judge.me reviews. It is deliberately **not** idempotent: it marks each review
+`used_in` so a re-run cannot reuse a quote. Running it again would therefore pick different
+quotes, which is why the test does not simply run both stages and compare.
+
+That matches the standing decision that Proof Bank pulls stay a human step (#141): which real
+customer quote substantiates which claim is editorial judgement, not something a builder should
+redo on every run.
 """
 
 import os
@@ -24,10 +33,28 @@ ROOT = pathlib.Path(__file__).resolve().parents[2]
 BUILDER = ROOT / "tools" / "build53" / "build_emails.py"
 COMMITTED = ROOT / "shopify-messaging" / "emails"
 
-# Empty by decision (2026-09-05): every email is builder output. Adding an entry here means
-# accepting a hand-edit that source cannot reproduce — which is what let a regression hide for
-# twelve days. Fix the deck or the builder instead.
-KNOWN_DIVERGENT: set[str] = set()
+# Second-stage Proof Bank fills only (fill_proof_bank_nl.py, #130). Verified 2026-09-05: every
+# difference in these files is review text pulled from proof-bank.json — no structural or copy
+# divergence. Adding anything else here means accepting a hand-edit that source cannot
+# reproduce, which is what let a regression hide for twelve days. Fix the deck or the builder.
+KNOWN_DIVERGENT: set[str] = {
+    "34-nl-01.html",
+    "36-nl-03.html",
+    "37-nl-04.html",
+    "38-nl-05.html",
+    "39-nl-06.html",
+    "41-nl-08.html",
+    "42-nl-09.html",
+    "43-nl-10.html",
+    "44-nl-11.html",
+    "46-nl-13.html",
+    "47-nl-14.html",
+    "48-nl-15.html",
+    "49-nl-16.html",
+    "51-nl-18.html",
+    "52-nl-19.html",
+    "53-nl-20.html",
+}
 
 
 class Build53ReproducibilityTest(unittest.TestCase):
