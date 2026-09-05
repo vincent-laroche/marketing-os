@@ -1,7 +1,15 @@
 import { parse, serialize } from "parse5";
 
 const approvedPublicMailto = new Set(["info@hairsolutions.co"]);
-const approvedHosts = new Set(["hairsolutions.co", "www.hairsolutions.co", "res.cloudinary.com"]);
+// assets.hairsolutions.co is the R2 media-delivery host, decided as the email image host
+// on 2026-09-05 (#134). res.cloudinary.com stays approved: it still serves imagery
+// elsewhere in the programme, and removing it would fail previews it legitimately renders.
+const approvedHosts = new Set([
+  "hairsolutions.co",
+  "www.hairsolutions.co",
+  "assets.hairsolutions.co",
+  "res.cloudinary.com",
+]);
 const forbiddenTags = new Set(["script", "form", "iframe", "frame", "frameset", "object", "embed", "applet", "base"]);
 const resourceAttributes = new Set(["href", "src", "action", "poster", "background", "xlink:href"]);
 const sensitiveDestination = /(checkout|unsubscribe|preference|edit-notifications|account|tracking)/i;
