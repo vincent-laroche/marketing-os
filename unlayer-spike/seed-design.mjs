@@ -40,8 +40,13 @@ const id = p => `${p}_${++n}`;
 
 export function buildDesign({ styles, preheader, modules }) {
   const rows = modules.map((mod, i) => {
+    // Re-attach the module marker the split consumed. It is what makes a composition
+    // self-describing: the exported HTML carries its own module order, so the order can be
+    // read back without trusting the design JSON, and a composition diffs against builder
+    // output in the same shape.
+    const marked = `<!-- module: ${mod.family} -->\n${mod.html}`;
     // Styles ride with the first module so they reach the export intact.
-    const html = i === 0 && styles.length ? `${styles.join('\n')}\n${mod.html}` : mod.html;
+    const html = i === 0 && styles.length ? `${styles.join('\n')}\n${marked}` : marked;
     return {
       id: id('row'),
       cells: [1],

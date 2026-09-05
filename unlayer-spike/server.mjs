@@ -4,6 +4,7 @@ import { createServer } from 'node:http';
 import { readFileSync } from 'node:fs';
 import { parseBuiltEmail, buildDesign } from './seed-design.mjs';
 import { buildBlocks } from './build-blocks.mjs';
+import { writeComposition } from './compose.mjs';
 import { loadEnv } from './env.mjs';
 
 const PORT = Number(process.env.PORT || 4300);
@@ -71,6 +72,22 @@ createServer(async (req, res) => {
       if (!r.ok) return json(res, 502, { error: `export ${r.status}` });
       const html = (await r.json()).data.html;
       return json(res, 200, { html, bytes: html.length, limit: 50 * 1024 });
+    } catch (e) { return json(res, 500, { error: e.message }); }
+  }
+
+  if (url.pathname === '/api/compose' && req.method === 'POST') {
+    let raw = '';
+    for await (const chunk of req) raw += chunk;
+    try {
+      const { design, file } = JSON.parse(raw);
+      const r = await fetch(`https://api.unlayer.com/v3/templates/export/html?projectId=${PROJECT_ID}`, {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${TOKEN}`, 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ displayMode: 'email', design }),
+      });
+      if (!r.ok) return json(res, 502, { error: `export ${r.status}` });
+      const html = (await r.json()).data.html;
+      return json(res, 200, writeComposition({ file, html, design }));
     } catch (e) { return json(res, 500, { error: e.message }); }
   }
 

@@ -24,7 +24,8 @@
   <h1>Atelier Zero — Unlayer spike</h1>
   <select id="file"></select>
   <button id="reload">Reload</button>
-  <button id="export" class="primary">Export &amp; check size</button>
+  <button id="export">Export &amp; check size</button>
+  <button id="compose" class="primary">Save composition</button>
   <span id="status">loading…</span>
 </header>
 <div id="editor"></div>
@@ -78,6 +79,21 @@ document.getElementById('export').onclick = () => {
     if (error) return say('export failed: ' + error, true);
     const kb = (bytes / 1024).toFixed(1), max = (limit / 1024).toFixed(0);
     say(`${kb} KB of ${max} KB Shopify limit`, bytes >= limit);
+  });
+};
+
+document.getElementById('compose').onclick = () => {
+  say('composing…');
+  unlayer.saveDesign(async design => {
+    const r = await fetch('/api/compose', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ design, file: sel.value }),
+    });
+    const d = await r.json();
+    if (d.error) return say('compose failed: ' + d.error, true);
+    const kb = (d.bytes / 1024).toFixed(1);
+    const moved = d.order_changed ? 'order CHANGED vs deck' : 'order matches deck';
+    say(`saved to shopify-messaging/composed/${d.file} — ${kb} KB, ${moved}`, d.over_shopify_limit);
   });
 };
 
