@@ -47,8 +47,15 @@ export function buildBlocks({ themes = ['light'] } = {}) {
         category: categoryOf(slug),
         tags: [scope, slug.split('_')[0], theme].join(','),
         displayMode: 'email',
+        // A block's payload must be a COMPLETE, schema-valid design. The schema marks
+        // `counters` and `body` required at the top level, and `id`/`rows`/`values`
+        // required on the body. Omitting them yields a block that groups under its
+        // category but renders no preview in the Blocks panel.
         design: {
+          counters: { u_row: 1, u_column: 1, u_content_html: 1 },
+          schemaVersion: 21,
           body: {
+            id: `blk_${i}_body`,
             rows: [{
               id: `blk_${i}_row`,
               cells: [1],
@@ -66,8 +73,13 @@ export function buildBlocks({ themes = ['light'] } = {}) {
                 }],
                 values: {},
               }],
-              values: { padding: '0px', backgroundColor: '', columns: false },
+              values: { padding: '0px', backgroundColor: '', columns: false, noStackMobile: false },
             }],
+            values: {
+              backgroundColor: 'transparent',   // AGENTS.md §5
+              contentWidth: '600px',
+              fontFamily: { label: 'Arial', value: 'arial,helvetica,sans-serif' },
+            },
           },
         },
       });
