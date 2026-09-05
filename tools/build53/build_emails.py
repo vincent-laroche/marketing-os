@@ -173,6 +173,13 @@ def translate_tokens(text):
     text = re.sub(
         r"\{\{\s*personalization_token\(\s*['\"]contact\.firstname['\"]\s*,\s*['\"](.*?)['\"]\s*\)\s*\}\}",
         r'{{ customer.first_name | default: "\1" }}', text)
+    # The deck writes {{ last_viewed_product }} as shorthand for the item the customer was
+    # looking at. Shopify exposes it on the abandonment event, so bind it here rather than
+    # leaving a token Shopify cannot resolve. CR-3 carried this binding by hand until the
+    # return-to-palette decision (2026-09-05); it belongs in the builder.
+    text = re.sub(r"\{\{\s*last_viewed_product\s*\}\}",
+                  '{{ abandoned_checkout.line_items.first.product_title '
+                  '| default: "Your selected system" }}', text)
     return text
 
 def paragraphs(copy):

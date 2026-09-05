@@ -7,15 +7,10 @@ inserted a duplicate CTA. The builder still reported `51 GREEN 2 BLOCKED 0 ISSUE
 output, and the only reproducibility test in the suite covered `github-campaign-os/manifest.json`
 rather than the emails (#141).
 
-Four J2 files are known, documented exceptions. `shopify-messaging/J2-CART-RECOVERY-READY.md`
-records deliberate hand-edits made under review — a Proof Bank testimonial filled into CR-2, a
-false expiry claim reworded in CR-4 — and says plainly:
-
-    Do not sweep the other 49 emails to match these four. First decide whether the current hard
-    rule remains in force.
-
-That decision is still open, so the exceptions are listed here explicitly rather than tolerated
-silently. When it is resolved, this list should shrink to nothing.
+`shopify-messaging/J2-CART-RECOVERY-READY.md` asked whether CR-1..CR-4 should keep their
+hand-edits or return to the Email Reference File module palette. **Vincent decided 2026-09-05:
+return to the palette.** All 53 emails are therefore builder output, and `KNOWN_DIVERGENT` is
+empty. A file appearing there again means someone hand-edited output instead of fixing source.
 """
 
 import os
@@ -29,14 +24,10 @@ ROOT = pathlib.Path(__file__).resolve().parents[2]
 BUILDER = ROOT / "tools" / "build53" / "build_emails.py"
 COMMITTED = ROOT / "shopify-messaging" / "emails"
 
-# Documented divergences awaiting Vincent's decision (J2-CART-RECOVERY-READY.md).
-# Anything not listed here MUST rebuild byte-for-byte.
-KNOWN_DIVERGENT = {
-    "01-cr-1.html",
-    "02-cr-2.html",
-    "03-cr-3.html",
-    "04-cr-4.html",
-}
+# Empty by decision (2026-09-05): every email is builder output. Adding an entry here means
+# accepting a hand-edit that source cannot reproduce — which is what let a regression hide for
+# twelve days. Fix the deck or the builder instead.
+KNOWN_DIVERGENT: set[str] = set()
 
 
 class Build53ReproducibilityTest(unittest.TestCase):
