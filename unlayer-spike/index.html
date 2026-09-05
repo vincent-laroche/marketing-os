@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Atelier Zero — Unlayer spike</title>
+<style>
+  :root { --ink:#151411; --rule:#C7BFAC; --coral:#EA6452; --card:#EDE3CC; }
+  * { box-sizing: border-box; }
+  body { margin:0; font:14px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+         color:var(--ink); background:#F6EFD9; display:flex; flex-direction:column; height:100vh; }
+  header { display:flex; align-items:center; gap:14px; padding:10px 16px;
+           border-bottom:1px solid var(--rule); background:var(--card); flex:none; }
+  h1 { font-size:14px; margin:0; letter-spacing:.02em; }
+  select, button { font:inherit; padding:6px 10px; border:1px solid var(--rule);
+                   border-radius:6px; background:#fff; color:var(--ink); cursor:pointer; }
+  button.primary { background:var(--coral); border-color:var(--coral); color:#fff; font-weight:600; }
+  #status { margin-left:auto; font-variant-numeric:tabular-nums; opacity:.8; }
+  #status.over { color:#B3261E; font-weight:700; opacity:1; }
+  #editor { flex:1; min-height:0; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Atelier Zero — Unlayer spike</h1>
+  <select id="file"></select>
+  <button id="reload">Reload</button>
+  <button id="export">Export &amp; check size</button>
+  <button id="compose" class="primary">Save composition</button>
+  <span id="status">loading…</span>
+</header>
+<div id="editor"></div>
+
+<script src="https://editor.unlayer.com/embed.js"></script>
+<script>
+const EMAILS = ['01-cr-1.html','29-c-0.html','43-nl-10.html','14-w-1.html','30-c-1.html'];
+const sel = document.getElementById('file');
+const status = document.getElementById('status');
+for (const f of EMAILS) sel.add(new Option(f, f));
+
+const say = (msg, over) => { status.textContent = msg; status.classList.toggle('over', !!over); };
+
+async function boot() {
+  const { projectId } = await (await fetch('/api/config')).json();
+  const q = new URLSearchParams(location.search);
+  const mode = q.get('blocks') || 'on';    // on | one | off  (isolation switches)
+  let blocks = [];
+  if (mode !== 'off') {
+    ({ blocks } = await (await fetch('/api/blocks')).json());
+    if (mode === 'one') blocks = blocks.slice(0, 1);
+  }
+  const opts = { id: 'editor', projectId, displayMode: 'email' };
+  if (mode !== 'off') opts.blocks = blocks;
+  unlayer.init(opts);
+  window.__blocks = blocks;
+  window.__mode = mode;
+  await load();
+}
+
+async function load() {
+  say('loading design…');
+  const r = await fetch('/api/design?file=' + encodeURIComponent(sel.value));
+  const { design, families, error } = await r.json();
+  if (error) return say('error: ' + error, true);
+  unlayer.loadDesign(design);
+  say(`${families.length} modules · ${(window.__blocks||[]).length} blocks in palette`);
+}
+
+document.getElementById('reload').onclick = load;
+sel.onchange = load;
+
+document.getElementById('export').onclick = () => {
+  say('exporting…');
+  unlayer.saveDesign(async design => {
+    const r = await fetch('/api/export', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ design }),
+    });
+    const { bytes, limit, error } = await r.json();
+    if (error) return say('export failed: ' + error, true);
+    const kb = (bytes / 1024).toFixed(1), max = (limit / 1024).toFixed(0);
+    say(`${kb} KB of ${max} KB Shopify limit`, bytes >= limit);
+  });
+};
+
+document.getElementById('compose').onclick = () => {
+  say('composing…');
+  unlayer.saveDesign(async design => {
+    const r = await fetch('/api/compose', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ design, file: sel.value }),
+    });
+    const d = await r.json();
+    if (d.error) return say('compose failed: ' + d.error, true);
+    const kb = (d.bytes / 1024).toFixed(1);
+    const moved = d.order_changed ? 'order CHANGED vs deck' : 'order matches deck';
+    say(`saved to shopify-messaging/composed/${d.file} — ${kb} KB, ${moved}`, d.over_shopify_limit);
+  });
+};
+
+boot().catch(e => say('boot failed: ' + e.message, true));
+</script>
+</body>
+</html>

@@ -25,16 +25,21 @@ import module_map as mm
 ROOT = mm.ROOT
 TEMPLATES = os.path.join(ROOT, "tools", "build53", "templates")
 ASSET_MAP = json.load(open(os.path.join(ROOT, "tools", "build53", "asset_map.json"), encoding="utf-8"))
-OUT_DIR = os.path.join(ROOT, "shopify-messaging", "emails")
+# Overridable so a reproducibility test can build to a scratch directory and diff,
+# instead of overwriting the committed tree to find out whether it would change it.
+OUT_DIR = os.environ.get("BUILD53_OUT_DIR") or os.path.join(ROOT, "shopify-messaging", "emails")
 
 ASSETS_BASE = "https://assets.hairsolutions.co/v1/public/"
-# The wordmark: header_centered_logo's fields.json defaults to Cloudinary (approved host,
-# 16 KB, HTTP 200); footer_social's defaults to the HubSpot portal CDN. HubSpot access is
-# lost (AGENTS.md §3) and that URL is portal-tied, so every logo is normalised to the
-# Cloudinary one. Verified 200 on 2026-08-19.
-LOGO_URL = ("https://res.cloudinary.com/dtmizxj1n/image/upload/e_trim/f_png/w_640,c_limit/"
-            "v1785220022/HAIR_SOLUTIONS_MEDIA_LIBRARY/01_BRAND/logos/"
-            "wordmark-dark-on-transparent-bg.png")
+# The wordmark: header_centered_logo's fields.json defaults to Cloudinary; footer_social's
+# defaults to the HubSpot portal CDN. HubSpot access is lost (AGENTS.md §3) and that URL is
+# portal-tied, so every logo is normalised to this one constant.
+# Host decided 2026-09-05 by Vincent (#134): email images live on R2 hsc-media-origin, served
+# by the hsc-media-delivery Worker. Content-addressed per BUILD-LEDGER: the key's sha256 is of
+# the uploaded bytes, so a re-encode is a new key. Raw /v1/public/ only — never ?variant=,
+# which emits AVIF that many email clients cannot render.
+# Uploaded and verified 2026-09-05: HTTP 200, image/png, 16,400 bytes, sha256 matches source.
+LOGO_URL = (ASSETS_BASE + "approved/brand/wordmark-dark-on-transparent/"
+            "cfcbef6a17911dd479598a3341973ed83492746fd68288030b04f19a757ed233.png")
 DEAD_LOGO_HOST = "hubspotusercontent"
 ADDRESS = "Ehitajate tee 110, Tallinn, Harjumaa 13517, Estonia"  # footer_wide spelling;
 # footer_standard's "Eahitajate tee" is a typo — normalised at render, recorded in ledger.
@@ -161,13 +166,26 @@ def parse_body(body):
 # ------------------------------------------------------------- copy structuring
 FIRSTNAME = '{{ customer.first_name | default: "there" }}'
 
-def translate_tokens(text):
+def translate_tokens(text, abandoned_checkout=False):
     """Reference-copy tokens -> Shopify Messaging Liquid. Known tokens translate;
     everything else stays verbatim (rendered loud downstream)."""
     text = re.sub(r"\{\{\s*firstname\s*\}\}", FIRSTNAME, text)
     text = re.sub(
         r"\{\{\s*personalization_token\(\s*['\"]contact\.firstname['\"]\s*,\s*['\"](.*?)['\"]\s*\)\s*\}\}",
         r'{{ customer.first_name | default: "\1" }}', text)
+    # {{ last_viewed_product }} is deck shorthand for "the item they were looking at".
+    # Its Shopify binding depends on which automation sends the email, so it is only
+    # translated where that binding is known: checkout abandonment (CR-*), where
+    # abandoned_checkout.* is populated. CR-3 carried this by hand until the
+    # return-to-palette decision (2026-09-05).
+    #
+    # BR-1 is BROWSE abandonment — a different automation type with a different event
+    # payload (J2-CART-RECOVERY-READY.md). abandoned_checkout.* would not resolve there,
+    # so its token is deliberately left to render loud rather than bound to a guess.
+    if abandoned_checkout:
+        text = re.sub(r"\{\{\s*last_viewed_product\s*\}\}",
+                      '{{ abandoned_checkout.line_items.first.product_title '
+                      '| default: "Your selected system" }}', text)
     return text
 
 def paragraphs(copy):
@@ -330,11 +348,20 @@ def r_static(slug, copy, ctx, **kw):
             continue
         d = fld.get("default")
         if isinstance(d, str) and d.strip():
-            values[fname] = esc(d)
+            # `richtext` defaults already contain HTML (footer_preference_centre's body_text
+            # is "<p>You can hear from us less often…</p>"). Escaping them emitted a literal
+            # &lt;p&gt; into the compliance footer of 19 emails (#142). Only `text` defaults
+            # are plain strings that need escaping.
+            values[fname] = d if fld.get("type") == "richtext" else esc(d)
         elif isinstance(d, dict):
             if d.get("src"):
                 src = d["src"]
-                if DEAD_LOGO_HOST in src:
+                # Both static modules carrying an image use `logo_image`, and it is always
+                # the wordmark: the header's field default points at Cloudinary and the
+                # footer's at the dead HubSpot portal. Rewriting only the HubSpot host left
+                # 30 Cloudinary references in place, so normalise every logo to the one
+                # approved R2 object (#134, decided 2026-09-05).
+                if fname == "logo_image" or DEAD_LOGO_HOST in src:
                     src = LOGO_URL
                 values[fname] = esc(src)
             elif d.get("href"):
@@ -584,6 +611,70 @@ def r_commerce(slug, copy, ctx=None, **kw):
             values["button_url"] = esc(ctx["dest"])
     return render(slug, values)
 
+def _replace_items_table(html_frag, inner):
+    """Swap the item-rows table's contents for `inner`, matching tags by depth.
+
+    The cart module's static item rows are placeholders. Shopify fills the cart from
+    `abandoned_checkout.line_items` at send time, so the rows must be a Liquid loop, not
+    three fixed slots. A non-greedy regex cannot be used here: the rows contain nested
+    tables, so the first `</table>` is not the right one.
+    """
+    m = re.search(r'<table[^>]*margin-top:16px;"[^>]*>', html_frag)
+    if not m:
+        return html_frag, False
+    i = m.end()
+    depth, j = 1, i
+    for t in re.finditer(r"<(/?)table\b", html_frag[i:]):
+        depth += -1 if t.group(1) else 1
+        if depth == 0:
+            j = i + t.start()
+            break
+    else:
+        return html_frag, False
+    return html_frag[:i] + inner + html_frag[j:], True
+
+
+def r_cart_line_items(slug, copy, ctx=None, **kw):
+    """Cart module: chrome from the template, line items from Shopify Liquid.
+
+    `r_commerce` renders a loud placeholder for the dynamic payload, which is right for
+    modules whose content a human must supply. It is wrong here: the payload is Shopify's
+    own abandoned-checkout data, and the Liquid to read it is fixed. That loop was
+    hand-written into the four J2 emails by 72811bf and never returned to the builder,
+    which is what made the builder unable to reproduce them (#141).
+    """
+    # {{ cart_contents }} is a deck shorthand meaning "the cart goes here". The Liquid
+    # loop below supplies exactly that, so the token is dropped from the copy before
+    # rendering rather than scrubbed out of the HTML afterwards. Dropping it early also
+    # fixes the inline case (CR-2 writes "Still in your cart: {{ cart_contents }}" on one
+    # line, so the token would otherwise end up inside the heading).
+    copy = re.sub(r"\s*\{\{\s*cart_contents\s*\}\}", "", copy or "").strip()
+    # This module's CTA returns the customer to their own cart. The per-email destination is
+    # a product or collection page, which is the wrong target here — recovering a cart means
+    # going to the checkout, not to a listing. Committed CR-2 was corrected by hand to
+    # {{ checkout.url }} for exactly this reason (#141).
+    ctx = {**(ctx or {}), "dest": "{{ checkout.url }}"}
+    frag = r_commerce(slug, copy, ctx, **kw)
+    liquid = os.path.join(TEMPLATES, slug + ".liquid.html")
+    if not os.path.exists(liquid):
+        return frag
+    inner = open(liquid, encoding="utf-8").read().strip()
+    frag, _ = _replace_items_table(frag, inner)
+    return frag
+    inner = open(liquid, encoding="utf-8").read().strip()
+    frag, ok = _replace_items_table(frag, inner)
+    if ok:
+        # The loud {{ cart_contents }} placeholder existed only to mark this payload as
+        # unresolved. Real Liquid now resolves it, so the placeholder must go.
+        # At renderer time the token is still bare inside loud()'s div; the inline <span>
+        # is only added later by loud_inline_tokens() at document assembly. Tolerate both.
+        frag = re.sub(r'<div style="border:2px dashed #EA6452[^"]*">'
+                      r'(?:<span[^>]*>)?\s*\{\{\s*cart_contents\s*\}\}\s*'
+                      r'(?:</span>)?</div>',
+                      "", frag)
+        frag = re.sub(r'<div class="hsc-rt"[^>]*>\s*</div>', "", frag)
+    return frag
+
 def r_products(slug, copy, ctx=None, max_cards=3, card_pat="product_%d", **kw):
     """Product grids: match copy-mentioned products to verified assets; else loud."""
     values = {}
@@ -795,6 +886,7 @@ RENDERERS = {
 for _s in ("commerce_cart_line_items", "commerce_order_summary", "commerce_quote_spec_table",
            "commerce_shipping_tracking", "commerce_viewed_product"):
     RENDERERS[_s] = r_commerce
+RENDERERS["commerce_cart_line_items"] = r_cart_line_items
 for _s in ("column_image_and_text", "photo_feature_story", "hero_photo_led"):
     RENDERERS[_s] = r_image_text
 for _s in ("text_section", "text_reassurance", "hero_text_led", "photo_founder_note",
@@ -877,7 +969,12 @@ def compliance_strip(html_doc, campaign):
 
 def loud_inline_tokens(doc):
     """Any leftover non-Shopify {{ token }} becomes an inline loud marker."""
-    keep = ("customer.first_name", "unsubscribe_url", "checkout.url", "unsubscribe_link")
+    # Real Shopify Messaging variables. Anything else is an unresolved deck placeholder and
+    # is marked loud. The abandoned-checkout loop variables belong here: they are emitted by
+    # r_cart_line_items as genuine Liquid, and marking them loud wrapped live Shopify
+    # variables in placeholder chrome (#141).
+    keep = ("customer.first_name", "unsubscribe_url", "checkout.url", "unsubscribe_link",
+            "line_item.", "abandoned_checkout.")
     def repl(m):
         tok = m.group(0)
         if any(k in tok for k in keep):
@@ -953,7 +1050,16 @@ def assemble(row):
             else:
                 deviations.append(f"dropped optional [{fam}] — no copy block")
             continue
-        copy_t = translate_tokens(copy)
+        # Only the checkout-abandonment journey has abandoned_checkout.* populated.
+        # email_prefix() returns the full code ("CR-3"), so match the family.
+        copy_t = translate_tokens(copy, abandoned_checkout=prefix.startswith("CR-"))
+        # The cart module resolves {{ cart_contents }} into a Shopify Liquid loop over
+        # abandoned_checkout.line_items, so the token is not copy that went missing.
+        # Without this, carry_overflow() sees it absent from the render and re-appends it
+        # verbatim after the rendered items — which is how it survived the renderer's own
+        # strip (#141).
+        if slug == "commerce_cart_line_items":
+            copy_t = re.sub(r"\s*\{\{\s*cart_contents\s*\}\}", "", copy_t).strip()
         if slug == "comparison" and copy_t.strip() and not _two_sided([copy_t]) \
                 and not copy_t.strip().startswith(("{{", "[")):
             deviations.append("(Comparison) copy is an option list, not a two-sided "
@@ -981,7 +1087,13 @@ def assemble(row):
 def email_doc(row, preamble, modules, styles):
     name = row["Email name"]
     preheader = esc(row["Preview Text"].strip()) or ""
-    comments = "\n".join("<!-- BUILD NOTE: " + esc(translate_tokens(p)) + " -->" for p in preamble)
+    # A preamble line that is only a structurally-resolved token adds nothing: the module
+    # renders it as real Shopify Liquid, so the note would assert an unresolved variable that
+    # is not unresolved. It also blocks the preview compiler as a build-note variable (#141).
+    notes = [p for p in preamble
+             if p.strip() not in RESOLVED_TOKENS
+             and re.sub(r"\s+", " ", p.strip()) not in RESOLVED_TOKENS]
+    comments = "\n".join("<!-- BUILD NOTE: " + esc(translate_tokens(p)) + " -->" for p in notes)
     style_block = "\n".join(dict.fromkeys(styles.values()))
     parts = ["<!-- module: " + fam + " -->\n" + frag for fam, frag in modules]
     body_inner = "\n".join(parts)
@@ -1047,6 +1159,14 @@ def coverage_probes(line):
     if m:
         yield m.group(1)  # numbered lines render as <ol> items, without the "1. " prefix
 
+# Deck shorthand that a renderer resolves into real Shopify Liquid rather than into text.
+# The copy line will not appear in the output, so coverage is proved by the presence of the
+# markup it was replaced by — never by ignoring the line.
+RESOLVED_TOKENS = {
+    "{{ cart_contents }}": "abandoned_checkout.line_items",
+    "{{ last_viewed_product }}": "abandoned_checkout.line_items.first.product_title",
+}
+
 def coverage_misses(row, doc):
     text = squash(doc)
     misses = []
@@ -1055,6 +1175,10 @@ def coverage_misses(row, doc):
             if squash(probe) in text:
                 break
         else:
+            resolved = next((mark for tok, mark in RESOLVED_TOKENS.items()
+                             if tok in line and mark in doc), None)
+            if resolved:
+                continue
             misses.append(line)
     return misses
 
