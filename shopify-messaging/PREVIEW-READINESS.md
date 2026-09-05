@@ -6,23 +6,24 @@
 A source is **ready** only when the fail-closed preview compiler renders it against the
 fictional fixtures and it clears every safety gate. Nothing here is a send approval.
 
-**13 ready · 40 blocked · 53 total.**
+**14 ready · 39 blocked · 53 total.**
 
 | Blocker | Emails | Remediation |
 |---|---:|---|
-| Ready | 13 | None. |
-| `build-note-comment` | 1 | Mechanical. The live copy is clean; a build note still carries an untranslated merge tag. |
+| Ready | 14 | None. |
+| `build-note-comment` | 0 | Mechanical. The live copy is clean; a build note still carries an untranslated merge tag. |
 | `unresolved-variable` | 9 | Decide the Shopify variable, then add a fictional fixture value. Requires Vincent. |
 | `authoring-placeholder` | 30 | Supply the real business data. Must stay blocked until then. |
 | `safety` | 0 | Fix the source. Never relax the gate. |
 
-## Ready (13)
+## Ready (14)
 
 | Email | Source | Live variables | Live placeholders | Build-note variables |
 |---|---|---|---|---|
 | CR-1 | `01-cr-1.html` | — | — | — |
 | CR-2 | `02-cr-2.html` | — | — | — |
 | CR-3 | `03-cr-3.html` | — | — | — |
+| CR-4 | `04-cr-4.html` | — | — | — |
 | PP-2 | `07-pp-2.html` | — | — | — |
 | PP-7 | `12-pp-7.html` | — | — | — |
 | W-2 | `15-w-2.html` | — | — | — |
@@ -33,12 +34,6 @@ fictional fixtures and it clears every safety gate. Nothing here is a send appro
 | C-1 | `30-c-1.html` | — | — | — |
 | C-3 | `32-c-3.html` | — | — | — |
 | C-4 | `33-c-4.html` | — | — | — |
-
-## Blocked only by a `<!-- BUILD NOTE -->` comment (1)
-
-| Email | Source | Live variables | Live placeholders | Build-note variables |
-|---|---|---|---|---|
-| CR-4 | `04-cr-4.html` | — | — | `cart_contents` |
 
 ## Blocked by an undecided dynamic variable in live copy (9)
 

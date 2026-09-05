@@ -1087,7 +1087,13 @@ def assemble(row):
 def email_doc(row, preamble, modules, styles):
     name = row["Email name"]
     preheader = esc(row["Preview Text"].strip()) or ""
-    comments = "\n".join("<!-- BUILD NOTE: " + esc(translate_tokens(p)) + " -->" for p in preamble)
+    # A preamble line that is only a structurally-resolved token adds nothing: the module
+    # renders it as real Shopify Liquid, so the note would assert an unresolved variable that
+    # is not unresolved. It also blocks the preview compiler as a build-note variable (#141).
+    notes = [p for p in preamble
+             if p.strip() not in RESOLVED_TOKENS
+             and re.sub(r"\s+", " ", p.strip()) not in RESOLVED_TOKENS]
+    comments = "\n".join("<!-- BUILD NOTE: " + esc(translate_tokens(p)) + " -->" for p in notes)
     style_block = "\n".join(dict.fromkeys(styles.values()))
     parts = ["<!-- module: " + fam + " -->\n" + frag for fam, frag in modules]
     body_inner = "\n".join(parts)
