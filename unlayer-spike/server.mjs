@@ -3,6 +3,7 @@
 import { createServer } from 'node:http';
 import { readFileSync } from 'node:fs';
 import { parseBuiltEmail, buildDesign } from './seed-design.mjs';
+import { buildBlocks } from './build-blocks.mjs';
 import { loadEnv } from './env.mjs';
 
 const PORT = Number(process.env.PORT || 4300);
@@ -43,6 +44,12 @@ createServer(async (req, res) => {
   }
 
   if (url.pathname === '/api/config') return json(res, 200, { projectId: PROJECT_ID });
+
+  if (url.pathname === '/api/blocks') {
+    const themes = url.searchParams.get('dark') === '1' ? ['light', 'dark'] : ['light'];
+    try { return json(res, 200, { blocks: buildBlocks({ themes }) }); }
+    catch (e) { return json(res, 500, { error: e.message }); }
+  }
 
   if (url.pathname === '/api/design') {
     const file = url.searchParams.get('file') || '01-cr-1.html';

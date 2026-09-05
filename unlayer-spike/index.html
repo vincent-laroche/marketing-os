@@ -40,7 +40,18 @@ const say = (msg, over) => { status.textContent = msg; status.classList.toggle('
 
 async function boot() {
   const { projectId } = await (await fetch('/api/config')).json();
-  unlayer.init({ id: 'editor', projectId, displayMode: 'email' });
+  const q = new URLSearchParams(location.search);
+  const mode = q.get('blocks') || 'on';    // on | one | off  (isolation switches)
+  let blocks = [];
+  if (mode !== 'off') {
+    ({ blocks } = await (await fetch('/api/blocks')).json());
+    if (mode === 'one') blocks = blocks.slice(0, 1);
+  }
+  const opts = { id: 'editor', projectId, displayMode: 'email' };
+  if (mode !== 'off') opts.blocks = blocks;
+  unlayer.init(opts);
+  window.__blocks = blocks;
+  window.__mode = mode;
   await load();
 }
 
@@ -50,7 +61,7 @@ async function load() {
   const { design, families, error } = await r.json();
   if (error) return say('error: ' + error, true);
   unlayer.loadDesign(design);
-  say(`${families.length} modules loaded — drag them to reorder`);
+  say(`${families.length} modules · ${(window.__blocks||[]).length} blocks in palette`);
 }
 
 document.getElementById('reload').onclick = load;
