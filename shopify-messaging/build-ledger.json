@@ -3,7 +3,7 @@
   "file": "01-cr-1.html",
   "email": "CR-1 · Your Cart's Still Here — Abandon +4h",
   "status": "GREEN",
-  "size_kb": 12.4,
+  "size_kb": 11.6,
   "modules": [
    "Header - Centered logo",
    "Layout - Plain-text founder wrapper",
@@ -16,13 +16,13 @@
   "blockers": [],
   "issues": [],
   "deviations": [],
-  "loud_placeholders": 1
+  "loud_placeholders": 0
  },
  {
   "file": "02-cr-2.html",
   "email": "CR-2 · Three Questions Answered — Abandon +1d",
   "status": "GREEN",
-  "size_kb": 18.6,
+  "size_kb": 18.1,
   "modules": [
    "Header - Centered logo",
    "Layout - Plain-text founder wrapper",
@@ -70,7 +70,7 @@
   "file": "04-cr-4.html",
   "email": "CR-4 · Last Note + Free Shipping — Abandon +4d",
   "status": "GREEN",
-  "size_kb": 15.2,
+  "size_kb": 14.3,
   "modules": [
    "Header - Centered logo",
    "Layout - Plain-text founder wrapper",
@@ -95,7 +95,7 @@
   "blockers": [],
   "issues": [],
   "deviations": [],
-  "loud_placeholders": 1
+  "loud_placeholders": 0
  },
  {
   "file": "05-br-1.html",
@@ -169,7 +169,7 @@
   "file": "08-pp-3.html",
   "email": "PP-3 · On The Bench — Day 5",
   "status": "GREEN",
-  "size_kb": 9.7,
+  "size_kb": 9.6,
   "modules": [
    "Header - Centered logo",
    "Layout - Plain-text founder wrapper",
@@ -258,7 +258,7 @@
   "file": "12-pp-7.html",
   "email": "PP-7 · How's It Going — Delivery +35d",
   "status": "GREEN",
-  "size_kb": 7.5,
+  "size_kb": 7.4,
   "modules": [
    "Header - Centered logo",
    "Layout - Plain-text founder wrapper",
@@ -474,7 +474,7 @@
   "file": "20-ro-2.html",
   "email": "RO-2 · Due For Supplies — Delivery +60d",
   "status": "GREEN",
-  "size_kb": 12.9,
+  "size_kb": 12.8,
   "modules": [
    "Header - Centered logo",
    "Hero - Text-led",
@@ -495,7 +495,7 @@
   "file": "21-ro-3.html",
   "email": "RO-3 · Replacement Window — Delivery +90d",
   "status": "GREEN",
-  "size_kb": 17.9,
+  "size_kb": 17.8,
   "modules": [
    "Header - Centered logo",
    "Hero - Text-led",
@@ -598,7 +598,7 @@
   "file": "25-wb-1.html",
   "email": "WB-1 · Checking In — Day 0",
   "status": "GREEN",
-  "size_kb": 8.9,
+  "size_kb": 8.8,
   "modules": [
    "Header - Centered logo",
    "Layout - Plain-text founder wrapper",
@@ -675,7 +675,7 @@
   "file": "28-wb-4.html",
   "email": "WB-4 · Last Email From Us — Day 21",
   "status": "GREEN",
-  "size_kb": 8.7,
+  "size_kb": 8.6,
   "modules": [
    "Header - Centered logo",
    "Layout - Plain-text founder wrapper",
@@ -970,7 +970,7 @@
   "file": "39-nl-06.html",
   "email": "NL-06 · Education — Density explained",
   "status": "GREEN",
-  "size_kb": 16.3,
+  "size_kb": 16.2,
   "modules": [
    "Text - Masthead",
    "Text - Opening",
@@ -1083,7 +1083,7 @@
   "file": "43-nl-10.html",
   "email": "NL-10 · Launch — HS- spotlight",
   "status": "GREEN",
-  "size_kb": 23.1,
+  "size_kb": 23.0,
   "modules": [
    "Text - Masthead",
    "Hero - Photo-led",
@@ -1351,7 +1351,7 @@
   "file": "52-nl-19.html",
   "email": "NL-19 · Brand — What's next + reader Q&A",
   "status": "GREEN",
-  "size_kb": 13.6,
+  "size_kb": 13.5,
   "modules": [
    "Text - Masthead",
    "Photo - Feature story",
