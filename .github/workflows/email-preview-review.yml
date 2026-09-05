@@ -93,12 +93,37 @@ jobs:
             if (!source || !Number.isInteger(issue) || issue < 1) throw new Error("canonical preview identity unavailable");
             return {emailCode, source: source.source_path, campaign: source.campaign_key, persona: source.persona, states: source.states, issue};
           });
+          // Blockers at the base revision, so a *newly* failing preview can be told from one
+          // that was already blocked and merely touched. Without this, any repository-wide
+          // change fails the gate on every pre-existing blocker it happens to touch, which is
+          // stricter than this check's own message ("changed or newly failing") claims.
+          //
+          // Fail closed: if the base inventory cannot be produced, every changed blocked Email
+          // is treated as newly failing.
+          const baseBlockers = (() => {
+            const base = path.join(process.env.RUNNER_TEMP || os.tmpdir(), "preview-base");
+            try {
+              execFileSync("git", ["worktree", "add", "--detach", base, process.env.BASE_SHA], {stdio: "inherit"});
+              const out = execFileSync("npm", ["--silent", "--prefix", "tools/email-preview", "run", "inventory"],
+                {env: {...process.env, EMAIL_PREVIEW_REPO_ROOT: base}, maxBuffer: 64 * 1024 * 1024}).toString();
+              return new Map(JSON.parse(out).sources.map(item => [item.emailCode, item.blocker]));
+            } catch (error) {
+              console.log("base inventory unavailable, failing closed: " + (error && error.message));
+              return null;
+            } finally {
+              try { execFileSync("git", ["worktree", "remove", "--force", base], {stdio: "ignore"}); } catch {}
+            }
+          })();
+
           const blocked = inventory.sources.filter(item => item.blocker !== "none" && (broadChange || changed.length === 0 || changedCodes.has(item.emailCode))).map(item => {
             const issue = issues["email:" + item.emailCode];
             if (!Number.isInteger(issue) || issue < 1) throw new Error("canonical blocked Email Issue unavailable");
             const source = "shopify-messaging/emails/" + item.file;
             const changedSource = changedCodes.has(item.emailCode);
-            return {emailCode: item.emailCode, category: item.blocker, issue, mustFail: changedSource && !buildNoteOnly(source)};
+            // Newly failing means the blocker appeared, or changed category, in this revision.
+            const newlyFailing = baseBlockers === null || baseBlockers.get(item.emailCode) !== item.blocker;
+            return {emailCode: item.emailCode, category: item.blocker, issue,
+                    mustFail: changedSource && newlyFailing && !buildNoteOnly(source)};
           });
           fs.writeFileSync("render-plan.json", JSON.stringify({selected, blocked}, null, 2) + "\n");
           NODE

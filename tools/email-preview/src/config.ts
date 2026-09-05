@@ -22,7 +22,18 @@ const configSchema = z.object({
 }).strict();
 
 export const packageRoot = path.resolve(import.meta.dirname, "..");
-export const repositoryRoot = path.resolve(packageRoot, "../..");
+/** Repository the inventory reads sources from.
+ *
+ * Overridable so the review workflow can run this exact compiler against a BASE_SHA worktree
+ * and tell a *newly* failing preview from one that was already blocked and merely touched.
+ * Without that comparison, any repository-wide change (an image-host migration, say) fails
+ * the gate on every pre-existing blocker it happens to touch.
+ *
+ * Set only by CI. The default remains the checkout this package lives in.
+ */
+export const repositoryRoot = process.env.EMAIL_PREVIEW_REPO_ROOT
+  ? path.resolve(process.env.EMAIL_PREVIEW_REPO_ROOT)
+  : path.resolve(packageRoot, "../..");
 
 export function loadConfig() {
   const config = configSchema.parse(JSON.parse(fs.readFileSync(path.join(packageRoot, "preview-config.json"), "utf8")));
