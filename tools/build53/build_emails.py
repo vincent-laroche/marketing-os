@@ -166,20 +166,26 @@ def parse_body(body):
 # ------------------------------------------------------------- copy structuring
 FIRSTNAME = '{{ customer.first_name | default: "there" }}'
 
-def translate_tokens(text):
+def translate_tokens(text, abandoned_checkout=False):
     """Reference-copy tokens -> Shopify Messaging Liquid. Known tokens translate;
     everything else stays verbatim (rendered loud downstream)."""
     text = re.sub(r"\{\{\s*firstname\s*\}\}", FIRSTNAME, text)
     text = re.sub(
         r"\{\{\s*personalization_token\(\s*['\"]contact\.firstname['\"]\s*,\s*['\"](.*?)['\"]\s*\)\s*\}\}",
         r'{{ customer.first_name | default: "\1" }}', text)
-    # The deck writes {{ last_viewed_product }} as shorthand for the item the customer was
-    # looking at. Shopify exposes it on the abandonment event, so bind it here rather than
-    # leaving a token Shopify cannot resolve. CR-3 carried this binding by hand until the
-    # return-to-palette decision (2026-09-05); it belongs in the builder.
-    text = re.sub(r"\{\{\s*last_viewed_product\s*\}\}",
-                  '{{ abandoned_checkout.line_items.first.product_title '
-                  '| default: "Your selected system" }}', text)
+    # {{ last_viewed_product }} is deck shorthand for "the item they were looking at".
+    # Its Shopify binding depends on which automation sends the email, so it is only
+    # translated where that binding is known: checkout abandonment (CR-*), where
+    # abandoned_checkout.* is populated. CR-3 carried this by hand until the
+    # return-to-palette decision (2026-09-05).
+    #
+    # BR-1 is BROWSE abandonment — a different automation type with a different event
+    # payload (J2-CART-RECOVERY-READY.md). abandoned_checkout.* would not resolve there,
+    # so its token is deliberately left to render loud rather than bound to a guess.
+    if abandoned_checkout:
+        text = re.sub(r"\{\{\s*last_viewed_product\s*\}\}",
+                      '{{ abandoned_checkout.line_items.first.product_title '
+                      '| default: "Your selected system" }}', text)
     return text
 
 def paragraphs(copy):
@@ -1044,7 +1050,9 @@ def assemble(row):
             else:
                 deviations.append(f"dropped optional [{fam}] — no copy block")
             continue
-        copy_t = translate_tokens(copy)
+        # Only the checkout-abandonment journey has abandoned_checkout.* populated.
+        # email_prefix() returns the full code ("CR-3"), so match the family.
+        copy_t = translate_tokens(copy, abandoned_checkout=prefix.startswith("CR-"))
         # The cart module resolves {{ cart_contents }} into a Shopify Liquid loop over
         # abandoned_checkout.line_items, so the token is not copy that went missing.
         # Without this, carry_overflow() sees it absent from the render and re-appends it
@@ -1148,7 +1156,10 @@ def coverage_probes(line):
 # Deck shorthand that a renderer resolves into real Shopify Liquid rather than into text.
 # The copy line will not appear in the output, so coverage is proved by the presence of the
 # markup it was replaced by — never by ignoring the line.
-RESOLVED_TOKENS = {"{{ cart_contents }}": "abandoned_checkout.line_items"}
+RESOLVED_TOKENS = {
+    "{{ cart_contents }}": "abandoned_checkout.line_items",
+    "{{ last_viewed_product }}": "abandoned_checkout.line_items.first.product_title",
+}
 
 def coverage_misses(row, doc):
     text = squash(doc)
