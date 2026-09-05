@@ -171,6 +171,29 @@ That is the intended behaviour, not a bug to patch with a background.
 conversation, never publish it. Secrets come from `~/.env` via
 `set -a && source ~/.env && set +a` — never hardcode a token.
 
+## 6b. Customer proof rights — settled, do not re-ask
+
+**Decided 2026-08-29 by Vincent.** Reviews in `proof-bank/` carrying
+`permission: published-review` **may be used in marketing email**. They are already
+published on the Hair Solutions storefront, so email is not a new disclosure.
+
+This is standing policy, not a per-review judgement. Do not reopen it per email, per
+review, or per campaign, and do not ask Vincent to verify a review that already carries
+`published-review`. An agent about to ask "is this proof cleared for email use?" has its
+answer here.
+
+The `used_in` field maps a review to the email that uses it. It is **hand-maintained
+editorial work**, not generator output — `extract_proof_bank.py` writes it empty and a
+re-run destroys it (#129). Never regenerate the proof bank without preserving `used_in`.
+
+Two things this does **not** settle, and which still need judgement:
+
+- **Claims.** A review asserting a result the brand cannot substantiate is a claims
+  problem, not a rights problem.
+- **Attribution accuracy.** Author name, rating and product must match the source record.
+
+Neither should ever surface as "please verify this proof."
+
 ## 7. Marketing OS shared layer
 
 The repository now contains the shared Marketing OS control plane and a Social Media OS domain in addition to the existing Email OS. Read `docs/marketing-os/OPERATING-CONTRACT.md` before changing shared records, social schemas, cross-channel references, or platform workflows.
