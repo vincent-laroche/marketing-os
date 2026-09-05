@@ -19,6 +19,16 @@ which modules appear in each email. It is a Notion export of the email system.
 - If it looks stale, ask Vincent to re-export from Notion — do not patch around it.
 - Anything anywhere else in this repo that disagrees with it is obsolete by definition.
 
+**Amendment — module order, approved 2026-09-05 by Vincent (#138).** `Module Stack` in
+`modules_master …_all.csv` is **descriptive, not generative**. Composition may originate in the
+Unlayer block editor rather than the CSV, and the export writes the resulting module order back
+so the CSV stays accurate rather than silently stale.
+
+Everything else in this section is unchanged and still binds. Copy still comes **verbatim** from
+the decks, and composition still draws only on the approved Atelier Zero module library — an
+editor may reorder and swap approved modules, never invent copy or a module. A missing copy
+block remains a re-export question, never something to write locally (#139).
+
 **Brand colours for email come from the modules in `Email Reference File/`, not from
 `brand-design-system/`.** Set 2026-08-19 by Vincent. The rendered module previews in
 `Atelier Zero — Resolved HTML Module Previews (102)/` ARE the correct brand colours:
