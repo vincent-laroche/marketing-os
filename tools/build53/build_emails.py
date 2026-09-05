@@ -28,13 +28,16 @@ ASSET_MAP = json.load(open(os.path.join(ROOT, "tools", "build53", "asset_map.jso
 OUT_DIR = os.path.join(ROOT, "shopify-messaging", "emails")
 
 ASSETS_BASE = "https://assets.hairsolutions.co/v1/public/"
-# The wordmark: header_centered_logo's fields.json defaults to Cloudinary (approved host,
-# 16 KB, HTTP 200); footer_social's defaults to the HubSpot portal CDN. HubSpot access is
-# lost (AGENTS.md §3) and that URL is portal-tied, so every logo is normalised to the
-# Cloudinary one. Verified 200 on 2026-08-19.
-LOGO_URL = ("https://res.cloudinary.com/dtmizxj1n/image/upload/e_trim/f_png/w_640,c_limit/"
-            "v1785220022/HAIR_SOLUTIONS_MEDIA_LIBRARY/01_BRAND/logos/"
-            "wordmark-dark-on-transparent-bg.png")
+# The wordmark: header_centered_logo's fields.json defaults to Cloudinary; footer_social's
+# defaults to the HubSpot portal CDN. HubSpot access is lost (AGENTS.md §3) and that URL is
+# portal-tied, so every logo is normalised to this one constant.
+# Host decided 2026-09-05 by Vincent (#134): email images live on R2 hsc-media-origin, served
+# by the hsc-media-delivery Worker. Content-addressed per BUILD-LEDGER: the key's sha256 is of
+# the uploaded bytes, so a re-encode is a new key. Raw /v1/public/ only — never ?variant=,
+# which emits AVIF that many email clients cannot render.
+# Uploaded and verified 2026-09-05: HTTP 200, image/png, 16,400 bytes, sha256 matches source.
+LOGO_URL = (ASSETS_BASE + "approved/brand/wordmark-dark-on-transparent/"
+            "cfcbef6a17911dd479598a3341973ed83492746fd68288030b04f19a757ed233.png")
 DEAD_LOGO_HOST = "hubspotusercontent"
 ADDRESS = "Ehitajate tee 110, Tallinn, Harjumaa 13517, Estonia"  # footer_wide spelling;
 # footer_standard's "Eahitajate tee" is a typo — normalised at render, recorded in ledger.
@@ -334,7 +337,12 @@ def r_static(slug, copy, ctx, **kw):
         elif isinstance(d, dict):
             if d.get("src"):
                 src = d["src"]
-                if DEAD_LOGO_HOST in src:
+                # Both static modules carrying an image use `logo_image`, and it is always
+                # the wordmark: the header's field default points at Cloudinary and the
+                # footer's at the dead HubSpot portal. Rewriting only the HubSpot host left
+                # 30 Cloudinary references in place, so normalise every logo to the one
+                # approved R2 object (#134, decided 2026-09-05).
+                if fname == "logo_image" or DEAD_LOGO_HOST in src:
                     src = LOGO_URL
                 values[fname] = esc(src)
             elif d.get("href"):

@@ -7,6 +7,11 @@
 
 ## Standing rules
 
+- **Image host is `assets.hairsolutions.co` (R2 `hsc-media-origin`).** Decided 2026-09-05 by
+  Vincent (#134). All 54 image references in the built emails resolve there; Cloudinary and the
+  HubSpot portal CDN are both zero. The wordmark lives at
+  `approved/brand/wordmark-dark-on-transparent/cfcbef6a…233.png` — uploaded and verified
+  2026-09-05 as HTTP 200, `image/png`, 16,400 bytes, sha256 matching source.
 - **Image URLs: raw `/v1/public/<key>` only — never `?variant=`.** The variant transform
   emits AVIF, which many email clients cannot render. Recorded 2026-08-19, re-verified
   Phase 2.
@@ -14,7 +19,11 @@
   file, so a re-encode means a new key. Old keys are left in place (immutable, content-
   addressed); references move, objects are not deleted.
 - Upload path: `wrangler r2 object put hsc-media-origin/<key> --file <f> --remote`
-  with `CLOUDFLARE_API_TOKEN=$CLOUDFLARE_MASTER_ACCOUNT_API_TOKEN`.
+  with `CLOUDFLARE_API_TOKEN=$CLOUDFLARE_MASTER_TOKEN`.
+  **Corrected 2026-09-05 (#134):** this line previously named
+  `CLOUDFLARE_MASTER_ACCOUNT_API_TOKEN`, which `GET /user/tokens/verify` reports as
+  *Invalid API Token*. `CLOUDFLARE_MASTER_TOKEN` is active, resolves the HSC Account, and
+  reads all five R2 buckets.
   **Trap:** without `--remote`, wrangler 4.72 prints "Upload complete" against a local
   simulation and the object never exists — always verify with a public HEAD after upload.
   (The `CLOUDFLARE_ACCESS_KEY_ID`/`CLOUDFLARE_SECRET_ACCESS_KEY` pair in ~/.env is not
