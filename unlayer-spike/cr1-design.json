@@ -1,0 +1,170 @@
+{
+  "counters": {
+    "u_row": 4,
+    "u_column": 4,
+    "u_content_html": 4
+  },
+  "schemaVersion": 21,
+  "body": {
+    "id": "48384536-20c8-48e4-a963-1354df60e6ad",
+    "rows": [
+      {
+        "id": "row_1",
+        "cells": [
+          1
+        ],
+        "columns": [
+          {
+            "id": "col_2",
+            "contents": [
+              {
+                "id": "html_3",
+                "type": "html",
+                "values": {
+                  "html": "<style>\n@media only screen and (max-width:480px){\n  .az-module-shell{width:100%!important;max-width:100%!important;}\n  .az-module-shell .az-mobile-pad{padding-left:24px!important;padding-right:24px!important;}\n  .az-module-shell .az-stack{display:block!important;width:100%!important;box-sizing:border-box!important;}\n  .az-module-shell li{font-size:16px!important;line-height:1.6!important;}\n  .az-module-shell td{max-width:100%!important;box-sizing:border-box!important;overflow-wrap:anywhere!important;}\n  .az-module-shell img{max-width:100%!important;height:auto!important;}\n}\n</style>\n<style>\n@media only screen and (max-width:480px){\n  .az-module-shell{width:100%!important;max-width:100%!important;}\n  .az-module-shell .az-mobile-pad{padding-left:24px!important;padding-right:24px!important;}\n  .az-module-shell .az-stack{display:block!important;width:100%!important;box-sizing:border-box!important;}\n  .az-module-shell li{font-size:16px!important;line-height:1.6!important;}\n  .az-module-shell td{max-width:100%!important;box-sizing:border-box!important;overflow-wrap:anywhere!important;}\n  .az-module-shell img{max-width:100%!important;height:auto!important;}\n}\n</style>\n<style>.hsc-rt p{margin:0 0 12px;padding:0;}.hsc-rt p:last-child{margin-bottom:0;}</style>\n<!-- Atelier Zero v7 -->\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color:transparent;border-collapse:collapse;margin:0;\" width=\"100%\"><tr><td align=\"center\" style=\"padding:7px 0;\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"az-module-shell\" role=\"presentation\" style=\"max-width:568px;background-color:#F6EFD9;border:none;border-radius:16px;border-collapse:separate;\" width=\"100%\"><tr><td align=\"center\" style=\"padding:34px 26px;\"><a href=\"https://hairsolutions.co/\" rel=\"noopener noreferrer\" style=\"text-decoration:none;border:none;display:inline-block;background-color:transparent;padding:0;\" target=\"_blank\"><img alt=\"Hair Solutions Co.\" height=\"256\" src=\"https://res.cloudinary.com/dtmizxj1n/image/upload/e_trim/f_png/w_640,c_limit/v1785220022/HAIR_SOLUTIONS_MEDIA_LIBRARY/01_BRAND/logos/wordmark-dark-on-transparent-bg.png\" style=\"display:block;border:0;outline:none;width:320px;max-width:100%;height:auto;margin:0 auto;\" width=\"320\"/></a></td></tr></table>",
+                  "containerPadding": "0px",
+                  "_meta": {
+                    "htmlID": "",
+                    "htmlClassNames": ""
+                  },
+                  "anchor": "",
+                  "hideable": true,
+                  "deletable": true,
+                  "draggable": true,
+                  "duplicatable": true
+                }
+              }
+            ],
+            "values": {}
+          }
+        ],
+        "values": {
+          "padding": "0px",
+          "backgroundColor": "",
+          "columns": false,
+          "noStackMobile": false
+        }
+      },
+      {
+        "id": "row_4",
+        "cells": [
+          1
+        ],
+        "columns": [
+          {
+            "id": "col_5",
+            "contents": [
+              {
+                "id": "html_6",
+                "type": "html",
+                "values": {
+                  "html": "<!-- Atelier Zero v7 -->\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color:transparent;border-collapse:collapse;margin:0;\" width=\"100%\"><tr><td align=\"center\" style=\"padding:7px 16px;\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"az-module-shell\" role=\"presentation\" style=\"max-width:568px;background-color:#F6EFD9;border:none;border-radius:16px;border-collapse:separate;\" width=\"100%\"><tr><td class=\"az-content-pad\" style=\"padding:32px 30px;\"><div style=\"font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;color:#151411;font-weight:700;\">Hi {{ customer.first_name | default: \"there\" }},</div><div class=\"hsc-rt\" style=\"font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;color:#25221D;padding-top:14px;\"><p style=\"margin:0 0 12px;padding:0;\">You were partway through an order and stopped. That's completely fine — but occasionally it's because something on our side didn't work, and I'd want to know.</p><p style=\"margin:0 0 12px;padding:0;\">If it was a payment error, a shipping surprise, or the page just froze, reply and tell me. I'll sort it out.</p><p style=\"margin:0;padding:0;\">If you're still deciding, no rush at all. Your cart's saved.</p></div><div style=\"height:1px;background-color:#C7BFAC;margin:22px 0 0;line-height:1px;font-size:0;\">&nbsp;</div><div style=\"font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:16px;font-weight:700;color:#151411;padding-top:16px;\">Vincent</div><div style=\"font-family:'SF Mono',ui-monospace,Menlo,Consolas,'Courier New',monospace;font-size:13px;color:#25221D;padding-top:4px;\">Founder, Hair Solutions Co.</div></td></tr></table>",
+                  "containerPadding": "0px",
+                  "_meta": {
+                    "htmlID": "",
+                    "htmlClassNames": ""
+                  },
+                  "anchor": "",
+                  "hideable": true,
+                  "deletable": true,
+                  "draggable": true,
+                  "duplicatable": true
+                }
+              }
+            ],
+            "values": {}
+          }
+        ],
+        "values": {
+          "padding": "0px",
+          "backgroundColor": "",
+          "columns": false,
+          "noStackMobile": false
+        }
+      },
+      {
+        "id": "row_7",
+        "cells": [
+          1
+        ],
+        "columns": [
+          {
+            "id": "col_8",
+            "contents": [
+              {
+                "id": "html_9",
+                "type": "html",
+                "values": {
+                  "html": "<!- Atelier Zero v7 -->\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color:transparent;border-collapse:collapse;margin:0;\" width=\"100%\"><tr><td align=\"center\" style=\"padding:7px 16px;\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"az-module-shell\" role=\"presentation\" style=\"max-width:568px;background-color:#F6EFD9;border:none;border-radius:16px;border-collapse:separate;\" width=\"100%\"><tr><td class=\"az-content-pad\" style=\"padding:32px 30px;\"><div style=\"font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:28px;font-weight:700;line-height:1.2;color:#151411;letter-spacing:-0.3px;\">Still in your cart</div><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse:collapse;margin-top:16px;\" width=\"100%\">{% for line_item in abandoned_checkout.line_items limit:5 %}<tr><td style=\"padding:12px 0;border-bottom:1px solid #C7BFAC;\" width=\"70%\"><div style=\"font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:15px;font-weight:700;color:#151411;line-height:1.4;\">{{ line_item.product_title }}</div>{% if line_item.variant_title != blank %}<div style=\"font-family:'SF Mono',ui-monospace,Menlo,Consolas,'Courier New',monospace;font-size:13px;color:#25221D;padding-top:4px;\">{{ line_item.variant_title }}</div>{% endif %}</td><td align=\"right\" style=\"padding:12px 0;border-bottom:1px solid #C7BFAC;font-family:'SF Mono',ui-monospace,Menlo,Consolas,'Courier New',monospace;font-size:13px;color:#151411;\">Qty {{ line_item.quantity }}</td></tr>{% endfor %}{% if abandoned_checkout.remaining_products_count > 0 %}<tr><td colspan=\"2\" style=\"padding:10px 0 0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:13px;color:#25221D;\">+ {{ abandoned_checkout.remaining_products_count }} more item{% if abandoned_checkout.remaining_products_count != 1 %}s{% endif %}</td></tr>{% endif %}</table><table align=\"left\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"margin:0;\"><tr><td style=\"padding-top:20px;\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"width:auto;border-collapse:separate;\"><tr><td style=\"background-color:#EA6452;border-radius:999px;border:none;\"><a class=\"az-cta\" href=\"{{ checkout.url }}\" rel=\"noopener noreferrer\" style=\"display:inline-block;padding:14px 24px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;font-weight:700;letter-spacing:0.4px;color:#151411;text-decoration:none;background-color:#EA6452;border:none;border-radius:999px;line-height:1.2;min-height:44px;box-sizing:border-box;\" target=\"_blank\">Finish your order →</a></td></tr></table></td></tr></table></td></tr></table>",
+                  "containerPadding": "0px",
+                  "_meta": {
+                    "htmlID": "",
+                    "htmlClassNames": ""
+                  },
+                  "anchor": "",
+                  "hideable": true,
+                  "deletable": true,
+                  "draggable": true,
+                  "duplicatable": true
+                }
+              }
+            ],
+            "values": {}
+          }
+        ],
+        "values": {
+          "padding": "0px",
+          "backgroundColor": "",
+          "columns": false,
+          "noStackMobile": false
+        }
+      },
+      {
+        "id": "row_10",
+        "cells": [
+          1
+        ],
+        "columns": [
+          {
+            "id": "col_11",
+            "contents": [
+              {
+                "id": "html_12",
+                "type": "html",
+                "values": {
+                  "html": "<!-- Atelier Zero v7 -->\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color:transparent;border-collapse:collapse;margin:0;\" width=\"100%\"><tr><td align=\"center\" style=\"padding:7px 16px;\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"az-module-shell\" role=\"presentation\" style=\"max-width:568px;background-color:#F6EFD9;border:none;border-radius:16px;border-collapse:separate;\" width=\"100%\"><tr><td class=\"az-content-pad\" style=\"padding:32px 30px;\"><div style=\"font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#151411;padding-bottom:10px;\">Your preferences</div><div class=\"hsc-rt\" style=\"font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;color:#25221D;padding-top:0px;\">You can hear from us less often, or not at all. Either is completely fine and it will not affect your order or your support.</div><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse:collapse;margin-top:16px;\" width=\"100%\"><tr><td style=\"padding:10px 0;border-bottom:1px solid #C7BFAC;\"><a href=\"https://hairsolutions.co/pages/edit-notifications\" style=\"font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;font-weight:700;color:#151411;text-decoration:underline;\">Send me less often</a></td></tr><tr><td style=\"padding:10px 0;border-bottom:1px solid #C7BFAC;\"><a href=\"https://hairsolutions.co/pages/edit-notifications\" style=\"font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;font-weight:700;color:#151411;text-decoration:underline;\">Update my preferences</a></td></tr><tr><td style=\"padding:10px 0;border-bottom:1px solid #C7BFAC;\"><a href=\"{{ unsubscribe_url }}\" style=\"font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;font-weight:700;color:#151411;text-decoration:underline;\">Unsubscribe entirely</a></td></tr></table></td></tr></table></td></tr></table>\n\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color:transparent;border-collapse:collapse;margin:0;\" width=\"100%\"><tr><td align=\"center\" style=\"padding:7px 16px 24px;\"><div style=\"font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11px;line-height:1.7;color:#25221D;text-align:center;\">Hair Solutions Co.<br>Ehitajate tee 110, Tallinn, Harjumaa 13517, Estonia<br><a href=\"https://hairsolutions.co/pages/edit-notifications\" style=\"color:#25221D;text-decoration:underline;\">Manage preferences</a> &middot; <a href=\"https://hairsolutions.co/policies/privacy-policy\" style=\"color:#25221D;text-decoration:underline;\">Privacy</a></div></td></tr></table>",
+                  "containerPadding": "0px",
+                  "_meta": {
+                    "htmlID": "",
+                    "htmlClassNames": ""
+                  },
+                  "anchor": "",
+                  "hideable": true,
+                  "deletable": true,
+                  "draggable": true,
+                  "duplicatable": true
+                }
+              }
+            ],
+            "values": {}
+          }
+        ],
+        "values": {
+          "padding": "0px",
+          "backgroundColor": "",
+          "columns": false,
+          "noStackMobile": false
+        }
+      }
+    ],
+    "values": {
+      "backgroundColor": "transparent",
+      "contentWidth": "600px",
+      "preheaderText": "No pressure — just making sure nothing broke on our end.",
+      "fontFamily": {
+        "label": "Arial",
+        "value": "arial,helvetica,sans-serif"
+      }
+    }
+  }
+}
