@@ -49,6 +49,69 @@ Consequence, recorded so it is not rediscovered: `mailerlite/ml_components.py` r
 built from it do not match the modules. Retokenising it to the module palette above is
 open work, not a decision to revisit.
 
+**Supersession — Bone/Paper/Ink is the current email palette, decided 2026-09-06 by Vincent.**
+The rule above, including its "open work, not a decision to revisit" framing, is reversed.
+This session surfaced a separate, later, git-tagged module library —
+`approved-module-library-2026-08-19` (tag message: *"Approved Atelier Zero email module
+library: 19 families x bone/paper/ink. Sole copy. Created by Vincent 2026-08-19, confirmed
+approved."*) — that Vincent had approved *after* the `#F6EFD9` rule above but before this
+session, and which this file never recorded. Asked directly which palette governs, Vincent
+named Bone/Paper/Ink.
+
+Current palette, three shades per module:
+
+| Shade | Surface | Ink text | Muted text | Border/rule | Coral |
+|---|---|---|---|---|---|
+| Bone | `#F7F1DE` | `#15140F` | `#5A5448` | `#DDD2B6` | `#ED6F5C` |
+| Paper | `#EFE7D2` | `#15140F` | `#5A5448` | `#DDD2B6` | `#ED6F5C` |
+| Ink | `#15140F` (surface) | `#F7F1DE` | `#DDD2B6` | `#2A2620` | `#ED6F5C` |
+
+The "Consequence" paragraph above is now backwards: `mailerlite/ml_components.py` was never
+misaligned — it matches the current palette, and it was the `Email Reference File/` previews
+that had drifted from what Vincent had approved. No retokenising work is needed there.
+
+**Location.** The library lives in this repository, git-tracked, split across five folders:
+`reshade-batch-1/`, `reshade-batch-2/`, `reshade-batch-3/`, `wb1-master-assembly/`,
+`module-proof-batch/` — 30 distinct module families × 3 shades. `mailerlite-blocks/` holds an
+earlier 8-family subset and is gitignored; its one committed copy is frozen at the
+`approved-module-library-2026-08-19` tag, not in the working tree. **Trap:** because it is
+gitignored, `mailerlite-blocks/` does not exist inside any git worktree — only in the main
+checkout. A script resolving its source directory relative to its own location (the pattern
+used everywhere else in this repo) will silently miss every family that lives only there —
+`divider` is the one family with no copy in any of the other four folders. Point explicitly at
+the main checkout, not a worktree-relative path.
+
+**How shade composition works — see the `email-shade-composition` skill.** Shade is not
+decoration; it is assigned by the job a block does (Bone = air/openers, Paper = body/most
+content, Ink = punctuation, Coral = at most one accent block per email). Do not pick a shade
+arbitrarily when building or reviewing an email — read that skill first.
+
+**No page background, still — verified against these files directly.** Every file's outer
+wrapper table is `background-color:transparent`, same as the superseded §5 rule. There is no
+white or near-white brand colour to find: what reads as "white" in a rendered screenshot is
+whatever renders the page (browser, email client, screenshot tool) showing through, not a
+decided value. Confirmed 2026-09-06 after a real search for a fourth shade turned up nothing —
+see #150 for the full trail, including a rendered PNG reference set
+(`on-brand email templates inspirations/`) whose own governing skill calls the same visual
+effect "near-white" and treats it as approximate, never gives it a hex, and an unrelated Manus
+sandbox export (`~/Downloads/email-block-library`, self-described as *"not claimed to be
+exports from a live Figma file"*) that independently invents a `white: #FFFFFF` token with no
+confirmed approval trail. Neither is adopted as source.
+
+**Paper is real; the inset tone is not Paper.** `#EFE7D2` genuinely exists as its own
+block-level card colour — confirmed directly in `header__centered_logo__paper.html`. What
+shows up nested *inside* a Bone or Ink card (a three-cell strip, a sub-panel) is a fourth,
+darker value — `#DDD2B6` on light shades, `#2A2620` on Ink — and it is inset-only, never a
+block's own surface, exactly as the shade-composition skill states. Confirmed by checking real
+usage counts in `list__support_strip__bone.html`: the inset tone appears 7 times, Paper zero.
+
+**Still open:** whether the `Email Reference File/` module previews themselves get rebuilt in
+this palette, and whether the 53 built Shopify Messaging emails move to it. **Measured, not
+open:** the 30-family library is missing 29 of the 52 `Email Reference File/` families,
+including every footer variant and both CTA buttons (`button_primary_cta`, `button_final_cta`)
+— it cannot build a complete email on its own yet. None of the rebuild questions are decided;
+this amendment only settles which palette is authoritative going forward. Full record on #150.
+
 Contents:
 
 | Path | Contents |
