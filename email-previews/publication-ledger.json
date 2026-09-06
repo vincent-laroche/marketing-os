@@ -345,6 +345,328 @@
       "pages_deployment_id": "c0ee6e5e8b090e63eac03cfde06351cbfd3d8ef7",
       "workflow_run_id": "32865679611",
       "workflow_attempt": "1"
+    },
+    {
+      "event": "published",
+      "email_code": "C-1",
+      "campaign_key": "campaign:J5",
+      "source_path": "shopify-messaging/emails/30-c-1.html",
+      "source_commit_sha": "1b39eb1198310c2e21ba05420a60415d58b07121",
+      "canonical_issue": 34,
+      "canonical_pr": 146,
+      "persona": "normal-customer",
+      "states": [
+        "missing-first-name"
+      ],
+      "output_sha256": {
+        "rendered.html": "ef865fd61be544a0b9fe19687aac233df1526dd8802106ee947c85b75a7bd598",
+        "desktop.png": "a06bf2165437b21d1a58ea02192d2a2235256d3f24de8ed5b380c3b50dab8a70",
+        "mobile.png": "c6d484c1cc73aef09e7d0cc5d45cd62396991ed0be1c3be3817e72a164050895"
+      },
+      "publication_timestamp": "2026-09-06T00:40:36Z",
+      "canonical_url": "https://vincent-laroche.github.io/marketing-os/C-1/detail.html",
+      "pages_deployment_id": "1b39eb1198310c2e21ba05420a60415d58b07121",
+      "workflow_run_id": "34001812400",
+      "workflow_attempt": "1"
+    },
+    {
+      "event": "published",
+      "email_code": "C-3",
+      "campaign_key": "campaign:J5",
+      "source_path": "shopify-messaging/emails/32-c-3.html",
+      "source_commit_sha": "1b39eb1198310c2e21ba05420a60415d58b07121",
+      "canonical_issue": 35,
+      "canonical_pr": 146,
+      "persona": "normal-customer",
+      "states": [
+        "missing-first-name"
+      ],
+      "output_sha256": {
+        "rendered.html": "0029af0a3865c409a53097468c656a8fe22f872cd69117023ce6c0e51a6c3154",
+        "desktop.png": "3d2ac3c70fd242f5ccc5c87b7c30aed8020331805864280e0db3b8ca4991bcab",
+        "mobile.png": "0450ea6548881fd401bf755380fcf3e886d6d6e7e94e6aabf8f9cc2f7cc9e140"
+      },
+      "publication_timestamp": "2026-09-06T00:40:36Z",
+      "canonical_url": "https://vincent-laroche.github.io/marketing-os/C-3/detail.html",
+      "pages_deployment_id": "1b39eb1198310c2e21ba05420a60415d58b07121",
+      "workflow_run_id": "34001812400",
+      "workflow_attempt": "1"
+    },
+    {
+      "event": "published",
+      "email_code": "C-4",
+      "campaign_key": "campaign:J5",
+      "source_path": "shopify-messaging/emails/33-c-4.html",
+      "source_commit_sha": "1b39eb1198310c2e21ba05420a60415d58b07121",
+      "canonical_issue": 33,
+      "canonical_pr": 146,
+      "persona": "normal-customer",
+      "states": [
+        "missing-first-name"
+      ],
+      "output_sha256": {
+        "rendered.html": "c44f31156df7577608e279100b553ae929cd2b1ca542ecb3c52cca6ed5855a90",
+        "desktop.png": "e1041cab03c080d697f6ba0792192f46b6cc9cda413b61a174f076d96629cf6a",
+        "mobile.png": "46c6dc2364236dd76d6e4debe2eb66a70fd6d73f6378ec01dcdb8ef2298f693b"
+      },
+      "publication_timestamp": "2026-09-06T00:40:36Z",
+      "canonical_url": "https://vincent-laroche.github.io/marketing-os/C-4/detail.html",
+      "pages_deployment_id": "1b39eb1198310c2e21ba05420a60415d58b07121",
+      "workflow_run_id": "34001812400",
+      "workflow_attempt": "1"
+    },
+    {
+      "event": "published",
+      "email_code": "CR-1",
+      "campaign_key": "campaign:J2",
+      "source_path": "shopify-messaging/emails/01-cr-1.html",
+      "source_commit_sha": "1b39eb1198310c2e21ba05420a60415d58b07121",
+      "canonical_issue": 10,
+      "canonical_pr": 146,
+      "persona": "normal-customer",
+      "states": [
+        "missing-first-name"
+      ],
+      "output_sha256": {
+        "rendered.html": "df531919aae93af378e436b451e72ef74a8844a8592ac29caa979e692b75ba9d",
+        "desktop.png": "e545248c458ec34295f514e1457e5f2be5a77bb91f7eb545a7984536814fd2d8",
+        "mobile.png": "982e7f3c739d4f48e607148eedc8cf2862966d98cab007cdd2685ee070dc3627"
+      },
+      "publication_timestamp": "2026-09-06T00:40:36Z",
+      "canonical_url": "https://vincent-laroche.github.io/marketing-os/CR-1/detail.html",
+      "pages_deployment_id": "1b39eb1198310c2e21ba05420a60415d58b07121",
+      "workflow_run_id": "34001812400",
+      "workflow_attempt": "1"
+    },
+    {
+      "event": "published",
+      "email_code": "CR-2",
+      "campaign_key": "campaign:J2",
+      "source_path": "shopify-messaging/emails/02-cr-2.html",
+      "source_commit_sha": "1b39eb1198310c2e21ba05420a60415d58b07121",
+      "canonical_issue": 8,
+      "canonical_pr": 146,
+      "persona": "normal-customer",
+      "states": [
+        "missing-first-name"
+      ],
+      "output_sha256": {
+        "rendered.html": "285f9174c800a67eab56ec2162b5cffc18c27f914f2d5738585cad3dfceed0aa",
+        "desktop.png": "cf61199868d9d0f03b2a6c7b486b530f327c0e32856f0543dfaf3a15495f7fe0",
+        "mobile.png": "7902d25c12b9198efc1f6f9be9f817069aefb3724c524fc340d8c328a7263d84"
+      },
+      "publication_timestamp": "2026-09-06T00:40:36Z",
+      "canonical_url": "https://vincent-laroche.github.io/marketing-os/CR-2/detail.html",
+      "pages_deployment_id": "1b39eb1198310c2e21ba05420a60415d58b07121",
+      "workflow_run_id": "34001812400",
+      "workflow_attempt": "1"
+    },
+    {
+      "event": "published",
+      "email_code": "CR-3",
+      "campaign_key": "campaign:J2",
+      "source_path": "shopify-messaging/emails/03-cr-3.html",
+      "source_commit_sha": "1b39eb1198310c2e21ba05420a60415d58b07121",
+      "canonical_issue": 29,
+      "canonical_pr": 146,
+      "persona": "normal-customer",
+      "states": [
+        "missing-first-name"
+      ],
+      "output_sha256": {
+        "rendered.html": "17172cdb434fb3a3ec3d95ebe5aa8affc038521e8b53be5d5652d5aec135d0a8",
+        "desktop.png": "d70dd385dba8d6fdd0409c1a4bb4cf5e5937929e4d9b4e8b1d506288d1ca358b",
+        "mobile.png": "b091798f66f100f2b3be256b01393af92f7873b82d27aa6014dfe60cbc8d20e3"
+      },
+      "publication_timestamp": "2026-09-06T00:40:36Z",
+      "canonical_url": "https://vincent-laroche.github.io/marketing-os/CR-3/detail.html",
+      "pages_deployment_id": "1b39eb1198310c2e21ba05420a60415d58b07121",
+      "workflow_run_id": "34001812400",
+      "workflow_attempt": "1"
+    },
+    {
+      "event": "published",
+      "email_code": "CR-4",
+      "campaign_key": "campaign:J2",
+      "source_path": "shopify-messaging/emails/04-cr-4.html",
+      "source_commit_sha": "1b39eb1198310c2e21ba05420a60415d58b07121",
+      "canonical_issue": 24,
+      "canonical_pr": 146,
+      "persona": "normal-customer",
+      "states": [
+        "missing-first-name"
+      ],
+      "output_sha256": {
+        "rendered.html": "593cb0d3e8414faa2f4f0b19d4e2f4e31d1b767f43b12c9fc4a237ca11506ef8",
+        "desktop.png": "fc4c4ccaf0743e28ea9b469895b2dd2fab816b9308ed889638feccab224b6b88",
+        "mobile.png": "f291b35e34d86f5c91e993d0c19576dec5749e40a5536599e3280139886d5041"
+      },
+      "publication_timestamp": "2026-09-06T00:40:36Z",
+      "canonical_url": "https://vincent-laroche.github.io/marketing-os/CR-4/detail.html",
+      "pages_deployment_id": "1b39eb1198310c2e21ba05420a60415d58b07121",
+      "workflow_run_id": "34001812400",
+      "workflow_attempt": "1"
+    },
+    {
+      "event": "published",
+      "email_code": "PP-2",
+      "campaign_key": "campaign:J1",
+      "source_path": "shopify-messaging/emails/07-pp-2.html",
+      "source_commit_sha": "1b39eb1198310c2e21ba05420a60415d58b07121",
+      "canonical_issue": 19,
+      "canonical_pr": 146,
+      "persona": "normal-customer",
+      "states": [
+        "missing-first-name"
+      ],
+      "output_sha256": {
+        "rendered.html": "bdda2990971f9ad130e32ea3686c7f359825e35a9bf6d2149441d6a4f909e178",
+        "desktop.png": "037a998e2326901b4ef63dcb5f758e99914819d6b14ba690ece2fcc5c2ec737b",
+        "mobile.png": "169a67c28afef9a5b12d8d47f44b60b27322eb5d3419ad0cde65a52dd778dcec"
+      },
+      "publication_timestamp": "2026-09-06T00:40:36Z",
+      "canonical_url": "https://vincent-laroche.github.io/marketing-os/PP-2/detail.html",
+      "pages_deployment_id": "1b39eb1198310c2e21ba05420a60415d58b07121",
+      "workflow_run_id": "34001812400",
+      "workflow_attempt": "1"
+    },
+    {
+      "event": "published",
+      "email_code": "PP-7",
+      "campaign_key": "campaign:J1",
+      "source_path": "shopify-messaging/emails/12-pp-7.html",
+      "source_commit_sha": "1b39eb1198310c2e21ba05420a60415d58b07121",
+      "canonical_issue": 11,
+      "canonical_pr": 146,
+      "persona": "normal-customer",
+      "states": [
+        "missing-first-name"
+      ],
+      "output_sha256": {
+        "rendered.html": "cd66f869de6952182b875f3d5477d898a22ec7a95d850983e94cc5f5c593768c",
+        "desktop.png": "73a1850e40987269b0f5b31d24100cf0024d761b8e717a09359581873135752c",
+        "mobile.png": "f9e30285de2b47f48a56090f0a7b5db056d5149cd93f64c4264540056684c901"
+      },
+      "publication_timestamp": "2026-09-06T00:40:36Z",
+      "canonical_url": "https://vincent-laroche.github.io/marketing-os/PP-7/detail.html",
+      "pages_deployment_id": "1b39eb1198310c2e21ba05420a60415d58b07121",
+      "workflow_run_id": "34001812400",
+      "workflow_attempt": "1"
+    },
+    {
+      "event": "published",
+      "email_code": "RO-1",
+      "campaign_key": "campaign:J4",
+      "source_path": "shopify-messaging/emails/19-ro-1.html",
+      "source_commit_sha": "1b39eb1198310c2e21ba05420a60415d58b07121",
+      "canonical_issue": 16,
+      "canonical_pr": 146,
+      "persona": "normal-customer",
+      "states": [
+        "missing-first-name"
+      ],
+      "output_sha256": {
+        "rendered.html": "20487fd2c870f3188758ac956789ecef8260121537cc44f1e3f131afae636dd0",
+        "desktop.png": "60231811a95941386648be818393c6c82fd1f8ab705a5a4e9d3d11252ecf5774",
+        "mobile.png": "d2ec30b84a9bb7ad7cbcf84937490f9c5c731e70a3df8e877ae2c5778126761d"
+      },
+      "publication_timestamp": "2026-09-06T00:40:36Z",
+      "canonical_url": "https://vincent-laroche.github.io/marketing-os/RO-1/detail.html",
+      "pages_deployment_id": "1b39eb1198310c2e21ba05420a60415d58b07121",
+      "workflow_run_id": "34001812400",
+      "workflow_attempt": "1"
+    },
+    {
+      "event": "published",
+      "email_code": "RO-4",
+      "campaign_key": "campaign:J4",
+      "source_path": "shopify-messaging/emails/22-ro-4.html",
+      "source_commit_sha": "1b39eb1198310c2e21ba05420a60415d58b07121",
+      "canonical_issue": 30,
+      "canonical_pr": 146,
+      "persona": "normal-customer",
+      "states": [
+        "missing-first-name"
+      ],
+      "output_sha256": {
+        "rendered.html": "ae3d6a4391572d866639eb48d8be5aa9421e87f21c73d75abcfc94bdc2fc1e68",
+        "desktop.png": "316bcc85f2c95e8252adddf6f82727abcf66c781899ea29432bc5f06d9e44e1a",
+        "mobile.png": "e41fddc385d12af3a7d393b5dc042d1deb1c06ba5e97a15cfe30b43d8f17c1ff"
+      },
+      "publication_timestamp": "2026-09-06T00:40:36Z",
+      "canonical_url": "https://vincent-laroche.github.io/marketing-os/RO-4/detail.html",
+      "pages_deployment_id": "1b39eb1198310c2e21ba05420a60415d58b07121",
+      "workflow_run_id": "34001812400",
+      "workflow_attempt": "1"
+    },
+    {
+      "event": "published",
+      "email_code": "W-2",
+      "campaign_key": "campaign:W",
+      "source_path": "shopify-messaging/emails/15-w-2.html",
+      "source_commit_sha": "1b39eb1198310c2e21ba05420a60415d58b07121",
+      "canonical_issue": 38,
+      "canonical_pr": 146,
+      "persona": "normal-customer",
+      "states": [
+        "missing-first-name"
+      ],
+      "output_sha256": {
+        "rendered.html": "c6fe2024261cd615ac7cabdfbf4701aa5219cafbfd5aa2a2555def00db95dd5c",
+        "desktop.png": "7d85fc0e61d9ad30bdd06e00b3fe1acb7217b4d0acb150f6b18c7118d1e2a526",
+        "mobile.png": "38bed892929566ed53d2cbf6cf40cb9ee64b62b7e908be72f9fe1c0e7e399155"
+      },
+      "publication_timestamp": "2026-09-06T00:40:36Z",
+      "canonical_url": "https://vincent-laroche.github.io/marketing-os/W-2/detail.html",
+      "pages_deployment_id": "1b39eb1198310c2e21ba05420a60415d58b07121",
+      "workflow_run_id": "34001812400",
+      "workflow_attempt": "1"
+    },
+    {
+      "event": "published",
+      "email_code": "W-4",
+      "campaign_key": "campaign:W",
+      "source_path": "shopify-messaging/emails/17-w-4.html",
+      "source_commit_sha": "1b39eb1198310c2e21ba05420a60415d58b07121",
+      "canonical_issue": 39,
+      "canonical_pr": 146,
+      "persona": "normal-customer",
+      "states": [
+        "missing-first-name"
+      ],
+      "output_sha256": {
+        "rendered.html": "5dd272406390d1fa2fc2da4865c7ef6f6cfd19a5d8d6ef62ef0963bb9308407e",
+        "desktop.png": "7ccf60d11a62606110395f72f00ae1a8c681c046131d4db83004b347587b12a7",
+        "mobile.png": "ac9f6fa8c8788e006f09f55b20abc2a60b7dc613709129514c2899d44f833a87"
+      },
+      "publication_timestamp": "2026-09-06T00:40:36Z",
+      "canonical_url": "https://vincent-laroche.github.io/marketing-os/W-4/detail.html",
+      "pages_deployment_id": "1b39eb1198310c2e21ba05420a60415d58b07121",
+      "workflow_run_id": "34001812400",
+      "workflow_attempt": "1"
+    },
+    {
+      "event": "published",
+      "email_code": "WB-4",
+      "campaign_key": "campaign:J3",
+      "source_path": "shopify-messaging/emails/28-wb-4.html",
+      "source_commit_sha": "1b39eb1198310c2e21ba05420a60415d58b07121",
+      "canonical_issue": 21,
+      "canonical_pr": 146,
+      "persona": "normal-customer",
+      "states": [
+        "missing-first-name"
+      ],
+      "output_sha256": {
+        "rendered.html": "75bb57f34fc21ff3bbc3ac12de7c04194be484eeabce6933256269757d37ba2b",
+        "desktop.png": "89975c450b208348ef8f61276a91bebc92196079ba9fb0b0a73dc711870caae8",
+        "mobile.png": "3030d12ae72924b08ebec0b56e476c5220a72fe7c6453fc4167490705adfbde9"
+      },
+      "publication_timestamp": "2026-09-06T00:40:36Z",
+      "canonical_url": "https://vincent-laroche.github.io/marketing-os/WB-4/detail.html",
+      "pages_deployment_id": "1b39eb1198310c2e21ba05420a60415d58b07121",
+      "workflow_run_id": "34001812400",
+      "workflow_attempt": "1"
     }
   ]
 }
