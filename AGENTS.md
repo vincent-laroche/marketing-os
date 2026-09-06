@@ -49,6 +49,149 @@ Consequence, recorded so it is not rediscovered: `mailerlite/ml_components.py` r
 built from it do not match the modules. Retokenising it to the module palette above is
 open work, not a decision to revisit.
 
+**Supersession — Bone/Paper/Ink is the current email palette, decided 2026-09-06 by Vincent.**
+The rule above, including its "open work, not a decision to revisit" framing, is reversed.
+This session surfaced a separate, later, git-tagged module library —
+`approved-module-library-2026-08-19` (tag message: *"Approved Atelier Zero email module
+library: 19 families x bone/paper/ink. Sole copy. Created by Vincent 2026-08-19, confirmed
+approved."*) — that Vincent had approved *after* the `#F6EFD9` rule above but before this
+session, and which this file never recorded. Asked directly which palette governs, Vincent
+named Bone/Paper/Ink.
+
+Current palette, three shades per module:
+
+| Shade | Surface | Ink text | Muted text | Border/rule | Coral |
+|---|---|---|---|---|---|
+| Bone | `#F7F1DE` | `#15140F` | `#5A5448` | `#DDD2B6` | `#ED6F5C` |
+| Paper | `#EFE7D2` | `#15140F` | `#5A5448` | `#DDD2B6` | `#ED6F5C` |
+| Ink | `#15140F` (surface) | `#F7F1DE` | `#DDD2B6` | `#2A2620` | `#ED6F5C` |
+
+The "Consequence" paragraph above is now backwards: `mailerlite/ml_components.py` was never
+misaligned — it matches the current palette, and it was the `Email Reference File/` previews
+that had drifted from what Vincent had approved. No retokenising work is needed there.
+
+**Location.** The library lives in this repository, git-tracked, split across five folders:
+`reshade-batch-1/`, `reshade-batch-2/`, `reshade-batch-3/`, `wb1-master-assembly/`,
+`module-proof-batch/` — 30 distinct module families × 3 shades. `mailerlite-blocks/` holds an
+earlier 8-family subset and is gitignored; its one committed copy is frozen at the
+`approved-module-library-2026-08-19` tag, not in the working tree. **Trap:** because it is
+gitignored, `mailerlite-blocks/` does not exist inside any git worktree — only in the main
+checkout. A script resolving its source directory relative to its own location (the pattern
+used everywhere else in this repo) will silently miss every family that lives only there —
+`divider` is the one family with no copy in any of the other four folders. Point explicitly at
+the main checkout, not a worktree-relative path.
+
+**How shade composition works — see the `email-shade-composition` skill.** Shade is not
+decoration; it is assigned by the job a block does (Bone = air/openers, Paper = body/most
+content, Ink = punctuation, Coral = at most one accent block per email). Do not pick a shade
+arbitrarily when building or reviewing an email — read that skill first.
+
+**No page background, still — verified against these files directly.** Every file's outer
+wrapper table is `background-color:transparent`, same as the superseded §5 rule. There is no
+white or near-white brand colour to find: what reads as "white" in a rendered screenshot is
+whatever renders the page (browser, email client, screenshot tool) showing through, not a
+decided value. Confirmed 2026-09-06 after a real search for a fourth shade turned up nothing —
+see #150 for the full trail, including a rendered PNG reference set
+(`on-brand email templates inspirations/`) whose own governing skill calls the same visual
+effect "near-white" and treats it as approximate, never gives it a hex, and an unrelated Manus
+sandbox export (`~/Downloads/email-block-library`, self-described as *"not claimed to be
+exports from a live Figma file"*) that independently invents a `white: #FFFFFF` token with no
+confirmed approval trail. Neither is adopted as source.
+
+**Paper is real; the inset tone is not Paper.** `#EFE7D2` genuinely exists as its own
+block-level card colour — confirmed directly in `header__centered_logo__paper.html`. What
+shows up nested *inside* a Bone or Ink card (a three-cell strip, a sub-panel) is a fourth,
+darker value — `#DDD2B6` on light shades, `#2A2620` on Ink — and it is inset-only, never a
+block's own surface, exactly as the shade-composition skill states. Confirmed by checking real
+usage counts in `list__support_strip__bone.html`: the inset tone appears 7 times, Paper zero.
+
+**Still open:** whether the `Email Reference File/` module previews themselves get rebuilt in
+this palette, and whether the 53 built Shopify Messaging emails move to it. None of the rebuild
+questions are decided; this amendment only settles which palette is authoritative going forward.
+Full record on #150.
+
+**A richer real source exists — the Figma "Email Design System" file**, decided 2026-09-06 by
+Vincent (also #150). File key `9Il504CQE8jLaUTBVzphqc`. This is a genuine componentized design
+system — 15 named component sets with real Figma variant properties (`Action / Button`: Style
+Ink/Coral/Ghost × Size Default/Small × State Default/Hover/Focus/Disabled; `Email / Hero`, 12
+variants; `Email / Title`, 5; `Email / Content`, 4; `Email / Product`, 7; `Email /
+Call-To-Action`, 8; plus `Email / Footer`, `Email / Divider`, `Email / Pre-Header`, `Email /
+Navigation`, `Email / Regard`, `Label / Eyebrow`, `Label / Badge`, `Divider / Rule`, `Icon /
+Glyph`) — not static mockups. Read in full via the Figma REST API, 103 nodes, 2026-09-06.
+
+This settles the "measured, not open" gap above: the 29 families missing from the 30-family
+Bone/Paper/Ink library exist here, including a real `Action / Button` (with hover/focus/disabled
+states) and every footer variant.
+
+**A fourth real surface: White (`#FFFFFF`).** Confirmed as a governed block-level colour in this
+file — `Email / Pre-Header`, `Email / Divider`, and one `Email / Footer` variant are built on it
+deliberately, not as a rendering artefact. This is a different and better-evidenced finding than
+the "no page background" one above (which still holds — no file in this Figma system paints a
+page background either). Do not conflate the two: transparency is about the *page*; White is a
+real *card* surface, on the same footing as Bone, Paper, and Ink.
+
+**Shade rules are per-family, not uniform.** Content families (Hero, Title, Content, Product,
+Divider, Pre-Header, Footer, Navigation) range across Bone/White/Ink. A separate group —
+transactional and account-status modules (cart, checkout, billing, shipping tracking, order
+confirmation, browse-abandonment, spec-confirmation, preference-centre, a personal founder
+email, "what's changed") — is explicitly spec'd as **Paper+Ink pairs only**, shown side by side
+in the file as deliberate two-shade comparisons. Do not assume every family takes every shade.
+
+**Gap-fill build, 2026-09-06.** Following Vincent's direction to fill the gap before a full
+rebuild, 9 files were hand-converted from this Figma source to email-safe HTML (Figma's node
+JSON is not email markup) and added at `figma-email-design-system/modules/`: three button
+styles (Coral, Ink, Ghost — states are not meaningful in static email HTML, so only the three
+styles were built, not the hover/focus/disabled variants), Divider (White), Pre-Header (White),
+Navigation (Centered Logo/White and With-Links/Ink), Footer (White and Ink). Wired into the
+Unlayer spike's `bone-ink` palette (`unlayer-spike/build-blocks-figma-gap.mjs`), bringing it to
+69 blocks. Verified structurally (balanced tags, transparent outer wrapper, palette confined to
+the approved hexes) and live in the editor with real content loaded.
+
+The wordmark image used is the existing approved asset
+(`approved/brand/wordmark-dark-on-transparent/…png` in R2, per #134) — no new asset was
+uploaded. No light-on-dark wordmark exists in the approved store, so the Ink-surface footer and
+navigation fall back to styled text ("Hair Solutions Co.") rather than inventing a new logo
+asset; the same fallback the existing `footer__preference_centre` files already use. Social
+links are plain text ("Instagram · Facebook · YouTube"), matching the convention already
+established in `Email Reference File/`'s own `footer_social` modules — no icon images were
+introduced.
+
+**Still open, larger scope:** the remaining 10 named component sets (Hero, Title, Content,
+Product, Call-To-Action, Regard, and the supporting Label/Divider-Rule/Icon atoms) are catalogued
+but not yet converted. That is a substantially larger effort — Vincent deferred it pending a
+decision on whether to do the full rebuild.
+
+**A third real source: the "Lifecycle Modules" canvas (`#287:727`), distinct from "Modules
+Library + Hubspot Source."** Discovered 2026-09-06 while auditing the 28 built "Journey Emails"
+against the library for a full block inventory. Unlike the 15 abstract component sets above
+(Figma variant properties, not ready-to-convert markup), this canvas holds ~50 literal Bone/Ink
+frame pairs — finished per-family templates, one Light and one Dark frame each, already laid out
+at 600px width with real placeholder copy. It is where the true Bone/Ink evidence for a family
+lives when the 30-file git library and the 9-file gap-fill don't already cover it.
+
+**Second gap-fill build, 2026-09-06 — 7 families the block inventory found still missing** after
+both the 30-family library and the first gap-fill: `hero_text_led`, `text_block_generic`,
+`plain_text_founder_wrapper`, `testimonial`, `faq`, `trust_badge_row`, `promo_code_block`. Hand-
+converted from the "Lifecycle Modules" canvas (node IDs: `310:772`/`310:775` hero; `310:778`/
+`310:781` text-opening template, reused for the snapshot/why-it-matters/next-step/reassurance/
+offer-discount slots too; `288:724`/`288:731` founder wrapper; `313:780`/`313:783` testimonial;
+`313:786`/`313:795` FAQ; `313:828`/`313:832` trust strip; `288:738`/`288:744` promo code) — all
+genuine Bone+Ink pairs, unlike the White-only families in the first gap-fill, so these fit the
+same shade-paired shape as the 30-family library rather than the flat-list one. Added at
+`figma-lifecycle-gap-batch/` and wired into `unlayer-spike/build-blocks-bpi.mjs`'s `SOURCE_DIRS`
+(37 families × Bone/Ink = 74 blocks, plus the 9 flat gap-fill blocks = 83 total in the `bone-ink`
+library). Verified structurally (balanced tags, transparent outer wrapper, palette confined to
+the approved hexes) and live via the spike's `/api/blocks` endpoint; full test suite unaffected
+(59 passed).
+
+Fixing this build's wiring surfaced a second instance of the `mailerlite-blocks` gitignore trap,
+in reverse: `build-blocks-bpi.mjs`'s `REPO` constant was hardcoded to the main checkout for every
+source directory, so a batch folder authored inside a worktree (git-tracked, just not yet merged
+to `main`) would have silently resolved to nothing there — the same catch-and-continue silent
+miss, mirrored. Fixed by resolving each source directory against the worktree root first, falling
+back to the main checkout only when a directory (like `mailerlite-blocks`) doesn't exist in the
+worktree at all.
+
 Contents:
 
 | Path | Contents |

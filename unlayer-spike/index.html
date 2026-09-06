@@ -23,6 +23,8 @@
 <header>
   <h1>Atelier Zero — Unlayer spike</h1>
   <select id="file"></select>
+  <select id="library"><option value="atelier-zero">Atelier Zero (light/dark)</option><option value="bone-ink">Bone / Ink</option></select>
+  <span id="libHint" style="font-size:11px;opacity:.6;">reloads on change</span>
   <button id="reload">Reload</button>
   <button id="export">Export &amp; check size</button>
   <button id="compose" class="primary">Save composition</button>
@@ -43,9 +45,11 @@ async function boot() {
   const { projectId } = await (await fetch('/api/config')).json();
   const q = new URLSearchParams(location.search);
   const mode = q.get('blocks') || 'on';    // on | one | off  (isolation switches)
+  const library = q.get('library') || 'atelier-zero';
+  document.getElementById('library').value = library;
   let blocks = [];
   if (mode !== 'off') {
-    ({ blocks } = await (await fetch('/api/blocks')).json());
+    ({ blocks } = await (await fetch('/api/blocks?library=' + library)).json());
     if (mode === 'one') blocks = blocks.slice(0, 1);
   }
   const opts = { id: 'editor', projectId, displayMode: 'email' };
@@ -62,11 +66,15 @@ async function load() {
   const { design, families, error } = await r.json();
   if (error) return say('error: ' + error, true);
   unlayer.loadDesign(design);
-  say(`${families.length} modules · ${(window.__blocks||[]).length} blocks in palette`);
+  say(`${families.length} modules · ${(window.__blocks||[]).length} blocks (${document.getElementById('library').selectedOptions[0].text})`);
 }
 
 document.getElementById('reload').onclick = load;
 sel.onchange = load;
+document.getElementById('library').onchange = e => {
+  const p = new URLSearchParams(location.search); p.set('library', e.target.value);
+  location.search = p.toString(); // blocks are only readable by Unlayer at init(); reload to re-init.
+};
 
 document.getElementById('export').onclick = () => {
   say('exporting…');
