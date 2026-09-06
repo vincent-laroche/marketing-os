@@ -5,6 +5,7 @@ import { readFileSync } from 'node:fs';
 import { parseBuiltEmail, buildDesign } from './seed-design.mjs';
 import { buildBlocks } from './build-blocks.mjs';
 import { buildBonelnkBlocks } from './build-blocks-bpi.mjs';
+import { buildFigmaGapBlocks } from './build-blocks-figma-gap.mjs';
 import { writeComposition } from './compose.mjs';
 import { loadEnv } from './env.mjs';
 
@@ -50,7 +51,7 @@ createServer(async (req, res) => {
   if (url.pathname === '/api/blocks') {
     const library = url.searchParams.get('library') || 'atelier-zero';
     try {
-      if (library === 'bone-ink') return json(res, 200, { blocks: buildBonelnkBlocks() });
+      if (library === 'bone-ink') return json(res, 200, { blocks: [...buildBonelnkBlocks(), ...buildFigmaGapBlocks()] });
       const themes = url.searchParams.get('dark') === '1' ? ['light', 'dark'] : ['light'];
       return json(res, 200, { blocks: buildBlocks({ themes }) });
     } catch (e) { return json(res, 500, { error: e.message }); }

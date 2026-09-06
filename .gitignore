@@ -55,6 +55,10 @@ figma-plugin/
 mailerlite-blocks/
 proof-email/
 
+# unlayer-spike's own "Save composition" output — a scratch save target for manual testing,
+# not durable source. The spike's code (server.mjs, build-blocks*.mjs) stays tracked.
+shopify-messaging/composed/
+
 # Skill package: authored under .claude/skills, distributed separately
 email-marketing-os-github-project/
 email_marketing_os_github_project_skill.zip

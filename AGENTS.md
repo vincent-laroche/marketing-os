@@ -106,11 +106,60 @@ block's own surface, exactly as the shade-composition skill states. Confirmed by
 usage counts in `list__support_strip__bone.html`: the inset tone appears 7 times, Paper zero.
 
 **Still open:** whether the `Email Reference File/` module previews themselves get rebuilt in
-this palette, and whether the 53 built Shopify Messaging emails move to it. **Measured, not
-open:** the 30-family library is missing 29 of the 52 `Email Reference File/` families,
-including every footer variant and both CTA buttons (`button_primary_cta`, `button_final_cta`)
-— it cannot build a complete email on its own yet. None of the rebuild questions are decided;
-this amendment only settles which palette is authoritative going forward. Full record on #150.
+this palette, and whether the 53 built Shopify Messaging emails move to it. None of the rebuild
+questions are decided; this amendment only settles which palette is authoritative going forward.
+Full record on #150.
+
+**A richer real source exists — the Figma "Email Design System" file**, decided 2026-09-06 by
+Vincent (also #150). File key `9Il504CQE8jLaUTBVzphqc`. This is a genuine componentized design
+system — 15 named component sets with real Figma variant properties (`Action / Button`: Style
+Ink/Coral/Ghost × Size Default/Small × State Default/Hover/Focus/Disabled; `Email / Hero`, 12
+variants; `Email / Title`, 5; `Email / Content`, 4; `Email / Product`, 7; `Email /
+Call-To-Action`, 8; plus `Email / Footer`, `Email / Divider`, `Email / Pre-Header`, `Email /
+Navigation`, `Email / Regard`, `Label / Eyebrow`, `Label / Badge`, `Divider / Rule`, `Icon /
+Glyph`) — not static mockups. Read in full via the Figma REST API, 103 nodes, 2026-09-06.
+
+This settles the "measured, not open" gap above: the 29 families missing from the 30-family
+Bone/Paper/Ink library exist here, including a real `Action / Button` (with hover/focus/disabled
+states) and every footer variant.
+
+**A fourth real surface: White (`#FFFFFF`).** Confirmed as a governed block-level colour in this
+file — `Email / Pre-Header`, `Email / Divider`, and one `Email / Footer` variant are built on it
+deliberately, not as a rendering artefact. This is a different and better-evidenced finding than
+the "no page background" one above (which still holds — no file in this Figma system paints a
+page background either). Do not conflate the two: transparency is about the *page*; White is a
+real *card* surface, on the same footing as Bone, Paper, and Ink.
+
+**Shade rules are per-family, not uniform.** Content families (Hero, Title, Content, Product,
+Divider, Pre-Header, Footer, Navigation) range across Bone/White/Ink. A separate group —
+transactional and account-status modules (cart, checkout, billing, shipping tracking, order
+confirmation, browse-abandonment, spec-confirmation, preference-centre, a personal founder
+email, "what's changed") — is explicitly spec'd as **Paper+Ink pairs only**, shown side by side
+in the file as deliberate two-shade comparisons. Do not assume every family takes every shade.
+
+**Gap-fill build, 2026-09-06.** Following Vincent's direction to fill the gap before a full
+rebuild, 9 files were hand-converted from this Figma source to email-safe HTML (Figma's node
+JSON is not email markup) and added at `figma-email-design-system/modules/`: three button
+styles (Coral, Ink, Ghost — states are not meaningful in static email HTML, so only the three
+styles were built, not the hover/focus/disabled variants), Divider (White), Pre-Header (White),
+Navigation (Centered Logo/White and With-Links/Ink), Footer (White and Ink). Wired into the
+Unlayer spike's `bone-ink` palette (`unlayer-spike/build-blocks-figma-gap.mjs`), bringing it to
+69 blocks. Verified structurally (balanced tags, transparent outer wrapper, palette confined to
+the approved hexes) and live in the editor with real content loaded.
+
+The wordmark image used is the existing approved asset
+(`approved/brand/wordmark-dark-on-transparent/…png` in R2, per #134) — no new asset was
+uploaded. No light-on-dark wordmark exists in the approved store, so the Ink-surface footer and
+navigation fall back to styled text ("Hair Solutions Co.") rather than inventing a new logo
+asset; the same fallback the existing `footer__preference_centre` files already use. Social
+links are plain text ("Instagram · Facebook · YouTube"), matching the convention already
+established in `Email Reference File/`'s own `footer_social` modules — no icon images were
+introduced.
+
+**Still open, larger scope:** the remaining 10 named component sets (Hero, Title, Content,
+Product, Call-To-Action, Regard, and the supporting Label/Divider-Rule/Icon atoms) are catalogued
+but not yet converted. That is a substantially larger effort — Vincent deferred it pending a
+decision on whether to do the full rebuild.
 
 Contents:
 
