@@ -23,11 +23,23 @@ proof-bank.json "used_in" field, which this script also updates on disk so a
 future run doesn't reuse an already-placed quote). Run with --dry-run first.
 """
 import json
+import os
 import re
 import sys
 
-EMAILS_DIR = "/Users/vMac/04_marketing/email_marketing/shopify-messaging/emails"
-PROOF_BANK_JSON = "/Users/vMac/04_marketing/email_marketing/proof-bank/proof-bank.json"
+# Derived from this file's location, not hard-coded. The previous absolute paths pointed at
+# /Users/vMac/04_marketing/email_marketing, which stopped existing when the repository was
+# consolidated — so this stage silently did nothing while build_emails.py happily produced
+# newsletters with empty Proof Bank slots (#144).
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+EMAILS_DIR = os.path.join(ROOT, "shopify-messaging", "emails")
+PROOF_BANK_JSON = os.path.join(ROOT, "proof-bank", "proof-bank.json")
+
+for _required in (EMAILS_DIR, PROOF_BANK_JSON):
+    if not os.path.exists(_required):
+        # Fail loudly. Proceeding leaves the newsletters looking built but unfilled, which is
+        # exactly how the broken paths went unnoticed.
+        raise SystemExit(f"fill_proof_bank_nl: required path is missing: {_required}")
 
 DRY = "--dry-run" in sys.argv
 
