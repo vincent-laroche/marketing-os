@@ -161,6 +161,37 @@ Product, Call-To-Action, Regard, and the supporting Label/Divider-Rule/Icon atom
 but not yet converted. That is a substantially larger effort — Vincent deferred it pending a
 decision on whether to do the full rebuild.
 
+**A third real source: the "Lifecycle Modules" canvas (`#287:727`), distinct from "Modules
+Library + Hubspot Source."** Discovered 2026-09-06 while auditing the 28 built "Journey Emails"
+against the library for a full block inventory. Unlike the 15 abstract component sets above
+(Figma variant properties, not ready-to-convert markup), this canvas holds ~50 literal Bone/Ink
+frame pairs — finished per-family templates, one Light and one Dark frame each, already laid out
+at 600px width with real placeholder copy. It is where the true Bone/Ink evidence for a family
+lives when the 30-file git library and the 9-file gap-fill don't already cover it.
+
+**Second gap-fill build, 2026-09-06 — 7 families the block inventory found still missing** after
+both the 30-family library and the first gap-fill: `hero_text_led`, `text_block_generic`,
+`plain_text_founder_wrapper`, `testimonial`, `faq`, `trust_badge_row`, `promo_code_block`. Hand-
+converted from the "Lifecycle Modules" canvas (node IDs: `310:772`/`310:775` hero; `310:778`/
+`310:781` text-opening template, reused for the snapshot/why-it-matters/next-step/reassurance/
+offer-discount slots too; `288:724`/`288:731` founder wrapper; `313:780`/`313:783` testimonial;
+`313:786`/`313:795` FAQ; `313:828`/`313:832` trust strip; `288:738`/`288:744` promo code) — all
+genuine Bone+Ink pairs, unlike the White-only families in the first gap-fill, so these fit the
+same shade-paired shape as the 30-family library rather than the flat-list one. Added at
+`figma-lifecycle-gap-batch/` and wired into `unlayer-spike/build-blocks-bpi.mjs`'s `SOURCE_DIRS`
+(37 families × Bone/Ink = 74 blocks, plus the 9 flat gap-fill blocks = 83 total in the `bone-ink`
+library). Verified structurally (balanced tags, transparent outer wrapper, palette confined to
+the approved hexes) and live via the spike's `/api/blocks` endpoint; full test suite unaffected
+(59 passed).
+
+Fixing this build's wiring surfaced a second instance of the `mailerlite-blocks` gitignore trap,
+in reverse: `build-blocks-bpi.mjs`'s `REPO` constant was hardcoded to the main checkout for every
+source directory, so a batch folder authored inside a worktree (git-tracked, just not yet merged
+to `main`) would have silently resolved to nothing there — the same catch-and-continue silent
+miss, mirrored. Fixed by resolving each source directory against the worktree root first, falling
+back to the main checkout only when a directory (like `mailerlite-blocks`) doesn't exist in the
+worktree at all.
+
 Contents:
 
 | Path | Contents |

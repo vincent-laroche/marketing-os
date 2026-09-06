@@ -13,13 +13,24 @@ import { join } from 'node:path';
 // batch folders are git-tracked and so exist inside the worktree — but mailerlite-blocks/ is
 // gitignored (AGENTS-level rule: vendored/scratch, never repo content) and therefore exists
 // ONLY in the main checkout, never in any worktree. `divider` lives solely in that folder, so
-// resolving REPO as `join(process.cwd(), '..')` silently dropped it — the catch-and-continue
+// resolving every dir as `join(process.cwd(), '..')` silently dropped it — the catch-and-continue
 // in buildFamilyMap() below turned a missing directory into a missing family, with no error.
-// Point at the main checkout explicitly rather than assume the worktree has everything.
+// The reverse trap also exists: a batch folder authored inside a worktree (git-tracked, just not
+// yet merged to main) exists ONLY there, not in the main checkout. So each source dir is resolved
+// against the worktree root first, falling back to the main checkout — never one root for all.
 const REPO = process.env.BPI_REPO_ROOT || '/Users/vMac/04_marketing/marketing-os';
+const WORKTREE_ROOT = join(process.cwd(), '..');
 const SOURCE_DIRS = [
   'reshade-batch-1', 'reshade-batch-2', 'reshade-batch-3',
   'wb1-master-assembly', 'module-proof-batch', 'mailerlite-blocks',
+  // The 7 families #150's block inventory found missing even after the Figma gap-fill
+  // (build-blocks-figma-gap.mjs): hero_text_led, text_block_generic,
+  // plain_text_founder_wrapper, testimonial, faq, trust_badge_row, promo_code_block.
+  // Sourced from the same governed Figma "Lifecycle Modules" canvas (#287:727), which is
+  // where the true Bone/Ink pairs live — unlike the earlier gap-fill's 9 files, these all
+  // have genuine Figma-evidenced Bone AND Ink variants, so they fit this shade-paired
+  // generator directly rather than needing the flat-list shape.
+  'figma-lifecycle-gap-batch',
 ];
 const SHADES = ['bone', 'ink']; // Paper deliberately excluded.
 
@@ -41,15 +52,19 @@ const titleOf = slug => slug
 function buildFamilyMap() {
   const map = {};
   for (const dir of SOURCE_DIRS) {
-    let entries;
-    try { entries = readdirSync(join(REPO, dir)); } catch { continue; }
+    let root = WORKTREE_ROOT, entries;
+    try { entries = readdirSync(join(root, dir)); }
+    catch {
+      root = REPO;
+      try { entries = readdirSync(join(root, dir)); } catch { continue; }
+    }
     for (const name of entries) {
       const m = /^(.+)__(bone|paper|ink)\.html$/.exec(name);
       if (!m) continue;
       const [, rawFam, shade] = m;
       const fam = rawFam.replace(/-off$/, '_off').replace('sign-off', 'sign_off');
       if (shade === 'paper') continue; // never sourced
-      (map[fam] ??= {})[shade] = join(REPO, dir, name);
+      (map[fam] ??= {})[shade] = join(root, dir, name);
     }
   }
   // Keep only families with both required shades — a partial family would silently drop one
