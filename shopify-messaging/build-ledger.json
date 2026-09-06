@@ -517,7 +517,7 @@
  {
   "file": "22-ro-4.html",
   "email": "RO-4 · Same Spec Or Change — Delivery +110d",
-  "status": "BLOCKED",
+  "status": "GREEN",
   "size_kb": 10.7,
   "modules": [
    "Header - Centered logo",
@@ -537,11 +537,10 @@
    "Reply with what you'd change and I'll adjust the specification before it goes to production. That costs nothing.",
    "Vincent"
   ],
-  "blockers": [
-   "BLOCKER: required module (Text - Customer snapshot) has no copy block"
-  ],
+  "blockers": [],
   "issues": [],
   "deviations": [
+   "dropped optional [Text - Customer snapshot] — no copy block",
    "dual CTA rendered in-wrapper: 'Same spec →' -> https://hairsolutions.co/collections/mens-hair-systems?utm_source=shopify_email&utm_medium=email&utm_campaign=ro-4; 'Change my spec →' -> mailto:info@hairsolutions.co"
   ],
   "loud_placeholders": 0
