@@ -70,7 +70,7 @@
   "file": "04-cr-4.html",
   "email": "CR-4 · Last Note + Free Shipping — Abandon +4d",
   "status": "GREEN",
-  "size_kb": 14.1,
+  "size_kb": 13.9,
   "modules": [
    "Header - Centered logo",
    "Layout - Plain-text founder wrapper",
@@ -86,7 +86,6 @@
    "Last email about this — I won't keep bringing it up.",
    "If cost is the sticking point, here's free shipping on the order:",
    "Code: FREESHIP",
-   "Valid for 72 hours",
    "{{ cart_contents }}",
    "And if the timing just isn't right, that's genuinely fine. Your cart stays saved, the code will be honoured whenever you come back, and I'll stop emailing you about it.",
    "Vincent",

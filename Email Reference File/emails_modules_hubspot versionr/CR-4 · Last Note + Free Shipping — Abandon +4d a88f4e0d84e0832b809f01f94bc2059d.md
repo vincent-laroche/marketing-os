@@ -7,7 +7,6 @@ Last email about this — I won't keep bringing it up.
 If cost is the sticking point, here's free shipping on the order:
 
 Code: FREESHIP
-Valid for 72 hours
 
 {{ cart_contents }}
 
@@ -45,7 +44,6 @@ Last email about this — I won't keep bringing it up.
 If cost is the sticking point, here's free shipping on the order:
 
 Code: FREESHIP
-Valid for 72 hours
 
 {{ cart_contents }}
 
@@ -62,6 +60,6 @@ Complete your order →
 
 ### Build notes
 
-Timing: Abandon + 4 days. Keep record: Abandoned Cart 3of3 (214987971492, this record) — publish it. Deliberate choice: free shipping (FREESHIP, 72h) rather than the 10% in Checkout Abandonment 3of4 — a percentage discount on a considered purchase trains people to wait for the next one; shipping does not devalue the product.
+Timing: Abandon + 4 days. Keep record: Abandoned Cart 3of3 (214987971492, this record) — publish it. Deliberate choice: free shipping (FREESHIP, no expiry) rather than the 10% in Checkout Abandonment 3of4 — a percentage discount on a considered purchase trains people to wait for the next one; shipping does not devalue the product.
 
 Journey: Journey · Cart Recovery · Master · Subscription: Order & Shipping Updates · Module stack: (Header - Centered logo) (Layout - Plain-text founder wrapper) (Commerce - Cart line items) (Signal - Promo code) (Footer - Preference centre)
